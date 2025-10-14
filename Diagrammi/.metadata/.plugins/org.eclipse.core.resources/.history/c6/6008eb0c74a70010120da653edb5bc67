@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_7zzkoKdGEfCUnMEloEO-zQ" name="Diagramma_classi">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_75bEcKdGEfCUnMEloEO-zQ">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_-AsWIKdKEfCUnMEloEO-zQ" name="carte">
+    <packagedElement xmi:type="uml:Class" xmi:id="_TbENAKdLEfCUnMEloEO-zQ" name="Carta" isAbstract="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_WW1akKdLEfCUnMEloEO-zQ" name="nome" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_McjtUKdMEfCUnMEloEO-zQ" name="descrizione" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_YH7IQKdMEfCUnMEloEO-zQ" name="pathImmagine" visibility="private" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_VHeZkKdNEfCUnMEloEO-zQ" name="applicaEffetto">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_9BojgKdjEfCJF7pWmnDnuw" name="stato" type="_5Nz5IKdOEfCUnMEloEO-zQ"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_Bk_Z8KdkEfCJF7pWmnDnuw" name="g" type="__YKikKdOEfCUnMEloEO-zQ"/>
+      </ownedOperation>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_G4WhEKdQEfCUnMEloEO-zQ" name="Carta" visibility="private"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_4dwfwKdPEfCUnMEloEO-zQ" name="Mazzo">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_B8hgQKdQEfCUnMEloEO-zQ" name="carte" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_3S6zkKdrEfCJF7pWmnDnuw" name="pesca"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_7dZ3AKdrEfCJF7pWmnDnuw" name="mischiaMazzo"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_9HYFgKdrEfCJF7pWmnDnuw" name="aggiungiCarta">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_BiuPcKdsEfCJF7pWmnDnuw" name="carta" type="_TbENAKdLEfCUnMEloEO-zQ"/>
+      </ownedOperation>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_YMEPIKdREfCUnMEloEO-zQ" name="Mazzo" visibility="private"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_CU2ucKdVEfCUnMEloEO-zQ" name="Nemico">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_trC_kKdZEfCUnMEloEO-zQ" name="danno" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_xgoxEKdZEfCUnMEloEO-zQ" name="danno"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_z1VXkKdZEfCUnMEloEO-zQ" name="dannoMax" visibility="private" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_UhXv8KdaEfCUnMEloEO-zQ" name="caratteristiche" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_xJjFwKdkEfCJF7pWmnDnuw" name="effettoMalvagio">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_zfFZwKdkEfCJF7pWmnDnuw" name="stato" type="_5Nz5IKdOEfCUnMEloEO-zQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_5-qFQKdkEfCJF7pWmnDnuw" name="effettoSconfitta">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_JlKgEKdlEfCJF7pWmnDnuw" name="stato" type="_5Nz5IKdOEfCUnMEloEO-zQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_QuPbkKdlEfCJF7pWmnDnuw" name="danneggia">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_YcL-sKdlEfCJF7pWmnDnuw" name="danni">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_M49mYKdVEfCUnMEloEO-zQ" name="Regole"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_uigBcKdYEfCUnMEloEO-zQ" name="ArtiOscure">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_eY-0oKdiEfCJF7pWmnDnuw" name="caratteristiche" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_iPSG4KdZEfCUnMEloEO-zQ" name="GestoreEffetti">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Sq6HIKdmEfCJF7pWmnDnuw" name="regole" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EMap"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_UowMgKdpEfCJF7pWmnDnuw" name="aggiungiRegola">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_XFsJAKdpEfCJF7pWmnDnuw" name="regola" type="_M49mYKdVEfCUnMEloEO-zQ"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_fOKE8KdpEfCJF7pWmnDnuw" name="carta">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_-otAQKdpEfCJF7pWmnDnuw" name="rimuoviRegola">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_BJcesKdqEfCJF7pWmnDnuw" name="carta">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EJavaObject"/>
+        </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_V3IZQKdrEfCJF7pWmnDnuw" name="regolaAttiva">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_e7QFIKdrEfCJF7pWmnDnuw" name="regola" type="_M49mYKdVEfCUnMEloEO-zQ"/>
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_iwmmEKdrEfCJF7pWmnDnuw" name="" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_pFz50KdZEfCUnMEloEO-zQ" name="Luogo">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_pCOk4KdaEfCUnMEloEO-zQ" name="marchi" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_zD_kwKdaEfCUnMEloEO-zQ" name="marchi"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_ve9-0KdaEfCUnMEloEO-zQ" name="marchiMax" visibility="private" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_BagXUKdbEfCUnMEloEO-zQ" name="Incantesimo">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_QNcnMKdbEfCUnMEloEO-zQ" name="costo" visibility="private" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_KfrScKdjEfCJF7pWmnDnuw" name="caratteristiche" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_X1c2MKdiEfCJF7pWmnDnuw" name="Oggetto">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Z7cSUKdiEfCJF7pWmnDnuw" name="costo" visibility="private" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_LAPB0KdjEfCJF7pWmnDnuw" name="caratteristiche" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_m-6IoKdiEfCJF7pWmnDnuw" name="Competenza">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_rAkAMKdiEfCJF7pWmnDnuw" name="caratteristiche" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_sQ4YkKdiEfCJF7pWmnDnuw" name="Alleato">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_uIgokKdiEfCJF7pWmnDnuw" name="costo" visibility="private" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_LOvX4KdjEfCJF7pWmnDnuw" name="caratteristiche" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_PyFMwKdOEfCUnMEloEO-zQ" name="gioco">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_t62-MKdOEfCUnMEloEO-zQ" name="Eroe">
+      <nestedClassifier xmi:type="uml:Interface" xmi:id="_Z9VDUKdPEfCUnMEloEO-zQ" name="Eroe" visibility="private"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_y0QWEKdOEfCUnMEloEO-zQ" name="applicaAblita">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_bvluUKdTEfCUnMEloEO-zQ" name="stato" type="_iTx0EKdTEfCUnMEloEO-zQ"/>
+      </ownedOperation>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_0as9MKdTEfCUnMEloEO-zQ" name="getNome" visibility="public">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_KkrsEKdUEfCUnMEloEO-zQ" name="" direction="return">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_5Nz5IKdOEfCUnMEloEO-zQ" name="StatoDiGioco">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_rIvq0KdtEfCJF7pWmnDnuw" name="giocatori" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_xgFAUKdtEfCJF7pWmnDnuw" name="nemiciAttivi" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_1HsnQKdtEfCJF7pWmnDnuw" name="mazzoMercato" visibility="private" type="_YMEPIKdREfCUnMEloEO-zQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_-ySdQKdtEfCJF7pWmnDnuw" name="mercato" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_EJOFsKduEfCJF7pWmnDnuw" name="gestore" visibility="private" type="_iPSG4KdZEfCUnMEloEO-zQ"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_P_f6sKdvEfCJF7pWmnDnuw" name="rivelaNemico"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_VPRyQKdvEfCJF7pWmnDnuw" name="rivelaEventoArtiOscure"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_crj9oKdvEfCJF7pWmnDnuw" name="fineTurno"/>
+      <nestedClassifier xmi:type="uml:Activity" xmi:id="_WPlCYKdTEfCUnMEloEO-zQ" name="stato"/>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_iTx0EKdTEfCUnMEloEO-zQ" name="StatoDiGioco"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="__YKikKdOEfCUnMEloEO-zQ" name="Giocatore">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_TOOHAKdPEfCUnMEloEO-zQ" name="eroe" visibility="private" type="_Z9VDUKdPEfCUnMEloEO-zQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_7rUygKdQEfCUnMEloEO-zQ" name="vita" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_E0MbgKdREfCUnMEloEO-zQ" name="vita" value="10"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_J4qa8KdREfCUnMEloEO-zQ" name="mazzo" visibility="private" type="_YMEPIKdREfCUnMEloEO-zQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_c5xUYKdREfCUnMEloEO-zQ" name="scarti" visibility="private" type="_YMEPIKdREfCUnMEloEO-zQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_v9n_0KdREfCUnMEloEO-zQ" name="mano" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EEList"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_KZuEIKdSEfCUnMEloEO-zQ" name="attacchi" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_gcleYKdSEfCUnMEloEO-zQ" name="attacchi"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_P7HQIKdSEfCUnMEloEO-zQ" name="gettoni" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_bXz88KdSEfCUnMEloEO-zQ" name="gettoni"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_EIiC0KdmEfCJF7pWmnDnuw" name="danneggia">
+        <ownedParameter xmi:type="uml:Parameter" xmi:id="_EIiC0admEfCJF7pWmnDnuw" name="danni">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EInt"/>
+        </ownedParameter>
+      </ownedOperation>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>
