@@ -1,5 +1,5 @@
 package carte;
 
-public enum TipologiaEffetto {
+public enum DurataEffetto {
 	ISTANTANEO, TEMPORANEO, CONTINUO;
 }
