@@ -1,0 +1,469 @@
+{
+  "gioco1": [
+    {
+      "id": "Draco_Malfoy1",
+      "nome": "Draco Malfoy",
+      "class": "Malvagio",
+      "Descrizione": "ogni volta che viene aggiunto al luogo, eroe attivo perde due vite",
+      "costo": "0",
+      "vita": "6",
+      "path-img": "...",
+      "triggers": [
+        {
+          "type": "onLocationTokenAdded",
+          "effectToExecute": [
+            { "type": "loseLife", "qta": 2, "target": "activePlayer" }
+          ]
+        }
+      ],
+      "reward": [
+        { "type": "removeLocationToken", "qta": 1, "target": "location" }
+      ]
+    },
+
+    {
+      "id": "Quirius_Raptor1",
+      "nome": "Quirius Raptor",
+      "class": "Malvagio",
+      "Descrizione": "eroe attivo perde un cuore",
+      "costo": "0",
+      "vita": "6",
+      "path-img": "...",
+      "triggers": [
+        {
+          "type": "onActive",
+          "effectToExecute": [
+            { "type": "loseLife", "qta": 1, "target": "activePlayer" }
+          ]
+        }
+      ],
+      "reward": [
+        { "type": "gainCoin", "qta": 1, "target": "allPlayer" },
+        { "type": "gainLife", "qta": 1, "target": "allPlayer" }
+      ]
+    },
+
+    {
+      "id": "Tiger_&_Goyle1",
+      "nome": "Tiger & Goyle",
+      "class": "Malvagio",
+      "Descrizione": "ogni volta che un evento o un cattivo di arti oscure, fa sì che un eroe scarti una carta, che l'eroe perde un cuore",
+      "costo": "0",
+      "vita": "5",
+      "path-img": "...",
+      "triggers": [
+        {
+          "type": "onForcedDiscard",
+          "cause": ["darkArtsEvent", "villainEffect"],
+          "effectToExecute": [
+            { "type": "loseLife", "qta": 1, "target": "discardingHero" }
+          ]
+        }
+      ],
+      "reward": [
+        { "type": "drawCard", "qta": 1, "target": "allPlayer" }
+      ]
+    }
+  ],
+
+
+  "gioco 2": [
+    {
+      "id": "Basilisco2",
+      "nome": "Basilisco",
+      "class": "Malvagio",
+      "Descrizione": "gli eroi non possono pescare carte extra",
+      "costo": "0",
+      "vita": "8",
+      "path-img": "...",
+      "triggers": [
+        {
+          "type": "onDrawExtraCardAttempt",
+          "effectToExecute": [
+            {"type": "preventDrawExtraCards", "target": "allPlayer"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "drawCard", "qta": 1, "target": "allPlayer"},
+        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+      ]
+    },
+
+    {
+      "id": "Lucius_Malfoy2",
+      "nome": "Lucius Malfoy",
+      "class": "Malvagio",
+      "Descrizione": "ogni volta che viene aggiunto alla posizione, rimuovi uno da tutti i cattivi",
+      "costo": "0",
+      "vita": "7",
+      "path-img": "...",
+      "triggers": [
+        {
+          "type": "onLocationTokenAdded",
+          "effectToExecute": [
+            {"type": "healVillains", "qta": 1, "target": "allVillains"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "gainCoin", "qta": 1, "target": "allPlayer"},
+        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+      ]
+    },
+
+    {
+      "id": "Tom_Riddle2",
+      "nome": "Tom Riddle",
+      "class": "Malvagio",
+      "Descrizione": "Per ogni Alleato in mano, l'eroe ne sceglie uno: perdi una vita; o scarta una carta.",
+      "costo": "0",
+      "vita": "6",
+      "path-img": "...",
+      "triggers": [
+        {
+          "type": "onAllyInHand",
+          "repeat": "perogni",
+          "effectToExecute": [
+            {
+              "type": "chooseEffect",
+              "options": [
+                {"type": "loseLife", "qta": 2, "target": "activePlayer"},
+                {"type": "discardCard", "qta": 1, "target": "activePlayer"}
+              ]
+            }
+          ]
+        }
+      ],
+      "reward": [
+        {
+          "type": "chooseEffect",
+          "options": [
+            {"type": "gainLife", "qta": 2, "target": "currentPlayer"},
+            {"type": "searchAllyDiscard", "qta": 1, "target": "allPalyer" }
+          ]
+        }
+      ]
+    }
+  ],
+
+
+  "gioco 3": [
+    {
+      "id": "Dissennatore3",
+      "nome": "Dissennatore",
+      "class": "Malvagio",
+      "Descrizione": "L'eroe attivo perde due di vita.",
+      "costo": "0",
+      "vita": "8",
+      "path-img": "...",
+      "triggers": [
+        {
+          "type": "onActive",
+          "effectToExecute": [
+            {"type": "loseLife", "qta": 2, "target": "activePlayer"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "gainLife", "qta": 2, "target": "allPlayer"},
+        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+      ]
+    },
+
+    {
+      "id": "Peter_Minus3",
+      "nome": "Peter Minus",
+      "class": "Malvagio",
+      "Descrizione": "L'eroe attivo rivela la prima carta del suo mazzo: se il valore è almeno una moneta, scarta la carta e aggiungi un segnalino alla Location.",
+      "costo": "0",
+      "vita": "7",
+      "path-img": "...",
+      "triggers": [
+        {
+          "type": "onActive",
+          "effectToExecute": [
+            {"type": "revealTopDeckCard", "target": "activePlayer"},
+            {
+              "type": "ifCoinValueAtLeast",
+              "qta": 1,
+              "then": [
+                {"type": "discardCard", "qta": 1, "target": "activePlayer"},
+                {"type": "addLocationToken", "qta": 1, "target": "location"}
+              ]
+            }
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "searchDiscardSpellToHand", "target": "allPlayer"},
+        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+      ]
+    }
+  ],
+
+
+
+  "gioco 4": [
+    {
+      "id": "Barty_Crouch_JR4",
+      "nome": "Barty Crouch JR",
+      "class": "Malvagio",
+      "Descrizione": "Gli eroi non possono rimuovere un marchio nero dalla Locazione",
+      "costo": "0",
+      "vita": "7",
+      "path-img": "...",
+      "triggers": [
+        {
+          "type": "onRemoveLocationTokenAttempt",
+          "effectToExecute": [
+            {"type": "preventRemoveLocationToken", "target": "allPlayer"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "removeLocationToken", "qta": 2, "target": "location"}
+      ]
+    },
+
+    {
+      "id": "Mangiamorte4",
+      "nome": "Mangiamorte",
+      "class": "Malvagio",
+      "Descrizione": "Ogni volta che Morsmordre! o un nuovo malvaggio è rivelato, tutti gli eroi perdono una vita",
+      "costo": "0",
+      "vita": "7",
+      "path-img": "...",
+      "triggers": [
+        {
+          "type": "onMorsmordreOrVillainRevealed",
+          "effectToExecute": [
+            {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "gainLife", "qta": 1, "target": "allPlayer"},
+        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+      ]
+    }
+  ],
+
+
+
+  "gioco 5": [
+    {
+      "id": "Dolores_Umbridge5",
+      "nome": "Dolores Umbridge",
+      "class": "Malvagio",
+      "Descrizione": "Ogni volta che un eroe acquisisce una carta con valore di 4 o più simboli, quel eroe perde una vita",
+      "costo": "0",
+      "vita": "7",
+      "path-img": "...",
+      "triggers": [
+        {
+          "type": "onAcquiredCard",
+          "condition": {
+            "minCost": 4
+          },
+          "effectToExecute": [
+            {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "gainCoin", "qta": 1, "target": "allPlayer"},
+        {"type": "gainLife", "qta": 2, "target": "allPlayer"}
+      ]
+    },
+
+    {
+      "id": "Lord_Voldemort5",
+      "nome": "Lord Voldemort",
+      "class": "Malvagio",
+      "Descrizione": "L'eroe attivo perde una vita e scarta una carta. Non può essere assegnato danno finché tutti gli altri villain non sono sconfitti.",
+      "costo": "0",
+      "vita": "10",
+      "path-img": "...",
+      "triggers": [
+        {
+          "type": "onActive",
+          "effectToExecute": [
+            {"type": "loseLife", "qta": 1, "target": "activePlayer"},
+            {"type": "discardCard", "qta": 1, "target": "activePlayer"}
+          ]
+        },
+        {
+          "type": "damageImmunityUntilVillainsDefeated",
+          "effectToExecute": [
+            {"type": "cannotBeAssignedDamage", "target": "self"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "win", "target": "heroes"}
+      ]
+    },
+
+    {
+      "id": "Mangiamorte5",
+      "nome": "Mangiamorte",
+      "class": "Malvagio",
+      "Descrizione": "Ogni volta che viene attivato Morsmordre! o viene rivelato un nuovo Villain, tutti gli eroi perdono una vita.",
+      "costo": "0",
+      "vita": "7",
+      "path-img": "...",
+      "triggers": [
+        {
+          "type": "onMorsmordreOrVillainRevealed",
+          "effectToExecute": [
+            {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "gainLife", "qta": 1, "target": "allPlayer"},
+        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+      ]
+    }
+  ],
+
+
+
+  "gioco 6": [
+    {
+      "id": "bellatrix_lestrange6",
+      "nome": "Bellatrix Lestrange",
+      "class": "Malvagio",
+      "Descrizione": "Rivela un evento Arti Oscure aggiuntivo ogni turno.",
+      "costo": "0",
+      "vita": 9,
+      "triggers": [
+        {
+          "type": "onTurnStart",
+          "effectToExecute": [
+            {"type": "drawAdditionalDarkArtsEvent", "qta": 1, "target": "table"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "searchDiscardItemToHand", "target": "allPlayer"},
+        {"type": "removeLocationToken", "qta": 2, "target": "location"}
+      ]
+    },
+
+    {
+      "id": "Fenrir_Greyback6",
+      "nome": "Fenrir Greyback",
+      "class": "Malvagio",
+      "Descrizione": "Gli eroi non guadagnano vite",
+      "costo": "0",
+      "vita": "8",
+      "path-img": "...",
+      "triggers": [
+        {
+          "type": "onGainLifeAttempt",
+          "effectToExecute": [
+            {"type": "preventGainLife", "target": "allPlayer"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "gainLife", "qta": 3, "target": "allPlayer"},
+        {"type": "removeLocationToken", "qta": 2, "target": "location"}
+      ]
+    },
+
+    {
+      "id": "Lord_Voldemort6",
+      "nome": "Lord Voldemort",
+      "class": "Malvagio",
+      "Descrizione": "Lancia il dado della morte: tutti gli eroi perdono una vita; aggiungi un marchio nero alla Locazione; Rimuovi un segnalino di attacco da tutti i malvagi; tutti gli eroi scartano una carta, non puoi mettere un segnalino di attacco finché tutti i malvagi non sono sconfitti",
+      "costo": "0",
+      "vita": "15",
+      "path-img": "...",
+      "triggers": [
+        {
+          "type": "onDiceRoll",
+          "effectToExecute": [
+            {
+              "type": "switch",
+              "cases": [
+                {
+                  "result": "heart",
+                  "effects": [
+                    {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+                  ]
+                },
+                {
+                  "result": "token",
+                  "effects": [
+                    {"type": "addLocationToken", "qta": 1, "target": "location"}
+                  ]
+                },
+                {
+                  "result": "heal",
+                  "effects": [
+                    {"type": "healVillains", "qta": 1, "target": "allVillains"}
+                  ]
+                },
+                {
+                  "result": "discard",
+                  "effects": [
+                    {"type": "discardCard", "qta": 1, "target": "allPlayer"}
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "damageImmunityUntilVillainsDefeated",
+          "effectToExecute": [
+            {"type": "cannotBeAssignedDamage", "target": "self"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "win", "target": "heroes"}
+      ]
+    }
+  ],
+
+
+
+  "gioco 7": [
+    {
+      "id": "Lord_Voldemort7",
+      "nome": "Lord Voldemort",
+      "class": "Malvagio",
+      "Descrizione": "Aggiungi un segnalino alla Locazione. Ogni volta che il segnalino è rimosso dalla Locazione, tutti gli eroi perdono una vita",
+      "costo": "0",
+      "vita": "20",
+      "path-img": "...",
+      "triggers": [
+        {
+          "type": "onActive",
+          "effectToExecute": [
+            {"type": "addLocationToken", "qta": 1, "target": "location"}
+          ]
+        },
+        {
+          "type": "onLocationTokenRemoved",
+          "effectToExecute": [
+            {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+          ]
+        },
+        {
+          "type": "damageImmunityUntilVillainsDefeated",
+          "effectToExecute": [
+            {"type": "cannotBeAssignedDamage", "qta": null, "target": "self"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "win", "target": "heroes"}
+      ]
+    }
+  ]
+}
