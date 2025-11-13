@@ -171,7 +171,7 @@
             "nome": "Pensatoio",
             "id": "Pensatoio4",
             "class": "Oggetto",
-            "descrizione": "2 eroi guadagnano ciascuno 1 Segnalino Influenza e pescare 1 Carta",
+            "descrizione": "2 Eroi guadagnano ciascuno 1 Segnalino Influenza e pescare 1 Carta",
             "costo": 5,
             "path-img":"...",
             "effetti":[
@@ -203,7 +203,7 @@
     "gioco5":[
         {
             "nome": "G.U.F.O",
-            "id": "Gufo4",
+            "id": "Gufo5",
             "class": "Oggetto",
             "descrizione": "Guadagni 2 Segnalini Influenza",
             "costo": 4,
@@ -219,6 +219,111 @@
                         {"type": "dadoCorvonero", "target": "currentPlayer"}
                     ]
                 }
+            ]
+        }
+    ],
+    "gioco6":[
+        {
+           "nome": "Bacchetta di Sambuco",
+            "id": "Bacchetta_Sambuco6",
+            "class": "Oggetto",
+            "descrizione": "Per ogni Incantesimo giocato in questo turno:\nGuadagni 1 Segnalino Attacco e 1 Punto Vita",
+            "costo": 7,
+            "path-img":"...",
+            "triggers":[
+                {
+                    "type":"onSpellPlayed",
+                    "effectToExecute":[
+                        {"type":"guadagnoAttacco", "qta":1, "target":"currentPlayer"},
+                        {"type":"guadagnoVita", "qta":1, "target":"currentPlayer"}
+                    ]
+                }
+            ] 
+        },
+        {
+            "nome":"Bezoar",
+            "id":"Bezoar6",
+            "class":"Oggetto",
+            "descrizione": "Un eroe a tua scelta guadagna 3 Punti Vita.\nPesca una carta",
+            "costo":4,
+            "path-img":"...",
+            "effetti":[
+                {"type":"guadagnoVita", "qta":3, "target":"selectPlayer", "qta-target":1},
+                {"type":"pescaCarta", "qta":1, "target":"currentPlayer"}
+            ]
+        },
+        {
+            "nome":"Deluminatore",
+            "id":"Deluminatore6",
+            "class":"Oggetto",
+            "descrizione": "Rimuovi fino a 2 Segnalini Controllo dal Luogo",
+            "costo":6,
+            "path-img":"...",
+            "effetti":[
+                {
+                    "type": "SCELTA",
+                    "target":"currentPlayer",
+                    "opzioni":[
+                        {"type": "rimuoviControllo", "qta": 1, "target":"location"},
+                        {"type": "rimuoviControllo", "qta": 2, "target":"location"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome":"Felix Felicis",
+            "id":"Felix_Felicis6",
+            "class":"Oggetto",
+            "descrizione": "Scegli 2:\nGuadagni 2 Segnalini Attacco; o guadagni 2 Segnalini Influenza; o guadagni 2 Punti Vita; o Pesca 2 carte",
+            "costo":7,
+            "path-img":"...",
+            "effetti":[
+                {
+                    "type": "SCELTA",
+                    "target":"currentPlayer",
+                    "opzioni":[
+                        {"type": "guadagnoAttacco", "qta": 2, "target":"currentPlayer", "selected": false},
+                        {"type": "guadagnoInfluenza", "qta": 2, "target":"currentPlayer", "selected": false},
+                        {"type": "guadagnoVita", "qta": 2, "target":"currentPlayer", "selected": false},
+                        {"type": "pescaCarta", "qta": 2, "target":"currentPlayer", "selected": false}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome":"Pozioni avanzate",
+            "id":"Pozioni_Avanzate6",
+            "class":"Oggetto",
+            "descrizione": "Tutti gli Eroi guadagnano 2 Punti Vita. Poi, ogni Eroe con massimo Punti Vita guadagna 1 Segnalino Attacco e pesca una carta",
+            "costo":6,
+            "path-img":"...",
+            "effetti":[
+                {"type":"guadagnoVita", "qta":2, "target":"allPlayers"}
+            ],
+            "triggers":[
+                {
+                    "type":"onMaxHealth",
+                    "target": "allPlayers",
+                    "effectToExecute":[
+                        {"type":"guadagnoAttacco", "qta":1, "target":"currentPlayer"},
+                        {"type":"pescaCarta", "qta":1, "target":"currentPlayer"}
+                    ]
+                }
+            ]
+        }
+    ],
+    "gioco7":[
+        {
+            "nome":"Spada di Grifondoro",
+            "id":"Spada_Grifondoro7",
+            "class":"Oggetto",
+            "descrizione": "Guadagni 2 Segnalini Attacco\nTira il dado casata Grifondoro 2 volte",
+            "costo":7,
+            "path-img":"...",
+            "effetti":[
+                {"type":"guadagnoAttacco", "qta":2, "target":"currentPlayer"},
+                {"type":"dadoGrifondoro", "target":"currentPlayer"},
+                {"type":"dadoGrifondoro", "target":"currentPlayer"}
             ]
         }
     ]
