@@ -407,7 +407,7 @@
                         {"type":"guadagnoVita","qta":1,"target":"currentPlayer"}
                     ]
                 },
-                {"type": "dadoSerpeverse", "target":"currentPlayer"}
+                {"type": "dadoSerpeverde", "target":"currentPlayer"}
             ] 
         }
     ]
