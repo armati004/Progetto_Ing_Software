@@ -1,0 +1,162 @@
+{
+    "gioco1": [
+    {
+        "nome": "Harry Potter",
+        "id": "Harry1",
+        "class": "Eroe",
+        "descrizione": "Non posso essere un ma-ma-mago. Cioè io sono... Harry. Soltanto Harry.",
+        "path-img": "..."
+    },
+    {
+        "nome": "Hermione Granger",
+        "id": "Hermione1",
+        "class": "Eroe",
+        "descrizione": "Ora se non è un problema, andrò a dormire prima che qualcuno di voi due abbia un'altra geniale ideale per farci uccidere o peggio, espellere",
+        "path-img": "..."
+    },
+    {
+        "nome": "Neville Longbottom",
+        "id": "Neville1",
+        "class": "Eroe",
+        "descrizione": "L'unico problema è che non riesco a ricordare cos'ho dimenticato.",
+        "path-img": "..."
+    },
+    {
+        "nome": "Ron Weasley",
+        "id": "Ron1",
+        "class": "Eroe",
+        "descrizione": "Cosa pensate stiano facendo ingabbiando una cosa del genere in una scuola?",
+        "path-img": "..."
+    }],
+    "gioco3": [
+    {
+        "nome": "Harry Potter",
+        "id": "Harry3",
+        "class": "Eroe",
+        "descrizione": "La prima volta che un Segnalino Controllo è rimosso da un Luogo ogni turno, un Eroe a tua scelta guadagna 1 Segnalino Attacco",
+        "path-img": "...",
+        "triggers":[
+            {
+                "type": "onControlRemove",
+                "attivato1Volta":false,
+                "effectToExecute":[
+                    {"type": "guadagnaAttacco", "qta": 1, "target": "selectPlayer", "qta-target": 1}
+                ]
+            }
+        ]
+    },
+    {
+        "nome": "Hermione Granger",
+        "id": "Hermione3",
+        "class": "Eroe",
+        "descrizione": "Se giochi 4 o più Incantesimi nel tuo turno, un Eroe a tua scelta guadagna 1 Segnalino Influenza",
+        "path-img": "...",
+        "triggers":[
+            {
+                "type": "onSpellPlayed",
+                "qta-quorum":4,
+                "attivato1Volta": false,
+                "effectToExecute":[
+                    {"type": "guadagnaInfluenza", "qta": 1, "target": "selectPlayer", "qta-target": 1}
+                ]
+            }
+        ]
+    },
+    {
+        "nome": "Neville Longbottom",
+        "id": "Neville3",
+        "class": "Eroe",
+        "descrizione": "La prima volta che ciascun Eroe guadagna dei Punti Vita nel tuo turno, egli guadagna un'ulteriore Punto Vita",
+        "path-img": "...",
+        "triggers":[
+            {
+                "type": "onGainHealth",
+                "attivato1Volta":false,
+                "effectToExecute": [
+                    {"type": "guadagnaVita", "qta": 1, "target": "currentPlayer"}
+                ]
+            }
+        ]
+    },
+    {
+        "nome": "Ron Weasley",
+        "id": "Ron3",
+        "class": "Eroe",
+        "descrizione": "Se assegni 3 o più Segnalini Attacco nel tuo turno, un Eroe guadagna 2 Punti Vita",
+        "path-img": "...",
+        "triggers":[
+            {
+                "type": "onAttackAssigned",
+                "qta-quorum": 3,
+                "effectToExecute": [
+                    {"type": "guadagnaVita", "qta": 2, "target": "selectPlayer", "qta-target": 1}
+                ]
+            }
+            ]
+    }],
+    "gioco7": [
+    {
+        "nome": "Harry Potter",
+        "id": "Harry7",
+        "class": "Eroe",
+        "descrizione": "La prima volta che un Segnalino Controllo è rimosso da un Luogo ogni turno, fino a due Eroi guadagnano 1 Segnalino Attacco",
+        "path-img": "...",
+        "triggers":[
+            {
+                "type": "onControlRemove",
+                "attivato1Volta":false,
+                "effectToExecute":[
+                    {"type": "guadagnaAttacco", "qta": 1, "target": "selectPlayer", "qta-target": 2}
+                ]
+            }
+        ]
+    },
+    {
+        "nome": "Hermione Granger",
+        "id": "Hermione7",
+        "class": "Eroe",
+        "descrizione": "Se giochi 4 o più Incantesimi nel tuo turno, Ciascun Eroe guadagna 1 Segnalino Influenza",
+        "path-img": "...",
+        "triggers":[
+            {
+                "type": "onSpellPlayed",
+                "qta-quorum":4,
+                "attivato1Volta": false,
+                "effectToExecute":[
+                    {"type": "guadagnaInfluenza", "qta": 1, "target": "allPlayer"}
+                ]
+            }
+        ]
+    },
+    {
+        "nome": "Neville Longbottom",
+        "id": "Neville7",
+        "class": "Eroe",
+        "descrizione": "Ogni volta che ciascun Eroe guadagna dei Punti Vita nel tuo turno, esso guadagna un'ulteriore Punto Vita",
+        "path-img": "...",
+        "triggers":[
+            {
+                "type": "onGainHealth",
+                "effectToExecute": [
+                    {"type": "guadagnaVita", "qta": 2, "target": "allPlayer"}
+                ]
+            }
+        ]
+    },
+    {
+        "nome": "Ron Weasley",
+        "id": "Ron7",
+        "class": "Eroe",
+        "descrizione": "Se assegni 3 o più Segnalini Attacco nel tuo turno, ciascun Eroe guadagna 2 Punti Vita",
+        "path-img": "...",
+        "triggers":[
+        {
+            "type": "onAttackAssigned",
+            "qta-quorum": 3,
+            "effectToExecute": [
+                {"type": "guadagnaVita", "qta": 2, "target": "allPlayer"}
+            ]
+        }
+        ]
+    }]
+}
