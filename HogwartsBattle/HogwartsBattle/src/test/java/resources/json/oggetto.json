@@ -205,18 +205,20 @@
             "nome": "G.U.F.O",
             "id": "Gufo5",
             "class": "Oggetto",
-            "descrizione": "Guadagni 2 Segnalini Influenza",
+            "descrizione": "Guadagni 2 Segnalini Influenza\nSe giochi 2 o più Incantesimi guadagni anche 1 Segnalino Attacco e 1 Punto Vita",
             "costo": 4,
             "path-img":"...",
             "effetti":[
+                {"type":"guadagnoInfluenza", "qta":2, "target":"currentPlayer"}
+            ],
+            "triggers":[
                 {
-                    "type": "SCELTA",
-                    "target":"currentPlayer",
-                    "opzioni":[
-                        {"type": "dadoTassorosso", "target": "currentPlayer"},
-                        {"type": "dadoGrifondoro", "target": "currentPlayer"},
-                        {"type": "dadoSerpeverde", "target": "currentPlayer"},
-                        {"type": "dadoCorvonero", "target": "currentPlayer"}
+                    "type":"onSpellPlayed",
+                    "qta-quorum":2,
+                    "attivato1Volta": false,
+                    "effectToExecute":[
+                        {"type":"guadagnoAttacco", "qta":1, "target":"currentPlayer"},
+                        {"type":"guadagnoVita", "qta":1, "target":"currentPlayer"}
                     ]
                 }
             ]
@@ -232,7 +234,7 @@
             "path-img":"...",
             "triggers":[
                 {
-                    "type":"onSpellPlayed",
+                    "type":"onEachSpellPlayed",
                     "effectToExecute":[
                         {"type":"guadagnoAttacco", "qta":1, "target":"currentPlayer"},
                         {"type":"guadagnoVita", "qta":1, "target":"currentPlayer"}
