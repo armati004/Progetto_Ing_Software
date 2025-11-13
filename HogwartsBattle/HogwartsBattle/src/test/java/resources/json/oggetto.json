@@ -79,7 +79,7 @@
             "nome": "Pozione polisucco",
             "id": "Pozione_Polisucco2",
             "class": "Oggetto",
-            "descrizione": "Guadagni 2 Segnalini Attacco\nSe sconfiggi un Malvagio, guadagni anche 2 Segnalini influenza",
+            "descrizione": "Scegli un Alleato che hai giocato questo turno. Puoi copiare gli effetti di quell'Alleato",
             "costo": 3,
             "path-img": "...",
             "effetti":[

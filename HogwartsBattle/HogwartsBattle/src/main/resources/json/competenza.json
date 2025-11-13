@@ -1,0 +1,27 @@
+{
+    "competenze":[
+        {
+            "nome": "Artimanzia",
+            "id": "artimanzia6",
+            "tipo": "Competenza",
+            "descrizione": "Le carte che ti permettono di tirare un Dado Casata ti costano 1 Segnalino Influenza in meno.\nOgni volta che tiri un dado puoi decidere di ritirarlo un'altra volta",
+            "path-img":"...",
+            "triggers":[
+                {
+                    "type": "onDiceRoll",
+                    "effectToExecute":[
+                        {"type": "tiraAncoraDado", "qta":1, "target": "currentPlayer"}
+                    ]
+                },
+                {
+                    "type": "onDiceRollBuy",
+                    "effectToExecute":[
+                        {"type": "scontoInfluenza", "qta":1, "target": "currentPlayer"}
+                    ]
+                }
+            ]
+
+            
+        }
+    ]
+}

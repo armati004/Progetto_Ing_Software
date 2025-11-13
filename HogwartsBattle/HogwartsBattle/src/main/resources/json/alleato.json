@@ -66,7 +66,7 @@
             "costo": 4,
             "path-img": "...",
             "effetti":[
-                {"type": "rimuoviControllo", "qta": 1, "target": "location"},
+                {"type": "rimuoviControllo", "qta": 1, "target": "Location"},
                 {"type": "pescaCarta", "qta": 1, "target":"currentPlayer"}
             ]
         },
@@ -189,7 +189,7 @@
             "path-img": "...",
             "effetti":[
                 {"type": "guadagnoInfluenza", "qta": 2, "target": "currentPlayer"},
-                {"type": "rimuoviControllo", "qta": 1, "target":"location"}
+                {"type": "rimuoviControllo", "qta": 1, "target":"Location"}
             ]
         },
         {
@@ -213,6 +213,7 @@
             "path-img": "...",
             "effetti":[
                 {"type": "guadagnoInfluenza", "qta": 1, "target": "currentPlayer"},
+                {"type": "pescaCarta", "qta":1, "target":"currentPlayer"},
                 {"type": "dadoCorvonero", "target":"currentPlayer"}
             ]
         },
@@ -293,7 +294,7 @@
             "effetti":[
                 {"type": "pescaCarta", "qta": 3, "target": "currentPlayer"},
                 {"type": "scartaCarta", "qta": 2, "target":"currentPlayer"},
-                {"type": "dadoTassorosso", "target":"currentPlayer"}
+                {"type": "dadoCorvonero", "target":"currentPlayer"}
             ]
         },
         {
@@ -346,7 +347,7 @@
             "effetti":[
                 {"type": "guadagnoAttacco", "qta": 2, "target": "currentPlayer"},
                 {"type": "guadagnoVita", "qta": 1, "target":"currentPlayer"},
-                {"type": "rimuoviControllo", "qta":1, "target":"currentPlayer"}
+                {"type": "rimuoviControllo", "qta":1, "target":"Location"}
             ]
         },
         {
@@ -383,7 +384,7 @@
                     "opzioni":[
                         {"type": "guadagnoInfluenza", "qta": 3, "target": "currentPlayer"},
                         {"type": "guadagnoAttacco", "qta": 2, "target":"currentPlayer"},
-                        {"type": "rimuoviControllo", "qta": 1, "target":"location"}
+                        {"type": "rimuoviControllo", "qta": 1, "target":"Location"}
                     ]
                 }
             ]
