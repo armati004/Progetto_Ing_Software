@@ -2,11 +2,11 @@
     "gioco1":[
         {
             "nome": "Albus Silente",
-            "id": "Albus_Silente1",
+            "id": "albusSilente1",
             "class": "Alleato",
             "descrizione": "Tutti gli eroi guadagnano 1 Segnalino Attacco, 1 Segnalino influenza, 1 punto vita e pescano una carta",
             "costo": 8,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco1/Albus_Silente.png",
             "effetti":[
                 {"type": "guadagnoAttacco", "qta": 1, "target": "allPlayers"},
                 {"type": "guadagnoInfluenza", "qta": 1, "target": "allPlayers"},
@@ -16,11 +16,11 @@
         },
         {
             "nome": "Oliver Baston",
-            "id": "Oliver_Baston1",
+            "id": "oliverBaston1",
             "class": "Alleato",
             "descrizione": "Guadagni 1 Segnalino Attacco, \nSe sconfiggi un Malvagio, un eroe guadagna 2 Punti Vita",
             "costo": 3,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco1/Oliver_Baston.png",
             "effetti":[
                 {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"}
             ],
@@ -35,11 +35,11 @@
         },
         {
             "nome": "Rubeus Hagrid",
-            "id": "Rubeus_Hagrid1",
+            "id": "rubeusHagrid1",
             "class": "Alleato",
             "descrizione": "Guadagni 1 Segnalino Attacco, \nTutti gli eroi guadagnano 1 Punto Vita",
             "costo": 4,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco1/Rubeus_Hagrid.png",
             "effetti":[
                 {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
                 {"type": "guadagnoVita", "qta":1, "target": "allPlayers"}
@@ -49,22 +49,22 @@
     "gioco2":[
         {
             "nome": "Arthur Weasley",
-            "id": "Arthur_Weasley2",
+            "id": "arthurWeasley2",
             "class": "Alleato",
             "descrizione": "Ogni eroe guadagna 2 Segnalini Influenza",
             "costo": 6,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco2/Arthur_Weasley.png",
             "effetti":[
                 {"type": "guadagnoInfluenza", "qta": 2, "target": "allPlayers"}
             ]
         },
         {
             "nome": "Dobby l'elfo casalingo",
-            "id": "Dobby_elf2",
+            "id": "dobbyElf2",
             "class": "Alleato",
             "descrizione": "Rimuovi 1 Segnalino Controllo dal luogo. \n Pesca una carta",
             "costo": 4,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco2/Dobby_l_Elfo_Domestico.png",
             "effetti":[
                 {"type": "rimuoviControllo", "qta": 1, "target": "Location"},
                 {"type": "pescaCarta", "qta": 1, "target":"currentPlayer"}
@@ -72,11 +72,11 @@
         },
         {
             "nome": "Fanny la fenice",
-            "id": "Fanny_fenice2",
+            "id": "fannyFenice2",
             "class": "Alleato",
             "descrizione": "Scegli uno: \n Guadagna 2 Segnalini Attacco \n o \n Tutti gli eroi guadagnano 2 Punti Vita",
             "costo": 5,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco2/Fanny_la_Fenice.png",
             "effetti":[
                 {
                     "type": "SCELTA",
@@ -90,11 +90,11 @@
         },
         {
             "nome": "Gilderoy Allock",
-            "id": "Gilderoy_Allock2",
+            "id": "gilderoyAllock2",
             "class": "Alleato",
             "descrizione": "Pesca 1 carta, poi scarta un'altra carta. \n Se scarti questa carta pesca una carta",
             "costo": 2,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco2/Gilderoy_Allock.png",
             "effetti":[
                 {"type": "pescaCarta", "qta": 1, "target": "currentPlayer"},
                 {"type": "scartaCarta", "qta": 1, "target":"currentPlayer"}
@@ -110,11 +110,11 @@
         },
         {
             "nome": "Ginny Weasley",
-            "id": "Ginny_Weasley2",
+            "id": "ginnyWeasley2",
             "class": "Alleato",
             "descrizione": "Guadagni 1 Segnalino Attacco e un Segnalino Influenza",
             "costo": 4,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco2/Ginny_Weasley.png",
             "effetti":[
                 {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
                 {"type": "guadagnoInfluenza", "qta": 1, "target":"currentPlayer"}
@@ -122,11 +122,11 @@
         },
         {
             "nome": "Molly Weasley",
-            "id": "Molly_Weasley2",
+            "id": "mollyWeasley2",
             "class": "Alleato",
             "descrizione": "Tutti gli eroi guadagnano 1 Segnalino Influenza e 2 Punti Vita",
             "costo": 6,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco2/Molly_Weasley.png",
             "effetti":[
                 {"type": "guadagnoInfluenza", "qta": 1, "target": "allPlayers"},
                 {"type": "guadagnoVita", "qta": 2, "target":"allPlayers"}
@@ -136,11 +136,11 @@
     "gioco3":[
         {
             "nome": "Remus Lupin",
-            "id": "Remus_Lupin3",
+            "id": "remusLupin3",
             "class": "Alleato",
             "descrizione": "Guadagni 1 Segnalino Attacco\n Un eroe a tua scelta guadagna 3 Punti Vita",
             "costo": 4,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco3/Remus_Lupin.png",
             "effetti":[
                 {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
                 {"type": "guadagnoVita", "qta": 3, "target":"selectPlayer", "qta-target":1}
@@ -148,11 +148,11 @@
         },
         {
             "nome": "Sibilla Cooman",
-            "id": "Sibilla_cooman3",
+            "id": "sibillaCooman3",
             "class": "Alleato",
             "descrizione": "Pesca 2 carte, poi scarta un'altra carta. \n Se scarti un magia guadagni 2 Segnalini Influenza",
             "costo": 4,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco3/Sibilla_Cooman.png",
             "effetti":[
                 {"type": "pescaCarta", "qta": 2, "target": "currentPlayer"},
                 {"type": "scartaCarta", "qta": 1, "target":"currentPlayer"}
@@ -168,11 +168,11 @@
         },
         {
             "nome": "Sirius Black",
-            "id": "Sirius_Black3",
+            "id": "siriusBlack3",
             "class": "Alleato",
             "descrizione": "Guadagni 2 Segnalini Attacco e 1 Segnalino Influenza",
             "costo": 6,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco3/Sirius_Black.png",
             "effetti":[
                 {"type": "guadagnoAttacco", "qta": 2, "target": "currentPlayer"},
                 {"type": "guadagnoInfluenza", "qta": 1, "target":"currentPlayer"}
@@ -182,11 +182,11 @@
     "gioco4":[
         {
             "nome": "Alastor 'Malocchio' Moody",
-            "id": "Alastor_Moody4",
+            "id": "alastorMoody4",
             "class": "Alleato",
             "descrizione": "Guadagni 2 Segnalini Influenza.\nRimuovi 1 Segnalino Controllo dal luogo",
             "costo": 6,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco4/Alastor_Moody.png",
             "effetti":[
                 {"type": "guadagnoInfluenza", "qta": 2, "target": "currentPlayer"},
                 {"type": "rimuoviControllo", "qta": 1, "target":"Location"}
@@ -194,11 +194,11 @@
         },
         {
             "nome": "Cedric Diggory",
-            "id": "Cedric_Diggory4",
+            "id": "cedricDiggory4",
             "class": "Alleato",
             "descrizione": "Guadagni 1 Segnalino Attacco.\nTira il dado Tassorosso",
             "costo": 4,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco4/Cedric_Diggory.png",
             "effetti":[
                 {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
                 {"type": "dadoTassorosso", "target":"currentPlayer"}
@@ -206,11 +206,11 @@
         },        
         {
             "nome": "Filius Vitious",
-            "id": "Filius_Vitious4",
+            "id": "filiusVitious4",
             "class": "Alleato",
             "descrizione": "Guadagni 1 Segnalino Influenza.\nPesca una carta.\nTira un dado Corvonero",
             "costo": 6,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco4/Filius_Vitious.png",
             "effetti":[
                 {"type": "guadagnoInfluenza", "qta": 1, "target": "currentPlayer"},
                 {"type": "pescaCarta", "qta":1, "target":"currentPlayer"},
@@ -219,11 +219,11 @@
         },
         {
             "nome": "Fleur Delacour",
-            "id": "Fleur_Delacour4",
+            "id": "fleurDelacour4",
             "class": "Alleato",
             "descrizione": "Guadagni 2 Segnalini Influenza.\n Se giochi un altro alleato, guadagni anche 2 Punti Vita",
             "costo": 4,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco4/Fleur_Delacour.png",
             "effetti":[
                 {"type": "guadagnoInfluenza", "qta": 2, "target": "currentPlayer"}
             ],
@@ -238,11 +238,11 @@
         },
         {
             "nome": "Minerva McGranitt",
-            "id": "Minerva_McGranitt4",
+            "id": "minervaMcGranitt4",
             "class": "Alleato",
             "descrizione": "Guadagni 1 Segnalino Influenza e 1 segnalino attacco.\nTira un dado Grifondoro",
             "costo": 6,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco4/Minerva_McGranitt.png",
             "effetti":[
                 {"type": "guadagnoInfluenza", "qta": 1, "target": "currentPlayer"},
                 {"type": "guadagnoAttacco", "qta": 1, "target":"currentPlayer"},
@@ -250,12 +250,12 @@
             ]
         },
         {
-            "nome": "Pomona Sprout",
-            "id": "Pomona_Sprout4",
+            "nome": "Pomona Sprite",
+            "id": "pomonaSprite4",
             "class": "Alleato",
             "descrizione": "Guadagni 1 Segnalino Influenza.\nUn eroe a tua scelta guadagna 2 Punti Vita\nTira un dado Tassorosso",
             "costo": 6,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco4/Pomona_Sprite.png",
             "effetti":[
                 {"type": "guadagnoInfluenza", "qta": 1, "target": "currentPlayer"},
                 {"type": "guadagnoVita", "qta": 2, "target":"selectPlayer", "qta-target": 1},
@@ -264,11 +264,11 @@
         },
         {
             "nome": "Viktor Krum",
-            "id": "Viktor_Krum4",
+            "id": "viktorKrum4",
             "class": "Alleato",
             "descrizione": "Guadagni 2 Segnalini Attacco.\nSe sconfiggi un malvagio, guadagni anche 1 Segnalino Influenza e 1 Punto vita",
             "costo": 5,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco4/Viktor_Krum.png",
             "effetti":[
                 {"type": "guadagnoAttacco", "qta": 2, "target": "currentPlayer"}
             ],
@@ -286,11 +286,11 @@
     "gioco5":[
         {
             "nome": "Cho Chang",
-            "id": "Cho_Chang5",
+            "id": "choChang5",
             "class": "Alleato",
             "descrizione": "Pesca 3 carte, poi scarta 2 carte dalla mano.\nTira un Dado Corvonero",
             "costo": 4,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco5/Cho_Chang.png",
             "effetti":[
                 {"type": "pescaCarta", "qta": 3, "target": "currentPlayer"},
                 {"type": "scartaCarta", "qta": 2, "target":"currentPlayer"},
@@ -299,11 +299,11 @@
         },
         {
             "nome": "Fred Weasley",
-            "id": "Fred_Weasley5",
+            "id": "fredWeasley5",
             "class": "Alleato",
             "descrizione": "Guadagni 1 Segnalino Attacco.\nSe un altro Eroe ha un Weasley nella sua mano, OGNI eroe guadagna 1 Segnalino Influenza \nTira il dado Grifondoro",
             "costo": 4,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco5/Fred_Weasley.png",
             "effetti":[
                 {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
                 {"type": "dadoGrifondoro", "target":"currentPlayer"}
@@ -319,11 +319,11 @@
         },
         {
             "nome": "George Weasley",
-            "id": "George_Weasley5",
+            "id": "georgeWeasley5",
             "class": "Alleato",
             "descrizione": "Guadagni 1 Segnalino Attacco.\nSe un altro Eroe ha un Weasley nella sua mano, OGNI eroe guadagna 1 Punto Vita \nTira il dado Grifondoro",
             "costo": 4,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco5/George_Weasley.png",
             "effetti":[
                 {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
                 {"type": "dadoGrifondoro", "target":"currentPlayer"}
@@ -339,11 +339,11 @@
         },
         {
             "nome": "Kingsley Shacklebolt",
-            "id": "Kingsley_Shacklebolt5",
+            "id": "kingsleyShacklebolt5",
             "class": "Alleato",
             "descrizione": "Guadagni 2 Segnalini Attacco e 1 Punto Vita.\nRimuovi 1 Segnalino Controllo dal Luogo",
             "costo": 7,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco5/Kingsley_Shacklebolt.png",
             "effetti":[
                 {"type": "guadagnoAttacco", "qta": 2, "target": "currentPlayer"},
                 {"type": "guadagnoVita", "qta": 1, "target":"currentPlayer"},
@@ -352,11 +352,11 @@
         },
         {
             "nome": "Luna Lovegood",
-            "id": "Luna_Lovegood5",
+            "id": "lunaLovegood5",
             "class": "Alleato",
             "descrizione": "Guadagna 1 Segnalino Influenza.\nSe giochi un altro Oggetto, guadagni anche 1 Segnalino Attacco\nTira un Dado Corvonero",
             "costo": 5,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco5/Luna_Lovegood.png",
             "effetti":[
                 {"type": "guadagnoInfluenza", "qta": 1, "target": "currentPlayer"},
                 {"type": "dadoCorvonero", "target":"currentPlayer"}
@@ -372,11 +372,11 @@
         },
         {
             "nome": "Ninfadora Tonks",
-            "id": "Ninfadora_Tonks5",
+            "id": "ninfadoraTonks5",
             "class": "Alleato",
             "descrizione": "Scegli uno: \n Guadagna 3 Segnalini Influenza; o guadagni 2 Segnalini Attacco; o rimuovi 1 Segnalino Controllo dal Luogo",
             "costo": 5,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco5/Ninfadora_Tonks.png",
             "effetti":[
                 {
                     "type": "SCELTA",
@@ -393,11 +393,11 @@
     "gioco6":[
         {
            "nome": "Horace Lumacorno",
-            "id": "Horace_Lumacorno6",
+            "id": "horaceLumacorno6",
             "class": "Alleato",
             "descrizione": "Tutti gli eroi scelgono uno: \nGuadagnano 1 Segnalino Influenza o 1 Punto Vita",
             "costo": 6,
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Negozio/Gioco6/Horace_Lumacorno.png",
             "effetti":[
                 {
                     "type":"SCELTA",

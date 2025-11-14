@@ -5,7 +5,7 @@
             "id": "artimanzia6",
             "tipo": "Competenza",
             "descrizione": "Le carte che ti permettono di tirare un Dado Casata ti costano 1 Segnalino Influenza in meno.\nOgni volta che tiri un dado puoi decidere di ritirarlo un'altra volta",
-            "path-img":"...",
+            "path-img":"../Immagini_carte/Competenze/Artimanzia.png",
             "triggers":[
                 {
                     "type": "onDiceRoll",
@@ -23,10 +23,10 @@
         },
         {
             "nome": "Cura delle creature magiche",
-            "id": "Cura_magiche6",
+            "id": "curaMagiche6",
             "tipo": "Competenza",
             "descrizione": "La prima volta che assegni 1 o più Segnalini Attacco o Segnalini Influenza ad una creatura, un eroe guadagna 2 Punti Vita. Se sconfiggi una creatura rimuovi anche 1 Segnalino Controllo dal Luogo",
-            "path-img":"...",
+            "path-img":"../Immagini_carte/Competenze/Cura_delle_creature_magiche.png",
             "triggers":[
                 {
                     "type": "onTokenPlaced",
@@ -44,10 +44,10 @@
         },
         {
             "nome": "Difesa contro le arti oscure",
-            "id": "Difesa_Oscure6",
+            "id": "difesaOscure6",
             "tipo": "Competenza",
             "descrizione": "Ogni volta che un evento Arti Oscure o un Malvagio ti obbliga a scartare una carta, guadagni 1 Segnalino Attacco e 1 Punto Vita",
-            "path-img":"...",
+            "path-img":"../Immagini_carte/Competenze/Difesa_contro_le_arti_oscure.png",
             "triggers":[
                 {
                     "type": "onDiscardEnemy",
@@ -60,10 +60,10 @@
         },
         {
             "nome": "Divinazione",
-            "id": "Divinazione6",
+            "id": "divinazione6",
             "tipo": "Competenza",
             "descrizione": "Ogni volta che giochi un Oggetto, puoi scegliere di guardare alla carta in cima al tuo mazzo e decidere se lasciarla in cima o scartarla",
-            "path-img":"...",
+            "path-img":"../Immagini_carte/Competenze/Divinazione.png",
             "triggers":[
                 {
                     "type": "onItemPlay",
@@ -84,10 +84,10 @@
         },
         {
             "nome": "Erbologia",
-            "id": "Erbologia6",
+            "id": "erbologia6",
             "tipo": "Competenza",
             "descrizione": "Se un Eroe guadagna 3 o più Punti Vita, egli pesca una carta",
-            "path-img":"...",
+            "path-img":"../Immagini_carte/Competenze/Erbologia.png",
             "triggers":[
                 {
                     "type": "onGainHealth",
@@ -101,10 +101,10 @@
         },
         {
             "nome": "Incanti", 
-            "id": "Incanti6",
+            "id": "incanti6",
             "tipo": "Competenza",
             "descrizione": "Una volta per turno, puoi scartare 2 Incantesimi.\nSe lo fai, tutti gli eroi guadagnano 1 Segnalino Influenza e pescano una carta",
-            "path-img":"...",
+            "path-img":"../Immagini_carte/Competenze/Incanti.png",
             "attivabile": true,
             "effetti":[
                 {"type": "scartaCarta", "qta":2, "target":"currentPlayer"},
@@ -115,10 +115,10 @@
         },
         {
             "nome": "Pozioni", 
-            "id": "Pozioni6",
+            "id": "pozioni6",
             "tipo": "Competenza",
             "descrizione": "Se giochi almeno un Alleato, un Oggetto e un Incantesimo nello stesso turno, un Eroe guadagna 1 Segnalino Attacco e 1 Punto Vita",
-            "path-img":"...",
+            "path-img":"../Immagini_carte/Competenze/Pozioni.png",
             "triggers":[
                 {
                     "type": "onAllCategoryPlayed",
@@ -132,10 +132,10 @@
         },
         {
             "nome": "Storia della magia", 
-            "id": "Storia_Magia6",
+            "id": "storiaMagia6",
             "tipo": "Competenza",
             "descrizione": "Ogni volta che acquisti un Incantesimo, un eroe guadagna 1 Segnalino Influenza",
-            "path-img":"...",
+            "path-img":"../Immagini_carte/Competenze/Storia_della_magia.png",
             "triggers":[
                 {
                     "type": "onBuySpell",
@@ -148,24 +148,24 @@
         },
         {
             "nome": "Trasfigurazione", 
-            "id": "Trasfigurazione6",
+            "id": "trasfigurazione6",
             "tipo": "Competenza",
-            "descrizione": "Una volta per turno, puoi scartare 1 Oggetto dal tuo mazzo con un valore di 5 o meno Segnalini Influenza e aggiungerla alla mano. Poi mischia il mazzo",
-            "path-img":"...",
+            "descrizione": "Una volta per turno, puoi scartare 1 Oggetto per cercare dal tuo mazzo una carta con un valore di 5 o meno Segnalini Influenza e aggiungerla alla mano. Poi mischia il mazzo",
+            "path-img":"../Immagini_carte/Competenze/Trasfigurazione.png",
             "attivabile": true,
             "effetti":[
                 {"type": "scartaOggetto", "qta":1, "target":"currentPlayer"},
-                {"type": "cercaOggettoMazzo", "qta":1, "target":"currentPlayer"},
+                {"type": "cercaCartaMazzo", "qta":1, "qta-quorum": 5, "target":"currentPlayer"},
                 {"type": "mischiaCarta", "target":"currentPlayer"}
             ],
             "commento": "da vedere come considerare un evento che è possibile attivare ogni volta per turno"
         },
         {
             "nome": "Lezioni di volo", 
-            "id": "Lezioni_Volo6",
+            "id": "lezioniVolo6",
             "tipo": "Competenza",
             "descrizione": "Una volta per turno, puoi scartare 5 Segnalini Influenza.\n Se lo fai, rimuovi 1 Segnalino Controllo dal Luogo",
-            "path-img":"...",
+            "path-img":"../Immagini_carte/Competenze/Volo.png",
             "attivabile": true,
             "effetti":[
                 {"type": "scartaInfluenza", "qta":5, "target":"currentPlayer"},

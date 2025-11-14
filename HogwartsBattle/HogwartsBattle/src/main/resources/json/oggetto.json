@@ -2,7 +2,7 @@
     "gioco1":[
         {
             "nome": "Attrezzatura da Quidditch",
-            "id": "Attrezzatura_Quidditch1",
+            "id": "attrezzaturaQuidditch1",
             "class": "Oggetto",
             "descrizione": "Guadagni 1 Segnalino Attacco e 1 Punto Vita",
             "costo": 3,
@@ -14,7 +14,7 @@
         },
         {
             "nome": "Boccino d'oro",
-            "id": "Boccino_Oro1",
+            "id": "boccinoOro1",
             "class": "Oggetto",
             "descrizione": "Guadagni 2 Segnalini Influenza \nPesca una carta",
             "costo": 5,
@@ -26,7 +26,7 @@
         },
         {
             "nome": "Cappello parlante",
-            "id": "Cappello_parlante1",
+            "id": "cappelloParlante1",
             "class": "Oggetto",
             "descrizione": "Guadagni 2 Segnalini Influenza \nPuoi mettere gli alleati che acquisti in cima al tuo mazzo, invece che nel mazzo degli scarti",
             "costo": 4,
@@ -58,7 +58,7 @@
     "gioco2":[
         {
             "nome": "Nimbus 2001",
-            "id": "Nimbus_duemilauno2",
+            "id": "nimbusDuemilauno2",
             "class": "Oggetto",
             "descrizione": "Guadagni 2 Segnalini Attacco\nSe sconfiggi un Malvagio, guadagni anche 2 Segnalini influenza",
             "costo": 5,
@@ -77,7 +77,7 @@
         },
         {
             "nome": "Pozione polisucco",
-            "id": "Pozione_Polisucco2",
+            "id": "pozionePolisucco2",
             "class": "Oggetto",
             "descrizione": "Scegli un Alleato che hai giocato questo turno. Puoi copiare gli effetti di quell'Alleato",
             "costo": 3,
@@ -90,7 +90,7 @@
     "gioco3":[
         {
             "nome": "Burrobirra",
-            "id": "Burrobirra3",
+            "id": "burrobirra3",
             "class": "Oggetto",
             "descrizione": "2 Eroi guadagnano 1 Segnalino Influenza e 1 Punto Vita",
             "costo": 2,
@@ -102,7 +102,7 @@
         },
          {
             "nome": "Cioccorana",
-            "id": "Cioccorana3",
+            "id": "cioccorana3",
             "class": "Oggetto",
             "descrizione": "Un eroe guadagna 1 Segnalino Influenza e 1 Punto Vita\nSe scarti questa carta, guadagni 1 Segnalino Influenza e 1 Punto Vita",
             "costo": 2,
@@ -123,7 +123,7 @@
         },
         {
             "nome": "Mappa del malandrino",
-            "id": "Mappa_Malandrino3",
+            "id": "mappaMalandrino3",
             "class": "Oggetto",
             "descrizione": "Pesca 2 carte\nSe scarti questa carta, ogni Eroe pesca una carta",
             "costo": 5,
@@ -142,7 +142,7 @@
         },
         {
             "nome": "Sfera di cristallo",
-            "id": "Sfera_Cristallo3",
+            "id": "sferaCristallo3",
             "class": "Oggetto",
             "descrizione": "Pesca 2 carte, scarti 1 carta",
             "costo": 3,
@@ -156,7 +156,7 @@
     "gioco4":[
         {
             "nome": "Coppa tremaghi",
-            "id": "Coppa_Tremaghi4",
+            "id": "coppaTremaghi4",
             "class": "Oggetto",
             "descrizione": "Guadagni 1 Segnalino Attaco, 1 Segnalino Influenza e 1 Punto Vita",
             "costo": 5,
@@ -169,7 +169,7 @@
         },
         {
             "nome": "Pensatoio",
-            "id": "Pensatoio4",
+            "id": "pensatoio4",
             "class": "Oggetto",
             "descrizione": "2 Eroi guadagnano ciascuno 1 Segnalino Influenza e pescare 1 Carta",
             "costo": 5,
@@ -181,7 +181,7 @@
         },
         {
             "nome": "Storia di Hogwarts",
-            "id": "Storia_Hogwarts4",
+            "id": "storiaHogwarts4",
             "class": "Oggetto",
             "descrizione": "Scegli e tira un dado casata",
             "costo": 4,
@@ -203,7 +203,7 @@
     "gioco5":[
         {
             "nome": "G.U.F.O",
-            "id": "Gufo5",
+            "id": "gufo5",
             "class": "Oggetto",
             "descrizione": "Guadagni 2 Segnalini Influenza\nSe giochi 2 o più Incantesimi guadagni anche 1 Segnalino Attacco e 1 Punto Vita",
             "costo": 4,
@@ -227,7 +227,7 @@
     "gioco6":[
         {
            "nome": "Bacchetta di Sambuco",
-            "id": "Bacchetta_Sambuco6",
+            "id": "bacchettaSambuco6",
             "class": "Oggetto",
             "descrizione": "Per ogni Incantesimo giocato in questo turno:\nGuadagni 1 Segnalino Attacco e 1 Punto Vita",
             "costo": 7,
@@ -244,7 +244,7 @@
         },
         {
             "nome":"Bezoar",
-            "id":"Bezoar6",
+            "id":"bezoar6",
             "class":"Oggetto",
             "descrizione": "Un eroe a tua scelta guadagna 3 Punti Vita.\nPesca una carta",
             "costo":4,
@@ -256,7 +256,7 @@
         },
         {
             "nome":"Deluminatore",
-            "id":"Deluminatore6",
+            "id":"deluminatore6",
             "class":"Oggetto",
             "descrizione": "Rimuovi fino a 2 Segnalini Controllo dal Luogo",
             "costo":6,
@@ -274,7 +274,7 @@
         },
         {
             "nome":"Felix Felicis",
-            "id":"Felix_Felicis6",
+            "id":"felixFelicis6",
             "class":"Oggetto",
             "descrizione": "Scegli 2:\nGuadagni 2 Segnalini Attacco; o guadagni 2 Segnalini Influenza; o guadagni 2 Punti Vita; o Pesca 2 carte",
             "costo":7,
@@ -294,7 +294,7 @@
         },
         {
             "nome":"Pozioni avanzate",
-            "id":"Pozioni_Avanzate6",
+            "id":"pozioniAvanzate6",
             "class":"Oggetto",
             "descrizione": "Tutti gli Eroi guadagnano 2 Punti Vita. Poi, ogni Eroe con massimo Punti Vita guadagna 1 Segnalino Attacco e pesca una carta",
             "costo":6,
@@ -317,7 +317,7 @@
     "gioco7":[
         {
             "nome":"Spada di Grifondoro",
-            "id":"Spada_Grifondoro7",
+            "id":"spadaGrifondoro7",
             "class":"Oggetto",
             "descrizione": "Guadagni 2 Segnalini Attacco\nTira il dado casata Grifondoro 2 volte",
             "costo":7,

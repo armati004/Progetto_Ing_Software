@@ -1,13 +1,13 @@
 {
   "gioco1": [
     {
-      "id": "Draco_Malfoy1",
+      "id": "dracoMalfoy1",
       "nome": "Draco Malfoy",
       "class": "Malvagio",
-      "Descrizione": "ogni volta che viene aggiunto al luogo, eroe attivo perde due vite",
+      "Descrizione": "Ogni volta che viene aggiunto 1 Segnalino Controllo al Luogo, l'Eroe attivo perde 2 Punti Vita.",
       "costo": "0",
       "vita": "6",
-      "path-img": "...",
+      "path-img": "../Immagini_carte/Malvagi/Gioco1/Draco_Malfoy.png",
       "triggers": [
         {
           "type": "onLocationTokenAdded",
@@ -22,13 +22,13 @@
     },
 
     {
-      "id": "Quirius_Raptor1",
+      "id": "quiriusRaptor1",
       "nome": "Quirius Raptor",
       "class": "Malvagio",
-      "Descrizione": "eroe attivo perde un cuore",
+      "Descrizione": "L'Eroe attivo perde 1 Punto Vita",
       "costo": "0",
       "vita": "6",
-      "path-img": "...",
+      "path-img": "../Immagini_carte/Malvagi/Gioco1/Quirinus_Raptor.png",
       "triggers": [
         {
           "type": "onActive",
@@ -44,13 +44,13 @@
     },
 
     {
-      "id": "Tiger_&_Goyle1",
+      "id": "tigerGoyle1",
       "nome": "Tiger & Goyle",
       "class": "Malvagio",
-      "Descrizione": "ogni volta che un evento o un cattivo di arti oscure, fa sì che un eroe scarti una carta, che l'eroe perde un cuore",
+      "Descrizione": "ogni volta che un Evento Arti Oscure o un Malvagio, fa sì che un Eroe scarti una carta, allora l'Eroe perde anche 1 Punto Vita",
       "costo": "0",
       "vita": "5",
-      "path-img": "...",
+      "path-img": "../Immagini_carte/Malvagi/Gioco1/Tiger_Goyle.png",
       "triggers": [
         {
           "type": "onForcedDiscard",
@@ -69,13 +69,13 @@
 
   "gioco 2": [
     {
-      "id": "Basilisco2",
+      "id": "basilisco2",
       "nome": "Basilisco",
       "class": "Malvagio",
-      "Descrizione": "gli eroi non possono pescare carte extra",
+      "Descrizione": "Gli Eroi non possono pescare carte extra.\n(Peschi comunque 5 nuove carte alla fine del tuo turno)",
       "costo": "0",
       "vita": "8",
-      "path-img": "...",
+      "path-img": "../Immagini_carte/Malvagi/Gioco2/Basilisco.png",
       "triggers": [
         {
           "type": "onDrawExtraCardAttempt",
@@ -91,13 +91,13 @@
     },
 
     {
-      "id": "Lucius_Malfoy2",
+      "id": "luciusMalfoy2",
       "nome": "Lucius Malfoy",
       "class": "Malvagio",
-      "Descrizione": "ogni volta che viene aggiunto alla posizione, rimuovi uno da tutti i cattivi",
+      "Descrizione": "Ogni volta che viene aggiunto 1 Segnalino Controllo al Luogo, rimuovi 1 Segnalino attacco da tutti i cattivi",
       "costo": "0",
       "vita": "7",
-      "path-img": "...",
+      "path-img": "../Immagini_carte/Malvagi/Gioco2/Lucius_Malfoy.png",
       "triggers": [
         {
           "type": "onLocationTokenAdded",
@@ -109,17 +109,18 @@
       "reward": [
         {"type": "gainCoin", "qta": 1, "target": "allPlayer"},
         {"type": "removeLocationToken", "qta": 1, "target": "location"}
-      ]
+      ],
+      "commenti": "da sistemare l'effetto del trigger"
     },
 
     {
-      "id": "Tom_Riddle2",
+      "id": "tomRiddle2",
       "nome": "Tom Riddle",
       "class": "Malvagio",
-      "Descrizione": "Per ogni Alleato in mano, l'eroe ne sceglie uno: perdi una vita; o scarta una carta.",
+      "Descrizione": "Per ogni Alleato in mano, l'Eroe attivo sceglie uno dei seguenti effetti:\n perdi 1 Punto Vita; o scarta una carta.",
       "costo": "0",
       "vita": "6",
-      "path-img": "...",
+      "path-img": "../Immagini_carte/Malvagi/Gioco2/Tom_Riddle.png",
       "triggers": [
         {
           "type": "onAllyInHand",
@@ -143,20 +144,21 @@
             {"type": "searchAllyDiscard", "qta": 1, "target": "allPalyer" }
           ]
         }
-      ]
+      ],
+      "commenti":"da sistemare il repeat, manca il per ogni eroe"
     }
   ],
 
 
   "gioco 3": [
     {
-      "id": "Dissennatore3",
+      "id": "dissennatore3",
       "nome": "Dissennatore",
       "class": "Malvagio",
-      "Descrizione": "L'eroe attivo perde due di vita.",
+      "Descrizione": "L'Eroe attivo perde 2 Punti Vita.",
       "costo": "0",
       "vita": "8",
-      "path-img": "...",
+      "path-img": "../Immagini_carte/Malvagi/Gioco3/Dissennatore.png",
       "triggers": [
         {
           "type": "onActive",
@@ -172,13 +174,13 @@
     },
 
     {
-      "id": "Peter_Minus3",
+      "id": "peterMinus3",
       "nome": "Peter Minus",
       "class": "Malvagio",
-      "Descrizione": "L'eroe attivo rivela la prima carta del suo mazzo: se il valore è almeno una moneta, scarta la carta e aggiungi un segnalino alla Location.",
+      "Descrizione": "L'Eroe attivo rivela la prima carta del suo mazzo: se il suo valore è almeno 1 Segnalino Influenza, scarta la carta e aggiungi 1 Segnalino Controllo al Luogo.",
       "costo": "0",
       "vita": "7",
-      "path-img": "...",
+      "path-img": "../Immagini_carte/Malvagi/Gioco3/Peter_Minus.png",
       "triggers": [
         {
           "type": "onActive",
@@ -206,13 +208,13 @@
 
   "gioco 4": [
     {
-      "id": "Barty_Crouch_JR4",
+      "id": "bartyCrouchJR4",
       "nome": "Barty Crouch JR",
       "class": "Malvagio",
-      "Descrizione": "Gli eroi non possono rimuovere un marchio nero dalla Locazione",
+      "Descrizione": "Gli Eroi non possono rimuovere Segnalini Controllo dal Luogo",
       "costo": "0",
       "vita": "7",
-      "path-img": "...",
+      "path-img": "../Immagini_carte/Malvagi/Gioco4/Barty_Crouch_JR.png",
       "triggers": [
         {
           "type": "onRemoveLocationTokenAttempt",
@@ -227,13 +229,13 @@
     },
 
     {
-      "id": "Mangiamorte4",
+      "id": "mangiamorte4",
       "nome": "Mangiamorte",
       "class": "Malvagio",
-      "Descrizione": "Ogni volta che Morsmordre! o un nuovo malvaggio è rivelato, tutti gli eroi perdono una vita",
+      "Descrizione": "Ogni volta che Morsmordre! o un nuovo malvagio è rivelato, tutti gli Eroi perdono 1 Punto Vita",
       "costo": "0",
       "vita": "7",
-      "path-img": "...",
+      "path-img": "../Immagini_carte/Malvagi/Gioco4/Mangiamorte4.png",
       "triggers": [
         {
           "type": "onMorsmordreOrVillainRevealed",
@@ -253,13 +255,13 @@
 
   "gioco 5": [
     {
-      "id": "Dolores_Umbridge5",
+      "id": "doloresUmbridge5",
       "nome": "Dolores Umbridge",
       "class": "Malvagio",
-      "Descrizione": "Ogni volta che un eroe acquisisce una carta con valore di 4 o più simboli, quel eroe perde una vita",
+      "Descrizione": "Ogni volta che un Eroe acquista una carta con valore di 4 o più Segnalini Influenza, quell'Eroe perde 1 Punto Vita.",
       "costo": "0",
       "vita": "7",
-      "path-img": "...",
+      "path-img": "../Immagini_carte/Malvagi/Gioco5/Dolores_Umbridge.png",
       "triggers": [
         {
           "type": "onAcquiredCard",
@@ -278,13 +280,13 @@
     },
 
     {
-      "id": "Lord_Voldemort5",
+      "id": "lordVoldemort5",
       "nome": "Lord Voldemort",
       "class": "Malvagio",
-      "Descrizione": "L'eroe attivo perde una vita e scarta una carta. Non può essere assegnato danno finché tutti gli altri villain non sono sconfitti.",
+      "Descrizione": "L'Eroe attivo perde 1 Punto Vita e scarta una carta.\nNon possono essere assegnati Segnalini Attacco su questa carta finché tutti gli altri Malvagi non sono sconfitti.",
       "costo": "0",
       "vita": "10",
-      "path-img": "...",
+      "path-img": "../Immagini_carte/Malvagi/Gioco5/Lord_Voldemort5.png",
       "triggers": [
         {
           "type": "onActive",
@@ -301,18 +303,19 @@
         }
       ],
       "reward": [
-        {"type": "win", "target": "heroes"}
-      ]
+        {"type": "win", "target": "hEroes"}
+      ],
+      "commenti": "da sistemare il reward"
     },
 
     {
-      "id": "Mangiamorte5",
+      "id": "mangiamorte5",
       "nome": "Mangiamorte",
       "class": "Malvagio",
-      "Descrizione": "Ogni volta che viene attivato Morsmordre! o viene rivelato un nuovo Villain, tutti gli eroi perdono una vita.",
+      "Descrizione": "Ogni volta che Morsmordre! o un nuovo malvagio è rivelato, tutti gli Eroi perdono 1 Punto Vita.",
       "costo": "0",
       "vita": "7",
-      "path-img": "...",
+      "path-img": "../Immagini_carte/Malvagi/Gioco5/Mangiamorte5.png",
       "triggers": [
         {
           "type": "onMorsmordreOrVillainRevealed",
@@ -332,12 +335,13 @@
 
   "gioco 6": [
     {
-      "id": "bellatrix_lestrange6",
+      "id": "bellatrixLestrange6",
       "nome": "Bellatrix Lestrange",
       "class": "Malvagio",
-      "Descrizione": "Rivela un evento Arti Oscure aggiuntivo ogni turno.",
+      "Descrizione": "Rivela un Evento Arti Oscure aggiuntivo ogni turno.",
       "costo": "0",
       "vita": 9,
+      "path-img": "../Immagini_carte/Malvagi/Gioco6/Bellatrix_Lestrange.png",
       "triggers": [
         {
           "type": "onTurnStart",
@@ -353,13 +357,13 @@
     },
 
     {
-      "id": "Fenrir_Greyback6",
+      "id": "fenrirGreyback6",
       "nome": "Fenrir Greyback",
       "class": "Malvagio",
-      "Descrizione": "Gli eroi non guadagnano vite",
+      "Descrizione": "Gli Eroi non possono guadagnare Punti Vita.",
       "costo": "0",
       "vita": "8",
-      "path-img": "...",
+      "path-img": "../Immagini_carte/Malvagi/Gioco6/Fenrir_Greyback.png",
       "triggers": [
         {
           "type": "onGainLifeAttempt",
@@ -375,13 +379,13 @@
     },
 
     {
-      "id": "Lord_Voldemort6",
+      "id": "lordVoldemort6",
       "nome": "Lord Voldemort",
       "class": "Malvagio",
-      "Descrizione": "Lancia il dado della morte: tutti gli eroi perdono una vita; aggiungi un marchio nero alla Locazione; Rimuovi un segnalino di attacco da tutti i malvagi; tutti gli eroi scartano una carta, non puoi mettere un segnalino di attacco finché tutti i malvagi non sono sconfitti",
+      "Descrizione": "Lancia il dado Serpeverde:\nSe esce Segnalino Attacco: tutti gli Eroi perdono 1 Punto Vita;\nSe esce segnalino Influenza: aggiungi un Segnalino Controllo al Luogo;\nSe esce Punto Vita: rimuovi 1 Segnalino Attacco da tutti i Malvagi;Se esce Carta: tutti gli Eroi scartano una carta,\n non puoi mettere Segnalini Attacco su questa carta finché tutti i malvagi non sono sconfitti",
       "costo": "0",
       "vita": "15",
-      "path-img": "...",
+      "path-img": "../Immagini_carte/Malvagi/Gioco6/Lord_Voldemort6.png",
       "triggers": [
         {
           "type": "onDiceRoll",
@@ -425,7 +429,7 @@
         }
       ],
       "reward": [
-        {"type": "win", "target": "heroes"}
+        {"type": "win", "target": "hEroes"}
       ]
     }
   ],
@@ -434,13 +438,13 @@
 
   "gioco 7": [
     {
-      "id": "Lord_Voldemort7",
+      "id": "lordVoldemort7",
       "nome": "Lord Voldemort",
       "class": "Malvagio",
-      "Descrizione": "Aggiungi un segnalino alla Locazione. Ogni volta che il segnalino è rimosso dalla Locazione, tutti gli eroi perdono una vita",
+      "Descrizione": "Aggiungi 1 Segnalino Controllo al Luogo.\nOgni volta che 1 Segnalino Controllo è rimosso dal Luogo, tutti gli Eroi perdono 1 Punto Vita.\nNon possono essere assegnati Segnalini Attacco su questa carta finché tutti gli altri Malvagi non sono sconfitti.",
       "costo": "0",
       "vita": "20",
-      "path-img": "...",
+      "path-img": "../Immagini_carte/Malvagi/Gioco7/Lord_Voldemort7.png",
       "triggers": [
         {
           "type": "onActive",
@@ -462,7 +466,7 @@
         }
       ],
       "reward": [
-        {"type": "win", "target": "heroes"}
+        {"type": "win", "target": "hEroes"}
       ]
     }
   ]
