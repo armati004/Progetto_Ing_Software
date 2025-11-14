@@ -28,7 +28,7 @@
                 {
                     "type": "onVillainDefeat",
                     "effectToExecute":[
-                        {"type": "guadagnoVita", "qta":2, "target": "selectPlayer", "qta-target": 1}
+                        {"type": "guadagnoVita", "qta":2, "target": "selectPlayer", "targetCount": 1}
                     ]
                 }
             ]
@@ -143,7 +143,7 @@
             "path-img": "../Immagini_carte/Negozio/Gioco3/Remus_Lupin.png",
             "effetti":[
                 {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
-                {"type": "guadagnoVita", "qta": 3, "target":"selectPlayer", "qta-target":1}
+                {"type": "guadagnoVita", "qta": 3, "target":"selectPlayer", "targetCount":1}
             ]
         },
         {
@@ -258,7 +258,7 @@
             "path-img": "../Immagini_carte/Negozio/Gioco4/Pomona_Sprite.png",
             "effetti":[
                 {"type": "guadagnoInfluenza", "qta": 1, "target": "currentPlayer"},
-                {"type": "guadagnoVita", "qta": 2, "target":"selectPlayer", "qta-target": 1},
+                {"type": "guadagnoVita", "qta": 2, "target":"selectPlayer", "targetCount": 1},
                 {"type": "dadoTassorosso", "target":"currentPlayer"}
             ]
         },

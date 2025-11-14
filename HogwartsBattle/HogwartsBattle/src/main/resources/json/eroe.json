@@ -40,7 +40,7 @@
                 "type": "onControlRemove",
                 "attivato1Volta":false,
                 "effectToExecute":[
-                    {"type": "guadagnaAttacco", "qta": 1, "target": "selectPlayer", "qta-target": 1}
+                    {"type": "guadagnaAttacco", "qta": 1, "target": "selectPlayer", "targetCount": 1}
                 ]
             }
         ]
@@ -57,7 +57,7 @@
                 "qta-quorum":4,
                 "attivato1Volta": false,
                 "effectToExecute":[
-                    {"type": "guadagnaInfluenza", "qta": 1, "target": "selectPlayer", "qta-target": 1}
+                    {"type": "guadagnaInfluenza", "qta": 1, "target": "selectPlayer", "targetCount": 1}
                 ]
             }
         ]
@@ -89,7 +89,7 @@
                 "type": "onAttackAssigned",
                 "qta-quorum": 3,
                 "effectToExecute": [
-                    {"type": "guadagnaVita", "qta": 2, "target": "selectPlayer", "qta-target": 1}
+                    {"type": "guadagnaVita", "qta": 2, "target": "selectPlayer", "targetCount": 1}
                 ]
             }
             ]
@@ -106,7 +106,7 @@
                 "type": "onControlRemove",
                 "attivato1Volta":false,
                 "effectToExecute":[
-                    {"type": "guadagnaAttacco", "qta": 1, "target": "selectPlayer", "qta-target": 2}
+                    {"type": "guadagnaAttacco", "qta": 1, "target": "selectPlayer", "targetCount": 2}
                 ]
             }
         ]

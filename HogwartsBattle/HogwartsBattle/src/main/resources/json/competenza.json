@@ -31,7 +31,7 @@
                 {
                     "type": "onTokenPlaced",
                     "effectToExecute":[
-                        {"type": "guadagnoVita", "qta":2, "target": "selectPlayer", "qta-target": 1}
+                        {"type": "guadagnoVita", "qta":2, "target": "selectPlayer", "targetCount": 1}
                     ]
                 },
                 {
@@ -124,8 +124,8 @@
                     "type": "onAllCategoryPlayed",
                     "attivato1Volta": false,
                     "effectToExecute":[
-                        {"type": "guadagnoAttacco", "qta":1, "target": "selectPlayer", "qta-target":1},
-                        {"type":"guadagnoVita", "qta":1, "target":"selectPlayer", "qta-target":1}
+                        {"type": "guadagnoAttacco", "qta":1, "target": "selectPlayer", "targetCount":1},
+                        {"type":"guadagnoVita", "qta":1, "target":"selectPlayer", "targetCount":1}
                     ]
                 }
             ]
@@ -141,7 +141,7 @@
                     "type": "onBuySpell",
                     "attivato1Volta": false,
                     "effectToExecute":[
-                        {"type": "guadagnoInfluenza", "qta":1, "target": "selectPlayer", "qta-target":1}
+                        {"type": "guadagnoInfluenza", "qta":1, "target": "selectPlayer", "targetCount":1}
                     ]
                 }
             ]
