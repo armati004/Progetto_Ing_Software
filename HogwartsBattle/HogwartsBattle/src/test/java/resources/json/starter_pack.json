@@ -1,0 +1,249 @@
+{
+    "harry":[
+        {
+            "nome": "Edvige",
+            "id": "edvige0",
+            "class": "Alleato",
+            "descrizione": "Scegli uno: \n Guadagna 1 Segnalino Attacco; o guadagni 2 Punti vita",
+            "costo": 0,
+            "path-img": "../Immagini_carte/Starter_Pack/Harry/Edvige.png",
+            "effetti":[
+                {
+                    "type": "SCELTA",
+                    "target":"currentPlayer",
+                    "opzioni":[
+                        {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
+                        {"type": "guadagnoVita", "qta": 2, "target":"currentPlayer"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Firebolt",
+            "id": "firebolt0",
+            "class": "Oggetto",
+            "descrizione": "Guadagni 1 Segnalino Attacco \nSe sconfiggi un Malvagio, guadagni anche 1 Segnalino Influenza",
+            "costo": 0,
+            "path-img": "../Immagini_carte/Starter_Pack/Harry/Firebolt.png",
+            "effetti":[
+                {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"}
+            ],
+            "triggers":[
+                {
+                    "type": "onVillainDefeat",
+                    "effectToExecute":[
+                        {"type": "guadagnaInfluenza", "qta": 1, "target": "currentPlayer"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Mantello dell'Invisibilità",
+            "id": "mantelloInvisibilita0",
+            "class": "Oggetto",
+            "descrizione": "Guadagni 1 Segnalino Attacco,\n Se hai questa carta in mano, non puoi perdere più di 1 Punto Vita per Evento Arti Oscure o Malvagio",
+            "costo": 0,
+            "path-img": "../Immagini_carte/Starter_Pack/Harry/Mantello_dell_invisibilita.png",
+            "effetti":[
+                {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"}
+            ],
+            "triggers":[
+                {
+                    "type": "onTakeDamage",
+                    "condition": {
+                        "sourceType": ["EventoArtiOscure", "Malvagio"],
+                        "hasCardInHand": "Mantello0"
+                    },
+                    "effectToExecute":[
+                        {"type": "limitaDanno", "qta": 1, "target": "currentPlayer"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Alohomora"
+        }
+    ],
+    "Hermione":[
+        {
+            "nome": "Alohomora"
+        },
+        {
+            "nome": "Favola di Beda il Bardo",
+            "id": "favolaBeda0",
+            "class": "Oggetto",
+            "descrizione": "Scegli uno: \nGuadagni 2 Segnalini influenza; o TUTTI gli Eroi guadagnano 1 Segnalino Influenza",
+            "costo": 0,
+            "path-img": "../Immagini_carte/Starter_Pack/Hermione/Favola_di_Beda_il_Bardo.png",
+            "effetti":[
+                {
+                    "type": "SCELTA",
+                    "target":"currentPlayer",
+                    "opzioni":[
+                        {"type": "guadagnaInfluenza", "qta": 2, "target": "currentPlayer"},
+                        {"type": "guadagnaInfluenza", "qta": 1, "target": "allHeroes"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Giratempo",
+            "id": "giratempo0",
+            "class": "Oggetto",
+            "descrizione": "Guadagni 1 Segnalino Influenza \n Puoi mettere gli Incantesimi che acquisti in cima al mazzo invece che nella tua pila degli scarti",
+            "costo": 0,
+            "path-img": "../Immagini_carte/Starter_Pack/Hermione/Giratempo.png",
+            "effetti":[
+                {"type": "guadagnaInfluenza", "qta": 1, "target": "currentPlayer"}
+            ],
+            "triggers":[
+                {
+                    "type": "onSpellAcquired",
+                    "effectToExecute":[
+                        {"type": "mettiInCimaMazzo", "target": "currentPlayer"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Grattastinchi",
+            "id": "grattastinchi0",
+            "class": "Alleato",
+            "descrizione": "Scegli uno: \nGuadagni 1 Segnalino Attacco; o guadagni 2 Punti Vita",
+            "costo": 0,
+            "path-img": "../Immagini_carte/Starter_Pack/Hermione/Grattastinchi.png",
+            "effetti":[
+                {
+                    "type": "SCELTA",
+                    "target":"currentPlayer",
+                    "opzioni":[
+                        {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
+                        {"type": "guadagnoVita", "qta": 2, "target":"currentPlayer"}
+                    ]
+                }
+            ]
+        }
+    ],
+    "Neville":[
+        {
+            "nome": "Alohomora"
+        },
+        {
+            "nome": "Mandragola",
+            "id": "mandragola0",
+            "class": "Oggetto",
+            "descrizione": "Scegli uno:\n Guadagni 1 Segnalino Attacco; o un Eroe guadagnano 2 Punti Vita",
+            "costo": 0,
+            "path-img": "../Immagini_carte/Starter_Pack/Neville/Mandragola.png",
+            "effetti":[
+                {
+                    "type": "SCELTA",
+                    "target":"currentPlayer",
+                    "opzioni":[
+                        {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
+                        {"type": "guadagnaVita", "qta": 2, "target":"selectPlayer", "qta-target": 1}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Oscar",
+            "id": "oscar0",
+            "class": "Alleato",
+            "descrizione": "Scegli uno: \n Guadagni 1 Segnalino Attacco; o guadagni 2 Punti vita",
+            "costo": 0,
+            "path-img": "../Immagini_carte/Starter_Pack/Neville/Oscar.png",
+            "effetti":[
+                {
+                    "type": "SCELTA",
+                    "target":"currentPlayer",
+                    "opzioni":[
+                        {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
+                        {"type": "guadagnoVita", "qta": 2, "target":"currentPlayer"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Ricordella",
+            "id": "ricordella0",
+            "class": "Oggetto",
+            "descrizione": "Guadagni 1 Segnalino Influenza \n Se scarti questa carta, guadagni 2 Segnalini Influenza",
+            "costo": 0,
+            "path-img": "../Immagini_carte/Starter_Pack/Neville/Ricordella.png",
+            "effetti":[
+                {"type": "guadagnaInfluenza", "qta": 1, "target": "currentPlayer"}
+            ],
+            "triggers":[
+                {
+                    "type": "onDiscardSelf",
+                    "effectToExecute":[
+                        {"type": "guadagnaInfluenza", "qta": 2, "target": "currentPlayer"}
+                    ]
+                }
+            ]
+        }
+    ],
+    "Ron":[
+        {
+            "nome": "Alohomora"
+        },
+        {
+            "nome": "Gelatine tutti gusti",
+            "id": "gelatineTuttiGusti0",
+            "class": "Oggetto",
+            "descrizione": "Guadagni 1 Segnalino Influenza\n Per ogni Alleato giocato in questo turno, guadagni 1 Segnalino Attacco",
+            "costo": 0,
+            "path-img": "../Immagini_carte/Starter_Pack/Ron/Gelatine_tutti_gusti.png",
+            "effetti":[
+                {"type": "guadagnaInfluenza", "qta": 1, "target": "currentPlayer"}
+            ],
+            "triggers":[
+                {
+                    "type": "onAllyPlayed",
+                    "effectToExecute":[
+                        {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Leotardo",
+            "id": "leotardo0",
+            "class": "Alleato",
+            "descrizione": "Scegli uno: \n Guadagni 1 Segnalino Attacco; o guadagni 2 Punti vita",
+            "costo": 0,
+            "path-img": "../Immagini_carte/Starter_Pack/Ron/Leotardo.png",
+            "effetti":[
+                {
+                    "type": "SCELTA",
+                    "target":"currentPlayer",
+                    "opzioni":[
+                        {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
+                        {"type": "guadagnoVita", "qta": 2, "target":"currentPlayer"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Tornado11",
+            "id": "tornado110",
+            "class": "Oggetto",
+            "descrizione": "Guadagni 1 Segnalino Attacco \n Se sconfiggi un Malvagio, guadagni anche 1 Segnalino Influenza",
+            "costo": 0,
+            "path-img": "../Immagini_carte/Starter_Pack/Ron/Tornado11.png",
+            "effetti":[
+                {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"}
+            ],
+            "triggers":[
+                {
+                    "type": "onVillainDefeat",
+                    "effectToExecute":[
+                        {"type": "guadagnaInfluenza", "qta": 1, "target": "currentPlayer"}
+                    ]
+                }
+            ]
+        }
+    ]
+    
+}
