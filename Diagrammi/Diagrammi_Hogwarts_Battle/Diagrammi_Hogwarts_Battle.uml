@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_E3eMQMIcEfCeZomnI-SNRA" name="Diagrammi_Hogwarts_Battle">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_E8t4oMIcEfCeZomnI-SNRA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_E7phoMIcEfCeZomnI-SNRA" name="Interaction1"/>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_E729AMIcEfCeZomnI-SNRA" name="Interaction2"/>
+  <packagedElement xmi:type="uml:StateMachine" xmi:id="_E8GNkMIcEfCeZomnI-SNRA" name="Hogwarts Battle">
+    <region xmi:type="uml:Region" xmi:id="_E8P-kMIcEfCeZomnI-SNRA" name="Region1">
+      <subvertex xmi:type="uml:State" xmi:id="_LP050MI6EfCeZomnI-SNRA" name="Gioco 1">
+        <region xmi:type="uml:Region" xmi:id="_kj0GksI6EfCeZomnI-SNRA" name="Region1">
+          <subvertex xmi:type="uml:State" xmi:id="_J2CtUMJDEfCeZomnI-SNRA" name="Arti Oscure">
+            <doActivity xmi:type="uml:Activity" xmi:id="_j9_toMJDEfCeZomnI-SNRA" name="Applica effetto arti oscure"/>
+            <entry xmi:type="uml:Activity" xmi:id="_Y_FJAMJDEfCeZomnI-SNRA" name="Rivela evento arti oscure"/>
+          </subvertex>
+        </region>
+      </subvertex>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_BorfwMJCEfCeZomnI-SNRA" name=""/>
+    </region>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_E8VeIMIcEfCeZomnI-SNRA" name="Activity4"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_IrmeAMJEEfCeZomnI-SNRA" name="Hogwarts Battle">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_5hP-QMJEEfCeZomnI-SNRA" name="Rivela evento arti oscure">
+      <include xmi:type="uml:Include" xmi:id="_hiNY8MJJEfCeZomnI-SNRA" addition="_69U6sMJEEfCeZomnI-SNRA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_69U6sMJEEfCeZomnI-SNRA" name="Applica effetto">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_GStXMMJIEfCeZomnI-SNRA" name="ExtensionPoint1"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_HYGR8MJIEfCeZomnI-SNRA" name="ExtensionPoint2"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_QUrLYMJIEfCeZomnI-SNRA" name="ExtensionPoint3"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_RAxcYMJIEfCeZomnI-SNRA" name="ExtensionPoint4"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_SEEFYMJIEfCeZomnI-SNRA" name="ExtensionPoint5"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_Tmtj4MJIEfCeZomnI-SNRA" name="ExtensionPoint6"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_VEP44MJIEfCeZomnI-SNRA" name="ExtensionPoint7"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_V07H4MJIEfCeZomnI-SNRA" name="ExtensionPoint8"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_WeCWUMJIEfCeZomnI-SNRA" name="ExtensionPoint9"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_cCjHwMJIEfCeZomnI-SNRA" name="ExtensionPoint10"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_LfoSkMJJEfCeZomnI-SNRA" name="ExtensionPoint11"/>
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_rPZ3AMJJEfCeZomnI-SNRA" name="ExtensionPoint12"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_EwdosMJFEfCeZomnI-SNRA" name="Gioca carta">
+      <include xmi:type="uml:Include" xmi:id="_-bsXoMJHEfCeZomnI-SNRA" addition="_69U6sMJEEfCeZomnI-SNRA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_Iz8sQMJFEfCeZomnI-SNRA" name="Guadagnare gettone">
+      <extend xmi:type="uml:Extend" xmi:id="_HYFD0MJIEfCeZomnI-SNRA" extendedCase="_69U6sMJEEfCeZomnI-SNRA" extensionLocation="_HYGR8MJIEfCeZomnI-SNRA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_KajdsMJFEfCeZomnI-SNRA" name="Guadagnare attacco">
+      <extend xmi:type="uml:Extend" xmi:id="_QUqkUMJIEfCeZomnI-SNRA" extendedCase="_69U6sMJEEfCeZomnI-SNRA" extensionLocation="_QUrLYMJIEfCeZomnI-SNRA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_LbGUsMJFEfCeZomnI-SNRA" name="Guadagnare vita">
+      <extend xmi:type="uml:Extend" xmi:id="_GSsJEMJIEfCeZomnI-SNRA" extendedCase="_69U6sMJEEfCeZomnI-SNRA" extensionLocation="_GStXMMJIEfCeZomnI-SNRA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_MVFQsMJFEfCeZomnI-SNRA" name="Pesca carta">
+      <extend xmi:type="uml:Extend" xmi:id="_WeBvQMJIEfCeZomnI-SNRA" extendedCase="_69U6sMJEEfCeZomnI-SNRA" extensionLocation="_WeCWUMJIEfCeZomnI-SNRA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_N7J2oMJFEfCeZomnI-SNRA" name="Rimuovere marchio nero dal luogo">
+      <extend xmi:type="uml:Extend" xmi:id="_SEDeUMJIEfCeZomnI-SNRA" extendedCase="_69U6sMJEEfCeZomnI-SNRA" extensionLocation="_SEEFYMJIEfCeZomnI-SNRA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_Qg3UoMJFEfCeZomnI-SNRA" name="Tirare dado casata">
+      <extend xmi:type="uml:Extend" xmi:id="_RAwOQMJIEfCeZomnI-SNRA" extendedCase="_69U6sMJEEfCeZomnI-SNRA" extensionLocation="_RAxcYMJIEfCeZomnI-SNRA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_aXhQsMJFEfCeZomnI-SNRA" name="Attacca i malvagi">
+      <extensionPoint xmi:type="uml:ExtensionPoint" xmi:id="_eNvM8MJIEfCeZomnI-SNRA" name="ExtensionPoint1"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_ifdBIMJFEfCeZomnI-SNRA" name="Sconfiggere un malvagio">
+      <extend xmi:type="uml:Extend" xmi:id="_eNt-0MJIEfCeZomnI-SNRA" extendedCase="_aXhQsMJFEfCeZomnI-SNRA" extensionLocation="_eNvM8MJIEfCeZomnI-SNRA"/>
+      <include xmi:type="uml:Include" xmi:id="_gx5LwMJIEfCeZomnI-SNRA" addition="_v-jqkMJFEfCeZomnI-SNRA"/>
+      <include xmi:type="uml:Include" xmi:id="_inh3sMJIEfCeZomnI-SNRA" addition="_69U6sMJEEfCeZomnI-SNRA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_v-jqkMJFEfCeZomnI-SNRA" name="Rivela nuovo malvagio"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_1IxQMMJGEfCeZomnI-SNRA" name="Cercare nella pila degli scarti una carta">
+      <extend xmi:type="uml:Extend" xmi:id="_V06g0MJIEfCeZomnI-SNRA" extendedCase="_69U6sMJEEfCeZomnI-SNRA" extensionLocation="_V07H4MJIEfCeZomnI-SNRA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_JKkKkMJHEfCeZomnI-SNRA" name="Pesca 5 carte alla fine del turno"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_SlbigMJHEfCeZomnI-SNRA" name="Perdere vite">
+      <extend xmi:type="uml:Extend" xmi:id="_TmsVwMJIEfCeZomnI-SNRA" extendedCase="_69U6sMJEEfCeZomnI-SNRA" extensionLocation="_Tmtj4MJIEfCeZomnI-SNRA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_VcAHAMJHEfCeZomnI-SNRA" name="Aggiungere marchio nero al luogo">
+      <extend xmi:type="uml:Extend" xmi:id="_LfnrgMJJEfCeZomnI-SNRA" extendedCase="_69U6sMJEEfCeZomnI-SNRA" extensionLocation="_LfoSkMJJEfCeZomnI-SNRA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_kK_D8MJHEfCeZomnI-SNRA" name="Rimuovere attacchi dai malvagi">
+      <extend xmi:type="uml:Extend" xmi:id="_cCigsMJIEfCeZomnI-SNRA" extendedCase="_69U6sMJEEfCeZomnI-SNRA" extensionLocation="_cCjHwMJIEfCeZomnI-SNRA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_m1p6cMJHEfCeZomnI-SNRA" name="Scartare carte">
+      <extend xmi:type="uml:Extend" xmi:id="_VEPR0MJIEfCeZomnI-SNRA" extendedCase="_69U6sMJEEfCeZomnI-SNRA" extensionLocation="_VEP44MJIEfCeZomnI-SNRA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_spXlgMJHEfCeZomnI-SNRA" name="Controlla se un'azione può essere eseguita"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_ntrSIMJIEfCeZomnI-SNRA" name="Blocca un effetto di una carta"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_n1f78MJJEfCeZomnI-SNRA" name="Rivela evento arti oscure aggiuntivo">
+      <extend xmi:type="uml:Extend" xmi:id="_rPYo4MJJEfCeZomnI-SNRA" extendedCase="_69U6sMJEEfCeZomnI-SNRA" extensionLocation="_rPZ3AMJJEfCeZomnI-SNRA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_-IYIIMJJEfCeZomnI-SNRA" name="Compra carte"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_Ft9LsMJFEfCeZomnI-SNRA" name="Giocatore"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_19ixgMJFEfCeZomnI-SNRA" name="Gioco"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_Dbp8cMJGEfCeZomnI-SNRA" name="Carta"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="__OdGwMJGEfCeZomnI-SNRA" memberEnd="__OgKEMJGEfCeZomnI-SNRA __OgxIMJGEfCeZomnI-SNRA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__OfjAMJGEfCeZomnI-SNRA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="__OfjAcJGEfCeZomnI-SNRA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="__OgKEMJGEfCeZomnI-SNRA" name="gioca carta" type="_EwdosMJFEfCeZomnI-SNRA" association="__OdGwMJGEfCeZomnI-SNRA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="__OgxIMJGEfCeZomnI-SNRA" name="giocatore" type="_Ft9LsMJFEfCeZomnI-SNRA" association="__OdGwMJGEfCeZomnI-SNRA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Bd4ywMJHEfCeZomnI-SNRA" memberEnd="_Bd6A4MJHEfCeZomnI-SNRA _Bd6A4cJHEfCeZomnI-SNRA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Bd5Z0MJHEfCeZomnI-SNRA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Bd5Z0cJHEfCeZomnI-SNRA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Bd6A4MJHEfCeZomnI-SNRA" name="rivela nuovo malvagio" type="_v-jqkMJFEfCeZomnI-SNRA" association="_Bd4ywMJHEfCeZomnI-SNRA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Bd6A4cJHEfCeZomnI-SNRA" name="gioco" type="_19ixgMJFEfCeZomnI-SNRA" association="_Bd4ywMJHEfCeZomnI-SNRA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CahaIMJHEfCeZomnI-SNRA" memberEnd="_CaiBMsJHEfCeZomnI-SNRA _CaiBM8JHEfCeZomnI-SNRA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CaiBMMJHEfCeZomnI-SNRA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CaiBMcJHEfCeZomnI-SNRA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CaiBMsJHEfCeZomnI-SNRA" name="rivela evento arti oscure" type="_5hP-QMJEEfCeZomnI-SNRA" association="_CahaIMJHEfCeZomnI-SNRA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CaiBM8JHEfCeZomnI-SNRA" name="gioco" type="_19ixgMJFEfCeZomnI-SNRA" association="_CahaIMJHEfCeZomnI-SNRA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_EcFCMMJHEfCeZomnI-SNRA" memberEnd="_EcFpQsJHEfCeZomnI-SNRA _EcFpQ8JHEfCeZomnI-SNRA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_EcFpQMJHEfCeZomnI-SNRA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_EcFpQcJHEfCeZomnI-SNRA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_EcFpQsJHEfCeZomnI-SNRA" name="attacca i malvagi" type="_aXhQsMJFEfCeZomnI-SNRA" association="_EcFCMMJHEfCeZomnI-SNRA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_EcFpQ8JHEfCeZomnI-SNRA" name="giocatore" type="_Ft9LsMJFEfCeZomnI-SNRA" association="_EcFCMMJHEfCeZomnI-SNRA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_FOzfoMJHEfCeZomnI-SNRA" memberEnd="_FO0GscJHEfCeZomnI-SNRA _FO0GssJHEfCeZomnI-SNRA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_FOzfocJHEfCeZomnI-SNRA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_FO0GsMJHEfCeZomnI-SNRA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_FO0GscJHEfCeZomnI-SNRA" name="sconfiggere un malvagio" type="_ifdBIMJFEfCeZomnI-SNRA" association="_FOzfoMJHEfCeZomnI-SNRA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_FO0GssJHEfCeZomnI-SNRA" name="giocatore" type="_Ft9LsMJFEfCeZomnI-SNRA" association="_FOzfoMJHEfCeZomnI-SNRA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Mj2akMJHEfCeZomnI-SNRA" memberEnd="_Mj3BosJHEfCeZomnI-SNRA _Mj3Bo8JHEfCeZomnI-SNRA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Mj3BoMJHEfCeZomnI-SNRA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Mj3BocJHEfCeZomnI-SNRA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Mj3BosJHEfCeZomnI-SNRA" name="pesca 5 carte alla fine del turno" type="_JKkKkMJHEfCeZomnI-SNRA" association="_Mj2akMJHEfCeZomnI-SNRA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_Mj3Bo8JHEfCeZomnI-SNRA" name="giocatore" type="_Ft9LsMJFEfCeZomnI-SNRA" association="_Mj2akMJHEfCeZomnI-SNRA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_PbVlEMJHEfCeZomnI-SNRA" memberEnd="_PbXaQMJHEfCeZomnI-SNRA _PbXaQcJHEfCeZomnI-SNRA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_PbWzMMJHEfCeZomnI-SNRA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_PbWzMcJHEfCeZomnI-SNRA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_PbXaQMJHEfCeZomnI-SNRA" name="applica effetto" type="_69U6sMJEEfCeZomnI-SNRA" association="_PbVlEMJHEfCeZomnI-SNRA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_PbXaQcJHEfCeZomnI-SNRA" name="carta" type="_Dbp8cMJGEfCeZomnI-SNRA" association="_PbVlEMJHEfCeZomnI-SNRA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_xgRqEMJHEfCeZomnI-SNRA" memberEnd="_xgSRIsJHEfCeZomnI-SNRA _xgSRI8JHEfCeZomnI-SNRA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_xgSRIMJHEfCeZomnI-SNRA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_xgSRIcJHEfCeZomnI-SNRA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_xgSRIsJHEfCeZomnI-SNRA" name="controlla se un'azione può essere eseguita" type="_spXlgMJHEfCeZomnI-SNRA" association="_xgRqEMJHEfCeZomnI-SNRA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_xgSRI8JHEfCeZomnI-SNRA" type="_19ixgMJFEfCeZomnI-SNRA" association="_xgRqEMJHEfCeZomnI-SNRA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_s24AkMJIEfCeZomnI-SNRA" name="Arti Oscure">
+    <generalization xmi:type="uml:Generalization" xmi:id="_3V5kMMJIEfCeZomnI-SNRA" general="_Dbp8cMJGEfCeZomnI-SNRA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_udG-kMJIEfCeZomnI-SNRA" name="Malvagio">
+    <generalization xmi:type="uml:Generalization" xmi:id="_5-CEEMJIEfCeZomnI-SNRA" general="_Dbp8cMJGEfCeZomnI-SNRA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_wTNkkMJIEfCeZomnI-SNRA" name="Horcrux">
+    <generalization xmi:type="uml:Generalization" xmi:id="_81NskMJIEfCeZomnI-SNRA" general="_Dbp8cMJGEfCeZomnI-SNRA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_CfYaEMJJEfCeZomnI-SNRA" memberEnd="_CfZBIsJJEfCeZomnI-SNRA _CfZBI8JJEfCeZomnI-SNRA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_CfZBIMJJEfCeZomnI-SNRA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_CfZBIcJJEfCeZomnI-SNRA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CfZBIsJJEfCeZomnI-SNRA" name="blocca un effetto di una carta" type="_ntrSIMJIEfCeZomnI-SNRA" association="_CfYaEMJJEfCeZomnI-SNRA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_CfZBI8JJEfCeZomnI-SNRA" name="malvagio" type="_udG-kMJIEfCeZomnI-SNRA" association="_CfYaEMJJEfCeZomnI-SNRA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ET4dkMJJEfCeZomnI-SNRA" memberEnd="_ET5rscJJEfCeZomnI-SNRA _ET5rssJJEfCeZomnI-SNRA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ET5EoMJJEfCeZomnI-SNRA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ET5rsMJJEfCeZomnI-SNRA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_ET5rscJJEfCeZomnI-SNRA" name="blocca un effetto di una carta" type="_ntrSIMJIEfCeZomnI-SNRA" association="_ET4dkMJJEfCeZomnI-SNRA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_ET5rssJJEfCeZomnI-SNRA" name="horcrux" type="_wTNkkMJIEfCeZomnI-SNRA" association="_ET4dkMJJEfCeZomnI-SNRA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_GKNtEMJJEfCeZomnI-SNRA" memberEnd="_GKOUIsJJEfCeZomnI-SNRA _GKO7MMJJEfCeZomnI-SNRA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GKOUIMJJEfCeZomnI-SNRA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GKOUIcJJEfCeZomnI-SNRA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_GKOUIsJJEfCeZomnI-SNRA" name="blocca un effetto di una carta" type="_ntrSIMJIEfCeZomnI-SNRA" association="_GKNtEMJJEfCeZomnI-SNRA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_GKO7MMJJEfCeZomnI-SNRA" name="arti oscure" type="_s24AkMJIEfCeZomnI-SNRA" association="_GKNtEMJJEfCeZomnI-SNRA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_MN8UoMJKEfCeZomnI-SNRA" memberEnd="_MN9iwcJKEfCeZomnI-SNRA _MN9iwsJKEfCeZomnI-SNRA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_MN87sMJKEfCeZomnI-SNRA" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_MN9iwMJKEfCeZomnI-SNRA" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MN9iwcJKEfCeZomnI-SNRA" name="compra carte" type="_-IYIIMJJEfCeZomnI-SNRA" association="_MN8UoMJKEfCeZomnI-SNRA"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_MN9iwsJKEfCeZomnI-SNRA" name="giocatore" type="_Ft9LsMJFEfCeZomnI-SNRA" association="_MN8UoMJKEfCeZomnI-SNRA"/>
+  </packagedElement>
+  <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_UVtq0MI7EfCeZomnI-SNRA">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_UV20wMI7EfCeZomnI-SNRA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
+    </eAnnotations>
+    <appliedProfile xmi:type="uml:Profile" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#ActionLanguage"/>
+  </profileApplication>
+</uml:Model>

@@ -1,0 +1,1048 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/papyrus/infra/gmfdiag/style" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML">
+  <notation:Diagram xmi:id="_E7UKcMIcEfCeZomnI-SNRA" type="PapyrusUMLComponentDiagram" name="Component Diagram" measurementUnit="Pixel">
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_E7UKccIcEfCeZomnI-SNRA" name="diagram_compatibility_version" stringValue="1.4.0"/>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_E7UKcsIcEfCeZomnI-SNRA"/>
+    <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_E7UKc8IcEfCeZomnI-SNRA" diagramKindId="org.eclipse.papyrus.uml.diagram.component.root.package">
+      <owner xmi:type="uml:Model" href="Diagrammi_Hogwarts_Battle.uml#_E3eMQMIcEfCeZomnI-SNRA"/>
+    </styles>
+    <element xmi:type="uml:Model" href="Diagrammi_Hogwarts_Battle.uml#_E3eMQMIcEfCeZomnI-SNRA"/>
+  </notation:Diagram>
+  <notation:Diagram xmi:id="_E7cGQMIcEfCeZomnI-SNRA" type="PapyrusUMLClassDiagram" name="Package Diagram" measurementUnit="Pixel">
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_E7cGQcIcEfCeZomnI-SNRA" name="diagram_compatibility_version" stringValue="1.4.0"/>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_E7cGQsIcEfCeZomnI-SNRA"/>
+    <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_E7cGQ8IcEfCeZomnI-SNRA" diagramKindId="org.eclipse.papyrus.uml.diagram.package">
+      <owner xmi:type="uml:Model" href="Diagrammi_Hogwarts_Battle.uml#_E3eMQMIcEfCeZomnI-SNRA"/>
+    </styles>
+    <element xmi:type="uml:Model" href="Diagrammi_Hogwarts_Battle.uml#_E3eMQMIcEfCeZomnI-SNRA"/>
+  </notation:Diagram>
+  <notation:Diagram xmi:id="_E70gwMIcEfCeZomnI-SNRA" type="PapyrusUMLSequenceDiagram" name="Sequence Diagram" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_E70gwcIcEfCeZomnI-SNRA" type="Interaction_Shape">
+      <children xmi:type="notation:DecorationNode" xmi:id="_E70gwsIcEfCeZomnI-SNRA" type="Interaction_NameLabel"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_E70gw8IcEfCeZomnI-SNRA" type="Interaction_SubfragmentCompartment">
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E70gxMIcEfCeZomnI-SNRA"/>
+      </children>
+      <element xmi:type="uml:Interaction" href="Diagrammi_Hogwarts_Battle.uml#_E7phoMIcEfCeZomnI-SNRA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E70gxcIcEfCeZomnI-SNRA"/>
+    </children>
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_E70gxsIcEfCeZomnI-SNRA" name="diagram_compatibility_version" stringValue="1.4.0"/>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_E70gx8IcEfCeZomnI-SNRA"/>
+    <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_E70gyMIcEfCeZomnI-SNRA" diagramKindId="org.eclipse.papyrus.uml.diagram.sequence">
+      <owner xmi:type="uml:Model" href="Diagrammi_Hogwarts_Battle.uml#_E3eMQMIcEfCeZomnI-SNRA"/>
+    </styles>
+    <element xmi:type="uml:Interaction" href="Diagrammi_Hogwarts_Battle.uml#_E7phoMIcEfCeZomnI-SNRA"/>
+  </notation:Diagram>
+  <notation:Diagram xmi:id="_E75ZQMIcEfCeZomnI-SNRA" type="PapyrusUMLCommunicationDiagram" name="Communication Diagram" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_E75ZQcIcEfCeZomnI-SNRA" type="Interaction_Shape">
+      <children xmi:type="notation:DecorationNode" xmi:id="_E75ZQsIcEfCeZomnI-SNRA" type="Interaction_NameLabel"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_E75ZQ8IcEfCeZomnI-SNRA" type="Interaction_FloatingNameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_E75ZRMIcEfCeZomnI-SNRA" x="50"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_E75ZRcIcEfCeZomnI-SNRA" type="Interaction_SubfragmentCompartment">
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E75ZRsIcEfCeZomnI-SNRA"/>
+      </children>
+      <element xmi:type="uml:Interaction" href="Diagrammi_Hogwarts_Battle.uml#_E729AMIcEfCeZomnI-SNRA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E75ZR8IcEfCeZomnI-SNRA"/>
+    </children>
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_E75ZSMIcEfCeZomnI-SNRA" name="diagram_compatibility_version" stringValue="1.4.0"/>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_E75ZScIcEfCeZomnI-SNRA"/>
+    <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_E75ZSsIcEfCeZomnI-SNRA" diagramKindId="org.eclipse.papyrus.uml.diagram.communication">
+      <owner xmi:type="uml:Model" href="Diagrammi_Hogwarts_Battle.uml#_E3eMQMIcEfCeZomnI-SNRA"/>
+    </styles>
+    <element xmi:type="uml:Interaction" href="Diagrammi_Hogwarts_Battle.uml#_E729AMIcEfCeZomnI-SNRA"/>
+  </notation:Diagram>
+  <notation:Diagram xmi:id="_E78ckMIcEfCeZomnI-SNRA" type="UseCase" name="Use Case Diagram" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_IroTMMJEEfCeZomnI-SNRA" type="Package_Shape">
+      <children xmi:type="notation:DecorationNode" xmi:id="_Iro6QMJEEfCeZomnI-SNRA" type="Package_NameLabel"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_Iro6QcJEEfCeZomnI-SNRA" type="Package_PackagedElementCompartment">
+        <children xmi:type="notation:Shape" xmi:id="_5hSagMJEEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_5hSagsJEEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_5hSag8JEEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_5hSahMJEEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_5hSahcJEEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_5hSahsJEEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_5hSah8JEEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5hSaiMJEEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_5hP-QMJEEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5hSagcJEEfCeZomnI-SNRA" x="605" y="504"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_69X-AMJEEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_69X-AsJEEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_69X-A8JEEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_69X-BMJEEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_69X-BcJEEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_69X-BsJEEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_69X-B8JEEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_69X-CMJEEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_69U6sMJEEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_69X-AcJEEfCeZomnI-SNRA" x="294" y="191"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_Ewh6IMJFEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_Ewh6IsJFEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_Ewh6I8JFEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Ewh6JMJFEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_Ewh6JcJFEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_Ewh6JsJFEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_Ewh6J8JFEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ewh6KMJFEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_EwdosMJFEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ewh6IcJFEfCeZomnI-SNRA" x="754" y="131"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_Iz_vkMJFEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_I0AWoMJFEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_I0AWocJFEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_I0AWosJFEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_I0AWo8JFEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_I0AWpMJFEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_I0AWpcJFEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_I0AWpsJFEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_Iz8sQMJFEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Iz_vkcJFEfCeZomnI-SNRA" x="14" y="131"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_KamhAMJFEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_KamhAsJFEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_KamhA8JFEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_KamhBMJFEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_KamhBcJFEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_KamhBsJFEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_KamhB8JFEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KamhCMJFEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_KajdsMJFEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KamhAcJFEfCeZomnI-SNRA" x="34" y="271"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_LbLNMMJFEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_LbLNMsJFEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_LbLNM8JFEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_LbLNNMJFEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_LbLNNcJFEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_LbLNNsJFEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_LbLNN8JFEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LbLNOMJFEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_LbGUsMJFEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LbLNMcJFEfCeZomnI-SNRA" x="154" y="51"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_MVI7EMJFEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_MVI7EsJFEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_MVI7E8JFEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_MVI7FMJFEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_MVI7FcJFEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_MVI7FsJFEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_MVI7F8JFEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MVI7GMJFEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_MVFQsMJFEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MVI7EcJFEfCeZomnI-SNRA" x="614" y="211"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_N7OIEMJFEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_N7OIEsJFEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_N7OIE8JFEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_N7OIFMJFEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_N7OIFcJFEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_N7OIFsJFEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_N7OIF8JFEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_N7OIGMJFEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_N7J2oMJFEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_N7OIEcJFEfCeZomnI-SNRA" x="574" y="31"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_Qg7mEMJFEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_Qg8NIMJFEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_Qg8NIcJFEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Qg8NIsJFEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_Qg8NI8JFEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_Qg8NJMJFEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_Qg8NJcJFEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Qg8NJsJFEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_Qg3UoMJFEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Qg7mEcJFEfCeZomnI-SNRA" x="374" y="51"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_aXnXUMJFEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_aXn-YcJFEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_aXn-YsJFEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_aXn-Y8JFEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_aXn-ZMJFEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_aXn-ZcJFEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_aXn-ZsJFEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aXn-Z8JFEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_aXhQsMJFEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_aXn-YMJFEfCeZomnI-SNRA" x="854" y="351"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_ifigsMJFEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_ifigssJFEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_ifigs8JFEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_ifigtMJFEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_ifjHwMJFEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_ifjHwcJFEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_ifjHwsJFEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ifjHw8JFEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_ifdBIMJFEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ifigscJFEfCeZomnI-SNRA" x="794" y="471"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_v-qYQMJFEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_v-q_UMJFEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_v-q_UcJFEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_v-q_UsJFEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_v-q_U8JFEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_v-q_VMJFEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_v-q_VcJFEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_v-q_VsJFEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_v-jqkMJFEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_v-qYQcJFEfCeZomnI-SNRA" x="634" y="631"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_1I5MAMJGEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_1I5MAsJGEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_1I5MA8JGEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_1I5MBMJGEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_1I5MBcJGEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_1I5MBsJGEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_1I5MB8JGEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1I5MCMJGEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_1IxQMMJGEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1I5MAcJGEfCeZomnI-SNRA" x="394" y="411"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_JKtUgMJHEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_JKtUgsJHEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_JKtUg8JHEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_JKtUhMJHEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_JKtUhcJHEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_JKtUhsJHEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_JKtUh8JHEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JKtUiMJHEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_JKkKkMJHEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JKtUgcJHEfCeZomnI-SNRA" x="854" y="31"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_SlkscMJHEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_SllTgMJHEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_SllTgcJHEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_SllTgsJHEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_SllTg8JHEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_SllThMJHEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_SllThcJHEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_SllThsJHEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_SlbigMJHEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_SlksccJHEfCeZomnI-SNRA" x="34" y="411"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_VcG0sMJHEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_VcG0ssJHEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_VcG0s8JHEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_VcG0tMJHEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_VcG0tcJHEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_VcG0tsJHEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_VcG0t8JHEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VcG0uMJHEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_VcAHAMJHEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VcG0scJHEfCeZomnI-SNRA" x="294" y="531"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_kLGYsMJHEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_kLGYssJHEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_kLGYs8JHEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_kLGYtMJHEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_kLGYtcJHEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_kLGYtsJHEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_kLGYt8JHEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kLGYuMJHEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_kK_D8MJHEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kLGYscJHEfCeZomnI-SNRA" x="54" y="511"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_m1ydUMJHEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_m1ydUsJHEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_m1ydU8JHEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_m1ydVMJHEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_m1ydVcJHEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_m1ydVsJHEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_m1ydV8JHEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_m1ydWMJHEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_m1p6cMJHEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_m1ydUcJHEfCeZomnI-SNRA" x="194" y="451"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_sphWgMJHEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_sph9kMJHEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_sph9kcJHEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_sph9ksJHEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_sph9k8JHEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_sph9lMJHEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_sph9lcJHEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sph9lsJHEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_spXlgMJHEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sphWgcJHEfCeZomnI-SNRA" x="794" y="691"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_nt2RQMJIEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_nt3fYMJIEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_nt3fYcJIEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_nt3fYsJIEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_nt3fY8JIEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_nt3fZMJIEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_nt3fZcJIEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nt3fZsJIEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_ntrSIMJIEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_nt2RQcJIEfCeZomnI-SNRA" x="354" y="691"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_n1q7EMJJEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_n1q7EsJJEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_n1q7E8JJEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_n1q7FMJJEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_n1q7FcJJEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_n1q7FsJJEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_n1q7F8JJEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_n1q7GMJJEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_n1f78MJJEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_n1q7EcJJEfCeZomnI-SNRA" x="634" y="311"/>
+        </children>
+        <children xmi:type="notation:Shape" xmi:id="_-In_wMJJEfCeZomnI-SNRA" type="UseCase_Shape_CN">
+          <children xmi:type="notation:DecorationNode" xmi:id="_-In_wsJJEfCeZomnI-SNRA" type="UseCase_NameLabel_CN"/>
+          <children xmi:type="notation:DecorationNode" xmi:id="_-In_w8JJEfCeZomnI-SNRA" type="UseCase_FloatingNameLabel_CN">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_-In_xMJJEfCeZomnI-SNRA" y="15"/>
+          </children>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_-In_xcJJEfCeZomnI-SNRA" type="UseCase_ExtensionPointCompartment_CN">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_-In_xsJJEfCeZomnI-SNRA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_-In_x8JJEfCeZomnI-SNRA"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-In_yMJJEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:UseCase" href="Diagrammi_Hogwarts_Battle.uml#_-IYIIMJJEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-In_wcJJEfCeZomnI-SNRA" x="854" y="231"/>
+        </children>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Iro6QsJEEfCeZomnI-SNRA"/>
+      </children>
+      <element xmi:type="uml:Package" href="Diagrammi_Hogwarts_Battle.uml#_IrmeAMJEEfCeZomnI-SNRA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IroTMcJEEfCeZomnI-SNRA" x="440" y="40" width="1081" height="821"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_Ft_A4MJFEfCeZomnI-SNRA" type="Actor_Shape" fontColor="16777215" fontName="Segoe UI" fontHeight="10">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YZg2cMJGEfCeZomnI-SNRA" source="PapyrusCSSForceValue">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YZg2ccJGEfCeZomnI-SNRA" key="bold" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YZg2csJGEfCeZomnI-SNRA" key="italic" value="true"/>
+      </eAnnotations>
+      <children xmi:type="notation:DecorationNode" xmi:id="_Ft_A4sJFEfCeZomnI-SNRA" type="Actor_NameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Ft_A48JFEfCeZomnI-SNRA" y="15"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_Ft_A5MJFEfCeZomnI-SNRA" type="Actor_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Ft_A5cJFEfCeZomnI-SNRA" x="20" y="100"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_Ft_A5sJFEfCeZomnI-SNRA" type="Actor_QualifiedNameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Ft_A58JFEfCeZomnI-SNRA" x="20" y="80"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_Ft_A6MJFEfCeZomnI-SNRA" type="Actor_FloatingNameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Ft_A6cJFEfCeZomnI-SNRA" y="15"/>
+      </children>
+      <element xmi:type="uml:Actor" href="Diagrammi_Hogwarts_Battle.uml#_Ft9LsMJFEfCeZomnI-SNRA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ft_A4cJFEfCeZomnI-SNRA" x="1680" y="200"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_19lNwMJFEfCeZomnI-SNRA" type="Actor_Shape" fontColor="16777215" fontName="Segoe UI" fontHeight="10">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Z2TkkMJGEfCeZomnI-SNRA" source="PapyrusCSSForceValue">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Z2TkkcJGEfCeZomnI-SNRA" key="bold" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Z2TkksJGEfCeZomnI-SNRA" key="italic" value="true"/>
+      </eAnnotations>
+      <children xmi:type="notation:DecorationNode" xmi:id="_19lNwsJFEfCeZomnI-SNRA" type="Actor_NameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_19lNw8JFEfCeZomnI-SNRA" y="15"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_19lNxMJFEfCeZomnI-SNRA" type="Actor_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_19lNxcJFEfCeZomnI-SNRA" x="20" y="100"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_19lNxsJFEfCeZomnI-SNRA" type="Actor_QualifiedNameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_19lNx8JFEfCeZomnI-SNRA" x="20" y="80"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_19lNyMJFEfCeZomnI-SNRA" type="Actor_FloatingNameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_19lNycJFEfCeZomnI-SNRA" y="15"/>
+      </children>
+      <element xmi:type="uml:Actor" href="Diagrammi_Hogwarts_Battle.uml#_19ixgMJFEfCeZomnI-SNRA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_19lNwcJFEfCeZomnI-SNRA" x="1660" y="580"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_DbsYsMJGEfCeZomnI-SNRA" type="Actor_Shape" fontColor="16777215" fontName="Segoe UI" fontHeight="10">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Wl6K0MJGEfCeZomnI-SNRA" source="PapyrusCSSForceValue">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Wl6K0cJGEfCeZomnI-SNRA" key="bold" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_Wl6K0sJGEfCeZomnI-SNRA" key="italic" value="true"/>
+      </eAnnotations>
+      <children xmi:type="notation:DecorationNode" xmi:id="_DbsYssJGEfCeZomnI-SNRA" type="Actor_NameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_DbsYs8JGEfCeZomnI-SNRA" y="-20"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_DbsYtMJGEfCeZomnI-SNRA" type="Actor_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_DbsYtcJGEfCeZomnI-SNRA" x="20" y="100"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_DbsYtsJGEfCeZomnI-SNRA" type="Actor_QualifiedNameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_DbsYt8JGEfCeZomnI-SNRA" x="20" y="80"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_DbsYuMJGEfCeZomnI-SNRA" type="Actor_FloatingNameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_DbsYucJGEfCeZomnI-SNRA" y="15"/>
+      </children>
+      <element xmi:type="uml:Actor" href="Diagrammi_Hogwarts_Battle.uml#_Dbp8cMJGEfCeZomnI-SNRA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DbsYscJGEfCeZomnI-SNRA" x="180" y="220"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_s26c0MJIEfCeZomnI-SNRA" type="Actor_Shape" fontColor="16777215" fontName="Segoe UI" fontHeight="10">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_y_070MJIEfCeZomnI-SNRA" source="PapyrusCSSForceValue">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y_070cJIEfCeZomnI-SNRA" key="bold" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_y_070sJIEfCeZomnI-SNRA" key="italic" value="true"/>
+      </eAnnotations>
+      <children xmi:type="notation:DecorationNode" xmi:id="_s26c0sJIEfCeZomnI-SNRA" type="Actor_NameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_s26c08JIEfCeZomnI-SNRA" y="15"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_s26c1MJIEfCeZomnI-SNRA" type="Actor_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_s26c1cJIEfCeZomnI-SNRA" x="20" y="100"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_s26c1sJIEfCeZomnI-SNRA" type="Actor_QualifiedNameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_s26c18JIEfCeZomnI-SNRA" x="20" y="80"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_s26c2MJIEfCeZomnI-SNRA" type="Actor_FloatingNameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_s26c2cJIEfCeZomnI-SNRA" y="15"/>
+      </children>
+      <element xmi:type="uml:Actor" href="Diagrammi_Hogwarts_Battle.uml#_s24AkMJIEfCeZomnI-SNRA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_s26c0cJIEfCeZomnI-SNRA" x="60" y="600"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_udIzwMJIEfCeZomnI-SNRA" type="Actor_Shape" fontColor="16777215" fontName="Segoe UI" fontHeight="10">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_06ZLEMJIEfCeZomnI-SNRA" source="PapyrusCSSForceValue">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_06ZLEcJIEfCeZomnI-SNRA" key="bold" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_06ZyIMJIEfCeZomnI-SNRA" key="italic" value="true"/>
+      </eAnnotations>
+      <children xmi:type="notation:DecorationNode" xmi:id="_udIzwsJIEfCeZomnI-SNRA" type="Actor_NameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_udIzw8JIEfCeZomnI-SNRA" y="15"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_udIzxMJIEfCeZomnI-SNRA" type="Actor_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_udIzxcJIEfCeZomnI-SNRA" x="20" y="100"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_udIzxsJIEfCeZomnI-SNRA" type="Actor_QualifiedNameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_udIzx8JIEfCeZomnI-SNRA" x="20" y="80"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_udIzyMJIEfCeZomnI-SNRA" type="Actor_FloatingNameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_udIzycJIEfCeZomnI-SNRA" y="15"/>
+      </children>
+      <element xmi:type="uml:Actor" href="Diagrammi_Hogwarts_Battle.uml#_udG-kMJIEfCeZomnI-SNRA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_udIzwcJIEfCeZomnI-SNRA" x="260" y="540"/>
+    </children>
+    <children xmi:type="notation:Shape" xmi:id="_wTOysMJIEfCeZomnI-SNRA" type="Actor_Shape" fontColor="16777215" fontName="Segoe UI" fontHeight="10">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2UMPkMJIEfCeZomnI-SNRA" source="PapyrusCSSForceValue">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2UMPkcJIEfCeZomnI-SNRA" key="bold" value="true"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2UMPksJIEfCeZomnI-SNRA" key="italic" value="true"/>
+      </eAnnotations>
+      <children xmi:type="notation:DecorationNode" xmi:id="_wTOyssJIEfCeZomnI-SNRA" type="Actor_NameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_wTOys8JIEfCeZomnI-SNRA" y="15"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_wTOytMJIEfCeZomnI-SNRA" type="Actor_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_wTOytcJIEfCeZomnI-SNRA" x="20" y="100"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_wTOytsJIEfCeZomnI-SNRA" type="Actor_QualifiedNameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_wTOyt8JIEfCeZomnI-SNRA" x="20" y="80"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_wTOyuMJIEfCeZomnI-SNRA" type="Actor_FloatingNameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_wTOyucJIEfCeZomnI-SNRA" y="15"/>
+      </children>
+      <element xmi:type="uml:Actor" href="Diagrammi_Hogwarts_Battle.uml#_wTNkkMJIEfCeZomnI-SNRA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wTOyscJIEfCeZomnI-SNRA" x="160" y="740"/>
+    </children>
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_E78ckcIcEfCeZomnI-SNRA" name="diagram_compatibility_version" stringValue="1.4.0"/>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_E78cksIcEfCeZomnI-SNRA"/>
+    <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_E78ck8IcEfCeZomnI-SNRA" diagramKindId="org.eclipse.papyrus.uml.diagram.useCase">
+      <owner xmi:type="uml:Model" href="Diagrammi_Hogwarts_Battle.uml#_E3eMQMIcEfCeZomnI-SNRA"/>
+    </styles>
+    <element xmi:type="uml:Model" href="Diagrammi_Hogwarts_Battle.uml#_E3eMQMIcEfCeZomnI-SNRA"/>
+    <edges xmi:type="notation:Connector" xmi:id="__OimUMJGEfCeZomnI-SNRA" type="Association_Edge" source="_Ft_A4MJFEfCeZomnI-SNRA" target="_Ewh6IMJFEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="__OjNYMJGEfCeZomnI-SNRA" type="Association_NameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="__OjNYcJGEfCeZomnI-SNRA" y="40"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="__OjNYsJGEfCeZomnI-SNRA" type="Association_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="__OjNY8JGEfCeZomnI-SNRA" y="-20"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="__OimUcJGEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Association" href="Diagrammi_Hogwarts_Battle.uml#__OdGwMJGEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="__OimUsJGEfCeZomnI-SNRA" points="[1680, 220, -643984, -643984]$[1340, 230, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="__OzsEMJGEfCeZomnI-SNRA" id="(0.0,0.4)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="__OzsEcJGEfCeZomnI-SNRA" id="(1.0,0.5)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_Bd72EMJHEfCeZomnI-SNRA" type="Association_Edge" source="_19lNwMJFEfCeZomnI-SNRA" target="_v-qYQMJFEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_Bd72E8JHEfCeZomnI-SNRA" type="Association_NameLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_vCFwYMJHEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Bd72FMJHEfCeZomnI-SNRA" x="-2" y="37"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_Bd72FcJHEfCeZomnI-SNRA" type="Association_StereotypeLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_vCNFIMJHEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Bd72FsJHEfCeZomnI-SNRA" x="1" y="-19"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_Bd72EcJHEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Association" href="Diagrammi_Hogwarts_Battle.uml#_Bd4ywMJHEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Bd72EsJHEfCeZomnI-SNRA" points="[1660, 600, -643984, -643984]$[1240, 754, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BeKfkMJHEfCeZomnI-SNRA" id="(0.0,0.4)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BeKfkcJHEfCeZomnI-SNRA" id="(0.9271523178807947,0.23333333333333334)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_CajPUMJHEfCeZomnI-SNRA" type="Association_Edge" source="_19lNwMJFEfCeZomnI-SNRA" target="_5hSagMJEEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_CajPU8JHEfCeZomnI-SNRA" type="Association_NameLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_pdrFkMJHEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_CajPVMJHEfCeZomnI-SNRA" x="-1" y="38"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_CajPVcJHEfCeZomnI-SNRA" type="Association_StereotypeLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_pd0PgMJHEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_CajPVsJHEfCeZomnI-SNRA" x="1" y="-19"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_CajPUcJHEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Association" href="Diagrammi_Hogwarts_Battle.uml#_CahaIMJHEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_CajPUsJHEfCeZomnI-SNRA" points="[1660, 600, -643984, -643984]$[1060, 630, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CavckMJHEfCeZomnI-SNRA" id="(0.0,0.4)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CavckcJHEfCeZomnI-SNRA" id="(0.80625,0.8833333333333333)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_EcHecMJHEfCeZomnI-SNRA" type="Association_Edge" source="_Ft_A4MJFEfCeZomnI-SNRA" target="_aXnXUMJFEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_EcHec8JHEfCeZomnI-SNRA" type="Association_NameLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_DTWYMMJKEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_EcHedMJHEfCeZomnI-SNRA" x="-1" y="38"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_EcHedcJHEfCeZomnI-SNRA" type="Association_StereotypeLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_DTjMgMJKEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_EcHedsJHEfCeZomnI-SNRA" x="-1" y="-18"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_EcHeccJHEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Association" href="Diagrammi_Hogwarts_Battle.uml#_EcFCMMJHEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_EcHecsJHEfCeZomnI-SNRA" points="[1680, 220, -643984, -643984]$[1420, 389, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_EcX9IMJHEfCeZomnI-SNRA" id="(0.0,0.4)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_EcX9IcJHEfCeZomnI-SNRA" id="(0.8571428571428571,0.15)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_FO0twMJHEfCeZomnI-SNRA" type="Association_Edge" source="_Ft_A4MJFEfCeZomnI-SNRA" target="_ifigsMJFEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_FO1U0MJHEfCeZomnI-SNRA" type="Association_NameLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_BMsNsMJKEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_FO1U0cJHEfCeZomnI-SNRA" x="1" y="38"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_FO1U0sJHEfCeZomnI-SNRA" type="Association_StereotypeLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_BM0wkMJKEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_FO1U08JHEfCeZomnI-SNRA" y="-19"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_FO0twcJHEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Association" href="Diagrammi_Hogwarts_Battle.uml#_FOzfoMJHEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_FO0twsJHEfCeZomnI-SNRA" points="[1680, 220, -643984, -643984]$[1398, 540, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FPCJIMJHEfCeZomnI-SNRA" id="(0.0,0.4)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_FPCJIcJHEfCeZomnI-SNRA" id="(0.9693251533742331,0.3333333333333333)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_Mj4PwMJHEfCeZomnI-SNRA" type="Association_Edge" source="_Ft_A4MJFEfCeZomnI-SNRA" target="_JKtUgMJHEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_Mj4Pw8JHEfCeZomnI-SNRA" type="Association_NameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Mj4PxMJHEfCeZomnI-SNRA" y="40"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_Mj4PxcJHEfCeZomnI-SNRA" type="Association_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Mj4PxsJHEfCeZomnI-SNRA" y="-20"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_Mj4PwcJHEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Association" href="Diagrammi_Hogwarts_Battle.uml#_Mj2akMJHEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Mj4PwsJHEfCeZomnI-SNRA" points="[1680, 200, -643984, -643984]$[1460, 107, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MkG5QMJHEfCeZomnI-SNRA" id="(0.0,0.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MkG5QcJHEfCeZomnI-SNRA" id="(0.9689119170984456,0.6666666666666666)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_PbZPcMJHEfCeZomnI-SNRA" type="Association_Edge" source="_DbsYsMJGEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA" lineColor="255">
+      <children xmi:type="notation:DecorationNode" xmi:id="_PbZPc8JHEfCeZomnI-SNRA" type="Association_NameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PbZPdMJHEfCeZomnI-SNRA" y="40"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_PbZPdcJHEfCeZomnI-SNRA" type="Association_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PbZPdsJHEfCeZomnI-SNRA" y="-20"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_PbZPccJHEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Association" href="Diagrammi_Hogwarts_Battle.uml#_PbVlEMJHEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PbZPcsJHEfCeZomnI-SNRA" points="[210, 240, -643984, -643984]$[744, 300, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbn48MJHEfCeZomnI-SNRA" id="(1.0,0.4)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbn48cJHEfCeZomnI-SNRA" id="(0.02857142857142857,0.6666666666666666)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_xgUGUMJHEfCeZomnI-SNRA" type="Association_Edge" source="_19lNwMJFEfCeZomnI-SNRA" target="_sphWgMJHEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_xgUGU8JHEfCeZomnI-SNRA" type="Association_NameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_xgUGVMJHEfCeZomnI-SNRA" y="40"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_xgUGVcJHEfCeZomnI-SNRA" type="Association_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_xgUGVsJHEfCeZomnI-SNRA" y="-20"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_xgUGUcJHEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Association" href="Diagrammi_Hogwarts_Battle.uml#_xgRqEMJHEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_xgUGUsJHEfCeZomnI-SNRA" points="[-14, 4, 620, -94]$[-181, 172, 453, 74]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_xglzIMJHEfCeZomnI-SNRA" id="(0.0,0.4)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_xgmaMMJHEfCeZomnI-SNRA" id="(0.9375,0.25)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_-b1hkMJHEfCeZomnI-SNRA" type="Include_Edge" source="_Ewh6IMJFEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_-b1hk8JHEfCeZomnI-SNRA" type="Include_KeywordLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-b1hlMJHEfCeZomnI-SNRA" y="20"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_-b1hlcJHEfCeZomnI-SNRA" type="Include_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_-b1hlsJHEfCeZomnI-SNRA" y="-20"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_-b1hkcJHEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Include" href="Diagrammi_Hogwarts_Battle.uml#_-bsXoMJHEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_-b1hksJHEfCeZomnI-SNRA" points="[1200, 230, -643984, -643984]$[875, 280, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-cJDkMJHEfCeZomnI-SNRA" id="(0.0,0.5)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-cJDkcJHEfCeZomnI-SNRA" id="(0.9642857142857143,0.3333333333333333)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_GS2hIMJIEfCeZomnI-SNRA" type="Extend_Edge" source="_LbLNMMJFEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_GS2hI8JIEfCeZomnI-SNRA" type="Extend_KeywordLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_GS2hJMJIEfCeZomnI-SNRA" y="20"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_GS2hJcJIEfCeZomnI-SNRA" type="Extend_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_GS2hJsJIEfCeZomnI-SNRA" y="-20"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_GS2hIcJIEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Extend" href="Diagrammi_Hogwarts_Battle.uml#_GSsJEMJIEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_GS2hIsJIEfCeZomnI-SNRA" points="[700, 177, -643984, -643984]$[760, 269, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_GTHm4MJIEfCeZomnI-SNRA" id="(0.7142857142857143,0.95)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_GTHm4cJIEfCeZomnI-SNRA" id="(0.14285714285714285,0.15)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_HYO00MJIEfCeZomnI-SNRA" type="Extend_Edge" source="_Iz_vkMJFEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_HYO008JIEfCeZomnI-SNRA" type="Extend_KeywordLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_HYO01MJIEfCeZomnI-SNRA" y="20"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_HYO01cJIEfCeZomnI-SNRA" type="Extend_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_HYO01sJIEfCeZomnI-SNRA" y="-20"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_HYO00cJIEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Extend" href="Diagrammi_Hogwarts_Battle.uml#_HYFD0MJIEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_HYO00sJIEfCeZomnI-SNRA" points="[595, 240, -643984, -643984]$[740, 290, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_HYeFYMJIEfCeZomnI-SNRA" id="(0.9642857142857143,0.6666666666666666)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_HYeFYcJIEfCeZomnI-SNRA" id="(0.0,0.5)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_QU0VUMJIEfCeZomnI-SNRA" type="Extend_Edge" source="_KamhAMJFEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_QU0VU8JIEfCeZomnI-SNRA" type="Extend_KeywordLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_QU0VVMJIEfCeZomnI-SNRA" y="20"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_QU0VVcJIEfCeZomnI-SNRA" type="Extend_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_QU0VVsJIEfCeZomnI-SNRA" y="-20"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_QU0VUcJIEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Extend" href="Diagrammi_Hogwarts_Battle.uml#_QUqkUMJIEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_QU0VUsJIEfCeZomnI-SNRA" points="[615, 360, -643984, -643984]$[760, 310, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_QVGCIMJIEfCeZomnI-SNRA" id="(0.9642857142857143,0.3333333333333333)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_QVGCIcJIEfCeZomnI-SNRA" id="(0.14285714285714285,0.8333333333333334)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_RA6mUMJIEfCeZomnI-SNRA" type="Extend_Edge" source="_Qg7mEMJFEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_RA6mU8JIEfCeZomnI-SNRA" type="Extend_KeywordLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_RA6mVMJIEfCeZomnI-SNRA" y="20"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_RA6mVcJIEfCeZomnI-SNRA" type="Extend_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_RA6mVsJIEfCeZomnI-SNRA" y="-20"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_RA6mUcJIEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Extend" href="Diagrammi_Hogwarts_Battle.uml#_RAwOQMJIEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_RA6mUsJIEfCeZomnI-SNRA" points="[860, 177, -643984, -643984]$[820, 260, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_RBJ24MJIEfCeZomnI-SNRA" id="(0.2857142857142857,0.95)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_RBJ24cJIEfCeZomnI-SNRA" id="(0.5714285714285714,0.0)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_SENPUMJIEfCeZomnI-SNRA" type="Extend_Edge" source="_N7OIEMJFEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_SENPU8JIEfCeZomnI-SNRA" type="Extend_KeywordLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_SENPVMJIEfCeZomnI-SNRA" y="20"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_SENPVcJIEfCeZomnI-SNRA" type="Extend_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_SENPVsJIEfCeZomnI-SNRA" y="-20"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_SENPUcJIEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Extend" href="Diagrammi_Hogwarts_Battle.uml#_SEDeUMJIEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_SENPUsJIEfCeZomnI-SNRA" points="[1040, 147, -643984, -643984]$[860, 269, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_SEduAMJIEfCeZomnI-SNRA" id="(0.09302325581395349,0.7833333333333333)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_SEduAcJIEfCeZomnI-SNRA" id="(0.8571428571428571,0.15)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_Tm2t0MJIEfCeZomnI-SNRA" type="Extend_Edge" source="_SlkscMJHEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_Tm3U4MJIEfCeZomnI-SNRA" type="Extend_KeywordLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Tm3U4cJIEfCeZomnI-SNRA" y="20"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_Tm3U4sJIEfCeZomnI-SNRA" type="Extend_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Tm3U48JIEfCeZomnI-SNRA" y="-20"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_Tm2t0cJIEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Extend" href="Diagrammi_Hogwarts_Battle.uml#_TmsVwMJIEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Tm2t0sJIEfCeZomnI-SNRA" points="[600, 489, -643984, -643984]$[780, 317, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_TnHzkMJIEfCeZomnI-SNRA" id="(0.8571428571428571,0.15)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_TnHzkcJIEfCeZomnI-SNRA" id="(0.2857142857142857,0.95)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_VEZC0MJIEfCeZomnI-SNRA" type="Extend_Edge" source="_m1ydUMJHEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_VEZC08JIEfCeZomnI-SNRA" type="Extend_KeywordLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_VEZC1MJIEfCeZomnI-SNRA" y="20"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_VEZC1cJIEfCeZomnI-SNRA" type="Extend_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_VEZp4MJIEfCeZomnI-SNRA" y="-20"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_VEZC0cJIEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Extend" href="Diagrammi_Hogwarts_Battle.uml#_VEPR0MJIEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_VEZC0sJIEfCeZomnI-SNRA" points="[740, 522, -643984, -643984]$[820, 319, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_VEphgMJIEfCeZomnI-SNRA" id="(0.7142857142857143,0.03333333333333333)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_VEphgcJIEfCeZomnI-SNRA" id="(0.5714285714285714,0.9833333333333333)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_V1ER0MJIEfCeZomnI-SNRA" type="Extend_Edge" source="_1I5MAMJGEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_V1E44MJIEfCeZomnI-SNRA" type="Extend_KeywordLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_f8RV4MJJEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_V1E44cJIEfCeZomnI-SNRA" y="19"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_V1E44sJIEfCeZomnI-SNRA" type="Extend_StereotypeLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_f8bt8MJJEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_V1E448JIEfCeZomnI-SNRA" x="-25" y="24"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_V1ER0cJIEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Extend" href="Diagrammi_Hogwarts_Battle.uml#_V06g0MJIEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_V1ER0sJIEfCeZomnI-SNRA" points="[900, 467, -643984, -643984]$[840, 317, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_V1VXkMJIEfCeZomnI-SNRA" id="(0.17316017316017315,0.11666666666666667)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_V1VXkcJIEfCeZomnI-SNRA" id="(0.7142857142857143,0.95)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_WeMHUMJIEfCeZomnI-SNRA" type="Extend_Edge" source="_MVI7EMJFEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_WeMHU8JIEfCeZomnI-SNRA" type="Extend_KeywordLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_WHtEgMJJEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_WeMHVMJIEfCeZomnI-SNRA" x="-1" y="18"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_WeMHVcJIEfCeZomnI-SNRA" type="Extend_StereotypeLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_WH4DoMJJEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_WeMHVsJIEfCeZomnI-SNRA" x="-23" y="10"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_WeMHUcJIEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Extend" href="Diagrammi_Hogwarts_Battle.uml#_WeBvQMJIEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_WeMHUsJIEfCeZomnI-SNRA" points="[1000, 330, -643984, -643984]$[875, 300, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_WecmAMJIEfCeZomnI-SNRA" id="(0.0,0.5)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_WecmAcJIEfCeZomnI-SNRA" id="(0.9642857142857143,0.6666666666666666)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_cCrDkMJIEfCeZomnI-SNRA" type="Extend_Edge" source="_kLGYsMJHEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_cCrDk8JIEfCeZomnI-SNRA" type="Extend_KeywordLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_DE13kMJJEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_cCrDlMJIEfCeZomnI-SNRA" x="1" y="20"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_cCrDlcJIEfCeZomnI-SNRA" type="Extend_StereotypeLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_DE_okMJJEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_cCrDlsJIEfCeZomnI-SNRA" x="-2" y="-17"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_cCrDkcJIEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Extend" href="Diagrammi_Hogwarts_Battle.uml#_cCigsMJIEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_cCrDksJIEfCeZomnI-SNRA" points="[600, 642, -643984, -643984]$[800, 319, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_cC8JUMJIEfCeZomnI-SNRA" id="(0.5102040816326531,0.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_cC8JUcJIEfCeZomnI-SNRA" id="(0.42857142857142855,0.9833333333333333)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_eN4W4MJIEfCeZomnI-SNRA" type="Extend_Edge" source="_ifigsMJFEfCeZomnI-SNRA" target="_aXnXUMJFEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_eN4W48JIEfCeZomnI-SNRA" type="Extend_KeywordLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_BL2gMMJKEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_eN4W5MJIEfCeZomnI-SNRA" y="19"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_eN4W5cJIEfCeZomnI-SNRA" type="Extend_StereotypeLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_BMA4QMJKEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_eN4W5sJIEfCeZomnI-SNRA" x="-1" y="-18"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_eN4W4cJIEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Extend" href="Diagrammi_Hogwarts_Battle.uml#_eNt-0MJIEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_eN4W4sJIEfCeZomnI-SNRA" points="[1340, 520, -643984, -643984]$[1370, 440, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eOJcoMJIEfCeZomnI-SNRA" id="(0.6134969325153374,0.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eOJcocJIEfCeZomnI-SNRA" id="(0.5,1.0)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_gyC8wMJIEfCeZomnI-SNRA" type="Include_Edge" source="_ifigsMJFEfCeZomnI-SNRA" target="_v-qYQMJFEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_gyC8w8JIEfCeZomnI-SNRA" type="Include_KeywordLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_BMJbIMJKEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_gyC8xMJIEfCeZomnI-SNRA" x="1" y="17"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_gyC8xcJIEfCeZomnI-SNRA" type="Include_StereotypeLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_BMR-AMJKEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_gyC8xsJIEfCeZomnI-SNRA" y="-19"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_gyC8wcJIEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Include" href="Diagrammi_Hogwarts_Battle.uml#_gx5LwMJIEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_gyC8wsJIEfCeZomnI-SNRA" points="[1280, 575, -643984, -643984]$[1160, 700, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_gyVQoMJIEfCeZomnI-SNRA" id="(0.24539877300613497,0.9166666666666666)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_gyVQocJIEfCeZomnI-SNRA" id="(0.5298013245033113,0.0)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_ins20MJIEfCeZomnI-SNRA" type="Include_Edge" source="_ifigsMJFEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_ins208JIEfCeZomnI-SNRA" type="Include_KeywordLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_BMag4MJKEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ins21MJIEfCeZomnI-SNRA" x="-1" y="18"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_ins21cJIEfCeZomnI-SNRA" type="Include_StereotypeLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_BMjq0MJKEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ins21sJIEfCeZomnI-SNRA" x="-1" y="-18"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_ins20cJIEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Include" href="Diagrammi_Hogwarts_Battle.uml#_inh3sMJIEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ins20sJIEfCeZomnI-SNRA" points="[1260, 530, -643984, -643984]$[860, 310, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_in_KsMJIEfCeZomnI-SNRA" id="(0.12269938650306748,0.16666666666666666)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_in_KscJIEfCeZomnI-SNRA" id="(0.8571428571428571,0.8333333333333334)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_3WEjUMJIEfCeZomnI-SNRA" type="Generalization_Edge" source="_s26c0MJIEfCeZomnI-SNRA" target="_DbsYsMJGEfCeZomnI-SNRA" lineColor="16777215">
+      <children xmi:type="notation:DecorationNode" xmi:id="_3WEjU8JIEfCeZomnI-SNRA" type="Generalization_StereotypeLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_E90ycMJJEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_3WEjVMJIEfCeZomnI-SNRA" x="-2" y="-17"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_3WEjUcJIEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Generalization" href="Diagrammi_Hogwarts_Battle.uml#_3V5kMMJIEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_3WEjUsJIEfCeZomnI-SNRA" points="[80, 560, -643984, -643984]$[180, 240, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_3WZTcMJIEfCeZomnI-SNRA" id="(0.6666666666666666,0.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_3WZTccJIEfCeZomnI-SNRA" id="(0.0,0.4)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_5-McIMJIEfCeZomnI-SNRA" type="Generalization_Edge" source="_udIzwMJIEfCeZomnI-SNRA" target="_DbsYsMJGEfCeZomnI-SNRA" lineColor="16777215">
+      <children xmi:type="notation:DecorationNode" xmi:id="_5-McI8JIEfCeZomnI-SNRA" type="Generalization_StereotypeLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="__5IwkMJIEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_5-McJMJIEfCeZomnI-SNRA" x="1" y="-18"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_5-McIcJIEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Generalization" href="Diagrammi_Hogwarts_Battle.uml#_5-CEEMJIEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5-McIsJIEfCeZomnI-SNRA" points="[260, 560, -643984, -643984]$[210, 240, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5-f-IMJIEfCeZomnI-SNRA" id="(0.6666666666666666,0.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5-f-IcJIEfCeZomnI-SNRA" id="(1.0,0.4)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_81YEoMJIEfCeZomnI-SNRA" type="Generalization_Edge" source="_wTOysMJIEfCeZomnI-SNRA" target="_DbsYsMJGEfCeZomnI-SNRA" lineColor="16777215">
+      <children xmi:type="notation:DecorationNode" xmi:id="_81YEo8JIEfCeZomnI-SNRA" type="Generalization_StereotypeLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_Dg_BAMJJEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_81YEpMJIEfCeZomnI-SNRA" x="-1" y="-18"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_81YEocJIEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Generalization" href="Diagrammi_Hogwarts_Battle.uml#_81NskMJIEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_81YEosJIEfCeZomnI-SNRA" points="[180, 700, -643984, -643984]$[200, 270, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_81sNsMJIEfCeZomnI-SNRA" id="(0.6666666666666666,0.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_81sNscJIEfCeZomnI-SNRA" id="(0.6666666666666666,1.0)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_Cfa2UMJJEfCeZomnI-SNRA" type="Association_Edge" source="_udIzwMJIEfCeZomnI-SNRA" target="_nt2RQMJIEfCeZomnI-SNRA" lineColor="255">
+      <children xmi:type="notation:DecorationNode" xmi:id="_Cfa2U8JJEfCeZomnI-SNRA" type="Association_NameLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_HK_NkMJJEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Cfa2VMJJEfCeZomnI-SNRA" x="1" y="39"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_Cfa2VcJJEfCeZomnI-SNRA" type="Association_StereotypeLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_HLKMsMJJEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Cfa2VsJJEfCeZomnI-SNRA" x="2" y="-17"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_Cfa2UcJJEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Association" href="Diagrammi_Hogwarts_Battle.uml#_CfYaEMJJEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Cfa2UsJJEfCeZomnI-SNRA" points="[290, 540, -643984, -643984]$[880, 760, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CfwNgMJJEfCeZomnI-SNRA" id="(1.0,0.8)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CfwNgcJJEfCeZomnI-SNRA" id="(0.43243243243243246,0.0)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_ET6SwMJJEfCeZomnI-SNRA" type="Association_Edge" source="_wTOysMJIEfCeZomnI-SNRA" target="_nt2RQMJIEfCeZomnI-SNRA" lineColor="255">
+      <children xmi:type="notation:DecorationNode" xmi:id="_ET6Sw8JJEfCeZomnI-SNRA" type="Association_NameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ET6SxMJJEfCeZomnI-SNRA" y="40"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_ET6SxcJJEfCeZomnI-SNRA" type="Association_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ET6SxsJJEfCeZomnI-SNRA" y="-20"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_ET6SwcJJEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Association" href="Diagrammi_Hogwarts_Battle.uml#_ET4dkMJJEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ET6SwsJJEfCeZomnI-SNRA" points="[190, 760, -643984, -643984]$[805, 780, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_EUQRAMJJEfCeZomnI-SNRA" id="(1.0,0.4)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_EUQRAcJJEfCeZomnI-SNRA" id="(0.02702702702702703,0.3333333333333333)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_GKQJUMJJEfCeZomnI-SNRA" type="Association_Edge" source="_s26c0MJIEfCeZomnI-SNRA" target="_nt2RQMJIEfCeZomnI-SNRA" lineColor="255">
+      <children xmi:type="notation:DecorationNode" xmi:id="_GKQwYMJJEfCeZomnI-SNRA" type="Association_NameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_GKQwYcJJEfCeZomnI-SNRA" y="40"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_GKQwYsJJEfCeZomnI-SNRA" type="Association_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_GKQwY8JJEfCeZomnI-SNRA" y="-20"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_GKQJUcJJEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Association" href="Diagrammi_Hogwarts_Battle.uml#_GKNtEMJJEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_GKQJUsJJEfCeZomnI-SNRA" points="[90, 620, -643984, -643984]$[805, 780, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_GKnVsMJJEfCeZomnI-SNRA" id="(1.0,0.4)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_GKnVscJJEfCeZomnI-SNRA" id="(0.02702702702702703,0.3333333333333333)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_LfyDkMJJEfCeZomnI-SNRA" type="Extend_Edge" source="_VcG0sMJHEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_LfyDk8JJEfCeZomnI-SNRA" type="Extend_KeywordLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_LfyDlMJJEfCeZomnI-SNRA" y="20"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_LfyqoMJJEfCeZomnI-SNRA" type="Extend_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_LfyqocJJEfCeZomnI-SNRA" y="-20"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_LfyDkcJJEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Extend" href="Diagrammi_Hogwarts_Battle.uml#_LfnrgMJJEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_LfyDksJJEfCeZomnI-SNRA" points="[846, 600, -643984, -643984]$[820, 319, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LgHawMJJEfCeZomnI-SNRA" id="(0.49765258215962443,0.0)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_LgIB0MJJEfCeZomnI-SNRA" id="(0.5714285714285714,0.9833333333333333)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_hiaNQMJJEfCeZomnI-SNRA" type="Include_Edge" source="_5hSagMJEEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_hiaNQ8JJEfCeZomnI-SNRA" type="Include_KeywordLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_A81MwMJKEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_hiaNRMJJEfCeZomnI-SNRA" x="-1" y="18"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_hiaNRcJJEfCeZomnI-SNRA" type="Include_StereotypeLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_A9Ay8MJKEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_hiaNRsJJEfCeZomnI-SNRA" y="-19"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_hiaNQcJJEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Include" href="Diagrammi_Hogwarts_Battle.uml#_hiNY8MJJEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_hiaNQsJJEfCeZomnI-SNRA" points="[1120, 560, -643984, -643984]$[840, 317, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hitvQMJJEfCeZomnI-SNRA" id="(0.75,0.06666666666666667)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_hitvQcJJEfCeZomnI-SNRA" id="(0.7142857142857143,0.95)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_rPkPEMJJEfCeZomnI-SNRA" type="Extend_Edge" source="_n1q7EMJJEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_rPk2IMJJEfCeZomnI-SNRA" type="Extend_KeywordLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_EB45MMJKEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_rPk2IcJJEfCeZomnI-SNRA" x="-1" y="18"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_rPk2IsJJEfCeZomnI-SNRA" type="Extend_StereotypeLabel">
+        <styles xmi:type="notation:BooleanValueStyle" xmi:id="_ECD4UMJKEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_rPk2I8JJEfCeZomnI-SNRA" x="-47" y="-15"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_rPkPEcJJEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Extend" href="Diagrammi_Hogwarts_Battle.uml#_rPYo4MJJEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_rPkPEsJJEfCeZomnI-SNRA" points="[1100, 372, -643984, -643984]$[860, 310, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_rP3xEMJJEfCeZomnI-SNRA" id="(0.091324200913242,0.2)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_rP3xEcJJEfCeZomnI-SNRA" id="(0.8571428571428571,0.8333333333333334)"/>
+    </edges>
+    <edges xmi:type="notation:Connector" xmi:id="_MN-w4MJKEfCeZomnI-SNRA" type="Association_Edge" source="_Ft_A4MJFEfCeZomnI-SNRA" target="_-In_wMJJEfCeZomnI-SNRA">
+      <children xmi:type="notation:DecorationNode" xmi:id="_MN-w48JKEfCeZomnI-SNRA" type="Association_NameLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_MN-w5MJKEfCeZomnI-SNRA" y="40"/>
+      </children>
+      <children xmi:type="notation:DecorationNode" xmi:id="_MN-w5cJKEfCeZomnI-SNRA" type="Association_StereotypeLabel">
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_MN-w5sJKEfCeZomnI-SNRA" y="-20"/>
+      </children>
+      <styles xmi:type="notation:FontStyle" xmi:id="_MN-w4cJKEfCeZomnI-SNRA"/>
+      <element xmi:type="uml:Association" href="Diagrammi_Hogwarts_Battle.uml#_MN8UoMJKEfCeZomnI-SNRA"/>
+      <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MN-w4sJKEfCeZomnI-SNRA" points="[1680, 240, -643984, -643984]$[1420, 309, -643984, -643984]"/>
+      <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MOV9QMJKEfCeZomnI-SNRA" id="(0.0,0.4)"/>
+      <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MOV9QcJKEfCeZomnI-SNRA" id="(0.8571428571428571,0.15)"/>
+    </edges>
+  </notation:Diagram>
+  <notation:Diagram xmi:id="_E7-RwMIcEfCeZomnI-SNRA" type="PapyrusUMLClassDiagram" name="Class Diagram" measurementUnit="Pixel">
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_E7-RwcIcEfCeZomnI-SNRA" name="diagram_compatibility_version" stringValue="1.4.0"/>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_E7-RwsIcEfCeZomnI-SNRA"/>
+    <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_E7-Rw8IcEfCeZomnI-SNRA" diagramKindId="org.eclipse.papyrus.uml.diagram.class">
+      <owner xmi:type="uml:Model" href="Diagrammi_Hogwarts_Battle.uml#_E3eMQMIcEfCeZomnI-SNRA"/>
+    </styles>
+    <element xmi:type="uml:Model" href="Diagrammi_Hogwarts_Battle.uml#_E3eMQMIcEfCeZomnI-SNRA"/>
+  </notation:Diagram>
+  <notation:Diagram xmi:id="_E8RzwMIcEfCeZomnI-SNRA" type="PapyrusUMLStateMachineDiagram" name="State Machine Diagram" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_E8RzwcIcEfCeZomnI-SNRA" type="StateMachine_Shape">
+      <children xmi:type="notation:DecorationNode" xmi:id="_E8RzwsIcEfCeZomnI-SNRA" type="StateMachine_NameLabel">
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E8Rzw8IcEfCeZomnI-SNRA" width="1881" height="22"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_E8RzxMIcEfCeZomnI-SNRA" type="StateMachine_RegionCompartment">
+        <children xmi:type="notation:Shape" xmi:id="_E8RzxcIcEfCeZomnI-SNRA" type="Region_Shape">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_E8RzxsIcEfCeZomnI-SNRA" source="RegionAnnotationKey">
+            <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_E8Rzx8IcEfCeZomnI-SNRA" key="RegionZoneKey" value=""/>
+          </eAnnotations>
+          <children xmi:type="notation:BasicCompartment" xmi:id="_E8RzyMIcEfCeZomnI-SNRA" type="Region_SubvertexCompartment">
+            <children xmi:type="notation:Shape" xmi:id="_LP9csMI6EfCeZomnI-SNRA" type="State_Shape">
+              <children xmi:type="notation:DecorationNode" xmi:id="_LP-DwMI6EfCeZomnI-SNRA" type="State_NameLabel">
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_L7bbkMI6EfCeZomnI-SNRA" width="861" height="22"/>
+              </children>
+              <children xmi:type="notation:DecorationNode" xmi:id="_LP-DwcI6EfCeZomnI-SNRA" type="State_FloatingNameLabel">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_LP-DwsI6EfCeZomnI-SNRA" x="40"/>
+              </children>
+              <children xmi:type="notation:BasicCompartment" xmi:id="_LP-Dw8I6EfCeZomnI-SNRA" type="State_RegionCompartment">
+                <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kj0GkMI6EfCeZomnI-SNRA" source="PapyrusCSSForceValue">
+                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_kj0GkcI6EfCeZomnI-SNRA" key="visible" value="true"/>
+                </eAnnotations>
+                <children xmi:type="notation:Shape" xmi:id="_kj0toMI6EfCeZomnI-SNRA" type="Region_Shape">
+                  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kj0tpMI6EfCeZomnI-SNRA" source="RegionAnnotationKey">
+                    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_kj1UsMI6EfCeZomnI-SNRA" key="RegionZoneKey" value=""/>
+                  </eAnnotations>
+                  <children xmi:type="notation:BasicCompartment" xmi:id="_kj0tosI6EfCeZomnI-SNRA" type="Region_SubvertexCompartment">
+                    <children xmi:type="notation:Shape" xmi:id="_J2G-wMJDEfCeZomnI-SNRA" type="State_Shape">
+                      <children xmi:type="notation:DecorationNode" xmi:id="_J2G-wsJDEfCeZomnI-SNRA" type="State_NameLabel">
+                        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ldo9QMJDEfCeZomnI-SNRA" width="241"/>
+                      </children>
+                      <children xmi:type="notation:DecorationNode" xmi:id="_J2G-w8JDEfCeZomnI-SNRA" type="State_FloatingNameLabel">
+                        <layoutConstraint xmi:type="notation:Location" xmi:id="_J2G-xMJDEfCeZomnI-SNRA" x="40"/>
+                      </children>
+                      <children xmi:type="notation:BasicCompartment" xmi:id="_J2G-xcJDEfCeZomnI-SNRA" type="State_RegionCompartment">
+                        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J2G-xsJDEfCeZomnI-SNRA" y="-1" width="241"/>
+                      </children>
+                      <children xmi:type="notation:BasicCompartment" xmi:id="_J2cV8MJDEfCeZomnI-SNRA" type="compartment_shape_display">
+                        <styles xmi:type="notation:TitleStyle" xmi:id="_J2cV8cJDEfCeZomnI-SNRA"/>
+                        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J2cV8sJDEfCeZomnI-SNRA"/>
+                      </children>
+                      <children xmi:type="notation:Shape" xmi:id="_UNaw0MJDEfCeZomnI-SNRA" type="Behavior_DoActivityBehaviorLabel">
+                        <layoutConstraint xmi:type="notation:Location" xmi:id="_UNaw0cJDEfCeZomnI-SNRA" x="-10" y="-10"/>
+                      </children>
+                      <children xmi:type="notation:Shape" xmi:id="_a_0RsMJDEfCeZomnI-SNRA" type="Behavior_EntryBehaviorLabel">
+                        <element xmi:type="uml:Activity" href="Diagrammi_Hogwarts_Battle.uml#_Y_FJAMJDEfCeZomnI-SNRA"/>
+                        <layoutConstraint xmi:type="notation:Location" xmi:id="_a_0RscJDEfCeZomnI-SNRA" x="-10" y="-10"/>
+                      </children>
+                      <children xmi:type="notation:Shape" xmi:id="_l3yg0MJDEfCeZomnI-SNRA" type="Behavior_DoActivityBehaviorLabel">
+                        <element xmi:type="uml:Activity" href="Diagrammi_Hogwarts_Battle.uml#_j9_toMJDEfCeZomnI-SNRA"/>
+                        <layoutConstraint xmi:type="notation:Location" xmi:id="_l3yg0cJDEfCeZomnI-SNRA" x="-10" y="-10"/>
+                      </children>
+                      <element xmi:type="uml:State" href="Diagrammi_Hogwarts_Battle.uml#_J2CtUMJDEfCeZomnI-SNRA"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J2G-wcJDEfCeZomnI-SNRA" x="39" y="28" width="241" height="81"/>
+                    </children>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kj0to8I6EfCeZomnI-SNRA"/>
+                  </children>
+                  <element xmi:type="uml:Region" href="Diagrammi_Hogwarts_Battle.uml#_kj0GksI6EfCeZomnI-SNRA"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kj0tocI6EfCeZomnI-SNRA" width="861" height="469"/>
+                </children>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LP-DxMI6EfCeZomnI-SNRA" y="22" width="861" height="469"/>
+              </children>
+              <element xmi:type="uml:State" href="Diagrammi_Hogwarts_Battle.uml#_LP050MI6EfCeZomnI-SNRA"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LP9cscI6EfCeZomnI-SNRA" x="59" y="48" width="861" height="491"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="_BovKIMJCEfCeZomnI-SNRA" type="Pseudostate_InitialShape">
+              <children xmi:type="notation:DecorationNode" xmi:id="_BovxMMJCEfCeZomnI-SNRA" type="Pseudostate_InitialFloatingNameLabel">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_BovxMcJCEfCeZomnI-SNRA" x="25" y="3"/>
+              </children>
+              <children xmi:type="notation:DecorationNode" xmi:id="_BovxMsJCEfCeZomnI-SNRA" type="Pseudostate_InitialStereotypeLabel">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_BovxM8JCEfCeZomnI-SNRA" x="25" y="-10"/>
+              </children>
+              <element xmi:type="uml:Pseudostate" href="Diagrammi_Hogwarts_Battle.uml#_BorfwMJCEfCeZomnI-SNRA"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BovKIcJCEfCeZomnI-SNRA" x="9" y="168"/>
+            </children>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E8RzycIcEfCeZomnI-SNRA"/>
+          </children>
+          <element xmi:type="uml:Region" href="Diagrammi_Hogwarts_Battle.uml#_E8P-kMIcEfCeZomnI-SNRA"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E8RzysIcEfCeZomnI-SNRA" width="1881" height="839"/>
+        </children>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E8Rzy8IcEfCeZomnI-SNRA" y="22" width="1881" height="839"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_bPPqEMIdEfCeZomnI-SNRA" type="compartment_shape_display">
+        <styles xmi:type="notation:TitleStyle" xmi:id="_bPPqEcIdEfCeZomnI-SNRA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bPPqEsIdEfCeZomnI-SNRA"/>
+      </children>
+      <element xmi:type="uml:StateMachine" href="Diagrammi_Hogwarts_Battle.uml#_E8GNkMIcEfCeZomnI-SNRA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E8RzzMIcEfCeZomnI-SNRA" width="1881" height="861"/>
+    </children>
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_E8RzzcIcEfCeZomnI-SNRA" name="diagram_compatibility_version" stringValue="1.4.0"/>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_E8RzzsIcEfCeZomnI-SNRA"/>
+    <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_E8Rzz8IcEfCeZomnI-SNRA" diagramKindId="org.eclipse.papyrus.uml.diagram.stateMachine">
+      <owner xmi:type="uml:Model" href="Diagrammi_Hogwarts_Battle.uml#_E3eMQMIcEfCeZomnI-SNRA"/>
+    </styles>
+    <element xmi:type="uml:StateMachine" href="Diagrammi_Hogwarts_Battle.uml#_E8GNkMIcEfCeZomnI-SNRA"/>
+  </notation:Diagram>
+  <notation:Diagram xmi:id="_E8WsQMIcEfCeZomnI-SNRA" type="PapyrusUMLActivityDiagram" name="Activity Diagram" measurementUnit="Pixel">
+    <children xmi:type="notation:Shape" xmi:id="_E8WsQcIcEfCeZomnI-SNRA" type="Activity_Shape">
+      <children xmi:type="notation:DecorationNode" xmi:id="_E8WsQsIcEfCeZomnI-SNRA" type="Activity_NameLabel"/>
+      <children xmi:type="notation:DecorationNode" xmi:id="_E8WsQ8IcEfCeZomnI-SNRA" type="Activity_KeywordLabel"/>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_E8WsRMIcEfCeZomnI-SNRA" type="Activity_ParameterCompartment">
+        <styles xmi:type="notation:SortingStyle" xmi:id="_E8WsRcIcEfCeZomnI-SNRA"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_E8WsRsIcEfCeZomnI-SNRA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E8WsR8IcEfCeZomnI-SNRA"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_E8WsSMIcEfCeZomnI-SNRA" type="Activity_PreconditionCompartment">
+        <styles xmi:type="notation:SortingStyle" xmi:id="_E8WsScIcEfCeZomnI-SNRA"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_E8WsSsIcEfCeZomnI-SNRA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E8WsS8IcEfCeZomnI-SNRA"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_E8WsTMIcEfCeZomnI-SNRA" type="Activity_PostconditionCompartment">
+        <styles xmi:type="notation:SortingStyle" xmi:id="_E8WsTcIcEfCeZomnI-SNRA"/>
+        <styles xmi:type="notation:FilteringStyle" xmi:id="_E8WsTsIcEfCeZomnI-SNRA"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E8WsT8IcEfCeZomnI-SNRA"/>
+      </children>
+      <children xmi:type="notation:BasicCompartment" xmi:id="_E8WsUMIcEfCeZomnI-SNRA" type="Activity_ActivityNodeCompartment">
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E8WsUcIcEfCeZomnI-SNRA"/>
+      </children>
+      <element xmi:type="uml:Activity" href="Diagrammi_Hogwarts_Battle.uml#_E8VeIMIcEfCeZomnI-SNRA"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E8WsUsIcEfCeZomnI-SNRA"/>
+    </children>
+    <styles xmi:type="notation:StringValueStyle" xmi:id="_E8WsU8IcEfCeZomnI-SNRA" name="diagram_compatibility_version" stringValue="1.4.0"/>
+    <styles xmi:type="notation:DiagramStyle" xmi:id="_E8WsVMIcEfCeZomnI-SNRA"/>
+    <styles xmi:type="style:PapyrusDiagramStyle" xmi:id="_E8WsVcIcEfCeZomnI-SNRA" diagramKindId="org.eclipse.papyrus.uml.diagram.activity">
+      <owner xmi:type="uml:Model" href="Diagrammi_Hogwarts_Battle.uml#_E3eMQMIcEfCeZomnI-SNRA"/>
+    </styles>
+    <element xmi:type="uml:Activity" href="Diagrammi_Hogwarts_Battle.uml#_E8VeIMIcEfCeZomnI-SNRA"/>
+  </notation:Diagram>
+</xmi:XMI>
