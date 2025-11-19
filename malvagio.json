@@ -1,0 +1,488 @@
+{
+  "gioco1": [
+    {
+      "id": "dracoMalfoy1",
+      "nome": "Draco Malfoy",
+      "class": "Malvagio",
+      "Descrizione": "Ogni volta che viene aggiunto 1 Segnalino Controllo al Luogo, l'Eroe attivo perde 2 Punti Vita.",
+      "Descrizione-ricompensa": "Rimuovi 1 Marchio Nero dalla locazione",
+      "costo": "0",
+      "vita": "6",
+      "path-img": "../Immagini_carte/Malvagi/Gioco1/Draco_Malfoy.png",
+      "triggers": [
+        {
+          "type": "onLocationTokenAdded",
+          "effectToExecute": [
+            { "type": "loseLife", "qta": 2, "target": "activePlayer" }
+          ]
+        }
+      ],
+      "reward": [
+        { "type": "removeLocationToken", "qta": 1, "target": "location" }
+      ]
+    },
+
+    {
+      "id": "quiriusRaptor1",
+      "nome": "Quirius Raptor",
+      "class": "Malvagio",
+      "Descrizione": "L'Eroe attivo perde 1 Punto Vita",
+      "Descrizione-ricompensa": "Tutti gli eroi guadagnano 1 Influenza e 1 Punto Vita",
+      "costo": "0",
+      "vita": "6",
+      "path-img": "../Immagini_carte/Malvagi/Gioco1/Quirinus_Raptor.png",
+      "triggers": [
+        {
+          "type": "onActive",
+          "effectToExecute": [
+            { "type": "loseLife", "qta": 1, "target": "activePlayer" }
+          ]
+        }
+      ],
+      "reward": [
+        { "type": "gainCoin", "qta": 1, "target": "allPlayer" },
+        { "type": "gainLife", "qta": 1, "target": "allPlayer" }
+      ]
+    },
+
+    {
+      "id": "tigerGoyle1",
+      "nome": "Tiger & Goyle",
+      "class": "Malvagio",
+      "Descrizione": "ogni volta che un Evento Arti Oscure o un Malvagio, fa sì che un Eroe scarti una carta, allora l'Eroe perde anche 1 Punto Vita",
+      "Descrizione-ricompensa": "Tutti gli eroi pescano una carta",
+      "costo": "0",
+      "vita": "5",
+      "path-img": "../Immagini_carte/Malvagi/Gioco1/Tiger_Goyle.png",
+      "triggers": [
+        {
+          "type": "onForcedDiscard",
+          "cause": ["darkArtsEvent", "villainEffect"],
+          "effectToExecute": [
+            { "type": "loseLife", "qta": 1, "target": "discardingHero" }
+          ]
+        }
+      ],
+      "reward": [
+        { "type": "drawCard", "qta": 1, "target": "allPlayer" }
+      ]
+    }
+  ],
+
+
+  "gioco 2": [
+    {
+      "id": "basilisco2",
+      "nome": "Basilisco",
+      "class": "Malvagio",
+      "Descrizione": "Gli Eroi non possono pescare carte extra.\n(Peschi comunque 5 nuove carte alla fine del tuo turno)",
+      "Descrizione-ricompensa": "Tutti gli eroi pescano una carta, rimuovi 1 marchio nero dalla locazione",
+      "costo": "0",
+      "vita": "8",
+      "path-img": "../Immagini_carte/Malvagi/Gioco2/Basilisco.png",
+      "triggers": [
+        {
+          "type": "onDrawExtraCardAttempt",
+          "effectToExecute": [
+            {"type": "preventDrawExtraCards", "target": "allPlayer"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "drawCard", "qta": 1, "target": "allPlayer"},
+        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+      ]
+    },
+
+    {
+      "id": "luciusMalfoy2",
+      "nome": "Lucius Malfoy",
+      "class": "Malvagio",
+      "Descrizione": "Ogni volta che viene aggiunto 1 Segnalino Controllo al Luogo, rimuovi 1 Segnalino attacco da tutti i cattivi",
+      "Descrizione-ricompensa": "Tutti gli eroi guadagnano 1 influenza, rimuovi 1 Marchio Nero dalla locazione",
+      "costo": "0",
+      "vita": "7",
+      "path-img": "../Immagini_carte/Malvagi/Gioco2/Lucius_Malfoy.png",
+      "triggers": [
+        {
+          "type": "onLocationTokenAdded",
+          "effectToExecute": [
+            {"type": "healVillains", "qta": 1, "target": "allVillains"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "gainCoin", "qta": 1, "target": "allPlayer"},
+        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+      ]
+    },
+
+    {
+      "id": "tomRiddle2",
+      "nome": "Tom Riddle",
+      "class": "Malvagio",
+      "Descrizione": "Per ogni Alleato in mano, l'Eroe attivo sceglie uno dei seguenti effetti:\n perdi 1 Punto Vita; o scarta una carta.",
+      "Descrizione-ricompensa": "Tutti gli eroi scelgono uno: guadagnano 2 Punti Vita; oppure cercare un alleato nella propria pila degli scarti e metterlo nella propria mano",
+      "costo": "0",
+      "vita": "6",
+      "path-img": "../Immagini_carte/Malvagi/Gioco2/Tom_Riddle.png",
+      "triggers": [
+        {
+          "type": "onAllyInHand",
+          "repeat": "perogni",
+          "effectToExecute": [
+            {
+              "type": "chooseEffect",
+              "options": [
+                {"type": "loseLife", "qta": 2, "target": "activePlayer"},
+                {"type": "discardCard", "qta": 1, "target": "activePlayer"}
+              ]
+            }
+          ]
+        }
+      ],
+      "reward": [
+        {
+          "type": "chooseEffect",
+          "options": [
+            {"type": "gainLife", "qta": 2, "target": "currentPlayer"},
+            {"type": "searchAllyDiscard", "qta": 1, "target": "allPalyer" }
+          ]
+        }
+      ]
+    }
+  ],
+
+
+  "gioco 3": [
+    {
+      "id": "dissennatore3",
+      "nome": "Dissennatore",
+      "class": "Malvagio",
+      "Descrizione": "L'Eroe attivo perde 2 Punti Vita.",
+      "Descrizione-ricompensa": "Tutti gli eroi guadagnano 2 Punti Vita, rimuovi 1 Marchio Nero dalla locazione",
+      "costo": "0",
+      "vita": "8",
+      "path-img": "../Immagini_carte/Malvagi/Gioco3/Dissennatore.png",
+      "triggers": [
+        {
+          "type": "onActive",
+          "effectToExecute": [
+            {"type": "loseLife", "qta": 2, "target": "activePlayer"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "gainLife", "qta": 2, "target": "allPlayer"},
+        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+      ]
+    },
+
+    {
+      "id": "peterMinus3",
+      "nome": "Peter Minus",
+      "class": "Malvagio",
+      "Descrizione": "L'Eroe attivo rivela la prima carta del suo mazzo: se il suo valore è almeno 1 Segnalino Influenza, scarta la carta e aggiungi 1 Segnalino Controllo al Luogo.",
+      "Descrizione-ricompensa":"Tutti gli eroi possono cercare un incantesimo nella loro pila degli scarti e metterlo in mano,rimuovi 1 Marchio Nero dalla locazione",
+      "costo": "0",
+      "vita": "7",
+      "path-img": "../Immagini_carte/Malvagi/Gioco3/Peter_Minus.png",
+      "triggers": [
+        {
+          "type": "onActive",
+          "effectToExecute": [
+            {"type": "revealTopDeckCard", "target": "activePlayer"},
+            {
+              "type": "ifCoinValueAtLeast",
+              "qta": 1,
+              "then": [
+                {"type": "discardCard", "qta": 1, "target": "activePlayer"},
+                {"type": "addLocationToken", "qta": 1, "target": "location"}
+              ]
+            }
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "searchDiscardSpellToHand", "target": "allPlayer"},
+        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+      ]
+    }
+  ],
+
+
+
+  "gioco 4": [
+    {
+      "id": "bartyCrouchJR4",
+      "nome": "Barty Crouch JR",
+      "class": "Malvagio",
+      "Descrizione": "Gli Eroi non possono rimuovere Segnalini Controllo dal Luogo",
+      "Descizione-ricompensa": "Rimuovi 2 Marchio Nero dalla locazione",
+      "costo": "0",
+      "vita": "7",
+      "path-img": "../Immagini_carte/Malvagi/Gioco4/Barty_Crouch_JR.png",
+      "triggers": [
+        {
+          "type": "onRemoveLocationTokenAttempt",
+          "effectToExecute": [
+            {"type": "preventRemoveLocationToken", "target": "allPlayer"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "removeLocationToken", "qta": 2, "target": "location"}
+      ]
+    },
+
+    {
+      "id": "mangiamorte4",
+      "nome": "Mangiamorte",
+      "class": "Malvagio",
+      "Descrizione": "Ogni volta che Morsmordre! o un nuovo malvagio è rivelato, tutti gli Eroi perdono 1 Punto Vita",
+      "Descizione-ricompensa": "Tutti gli eroi guadagnano 1 Punto Vita, rimuovi 1 Marchio Nero dalla locazione",
+      "costo": "0",
+      "vita": "7",
+      "path-img": "../Immagini_carte/Malvagi/Gioco4/Mangiamorte4.png",
+      "triggers": [
+        {
+          "type": "onMorsmordreOrVillainRevealed",
+          "effectToExecute": [
+            {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "gainLife", "qta": 1, "target": "allPlayer"},
+        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+      ]
+    }
+  ],
+
+
+
+  "gioco 5": [
+    {
+      "id": "doloresUmbridge5",
+      "nome": "Dolores Umbridge",
+      "class": "Malvagio",
+      "Descrizione": "Ogni volta che un Eroe acquista una carta con valore di 4 o più Segnalini Influenza, quell'Eroe perde 1 Punto Vita.",
+      "Descrizione-ricompensa": "Tutti gli eroi guadagnano 1 Influenza e 2 Punti Vita",
+      "costo": "0",
+      "vita": "7",
+      "path-img": "../Immagini_carte/Malvagi/Gioco5/Dolores_Umbridge.png",
+      "triggers": [
+        {
+          "type": "onAcquiredCard",
+          "condition": {
+            "minCost": 4
+          },
+          "effectToExecute": [
+            {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "gainCoin", "qta": 1, "target": "allPlayer"},
+        {"type": "gainLife", "qta": 2, "target": "allPlayer"}
+      ]
+    },
+
+    {
+      "id": "lordVoldemort5",
+      "nome": "Lord Voldemort",
+      "class": "Malvagio",
+      "Descrizione": "L'Eroe attivo perde 1 Punto Vita e scarta una carta.\nNon possono essere assegnati Segnalini Attacco su questa carta finché tutti gli altri Malvagi non sono sconfitti.",
+      "Descrizione-ricompensa": "Gli eroi vincono",
+      "costo": "0",
+      "vita": "10",
+      "path-img": "../Immagini_carte/Malvagi/Gioco5/Lord_Voldemort5.png",
+      "triggers": [
+        {
+          "type": "onActive",
+          "effectToExecute": [
+            {"type": "loseLife", "qta": 1, "target": "activePlayer"},
+            {"type": "discardCard", "qta": 1, "target": "activePlayer"}
+          ]
+        },
+        {
+          "type": "damageImmunityUntilVillainsDefeated",
+          "effectToExecute": [
+            {"type": "cannotBeAssignedDamage", "target": "self"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "win", "target": "hEroes"}
+      ],
+      "commenti": "da sistemare il reward"
+    },
+
+    {
+      "id": "mangiamorte5",
+      "nome": "Mangiamorte",
+      "class": "Malvagio",
+      "Descrizione": "Ogni volta che Morsmordre! o un nuovo malvagio è rivelato, tutti gli Eroi perdono 1 Punto Vita.",
+      "Descrizione-ricompensa": "Tutti gli eroi guadagnano 1 Punto Vita, rimuovi 1 Marchio Nero dalla locazione",
+      "costo": "0",
+      "vita": "7",
+      "path-img": "../Immagini_carte/Malvagi/Gioco5/Mangiamorte5.png",
+      "triggers": [
+        {
+          "type": "onMorsmordreOrVillainRevealed",
+          "effectToExecute": [
+            {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "gainLife", "qta": 1, "target": "allPlayer"},
+        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+      ]
+    }
+  ],
+
+
+
+  "gioco 6": [
+    {
+      "id": "bellatrixLestrange6",
+      "nome": "Bellatrix Lestrange",
+      "class": "Malvagio",
+      "Descrizione": "Rivela un Evento Arti Oscure aggiuntivo ogni turno.",
+      "Descrizione-ricompensa": "Tutti gli eroi possono cercare un oggetto nella loro pila degli scarti e metterlo in mano, rimuovi 2 Marchio Nero dalla locazione",
+      "costo": "0",
+      "vita": 9,
+      "path-img": "../Immagini_carte/Malvagi/Gioco6/Bellatrix_Lestrange.png",
+      "triggers": [
+        {
+          "type": "onTurnStart",
+          "effectToExecute": [
+            {"type": "drawAdditionalDarkArtsEvent", "qta": 1, "target": "table"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "searchDiscardItemToHand", "target": "allPlayer"},
+        {"type": "removeLocationToken", "qta": 2, "target": "location"}
+      ]
+    },
+
+    {
+      "id": "fenrirGreyback6",
+      "nome": "Fenrir Greyback",
+      "class": "Malvagio",
+      "Descrizione": "Gli Eroi non possono guadagnare Punti Vita.",
+      "Descrizione-ricompensa": "Tutti gli eroi guadagnano 3 Punti Vita, rimuovi 2 Marchio Nero dalla locazione",
+      "costo": "0",
+      "vita": "8",
+      "path-img": "../Immagini_carte/Malvagi/Gioco6/Fenrir_Greyback.png",
+      "triggers": [
+        {
+          "type": "onGainLifeAttempt",
+          "effectToExecute": [
+            {"type": "preventGainLife", "target": "allPlayer"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "gainLife", "qta": 3, "target": "allPlayer"},
+        {"type": "removeLocationToken", "qta": 2, "target": "location"}
+      ]
+    },
+
+    {
+      "id": "lordVoldemort6",
+      "nome": "Lord Voldemort",
+      "class": "Malvagio",
+      "Descrizione": "Lancia il dado Serpeverde:\nSe esce Segnalino Attacco: tutti gli Eroi perdono 1 Punto Vita;\nSe esce segnalino Influenza: aggiungi un Segnalino Controllo al Luogo;\nSe esce Punto Vita: rimuovi 1 Segnalino Attacco da tutti i Malvagi;Se esce Carta: tutti gli Eroi scartano una carta,\n non puoi mettere Segnalini Attacco su questa carta finché tutti i malvagi non sono sconfitti",
+      "Descrizione-ricompensa": "Gli eroi vincono",
+      "costo": "0",
+      "vita": "15",
+      "path-img": "../Immagini_carte/Malvagi/Gioco6/Lord_Voldemort6.png",
+      "triggers": [
+        {
+          "type": "onDiceRoll",
+          "effectToExecute": [
+            {
+              "type": "switch",
+              "cases": [
+                {
+                  "result": "heart",
+                  "effects": [
+                    {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+                  ]
+                },
+                {
+                  "result": "token",
+                  "effects": [
+                    {"type": "addLocationToken", "qta": 1, "target": "location"}
+                  ]
+                },
+                {
+                  "result": "heal",
+                  "effects": [
+                    {"type": "healVillains", "qta": 1, "target": "allVillains"}
+                  ]
+                },
+                {
+                  "result": "discard",
+                  "effects": [
+                    {"type": "discardCard", "qta": 1, "target": "allPlayer"}
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "damageImmunityUntilVillainsDefeated",
+          "effectToExecute": [
+            {"type": "cannotBeAssignedDamage", "target": "self"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "win", "target": "hEroes"}
+      ]
+    }
+  ],
+
+
+
+  "gioco 7": [
+    {
+      "id": "lordVoldemort7",
+      "nome": "Lord Voldemort",
+      "class": "Malvagio",
+      "Descrizione": "Aggiungi 1 Segnalino Controllo al Luogo.\nOgni volta che 1 Segnalino Controllo è rimosso dal Luogo, tutti gli Eroi perdono 1 Punto Vita.\nNon possono essere assegnati Segnalini Attacco su questa carta finché tutti gli altri Malvagi non sono sconfitti.",
+      "Descrizione-ricompensa": "Gli eroi vincono",
+      "costo": "0",
+      "vita": "20",
+      "path-img": "../Immagini_carte/Malvagi/Gioco7/Lord_Voldemort7.png",
+      "triggers": [
+        {
+          "type": "onActive",
+          "effectToExecute": [
+            {"type": "addLocationToken", "qta": 1, "target": "location"}
+          ]
+        },
+        {
+          "type": "onLocationTokenRemoved",
+          "effectToExecute": [
+            {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+          ]
+        },
+        {
+          "type": "damageImmunityUntilVillainsDefeated",
+          "effectToExecute": [
+            {"type": "cannotBeAssignedDamage", "qta": null, "target": "self"}
+          ]
+        }
+      ],
+      "reward": [
+        {"type": "win", "target": "hEroes"}
+      ]
+    }
+  ]
+}
