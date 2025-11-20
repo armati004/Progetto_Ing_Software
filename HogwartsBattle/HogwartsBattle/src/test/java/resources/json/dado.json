@@ -1,0 +1,196 @@
+{
+    "dadi":[
+        {
+            "nome": "Dado Serpeverde",
+            "id": "dadoSerpeverde",
+            "path-img": "...",
+            "triggers":[
+                {
+                    "type": "onRoll",
+                    "effectToExecute":[
+                        {
+                            "type": "RANDOM",
+                            "target": "currentPlayer",
+                            "options":[
+                                {
+                                    "type": "pescaCarta",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "guadagnoVita",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "guadagnoInfluenza",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "guadagnoAttacco",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "guadagnoAttacco",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "guadagnoAttacco",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Dado Corvonero",
+            "id": "dadoCorvonero",
+            "path-img": "...",
+            "triggers":[
+                {
+                    "type": "onRoll",
+                    "effectToExecute":[
+                        {
+                            "type": "RANDOM",
+                            "target": "currentPlayer",
+                            "options":[
+                                {
+                                    "type": "guadagnoVita",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "guadagnoInfluenza",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "guadagnoAttacco",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "pescaCarta",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "pescaCarta",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "pescaCarta",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Dado Grifondoro",
+            "id": "dadoGrifondoro",
+            "path-img": "...",
+            "triggers":[
+                {
+                    "type": "onRoll",
+                    "effectToExecute":[
+                        {
+                            "type": "RANDOM",
+                            "target": "currentPlayer",
+                            "options":[
+                                {
+                                    "type": "guadagnoInfluenza",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "pescaCarta",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "guadagnoAttacco",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "guadagnoVita",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "guadagnoInfluenza",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "guadagnoInfluenza",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Dado Tassorosso",
+            "id": "dadoTassorosso",
+            "path-img": "...",
+            "triggers":[
+                {
+                    "type": "onRoll",
+                    "effectToExecute":[
+                        {
+                            "type": "RANDOM",
+                            "target": "currentPlayer",
+                            "options":[
+                                {
+                                    "type": "guadagnoVita",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "guadagnoAttacco",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "pescaCarta",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "guadagnoVita",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "guadagnoVita",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                },
+                                {
+                                    "type": "guadagnoInfluenza",
+                                    "qta": 1,
+                                    "target": "allPlayers"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
