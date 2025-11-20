@@ -2,8 +2,8 @@ package gioco;
 
 import java.util.List;
 
-import carte.GestoreEffetti;
-import carte.GestoreTrigger;
+import gestoreEffetti.GestoreEffetti;
+import gestoreEffetti.GestoreTrigger;
 
 public class StatoDiGioco {
 	private List<Giocatore> giocatori;

@@ -1,4 +1,4 @@
-package carte;
+package gestoreEffetti;
 
 import gioco.Giocatore;
 import gioco.StatoDiGioco;
@@ -33,7 +33,7 @@ public class EsecutoreEffetti {
 			break;
 		case GUADAGNARE_ATTACCO:
 			break;
-		case GUADAGNARE_GETTONE:
+		case GUADAGNARE_INFLUENZA:
 			break;
 		case GUADAGNARE_VITA:
 			break;
@@ -81,7 +81,7 @@ public class EsecutoreEffetti {
 			break;
 		case SCARTA_OGGETTO:
 			break;
-		case SCONTO_ACQUISTO:
+		case SCONTO_ACQUISTO_CASATA:
 			break;
 		case VITTORIA:
 			break;
@@ -91,10 +91,12 @@ public class EsecutoreEffetti {
 	public static void gestisciOpzioni(Effetto effetto, StatoDiGioco stato, Giocatore attivo) {
 		
 	}
+	
+	public static void aggiungereMArchioNero () {
+		//...
+	}
 }
 
 // Lista di funzioni che vengono richiamate sopra
 
-void aggiungereMArchioNero () {
-	//...
-}
+	

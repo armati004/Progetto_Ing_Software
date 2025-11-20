@@ -1,4 +1,4 @@
-package carte;
+package gestoreEffetti;
 
 public enum TipoEffetto {
 	/**
@@ -175,27 +175,27 @@ public enum TipoEffetto {
 	 * che permette di rimuovere un marchio nero dal luogo
 	 * scartando 5 gettoni
 	 */
-	SCARTA_GETTONI;
+	SCARTA_GETTONI,
 	/**
 	 * Effetto della carta divinazione,
 	 * Permette di vedere la carta in cima al mazzo
 	 */
-	GUARDA_CARTA_CIMA;
+	GUARDA_CARTA_CIMA,
 	/**
 	 * Seguito della carta divinazione,
 	 * Permette di lasciare la carta in cima al mazzo
 	 */
-	LASCIA_CARTA_CIMA;
+	LASCIA_CARTA_CIMA,
 	/**
 	 * Seguito della carta divinazione,
 	 * Permette di scartare la carta in cima al mazzo
 	 */
-	SCARTA_CARTA_CIMA;
+	SCARTA_CARTA_CIMA,
 	/**
 	 * Effetto della carta Trasfigurazione,
 	 * Permette di cercare una carta nel mazzo con un valore massimo definito nel json
 	 */
-	CERCA_CARTA_MAZZO;
+	CERCA_CARTA_MAZZO,
 	/**
 	 * Mischia il mazzo
 	 */
