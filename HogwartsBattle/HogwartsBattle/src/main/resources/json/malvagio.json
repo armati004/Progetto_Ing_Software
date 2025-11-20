@@ -11,7 +11,7 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco1/Draco_Malfoy.png",
       "triggers": [
         {
-          "type": "onLocationTokenAdded",
+          "type": "AGGIUNTA_MARCHIO_NERO",
           "effectToExecute": [
             { "type": "PERDERE_VITA", "qta": 2, "target": "activePlayer" }
           ]
@@ -33,7 +33,7 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco1/Quirinus_Raptor.png",
       "triggers": [
         {
-          "type": "onActive",
+          "type": "EROE_ATTIVO",
           "effectToExecute": [
             { "type": "PERDERE_VITA", "qta": 1, "target": "activePlayer" }
           ]
@@ -56,7 +56,7 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco1/Tiger_Goyle.png",
       "triggers": [
         {
-          "type": "onForcedDiscard",
+          "type": "SCARTA_CARTA_MALUS",
           "cause": ["darkArtsEvent", "villainEffect"],
           "effectToExecute": [
             { "type": "PERDERE_VITA", "qta": 1, "target": "discardingHero" }
@@ -82,9 +82,9 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco2/Basilisco.png",
       "triggers": [
         {
-          "type": "onDrawExtraCardAttempt",
+          "type": "PESCA_CARTA_BONUS",
           "effectToExecute": [
-            {"type": "preventDrawExtraCards", "target": "allPlayer"}
+            {"type": "NON_PESCARE_CARTE", "target": "allPlayer"}
           ]
         }
       ],
@@ -105,7 +105,7 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco2/Lucius_Malfoy.png",
       "triggers": [
         {
-          "type": "onLocationTokenAdded",
+          "type": "AGGIUNTA_MARCHIO_NERO",
           "effectToExecute": [
             {"type": "CURARE_MALVAGI", "qta": 1, "target": "allVillains"}
           ]
@@ -128,7 +128,7 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco2/Tom_Riddle.png",
       "triggers": [
         {
-          "type": "onAllyInHand",
+          "type": "ALLEATO_IN_MANO",
           "repeat": "perogni",
           "effectToExecute": [
             {
@@ -166,7 +166,7 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco3/Dissennatore.png",
       "triggers": [
         {
-          "type": "onActive",
+          "type": "EROE_ATTIVO",
           "effectToExecute": [
             {"type": "PERDERE_VITA", "qta": 2, "target": "activePlayer"}
           ]
@@ -189,9 +189,9 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco3/Peter_Minus.png",
       "triggers": [
         {
-          "type": "onActive",
+          "type": "EROE_ATTIVO",
           "effectToExecute": [
-            {"type": "revealTopDeckCard", "target": "activePlayer"},
+            {"type": "RIVELA_CARTA", "target": "activePlayer"},
             {
               "type": "ifCoinValueAtLeast",
               "qta": 1,
@@ -224,7 +224,7 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco4/Barty_Crouch_JR.png",
       "triggers": [
         {
-          "type": "onRIMUOVERE_MARCHIO_NEROAttempt",
+          "type": "TENTA_RIMUOVI_MARCHIO_NERO",
           "effectToExecute": [
             {"type": "NON_RIMUOVERE_MARCHI", "target": "allPlayer"}
           ]
@@ -246,7 +246,7 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco4/Mangiamorte4.png",
       "triggers": [
         {
-          "type": "onMorsmordreOrVillainRevealed",
+          "type": "RIVELA_MORSMORDRE_O_MALVAGIO",
           "effectToExecute": [
             {"type": "PERDERE_VITA", "qta": 1, "target": "allPlayer"}
           ]
@@ -273,10 +273,8 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco5/Dolores_Umbridge.png",
       "triggers": [
         {
-          "type": "onAcquiredCard",
-          "condition": {
-            "minCost": 4
-          },
+          "type": "ACQUISTA_CARTA_UMBRIDGE",
+          "qtaQuorum": 4,
           "effectToExecute": [
             {"type": "PERDERE_VITA", "qta": 1, "target": "allPlayer"}
           ]
@@ -299,14 +297,14 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco5/Lord_Voldemort5.png",
       "triggers": [
         {
-          "type": "onActive",
+          "type": "EROE_ATTIVO",
           "effectToExecute": [
             {"type": "PERDERE_VITA", "qta": 1, "target": "activePlayer"},
             {"type": "SCARTARE_CARTA", "qta": 1, "target": "activePlayer"}
           ]
         },
         {
-          "type": "damageImmunityUntilVillainsDefeated",
+          "type": "ATTACCA_VOLDY",
           "effectToExecute": [
             {"type": "NON_ATTACCARE_VOLDY", "target": "self"}
           ]
@@ -328,7 +326,7 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco5/Mangiamorte5.png",
       "triggers": [
         {
-          "type": "onMorsmordreOrVillainRevealed",
+          "type": "RIVELA_MORSMORDRE_O_MALVAGIO",
           "effectToExecute": [
             {"type": "PERDERE_VITA", "qta": 1, "target": "allPlayer"}
           ]
@@ -355,7 +353,7 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco6/Bellatrix_Lestrange.png",
       "triggers": [
         {
-          "type": "onTurnStart",
+          "type": "INIZIO_TURNO_GENERALE",
           "effectToExecute": [
             {"type": "RIVELA_NUOVO_EVENTO", "qta": 1, "target": "table"}
           ]
@@ -378,7 +376,7 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco6/Fenrir_Greyback.png",
       "triggers": [
         {
-          "type": "onGUADAGNARE_VITAAttempt",
+          "type": "TENTA_GUADAGNA_VITA",
           "effectToExecute": [
             {"type": "NON_GUADAGNARE_VITA", "target": "allPlayer"}
           ]
@@ -399,43 +397,10 @@
       "costo": "0",
       "vita": "15",
       "path-img": "../Immagini_carte/Malvagi/Gioco6/Lord_Voldemort6.png",
-      "triggers": [
+      "effetti": [
+        {"type": "DADO_VOLDEMORT", "target": "currentEnemy"},
         {
-          "type": "onDiceRoll",
-          "effectToExecute": [
-            {
-              "type": "switch",
-              "cases": [
-                {
-                  "result": "heart",
-                  "effects": [
-                    {"type": "PERDERE_VITA", "qta": 1, "target": "allPlayer"}
-                  ]
-                },
-                {
-                  "result": "token",
-                  "effects": [
-                    {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "location"}
-                  ]
-                },
-                {
-                  "result": "heal",
-                  "effects": [
-                    {"type": "CURARE_MALVAGI", "qta": 1, "target": "allVillains"}
-                  ]
-                },
-                {
-                  "result": "discard",
-                  "effects": [
-                    {"type": "SCARTARE_CARTA", "qta": 1, "target": "allPlayer"}
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "damageImmunityUntilVillainsDefeated",
+          "type": "ATTACCA_VOLDY",
           "effectToExecute": [
             {"type": "NON_ATTACCARE_VOLDY", "target": "self"}
           ]
@@ -461,19 +426,19 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco7/Lord_Voldemort7.png",
       "triggers": [
         {
-          "type": "onActive",
+          "type": "INIZIO_TURNO_GENERALE",
           "effectToExecute": [
             {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "location"}
           ]
         },
         {
-          "type": "onLocationTokenRemoved",
+          "type": "RIMOZIONE_MARCHIO_NERO",
           "effectToExecute": [
             {"type": "PERDERE_VITA", "qta": 1, "target": "allPlayer"}
           ]
         },
         {
-          "type": "damageImmunityUntilVillainsDefeated",
+          "type": "ATTACCA_VOLDY",
           "effectToExecute": [
             {"type": "NON_ATTACCARE_VOLDY", "qta": null, "target": "self"}
           ]

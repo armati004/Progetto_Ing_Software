@@ -6,6 +6,10 @@ public enum TipoTrigger {
 	 */
 	NEMICO_SCONFITTO, 
 	/**
+	 * Trigger quando un eroe diventa attivo
+	 */
+	EROE_ATTIVO,
+	/**
 	 * Trigger che viene attivato quando si scarta una carta che
 	 * ha uno o più effetti quando viene scartata 
 	 */
@@ -20,11 +24,19 @@ public enum TipoTrigger {
 	 */
 	GIOCA_ALLEATO, 
 	/**
+	 * Trigger quando viene acquistato un alleato
+	 */
+	ACQUISTA_ALLEATO,
+	/**
 	 * Trigger delle carte Fred e George Weasley che attivano
 	 * un effetto aggiuntivo nel caso in cui un altro giocatore abbia
 	 * un Weasley in mano
 	 */
 	WEASLEY_IN_MANO, 
+	/**
+	 * Trigger che si attiva quando si pesca più di una carta
+	 */
+	PESCA_CARTA_BONUS,
 	/**
 	 * Attiva un effetto aggiuntivo nel caso si giochi un altro oggetto
 	 */
@@ -35,15 +47,19 @@ public enum TipoTrigger {
 	 */
 	SALUTE_MASSIMA,
 	/**
-	 * Trigger della carta eroe Harry che si attiva quando si rimuove
-	 * per la prima volta un marchio nero dal luogo
+	 * Trigger che si attiva quando si rimuove un marchio nero dal luogo
 	 */
 	RIMOZIONE_MARCHIO_NERO, 
 	/**
-	 * Trigger della carta eroe Hermione che si attiva quando si giocano 4
-	 * o più incantesimi
+	 * Trigger della carta eroe Hermione che si attiva quando si giocano x
+	 * o più incantesimi (x segnato nel JSON come qtaQuorum)
 	 */
 	INCANTESIMI_GIOCATI, 
+	/**
+	 * Trigger che si attiva quando viene giocato un incantesimo
+	 * in generale
+	 */
+	GIOCA_INCANTESIMO,
 	/**
 	 * Trigger della carta eroe Neville che si attiva quando si guadagnano
 	 * vite durante il turno del giocatore che ha Neville come eroe
@@ -82,6 +98,10 @@ public enum TipoTrigger {
 	 */
 	ASSEGNA_PIU_ATTACCHI, 
 	/**
+	 * Trigger che si attiva se si ha un alleato in mano
+	 */
+	ALLEATO_IN_MANO,
+	/**
 	 * Trigger della carta Horcrux Diadema, che fa perdere due vite quando
 	 * all'inizio del turno sono presenti in mano almeno un alleato, un oggetto
 	 * e un incantesimo
@@ -104,14 +124,40 @@ public enum TipoTrigger {
 	 */
 	RIVELA_NEMICO, 
 	/**
+	 * Trigger quando si prova a rimuovere un marchio nero da un luogo
+	 */
+	TENTA_RIMUOVI_MARCHIO_NERO,
+	/**
 	 * Trigger della carta malvagio Mangiamorte che si attiva
 	 * quando viene rivelato l'evento arti oscure Morsmordre
+	 * o un malvagio
 	 */
-	RIVELA_MORSMORDRE, 
+	RIVELA_MORSMORDRE_O_MALVAGIO, 
 	/**
 	 * Trigger della carta competenza Artimanzia che si attiva
 	 * quando si acquista una carta che ha come effetto tirare
 	 * il dado casata
 	 */
-	COSTO_MINORE_1;
+	COSTO_MINORE_1,
+	/**
+	 * Trigger che si attiva quando viene richiesto un tiro di dado
+	 */
+	DADO_TIRATO,
+	/**
+	 * Trigger su acquisto carta con valore superiore o uguale a x 
+	 */
+	ACQUISTA_CARTA_UMBRIDGE,
+	/**
+	 * Trigger che si attiva quando si prova ad attaccare voldemort
+	 * con suoi alleati in gioco
+	 */
+	ATTACCA_VOLDY,
+	/**
+	 * Trigger quando si ricomincia un giro di turni
+	 */
+	INIZIO_TURNO_GENERALE,
+	/**
+	 * Trigger quando si prova a guadagnare vita
+	 */
+	TENTA_GUADAGNA_VITA;
 }

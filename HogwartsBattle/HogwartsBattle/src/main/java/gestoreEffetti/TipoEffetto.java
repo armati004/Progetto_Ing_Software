@@ -22,6 +22,10 @@ public enum TipoEffetto {
 	 */
 	SCARTARE_CARTA, 
 	/**
+	 * Effetto che cura i malvagi
+	 */
+	CURARE_MALVAGI,
+	/**
 	 * Effetto che permette di pescare una o più carte
 	 */
 	PESCARE_CARTA, 
@@ -172,37 +176,33 @@ public enum TipoEffetto {
 	ALLEATO_IN_MANO,
 	/**
 	 * Effetto della carta competenza lezioni di volo,
-	 * che permette di rimuovere un marchio nero dal luogo
-	 * scartando 5 gettoni
+	 * che permette di rimuovere x influenza come requisito
+	 * per il secondo effetto (x è definito nel JSON)
 	 */
-	SCARTA_GETTONI;
+	SCARTA_INFLUENZA,
 	/**
 	 * Effetto della carta divinazione,
 	 * Permette di vedere la carta in cima al mazzo
 	 */
-	GUARDA_CARTA_CIMA;
+	GUARDA_CARTA_CIMA,
 	/**
 	 * Seguito della carta divinazione,
 	 * Permette di lasciare la carta in cima al mazzo
 	 */
-	LASCIA_CARTA_CIMA;
+	LASCIA_CARTA_CIMA,
 	/**
 	 * Seguito della carta divinazione,
 	 * Permette di scartare la carta in cima al mazzo
 	 */
-	SCARTA_CARTA_CIMA;
+	SCARTA_CARTA_CIMA,
 	/**
 	 * Effetto della carta Trasfigurazione,
 	 * Permette di cercare una carta nel mazzo con un valore massimo definito nel json
 	 */
-	CERCA_CARTA_MAZZO;
+	CERCA_CARTA_MAZZO,
 	/**
 	 * Mischia il mazzo
 	 */
 	MISCHIA_MAZZO;
-	/**
-	 * fa scartare x influenza (dove x è definito nel json),
-	 * utile considerando l'effetto di lezioni di volo
-	 */
 
 }
