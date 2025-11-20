@@ -36,7 +36,7 @@
             ],
             "triggers":[
                 {
-                    "type": "onAllyAcquire",
+                    "type": "ACQUISTO_ALLEATO",
                     "effectToExecute":[
                         {"type": "ALLEATO_IN_MAZZO", "target": "currentPlayer"}
                     ]
@@ -68,7 +68,7 @@
             ],
             "triggers":[
                 {
-                    "type": "onVillainDefeat",
+                    "type": "NEMICO_SCONFITTO",
                     "effectToExecute":[
                         {"type": "GUADAGNARE_INFLUENZA","qta":2, "target": "currentPlayer"}
                     ]
@@ -113,7 +113,7 @@
             ],
             "triggers":[
                 {
-                    "type": "onDiscardSelf",
+                    "type": "AUTO_SCARTO",
                     "effectToExecute":[
                         {"type": "GUADAGNARE_INFLUENZA", "qta":1, "target": "currentPlayer"},
                         {"type": "GUADAGNARE_VITA", "qta":1, "target": "currentPlayer"}
@@ -133,7 +133,7 @@
             ],
             "triggers":[
                 {
-                    "type":"onDiscardSelf",
+                    "type":"AUTO_SCARTO",
                     "effectToExecute":[
                         {"type":"PESCARE_CARTA", "qta":1, "target":"allPlayers"}
                     ]
@@ -213,8 +213,8 @@
             ],
             "triggers":[
                 {
-                    "type":"onSpellPlayed",
-                    "qta-quorum":2,
+                    "type":"INCANTESIMI_GIOCATI",
+                    "qtaQuorum":2,
                     "attivato1Volta": false,
                     "effectToExecute":[
                         {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"currentPlayer"},
@@ -234,7 +234,7 @@
             "path-img":"../Immagini_carte/Negozio/Gioco6/Bacchetta_di_Sambuco.png",
             "triggers":[
                 {
-                    "type":"onEachSpellPlayed",
+                    "type":"GIOCA_INCANTESIMO",
                     "effectToExecute":[
                         {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"currentPlayer"},
                         {"type":"GUADAGNARE_VITA", "qta":1, "target":"currentPlayer"}
@@ -304,7 +304,7 @@
             ],
             "triggers":[
                 {
-                    "type":"onMaxHealth",
+                    "type":"SALUTE_MASSIMA",
                     "target": "allPlayers",
                     "effectToExecute":[
                         {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"currentPlayer"},

@@ -1,4 +1,4 @@
-package gestoreEffetti;
+package carte;
 
 public enum TipoEffetto {
 	/**
@@ -21,6 +21,10 @@ public enum TipoEffetto {
 	 * Effetto che costringe a scartare una o più carte
 	 */
 	SCARTARE_CARTA, 
+	/**
+	 * Effetto che cura i malvagi
+	 */
+	CURARE_MALVAGI,
 	/**
 	 * Effetto che permette di pescare una o più carte
 	 */
@@ -172,10 +176,10 @@ public enum TipoEffetto {
 	ALLEATO_IN_MANO,
 	/**
 	 * Effetto della carta competenza lezioni di volo,
-	 * che permette di rimuovere un marchio nero dal luogo
-	 * scartando 5 gettoni
+	 * che permette di rimuovere x influenza come requisito
+	 * per il secondo effetto (x è definito nel JSON)
 	 */
-	SCARTA_GETTONI,
+	SCARTA_INFLUENZA,
 	/**
 	 * Effetto della carta divinazione,
 	 * Permette di vedere la carta in cima al mazzo
@@ -200,9 +204,5 @@ public enum TipoEffetto {
 	 * Mischia il mazzo
 	 */
 	MISCHIA_MAZZO;
-	/**
-	 * fa scartare x influenza (dove x è definito nel json),
-	 * utile considerando l'effetto di lezioni di volo
-	 */
 
 }
