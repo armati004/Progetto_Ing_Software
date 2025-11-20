@@ -7,6 +7,7 @@ public class EsecutoreEffetti {
 	public static void eseguiEffetto(Effetto effetto, StatoDiGioco stato, Giocatore giocatore) {
 		switch(effetto.getType()) {
 		case AGGIUNGERE_MARCHIO_NERO:
+			aggiungereMArchioNero();
 			break;
 		case ALLEATO_IN_MAZZO:
 			break;
@@ -90,4 +91,10 @@ public class EsecutoreEffetti {
 	public static void gestisciOpzioni(Effetto effetto, StatoDiGioco stato, Giocatore attivo) {
 		
 	}
+}
+
+// Lista di funzioni che vengono richiamate sopra
+
+void aggiungereMArchioNero () {
+	//...
 }

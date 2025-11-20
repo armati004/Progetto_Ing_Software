@@ -28,7 +28,7 @@ public enum TipoEffetto {
 	/**
 	 * Effetto che fa guadagnare uno o più gettoni
 	 */
-	GUADAGNARE_GETTONE, 
+	GUADAGNARE_INFLUENZA, 
 	/**
 	 * Effetto che fa guadagnare uno o più segnalini attacco
 	 */
@@ -52,7 +52,7 @@ public enum TipoEffetto {
 	 * Effetto relativo alla carta competenza Artimanzia che riduce il costo
 	 * delle carte che hanno come effetto tirare un dado casata. 
 	 */
-	SCONTO_ACQUISTO,
+	SCONTO_ACQUISTO_CASATA,
 	/**
 	 * Permette di tirare il dado due volte.
 	 */
@@ -176,4 +176,33 @@ public enum TipoEffetto {
 	 * scartando 5 gettoni
 	 */
 	SCARTA_GETTONI;
+	/**
+	 * Effetto della carta divinazione,
+	 * Permette di vedere la carta in cima al mazzo
+	 */
+	GUARDA_CARTA_CIMA;
+	/**
+	 * Seguito della carta divinazione,
+	 * Permette di lasciare la carta in cima al mazzo
+	 */
+	LASCIA_CARTA_CIMA;
+	/**
+	 * Seguito della carta divinazione,
+	 * Permette di scartare la carta in cima al mazzo
+	 */
+	SCARTA_CARTA_CIMA;
+	/**
+	 * Effetto della carta Trasfigurazione,
+	 * Permette di cercare una carta nel mazzo con un valore massimo definito nel json
+	 */
+	CERCA_CARTA_MAZZO;
+	/**
+	 * Mischia il mazzo
+	 */
+	MISCHIA_MAZZO;
+	/**
+	 * fa scartare x influenza (dove x è definito nel json),
+	 * utile considerando l'effetto di lezioni di volo
+	 */
+
 }

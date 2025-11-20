@@ -8,10 +8,10 @@
             "costo": 8,
             "path-img": "../Immagini_carte/Negozio/Gioco1/Albus_Silente.png",
             "effetti":[
-                {"type": "guadagnoAttacco", "qta": 1, "target": "allPlayers"},
-                {"type": "guadagnoInfluenza", "qta": 1, "target": "allPlayers"},
-                {"type": "guadagnoVita", "qta":1, "target": "allPlayers"},
-                {"type": "pescaCarta", "qta": 1 , "target": "allPlayers"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "allPlayers"},
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "allPlayers"},
+                {"type": "GUADAGNARE_VITA", "qta":1, "target": "allPlayers"},
+                {"type": "PESCARE_CARTA", "qta": 1 , "target": "allPlayers"}
             ]
         },
         {
@@ -22,13 +22,13 @@
             "costo": 3,
             "path-img": "../Immagini_carte/Negozio/Gioco1/Oliver_Baston.png",
             "effetti":[
-                {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "currentPlayer"}
             ],
             "triggers":[
                 {
                     "type": "onVillainDefeat",
                     "effectToExecute":[
-                        {"type": "guadagnoVita", "qta":2, "target": "selectPlayer", "targetCount": 1}
+                        {"type": "GUADAGNARE_VITA", "qta":2, "target": "selectPlayer", "targetCount": 1}
                     ]
                 }
             ]
@@ -41,8 +41,8 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco1/Rubeus_Hagrid.png",
             "effetti":[
-                {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
-                {"type": "guadagnoVita", "qta":1, "target": "allPlayers"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "currentPlayer"},
+                {"type": "GUADAGNARE_VITA", "qta":1, "target": "allPlayers"}
             ]
         }
     ],
@@ -55,7 +55,7 @@
             "costo": 6,
             "path-img": "../Immagini_carte/Negozio/Gioco2/Arthur_Weasley.png",
             "effetti":[
-                {"type": "guadagnoInfluenza", "qta": 2, "target": "allPlayers"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "allPlayers"}
             ]
         },
         {
@@ -66,8 +66,8 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco2/Dobby_l_Elfo_Domestico.png",
             "effetti":[
-                {"type": "rimuoviControllo", "qta": 1, "target": "Location"},
-                {"type": "pescaCarta", "qta": 1, "target":"currentPlayer"}
+                {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "Location"},
+                {"type": "PESCARE_CARTA", "qta": 1, "target":"currentPlayer"}
             ]
         },
         {
@@ -82,8 +82,8 @@
                     "type": "SCELTA",
                     "target":"currentPlayer",
                     "opzioni":[
-                        {"type": "guadagnoAttacco", "qta": 2, "target": "currentPlayer"},
-                        {"type": "guadagnoVita", "qta": 2, "target":"allPlayers"}
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "currentPlayer"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"allPlayers"}
                     ]
                 }
             ]
@@ -96,14 +96,14 @@
             "costo": 2,
             "path-img": "../Immagini_carte/Negozio/Gioco2/Gilderoy_Allock.png",
             "effetti":[
-                {"type": "pescaCarta", "qta": 1, "target": "currentPlayer"},
-                {"type": "scartaCarta", "qta": 1, "target":"currentPlayer"}
+                {"type": "PESCARE_CARTA", "qta": 1, "target": "currentPlayer"},
+                {"type": "SCARTARE_CARTA", "qta": 1, "target":"currentPlayer"}
             ],
             "triggers":[
                 {
                     "type": "onDiscardSelf",
                     "effectToExecute":[
-                        {"type": "pescaCarta", "qta": 1, "target": "currentPlayer"}
+                        {"type": "PESCARE_CARTA", "qta": 1, "target": "currentPlayer"}
                     ]
                 }
             ]
@@ -116,8 +116,8 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco2/Ginny_Weasley.png",
             "effetti":[
-                {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
-                {"type": "guadagnoInfluenza", "qta": 1, "target":"currentPlayer"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "currentPlayer"},
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target":"currentPlayer"}
             ]
         },
         {
@@ -128,8 +128,8 @@
             "costo": 6,
             "path-img": "../Immagini_carte/Negozio/Gioco2/Molly_Weasley.png",
             "effetti":[
-                {"type": "guadagnoInfluenza", "qta": 1, "target": "allPlayers"},
-                {"type": "guadagnoVita", "qta": 2, "target":"allPlayers"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "allPlayers"},
+                {"type": "GUADAGNARE_VITA", "qta": 2, "target":"allPlayers"}
             ]
         }
     ],
@@ -142,8 +142,8 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco3/Remus_Lupin.png",
             "effetti":[
-                {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
-                {"type": "guadagnoVita", "qta": 3, "target":"selectPlayer", "targetCount":1}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "currentPlayer"},
+                {"type": "GUADAGNARE_VITA", "qta": 3, "target":"selectPlayer", "targetCount":1}
             ]
         },
         {
@@ -154,14 +154,14 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco3/Sibilla_Cooman.png",
             "effetti":[
-                {"type": "pescaCarta", "qta": 2, "target": "currentPlayer"},
-                {"type": "scartaCarta", "qta": 1, "target":"currentPlayer"}
+                {"type": "PESCARE_CARTA", "qta": 2, "target": "currentPlayer"},
+                {"type": "SCARTARE_CARTA", "qta": 1, "target":"currentPlayer"}
             ],
             "triggers":[
                 {
                     "type": "onDiscardSpell",
                     "effectToExecute":[
-                        {"type": "guadagnoInfluenza", "qta": 2, "target": "currentPlayer"}
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "currentPlayer"}
                     ]
                 }
             ]
@@ -174,8 +174,8 @@
             "costo": 6,
             "path-img": "../Immagini_carte/Negozio/Gioco3/Sirius_Black.png",
             "effetti":[
-                {"type": "guadagnoAttacco", "qta": 2, "target": "currentPlayer"},
-                {"type": "guadagnoInfluenza", "qta": 1, "target":"currentPlayer"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "currentPlayer"},
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target":"currentPlayer"}
             ]
         }
     ],
@@ -188,8 +188,8 @@
             "costo": 6,
             "path-img": "../Immagini_carte/Negozio/Gioco4/Alastor_Moody.png",
             "effetti":[
-                {"type": "guadagnoInfluenza", "qta": 2, "target": "currentPlayer"},
-                {"type": "rimuoviControllo", "qta": 1, "target":"Location"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "currentPlayer"},
+                {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target":"Location"}
             ]
         },
         {
@@ -200,8 +200,8 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco4/Cedric_Diggory.png",
             "effetti":[
-                {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
-                {"type": "dadoTassorosso", "target":"currentPlayer"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "currentPlayer"},
+                {"type": "DADO_TASSOROSSO", "target":"currentPlayer"}
             ]
         },        
         {
@@ -212,9 +212,9 @@
             "costo": 6,
             "path-img": "../Immagini_carte/Negozio/Gioco4/Filius_Vitious.png",
             "effetti":[
-                {"type": "guadagnoInfluenza", "qta": 1, "target": "currentPlayer"},
-                {"type": "pescaCarta", "qta":1, "target":"currentPlayer"},
-                {"type": "dadoCorvonero", "target":"currentPlayer"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "currentPlayer"},
+                {"type": "PESCARE_CARTA", "qta":1, "target":"currentPlayer"},
+                {"type": "DADO_CORVONERO", "target":"currentPlayer"}
             ]
         },
         {
@@ -225,13 +225,13 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco4/Fleur_Delacour.png",
             "effetti":[
-                {"type": "guadagnoInfluenza", "qta": 2, "target": "currentPlayer"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "currentPlayer"}
             ],
             "triggers":[
                 {
                     "type": "onPlayAlly",
                     "effectToExecute":[
-                        {"type": "guadagnoVita", "qta": 2, "target": "currentPlayer"}
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target": "currentPlayer"}
                     ]
                 }
             ]
@@ -244,9 +244,9 @@
             "costo": 6,
             "path-img": "../Immagini_carte/Negozio/Gioco4/Minerva_McGranitt.png",
             "effetti":[
-                {"type": "guadagnoInfluenza", "qta": 1, "target": "currentPlayer"},
-                {"type": "guadagnoAttacco", "qta": 1, "target":"currentPlayer"},
-                {"type": "dadoGrifondoro", "target":"currentPlayer"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "currentPlayer"},
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target":"currentPlayer"},
+                {"type": "DADO_GRIFONDORO", "target":"currentPlayer"}
             ]
         },
         {
@@ -257,9 +257,9 @@
             "costo": 6,
             "path-img": "../Immagini_carte/Negozio/Gioco4/Pomona_Sprite.png",
             "effetti":[
-                {"type": "guadagnoInfluenza", "qta": 1, "target": "currentPlayer"},
-                {"type": "guadagnoVita", "qta": 2, "target":"selectPlayer", "targetCount": 1},
-                {"type": "dadoTassorosso", "target":"currentPlayer"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "currentPlayer"},
+                {"type": "GUADAGNARE_VITA", "qta": 2, "target":"selectPlayer", "targetCount": 1},
+                {"type": "DADO_TASSOROSSO", "target":"currentPlayer"}
             ]
         },
         {
@@ -270,14 +270,14 @@
             "costo": 5,
             "path-img": "../Immagini_carte/Negozio/Gioco4/Viktor_Krum.png",
             "effetti":[
-                {"type": "guadagnoAttacco", "qta": 2, "target": "currentPlayer"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "currentPlayer"}
             ],
             "triggers":[
                 {
                     "type": "onVillainDefeat",
                     "effectToExecute":[
-                        {"type": "guadagnoInfluenza", "qta": 1, "target": "currentPlayer"},
-                        {"type": "guadagnoVita", "qta":1, "target":"currentPlayer"}
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "currentPlayer"},
+                        {"type": "GUADAGNARE_VITA", "qta":1, "target":"currentPlayer"}
                     ]
                 }
             ]
@@ -292,9 +292,9 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco5/Cho_Chang.png",
             "effetti":[
-                {"type": "pescaCarta", "qta": 3, "target": "currentPlayer"},
-                {"type": "scartaCarta", "qta": 2, "target":"currentPlayer"},
-                {"type": "dadoCorvonero", "target":"currentPlayer"}
+                {"type": "PESCARE_CARTA", "qta": 3, "target": "currentPlayer"},
+                {"type": "SCARTARE_CARTA", "qta": 2, "target":"currentPlayer"},
+                {"type": "DADO_CORVONERO", "target":"currentPlayer"}
             ]
         },
         {
@@ -305,14 +305,14 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco5/Fred_Weasley.png",
             "effetti":[
-                {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
-                {"type": "dadoGrifondoro", "target":"currentPlayer"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "currentPlayer"},
+                {"type": "DADO_GRIFONDORO", "target":"currentPlayer"}
             ],
             "triggers":[
                 {
                     "type": "onHandWeasley",
                     "effectToExecute":[
-                        {"type": "guadagnoInfluenza", "qta": 1, "target": "allPlayers"}
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "allPlayers"}
                     ]
                 }
             ]
@@ -325,14 +325,14 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco5/George_Weasley.png",
             "effetti":[
-                {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
-                {"type": "dadoGrifondoro", "target":"currentPlayer"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "currentPlayer"},
+                {"type": "DADO_GRIFONDORO", "target":"currentPlayer"}
             ],
             "triggers":[
                 {
                     "type": "onHandWeasley",
                     "effectToExecute":[
-                        {"type": "guadagnoVita", "qta": 1, "target": "allPlayers"}
+                        {"type": "GUADAGNARE_VITA", "qta": 1, "target": "allPlayers"}
                     ]
                 }
             ]
@@ -345,9 +345,9 @@
             "costo": 7,
             "path-img": "../Immagini_carte/Negozio/Gioco5/Kingsley_Shacklebolt.png",
             "effetti":[
-                {"type": "guadagnoAttacco", "qta": 2, "target": "currentPlayer"},
-                {"type": "guadagnoVita", "qta": 1, "target":"currentPlayer"},
-                {"type": "rimuoviControllo", "qta":1, "target":"Location"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "currentPlayer"},
+                {"type": "GUADAGNARE_VITA", "qta": 1, "target":"currentPlayer"},
+                {"type": "RIMUOVERE_MARCHIO_NERO", "qta":1, "target":"Location"}
             ]
         },
         {
@@ -358,14 +358,14 @@
             "costo": 5,
             "path-img": "../Immagini_carte/Negozio/Gioco5/Luna_Lovegood.png",
             "effetti":[
-                {"type": "guadagnoInfluenza", "qta": 1, "target": "currentPlayer"},
-                {"type": "dadoCorvonero", "target":"currentPlayer"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "currentPlayer"},
+                {"type": "DADO_CORVONERO", "target":"currentPlayer"}
             ],
             "triggers":[
                 {
                     "type": "onPlayItem",
                     "effectToExecute":[
-                        {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"}
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "currentPlayer"}
                     ]
                 }
             ]
@@ -382,9 +382,9 @@
                     "type": "SCELTA",
                     "target":"currentPlayer",
                     "opzioni":[
-                        {"type": "guadagnoInfluenza", "qta": 3, "target": "currentPlayer"},
-                        {"type": "guadagnoAttacco", "qta": 2, "target":"currentPlayer"},
-                        {"type": "rimuoviControllo", "qta": 1, "target":"Location"}
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 3, "target": "currentPlayer"},
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target":"currentPlayer"},
+                        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target":"Location"}
                     ]
                 }
             ]
@@ -403,11 +403,11 @@
                     "type":"SCELTA",
                     "target":"allPlayers",
                     "opzioni":[
-                        {"type":"guadagnoInfluenza", "qta": 1, "target": "currentPlayer"},
-                        {"type":"guadagnoVita","qta":1,"target":"currentPlayer"}
+                        {"type":"GUADAGNARE_INFLUENZA", "qta": 1, "target": "currentPlayer"},
+                        {"type":"GUADAGNARE_VITA","qta":1,"target":"currentPlayer"}
                     ]
                 },
-                {"type": "dadoSerpeverde", "target":"currentPlayer"}
+                {"type": "DADO_SERPEVERDE", "target":"currentPlayer"}
             ] 
         }
     ]

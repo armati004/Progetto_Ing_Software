@@ -13,12 +13,12 @@
         {
           "type": "onLocationTokenAdded",
           "effectToExecute": [
-            { "type": "loseLife", "qta": 2, "target": "activePlayer" }
+            { "type": "PERDERE_VITA", "qta": 2, "target": "activePlayer" }
           ]
         }
       ],
       "reward": [
-        { "type": "removeLocationToken", "qta": 1, "target": "location" }
+        { "type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "location" }
       ]
     },
 
@@ -35,13 +35,13 @@
         {
           "type": "onActive",
           "effectToExecute": [
-            { "type": "loseLife", "qta": 1, "target": "activePlayer" }
+            { "type": "PERDERE_VITA", "qta": 1, "target": "activePlayer" }
           ]
         }
       ],
       "reward": [
-        { "type": "gainCoin", "qta": 1, "target": "allPlayer" },
-        { "type": "gainLife", "qta": 1, "target": "allPlayer" }
+        { "type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "allPlayer" },
+        { "type": "GUADAGNARE_VITA", "qta": 1, "target": "allPlayer" }
       ]
     },
 
@@ -59,12 +59,12 @@
           "type": "onForcedDiscard",
           "cause": ["darkArtsEvent", "villainEffect"],
           "effectToExecute": [
-            { "type": "loseLife", "qta": 1, "target": "discardingHero" }
+            { "type": "PERDERE_VITA", "qta": 1, "target": "discardingHero" }
           ]
         }
       ],
       "reward": [
-        { "type": "drawCard", "qta": 1, "target": "allPlayer" }
+        { "type": "PESCARE_CARTA", "qta": 1, "target": "allPlayer" }
       ]
     }
   ],
@@ -89,8 +89,8 @@
         }
       ],
       "reward": [
-        {"type": "drawCard", "qta": 1, "target": "allPlayer"},
-        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+        {"type": "PESCARE_CARTA", "qta": 1, "target": "allPlayer"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "location"}
       ]
     },
 
@@ -107,13 +107,13 @@
         {
           "type": "onLocationTokenAdded",
           "effectToExecute": [
-            {"type": "healVillains", "qta": 1, "target": "allVillains"}
+            {"type": "CURARE_MALVAGI", "qta": 1, "target": "allVillains"}
           ]
         }
       ],
       "reward": [
-        {"type": "gainCoin", "qta": 1, "target": "allPlayer"},
-        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "allPlayer"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "location"}
       ]
     },
 
@@ -134,8 +134,8 @@
             {
               "type": "chooseEffect",
               "options": [
-                {"type": "loseLife", "qta": 2, "target": "activePlayer"},
-                {"type": "discardCard", "qta": 1, "target": "activePlayer"}
+                {"type": "PERDERE_VITA", "qta": 2, "target": "activePlayer"},
+                {"type": "SCARTARE_CARTA", "qta": 1, "target": "activePlayer"}
               ]
             }
           ]
@@ -145,8 +145,8 @@
         {
           "type": "chooseEffect",
           "options": [
-            {"type": "gainLife", "qta": 2, "target": "currentPlayer"},
-            {"type": "searchAllyDiscard", "qta": 1, "target": "allPalyer" }
+            {"type": "GUADAGNARE_VITA", "qta": 2, "target": "currentPlayer"},
+            {"type": "CERCA_ALLEATO", "qta": 1, "target": "allPalyer" }
           ]
         }
       ]
@@ -168,13 +168,13 @@
         {
           "type": "onActive",
           "effectToExecute": [
-            {"type": "loseLife", "qta": 2, "target": "activePlayer"}
+            {"type": "PERDERE_VITA", "qta": 2, "target": "activePlayer"}
           ]
         }
       ],
       "reward": [
-        {"type": "gainLife", "qta": 2, "target": "allPlayer"},
-        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+        {"type": "GUADAGNARE_VITA", "qta": 2, "target": "allPlayer"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "location"}
       ]
     },
 
@@ -196,16 +196,16 @@
               "type": "ifCoinValueAtLeast",
               "qta": 1,
               "then": [
-                {"type": "discardCard", "qta": 1, "target": "activePlayer"},
-                {"type": "addLocationToken", "qta": 1, "target": "location"}
+                {"type": "SCARTARE_CARTA", "qta": 1, "target": "activePlayer"},
+                {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "location"}
               ]
             }
           ]
         }
       ],
       "reward": [
-        {"type": "searchDiscardSpellToHand", "target": "allPlayer"},
-        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+        {"type": "CERCA_INCANTESIMO", "target": "allPlayer"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "location"}
       ]
     }
   ],
@@ -224,14 +224,14 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco4/Barty_Crouch_JR.png",
       "triggers": [
         {
-          "type": "onRemoveLocationTokenAttempt",
+          "type": "onRIMUOVERE_MARCHIO_NEROAttempt",
           "effectToExecute": [
-            {"type": "preventRemoveLocationToken", "target": "allPlayer"}
+            {"type": "NON_RIMUOVERE_MARCHI", "target": "allPlayer"}
           ]
         }
       ],
       "reward": [
-        {"type": "removeLocationToken", "qta": 2, "target": "location"}
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 2, "target": "location"}
       ]
     },
 
@@ -248,13 +248,13 @@
         {
           "type": "onMorsmordreOrVillainRevealed",
           "effectToExecute": [
-            {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+            {"type": "PERDERE_VITA", "qta": 1, "target": "allPlayer"}
           ]
         }
       ],
       "reward": [
-        {"type": "gainLife", "qta": 1, "target": "allPlayer"},
-        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+        {"type": "GUADAGNARE_VITA", "qta": 1, "target": "allPlayer"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "location"}
       ]
     }
   ],
@@ -278,13 +278,13 @@
             "minCost": 4
           },
           "effectToExecute": [
-            {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+            {"type": "PERDERE_VITA", "qta": 1, "target": "allPlayer"}
           ]
         }
       ],
       "reward": [
-        {"type": "gainCoin", "qta": 1, "target": "allPlayer"},
-        {"type": "gainLife", "qta": 2, "target": "allPlayer"}
+        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "allPlayer"},
+        {"type": "GUADAGNARE_VITA", "qta": 2, "target": "allPlayer"}
       ]
     },
 
@@ -301,21 +301,20 @@
         {
           "type": "onActive",
           "effectToExecute": [
-            {"type": "loseLife", "qta": 1, "target": "activePlayer"},
-            {"type": "discardCard", "qta": 1, "target": "activePlayer"}
+            {"type": "PERDERE_VITA", "qta": 1, "target": "activePlayer"},
+            {"type": "SCARTARE_CARTA", "qta": 1, "target": "activePlayer"}
           ]
         },
         {
           "type": "damageImmunityUntilVillainsDefeated",
           "effectToExecute": [
-            {"type": "cannotBeAssignedDamage", "target": "self"}
+            {"type": "NON_ATTACCARE_VOLDY", "target": "self"}
           ]
         }
       ],
       "reward": [
-        {"type": "win", "target": "hEroes"}
-      ],
-      "commenti": "da sistemare il reward"
+        {"type": "VITTORIA", "target": "hEroes"}
+      ]
     },
 
     {
@@ -331,13 +330,13 @@
         {
           "type": "onMorsmordreOrVillainRevealed",
           "effectToExecute": [
-            {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+            {"type": "PERDERE_VITA", "qta": 1, "target": "allPlayer"}
           ]
         }
       ],
       "reward": [
-        {"type": "gainLife", "qta": 1, "target": "allPlayer"},
-        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+        {"type": "GUADAGNARE_VITA", "qta": 1, "target": "allPlayer"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "location"}
       ]
     }
   ],
@@ -358,13 +357,13 @@
         {
           "type": "onTurnStart",
           "effectToExecute": [
-            {"type": "drawAdditionalDarkArtsEvent", "qta": 1, "target": "table"}
+            {"type": "RIVELA_NUOVO_EVENTO", "qta": 1, "target": "table"}
           ]
         }
       ],
       "reward": [
-        {"type": "searchDiscardItemToHand", "target": "allPlayer"},
-        {"type": "removeLocationToken", "qta": 2, "target": "location"}
+        {"type": "CERCA_OGGETTO", "target": "allPlayer"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 2, "target": "location"}
       ]
     },
 
@@ -379,15 +378,15 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco6/Fenrir_Greyback.png",
       "triggers": [
         {
-          "type": "onGainLifeAttempt",
+          "type": "onGUADAGNARE_VITAAttempt",
           "effectToExecute": [
-            {"type": "preventGainLife", "target": "allPlayer"}
+            {"type": "NON_GUADAGNARE_VITA", "target": "allPlayer"}
           ]
         }
       ],
       "reward": [
-        {"type": "gainLife", "qta": 3, "target": "allPlayer"},
-        {"type": "removeLocationToken", "qta": 2, "target": "location"}
+        {"type": "GUADAGNARE_VITA", "qta": 3, "target": "allPlayer"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 2, "target": "location"}
       ]
     },
 
@@ -410,25 +409,25 @@
                 {
                   "result": "heart",
                   "effects": [
-                    {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+                    {"type": "PERDERE_VITA", "qta": 1, "target": "allPlayer"}
                   ]
                 },
                 {
                   "result": "token",
                   "effects": [
-                    {"type": "addLocationToken", "qta": 1, "target": "location"}
+                    {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "location"}
                   ]
                 },
                 {
                   "result": "heal",
                   "effects": [
-                    {"type": "healVillains", "qta": 1, "target": "allVillains"}
+                    {"type": "CURARE_MALVAGI", "qta": 1, "target": "allVillains"}
                   ]
                 },
                 {
                   "result": "discard",
                   "effects": [
-                    {"type": "discardCard", "qta": 1, "target": "allPlayer"}
+                    {"type": "SCARTARE_CARTA", "qta": 1, "target": "allPlayer"}
                   ]
                 }
               ]
@@ -438,12 +437,12 @@
         {
           "type": "damageImmunityUntilVillainsDefeated",
           "effectToExecute": [
-            {"type": "cannotBeAssignedDamage", "target": "self"}
+            {"type": "NON_ATTACCARE_VOLDY", "target": "self"}
           ]
         }
       ],
       "reward": [
-        {"type": "win", "target": "hEroes"}
+        {"type": "VITTORIA", "target": "hEroes"}
       ]
     }
   ],
@@ -464,24 +463,24 @@
         {
           "type": "onActive",
           "effectToExecute": [
-            {"type": "addLocationToken", "qta": 1, "target": "location"}
+            {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "location"}
           ]
         },
         {
           "type": "onLocationTokenRemoved",
           "effectToExecute": [
-            {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+            {"type": "PERDERE_VITA", "qta": 1, "target": "allPlayer"}
           ]
         },
         {
           "type": "damageImmunityUntilVillainsDefeated",
           "effectToExecute": [
-            {"type": "cannotBeAssignedDamage", "qta": null, "target": "self"}
+            {"type": "NON_ATTACCARE_VOLDY", "qta": null, "target": "self"}
           ]
         }
       ],
       "reward": [
-        {"type": "win", "target": "hEroes"}
+        {"type": "VITTORIA", "target": "hEroes"}
       ]
     }
   ]

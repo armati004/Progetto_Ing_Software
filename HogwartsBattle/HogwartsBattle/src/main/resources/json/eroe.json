@@ -40,7 +40,7 @@
                 "type": "onControlRemove",
                 "attivato1Volta":false,
                 "effectToExecute":[
-                    {"type": "guadagnaAttacco", "qta": 1, "target": "selectPlayer", "targetCount": 1}
+                    {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "selectPlayer", "targetCount": 1}
                 ]
             }
         ]
@@ -57,7 +57,7 @@
                 "qta-quorum":4,
                 "attivato1Volta": false,
                 "effectToExecute":[
-                    {"type": "guadagnaInfluenza", "qta": 1, "target": "selectPlayer", "targetCount": 1}
+                    {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "selectPlayer", "targetCount": 1}
                 ]
             }
         ]
@@ -73,7 +73,7 @@
                 "type": "onGainHealth",
                 "attivato1Volta":false,
                 "effectToExecute": [
-                    {"type": "guadagnaVita", "qta": 1, "target": "currentPlayer"}
+                    {"type": "GUADAGNARE_VITA", "qta": 1, "target": "currentPlayer"}
                 ]
             }
         ]
@@ -89,7 +89,7 @@
                 "type": "onAttackAssigned",
                 "qta-quorum": 3,
                 "effectToExecute": [
-                    {"type": "guadagnaVita", "qta": 2, "target": "selectPlayer", "targetCount": 1}
+                    {"type": "GUADAGNARE_VITA", "qta": 2, "target": "selectPlayer", "targetCount": 1}
                 ]
             }
             ]
@@ -106,7 +106,7 @@
                 "type": "onControlRemove",
                 "attivato1Volta":false,
                 "effectToExecute":[
-                    {"type": "guadagnaAttacco", "qta": 1, "target": "selectPlayer", "targetCount": 2}
+                    {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "selectPlayer", "targetCount": 2}
                 ]
             }
         ]
@@ -123,7 +123,7 @@
                 "qta-quorum":4,
                 "attivato1Volta": false,
                 "effectToExecute":[
-                    {"type": "guadagnaInfluenza", "qta": 1, "target": "allPlayer"}
+                    {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "allPlayer"}
                 ]
             }
         ]
@@ -138,7 +138,7 @@
             {
                 "type": "onGainHealth",
                 "effectToExecute": [
-                    {"type": "guadagnaVita", "qta": 2, "target": "allPlayer"}
+                    {"type": "GUADAGNARE_VITA", "qta": 2, "target": "allPlayer"}
                 ]
             }
         ]
@@ -154,7 +154,7 @@
             "type": "onAttackAssigned",
             "qta-quorum": 3,
             "effectToExecute": [
-                {"type": "guadagnaVita", "qta": 2, "target": "allPlayer"}
+                {"type": "GUADAGNARE_VITA", "qta": 2, "target": "allPlayer"}
             ]
         }
         ]

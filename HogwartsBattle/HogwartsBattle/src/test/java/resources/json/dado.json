@@ -3,7 +3,7 @@
         {
             "nome": "Dado Serpeverde",
             "id": "dadoSerpeverde",
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Dadi/dadoSerpeverde.png",
             "triggers":[
                 {
                     "type": "onRoll",
@@ -13,32 +13,32 @@
                             "target": "currentPlayer",
                             "options":[
                                 {
-                                    "type": "pescaCarta",
+                                    "type": "PESCARE_CARTA",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "guadagnoVita",
+                                    "type": "GUADAGNARE_VITA",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "guadagnoInfluenza",
+                                    "type": "GUADAGNARE_INFLUENZA",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "guadagnoAttacco",
+                                    "type": "GUADAGNARE_ATTACCO",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "guadagnoAttacco",
+                                    "type": "GUADAGNARE_ATTACCO",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "guadagnoAttacco",
+                                    "type": "GUADAGNARE_ATTACCO",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 }
@@ -51,7 +51,7 @@
         {
             "nome": "Dado Corvonero",
             "id": "dadoCorvonero",
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Dadi/dadoCorvonero.png",
             "triggers":[
                 {
                     "type": "onRoll",
@@ -61,32 +61,32 @@
                             "target": "currentPlayer",
                             "options":[
                                 {
-                                    "type": "guadagnoVita",
+                                    "type": "GUADAGNARE_VITA",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "guadagnoInfluenza",
+                                    "type": "GUADAGNARE_INFLUENZA",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "guadagnoAttacco",
+                                    "type": "GUADAGNARE_ATTACCO",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "pescaCarta",
+                                    "type": "PESCARE_CARTA",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "pescaCarta",
+                                    "type": "PESCARE_CARTA",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "pescaCarta",
+                                    "type": "PESCARE_CARTA",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 }
@@ -99,7 +99,7 @@
         {
             "nome": "Dado Grifondoro",
             "id": "dadoGrifondoro",
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Dadi/dadoGrifondoro.png",
             "triggers":[
                 {
                     "type": "onRoll",
@@ -109,32 +109,32 @@
                             "target": "currentPlayer",
                             "options":[
                                 {
-                                    "type": "guadagnoInfluenza",
+                                    "type": "GUADAGNARE_INFLUENZA",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "pescaCarta",
+                                    "type": "PESCARE_CARTA",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "guadagnoAttacco",
+                                    "type": "GUADAGNARE_ATTACCO",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "guadagnoVita",
+                                    "type": "GUADAGNARE_VITA",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "guadagnoInfluenza",
+                                    "type": "GUADAGNARE_INFLUENZA",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "guadagnoInfluenza",
+                                    "type": "GUADAGNARE_INFLUENZA",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 }
@@ -147,7 +147,7 @@
         {
             "nome": "Dado Tassorosso",
             "id": "dadoTassorosso",
-            "path-img": "...",
+            "path-img": "../Immagini_carte/Dadi/dadoTassorosso.png",
             "triggers":[
                 {
                     "type": "onRoll",
@@ -157,32 +157,32 @@
                             "target": "currentPlayer",
                             "options":[
                                 {
-                                    "type": "guadagnoVita",
+                                    "type": "GUADAGNARE_VITA",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "guadagnoAttacco",
+                                    "type": "GUADAGNARE_ATTACCO",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "pescaCarta",
+                                    "type": "PESCARE_CARTA",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "guadagnoVita",
+                                    "type": "GUADAGNARE_VITA",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "guadagnoVita",
+                                    "type": "GUADAGNARE_VITA",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 },
                                 {
-                                    "type": "guadagnoInfluenza",
+                                    "type": "GUADAGNARE_INFLUENZA",
                                     "qta": 1,
                                     "target": "allPlayers"
                                 }

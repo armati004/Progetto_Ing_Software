@@ -8,8 +8,8 @@
             "costo": 3,
             "path-img": "../Immagini_carte/Negozio/Gioco1/Attrezzatura_da_quidditch.png",
             "effetti":[
-                {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
-                {"type": "guadagnoVita", "qta": 1, "target": "currentPlayer"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "currentPlayer"},
+                {"type": "GUADAGNARE_VITA", "qta": 1, "target": "currentPlayer"}
             ]
         },
         {
@@ -20,8 +20,8 @@
             "costo": 5,
             "path-img": "../Immagini_carte/Negozio/Gioco1/Boccino_d_oro.png",
             "effetti":[
-                {"type": "guadagnoInfluenza", "qta": 2, "target": "currentPlayer"},
-                {"type": "pescaCarta", "qta": 1 , "target": "currentPlayer"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "currentPlayer"},
+                {"type": "PESCARE_CARTA", "qta": 1 , "target": "currentPlayer"}
             ]
         },
         {
@@ -32,13 +32,13 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco1/Cappello_parlante.png",
             "effetti":[
-                {"type": "guadagnoInfluenza", "qta": 2, "target": "currentPlayer"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "currentPlayer"}
             ],
             "triggers":[
                 {
                     "type": "onAllyAcquire",
                     "effectToExecute":[
-                        {"type": "alleatoInMazzo", "target": "currentPlayer"}
+                        {"type": "ALLEATO_IN_MAZZO", "target": "currentPlayer"}
                     ]
                 }
             ]
@@ -51,7 +51,7 @@
             "costo": 2,
             "path-img": "../Immagini_carte/Negozio/Gioco1/Essenza_di_dittamo.png",
             "effetti":[
-                {"type": "guadagnoVita", "qta": 2 , "target": "selectPlayer", "targetCount": 1}
+                {"type": "GUADAGNARE_VITA", "qta": 2 , "target": "selectPlayer", "targetCount": 1}
             ]
         }
     ],
@@ -64,13 +64,13 @@
             "costo": 5,
             "path-img": "../Immagini_carte/Negozio/Gioco2/Nimbus_Duemilauno.png",
             "effetti":[
-                {"type": "guadagnoAttacco", "qta": 2, "target": "currentPlayer"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "currentPlayer"}
             ],
             "triggers":[
                 {
                     "type": "onVillainDefeat",
                     "effectToExecute":[
-                        {"type": "guadagnoInfluenza","qta":2, "target": "currentPlayer"}
+                        {"type": "GUADAGNARE_INFLUENZA","qta":2, "target": "currentPlayer"}
                     ]
                 }
             ]
@@ -83,7 +83,7 @@
             "costo": 3,
             "path-img": "../Immagini_carte/Negozio/Gioco2/Pozione_Polisucco.png",
             "effetti":[
-                {"type": "copiaAlleato", "target": "allyPlayed", "targetCount":1}
+                {"type": "COPIA_EFFETTO", "target": "allyPlayed", "targetCount":1}
             ]
         }
     ],
@@ -96,8 +96,8 @@
             "costo": 2,
             "path-img": "../Immagini_carte/Negozio/Gioco3/Burrobirra.png",
             "effetti":[
-                {"type": "guadagnoInfluenza", "qta": 1, "target": "selectPlayer", "targetCount":2},
-                {"type": "guadagnoVita", "qta":1, "target": "selectPlayer", "targetCount":2}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "selectPlayer", "targetCount":2},
+                {"type": "GUADAGNARE_VITA", "qta":1, "target": "selectPlayer", "targetCount":2}
             ]
         },
          {
@@ -108,15 +108,15 @@
             "costo": 2,
             "path-img": "../Immagini_carte/Negozio/Gioco3/Cioccorana.png",
             "effetti":[
-                {"type": "guadagnoInfluenza", "qta": 1, "target": "currentPlayer"},
-                {"type": "guadagnoVita", "qta": 1, "target":"currentPlayer"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "currentPlayer"},
+                {"type": "GUADAGNARE_VITA", "qta": 1, "target":"currentPlayer"}
             ],
             "triggers":[
                 {
                     "type": "onDiscardSelf",
                     "effectToExecute":[
-                        {"type": "guadagnoInfluenza", "qta":1, "target": "currentPlayer"},
-                        {"type": "guadagnoVita", "qta":1, "target": "currentPlayer"}
+                        {"type": "GUADAGNARE_INFLUENZA", "qta":1, "target": "currentPlayer"},
+                        {"type": "GUADAGNARE_VITA", "qta":1, "target": "currentPlayer"}
                     ]
                 }
             ]
@@ -129,13 +129,13 @@
             "costo": 5,
             "path-img":"../Immagini_carte/Negozio/Gioco3/Mappa_del_Malandrino.png",
             "effetti":[
-                {"type":"pescaCarta", "qta":2, "target":"currentPlayer"}
+                {"type":"PESCARE_CARTA", "qta":2, "target":"currentPlayer"}
             ],
             "triggers":[
                 {
                     "type":"onDiscardSelf",
                     "effectToExecute":[
-                        {"type":"pescaCarta", "qta":1, "target":"allPlayers"}
+                        {"type":"PESCARE_CARTA", "qta":1, "target":"allPlayers"}
                     ]
                 }
             ]
@@ -148,8 +148,8 @@
             "costo": 3,
             "path-img":"../Immagini_carte/Negozio/Gioco3/Sfera_di_Cristallo.png",
             "effetti":[
-                {"type":"pescaCarta", "qta":2, "target":"currentPlayer"},
-                {"type":"scartaCarta", "qta":1, "target":"currentPlayer"}
+                {"type":"PESCARE_CARTA", "qta":2, "target":"currentPlayer"},
+                {"type":"SCARTARE_CARTA", "qta":1, "target":"currentPlayer"}
             ]
         }
     ],
@@ -162,9 +162,9 @@
             "costo": 5,
             "path-img":"../Immagini_carte/Negozio/Gioco4/Coppa_tremaghi.png",
             "effetti":[
-                {"type":"guadagnoAttacco", "qta":1, "target":"currentPlayer"},
-                {"type":"guadagnoInfluenza", "qta":1, "target":"currentPlayer"},
-                {"type":"guadagnoVita", "qta":1, "target":"currentPlayer"} 
+                {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"currentPlayer"},
+                {"type":"GUADAGNARE_INFLUENZA", "qta":1, "target":"currentPlayer"},
+                {"type":"GUADAGNARE_VITA", "qta":1, "target":"currentPlayer"} 
             ]
         },
         {
@@ -175,8 +175,8 @@
             "costo": 5,
             "path-img":"../Immagini_carte/Negozio/Gioco4/Pensatoio.png",
             "effetti":[
-                {"type":"guadagnoInfluenza", "qta":1, "target":"selectPlayer", "targetCount":2},
-                {"type":"pescaCarta", "qta":1, "target":"selectPlayer", "targetCount":2} 
+                {"type":"GUADAGNARE_INFLUENZA", "qta":1, "target":"selectPlayer", "targetCount":2},
+                {"type":"PESCARE_CARTA", "qta":1, "target":"selectPlayer", "targetCount":2} 
             ]
         },
         {
@@ -191,10 +191,10 @@
                     "type": "SCELTA",
                     "target":"currentPlayer",
                     "opzioni":[
-                        {"type": "dadoTassorosso", "target": "currentPlayer"},
-                        {"type": "dadoGrifondoro", "target": "currentPlayer"},
-                        {"type": "dadoSerpeverde", "target": "currentPlayer"},
-                        {"type": "dadoCorvonero", "target": "currentPlayer"}
+                        {"type": "DADO_TASSOROSSO", "target": "currentPlayer"},
+                        {"type": "DADO_GRIFONDORO", "target": "currentPlayer"},
+                        {"type": "DADO_SERPEVERDE", "target": "currentPlayer"},
+                        {"type": "DADO_CORVONERO", "target": "currentPlayer"}
                     ]
                 }
             ]
@@ -209,7 +209,7 @@
             "costo": 4,
             "path-img":"../Immagini_carte/Negozio/Gioco5/GUFO.png",
             "effetti":[
-                {"type":"guadagnoInfluenza", "qta":2, "target":"currentPlayer"}
+                {"type":"GUADAGNARE_INFLUENZA", "qta":2, "target":"currentPlayer"}
             ],
             "triggers":[
                 {
@@ -217,8 +217,8 @@
                     "qta-quorum":2,
                     "attivato1Volta": false,
                     "effectToExecute":[
-                        {"type":"guadagnoAttacco", "qta":1, "target":"currentPlayer"},
-                        {"type":"guadagnoVita", "qta":1, "target":"currentPlayer"}
+                        {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"currentPlayer"},
+                        {"type":"GUADAGNARE_VITA", "qta":1, "target":"currentPlayer"}
                     ]
                 }
             ]
@@ -236,8 +236,8 @@
                 {
                     "type":"onEachSpellPlayed",
                     "effectToExecute":[
-                        {"type":"guadagnoAttacco", "qta":1, "target":"currentPlayer"},
-                        {"type":"guadagnoVita", "qta":1, "target":"currentPlayer"}
+                        {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"currentPlayer"},
+                        {"type":"GUADAGNARE_VITA", "qta":1, "target":"currentPlayer"}
                     ]
                 }
             ] 
@@ -250,8 +250,8 @@
             "costo":4,
             "path-img":"../Immagini_carte/Negozio/Gioco6/Bezoar.png",
             "effetti":[
-                {"type":"guadagnoVita", "qta":3, "target":"selectPlayer", "targetCount":1},
-                {"type":"pescaCarta", "qta":1, "target":"currentPlayer"}
+                {"type":"GUADAGNARE_VITA", "qta":3, "target":"selectPlayer", "targetCount":1},
+                {"type":"PESCARE_CARTA", "qta":1, "target":"currentPlayer"}
             ]
         },
         {
@@ -266,8 +266,8 @@
                     "type": "SCELTA",
                     "target":"currentPlayer",
                     "opzioni":[
-                        {"type": "rimuoviControllo", "qta": 1, "target":"location"},
-                        {"type": "rimuoviControllo", "qta": 2, "target":"location"}
+                        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target":"location"},
+                        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 2, "target":"location"}
                     ]
                 }
             ]
@@ -284,10 +284,10 @@
                     "type": "SCELTA_MULTIPLA",
                     "target":"currentPlayer",
                     "opzioni":[
-                        {"type": "guadagnoAttacco", "qta": 2, "target":"currentPlayer", "selected": false},
-                        {"type": "guadagnoInfluenza", "qta": 2, "target":"currentPlayer", "selected": false},
-                        {"type": "guadagnoVita", "qta": 2, "target":"currentPlayer", "selected": false},
-                        {"type": "pescaCarta", "qta": 2, "target":"currentPlayer", "selected": false}
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target":"currentPlayer", "selected": false},
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target":"currentPlayer", "selected": false},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"currentPlayer", "selected": false},
+                        {"type": "PESCARE_CARTA", "qta": 2, "target":"currentPlayer", "selected": false}
                     ]
                 }
             ]
@@ -300,15 +300,15 @@
             "costo":6,
             "path-img":"../Immagini_carte/Negozio/Gioco6/Pozioni_avanzate.png",
             "effetti":[
-                {"type":"guadagnoVita", "qta":2, "target":"allPlayers"}
+                {"type":"GUADAGNARE_VITA", "qta":2, "target":"allPlayers"}
             ],
             "triggers":[
                 {
                     "type":"onMaxHealth",
                     "target": "allPlayers",
                     "effectToExecute":[
-                        {"type":"guadagnoAttacco", "qta":1, "target":"currentPlayer"},
-                        {"type":"pescaCarta", "qta":1, "target":"currentPlayer"}
+                        {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"currentPlayer"},
+                        {"type":"PESCARE_CARTA", "qta":1, "target":"currentPlayer"}
                     ]
                 }
             ]
@@ -323,9 +323,9 @@
             "costo":7,
             "path-img":"../Immagini_carte/Negozio/Gioco7/Spada_di_Grifondoro.png",
             "effetti":[
-                {"type":"guadagnoAttacco", "qta":2, "target":"currentPlayer"},
-                {"type":"dadoGrifondoro", "target":"currentPlayer"},
-                {"type":"dadoGrifondoro", "target":"currentPlayer"}
+                {"type":"GUADAGNARE_ATTACCO", "qta":2, "target":"currentPlayer"},
+                {"type":"DADO_GRIFONDORO", "target":"currentPlayer"},
+                {"type":"DADO_GRIFONDORO", "target":"currentPlayer"}
             ]
         }
     ]
