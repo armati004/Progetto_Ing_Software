@@ -1,4 +1,4 @@
-package carte;
+package gestoreEffetti;
 
 import gioco.Giocatore;
 import gioco.StatoDiGioco;
@@ -7,7 +7,7 @@ public class EsecutoreEffetti {
 	public static void eseguiEffetto(Effetto effetto, StatoDiGioco stato, Giocatore giocatore) {
 		switch(effetto.getType()) {
 		case AGGIUNGERE_MARCHIO_NERO:
-			aggiungereMArchioNero();
+			aggiungereMarchioNero();
 			break;
 		case ALLEATO_IN_MAZZO:
 			break;
@@ -33,7 +33,7 @@ public class EsecutoreEffetti {
 			break;
 		case GUADAGNARE_ATTACCO:
 			break;
-		case GUADAGNARE_GETTONE:
+		case GUADAGNARE_INFLUENZA:
 			break;
 		case GUADAGNARE_VITA:
 			break;
@@ -75,13 +75,13 @@ public class EsecutoreEffetti {
 			break;
 		case SCARTA_ALLEATO:
 			break;
-		case SCARTA_GETTONI:
+		case SCARTA_INFLUENZA:
 			break;
 		case SCARTA_INCANTESIMO:
 			break;
 		case SCARTA_OGGETTO:
 			break;
-		case SCONTO_ACQUISTO:
+		case SCONTO_ACQUISTO_CASATA:
 			break;
 		case VITTORIA:
 			break;
@@ -91,10 +91,8 @@ public class EsecutoreEffetti {
 	public static void gestisciOpzioni(Effetto effetto, StatoDiGioco stato, Giocatore attivo) {
 		
 	}
-}
-
-// Lista di funzioni che vengono richiamate sopra
-
-void aggiungereMArchioNero () {
-	//...
+	private static void aggiungereMarchioNero() {
+		// TODO Auto-generated method stub
+		
+	}	
 }
