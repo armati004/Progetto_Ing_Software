@@ -8,13 +8,13 @@
             "path-img":"../Immagini_carte/Competenze/Artimanzia.png",
             "triggers":[
                 {
-                    "type": "onDiceRoll",
+                    "type": "DADO_TIRATO",
                     "effectToExecute":[
                         {"type": "RITIRA_DADO", "qta":1, "target": "currentPlayer"}
                     ]
                 },
                 {
-                    "type": "onDiceRollBuy",
+                    "type": "COSTO_MINORE_1",
                     "effectToExecute":[
                         {"type": "SCONTO_ACQUISTO_CASATA", "qta":1, "target": "currentPlayer"}
                     ]
@@ -29,13 +29,13 @@
             "path-img":"../Immagini_carte/Competenze/Cura_delle_creature_magiche.png",
             "triggers":[
                 {
-                    "type": "onTokenPlaced",
+                    "type": "ASSEGNA_SEGNALINO_CREATURE",
                     "effectToExecute":[
                         {"type": "GUADAGNARE_VITA", "qta":2, "target": "selectPlayer", "targetCount": 1}
                     ]
                 },
                 {
-                    "type": "onVillainDefeat",
+                    "type": "NEMICO_SCONFITTO",
                     "effectToExecute":[
                         {"type": "RIMUOVERE_MARCHIO_NERO", "qta":1, "target": "Location"}
                     ]
@@ -50,7 +50,7 @@
             "path-img":"../Immagini_carte/Competenze/Difesa_contro_le_arti_oscure.png",
             "triggers":[
                 {
-                    "type": "onDiscardEnemy",
+                    "type": "SCARTA_CARTA_MALUS",
                     "effectToExecute":[
                         {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"currentPlayer"},
                         {"type": "GUADAGNARE_VITA", "qta":1, "target": "currentPlayer"}
@@ -66,7 +66,7 @@
             "path-img":"../Immagini_carte/Competenze/Divinazione.png",
             "triggers":[
                 {
-                    "type": "onItemPlay",
+                    "type": "GIOCA_OGGETTO",
                     "effectToExecute":[
                         {"type":"GUARDA_CARTA_CIMA", "qta":1, "target":"currentPlayer"},
                         {
@@ -90,8 +90,8 @@
             "path-img":"../Immagini_carte/Competenze/Erbologia.png",
             "triggers":[
                 {
-                    "type": "onGainHealth",
-                    "qta-quorum": 3,
+                    "type": "GUADAGNA_VITA_QUORUM",
+                    "qtaQuorum": 3,
                     "attivato1Volta": false,
                     "effectToExecute":[
                         {"type":"PESCARE_CARTA", "qta":1, "target":"triggerPlayer"}
@@ -121,7 +121,7 @@
             "path-img":"../Immagini_carte/Competenze/Pozioni.png",
             "triggers":[
                 {
-                    "type": "onAllCategoryPlayed",
+                    "type": "GIOCA_TUTTO",
                     "attivato1Volta": false,
                     "effectToExecute":[
                         {"type": "GUADAGNARE_ATTACCO", "qta":1, "target": "selectPlayer", "targetCount":1},
@@ -138,7 +138,7 @@
             "path-img":"../Immagini_carte/Competenze/Storia_della_magia.png",
             "triggers":[
                 {
-                    "type": "onBuySpell",
+                    "type": "ACQUISTA_INCANTESIMO",
                     "attivato1Volta": false,
                     "effectToExecute":[
                         {"type": "GUADAGNARE_INFLUENZA", "qta":1, "target": "selectPlayer", "targetCount":1}
@@ -155,7 +155,7 @@
             "attivabile": true,
             "effetti":[
                 {"type": "SCARTA_OGGETTO", "qta":1, "target":"currentPlayer"},
-                {"type": "CERCA_CARTA_MAZZO", "qta":1, "qta-quorum": 5, "target":"currentPlayer"},
+                {"type": "CERCA_CARTA_MAZZO", "qta":1, "qtaQuorum": 5, "target":"currentPlayer"},
                 {"type": "MISCHIA_MAZZO", "target":"currentPlayer"}
             ],
             "commento": "da vedere come considerare un evento che è possibile attivare ogni volta per turno"
