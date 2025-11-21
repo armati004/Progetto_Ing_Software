@@ -157,6 +157,21 @@ public enum TipoTrigger {
 	 */
 	INIZIO_TURNO_GENERALE,
 	/**
+	 * Trigger della competenza cura delle creature magiche
+	 * quando assegni un segnalino attacco o un segnalino
+	 * influenza su una creatura
+	 */
+	ASSEGNA_SEGNALINO_CREATURE,
+	/**
+	 * Trigger quando si guadagna x vita (x indicato nel 
+	 * JSON come qtaQuorum)
+	 */
+	GUADAGNA_VITA_QUORUM,
+	/**
+	 * Trigger che si attiva quando si riceve danno
+	 */
+	RiCEVI_DANNO,
+	/**
 	 * Trigger quando si prova a guadagnare vita
 	 */
 	TENTA_GUADAGNA_VITA;

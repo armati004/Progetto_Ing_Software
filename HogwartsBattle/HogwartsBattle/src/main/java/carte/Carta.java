@@ -1,12 +1,14 @@
 package carte;
 
 import java.util.List;
-
 import com.google.gson.annotations.SerializedName;
 
 import gioco.Giocatore;
 import gioco.StatoDiGioco;
-import gestoreEffetti.*;
+import gestoreEffetti.DurataEffetto;
+import gestoreEffetti.Effetto;
+import gestoreEffetti.EsecutoreEffetti;
+import gestoreEffetti.Trigger;
 
 public class Carta {
 	private final String nome;
@@ -15,7 +17,6 @@ public class Carta {
 	private final String classe;
 	private final String descrizione;
 	private final int costo;
-	@SerializedName("path-img")
 	private final String pathImmagine;
 	private List<Effetto> effetti;
 	private List<Trigger> triggers;

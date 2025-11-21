@@ -37,10 +37,10 @@
         "path-img": "../Immagini_carte/Eroi/Gioco3/Harry3.png",
         "triggers":[
             {
-                "type": "onControlRemove",
+                "type": "RIMOZIONE_MARCHIO_NERO",
                 "attivato1Volta":false,
                 "effectToExecute":[
-                    {"type": "guadagnaAttacco", "qta": 1, "target": "selectPlayer", "qta-target": 1}
+                    {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "selectPlayer", "targetCount": 1}
                 ]
             }
         ]
@@ -53,11 +53,11 @@
         "path-img": "../Immagini_carte/Eroi/Gioco3/Hermione3.png",
         "triggers":[
             {
-                "type": "onSpellPlayed",
+                "type": "INCANTESIMI_GIOCATI",
                 "qta-quorum":4,
                 "attivato1Volta": false,
                 "effectToExecute":[
-                    {"type": "guadagnaInfluenza", "qta": 1, "target": "selectPlayer", "qta-target": 1}
+                    {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "selectPlayer", "targetCount": 1}
                 ]
             }
         ]
@@ -70,10 +70,10 @@
         "path-img": "../Immagini_carte/Eroi/Gioco3/Neville3.png",
         "triggers":[
             {
-                "type": "onGainHealth",
+                "type": "GUADAGNA_VITA",
                 "attivato1Volta":false,
                 "effectToExecute": [
-                    {"type": "guadagnaVita", "qta": 1, "target": "currentPlayer"}
+                    {"type": "GUADAGNARE_VITA", "qta": 1, "target": "currentPlayer"}
                 ]
             }
         ]
@@ -86,10 +86,10 @@
         "path-img": "../Immagini_carte/Eroi/Gioco3/Ron3.png",
         "triggers":[
             {
-                "type": "onAttackAssigned",
+                "type": "ATTACCHI_ASSEGNATI",
                 "qta-quorum": 3,
                 "effectToExecute": [
-                    {"type": "guadagnaVita", "qta": 2, "target": "selectPlayer", "qta-target": 1}
+                    {"type": "GUADAGNARE_VITA", "qta": 2, "target": "selectPlayer", "targetCount": 1}
                 ]
             }
             ]
@@ -103,10 +103,10 @@
         "path-img": "../Immagini_carte/Eroi/Gioco7/Harry7.png",
         "triggers":[
             {
-                "type": "onControlRemove",
+                "type": "RIMOZIONE_MARCHIO_NERO",
                 "attivato1Volta":false,
                 "effectToExecute":[
-                    {"type": "guadagnaAttacco", "qta": 1, "target": "selectPlayer", "qta-target": 2}
+                    {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "selectPlayer", "targetCount": 2}
                 ]
             }
         ]
@@ -119,11 +119,11 @@
         "path-img": "../Immagini_carte/Eroi/Gioco7/Hermione7.png",
         "triggers":[
             {
-                "type": "onSpellPlayed",
+                "type": "INCANTESIMI_GIOCATI",
                 "qta-quorum":4,
                 "attivato1Volta": false,
                 "effectToExecute":[
-                    {"type": "guadagnaInfluenza", "qta": 1, "target": "allPlayer"}
+                    {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "allPlayer"}
                 ]
             }
         ]
@@ -136,9 +136,9 @@
         "path-img": "../Immagini_carte/Eroi/Gioco7/Neville7.png",
         "triggers":[
             {
-                "type": "onGainHealth",
+                "type": "GUADAGNA_VITA",
                 "effectToExecute": [
-                    {"type": "guadagnaVita", "qta": 2, "target": "allPlayer"}
+                    {"type": "GUADAGNARE_VITA", "qta": 2, "target": "allPlayer"}
                 ]
             }
         ]
@@ -151,10 +151,10 @@
         "path-img": "../Immagini_carte/Eroi/Gioco7/Ron7.png",
         "triggers":[
         {
-            "type": "onAttackAssigned",
+            "type": "ATTACCHI_ASSEGNATI",
             "qta-quorum": 3,
             "effectToExecute": [
-                {"type": "guadagnaVita", "qta": 2, "target": "allPlayer"}
+                {"type": "GUADAGNARE_VITA", "qta": 2, "target": "allPlayer"}
             ]
         }
         ]
