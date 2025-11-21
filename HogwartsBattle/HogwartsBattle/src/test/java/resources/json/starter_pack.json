@@ -10,10 +10,10 @@
             "effetti":[
                 {
                     "type": "SCELTA",
-                    "target":"currentPlayer",
+                    "target":"EROE_ATTIVO",
                     "opzioni":[
-                        {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
-                        {"type": "guadagnoVita", "qta": 2, "target":"currentPlayer"}
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO"}
                     ]
                 }
             ]
@@ -26,13 +26,13 @@
             "costo": 0,
             "path-img": "../Immagini_carte/Starter_Pack/Harry/Firebolt.png",
             "effetti":[
-                {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"}
             ],
             "triggers":[
                 {
-                    "type": "onVillainDefeat",
+                    "type": "NEMICO_SCONFITTO",
                     "effectToExecute":[
-                        {"type": "guadagnaInfluenza", "qta": 1, "target": "currentPlayer"}
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO"}
                     ]
                 }
             ]
@@ -45,17 +45,17 @@
             "costo": 0,
             "path-img": "../Immagini_carte/Starter_Pack/Harry/Mantello_dell_invisibilita.png",
             "effetti":[
-                {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"}
             ],
             "triggers":[
                 {
-                    "type": "onTakeDamage",
+                    "type": "RICEVI_DANNO",
                     "condition": {
                         "sourceType": ["EventoArtiOscure", "Malvagio"],
                         "hasCardInHand": "Mantello0"
                     },
                     "effectToExecute":[
-                        {"type": "limitaDanno", "qta": 1, "target": "currentPlayer"}
+                        {"type": "LIMITARE_DANNO", "qta": 1, "target": "EROE_ATTIVO"}
                     ]
                 }
             ]
@@ -78,10 +78,10 @@
             "effetti":[
                 {
                     "type": "SCELTA",
-                    "target":"currentPlayer",
+                    "target":"EROE_ATTIVO",
                     "opzioni":[
-                        {"type": "guadagnaInfluenza", "qta": 2, "target": "currentPlayer"},
-                        {"type": "guadagnaInfluenza", "qta": 1, "target": "allHeroes"}
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO"},
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI"}
                     ]
                 }
             ]
@@ -94,13 +94,13 @@
             "costo": 0,
             "path-img": "../Immagini_carte/Starter_Pack/Hermione/Giratempo.png",
             "effetti":[
-                {"type": "guadagnaInfluenza", "qta": 1, "target": "currentPlayer"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO"}
             ],
             "triggers":[
                 {
-                    "type": "onSpellAcquired",
+                    "type": "ACQUISTA_INCANTESIMO",
                     "effectToExecute":[
-                        {"type": "mettiInCimaMazzo", "target": "currentPlayer"}
+                        {"type": "mettiInCimaMazzo", "target": "EROE_ATTIVO"}
                     ]
                 }
             ]
@@ -115,10 +115,10 @@
             "effetti":[
                 {
                     "type": "SCELTA",
-                    "target":"currentPlayer",
+                    "target":"EROE_ATTIVO",
                     "opzioni":[
-                        {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
-                        {"type": "guadagnoVita", "qta": 2, "target":"currentPlayer"}
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO"}
                     ]
                 }
             ]
@@ -138,10 +138,10 @@
             "effetti":[
                 {
                     "type": "SCELTA",
-                    "target":"currentPlayer",
+                    "target":"EROE_ATTIVO",
                     "opzioni":[
-                        {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
-                        {"type": "guadagnaVita", "qta": 2, "target":"selectPlayer", "qta-target": 1}
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_SCELTO", "qta-target": 1}
                     ]
                 }
             ]
@@ -156,10 +156,10 @@
             "effetti":[
                 {
                     "type": "SCELTA",
-                    "target":"currentPlayer",
+                    "target":"EROE_ATTIVO",
                     "opzioni":[
-                        {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
-                        {"type": "guadagnoVita", "qta": 2, "target":"currentPlayer"}
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO"}
                     ]
                 }
             ]
@@ -172,13 +172,13 @@
             "costo": 0,
             "path-img": "../Immagini_carte/Starter_Pack/Neville/Ricordella.png",
             "effetti":[
-                {"type": "guadagnaInfluenza", "qta": 1, "target": "currentPlayer"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO"}
             ],
             "triggers":[
                 {
-                    "type": "onDiscardSelf",
+                    "type": "AUTO_SCARTO",
                     "effectToExecute":[
-                        {"type": "guadagnaInfluenza", "qta": 2, "target": "currentPlayer"}
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO"}
                     ]
                 }
             ]
@@ -196,13 +196,13 @@
             "costo": 0,
             "path-img": "../Immagini_carte/Starter_Pack/Ron/Gelatine_tutti_gusti.png",
             "effetti":[
-                {"type": "guadagnaInfluenza", "qta": 1, "target": "currentPlayer"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO"}
             ],
             "triggers":[
                 {
-                    "type": "onAllyPlayed",
+                    "type": "GIOCA_ALLEATO",
                     "effectToExecute":[
-                        {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"}
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"}
                     ]
                 }
             ]
@@ -217,10 +217,10 @@
             "effetti":[
                 {
                     "type": "SCELTA",
-                    "target":"currentPlayer",
+                    "target":"EROE_ATTIVO",
                     "opzioni":[
-                        {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"},
-                        {"type": "guadagnoVita", "qta": 2, "target":"currentPlayer"}
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO"}
                     ]
                 }
             ]
@@ -233,13 +233,13 @@
             "costo": 0,
             "path-img": "../Immagini_carte/Starter_Pack/Ron/Tornado11.png",
             "effetti":[
-                {"type": "guadagnoAttacco", "qta": 1, "target": "currentPlayer"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"}
             ],
             "triggers":[
                 {
-                    "type": "onVillainDefeat",
+                    "type": "NEMICO_SCONFITTO",
                     "effectToExecute":[
-                        {"type": "guadagnaInfluenza", "qta": 1, "target": "currentPlayer"}
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO"}
                     ]
                 }
             ]

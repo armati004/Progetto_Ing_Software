@@ -11,14 +11,14 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco1/Draco_Malfoy.png",
       "triggers": [
         {
-          "type": "onLocationTokenAdded",
+          "type": "AGGIUNTA_MARCHIO_NERO",
           "effectToExecute": [
-            { "type": "loseLife", "qta": 2, "target": "activePlayer" }
+            { "type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO" }
           ]
         }
       ],
       "reward": [
-        { "type": "removeLocationToken", "qta": 1, "target": "location" }
+        { "type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO" }
       ]
     },
 
@@ -33,15 +33,15 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco1/Quirinus_Raptor.png",
       "triggers": [
         {
-          "type": "onActive",
+          "type": "EROE_ATTIVO",
           "effectToExecute": [
-            { "type": "loseLife", "qta": 1, "target": "activePlayer" }
+            { "type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO" }
           ]
         }
       ],
       "reward": [
-        { "type": "gainCoin", "qta": 1, "target": "allPlayer" },
-        { "type": "gainLife", "qta": 1, "target": "allPlayer" }
+        { "type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI" },
+        { "type": "GUADAGNARE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI" }
       ]
     },
 
@@ -56,15 +56,15 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco1/Tiger_Goyle.png",
       "triggers": [
         {
-          "type": "onForcedDiscard",
+          "type": "SCARTA_CARTA_MALUS",
           "cause": ["darkArtsEvent", "villainEffect"],
           "effectToExecute": [
-            { "type": "loseLife", "qta": 1, "target": "discardingHero" }
+            { "type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVANTE" }
           ]
         }
       ],
       "reward": [
-        { "type": "drawCard", "qta": 1, "target": "allPlayer" }
+        { "type": "PESCARE_CARTA", "qta": 1, "target": "TUTTI_GLI_EROI" }
       ]
     }
   ],
@@ -82,15 +82,15 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco2/Basilisco.png",
       "triggers": [
         {
-          "type": "onDrawExtraCardAttempt",
+          "type": "PESCA_CARTA_BONUS",
           "effectToExecute": [
-            {"type": "preventDrawExtraCards", "target": "allPlayer"}
+            {"type": "NON_PESCARE_CARTE", "target": "TUTTI_GLI_EROI"}
           ]
         }
       ],
       "reward": [
-        {"type": "drawCard", "qta": 1, "target": "allPlayer"},
-        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+        {"type": "PESCARE_CARTA", "qta": 1, "target": "TUTTI_GLI_EROI"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO"}
       ]
     },
 
@@ -105,15 +105,15 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco2/Lucius_Malfoy.png",
       "triggers": [
         {
-          "type": "onLocationTokenAdded",
+          "type": "AGGIUNTA_MARCHIO_NERO",
           "effectToExecute": [
-            {"type": "healVillains", "qta": 1, "target": "allVillains"}
+            {"type": "CURARE_MALVAGI", "qta": 1, "target": "TUTTI_I_MALVAGI"}
           ]
         }
       ],
       "reward": [
-        {"type": "gainCoin", "qta": 1, "target": "allPlayer"},
-        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO"}
       ]
     },
 
@@ -128,14 +128,14 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco2/Tom_Riddle.png",
       "triggers": [
         {
-          "type": "onAllyInHand",
+          "type": "ALLEATO_IN_MANO",
           "repeat": "perogni",
           "effectToExecute": [
             {
               "type": "chooseEffect",
               "options": [
-                {"type": "loseLife", "qta": 2, "target": "activePlayer"},
-                {"type": "discardCard", "qta": 1, "target": "activePlayer"}
+                {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO"},
+                {"type": "SCARTARE_CARTA", "qta": 1, "target": "EROE_ATTIVO"}
               ]
             }
           ]
@@ -145,8 +145,8 @@
         {
           "type": "chooseEffect",
           "options": [
-            {"type": "gainLife", "qta": 2, "target": "currentPlayer"},
-            {"type": "searchAllyDiscard", "qta": 1, "target": "allPalyer" }
+            {"type": "GUADAGNARE_VITA", "qta": 2, "target": "EROE_ATTIVO"},
+            {"type": "CERCA_ALLEATO", "qta": 1, "target": "TUTTI_GLI_EROI" }
           ]
         }
       ]
@@ -166,15 +166,15 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco3/Dissennatore.png",
       "triggers": [
         {
-          "type": "onActive",
+          "type": "EROE_ATTIVO",
           "effectToExecute": [
-            {"type": "loseLife", "qta": 2, "target": "activePlayer"}
+            {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO"}
           ]
         }
       ],
       "reward": [
-        {"type": "gainLife", "qta": 2, "target": "allPlayer"},
-        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+        {"type": "GUADAGNARE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO"}
       ]
     },
 
@@ -189,23 +189,23 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco3/Peter_Minus.png",
       "triggers": [
         {
-          "type": "onActive",
+          "type": "EROE_ATTIVO",
           "effectToExecute": [
-            {"type": "revealTopDeckCard", "target": "activePlayer"},
+            {"type": "RIVELA_CARTA", "target": "EROE_ATTIVO"},
             {
               "type": "ifCoinValueAtLeast",
               "qta": 1,
               "then": [
-                {"type": "discardCard", "qta": 1, "target": "activePlayer"},
-                {"type": "addLocationToken", "qta": 1, "target": "location"}
+                {"type": "SCARTARE_CARTA", "qta": 1, "target": "EROE_ATTIVO"},
+                {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO"}
               ]
             }
           ]
         }
       ],
       "reward": [
-        {"type": "searchDiscardSpellToHand", "target": "allPlayer"},
-        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+        {"type": "CERCA_INCANTESIMO", "target": "TUTTI_GLI_EROI"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO"}
       ]
     }
   ],
@@ -224,14 +224,14 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco4/Barty_Crouch_JR.png",
       "triggers": [
         {
-          "type": "onRemoveLocationTokenAttempt",
+          "type": "TENTA_RIMUOVI_MARCHIO_NERO",
           "effectToExecute": [
-            {"type": "preventRemoveLocationToken", "target": "allPlayer"}
+            {"type": "NON_RIMUOVERE_MARCHI", "target": "TUTTI_GLI_EROI"}
           ]
         }
       ],
       "reward": [
-        {"type": "removeLocationToken", "qta": 2, "target": "location"}
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 2, "target": "LUOGO"}
       ]
     },
 
@@ -246,15 +246,15 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco4/Mangiamorte4.png",
       "triggers": [
         {
-          "type": "onMorsmordreOrVillainRevealed",
+          "type": "RIVELA_MORSMORDRE_O_MALVAGIO",
           "effectToExecute": [
-            {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+            {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"}
           ]
         }
       ],
       "reward": [
-        {"type": "gainLife", "qta": 1, "target": "allPlayer"},
-        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+        {"type": "GUADAGNARE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO"}
       ]
     }
   ],
@@ -273,18 +273,16 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco5/Dolores_Umbridge.png",
       "triggers": [
         {
-          "type": "onAcquiredCard",
-          "condition": {
-            "minCost": 4
-          },
+          "type": "ACQUISTA_CARTA_UMBRIDGE",
+          "qtaQuorum": 4,
           "effectToExecute": [
-            {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+            {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"}
           ]
         }
       ],
       "reward": [
-        {"type": "gainCoin", "qta": 1, "target": "allPlayer"},
-        {"type": "gainLife", "qta": 2, "target": "allPlayer"}
+        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI"},
+        {"type": "GUADAGNARE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI"}
       ]
     },
 
@@ -299,23 +297,22 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco5/Lord_Voldemort5.png",
       "triggers": [
         {
-          "type": "onActive",
+          "type": "EROE_ATTIVO",
           "effectToExecute": [
-            {"type": "loseLife", "qta": 1, "target": "activePlayer"},
-            {"type": "discardCard", "qta": 1, "target": "activePlayer"}
+            {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO"},
+            {"type": "SCARTARE_CARTA", "qta": 1, "target": "EROE_ATTIVO"}
           ]
         },
         {
-          "type": "damageImmunityUntilVillainsDefeated",
+          "type": "ATTACCA_VOLDY",
           "effectToExecute": [
-            {"type": "cannotBeAssignedDamage", "target": "self"}
+            {"type": "NON_ATTACCARE_VOLDY", "target": "SE_STESSO"}
           ]
         }
       ],
       "reward": [
-        {"type": "win", "target": "hEroes"}
-      ],
-      "commenti": "da sistemare il reward"
+        {"type": "VITTORIA", "target": "TUTTI_GLI_EROI"}
+      ]
     },
 
     {
@@ -329,15 +326,15 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco5/Mangiamorte5.png",
       "triggers": [
         {
-          "type": "onMorsmordreOrVillainRevealed",
+          "type": "RIVELA_MORSMORDRE_O_MALVAGIO",
           "effectToExecute": [
-            {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+            {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"}
           ]
         }
       ],
       "reward": [
-        {"type": "gainLife", "qta": 1, "target": "allPlayer"},
-        {"type": "removeLocationToken", "qta": 1, "target": "location"}
+        {"type": "GUADAGNARE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO"}
       ]
     }
   ],
@@ -356,15 +353,15 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco6/Bellatrix_Lestrange.png",
       "triggers": [
         {
-          "type": "onTurnStart",
+          "type": "INIZIO_TURNO_GENERALE",
           "effectToExecute": [
-            {"type": "drawAdditionalDarkArtsEvent", "qta": 1, "target": "table"}
+            {"type": "RIVELA_NUOVO_EVENTO", "qta": 1}
           ]
         }
       ],
       "reward": [
-        {"type": "searchDiscardItemToHand", "target": "allPlayer"},
-        {"type": "removeLocationToken", "qta": 2, "target": "location"}
+        {"type": "CERCA_OGGETTO", "target": "TUTTI_GLI_EROI"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 2, "target": "LUOGO"}
       ]
     },
 
@@ -379,15 +376,15 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco6/Fenrir_Greyback.png",
       "triggers": [
         {
-          "type": "onGainLifeAttempt",
+          "type": "TENTA_GUADAGNA_VITA",
           "effectToExecute": [
-            {"type": "preventGainLife", "target": "allPlayer"}
+            {"type": "NON_GUADAGNARE_VITA", "target": "TUTTI_GLI_EROI"}
           ]
         }
       ],
       "reward": [
-        {"type": "gainLife", "qta": 3, "target": "allPlayer"},
-        {"type": "removeLocationToken", "qta": 2, "target": "location"}
+        {"type": "GUADAGNARE_VITA", "qta": 3, "target": "TUTTI_GLI_EROI"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 2, "target": "LUOGO"}
       ]
     },
 
@@ -400,50 +397,17 @@
       "costo": "0",
       "vita": "15",
       "path-img": "../Immagini_carte/Malvagi/Gioco6/Lord_Voldemort6.png",
-      "triggers": [
+      "effetti": [
+        {"type": "DADO_VOLDEMORT", "target": "currentEnemy"},
         {
-          "type": "onDiceRoll",
+          "type": "ATTACCA_VOLDY",
           "effectToExecute": [
-            {
-              "type": "switch",
-              "cases": [
-                {
-                  "result": "heart",
-                  "effects": [
-                    {"type": "loseLife", "qta": 1, "target": "allPlayer"}
-                  ]
-                },
-                {
-                  "result": "token",
-                  "effects": [
-                    {"type": "addLocationToken", "qta": 1, "target": "location"}
-                  ]
-                },
-                {
-                  "result": "heal",
-                  "effects": [
-                    {"type": "healVillains", "qta": 1, "target": "allVillains"}
-                  ]
-                },
-                {
-                  "result": "discard",
-                  "effects": [
-                    {"type": "discardCard", "qta": 1, "target": "allPlayer"}
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "damageImmunityUntilVillainsDefeated",
-          "effectToExecute": [
-            {"type": "cannotBeAssignedDamage", "target": "self"}
+            {"type": "NON_ATTACCARE_VOLDY", "target": "SE_STESSO"}
           ]
         }
       ],
       "reward": [
-        {"type": "win", "target": "hEroes"}
+        {"type": "VITTORIA", "target": "TUTTI_GLI_EROI"}
       ]
     }
   ],
@@ -462,26 +426,26 @@
       "path-img": "../Immagini_carte/Malvagi/Gioco7/Lord_Voldemort7.png",
       "triggers": [
         {
-          "type": "onActive",
+          "type": "INIZIO_TURNO_GENERALE",
           "effectToExecute": [
-            {"type": "addLocationToken", "qta": 1, "target": "location"}
+            {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO"}
           ]
         },
         {
-          "type": "onLocationTokenRemoved",
+          "type": "RIMOZIONE_MARCHIO_NERO",
           "effectToExecute": [
-            {"type": "loseLife", "qta": 1, "target": "allPlayer"}
+            {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"}
           ]
         },
         {
-          "type": "damageImmunityUntilVillainsDefeated",
+          "type": "ATTACCA_VOLDY",
           "effectToExecute": [
-            {"type": "cannotBeAssignedDamage", "qta": null, "target": "self"}
+            {"type": "NON_ATTACCARE_VOLDY", "qta": null, "target": "SE_STESSO"}
           ]
         }
       ],
       "reward": [
-        {"type": "win", "target": "hEroes"}
+        {"type": "VITTORIA", "target": "TUTTI_GLI_EROI"}
       ]
     }
   ]

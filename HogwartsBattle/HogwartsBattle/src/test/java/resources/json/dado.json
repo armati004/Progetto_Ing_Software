@@ -10,37 +10,37 @@
                     "effectToExecute":[
                         {
                             "type": "RANDOM",
-                            "target": "currentPlayer",
+                            "target": "EROE_ATTIVO",
                             "options":[
                                 {
                                     "type": "PESCARE_CARTA",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "GUADAGNARE_VITA",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "GUADAGNARE_INFLUENZA",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "GUADAGNARE_ATTACCO",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "GUADAGNARE_ATTACCO",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "GUADAGNARE_ATTACCO",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 }
                             ]
                         }
@@ -58,37 +58,37 @@
                     "effectToExecute":[
                         {
                             "type": "RANDOM",
-                            "target": "currentPlayer",
+                            "target": "EROE_ATTIVO",
                             "options":[
                                 {
                                     "type": "GUADAGNARE_VITA",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "GUADAGNARE_INFLUENZA",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "GUADAGNARE_ATTACCO",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "PESCARE_CARTA",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "PESCARE_CARTA",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "PESCARE_CARTA",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 }
                             ]
                         }
@@ -106,37 +106,37 @@
                     "effectToExecute":[
                         {
                             "type": "RANDOM",
-                            "target": "currentPlayer",
+                            "target": "EROE_ATTIVO",
                             "options":[
                                 {
                                     "type": "GUADAGNARE_INFLUENZA",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "PESCARE_CARTA",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "GUADAGNARE_ATTACCO",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "GUADAGNARE_VITA",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "GUADAGNARE_INFLUENZA",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "GUADAGNARE_INFLUENZA",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 }
                             ]
                         }
@@ -154,37 +154,37 @@
                     "effectToExecute":[
                         {
                             "type": "RANDOM",
-                            "target": "currentPlayer",
+                            "target": "EROE_ATTIVO",
                             "options":[
                                 {
                                     "type": "GUADAGNARE_VITA",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "GUADAGNARE_ATTACCO",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "PESCARE_CARTA",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "GUADAGNARE_VITA",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "GUADAGNARE_VITA",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 },
                                 {
                                     "type": "GUADAGNARE_INFLUENZA",
                                     "qta": 1,
-                                    "target": "allPlayers"
+                                    "target": "TUTTI_GLI_EROI"
                                 }
                             ]
                         }
