@@ -1,0 +1,196 @@
+{
+    "dadi":[
+        {
+            "nome": "Dado Serpeverde",
+            "id": "dadoSerpeverde",
+            "path-img": "../Immagini_carte/Dadi/dadoSerpeverde.png",
+            "triggers":[
+                {
+                    "type": "DADO_TIRATO",
+                    "effectToExecute":[
+                        {
+                            "type": "RANDOM",
+                            "target": "EROE_ATTIVO",
+                            "options":[
+                                {
+                                    "type": "PESCARE_CARTA",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "GUADAGNARE_VITA",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "GUADAGNARE_INFLUENZA",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "GUADAGNARE_ATTACCO",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "GUADAGNARE_ATTACCO",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "GUADAGNARE_ATTACCO",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Dado Corvonero",
+            "id": "dadoCorvonero",
+            "path-img": "../Immagini_carte/Dadi/dadoCorvonero.png",
+            "triggers":[
+                {
+                    "type": "DADO_TIRATO",
+                    "effectToExecute":[
+                        {
+                            "type": "RANDOM",
+                            "target": "EROE_ATTIVO",
+                            "options":[
+                                {
+                                    "type": "GUADAGNARE_VITA",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "GUADAGNARE_INFLUENZA",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "GUADAGNARE_ATTACCO",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "PESCARE_CARTA",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "PESCARE_CARTA",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "PESCARE_CARTA",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Dado Grifondoro",
+            "id": "dadoGrifondoro",
+            "path-img": "../Immagini_carte/Dadi/dadoGrifondoro.png",
+            "triggers":[
+                {
+                    "type": "DADO_TIRATO",
+                    "effectToExecute":[
+                        {
+                            "type": "RANDOM",
+                            "target": "EROE_ATTIVO",
+                            "options":[
+                                {
+                                    "type": "GUADAGNARE_INFLUENZA",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "PESCARE_CARTA",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "GUADAGNARE_ATTACCO",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "GUADAGNARE_VITA",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "GUADAGNARE_INFLUENZA",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "GUADAGNARE_INFLUENZA",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Dado Tassorosso",
+            "id": "dadoTassorosso",
+            "path-img": "../Immagini_carte/Dadi/dadoTassorosso.png",
+            "triggers":[
+                {
+                    "type": "DADO_TIRATO",
+                    "effectToExecute":[
+                        {
+                            "type": "RANDOM",
+                            "target": "EROE_ATTIVO",
+                            "options":[
+                                {
+                                    "type": "GUADAGNARE_VITA",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "GUADAGNARE_ATTACCO",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "PESCARE_CARTA",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "GUADAGNARE_VITA",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "GUADAGNARE_VITA",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                },
+                                {
+                                    "type": "GUADAGNARE_INFLUENZA",
+                                    "qta": 1,
+                                    "target": "TUTTI_GLI_EROI"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

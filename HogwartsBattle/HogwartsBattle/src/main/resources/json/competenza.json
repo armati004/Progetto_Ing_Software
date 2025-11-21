@@ -10,13 +10,13 @@
                 {
                     "type": "DADO_TIRATO",
                     "effectToExecute":[
-                        {"type": "RITIRA_DADO", "qta":1, "target": "currentPlayer"}
+                        {"type": "RITIRA_DADO", "qta":1, "target": "EROE_ATTIVO"}
                     ]
                 },
                 {
                     "type": "COSTO_MINORE_1",
                     "effectToExecute":[
-                        {"type": "SCONTO_ACQUISTO_CASATA", "qta":1, "target": "currentPlayer"}
+                        {"type": "SCONTO_ACQUISTO_CASATA", "qta":1, "target": "EROE_ATTIVO"}
                     ]
                 }
             ]
@@ -31,13 +31,13 @@
                 {
                     "type": "ASSEGNA_SEGNALINO_CREATURE",
                     "effectToExecute":[
-                        {"type": "GUADAGNARE_VITA", "qta":2, "target": "selectPlayer", "targetCount": 1}
+                        {"type": "GUADAGNARE_VITA", "qta":2, "target": "EROE_SCELTO", "targetCount": 1}
                     ]
                 },
                 {
                     "type": "NEMICO_SCONFITTO",
                     "effectToExecute":[
-                        {"type": "RIMUOVERE_MARCHIO_NERO", "qta":1, "target": "Location"}
+                        {"type": "RIMUOVERE_MARCHIO_NERO", "qta":1, "target": "LUOGO"}
                     ]
                 }
             ]
@@ -52,8 +52,8 @@
                 {
                     "type": "SCARTA_CARTA_MALUS",
                     "effectToExecute":[
-                        {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"currentPlayer"},
-                        {"type": "GUADAGNARE_VITA", "qta":1, "target": "currentPlayer"}
+                        {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"EROE_ATTIVO"},
+                        {"type": "GUADAGNARE_VITA", "qta":1, "target": "EROE_ATTIVO"}
                     ]
                 }
             ]
@@ -68,13 +68,13 @@
                 {
                     "type": "GIOCA_OGGETTO",
                     "effectToExecute":[
-                        {"type":"GUARDA_CARTA_CIMA", "qta":1, "target":"currentPlayer"},
+                        {"type":"GUARDA_CARTA_CIMA", "qta":1, "target":"EROE_ATTIVO"},
                         {
                             "type": "SCELTA",
-                            "target":"currentPlayer",
+                            "target":"EROE_ATTIVO",
                             "opzioni":[
-                                {"type": "LASCIA_CARTA_CIMA", "target": "currentPlayer"},
-                                {"type": "SCARTA_CARTA_CIMA", "qta": 1, "target":"allPlayers"}
+                                {"type": "LASCIA_CARTA_CIMA", "target": "EROE_ATTIVO"},
+                                {"type": "SCARTA_CARTA_CIMA", "qta": 1, "target":"TUTTI_GLI_EROI"}
                             ]
                         }
                         
@@ -94,7 +94,7 @@
                     "qtaQuorum": 3,
                     "attivato1Volta": false,
                     "effectToExecute":[
-                        {"type":"PESCARE_CARTA", "qta":1, "target":"triggerPlayer"}
+                        {"type":"PESCARE_CARTA", "qta":1, "target":"EROE_ATTIVANTE"}
                     ]
                 }
             ]
@@ -107,9 +107,9 @@
             "path-img":"../Immagini_carte/Competenze/Incanti.png",
             "attivabile": true,
             "effetti":[
-                {"type": "SCARTARE_CARTA", "qta":2, "target":"currentPlayer"},
-                {"type": "GUADAGNARE_INFLUENZA", "qta":1, "target": "allPlayers"},
-                {"type": "PESCARE_CARTA", "qta":1, "target":"allPlayers"}
+                {"type": "SCARTARE_CARTA", "qta":2, "target":"EROE_ATTIVO"},
+                {"type": "GUADAGNARE_INFLUENZA", "qta":1, "target": "TUTTI_GLI_EROI"},
+                {"type": "PESCARE_CARTA", "qta":1, "target":"TUTTI_GLI_EROI"}
             ],
             "commento": "da vedere come considerare un evento che è possibile attivare ogni volta per turno"
         },
@@ -124,8 +124,8 @@
                     "type": "GIOCA_TUTTO",
                     "attivato1Volta": false,
                     "effectToExecute":[
-                        {"type": "GUADAGNARE_ATTACCO", "qta":1, "target": "selectPlayer", "targetCount":1},
-                        {"type":"GUADAGNARE_VITA", "qta":1, "target":"selectPlayer", "targetCount":1}
+                        {"type": "GUADAGNARE_ATTACCO", "qta":1, "target": "EROE_SCELTO", "targetCount":1},
+                        {"type":"GUADAGNARE_VITA", "qta":1, "target":"EROE_SCELTO", "targetCount":1}
                     ]
                 }
             ]
@@ -141,7 +141,7 @@
                     "type": "ACQUISTA_INCANTESIMO",
                     "attivato1Volta": false,
                     "effectToExecute":[
-                        {"type": "GUADAGNARE_INFLUENZA", "qta":1, "target": "selectPlayer", "targetCount":1}
+                        {"type": "GUADAGNARE_INFLUENZA", "qta":1, "target": "EROE_SCELTO", "targetCount":1}
                     ]
                 }
             ]
@@ -154,9 +154,9 @@
             "path-img":"../Immagini_carte/Competenze/Trasfigurazione.png",
             "attivabile": true,
             "effetti":[
-                {"type": "SCARTA_OGGETTO", "qta":1, "target":"currentPlayer"},
-                {"type": "CERCA_CARTA_MAZZO", "qta":1, "qtaQuorum": 5, "target":"currentPlayer"},
-                {"type": "MISCHIA_MAZZO", "target":"currentPlayer"}
+                {"type": "SCARTA_OGGETTO", "qta":1, "target":"EROE_ATTIVO"},
+                {"type": "CERCA_CARTA_MAZZO", "qta":1, "qtaQuorum": 5, "target":"EROE_ATTIVO"},
+                {"type": "MISCHIA_MAZZO", "target":"EROE_ATTIVO"}
             ],
             "commento": "da vedere come considerare un evento che è possibile attivare ogni volta per turno"
         },
@@ -168,8 +168,8 @@
             "path-img":"../Immagini_carte/Competenze/Volo.png",
             "attivabile": true,
             "effetti":[
-                {"type": "SCARTA_INFLUENZA", "qta":5, "target":"currentPlayer"},
-                {"type": "RIMUOVERE_MARCHIO_NERO", "qta":1, "target":"Location"}
+                {"type": "SCARTA_INFLUENZA", "qta":5, "target":"EROE_ATTIVO"},
+                {"type": "RIMUOVERE_MARCHIO_NERO", "qta":1, "target":"LUOGO"}
             ],
             "commento": "da vedere come considerare un evento che è possibile attivare ogni volta per turno"
         }
