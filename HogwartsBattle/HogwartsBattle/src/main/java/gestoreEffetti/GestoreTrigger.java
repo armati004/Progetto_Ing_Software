@@ -1,9 +1,10 @@
-package carte;
+package gestoreEffetti;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
+import carte.Carta;
 
 import gioco.Giocatore;
 import gioco.StatoDiGioco;

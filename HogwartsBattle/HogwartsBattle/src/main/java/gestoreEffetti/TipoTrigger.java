@@ -1,4 +1,4 @@
-package carte;
+package gestoreEffetti;
 
 public enum TipoTrigger {
 	/**
@@ -167,6 +167,10 @@ public enum TipoTrigger {
 	 * JSON come qtaQuorum)
 	 */
 	GUADAGNA_VITA_QUORUM,
+	/**
+	 * Trigger che si attiva quando si riceve danno
+	 */
+	RiCEVI_DANNO,
 	/**
 	 * Trigger quando si prova a guadagnare vita
 	 */

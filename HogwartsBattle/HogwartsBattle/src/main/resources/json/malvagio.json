@@ -1,8 +1,8 @@
 {
   "gioco1": [
     {
-      "id": "dracoMalfoy1",
       "nome": "Draco Malfoy",
+      "id": "dracoMalfoy1",
       "class": "Malvagio",
       "Descrizione": "Ogni volta che viene aggiunto 1 Segnalino Controllo al Luogo, l'Eroe attivo perde 2 Punti Vita.",
       "Descrizione-ricompensa": "Rimuovi 1 Marchio Nero dalla locazione",
@@ -23,8 +23,8 @@
     },
 
     {
-      "id": "quiriusRaptor1",
       "nome": "Quirius Raptor",
+      "id": "quiriusRaptor1",
       "class": "Malvagio",
       "Descrizione": "L'Eroe attivo perde 1 Punto Vita",
       "Descrizione-ricompensa": "Tutti gli eroi guadagnano 1 Influenza e 1 Punto Vita",
@@ -46,8 +46,8 @@
     },
 
     {
-      "id": "tigerGoyle1",
       "nome": "Tiger & Goyle",
+      "id": "tigerGoyle1",
       "class": "Malvagio",
       "Descrizione": "ogni volta che un Evento Arti Oscure o un Malvagio, fa sì che un Eroe scarti una carta, allora l'Eroe perde anche 1 Punto Vita",
       "Descrizione-ricompensa": "Tutti gli eroi pescano una carta",
@@ -72,8 +72,8 @@
 
   "gioco 2": [
     {
-      "id": "basilisco2",
       "nome": "Basilisco",
+      "id": "basilisco2",
       "class": "Malvagio",
       "Descrizione": "Gli Eroi non possono pescare carte extra.\n(Peschi comunque 5 nuove carte alla fine del tuo turno)",
       "Descrizione-ricompensa": "Tutti gli eroi pescano una carta, rimuovi 1 marchio nero dalla locazione",
@@ -95,8 +95,8 @@
     },
 
     {
-      "id": "luciusMalfoy2",
       "nome": "Lucius Malfoy",
+      "id": "luciusMalfoy2",
       "class": "Malvagio",
       "Descrizione": "Ogni volta che viene aggiunto 1 Segnalino Controllo al Luogo, rimuovi 1 Segnalino attacco da tutti i cattivi",
       "Descrizione-ricompensa": "Tutti gli eroi guadagnano 1 influenza, rimuovi 1 Marchio Nero dalla locazione",
@@ -118,8 +118,8 @@
     },
 
     {
-      "id": "tomRiddle2",
       "nome": "Tom Riddle",
+      "id": "tomRiddle2",
       "class": "Malvagio",
       "Descrizione": "Per ogni Alleato in mano, l'Eroe attivo sceglie uno dei seguenti effetti:\n perdi 1 Punto Vita; o scarta una carta.",
       "Descrizione-ricompensa": "Tutti gli eroi scelgono uno: guadagnano 2 Punti Vita; oppure cercare un alleato nella propria pila degli scarti e metterlo nella propria mano",
@@ -156,8 +156,8 @@
 
   "gioco 3": [
     {
-      "id": "dissennatore3",
       "nome": "Dissennatore",
+      "id": "dissennatore3",
       "class": "Malvagio",
       "Descrizione": "L'Eroe attivo perde 2 Punti Vita.",
       "Descrizione-ricompensa": "Tutti gli eroi guadagnano 2 Punti Vita, rimuovi 1 Marchio Nero dalla locazione",
@@ -179,8 +179,8 @@
     },
 
     {
-      "id": "peterMinus3",
       "nome": "Peter Minus",
+      "id": "peterMinus3",
       "class": "Malvagio",
       "Descrizione": "L'Eroe attivo rivela la prima carta del suo mazzo: se il suo valore è almeno 1 Segnalino Influenza, scarta la carta e aggiungi 1 Segnalino Controllo al Luogo.",
       "Descrizione-ricompensa":"Tutti gli eroi possono cercare un incantesimo nella loro pila degli scarti e metterlo in mano,rimuovi 1 Marchio Nero dalla locazione",
@@ -214,8 +214,8 @@
 
   "gioco 4": [
     {
-      "id": "bartyCrouchJR4",
       "nome": "Barty Crouch JR",
+      "id": "bartyCrouchJR4",
       "class": "Malvagio",
       "Descrizione": "Gli Eroi non possono rimuovere Segnalini Controllo dal Luogo",
       "Descizione-ricompensa": "Rimuovi 2 Marchio Nero dalla locazione",
@@ -236,8 +236,8 @@
     },
 
     {
-      "id": "mangiamorte4",
       "nome": "Mangiamorte",
+      "id": "mangiamorte4",
       "class": "Malvagio",
       "Descrizione": "Ogni volta che Morsmordre! o un nuovo malvagio è rivelato, tutti gli Eroi perdono 1 Punto Vita",
       "Descizione-ricompensa": "Tutti gli eroi guadagnano 1 Punto Vita, rimuovi 1 Marchio Nero dalla locazione",
@@ -263,8 +263,8 @@
 
   "gioco 5": [
     {
-      "id": "doloresUmbridge5",
       "nome": "Dolores Umbridge",
+      "id": "doloresUmbridge5",
       "class": "Malvagio",
       "Descrizione": "Ogni volta che un Eroe acquista una carta con valore di 4 o più Segnalini Influenza, quell'Eroe perde 1 Punto Vita.",
       "Descrizione-ricompensa": "Tutti gli eroi guadagnano 1 Influenza e 2 Punti Vita",
@@ -287,8 +287,8 @@
     },
 
     {
-      "id": "lordVoldemort5",
       "nome": "Lord Voldemort",
+      "id": "lordVoldemort5",
       "class": "Malvagio",
       "Descrizione": "L'Eroe attivo perde 1 Punto Vita e scarta una carta.\nNon possono essere assegnati Segnalini Attacco su questa carta finché tutti gli altri Malvagi non sono sconfitti.",
       "Descrizione-ricompensa": "Gli eroi vincono",
@@ -316,8 +316,8 @@
     },
 
     {
-      "id": "mangiamorte5",
       "nome": "Mangiamorte",
+      "id": "mangiamorte5",
       "class": "Malvagio",
       "Descrizione": "Ogni volta che Morsmordre! o un nuovo malvagio è rivelato, tutti gli Eroi perdono 1 Punto Vita.",
       "Descrizione-ricompensa": "Tutti gli eroi guadagnano 1 Punto Vita, rimuovi 1 Marchio Nero dalla locazione",
@@ -343,8 +343,8 @@
 
   "gioco 6": [
     {
-      "id": "bellatrixLestrange6",
       "nome": "Bellatrix Lestrange",
+      "id": "bellatrixLestrange6",
       "class": "Malvagio",
       "Descrizione": "Rivela un Evento Arti Oscure aggiuntivo ogni turno.",
       "Descrizione-ricompensa": "Tutti gli eroi possono cercare un oggetto nella loro pila degli scarti e metterlo in mano, rimuovi 2 Marchio Nero dalla locazione",
@@ -366,8 +366,8 @@
     },
 
     {
-      "id": "fenrirGreyback6",
       "nome": "Fenrir Greyback",
+      "id": "fenrirGreyback6",
       "class": "Malvagio",
       "Descrizione": "Gli Eroi non possono guadagnare Punti Vita.",
       "Descrizione-ricompensa": "Tutti gli eroi guadagnano 3 Punti Vita, rimuovi 2 Marchio Nero dalla locazione",
@@ -389,8 +389,8 @@
     },
 
     {
-      "id": "lordVoldemort6",
       "nome": "Lord Voldemort",
+      "id": "lordVoldemort6",
       "class": "Malvagio",
       "Descrizione": "Lancia il dado Serpeverde:\nSe esce Segnalino Attacco: tutti gli Eroi perdono 1 Punto Vita;\nSe esce segnalino Influenza: aggiungi un Segnalino Controllo al Luogo;\nSe esce Punto Vita: rimuovi 1 Segnalino Attacco da tutti i Malvagi;Se esce Carta: tutti gli Eroi scartano una carta,\n non puoi mettere Segnalini Attacco su questa carta finché tutti i malvagi non sono sconfitti",
       "Descrizione-ricompensa": "Gli eroi vincono",
@@ -416,8 +416,8 @@
 
   "gioco 7": [
     {
-      "id": "lordVoldemort7",
       "nome": "Lord Voldemort",
+      "id": "lordVoldemort7",
       "class": "Malvagio",
       "Descrizione": "Aggiungi 1 Segnalino Controllo al Luogo.\nOgni volta che 1 Segnalino Controllo è rimosso dal Luogo, tutti gli Eroi perdono 1 Punto Vita.\nNon possono essere assegnati Segnalini Attacco su questa carta finché tutti gli altri Malvagi non sono sconfitti.",
       "Descrizione-ricompensa": "Gli eroi vincono",
