@@ -1,0 +1,237 @@
+{
+  "gioco1": [
+    {
+      "nome": "Diagon Alley",
+      "id": "diagon_alley_1",
+      "numero": 1,
+      "path-img": "../Immagini_carte/Luoghi/Gioco1/Diagon_Alley.jpg",
+      "nDarkEvents": 1,
+      "marchiNeriMax": 4,
+      "effettoEntrata": null
+    },
+    {
+      "nome": "Specchio delle Brame",
+      "id": "specchio_delle_brame_2",
+      "numero": 2,
+      "path-img": "../Immagini_carte/Luoghi/Gioco1/Specchio_delle_Brame.jpg",
+      "nDarkEvents": 1,
+      "marchiNeriMax": 4,
+      "effettoEntrata": null
+    }
+  ],
+  "gioco2": [
+    {
+      "nome": "Foresta Proibita",
+      "id": "foresta_proibita_1",
+      "numero": 1,
+      "path-img": "../Immagini_carte/Luoghi/Gioco2/Foresta_Proibita.jpg",
+      "nDarkEvents": 1,
+      "marchiNeriMax": 4,
+      "effettoEntrata": null
+    },
+    {
+      "nome": "Campo da Quidditch",
+      "id": "campo_da_quidditch_2",
+      "numero": 2,
+      "path-img": "../Immagini_carte/Luoghi/Gioco2/Campo_da_Quidditch.jpg",
+      "nDarkEvents": 1,
+      "marchiNeriMax": 4,
+      "effettoEntrata": null
+    },
+    {
+      "nome": "Camera dei Segreti",
+      "id": "camera_dei_segreti_3",
+      "numero": 3,
+      "path-img": "../Immagini_carte/Luoghi/Gioco2/Camera_dei_Segreti.jpg",
+      "nDarkEvents": null,
+      "marchiNeriMax": null,
+      "effettoEntrata": null
+    }
+  ],
+  "gioco3": [
+    {
+      "nome": "Espresso per Hogwarts",
+      "id": "espresso_per_hogwarts_1",
+      "numero": 1,
+      "path-img": "../Immagini_carte/Luoghi/Gioco3/Espresso_per_Hogwarts.jpg",
+      "nDarkEvents": 1,
+      "marchiNeriMax": 5,
+      "effettoEntrata": null
+    },
+    {
+      "nome": "Hogsmeade",
+      "id": "hogsmeade_2",
+      "numero": 2,
+      "path-img": "../Immagini_carte/Luoghi/Gioco3/Hogsmeade.jpg",
+      "nDarkEvents": 2,
+      "marchiNeriMax": 6,
+      "effettoEntrata": null
+    },
+    {
+      "nome": "Stamberga Strillante",
+      "id": "stamberga_strillante_3",
+      "numero": 3,
+      "path-img": "../Immagini_carte/Luoghi/Gioco3/Stamberga_Strillante.jpg",
+      "nDarkEvents": 2,
+      "marchiNeriMax": 6,
+      "effettoEntrata": null
+    }
+  ],
+  "gioco4": [
+    {
+      "nome": "Coppa del Mondo di Quidditch",
+      "id": "coppa_del_mondo_1",
+      "numero": 1,
+      "path-img": "../Immagini_carte/Luoghi/Gioco4/Coppa_del_Mondo_di_Quidditch.jpg",
+      "nDarkEvents": 1,
+      "marchiNeriMax": 6,
+      "effettoEntrata": null
+    },
+    {
+      "nome": "Torneo Tremaghi",
+      "id": "torneo_tremaghi_2",
+      "numero": 2,
+      "path-img": "../Immagini_carte/Luoghi/Gioco4/Torneo_Tremaghi.jpg",
+      "nDarkEvents": 2,
+      "marchiNeriMax": 6,
+      "effettoEntrata": null
+    },
+    {
+      "nome": "Cimitero",
+      "id": "cimitero_3",
+      "numero": 3,
+      "path-img": "../Immagini_carte/Luoghi/Gioco4/Cimitero.jpg",
+      "nDarkEvents": 2,
+      "marchiNeriMax": 7,
+      "effettoEntrata": {
+        "type": "allHeroesDiscard",
+        "targetCardType": "Ally"
+      }
+    }
+  ],
+  "gioco5": [
+    {
+      "nome": "Azkaban",
+      "id": "azkaban_1",
+      "numero": 1,
+      "path-img": "../Immagini_carte/Luoghi/Gioco5/Azkaban.jpg",
+      "nDarkEvents": 1,
+      "marchiNeriMax": 7,
+      "effettoEntrata": null
+    },
+    {
+      "nome": "Sala delle profezie",
+      "id": "sala_delle_profezie_2",
+      "numero": 2,
+      "path-img": "../Immagini_carte/Luoghi/Gioco5/Sala_delle_profezie.jpg",
+      "nDarkEvents": 2,
+      "marchiNeriMax": 7,
+      "effettoEntrata": null
+    },
+    {
+      "nome": "Ministero della Magia",
+      "id": "ministero_della_magia_3",
+      "numero": 3,
+      "path-img": "../Immagini_carte/Luoghi/Gioco5/Ministero_della_Magia.jpg",
+      "nDarkEvents": 2,
+      "marchiNeriMax": 7,
+      "effettoEntrata": {
+        "type": "allHeroesDiscard",
+        "targetCardType": "Spell"
+      }
+    }
+  ],
+  "gioco6": [
+    {
+      "nome": "Knockturn Alley",
+      "id": "knockturn_alley_1",
+      "numero": 1,
+      "path-img": "../Immagini_carte/Luoghi/Gioco6/Knockturn_Alley.jpg",
+      "nDarkEvents": 1,
+      "marchiNeriMax": 7,
+      "effettoEntrata": null
+    },
+    {
+      "nome": "La Tana",
+      "id": "la_tana_2",
+      "numero": 2,
+      "path-img": "../Immagini_carte/Luoghi/Gioco6/La_Tana.jpg",
+      "nDarkEvents": 2,
+      "marchiNeriMax": 7,
+      "effettoEntrata": null
+    },
+    {
+      "nome": "Torre di Astronomia",
+      "id": "torre_di_astronomia_3",
+      "numero": 3,
+      "path-img": "../Immagini_carte/Luoghi/Gioco6/Torre_di_Astronomia.jpg",
+      "nDarkEvents": 3,
+      "marchiNeriMax": 8,
+      "effettoEntrata": {
+        "type": "allHeroesDiscard",
+        "targetCardType": "Item"
+      }
+    }
+  ],
+  "gioco7": [
+    {
+      "nome": "Godric's Hollow",
+      "id": "godrics_hollow_1",
+      "numero": 1,
+      "path-img": "../Immagini_carte/Luoghi/Gioco7/Godrics_Hollow.jpg",
+      "nDarkEvents": 1,
+      "marchiNeriMax": 6,
+      "effettoEntrata": null
+    },
+    {
+      "nome": "Gringott",
+      "id": "gringott_2",
+      "numero": 2,
+      "path-img": "../Immagini_carte/Luoghi/Gioco7/Gringott.jpg",
+      "nDarkEvents": 2,
+      "marchiNeriMax": 6,
+      "effettoEntrata": null
+    },
+    {
+      "nome": "Stanza delle Necessità",
+      "id": "stanza_delle_necessita_3",
+      "numero": 3,
+      "path-img": "../Immagini_carte/Luoghi/Gioco7/Stanza_delle_Necessita.jpg",
+      "nDarkEvents": 2,
+      "marchiNeriMax": 7,
+      "effettoEntrata": null
+    },
+    {
+      "nome": "Castello di Hogwarts",
+      "id": "castello_di_hogwarts_4",
+      "numero": 4,
+      "path-img": "../Immagini_carte/Luoghi/Gioco7/Castello_di_Hogwarts.jpg",
+      "nDarkEvents": 3,
+      "marchiNeriMax": 8,
+      "effettoEntrata": {
+        "steps": [
+          {
+            "type": "allHeroesLoseLife",
+            "qta": 2
+          },
+          {
+            "type": "activeHeroOptional",
+            "choices": [
+              {
+                "cost": {
+                  "type": "discardAttacco",
+                  "qta": 5
+                },
+                "reward": {
+                  "type": "removeLocationToken",
+                  "qta": 1,
+                  "target": "location"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
