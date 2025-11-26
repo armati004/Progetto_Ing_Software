@@ -1,42 +1,22 @@
 package carte;
 
 import java.util.List;
+import gestoreEffetti.Effetto;
 import gestoreEffetti.Trigger;
-public class Eroe {
+import gioco.Giocatore;
+import gioco.StatoDiGioco;
 
-    private String nome;
-    private String id;
+public class Eroe extends Carta {
 
-    // "class" è una parola riservata in Java → uso un altro nome e @JsonProperty
-    @com.fasterxml.jackson.annotation.JsonProperty("class")
-    private String classe;
+    public Eroe(String nome, String id, String classe, String descrizione, int costo,
+                String pathImmagine, List<Effetto> effetti, List<Trigger> triggers) {
 
-    private String descrizione;
+        super(nome, id, classe, descrizione, costo, pathImmagine, effetti, triggers);
+    }
 
-    @com.fasterxml.jackson.annotation.JsonProperty("path-img")
-    private String pathImg;
-
-    private List<Trigger> triggers;
-
-    // Getter e Setter
-    public String getNome() { return nome; }
-    public void setNome(String nome) { this.nome = nome; }
-
-    public String getId() { return id; }
-    public void setId(String id) { this.id = id; }
-
-    public String getClasse() { return classe; }
-    public void setClasse(String classe) { this.classe = classe; }
-
-    public String getDescrizione() { return descrizione; }
-    public void setDescrizione(String descrizione) { this.descrizione = descrizione; }
-
-    public String getPathImg() { return pathImg; }
-    public void setPathImg(String pathImg) { this.pathImg = pathImg; }
-
-    public List<Trigger> getTriggers() { return triggers; }
-    public void setTriggers(List<Trigger> triggers) { this.triggers = triggers; }
+    @Override
+    public void applicaEffetto(StatoDiGioco stato, Giocatore attivo) {
+        // Eventuali regole speciali degli eroi
+        super.applicaEffetto(stato, attivo);
+    }
 }
-
-
-

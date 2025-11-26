@@ -1,0 +1,183 @@
+{
+  "gioco1": [
+    {
+      "nome": "Descendo",
+      "id": "Descendo1",
+      "class": "Incantesimo",
+      "path-img": "../Immagini_carte/Incantesimo/Gioco1/Descendo.png",
+      "effetti": [
+        { "type": "GainAttacco", "qta": 2, "target": "activePlayer" }
+      ]
+    },
+    {
+      "nome": "Incendio",
+      "id": "Incendio1",
+      "class": "Incantesimo",
+      "path-img": "../Immagini_carte/Incantesimo/Gioco1/Incendio.png",
+      "effetti": [
+        { "type": "GainAttacco", "qta": 1, "target": "activePlayer" },
+        { "type": "drawCard", "qta": 1, "target": "activePlayer" }
+      ]
+    },
+    {
+      "nome": "Lumos",
+      "id": "Lumos1",
+      "class": "Incantesimo",
+      "path-img": "../Immagini_carte/Incantesimo/Gioco1/Lumos.png",
+      "effetti": [
+        { "type": "drawCard", "qta": 1, "target": "allPlayer" }
+      ]
+    },
+    {
+      "nome": "Reparo",
+      "id": "Reparo1",
+      "class": "Incantesimo",
+      "path-img": "../Immagini_carte/Incantesimo/Gioco1/Reparo.png",
+      "effetti": [
+        {
+          "effectToExecute": [
+            {
+              "type": "switch",
+              "cases": [
+                {
+                  "result": "Gain",
+                  "effects": [
+                    { "type": "GainCoin", "qta": 2, "target": "activePlayer" }
+                  ]
+                },
+                {
+                  "result": "draw",
+                  "effects": [
+                    { "type": "drawCard", "qta": 1, "target": "activePlayer" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "Wingardium Leviosa",
+      "id": "Wingardium_Leviosa",
+      "class": "Incantesimo",
+      "path-img": "../Immagini_carte/Incantesimo/Gioco1/Wingardium_Leviosa.png",
+      "effetti": [
+        { "type": "GainCoin", "qta": 1, "target": "activePlayer" },
+        { "type": "acquireCardOnTopOfDeck", "target": "activePlayer" }
+      ]
+    }
+  ],
+  "gioco2": [
+    {
+      "nome": "Expellarmus",
+      "id": "Expellarmus2",
+      "class": "Incantesimo",
+      "path-img": "../Immagini_carte/Incantesimo/Gioco2/Expellarmus.png",
+      "effetti": [
+        { "type": "GainAttacco", "qta": 2, "target": "activePlayer" },
+        { "type": "drawCard", "qta": 1, "target": "activePlayer" }
+      ]
+    },
+    {
+      "nome": "Finite",
+      "id": "Finite2",
+      "class": "Incantesimo",
+      "path-img": "../Immagini_carte/Incantesimo/Gioco2/Finite2.png",
+      "effetti": [
+        { "type": "RemoveMarchioNero", "qta": 1, "target": "location" }
+      ]
+    }
+  ],
+  "gioco3": [
+    {
+      "nome": "Expecto patronum",
+      "id": "Expecto_patronum3",
+      "class": "Incantesimo",
+      "path-img": "../Immagini_carte/Incantesimo/Gioco3/Expecto_patronum.png",
+      "effetti": [
+        { "type": "GainAttacco", "qta": 1, "target": "activePlayer" },
+        { "type": "RemoveMarchioNero", "qta": 1, "target": "location" }
+      ]
+    },
+    {
+      "nome": "Petrificus Totalus",
+      "id": "Petrificus_Totalus3",
+      "class": "Incantesimo",
+      "path-img": "../Immagini_carte/Incantesimo/Gioco3/Petrificus_Totalus.png",
+      "effetti": [
+        {
+          "type": "chooseVillain",
+          "effectToExecute": [
+            {
+              "type": "suppressVillainAbilities",
+              "target": "chosenVillain",
+              "duration": "untilStartOfNextTurn"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "gioco4": [
+    {
+      "nome": "Accio",
+      "id": "Accio4",
+      "class": "Incantesimo",
+      "path-img": "../Immagini_carte/Incantesimo/Gioco4/Accio.png",
+      "effetti": [
+        {
+          "type": "chooseEffect",
+          "options": [
+            { "type": "gainCoin", "qta": 2, "target": "activePlayer" },
+            { "type": "searchDiscardPileForItem", "qta": 1, "target": "activePlayer" }
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "Protego",
+      "id": "Protego4",
+      "class": "Incantesimo",
+      "path-img": "../Immagini_carte/Incantesimo/Gioco4/Protego.png",
+      "effetti": [
+        { "type": "GainAttacco", "qta": 1, "target": "activePlayer" },
+        { "type": "gainLife", "qta": 1, "target": "activePlayer" }
+      ],
+      "triggers": [
+        {
+          "effectToExecute": [
+            { "type": "GainAttacco", "qta": 1, "target": "activePlayer" },
+            { "type": "gainLife", "qta": 1, "target": "activePlayer" }
+          ]
+        }
+      ]
+    }
+  ],
+  "gioco5": [],
+  "gioco6": [
+    {
+      "nome": "Confundus",
+      "id": "Confundus6",
+      "class": "Incantesimo",
+      "path-img": "../Immagini_carte/Incantesimo/Gioco6/Confundus.png",
+      "effetti": [
+        { "type": "GainAttacco", "qta": 1, "target": "activePlayer" }
+      ],
+      "triggers": [
+        {
+          "condition": {
+            "allVillainsHaveAtLeastTokens": {
+              "tokenType": "GainAttacco",
+              "minimum": 1
+            }
+          },
+          "effectToExecute": [
+            { "type": "removeLocationToken", "qta": 1, "target": "location" }
+          ]
+        }
+      ]
+    }
+  ],
+  "gioco7": []
+}

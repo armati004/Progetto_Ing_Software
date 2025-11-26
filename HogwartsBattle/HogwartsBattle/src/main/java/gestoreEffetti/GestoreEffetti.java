@@ -4,6 +4,7 @@ import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import carte.Carta;
 
 import carte.Carta;
 
