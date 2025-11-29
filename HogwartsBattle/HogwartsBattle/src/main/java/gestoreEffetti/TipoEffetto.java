@@ -1,10 +1,14 @@
-package carte;
+package gestoreEffetti;
 
 public enum TipoEffetto {
 	/**
 	 * Effetto che fa perdere una o più vite
 	 */
 	PERDERE_VITA, 
+	/**
+	 * Effetto che si attiva per limitare il danno subito
+	 */
+	LIMITARE_DANNO,
 	/**
 	 * Effetto che fa guadagnare una o più vite
 	 */
