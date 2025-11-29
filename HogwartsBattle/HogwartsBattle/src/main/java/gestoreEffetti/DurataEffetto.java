@@ -1,4 +1,4 @@
-package carte;
+package gestoreEffetti;
 
 public enum DurataEffetto {
 	ISTANTANEO, TEMPORANEO, CONTINUO, RIPETIBILE;
