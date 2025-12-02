@@ -485,7 +485,7 @@
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="__OzsEMJGEfCeZomnI-SNRA" id="(0.0,0.4)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="__OzsEcJGEfCeZomnI-SNRA" id="(1.0,0.5)"/>
     </edges>
-    <edges xmi:type="notation:Connector" xmi:id="_Bd72EMJHEfCeZomnI-SNRA" type="Association_Edge" source="_19lNwMJFEfCeZomnI-SNRA" target="_v-qYQMJFEfCeZomnI-SNRA">
+    <edges xmi:type="notation:Connector" xmi:id="_Bd72EMJHEfCeZomnI-SNRA" type="Association_Edge" source="_19lNwMJFEfCeZomnI-SNRA" target="_v-qYQMJFEfCeZomnI-SNRA" lineColor="255">
       <children xmi:type="notation:DecorationNode" xmi:id="_Bd72E8JHEfCeZomnI-SNRA" type="Association_NameLabel">
         <styles xmi:type="notation:BooleanValueStyle" xmi:id="_vCFwYMJHEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_Bd72FMJHEfCeZomnI-SNRA" x="-2" y="37"/>
@@ -500,7 +500,7 @@
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BeKfkMJHEfCeZomnI-SNRA" id="(0.0,0.4)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BeKfkcJHEfCeZomnI-SNRA" id="(0.9271523178807947,0.23333333333333334)"/>
     </edges>
-    <edges xmi:type="notation:Connector" xmi:id="_CajPUMJHEfCeZomnI-SNRA" type="Association_Edge" source="_19lNwMJFEfCeZomnI-SNRA" target="_5hSagMJEEfCeZomnI-SNRA">
+    <edges xmi:type="notation:Connector" xmi:id="_CajPUMJHEfCeZomnI-SNRA" type="Association_Edge" source="_19lNwMJFEfCeZomnI-SNRA" target="_5hSagMJEEfCeZomnI-SNRA" lineColor="255">
       <children xmi:type="notation:DecorationNode" xmi:id="_CajPU8JHEfCeZomnI-SNRA" type="Association_NameLabel">
         <styles xmi:type="notation:BooleanValueStyle" xmi:id="_pdrFkMJHEfCeZomnI-SNRA" name="IS_UPDATED_POSITION" booleanValue="true"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_CajPVMJHEfCeZomnI-SNRA" x="-1" y="38"/>
@@ -571,7 +571,7 @@
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbn48MJHEfCeZomnI-SNRA" id="(1.0,0.4)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbn48cJHEfCeZomnI-SNRA" id="(0.02857142857142857,0.6666666666666666)"/>
     </edges>
-    <edges xmi:type="notation:Connector" xmi:id="_xgUGUMJHEfCeZomnI-SNRA" type="Association_Edge" source="_19lNwMJFEfCeZomnI-SNRA" target="_sphWgMJHEfCeZomnI-SNRA">
+    <edges xmi:type="notation:Connector" xmi:id="_xgUGUMJHEfCeZomnI-SNRA" type="Association_Edge" source="_19lNwMJFEfCeZomnI-SNRA" target="_sphWgMJHEfCeZomnI-SNRA" lineColor="255">
       <children xmi:type="notation:DecorationNode" xmi:id="_xgUGU8JHEfCeZomnI-SNRA" type="Association_NameLabel">
         <layoutConstraint xmi:type="notation:Location" xmi:id="_xgUGVMJHEfCeZomnI-SNRA" y="40"/>
       </children>
@@ -675,7 +675,7 @@
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_TnHzkMJIEfCeZomnI-SNRA" id="(0.8571428571428571,0.15)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_TnHzkcJIEfCeZomnI-SNRA" id="(0.2857142857142857,0.95)"/>
     </edges>
-    <edges xmi:type="notation:Connector" xmi:id="_VEZC0MJIEfCeZomnI-SNRA" type="Extend_Edge" source="_m1ydUMJHEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA">
+    <edges xmi:type="notation:Connector" xmi:id="_VEZC0MJIEfCeZomnI-SNRA" type="Extend_Edge" source="_m1ydUMJHEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA" lineColor="16711680">
       <children xmi:type="notation:DecorationNode" xmi:id="_VEZC08JIEfCeZomnI-SNRA" type="Extend_KeywordLabel">
         <layoutConstraint xmi:type="notation:Location" xmi:id="_VEZC1MJIEfCeZomnI-SNRA" y="20"/>
       </children>
@@ -852,7 +852,7 @@
       <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_GKnVsMJJEfCeZomnI-SNRA" id="(1.0,0.4)"/>
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_GKnVscJJEfCeZomnI-SNRA" id="(0.02702702702702703,0.3333333333333333)"/>
     </edges>
-    <edges xmi:type="notation:Connector" xmi:id="_LfyDkMJJEfCeZomnI-SNRA" type="Extend_Edge" source="_VcG0sMJHEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA">
+    <edges xmi:type="notation:Connector" xmi:id="_LfyDkMJJEfCeZomnI-SNRA" type="Extend_Edge" source="_VcG0sMJHEfCeZomnI-SNRA" target="_69X-AMJEEfCeZomnI-SNRA" lineColor="16711680">
       <children xmi:type="notation:DecorationNode" xmi:id="_LfyDk8JJEfCeZomnI-SNRA" type="Extend_KeywordLabel">
         <layoutConstraint xmi:type="notation:Location" xmi:id="_LfyDlMJJEfCeZomnI-SNRA" y="20"/>
       </children>
@@ -920,7 +920,7 @@
   <notation:Diagram xmi:id="_E8RzwMIcEfCeZomnI-SNRA" type="PapyrusUMLStateMachineDiagram" name="State Machine Diagram" measurementUnit="Pixel">
     <children xmi:type="notation:Shape" xmi:id="_E8RzwcIcEfCeZomnI-SNRA" type="StateMachine_Shape">
       <children xmi:type="notation:DecorationNode" xmi:id="_E8RzwsIcEfCeZomnI-SNRA" type="StateMachine_NameLabel">
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E8Rzw8IcEfCeZomnI-SNRA" width="1881" height="22"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E8Rzw8IcEfCeZomnI-SNRA" width="1881" height="21"/>
       </children>
       <children xmi:type="notation:BasicCompartment" xmi:id="_E8RzxMIcEfCeZomnI-SNRA" type="StateMachine_RegionCompartment">
         <children xmi:type="notation:Shape" xmi:id="_E8RzxcIcEfCeZomnI-SNRA" type="Region_Shape">
@@ -928,60 +928,6 @@
             <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_E8Rzx8IcEfCeZomnI-SNRA" key="RegionZoneKey" value=""/>
           </eAnnotations>
           <children xmi:type="notation:BasicCompartment" xmi:id="_E8RzyMIcEfCeZomnI-SNRA" type="Region_SubvertexCompartment">
-            <children xmi:type="notation:Shape" xmi:id="_LP9csMI6EfCeZomnI-SNRA" type="State_Shape">
-              <children xmi:type="notation:DecorationNode" xmi:id="_LP-DwMI6EfCeZomnI-SNRA" type="State_NameLabel">
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_L7bbkMI6EfCeZomnI-SNRA" width="861" height="22"/>
-              </children>
-              <children xmi:type="notation:DecorationNode" xmi:id="_LP-DwcI6EfCeZomnI-SNRA" type="State_FloatingNameLabel">
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_LP-DwsI6EfCeZomnI-SNRA" x="40"/>
-              </children>
-              <children xmi:type="notation:BasicCompartment" xmi:id="_LP-Dw8I6EfCeZomnI-SNRA" type="State_RegionCompartment">
-                <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kj0GkMI6EfCeZomnI-SNRA" source="PapyrusCSSForceValue">
-                  <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_kj0GkcI6EfCeZomnI-SNRA" key="visible" value="true"/>
-                </eAnnotations>
-                <children xmi:type="notation:Shape" xmi:id="_kj0toMI6EfCeZomnI-SNRA" type="Region_Shape">
-                  <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_kj0tpMI6EfCeZomnI-SNRA" source="RegionAnnotationKey">
-                    <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_kj1UsMI6EfCeZomnI-SNRA" key="RegionZoneKey" value=""/>
-                  </eAnnotations>
-                  <children xmi:type="notation:BasicCompartment" xmi:id="_kj0tosI6EfCeZomnI-SNRA" type="Region_SubvertexCompartment">
-                    <children xmi:type="notation:Shape" xmi:id="_J2G-wMJDEfCeZomnI-SNRA" type="State_Shape">
-                      <children xmi:type="notation:DecorationNode" xmi:id="_J2G-wsJDEfCeZomnI-SNRA" type="State_NameLabel">
-                        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ldo9QMJDEfCeZomnI-SNRA" width="241"/>
-                      </children>
-                      <children xmi:type="notation:DecorationNode" xmi:id="_J2G-w8JDEfCeZomnI-SNRA" type="State_FloatingNameLabel">
-                        <layoutConstraint xmi:type="notation:Location" xmi:id="_J2G-xMJDEfCeZomnI-SNRA" x="40"/>
-                      </children>
-                      <children xmi:type="notation:BasicCompartment" xmi:id="_J2G-xcJDEfCeZomnI-SNRA" type="State_RegionCompartment">
-                        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J2G-xsJDEfCeZomnI-SNRA" y="-1" width="241"/>
-                      </children>
-                      <children xmi:type="notation:BasicCompartment" xmi:id="_J2cV8MJDEfCeZomnI-SNRA" type="compartment_shape_display">
-                        <styles xmi:type="notation:TitleStyle" xmi:id="_J2cV8cJDEfCeZomnI-SNRA"/>
-                        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J2cV8sJDEfCeZomnI-SNRA"/>
-                      </children>
-                      <children xmi:type="notation:Shape" xmi:id="_UNaw0MJDEfCeZomnI-SNRA" type="Behavior_DoActivityBehaviorLabel">
-                        <layoutConstraint xmi:type="notation:Location" xmi:id="_UNaw0cJDEfCeZomnI-SNRA" x="-10" y="-10"/>
-                      </children>
-                      <children xmi:type="notation:Shape" xmi:id="_a_0RsMJDEfCeZomnI-SNRA" type="Behavior_EntryBehaviorLabel">
-                        <element xmi:type="uml:Activity" href="Diagrammi_Hogwarts_Battle.uml#_Y_FJAMJDEfCeZomnI-SNRA"/>
-                        <layoutConstraint xmi:type="notation:Location" xmi:id="_a_0RscJDEfCeZomnI-SNRA" x="-10" y="-10"/>
-                      </children>
-                      <children xmi:type="notation:Shape" xmi:id="_l3yg0MJDEfCeZomnI-SNRA" type="Behavior_DoActivityBehaviorLabel">
-                        <element xmi:type="uml:Activity" href="Diagrammi_Hogwarts_Battle.uml#_j9_toMJDEfCeZomnI-SNRA"/>
-                        <layoutConstraint xmi:type="notation:Location" xmi:id="_l3yg0cJDEfCeZomnI-SNRA" x="-10" y="-10"/>
-                      </children>
-                      <element xmi:type="uml:State" href="Diagrammi_Hogwarts_Battle.uml#_J2CtUMJDEfCeZomnI-SNRA"/>
-                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J2G-wcJDEfCeZomnI-SNRA" x="39" y="28" width="241" height="81"/>
-                    </children>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kj0to8I6EfCeZomnI-SNRA"/>
-                  </children>
-                  <element xmi:type="uml:Region" href="Diagrammi_Hogwarts_Battle.uml#_kj0GksI6EfCeZomnI-SNRA"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kj0tocI6EfCeZomnI-SNRA" width="861" height="469"/>
-                </children>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LP-DxMI6EfCeZomnI-SNRA" y="22" width="861" height="469"/>
-              </children>
-              <element xmi:type="uml:State" href="Diagrammi_Hogwarts_Battle.uml#_LP050MI6EfCeZomnI-SNRA"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LP9cscI6EfCeZomnI-SNRA" x="59" y="48" width="861" height="491"/>
-            </children>
             <children xmi:type="notation:Shape" xmi:id="_BovKIMJCEfCeZomnI-SNRA" type="Pseudostate_InitialShape">
               <children xmi:type="notation:DecorationNode" xmi:id="_BovxMMJCEfCeZomnI-SNRA" type="Pseudostate_InitialFloatingNameLabel">
                 <layoutConstraint xmi:type="notation:Location" xmi:id="_BovxMcJCEfCeZomnI-SNRA" x="25" y="3"/>
@@ -990,14 +936,27 @@
                 <layoutConstraint xmi:type="notation:Location" xmi:id="_BovxM8JCEfCeZomnI-SNRA" x="25" y="-10"/>
               </children>
               <element xmi:type="uml:Pseudostate" href="Diagrammi_Hogwarts_Battle.uml#_BorfwMJCEfCeZomnI-SNRA"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BovKIcJCEfCeZomnI-SNRA" x="9" y="168"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BovKIcJCEfCeZomnI-SNRA" x="19" y="59"/>
+            </children>
+            <children xmi:type="notation:Shape" xmi:id="__wrzEMbFEfCVnq1tkQ-fUA" type="State_Shape">
+              <children xmi:type="notation:DecorationNode" xmi:id="__wtoQMbFEfCVnq1tkQ-fUA" type="State_NameLabel">
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Aits8MbGEfCVnq1tkQ-fUA" width="161"/>
+              </children>
+              <children xmi:type="notation:DecorationNode" xmi:id="__wtoQcbFEfCVnq1tkQ-fUA" type="State_FloatingNameLabel">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="__wtoQsbFEfCVnq1tkQ-fUA" x="40"/>
+              </children>
+              <children xmi:type="notation:BasicCompartment" xmi:id="__wtoQ8bFEfCVnq1tkQ-fUA" type="State_RegionCompartment">
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="__wtoRMbFEfCVnq1tkQ-fUA" y="-1" width="161"/>
+              </children>
+              <element xmi:type="uml:State" href="Diagrammi_Hogwarts_Battle.uml#__wSKcMbFEfCVnq1tkQ-fUA"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="__wrzEcbFEfCVnq1tkQ-fUA" x="119" y="39" width="161" height="81"/>
             </children>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E8RzycIcEfCeZomnI-SNRA"/>
           </children>
           <element xmi:type="uml:Region" href="Diagrammi_Hogwarts_Battle.uml#_E8P-kMIcEfCeZomnI-SNRA"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E8RzysIcEfCeZomnI-SNRA" width="1881" height="839"/>
         </children>
-        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E8Rzy8IcEfCeZomnI-SNRA" y="22" width="1881" height="839"/>
+        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E8Rzy8IcEfCeZomnI-SNRA" y="21" width="1881" height="840"/>
       </children>
       <children xmi:type="notation:BasicCompartment" xmi:id="_bPPqEMIdEfCeZomnI-SNRA" type="compartment_shape_display">
         <styles xmi:type="notation:TitleStyle" xmi:id="_bPPqEcIdEfCeZomnI-SNRA"/>

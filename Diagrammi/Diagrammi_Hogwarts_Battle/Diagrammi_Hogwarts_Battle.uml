@@ -7,15 +7,8 @@
   <packagedElement xmi:type="uml:Interaction" xmi:id="_E729AMIcEfCeZomnI-SNRA" name="Interaction2"/>
   <packagedElement xmi:type="uml:StateMachine" xmi:id="_E8GNkMIcEfCeZomnI-SNRA" name="Hogwarts Battle">
     <region xmi:type="uml:Region" xmi:id="_E8P-kMIcEfCeZomnI-SNRA" name="Region1">
-      <subvertex xmi:type="uml:State" xmi:id="_LP050MI6EfCeZomnI-SNRA" name="Gioco 1">
-        <region xmi:type="uml:Region" xmi:id="_kj0GksI6EfCeZomnI-SNRA" name="Region1">
-          <subvertex xmi:type="uml:State" xmi:id="_J2CtUMJDEfCeZomnI-SNRA" name="Arti Oscure">
-            <doActivity xmi:type="uml:Activity" xmi:id="_j9_toMJDEfCeZomnI-SNRA" name="Applica effetto arti oscure"/>
-            <entry xmi:type="uml:Activity" xmi:id="_Y_FJAMJDEfCeZomnI-SNRA" name="Rivela evento arti oscure"/>
-          </subvertex>
-        </region>
-      </subvertex>
       <subvertex xmi:type="uml:Pseudostate" xmi:id="_BorfwMJCEfCeZomnI-SNRA" name=""/>
+      <subvertex xmi:type="uml:State" xmi:id="__wSKcMbFEfCVnq1tkQ-fUA" name="Menù principale"/>
     </region>
   </packagedElement>
   <packagedElement xmi:type="uml:Activity" xmi:id="_E8VeIMIcEfCeZomnI-SNRA" name="Activity4"/>

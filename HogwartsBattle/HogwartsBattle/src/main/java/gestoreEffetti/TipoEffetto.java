@@ -1,4 +1,4 @@
-package carte;
+package gestoreEffetti;
 
 public enum TipoEffetto {
 	/**
@@ -203,6 +203,7 @@ public enum TipoEffetto {
 	/**
 	 * Mischia il mazzo
 	 */
-	MISCHIA_MAZZO;
+	MISCHIA_MAZZO, 
+	SCELTA_MULTIPLA;
 
 }

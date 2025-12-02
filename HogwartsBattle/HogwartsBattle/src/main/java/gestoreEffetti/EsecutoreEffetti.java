@@ -45,6 +45,8 @@ public class EsecutoreEffetti {
 			break;
 		case SCELTA:
 			break;
+		case SCELTA_MULTIPLA:
+			break;
 		case ACQUISTO_CARTA:
 			break;
 		case NON_GUADAGNARE_ATTACCHI:
