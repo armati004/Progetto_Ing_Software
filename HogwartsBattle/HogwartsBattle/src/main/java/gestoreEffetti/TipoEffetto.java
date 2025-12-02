@@ -6,6 +6,10 @@ public enum TipoEffetto {
 	 */
 	PERDERE_VITA, 
 	/**
+	 * Effetto che si attiva per limitare il danno subito
+	 */
+	LIMITARE_DANNO,
+	/**
 	 * Effetto che fa guadagnare una o più vite
 	 */
 	GUADAGNARE_VITA, 
