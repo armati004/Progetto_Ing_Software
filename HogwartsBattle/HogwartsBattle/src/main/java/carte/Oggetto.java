@@ -27,7 +27,7 @@ public class Oggetto extends Carta {
 
         for (Effetto e : getEffetti()) {
 
-            if (e.getType() == TipoEffetto.SCELTA || e.getType() == BersaglioEffetto.SCELTA_MULTIPLA) { // da inserire il file con le scelte multiple  
+            if (e.getType() == TipoEffetto.SCELTA || e.getTarget() == BersaglioEffetto.SCELTA_MULTIPLA) { // da inserire il file con le scelte multiple  
                 gestisciScelta(e, stato, attivo);
             } else {
                 EsecutoreEffetti.eseguiEffetto(e, stato, attivo);
