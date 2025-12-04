@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.Set;
 import carte.Carta;
 
+import carte.Carta;
+
 public class GestoreEffetti {
 	private final Map<TipoEffetto, Set<Carta>> effettiAttivi = new EnumMap<>(TipoEffetto.class);
 	private final Set<Carta> carteTemporanee = new HashSet<>();
