@@ -47,7 +47,6 @@
       "effetti": [
         {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"},
         {"type": "BLOCCO_PESCA_EXTRA", "qta": 1, "target": "TUTTI_GLI_EROI"},
-        {"type": "PESCARE_CARTA", "qta": 5, "target": "EROE_ATTIVO"}
       ],
       "triggers": []
     }
