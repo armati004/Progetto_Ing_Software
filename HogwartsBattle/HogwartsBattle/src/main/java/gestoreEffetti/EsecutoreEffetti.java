@@ -1,5 +1,7 @@
 package gestoreEffetti;
 
+import carte.Alleato;
+import carte.Carta;
 import gioco.Giocatore;
 import gioco.StatoDiGioco;
 
@@ -7,11 +9,12 @@ public class EsecutoreEffetti {
 	public static void eseguiEffetto(Effetto effetto, StatoDiGioco stato, Giocatore giocatore) {
 		switch(effetto.getType()) {
 		case AGGIUNGERE_MARCHIO_NERO:
-			aggiungereMarchioNero();
+			aggiungereMarchioNero(effetto, stato, giocatore);
 			break;
 		case ALLEATO_IN_MAZZO:
 			break;
 		case ALLEATO_IN_MANO:
+			verificaAlleatoInMano(effetto, stato, giocatore);
 			break;
 		case CERCA_ALLEATO:
 			break;
@@ -93,8 +96,25 @@ public class EsecutoreEffetti {
 	public static void gestisciOpzioni(Effetto effetto, StatoDiGioco stato, Giocatore attivo) {
 		
 	}
-	private static void aggiungereMarchioNero() {
-		// TODO Auto-generated method stub
+	
+	public static void aggiungereMarchioNero(Effetto effetto, StatoDiGioco stato, Giocatore attivo) {
 		
 	}	
+	
+	public static void verificaAlleatoInMano(Effetto effetto, StatoDiGioco stato, Giocatore attivo) {
+		int contatore = 0;
+		
+		for(Carta c : attivo.getMano()) {
+			if(c instanceof Alleato) {
+				contatore++;
+			}
+		}
+		
+		if(contatore > 0) {
+			
+		}
+		else {
+			return;
+		}
+	}
 }

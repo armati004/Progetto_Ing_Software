@@ -6,7 +6,7 @@ import gestoreEffetti.Trigger;
 
 public class ArteOscura extends Carta {
 
-    public CartaArteOscure(
+    public ArteOscura(
         String nome,
         String id,
         String classe,

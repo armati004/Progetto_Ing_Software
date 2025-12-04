@@ -1,5 +1,8 @@
 package gioco;
 
+import java.util.List;
+
+import carte.Carta;
 import carte.Eroe;
 import carte.Mazzo;
 
@@ -9,6 +12,7 @@ public class Giocatore {
     private final int saluteMax = 10;
     private Mazzo mazzo;
     private Mazzo scarti;
+    private List<Carta> mano;
     private int gettone;
     private int attacco;
 	
@@ -34,6 +38,12 @@ public class Giocatore {
 	}
 	public Mazzo getScarti() {
 		return scarti;
+	}
+	public List<Carta> getMano() {
+		return mano;
+	}
+	public void setMano(List<Carta> mano) {
+		this.mano = mano;
 	}
 	public int getGettone() {
 		return gettone;
