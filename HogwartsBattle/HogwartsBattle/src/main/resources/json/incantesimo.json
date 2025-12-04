@@ -41,10 +41,11 @@
       "costo": 3,
       "pathImmagine": "../Immagini_carte/Incantesimo/Gioco1/Reparo.png",
       "effetti": [{
-        "type": "SCELTA_SWITCH",
-        "cases": [
-          {"result": "monete", "effects": [{"type": "GUADAGNARE_MONETE", "qta": 2, "target": "EROE_ATTIVO"}]},
-          {"result": "pesca", "effects": [{"type": "PESCARE_CARTA", "qta": 1, "target": "EROE_ATTIVO"}]}
+        "type": "SCELTA",
+        "target": "EROE_ATTIVO",
+        "opzioni": [
+          {"type": "GUADAGNARE_MONETE", "qta": 2, "target": "EROE_ATTIVO"},
+          {"type": "PESCARE_CARTA", "qta": 1, "target": "EROE_ATTIVO"}
         ]
       }],
       "triggers": []
@@ -106,15 +107,16 @@
       "nome": "Petrificus Totalus",
       "id": "Petrificus_Totalus3",
       "class": "Incantesimo",
-      "descrizione": "Guadagni 1 attacco, Scegli malvagio: blocca sue abilità fino all'inizio del prossimo turno.",
+      "descrizione": "Guadagni 1 attacco. Scegli malvagio: blocca sue abilità fino all'inizio del prossimo turno.",
       "costo": 6,
       "pathImmagine": "../Immagini_carte/Incantesimo/Gioco3/Petrificus_Totalus.png",
       "effetti": [
-		{"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"},
-		{
-        "type": "SCEGLI_MALVAGIO",
-        "effects": [{"type": "BLOCCA_ABILITA_MALVAGIO", "target": "MALVAGIO_SCELTO", "durata": "FINO_INIZIO_PROSSIMO_TURNO"}]
-      }],
+        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"},
+        {
+          "type": "SCEGLI_MALVAGIO",
+          "effects": [{"type": "BLOCCA_ABILITA_MALVAGIO", "target": "MALVAGIO_SCELTO", "durata": "FINO_INIZIO_PROSSIMO_TURNO"}]
+        }
+      ],
       "triggers": []
     }
   ],
@@ -127,10 +129,11 @@
       "costo": 4,
       "pathImmagine": "../Immagini_carte/Incantesimo/Gioco4/Accio.png",
       "effetti": [{
-        "type": "SCELTA_SWITCH",
-        "cases": [
-          {"result": "monete", "effects": [{"type": "GUADAGNARE_MONETE", "qta": 2, "target": "EROE_ATTIVO"}]},
-          {"result": "oggetto", "effects": [{"type": "CERCA_OGGETTO_PILA_SCARTI", "qta": 1, "target": "EROE_ATTIVO"}]}
+        "type": "SCELTA",
+        "target": "EROE_ATTIVO",
+        "opzioni": [
+          {"type": "GUADAGNARE_MONETE", "qta": 2, "target": "EROE_ATTIVO"},
+          {"type": "CERCA_OGGETTO_PILA_SCARTI", "qta": 1, "target": "EROE_ATTIVO"}
         ]
       }],
       "triggers": []
