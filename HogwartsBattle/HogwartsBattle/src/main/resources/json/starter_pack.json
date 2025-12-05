@@ -69,7 +69,7 @@
 		  "pathImmagine": "../Immagini_carte/Starter_Pack/Harry/Alohomora_Harry.png",
 		  "effetti": [{"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}],
 		  "triggers": []
-		},
+		}
     ],
     "Hermione":[
 		{
