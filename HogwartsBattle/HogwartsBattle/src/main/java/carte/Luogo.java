@@ -27,7 +27,7 @@ public class Luogo extends Carta {
         int numero,
         int nDarkEvents,
         int marchiNeriMax,
-        Object effettoEntrata
+        Effetto effettoEntrata
     ) {
         super(nome, id, classe, descrizione, costo, pathImmagine, effetti, triggers);
         this.numero = numero;
