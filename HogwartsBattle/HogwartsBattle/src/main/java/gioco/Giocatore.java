@@ -7,7 +7,7 @@ import carte.Eroe;
 import carte.Mazzo;
 
 public class Giocatore {
-    private Eroe eroe;
+    private Eroe  eroe;
     private int salute;
     private final int saluteMax = 10;
     private Mazzo mazzo;
@@ -57,6 +57,8 @@ public class Giocatore {
 	public void setAttacco(int attacco) {
 		this.attacco = attacco;
 	}
-    
+	public int danneggia(int attacco) {
+		this.attacco = attacco;
+	}   
     
 }
