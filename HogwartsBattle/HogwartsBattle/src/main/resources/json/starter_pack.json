@@ -12,8 +12,8 @@
                     "type": "SCELTA",
                     "target":"EROE_ATTIVO",
                     "opzioni":[
-                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"},
-                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO"}
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO","durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -32,7 +32,7 @@
                 {
                     "type": "NEMICO_SCONFITTO",
                     "effectToExecute":[
-                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO"}
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -45,7 +45,7 @@
             "costo": 0,
             "path-img": "../Immagini_carte/Starter_Pack/Harry/Mantello_dell_invisibilita.png",
             "effetti":[
-                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
             ],
             "triggers":[
                 {
@@ -80,8 +80,8 @@
                     "type": "SCELTA",
                     "target":"EROE_ATTIVO",
                     "opzioni":[
-                        {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO"},
-                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI"}
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO", "durata":"ISTANTANEO"},
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata":"ISTANTANEO"}
                     ]
                 }
             ]
@@ -94,7 +94,7 @@
             "costo": 0,
             "path-img": "../Immagini_carte/Starter_Pack/Hermione/Giratempo.png",
             "effetti":[
-                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
             ],
             "triggers":[
                 {
@@ -117,8 +117,8 @@
                     "type": "SCELTA",
                     "target":"EROE_ATTIVO",
                     "opzioni":[
-                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"},
-                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO"}
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -140,8 +140,8 @@
                     "type": "SCELTA",
                     "target":"EROE_ATTIVO",
                     "opzioni":[
-                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"},
-                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_SCELTO", "qta-target": 1}
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_SCELTO", "qta-target": 1, "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -158,8 +158,8 @@
                     "type": "SCELTA",
                     "target":"EROE_ATTIVO",
                     "opzioni":[
-                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"},
-                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO"}
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -172,7 +172,7 @@
             "costo": 0,
             "path-img": "../Immagini_carte/Starter_Pack/Neville/Ricordella.png",
             "effetti":[
-                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
             ],
             "triggers":[
                 {
@@ -196,7 +196,7 @@
             "costo": 0,
             "path-img": "../Immagini_carte/Starter_Pack/Ron/Gelatine_tutti_gusti.png",
             "effetti":[
-                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
             ],
             "triggers":[
                 {
@@ -219,8 +219,8 @@
                     "type": "SCELTA",
                     "target":"EROE_ATTIVO",
                     "opzioni":[
-                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"},
-                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO"}
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -233,7 +233,7 @@
             "costo": 0,
             "path-img": "../Immagini_carte/Starter_Pack/Ron/Tornado11.png",
             "effetti":[
-                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
             ],
             "triggers":[
                 {

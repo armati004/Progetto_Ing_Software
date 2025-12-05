@@ -8,10 +8,10 @@
             "costo": 8,
             "path-img": "../Immagini_carte/Negozio/Gioco1/Albus_Silente.png",
             "effetti":[
-                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "TUTTI_GLI_EROI"},
-                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI"},
-                {"type": "GUADAGNARE_VITA", "qta":1, "target": "TUTTI_GLI_EROI"},
-                {"type": "PESCARE_CARTA", "qta": 1 , "target": "TUTTI_GLI_EROI"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_VITA", "qta":1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+                {"type": "PESCARE_CARTA", "qta": 1 , "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
             ]
         },
         {
@@ -22,7 +22,7 @@
             "costo": 3,
             "path-img": "../Immagini_carte/Negozio/Gioco1/Oliver_Baston.png",
             "effetti":[
-                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
             ],
             "triggers":[
                 {
@@ -41,8 +41,8 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco1/Rubeus_Hagrid.png",
             "effetti":[
-                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"},
-                {"type": "GUADAGNARE_VITA", "qta":1, "target": "TUTTI_GLI_EROI"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_VITA", "qta":1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
             ]
         }
     ],
@@ -55,7 +55,7 @@
             "costo": 6,
             "path-img": "../Immagini_carte/Negozio/Gioco2/Arthur_Weasley.png",
             "effetti":[
-                {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "TUTTI_GLI_EROI"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
             ]
         },
         {
@@ -66,8 +66,8 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco2/Dobby_l_Elfo_Domestico.png",
             "effetti":[
-                {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO"},
-                {"type": "PESCARE_CARTA", "qta": 1, "target":"EROE_ATTIVO"}
+                {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"},
+                {"type": "PESCARE_CARTA", "qta": 1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
             ]
         },
         {
@@ -82,8 +82,8 @@
                     "type": "SCELTA",
                     "target":"EROE_ATTIVO",
                     "opzioni":[
-                        {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "EROE_ATTIVO"},
-                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"TUTTI_GLI_EROI"}
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -96,8 +96,8 @@
             "costo": 2,
             "path-img": "../Immagini_carte/Negozio/Gioco2/Gilderoy_Allock.png",
             "effetti":[
-                {"type": "PESCARE_CARTA", "qta": 1, "target": "EROE_ATTIVO"},
-                {"type": "SCARTARE_CARTA", "qta": 1, "target":"EROE_ATTIVO"}
+                {"type": "PESCARE_CARTA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "SCARTARE_CARTA", "qta": 1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
             ],
             "triggers":[
                 {
@@ -116,8 +116,8 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco2/Ginny_Weasley.png",
             "effetti":[
-                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"},
-                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target":"EROE_ATTIVO"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
             ]
         },
         {
@@ -128,8 +128,8 @@
             "costo": 6,
             "path-img": "../Immagini_carte/Negozio/Gioco2/Molly_Weasley.png",
             "effetti":[
-                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI"},
-                {"type": "GUADAGNARE_VITA", "qta": 2, "target":"TUTTI_GLI_EROI"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_VITA", "qta": 2, "target":"TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
             ]
         }
     ],
@@ -142,8 +142,8 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco3/Remus_Lupin.png",
             "effetti":[
-                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"},
-                {"type": "GUADAGNARE_VITA", "qta": 3, "target":"EROE_SCELTO", "targetCount":1}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_VITA", "qta": 3, "target":"EROE_SCELTO", "targetCount":1, "durata": "ISTANTANEO"}
             ]
         },
         {
@@ -154,8 +154,8 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco3/Sibilla_Cooman.png",
             "effetti":[
-                {"type": "PESCARE_CARTA", "qta": 2, "target": "EROE_ATTIVO"},
-                {"type": "SCARTARE_CARTA", "qta": 1, "target":"EROE_ATTIVO"}
+                {"type": "PESCARE_CARTA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "SCARTARE_CARTA", "qta": 1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
             ],
             "triggers":[
                 {
@@ -174,8 +174,8 @@
             "costo": 6,
             "path-img": "../Immagini_carte/Negozio/Gioco3/Sirius_Black.png",
             "effetti":[
-                {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "EROE_ATTIVO"},
-                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target":"EROE_ATTIVO"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
             ]
         }
     ],
@@ -188,8 +188,8 @@
             "costo": 6,
             "path-img": "../Immagini_carte/Negozio/Gioco4/Alastor_Moody.png",
             "effetti":[
-                {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO"},
-                {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target":"LUOGO"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target":"LUOGO", "durata": "ISTANTANEO"}
             ]
         },
         {
@@ -200,8 +200,8 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco4/Cedric_Diggory.png",
             "effetti":[
-                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"},
-                {"type": "DADO_TASSOROSSO", "target":"EROE_ATTIVO"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "DADO_TASSOROSSO", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
             ]
         },        
         {
@@ -212,9 +212,9 @@
             "costo": 6,
             "path-img": "../Immagini_carte/Negozio/Gioco4/Filius_Vitious.png",
             "effetti":[
-                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO"},
-                {"type": "PESCARE_CARTA", "qta":1, "target":"EROE_ATTIVO"},
-                {"type": "DADO_CORVONERO", "target":"EROE_ATTIVO"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "PESCARE_CARTA", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "DADO_CORVONERO", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
             ]
         },
         {
@@ -225,7 +225,7 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco4/Fleur_Delacour.png",
             "effetti":[
-                {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
             ],
             "triggers":[
                 {
@@ -244,9 +244,9 @@
             "costo": 6,
             "path-img": "../Immagini_carte/Negozio/Gioco4/Minerva_McGranitt.png",
             "effetti":[
-                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO"},
-                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target":"EROE_ATTIVO"},
-                {"type": "DADO_GRIFONDORO", "target":"EROE_ATTIVO"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "DADO_GRIFONDORO", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
             ]
         },
         {
@@ -257,9 +257,9 @@
             "costo": 6,
             "path-img": "../Immagini_carte/Negozio/Gioco4/Pomona_Sprite.png",
             "effetti":[
-                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO"},
-                {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_SCELTO", "targetCount": 1},
-                {"type": "DADO_TASSOROSSO", "target":"EROE_ATTIVO"}
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_SCELTO", "targetCount": 1, "durata": "ISTANTANEO"},
+                {"type": "DADO_TASSOROSSO", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
             ]
         },
         {
@@ -270,7 +270,7 @@
             "costo": 5,
             "path-img": "../Immagini_carte/Negozio/Gioco4/Viktor_Krum.png",
             "effetti":[
-                {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "EROE_ATTIVO"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
             ],
             "triggers":[
                 {
@@ -292,9 +292,9 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco5/Cho_Chang.png",
             "effetti":[
-                {"type": "PESCARE_CARTA", "qta": 3, "target": "EROE_ATTIVO"},
-                {"type": "SCARTARE_CARTA", "qta": 2, "target":"EROE_ATTIVO"},
-                {"type": "DADO_CORVONERO", "target":"EROE_ATTIVO"}
+                {"type": "PESCARE_CARTA", "qta": 3, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "SCARTARE_CARTA", "qta": 2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "DADO_CORVONERO", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
             ]
         },
         {
@@ -305,8 +305,8 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco5/Fred_Weasley.png",
             "effetti":[
-                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"},
-                {"type": "DADO_GRIFONDORO", "target":"EROE_ATTIVO"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "DADO_GRIFONDORO", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
             ],
             "triggers":[
                 {
@@ -325,8 +325,8 @@
             "costo": 4,
             "path-img": "../Immagini_carte/Negozio/Gioco5/George_Weasley.png",
             "effetti":[
-                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"},
-                {"type": "DADO_GRIFONDORO", "target":"EROE_ATTIVO"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "DADO_GRIFONDORO", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
             ],
             "triggers":[
                 {
@@ -345,9 +345,9 @@
             "costo": 7,
             "path-img": "../Immagini_carte/Negozio/Gioco5/Kingsley_Shacklebolt.png",
             "effetti":[
-                {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "EROE_ATTIVO"},
-                {"type": "GUADAGNARE_VITA", "qta": 1, "target":"EROE_ATTIVO"},
-                {"type": "RIMUOVERE_MARCHIO_NERO", "qta":1, "target":"LUOGO"}
+                {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_VITA", "qta": 1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "RIMUOVERE_MARCHIO_NERO", "qta":1, "target":"LUOGO", "durata": "ISTANTANEO"}
             ]
         },
         {
@@ -358,7 +358,7 @@
             "costo": 5,
             "path-img": "../Immagini_carte/Negozio/Gioco5/Luna_Lovegood.png",
             "effetti":[
-                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO"},
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
                 {"type": "DADO_CORVONERO", "target":"EROE_ATTIVO"}
             ],
             "triggers":[
@@ -382,9 +382,9 @@
                     "type": "SCELTA",
                     "target":"EROE_ATTIVO",
                     "opzioni":[
-                        {"type": "GUADAGNARE_INFLUENZA", "qta": 3, "target": "EROE_ATTIVO"},
-                        {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target":"EROE_ATTIVO"},
-                        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target":"LUOGO"}
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 3, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target":"LUOGO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -403,8 +403,8 @@
                     "type":"SCELTA",
                     "target":"TUTTI_GLI_EROI",
                     "opzioni":[
-                        {"type":"GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO"},
-                        {"type":"GUADAGNARE_VITA","qta":1,"target":"EROE_ATTIVO"}
+                        {"type":"GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type":"GUADAGNARE_VITA","qta":1,"target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 },
                 {"type": "DADO_SERPEVERDE", "target":"EROE_ATTIVO"}

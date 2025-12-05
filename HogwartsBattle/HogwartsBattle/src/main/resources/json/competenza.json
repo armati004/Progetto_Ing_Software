@@ -106,10 +106,11 @@
             "descrizione": "Una volta per turno, puoi scartare 2 Incantesimi.\nSe lo fai, tutti gli eroi guadagnano 1 Segnalino Influenza e pescano una carta",
             "path-img":"../Immagini_carte/Competenze/Incanti.png",
             "attivabile": true,
+            "attivato1Volta": false,
             "effetti":[
-                {"type": "SCARTARE_CARTA", "qta":2, "target":"EROE_ATTIVO"},
-                {"type": "GUADAGNARE_INFLUENZA", "qta":1, "target": "TUTTI_GLI_EROI"},
-                {"type": "PESCARE_CARTA", "qta":1, "target":"TUTTI_GLI_EROI"}
+                {"type": "SCARTA_INCANTESIMO", "qta":2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_INFLUENZA", "qta":1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+                {"type": "PESCARE_CARTA", "qta":1, "target":"TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
             ],
             "commento": "da vedere come considerare un evento che è possibile attivare ogni volta per turno"
         },
@@ -153,10 +154,11 @@
             "descrizione": "Una volta per turno, puoi scartare 1 Oggetto per cercare dal tuo mazzo una carta con un valore di 5 o meno Segnalini Influenza e aggiungerla alla mano. Poi mischia il mazzo",
             "path-img":"../Immagini_carte/Competenze/Trasfigurazione.png",
             "attivabile": true,
+            "attivato1Volta": false,
             "effetti":[
-                {"type": "SCARTA_OGGETTO", "qta":1, "target":"EROE_ATTIVO"},
-                {"type": "CERCA_CARTA_MAZZO", "qta":1, "qtaQuorum": 5, "target":"EROE_ATTIVO"},
-                {"type": "MISCHIA_MAZZO", "target":"EROE_ATTIVO"}
+                {"type": "SCARTA_OGGETTO", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "CERCA_CARTA_MAZZO", "qta":1, "qtaQuorum": 5, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "MISCHIA_MAZZO", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
             ],
             "commento": "da vedere come considerare un evento che è possibile attivare ogni volta per turno"
         },
@@ -167,9 +169,10 @@
             "descrizione": "Una volta per turno, puoi scartare 5 Segnalini Influenza.\n Se lo fai, rimuovi 1 Segnalino Controllo dal Luogo",
             "path-img":"../Immagini_carte/Competenze/Volo.png",
             "attivabile": true,
+            "attivato1Volta": false,
             "effetti":[
-                {"type": "SCARTA_INFLUENZA", "qta":5, "target":"EROE_ATTIVO"},
-                {"type": "RIMUOVERE_MARCHIO_NERO", "qta":1, "target":"LUOGO"}
+                {"type": "SCARTA_INFLUENZA", "qta":5, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "RIMUOVERE_MARCHIO_NERO", "qta":1, "target":"LUOGO", "durata": "ISTANTANEO"}
             ],
             "commento": "da vedere come considerare un evento che è possibile attivare ogni volta per turno"
         }
