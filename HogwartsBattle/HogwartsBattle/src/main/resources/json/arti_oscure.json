@@ -46,7 +46,7 @@
       "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco1/Pietrificazione.png",
       "effetti": [
         {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"},
-        {"type": "BLOCCO_PESCA_EXTRA", "qta": 1, "target": "TUTTI_GLI_EROI"},
+        {"type": "BLOCCO_PESCA_EXTRA", "qta": 1, "target": "TUTTI_GLI_EROI"}
       ],
       "triggers": []
     }
@@ -432,6 +432,6 @@
         "triggers": []
       }
     ]
-  }
+} 
 
-}
+
