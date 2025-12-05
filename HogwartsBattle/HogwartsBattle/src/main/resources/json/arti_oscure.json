@@ -4,449 +4,434 @@
       "nome": "Colui che non deve essere nominato",
       "id": "voldemort1",
       "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco1/Colui_che_non_deve_essere_nominato.png",
-      "triggers": [
-        {
-          "effectToExecute": [
-            { "type": "addLocationToken", "qta": 1, "target": "location" }
-          ]
-        }
-      ]
+      "descrizione": "Aggiunge 1 segnalino controllo al luogo corrente.",
+      "costo": 0,
+      "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco1/Colui_che_non_deve_essere_nominato.png",
+      "effetti": [
+        {"type": "AGGIUNGI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO"}
+      ],
+      "triggers": []
     },
     {
       "nome": "Expulso",
       "id": "Expulso1",
       "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco1/Expulso.png",
-      "triggers": [
-        {
-          "effectToExecute": [
-            { "type": "loseLife", "qta": 2, "target": "activePlayer" }
-          ]
-        }
-      ]
+      "descrizione": "L'eroe attivo perde 2 punti vita.",
+      "costo": 0,
+      "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco1/Expulso.png",
+      "effetti": [
+        {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO"}
+      ],
+      "triggers": []
+    },
+    {
+      "nome": "Flipendo",
+      "id": "flipendo1",
+      "class": "ArtiOscure",
+      "descrizione": "L'eroe attivo perde 1 punto vita e scarta 1 carta.",
+      "costo": 0,
+      "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco1/Flipendo.png",
+      "effetti": [
+        {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO"},
+        {"type": "SCARTA_CARTA", "qta": 1, "target": "EROE_ATTIVO"}
+      ],
+      "triggers": []
+    },
+    {
+      "nome": "Pietrificazione",
+      "id": "pietrificazione1",
+      "class": "ArtiOscure",
+      "descrizione": "Tutti gli eroi perdono 1 punto vita, non pescano carte extra questo turno. Eroe attivo pesca 5 carte fine turno.",
+      "costo": 0,
+      "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco1/Pietrificazione.png",
+      "effetti": [
+        {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"},
+        {"type": "BLOCCO_PESCA_EXTRA", "qta": 1, "target": "TUTTI_GLI_EROI"}
+      ],
+      "triggers": []
     }
   ],
-
   "gioco2": [
     {
       "nome": "Mano della gloria",
       "id": "Mano_della_gloria2",
       "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco2/Mano_della_gloria2.png",
-      "triggers": [
-        {
-          "effectToExecute": [
-            { "type": "loseLife", "qta": 1, "target": "activePlayer" },
-            { "type": "addLocationToken", "qta": 1, "target": "location" }
-          ]
-        }
-      ]
+      "descrizione": "L'eroe attivo perde 1 punto vita e aggiunge 1 segnalino luogo.",
+      "costo": 0,
+      "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco2/Mano_della_gloria2.png",
+      "effetti": [
+        {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO"},
+        {"type": "AGGIUNGI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO"}
+      ],
+      "triggers": []
     },
     {
       "nome": "Oblivion",
       "id": "Oblivion2",
       "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco2/Oblivion.png",
-      "triggers": [
+      "descrizione": "Scegli: tutti scartano 1 incantesimo OPPURE tutti perdono 2 punti vita.",
+      "costo": 0,
+      "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco2/Oblivion.png",
+      "effetti": [
         {
-          "effectToExecute": [
-            {
-              "type": "switch",
-              "cases": [
-                {
-                  "result": "discard",
-                  "effects": [
-                    { "type": "discardSpell", "qta": 1, "target": "allPlayer" }
-                  ]
-                },
-                {
-                  "result": "heart",
-                  "effects": [
-                    { "type": "loseLife", "qta": 2, "target": "allPlayer" }
-                  ]
-                }
-              ]
-            }
+          "type": "SCELTA_SWITCH",
+          "cases": [
+            {"result": "scarta", "effects": [{"type": "SCARTA_INCANTESIMO", "qta": 1, "target": "TUTTI_GLI_EROI"}]},
+            {"result": "vita", "effects": [{"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI"}]}
           ]
         }
-      ]
+      ],
+      "triggers": []
+    },
+    {
+      "nome": "Relascio",
+      "id": "relascio2",
+      "class": "ArtiOscure",
+      "descrizione": "Tutti gli eroi scelgono: scartare 1 oggetto OPPURE perdere 2 punti vita.",
+      "costo": 0,
+      "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco2/Relascio.png",
+      "effetti": [
+        {
+          "type": "SCELTA_SWITCH",
+          "cases": [
+            {"result": "oggetto", "effects": [{"type": "SCARTA_OGGETTO", "qta": 1, "target": "TUTTI_GLI_EROI"}]},
+            {"result": "vita", "effects": [{"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI"}]}
+          ]
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "nome": "Veleno",
+      "id": "veleno2",
+      "class": "ArtiOscure",
+      "descrizione": "Tutti gli eroi scelgono: scartare 1 alleato OPPURE perdere 2 punti vita.",
+      "costo": 0,
+      "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco2/Veleno.png",
+      "effetti": [
+        {
+          "type": "SCELTA_SWITCH",
+          "cases": [
+            {"result": "alleato", "effects": [{"type": "SCARTA_ALLEATO", "qta": 1, "target": "TUTTI_GLI_EROI"}]},
+            {"result": "vita", "effects": [{"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI"}]}
+          ]
+        }
+      ],
+      "triggers": []
     }
   ],
-
   "gioco3": [
     {
       "nome": "Bacio del dissennatore",
       "id": "Bacio_del_dissennatore3",
       "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco3/Bacio_del_dissennatore.png",
-      "triggers": [
-        {
-          "effectToExecute": [
-            { "type": "loseLife", "qta": 1, "target": "activePlayer" },
-            { "type": "loseLife", "qta": 1, "target": "allPlayer" }
-          ]
-        }
-      ]
+      "descrizione": "L'eroe attivo e tutti gli eroi perdono 1 punto vita ciascuno.",
+      "costo": 0,
+      "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco3/Bacio_del_dissennatore.png",
+      "effetti": [
+        {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO"},
+        {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"}
+      ],
+      "triggers": []
     },
     {
       "nome": "Oppugno",
       "id": "Oppugno3",
       "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco3/Oppugno3.png",
-      "triggers": [
+      "descrizione": "Tutti rivelano cima mazzo. Se moneta ≥1, tutti scartano 1 carta e perdono 2 vite.",
+      "costo": 0,
+      "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco3/Oppugno3.png",
+      "effetti": [
+        {"type": "RIVELA_CIMA_MAZZO", "target": "TUTTI_GLI_EROI"},
         {
-          "effectToExecute": [
-            { "type": "revealTopDeckCard", "target": "allPlayer" },
-            {
-              "type": "ifCoinValueAtLeast",
-              "qta": 1,
-              "then": [
-                { "type": "discardCard", "qta": 1, "target": "allPlayer" },
-                { "type": "loseLife", "qta": 2, "target": "allPlayer" }
-              ]
-            }
+          "type": "SE_MONETA_AL_MENO",
+          "qta": 1,
+          "then": [
+            {"type": "SCARTA_CARTA", "qta": 1, "target": "TUTTI_GLI_EROI"},
+            {"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI"}
           ]
         }
-      ]
+      ],
+      "triggers": []
     }
   ],
-
   "gioco4": [
     {
-      "nome": "Avada kedavra",
-      "id": "Avada_kedavra",
+      "nome": "Avada Kedavra",
+      "id": "Avada_kedavra4",
       "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco4/Avada_kedavra4.png",
-      "triggers": [
-        {
-          "effectToExecute": [
-            { "type": "loseLife", "qta": 3, "target": "allPlayer" },
-            {
-              "type": "ifStunned",
-              "effects": [
-                { "type": "addLocationToken", "qta": 1, "target": "location" }
-              ]
-            },
-            { "type": "drawAdditionalDarkArtsEvent", "qta": 1, "target": "table" }
-          ]
-        }
-      ]
+      "descrizione": "Tutti perdono 3 vite. Se stordito aggiunge segnalino luogo e pesca nuova carta Arti Oscure.",
+      "costo": 0,
+      "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco4/Avada_kedavra4.png",
+      "effetti": [
+        {"type": "PERDERE_VITA", "qta": 3, "target": "TUTTI_GLI_EROI"},
+        {"type": "SE_STORDITO", "effects": [{"type": "AGGIUNGI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO"}]},
+        {"type": "PESCA_ARTI_OSCURE_EXTRA", "qta": 1, "target": "TAVOLO"}
+      ],
+      "triggers": []
     },
     {
       "nome": "Crucio",
       "id": "Crucio4",
       "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco4/Crucio4.png",
-      "triggers": [
-        {
-          "effectToExecute": [
-            { "type": "loseLife", "qta": 1, "target": "activePlayer" },
-            { "type": "drawAdditionalDarkArtsEvent", "qta": 1, "target": "table" }
-          ]
-        }
-      ]
+      "descrizione": "Eroe attivo perde 1 vita e pesca nuova carta Arti Oscure.",
+      "costo": 0,
+      "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco4/Crucio4.png",
+      "effetti": [
+        {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO"},
+        {"type": "PESCA_ARTI_OSCURE_EXTRA", "qta": 1, "target": "TAVOLO"}
+      ],
+      "triggers": []
     },
     {
-      "nome": "Erede di serpeverde",
+      "nome": "Erede di Serpeverde",
       "id": "Erede_di_serpeverde4",
       "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco4/Erede_di_serpeverde4.png",
-      "triggers": [
+      "descrizione": "Tira dado: Cuore=tutti perdono 1 vita; Token=segnalino luogo; Guarigione=guarisci malvagi; Scarta=tutti scartano.",
+      "costo": 0,
+      "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco4/Erede_di_serpeverde4.png",
+      "effetti": [
         {
-          "type": "onDiceRoll",
-          "effectToExecute": [
-            {
-              "type": "switch",
-              "cases": [
-                {
-                  "result": "heart",
-                  "effects": [
-                    { "type": "loseLife", "qta": 1, "target": "allPlayer" }
-                  ]
-                },
-                {
-                  "result": "token",
-                  "effects": [
-                    { "type": "addLocationToken", "qta": 1, "target": "location" }
-                  ]
-                },
-                {
-                  "result": "heal",
-                  "effects": [
-                    { "type": "healVillains", "qta": 1, "target": "allVillains" }
-                  ]
-                },
-                {
-                  "result": "discard",
-                  "effects": [
-                    { "type": "discardCard", "qta": 1, "target": "allPlayer" }
-                  ]
-                }
-              ]
-            }
+          "type": "SCELTA_DADO",
+          "cases": [
+            {"result": "cuore", "effects": [{"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"}]},
+            {"result": "token", "effects": [{"type": "AGGIUNGI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO"}]},
+            {"result": "guarigione", "effects": [{"type": "GUARISCI_MALVAGI", "qta": 1, "target": "TUTTI_MALVAGI"}]},
+            {"result": "scarta", "effects": [{"type": "SCARTA_CARTA", "qta": 1, "target": "TUTTI_GLI_EROI"}]}
           ]
         }
-      ]
+      ],
+      "triggers": []
     },
     {
-      "nome": "imperio",
-      "id": "imperio",
+      "nome": "Imperio",
+      "id": "imperio4",
       "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco4/imperio4.png",
-      "triggers": [
+      "descrizione": "Scegli altro eroe: perde 2 vite. Pesca nuova carta Arti Oscure.",
+      "costo": 0,
+      "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco4/imperio4.png",
+      "effetti": [
         {
-          "effectToExecute": [
-            {
-              "type": "choosePlayer",
-              "target": "otherPlayer",
-              "effects": [
-                { "type": "loseLife", "qta": 2, "target": "chosenPlayer" }
-              ]
-            },
-            { "type": "drawAdditionalDarkArtsEvent", "qta": 1, "target": "table" }
-          ]
-        }
-      ]
+          "type": "SCEGLI_EROE",
+          "target": "ALTRO_EROE",
+          "effects": [{"type": "PERDERE_VITA", "qta": 2, "target": "EROE_SCELTO"}]
+        },
+        {"type": "PESCA_ARTI_OSCURE_EXTRA", "qta": 1, "target": "TAVOLO"}
+      ],
+      "triggers": []
     },
     {
       "nome": "Morsmordre",
-      "id": "Morsmordre",
+      "id": "Morsmordre4",
       "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco4/Morsmordre4.png",
-      "triggers": [
-        {
-          "effectToExecute": [
-            { "type": "loseLife", "qta": 1, "target": "allPlayer" },
-            { "type": "addLocationToken", "qta": 1, "target": "location" }
-          ]
-        }
-      ]
+      "descrizione": "Tutti perdono 1 vita e aggiunge 1 segnalino luogo.",
+      "costo": 0,
+      "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco4/Morsmordre4.png",
+      "effetti": [
+        {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"},
+        {"type": "AGGIUNGI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO"}
+      ],
+      "triggers": []
     },
     {
       "nome": "Rigenerazione",
-      "id": "Rigenerazione",
+      "id": "Rigenerazione4",
       "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco4/Rigenerazione.png",
-      "triggers": [
-        {
-          "effectToExecute": [
-            { "type": "healVillains", "qta": 2, "target": "allVillains" }
-          ]
-        }
-      ]
+      "descrizione": "Tutti i malvagi guadagnano 2 punti vita.",
+      "costo": 0,
+      "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco4/Rigenerazione.png",
+      "effetti": [{"type": "GUARISCI_MALVAGI", "qta": 2, "target": "TUTTI_MALVAGI"}],
+      "triggers": []
     }
   ],
+    "gioco5": [
+      {
+        "nome": "Avada Kedavra",
+        "id": "avada_kedavra5",
+        "class": "ArtiOscure",
+        "descrizione": "L'eroe attivo perde 3 punti vita. Se stordito aggiunge segnalino luogo e pesca nuova Arti Oscure.",
+        "costo": 0,
+        "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco5/avada_kedavra5.png",
+        "effetti": [
+          {"type": "PERDERE_VITA", "qta": 3, "target": "EROE_ATTIVO"},
+          {
+            "type": "SE_STORDITO",
+            "effects": [
+              {"type": "AGGIUNGI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO"}
+            ]
+          },
+          {"type": "PESCA_ARTI_OSCURE_EXTRA", "qta": 1, "target": "TAVOLO"}
+        ],
+        "triggers": []
+      },
+      {
+        "nome": "Crucio",
+        "id": "crucio5",
+        "class": "ArtiOscure",
+        "descrizione": "L'eroe attivo perde 1 punto vita e pesca nuova carta Arti Oscure.",
+        "costo": 0,
+        "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco5/crucio5.png",
+        "effetti": [
+          {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO"},
+          {"type": "PESCA_ARTI_OSCURE_EXTRA", "qta": 1, "target": "TAVOLO"}
+        ],
+        "triggers": []
+      },
+      {
+        "nome": "Decreto Educativo",
+        "id": "decreto_educativo5",
+        "class": "ArtiOscure",
+        "descrizione": "Per ogni carta in mano con costo ≥4, l'eroe attivo perde 1 punto vita.",
+        "costo": 0,
+        "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco5/decreto_educativo.png",
+        "effetti": [
+          {
+            "type": "PER_CARTA_COSTO_MINIMO",
+            "minCosto": 4,
+            "then": [
+              {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO"}
+            ]
+          }
+        ],
+        "triggers": [{"type": "ON_CONTROLLO_MANO"}]
+      },
+      {
+        "nome": "Imperio",
+        "id": "imperio5",
+        "class": "ArtiOscure",
+        "descrizione": "L'eroe attivo perde 2 punti vita e pesca nuova carta Arti Oscure.",
+        "costo": 0,
+        "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco5/imperio5.png",
+        "effetti": [
+          {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO"},
+          {"type": "PESCA_ARTI_OSCURE_EXTRA", "qta": 1, "target": "TAVOLO"}
+        ],
+        "triggers": []
+      },
+      {
+        "nome": "Legilmanzia",
+        "id": "legilmanzia5",
+        "class": "ArtiOscure",
+        "descrizione": "Tutti rivelano cima mazzo. Se incantesimo, scartano 1 carta e perdono 2 vite.",
+        "costo": 0,
+        "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco5/legilmanzia.png",
+        "effetti": [
+          {
+            "type": "EFFETTO_CONDITIONALE",
+            "condition": {"tipoCarta": "incantesimo"},
+            "then": [
+              {"type": "SCARTA_CARTA", "qta": 1, "target": "EROE_RIVELANTE"},
+              {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_RIVELANTE"}
+            ]
+          }
+        ],
+        "triggers": [{"type": "ON_TUTTI_RIVELANO_CIMA_MAZZO"}]
+      },
+      {
+        "nome": "Morsmordre",
+        "id": "morsmordre5",
+        "class": "ArtiOscure",
+        "descrizione": "Tutti gli eroi perdono 1 punto vita e aggiunge 1 segnalino luogo.",
+        "costo": 0,
+        "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco5/morsmordre5.png",
+        "effetti": [
+          {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"},
+          {"type": "AGGIUNGI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO"}
+        ],
+        "triggers": []
+      }
+    ],
+    "gioco6": [
+      {
+        "nome": "Morsmordre",
+        "id": "morsmordre6",
+        "class": "ArtiOscure",
+        "descrizione": "Tutti gli eroi perdono 1 punto vita e aggiunge 1 segnalino luogo.",
+        "costo": 0,
+        "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco6/morsmordre6.png",
+        "effetti": [
+          {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"},
+          {"type": "AGGIUNGI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO"}
+        ],
+        "triggers": []
+      },
+      {
+        "nome": "Sectumsempra",
+        "id": "sectumsempra6",
+        "class": "ArtiOscure",
+        "descrizione": "Tutti gli eroi perdono 2 punti vita e non possono guadagnare vita questo turno.",
+        "costo": 0,
+        "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco6/sectumsempra.png",
+        "effetti": [
+          {"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI"},
+          {"type": "BLOCCO_GUADAGNO_VITA_TURNO", "target": "TUTTI_GLI_EROI"}
+        ],
+        "triggers": [{"type": "ON_EFFETTO_SCATENATO"}]
+      }
+    ],
+    "gioco7": [
+      {
+        "nome": "Ardemonio",
+        "id": "ardemonio7",
+        "class": "ArtiOscure",
+        "descrizione": "Tutti gli eroi perdono 3 punti vita.",
+        "costo": 0,
+        "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco7/ardemonio.png",
+        "effetti": [
+          {"type": "PERDERE_VITA", "qta": 3, "target": "TUTTI_GLI_EROI"}
+        ],
+        "triggers": []
+      },
+      {
+        "nome": "Avada Kedavra",
+        "id": "avada_kedavra7",
+        "class": "ArtiOscure",
+        "descrizione": "L'eroe attivo perde 3 punti vita. Se stordito aggiunge segnalino luogo e pesca nuova Arti Oscure.",
+        "costo": 0,
+        "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco7/avada_kedavra7.png",
+        "effetti": [
+          {"type": "PERDERE_VITA", "qta": 3, "target": "EROE_ATTIVO"},
+          {
+            "type": "SE_STORDITO",
+            "effects": [
+              {"type": "AGGIUNGI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO"}
+            ]
+          },
+          {"type": "PESCA_ARTI_OSCURE_EXTRA", "qta": 1, "target": "TAVOLO"}
+        ],
+        "triggers": []
+      },
+      {
+        "nome": "Crucio",
+        "id": "crucio7",
+        "class": "ArtiOscure",
+        "descrizione": "L'eroe attivo perde 1 punto vita e pesca nuova carta Arti Oscure.",
+        "costo": 0,
+        "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco7/crucio7.png",
+        "effetti": [
+          {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO"},
+          {"type": "PESCA_ARTI_OSCURE_EXTRA", "qta": 1, "target": "TAVOLO"}
+        ],
+        "triggers": []
+      },
+      {
+        "nome": "Imperio",
+        "id": "imperio7",
+        "class": "ArtiOscure",
+        "descrizione": "Scegli altro eroe: perde 2 vite. Pesca nuova carta Arti Oscure.",
+        "costo": 0,
+        "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco7/imperio7.png",
+        "effetti": [
+          {
+            "type": "SCEGLI_EROE",
+            "target": "ALTRO_EROE",
+            "effects": [{"type": "PERDERE_VITA", "qta": 2, "target": "EROE_SCELTO"}]
+          },
+          {"type": "PESCA_ARTI_OSCURE_EXTRA", "qta": 1, "target": "TAVOLO"}
+        ],
+        "triggers": []
+      }
+    ]
+} 
 
-  "gioco5": [
-    {
-      "nome": "Avada Kedavra",
-      "id": "avada_kedavra5",
-      "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco5/avada_kedavra5.png",
-      "triggers": [
-        {
-          "effectToExecute": [
-            { "type": "loseLife", "qta": 3, "target": "activePlayer" },
-            {
-              "type": "ifStunned",
-              "effects": [
-                { "type": "addLocationToken", "qta": 1, "target": "location" }
-              ]
-            },
-            { "type": "drawAdditionalDarkArtsEvent", "qta": 1, "target": "table" }
-          ]
-        }
-      ]
-    },
-    {
-      "nome": "Crucio",
-      "id": "crucio5",
-      "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco5/crucio5.png",
-      "triggers": [
-        {
-          "effectToExecute": [
-            { "type": "loseLife", "qta": 1, "target": "activePlayer" },
-            { "type": "drawAdditionalDarkArtsEvent", "qta": 1, "target": "table" }
-          ]
-        }
-      ]
-    },
-    {
-      "nome": "Decreto Educativo",
-      "id": "decreto_educativo",
-      "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco5/decreto_educativo.png",
-      "triggers": [
-        {
-          "type": "onCheckHand",
-          "effectToExecute": [
-            {
-              "type": "forEachCardInHandWithMinCost",
-              "minCost": 4,
-              "then": [
-                { "type": "loseLife", "qta": 1, "target": "activePlayer" }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "nome": "Imperio",
-      "id": "imperio5",
-      "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco5/imperio5.png",
-      "triggers": [
-        {
-          "effectToExecute": [
-            { "type": "loseLife", "qta": 2, "target": "activePlayer" },
-            { "type": "drawAdditionalDarkArtsEvent", "qta": 1, "target": "table" }
-          ]
-        }
-      ]
-    },
-    {
-      "nome": "Legilmanzia",
-      "id": "legilmanzia",
-      "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco5/legilmanzia.png",
-      "triggers": [
-        {
-          "type": "onAllPlayersRevealTopDeckCard",
-          "effectToExecute": [
-            {
-              "type": "conditionalEffect",
-              "condition": { "cardType": "spell" },
-              "then": [
-                { "type": "discardCard", "qta": 1, "target": "revealingPlayer" },
-                { "type": "loseLife", "qta": 2, "target": "revealingPlayer" }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "nome": "Morsmordre",
-      "id": "morsmordre5",
-      "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco5/morsmordre5.png",
-      "triggers": [
-        {
-          "effectToExecute": [
-            { "type": "loseLife", "qta": 1, "target": "allPlayer" },
-            { "type": "addLocationToken", "qta": 1, "target": "location" }
-          ]
-        }
-      ]
-    }
-  ],
 
-  "gioco6": [
-    {
-      "nome": "Morsmordre",
-      "id": "morsmordre6",
-      "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco6/morsmordre6.png",
-      "triggers": [
-        {
-          "type": "loseLife",
-          "qta": 1,
-          "target": "allPlayer"
-        },
-        {
-          "type": "addLocationToken",
-          "qta": 1,
-          "target": "location"
-        }
-      ]
-    },
-    {
-      "nome": "Sectumsempra",
-      "id": "sectumsempra",
-      "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco6/sectumsempra.png",
-      "triggers": [
-        {
-          "type": "onEffectTriggered",
-          "effectToExecute": [
-            { "type": "loseLife", "qta": 2, "target": "allPlayer" },
-            { "type": "preventGainLifeForTurn", "target": "allPlayer" }
-          ]
-        }
-      ]
-    }
-  ],
-
-  "gioco7": [
-    {
-      "nome": "Ardemonio",
-      "id": "ardemonio",
-      "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco7/ardemonio.png",
-      "triggers": [
-        {
-          "effectToExecute": [
-            { "type": "loseLife", "qta": 3, "target": "allPlayer" }
-          ]
-        }
-      ]
-    },
-    {
-      "nome": "Avada Kedavra",
-      "id": "avada_kedavra7",
-      "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco7/avada_kedavra7.png",
-      "triggers": [
-        {
-          "effectToExecute": [
-            { "type": "loseLife", "qta": 3, "target": "activePlayer" },
-            {
-              "type": "ifStunned",
-              "effects": [
-                { "type": "addLocationToken", "qta": 1, "target": "location" }
-              ]
-            },
-            { "type": "drawAdditionalDarkArtsEvent", "qta": 1, "target": "table" }
-          ]
-        }
-      ]
-    },
-    {
-      "nome": "Crucio",
-      "id": "crucio7",
-      "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco7/crucio7.png",
-      "triggers": [
-        {
-          "effectToExecute": [
-            { "type": "loseLife", "qta": 1, "target": "activePlayer" },
-            { "type": "drawAdditionalDarkArtsEvent", "qta": 1, "target": "table" }
-          ]
-        }
-      ]
-    },
-    {
-      "nome": "Imperio",
-      "id": "imperio7",
-      "class": "ArtiOscure",
-      "path-img": "../Immagini_carte/Arti_Oscure/Gioco7/imperio7.png",
-      "triggers": [
-        {
-          "effectToExecute": [
-            {
-              "type": "choosePlayer",
-              "target": "otherPlayer",
-              "effects": [
-                { "type": "loseLife", "qta": 2, "target": "chosenPlayer" }
-              ]
-            },
-            { "type": "drawAdditionalDarkArtsEvent", "qta": 1, "target": "table" }
-          ]
-        }
-      ]
-    }
-  ]
-}
