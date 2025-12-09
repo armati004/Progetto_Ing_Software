@@ -1,5 +1,6 @@
 package gioco;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import carte.Carta;
@@ -57,8 +58,50 @@ public class Giocatore {
 	public void setAttacco(int attacco) {
 		this.attacco = attacco;
 	}
-	public int danneggia(int attacco) {
-		this.attacco = attacco;
-	}   
+	
+	private void scartaCarta(Mazzo mazzo, Carta carta) {
+		mazzo.remove(carta);
+	}
+
+	
+	private void giocaCarta(StatoDiGioco stato, Carta carta) {
+	    // Verifica che la carta sia nella mano
+	    if (!mano.contains(carta)) {
+	        System.out.println("Carta non trovata nella mano!");
+	        return;
+	    }
+	    // Rimuovi dalla mano
+	    mano.remove(carta);
+	    // Sposta carta negli scarti
+	    scarti.aggiungiCarta(carta);
+	    
+	    carta.applicaEffetto(stato, this);
+	    
+	    for (int i = 0; i < 5; i++) {
+	        Carta pescata = mazzo.pescaCarta();
+	        if (pescata != null) {
+	            mano.add(pescata);
+	        }
+	    }
+	    System.out.println("Giocata: " + carta.getNome() + " | Mano: " + mano.size());
+	}
+	
+	//cerca nel mazzo degli scarti un tipo di carta (oggetto, incantesimo e alleato)
+	private List<Carta> cercaNelMazzo(String tipo) {	
+	    List<Carta> carteCorrispondenti = new ArrayList<>();
+	    
+	    for (int i = 0; i < mazzo.getCarte().size(); i++) { 
+	        Carta carta = mazzo.getCarte().get(i);
+	        if (carta.getClasse().equalsIgnoreCase(tipo)) {
+	            carteCorrispondenti.add(carta);
+		        System.out.println("carta: " + carta.getNome() + ", descrizione:" + carta.getDescrizione());
+	        }
+	    }
+		return carteCorrispondenti;
+		//una volta ritornate dovra poi scegliere quale vuole aggiungere al mazzo
+	}
+	
+
+
     
 }
