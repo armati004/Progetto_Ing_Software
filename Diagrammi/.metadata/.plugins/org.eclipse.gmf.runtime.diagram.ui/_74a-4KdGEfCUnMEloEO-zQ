@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 #Sat Nov 15 13:05:46 CET 2025
+=======
+#Fri Oct 17 16:44:40 CEST 2025
+>>>>>>> Stashed changes
 print.margin.bottom=0.5
 print.margin.left=0.5
 print.margin.right=0.5
@@ -16,5 +20,9 @@ rulergrid.rulerunit=2
 rulergrid.snaptogrid=true
 rulergrid.viewgrid=true
 viewport.x=0
+<<<<<<< Updated upstream
 viewport.y=0
+=======
+viewport.y=61
+>>>>>>> Stashed changes
 zoom=1.0

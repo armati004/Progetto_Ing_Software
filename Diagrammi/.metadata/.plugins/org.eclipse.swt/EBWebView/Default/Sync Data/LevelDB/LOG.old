@@ -1,3 +1,9 @@
+<<<<<<< Updated upstream
 2025/11/21-11:18:25.039 728 Reusing MANIFEST C:\Users\Leo\Documents\università\anno_3\Ingegneria_del_software\Progetto\Progetto_Ing_Software\Diagrammi\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Sync Data\LevelDB/MANIFEST-000001
 2025/11/21-11:18:25.042 728 Recovering log #3
 2025/11/21-11:18:25.043 728 Reusing old log C:\Users\Leo\Documents\università\anno_3\Ingegneria_del_software\Progetto\Progetto_Ing_Software\Diagrammi\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Sync Data\LevelDB/000003.log 
+=======
+2025/10/13-19:43:17.950 150c Reusing MANIFEST D:\documenti\Leonardo\università\anno_3\Ingegneria_del_software\Progetto\Diagrammi\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Sync Data\LevelDB/MANIFEST-000001
+2025/10/13-19:43:17.951 150c Recovering log #3
+2025/10/13-19:43:17.951 150c Reusing old log D:\documenti\Leonardo\università\anno_3\Ingegneria_del_software\Progetto\Diagrammi\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Sync Data\LevelDB/000003.log 
+>>>>>>> Stashed changes

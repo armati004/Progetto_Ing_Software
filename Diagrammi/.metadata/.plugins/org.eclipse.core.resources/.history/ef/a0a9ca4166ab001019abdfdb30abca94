@@ -485,10 +485,6 @@
             <element xmi:type="uml:Property" href="Diagramma_classi.uml#_EJOFsKduEfCJF7pWmnDnuw"/>
             <layoutConstraint xmi:type="notation:Location" xmi:id="_EJWokaduEfCJF7pWmnDnuw"/>
           </children>
-          <children xmi:type="notation:Shape" xmi:id="_bM5HcKtlEfC8mbU1ylm-jQ" type="Property_ClassAttributeLabel">
-            <element xmi:type="uml:Property" href="Diagramma_classi.uml#_bHaxkKtlEfC8mbU1ylm-jQ"/>
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_bM5HcatlEfC8mbU1ylm-jQ"/>
-          </children>
           <styles xmi:type="notation:TitleStyle" xmi:id="_5N4xpqdOEfCUnMEloEO-zQ"/>
           <styles xmi:type="notation:SortingStyle" xmi:id="_5N4xp6dOEfCUnMEloEO-zQ"/>
           <styles xmi:type="notation:FilteringStyle" xmi:id="_5N4xqKdOEfCUnMEloEO-zQ"/>
