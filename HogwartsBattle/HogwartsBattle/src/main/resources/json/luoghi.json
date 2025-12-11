@@ -2,7 +2,7 @@
   "gioco1": [
     {
       "nome": "Diagon Alley",
-      "id": "diagon_alley_1",
+      "id": "diagonAlley1",
       "numero": 1,
       "path-img": "../Immagini_carte/Luoghi/Gioco1/Diagon_Alley.jpg",
       "nDarkEvents": 1,
@@ -11,7 +11,7 @@
     },
     {
       "nome": "Specchio delle Brame",
-      "id": "specchio_delle_brame_2",
+      "id": "specchioDelleBrame2",
       "numero": 2,
       "path-img": "../Immagini_carte/Luoghi/Gioco1/Specchio_delle_Brame.jpg",
       "nDarkEvents": 1,
@@ -22,7 +22,7 @@
   "gioco2": [
     {
       "nome": "Foresta Proibita",
-      "id": "foresta_proibita_1",
+      "id": "forestaProibita1",
       "numero": 1,
       "path-img": "../Immagini_carte/Luoghi/Gioco2/Foresta_Proibita.jpg",
       "nDarkEvents": 1,
@@ -31,7 +31,7 @@
     },
     {
       "nome": "Campo da Quidditch",
-      "id": "campo_da_quidditch_2",
+      "id": "campoDaQuidditch2",
       "numero": 2,
       "path-img": "../Immagini_carte/Luoghi/Gioco2/Campo_da_Quidditch.jpg",
       "nDarkEvents": 1,
@@ -40,7 +40,7 @@
     },
     {
       "nome": "Camera dei Segreti",
-      "id": "camera_dei_segreti_3",
+      "id": "cameraDeiSegreti3",
       "numero": 3,
       "path-img": "../Immagini_carte/Luoghi/Gioco2/Camera_dei_Segreti.jpg",
       "nDarkEvents": null,
@@ -51,7 +51,7 @@
   "gioco3": [
     {
       "nome": "Espresso per Hogwarts",
-      "id": "espresso_per_hogwarts_1",
+      "id": "espressoPerHogwarts1",
       "numero": 1,
       "path-img": "../Immagini_carte/Luoghi/Gioco3/Espresso_per_Hogwarts.jpg",
       "nDarkEvents": 1,
@@ -60,7 +60,7 @@
     },
     {
       "nome": "Hogsmeade",
-      "id": "hogsmeade_2",
+      "id": "hogsmeade2",
       "numero": 2,
       "path-img": "../Immagini_carte/Luoghi/Gioco3/Hogsmeade.jpg",
       "nDarkEvents": 2,
@@ -69,7 +69,7 @@
     },
     {
       "nome": "Stamberga Strillante",
-      "id": "stamberga_strillante_3",
+      "id": "stambergaStrillante3",
       "numero": 3,
       "path-img": "../Immagini_carte/Luoghi/Gioco3/Stamberga_Strillante.jpg",
       "nDarkEvents": 2,
@@ -80,7 +80,7 @@
   "gioco4": [
     {
       "nome": "Coppa del Mondo di Quidditch",
-      "id": "coppa_del_mondo_1",
+      "id": "coppaDelMondo1",
       "numero": 1,
       "path-img": "../Immagini_carte/Luoghi/Gioco4/Coppa_del_Mondo_di_Quidditch.jpg",
       "nDarkEvents": 1,
@@ -89,7 +89,7 @@
     },
     {
       "nome": "Torneo Tremaghi",
-      "id": "torneo_tremaghi_2",
+      "id": "torneoTremaghi2",
       "numero": 2,
       "path-img": "../Immagini_carte/Luoghi/Gioco4/Torneo_Tremaghi.jpg",
       "nDarkEvents": 2,
@@ -98,7 +98,7 @@
     },
     {
       "nome": "Cimitero",
-      "id": "cimitero_3",
+      "id": "cimitero3",
       "numero": 3,
       "path-img": "../Immagini_carte/Luoghi/Gioco4/Cimitero.jpg",
       "nDarkEvents": 2,
@@ -112,7 +112,7 @@
   "gioco5": [
     {
       "nome": "Azkaban",
-      "id": "azkaban_1",
+      "id": "azkaban1",
       "numero": 1,
       "path-img": "../Immagini_carte/Luoghi/Gioco5/Azkaban.jpg",
       "nDarkEvents": 1,
@@ -121,7 +121,7 @@
     },
     {
       "nome": "Sala delle profezie",
-      "id": "sala_delle_profezie_2",
+      "id": "salaDelleProfezie2",
       "numero": 2,
       "path-img": "../Immagini_carte/Luoghi/Gioco5/Sala_delle_profezie.jpg",
       "nDarkEvents": 2,
@@ -130,7 +130,7 @@
     },
     {
       "nome": "Ministero della Magia",
-      "id": "ministero_della_magia_3",
+      "id": "ministeroDellaMagia3",
       "numero": 3,
       "path-img": "../Immagini_carte/Luoghi/Gioco5/Ministero_della_Magia.jpg",
       "nDarkEvents": 2,
@@ -144,7 +144,7 @@
   "gioco6": [
     {
       "nome": "Knockturn Alley",
-      "id": "knockturn_alley_1",
+      "id": "knockturnAlley1",
       "numero": 1,
       "path-img": "../Immagini_carte/Luoghi/Gioco6/Knockturn_Alley.jpg",
       "nDarkEvents": 1,
@@ -153,7 +153,7 @@
     },
     {
       "nome": "La Tana",
-      "id": "la_tana_2",
+      "id": "laTana2",
       "numero": 2,
       "path-img": "../Immagini_carte/Luoghi/Gioco6/La_Tana.jpg",
       "nDarkEvents": 2,
@@ -162,7 +162,7 @@
     },
     {
       "nome": "Torre di Astronomia",
-      "id": "torre_di_astronomia_3",
+      "id": "torreDiAstronomia3",
       "numero": 3,
       "path-img": "../Immagini_carte/Luoghi/Gioco6/Torre_di_Astronomia.jpg",
       "nDarkEvents": 3,
@@ -176,7 +176,7 @@
   "gioco7": [
     {
       "nome": "Godric's Hollow",
-      "id": "godrics_hollow_1",
+      "id": "godricsHollow1",
       "numero": 1,
       "path-img": "../Immagini_carte/Luoghi/Gioco7/Godrics_Hollow.jpg",
       "nDarkEvents": 1,
@@ -185,7 +185,7 @@
     },
     {
       "nome": "Gringott",
-      "id": "gringott_2",
+      "id": "gringott2",
       "numero": 2,
       "path-img": "../Immagini_carte/Luoghi/Gioco7/Gringott.jpg",
       "nDarkEvents": 2,
@@ -194,7 +194,7 @@
     },
     {
       "nome": "Stanza delle Necessità",
-      "id": "stanza_delle_necessita_3",
+      "id": "stanzaDelleNecessita3",
       "numero": 3,
       "path-img": "../Immagini_carte/Luoghi/Gioco7/Stanza_delle_Necessita.jpg",
       "nDarkEvents": 2,
@@ -203,7 +203,7 @@
     },
     {
       "nome": "Castello di Hogwarts",
-      "id": "castello_di_hogwarts_4",
+      "id": "castelloDiHogwarts4",
       "numero": 4,
       "path-img": "../Immagini_carte/Luoghi/Gioco7/Castello_di_Hogwarts.jpg",
       "nDarkEvents": 3,

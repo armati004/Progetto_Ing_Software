@@ -1,0 +1,50 @@
+{
+    "anno": 2,
+    
+    "meccaniche":{
+        "usoDadi": false,
+        "usoCompetenze": false,
+        "usoHorcrux": false,
+        "versioneEroi": "gioco1",
+        "upgradeEroi": false
+    },
+
+    "luoghi":[
+        "forestaProibita1",
+        "campoDaQuidditch2",
+        "cameraDeiSegreti3"
+    ],
+
+    "aggiunteMazzoNegozio":[
+        "finite2",
+        "fannyFenice2",
+        "mollyWeasley2",
+        "gilderoyAllock2",
+        "expelliarmus2",
+        "pozionePolisucco2",
+        "ginnyWeasley2",
+        "arthurWeasley2",
+        "nimbusDuemilauno2",
+        "dobbyElf2",
+        "expelliarmus2",
+        "pozionePolisucco2",
+        "nimbusDuemilauno2",
+        "finite2"
+    ],
+
+    "aggiuntaMalvagi":[
+        "basilisco2",
+        "luciusMalfoy2",
+        "tomRiddle2"
+    ],
+
+    "aggiuntaArtiOscure":[
+        "veleno2",
+        "oblivion2",
+        "manoDellaGloria2",
+        "relascio2",
+        "manoDellaGloria2"
+    ]
+
+
+}

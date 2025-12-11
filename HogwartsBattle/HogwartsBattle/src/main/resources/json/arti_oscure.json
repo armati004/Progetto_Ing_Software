@@ -14,7 +14,7 @@
     },
     {
       "nome": "Expulso",
-      "id": "Expulso1",
+      "id": "expulso1",
       "class": "ArtiOscure",
       "descrizione": "L'eroe attivo perde 2 punti vita.",
       "costo": 0,
@@ -54,7 +54,7 @@
   "gioco2": [
     {
       "nome": "Mano della gloria",
-      "id": "Mano_della_gloria2",
+      "id": "manoDellaGloria2",
       "class": "ArtiOscure",
       "descrizione": "L'eroe attivo perde 1 punto vita e aggiunge 1 segnalino luogo.",
       "costo": 0,
@@ -67,7 +67,7 @@
     },
     {
       "nome": "Oblivion",
-      "id": "Oblivion2",
+      "id": "oblivion2",
       "class": "ArtiOscure",
       "descrizione": "Scegli: tutti scartano 1 incantesimo OPPURE tutti perdono 2 punti vita.",
       "costo": 0,
@@ -123,7 +123,7 @@
   "gioco3": [
     {
       "nome": "Bacio del dissennatore",
-      "id": "Bacio_del_dissennatore3",
+      "id": "bacioDelDissennatore3",
       "class": "ArtiOscure",
       "descrizione": "L'eroe attivo e tutti gli eroi perdono 1 punto vita ciascuno.",
       "costo": 0,
@@ -136,7 +136,7 @@
     },
     {
       "nome": "Oppugno",
-      "id": "Oppugno3",
+      "id": "oppugno3",
       "class": "ArtiOscure",
       "descrizione": "Tutti rivelano cima mazzo. Se moneta ≥1, tutti scartano 1 carta e perdono 2 vite.",
       "costo": 0,
@@ -153,6 +153,26 @@
         }
       ],
       "triggers": []
+    },
+    {
+      "nome": "TarantaAllegra",
+      "id": "tarantallegra3",
+      "class": "ArtiOscure",
+      "descrizione": "L'eroe attivo perde 1 Punto Vita e non può assegnare più di 1 Segnalino Attacco a ciascun Malvagio fino alla fine di questo turno.",
+      "costo": 0,
+      "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco3/Tarantallegra3.png",
+      "effetti": [
+        {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+      ],
+      "triggers": [
+        {
+          "type": "ASSEGNA_PIU_ATTACCHI",
+          "effectToExecute": [
+            {"type": "LIMITA_ATTACCO", "target": "MALVAGIO"}
+          ]
+          
+        }
+      ]
     }
   ],
   "gioco4": [

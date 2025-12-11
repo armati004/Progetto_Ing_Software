@@ -2,7 +2,7 @@
   "gioco1": [
     {
       "nome": "Descendo",
-      "id": "Descendo1",
+      "id": "descendo1",
       "class": "Incantesimo",
       "descrizione": "Guadagni 2 attacco.",
       "costo": 5,
@@ -12,7 +12,7 @@
     },
     {
       "nome": "Incendio",
-      "id": "Incendio1",
+      "id": "incendio1",
       "class": "Incantesimo",
       "descrizione": "Guadagni 1 attacco e peschi 1 carta.",
       "costo": 4,
@@ -25,7 +25,7 @@
     },
     {
       "nome": "Lumos",
-      "id": "Lumos1",
+      "id": "lumos1",
       "class": "Incantesimo",
       "descrizione": "Tutti gli eroi pescano 1 carta.",
       "costo": 4,
@@ -35,7 +35,7 @@
     },
     {
       "nome": "Reparo",
-      "id": "Reparo1",
+      "id": "reparo1",
       "class": "Incantesimo",
       "descrizione": "Scegli: guadagni 2 monete OPPURE peschi 1 carta.",
       "costo": 3,
@@ -53,7 +53,7 @@
     },
     {
       "nome": "Wingardium Leviosa",
-      "id": "Wingardium_Leviosa1",
+      "id": "wingardiumLeviosa1",
       "class": "Incantesimo",
       "descrizione": "Guadagni 1 moneta e acquisisci carta dalla cima del mazzo.",
       "costo": 2,
@@ -67,12 +67,12 @@
   ],
   "gioco2": [
     {
-      "nome": "Expellarmus",
-      "id": "Expellarmus2",
+      "nome": "Expelliarmus",
+      "id": "expelliarmus2",
       "class": "Incantesimo",
       "descrizione": "Guadagni 2 attacco e peschi 1 carta.",
       "costo": 6,
-      "pathImmagine": "../Immagini_carte/Incantesimo/Gioco2/Expellarmus.png",
+      "pathImmagine": "../Immagini_carte/Incantesimo/Gioco2/Expelliarmus.png",
       "effetti": [
         {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
         {"type": "PESCARE_CARTA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
@@ -81,7 +81,7 @@
     },
     {
       "nome": "Finite",
-      "id": "Finite2",
+      "id": "finite2",
       "class": "Incantesimo",
       "descrizione": "Rimuovi 1 segnalino nero dal luogo.",
       "costo": 3,
@@ -93,7 +93,7 @@
   "gioco3": [
     {
       "nome": "Expecto Patronum",
-      "id": "Expecto_patronum3",
+      "id": "expecto_patronum3",
       "class": "Incantesimo",
       "descrizione": "Guadagni 1 attacco e rimuovi 1 segnalino nero dal luogo.",
       "costo": 5,
@@ -106,7 +106,7 @@
     },
     {
       "nome": "Petrificus Totalus",
-      "id": "Petrificus_Totalus3",
+      "id": "petrificus_Totalus3",
       "class": "Incantesimo",
       "descrizione": "Guadagni 1 attacco. Scegli malvagio: blocca sue abilità fino all'inizio del prossimo turno.",
       "costo": 6,
@@ -125,7 +125,7 @@
   "gioco4": [
     {
       "nome": "Accio",
-      "id": "Accio4",
+      "id": "accio4",
       "class": "Incantesimo",
       "descrizione": "Scegli: guadagni 2 monete OPPURE cerchi 1 oggetto nella pila scarti.",
       "costo": 4,
@@ -143,7 +143,7 @@
     },
     {
       "nome": "Protego",
-      "id": "Protego4",
+      "id": "protego4",
       "class": "Incantesimo",
       "descrizione": "Guadagni 1 attacco e 1 punto vita.",
       "costo": 5,
@@ -159,7 +159,7 @@
   "gioco6": [
     {
       "nome": "Confundus",
-      "id": "Confundus6",
+      "id": "confundus6",
       "class": "Incantesimo",
       "descrizione": "Guadagni 1 attacco. Se tutti i malvagi hanno ≥1 token attacco, rimuovi 1 segnalino luogo.",
       "costo": 3,

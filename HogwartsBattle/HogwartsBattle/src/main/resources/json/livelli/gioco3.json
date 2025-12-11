@@ -1,0 +1,51 @@
+{
+    "anno": 2,
+    
+    "meccaniche":{
+        "usoDadi": false,
+        "usoCompetenze": false,
+        "usoHorcrux": false,
+        "versioneEroi": "gioco3",
+        "upgradeEroi": true
+    },
+
+    "luoghi":[
+        "forestaProibita1",
+        "campoDaQuidditch2",
+        "cameraDeiSegreti3"
+    ],
+
+    "aggiunteMazzoNegozio":[
+        "siriusBlack3",
+        "mappaMalandrino3",
+        "petrificusTotalus3",
+        "expectoPatronum3",
+        "sibillaCooman3",
+        "cioccorana3",
+        "remusLupin3",
+        "burrobirra3",
+        "sferaCristallo3",
+        "burrobirra3",
+        "burrobirra3",
+        "petrificusTotalus3",
+        "expectoPatronum3",
+        "sferaCristallo3",
+        "cioccorana3",
+        "cioccorana3"
+    ],
+
+    "aggiuntaMalvagi":[
+        "dissennatore3",
+        "peterMinus3"
+
+    ],
+
+    "aggiuntaArtiOscure":[
+        "tarantallegra3",
+        "oppugno3",
+        "bacioDelDissennatore3",
+        "bacioDelDissennatore3"
+    ]
+
+
+}

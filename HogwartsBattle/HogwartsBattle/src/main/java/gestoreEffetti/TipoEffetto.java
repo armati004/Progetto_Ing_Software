@@ -208,6 +208,10 @@ public enum TipoEffetto {
 	 * Mischia il mazzo
 	 */
 	MISCHIA_MAZZO, 
+	/**
+	 * Effetto che non permette di mettere più di un Segnalino Attacco ad un Malvagio
+	 */
+	LIMITA_ATTACCO,
 	SCELTA_MULTIPLA;
 
 }
