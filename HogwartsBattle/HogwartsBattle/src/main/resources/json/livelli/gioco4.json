@@ -1,0 +1,59 @@
+{
+    "anno": 4,
+    
+    "meccaniche":{
+        "usoDadi": true,
+        "usoCompetenze": false,
+        "usoHorcrux": false,
+        "versioneEroi": "gioco3",
+        "upgradeEroi": false
+    },
+
+    "luoghi":[
+        "coppaDelMondo1",
+        "torneoTremaghi2",
+        "cimitero3"
+    ],
+
+    "aggiunteMazzoNegozio":[
+        "pomonaSprite4",
+        "viktorKrum4",
+        "storiaHogwarts4",
+        "minervaMcGranitt4",
+        "severusPiton4",
+        "coppaTremaghi4",
+        "alastorMoody4",
+        "filiusVitious4",
+        "protego4",
+        "cedricDiggory4",
+        "pensatoio4",
+        "fleurDelacour4",
+        "accio4",
+        "accio4",
+        "storiaHogwarts4",
+        "storiaHogwarts4",
+        "storiaHogwarts4",
+        "storiaHogwarts4",
+        "storiaHogwarts4",
+        "protego4",
+        "protego4"
+    ],
+
+    "aggiuntaMalvagi":[
+        "bartyCrouchJR4",
+        "mangiamorte4"
+    ],
+
+    "aggiuntaArtiOscure":[
+        "morsmordre4",
+        "avadaKedavra4",
+        "eredeDiSerpeverde4",
+        "crucio4",
+        "imperio4",
+        "rigenerazione4",
+        "morsmordre4",
+        "eredeDiSerpeverde4"
+    ]
+
+
+}

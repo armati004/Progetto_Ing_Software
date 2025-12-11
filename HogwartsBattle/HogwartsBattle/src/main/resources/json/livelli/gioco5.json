@@ -1,0 +1,46 @@
+{
+    "anno": 5,
+    
+    "meccaniche":{
+        "usoDadi": true,
+        "usoCompetenze": false,
+        "usoHorcrux": false,
+        "versioneEroi": "gioco3",
+        "upgradeEroi": false
+    },
+
+    "luoghi":[
+        "azkaban1",
+        "salaDelleProfezie2",
+        "ministeroDellaMagia3"
+    ],
+
+    "aggiunteMazzoNegozio":[
+        "fredWeasley5",
+        "choChang5",
+        "kingsleyShacklebolt5",
+        "georgeWeasley5",
+        "lunaLovegood5",
+        "ninfadoraTonks5",
+        "gufo5",
+        "gufo5"
+    ],
+
+    "aggiuntaMalvagi":[
+        "mangiamorte5",
+        "doloresUmbridge5",
+        "lordVoldemort5"
+    ],
+
+    "aggiuntaArtiOscure":[
+        "crucio5",
+        "imperio5",
+        "avadaKedavra5",
+        "legilmanzia5",
+        "morsmordre5",
+        "decretoEducativo5",
+        "decretoEducativo5"
+    ]
+
+
+}

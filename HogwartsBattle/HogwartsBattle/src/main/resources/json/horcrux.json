@@ -27,7 +27,7 @@
       ]
     },
     {
-      "id": "Anello7",
+      "id": "anello7",
       "nome": "Anello",
       "tipo": "horcrux",
       "Descrizione": "Ogni volta che un Eroe infligge 2 o più danni a un Villain, quell'Eroe perde 2 Punti Vita.",
@@ -57,7 +57,7 @@
       ]
     },
     {
-      "id": "Medaglione7",
+      "id": "medaglione7",
       "nome": "Medaglione",
       "tipo": "horcrux",
       "Descrizione": "Gli eroi non possono guadagnare attacchi o monete durante il turno di altri eroi.",
@@ -81,7 +81,7 @@
       ]
     },
     {
-      "id": "Coppa7",
+      "id": "coppa7",
       "nome": "Coppa",
       "tipo": "horcrux",
       "Descrizione": "All'inizio di ogni turno, rimuovi 1 danno da tutti i villain.",
@@ -102,7 +102,7 @@
       ]
     },
     {
-      "id": "Diadema7",
+      "id": "diadema7",
       "name": "Diadema",
       "type": "horcrux",
       "description": "All'inizio di ogni turno, se l’eroe attivo ha almeno un Alleato, Oggetto e Magia in mano, perde 2 vita.",
@@ -129,7 +129,7 @@
       ]
     },
     {
-      "id": "Nagini7",
+      "id": "nagini7",
       "name": "Nagini",
       "type": "horcrux",
       "description": "All'inizio di ogni turno, l'eroe attivo perde 1 vita e non può guadagnare vita in quel turno.",

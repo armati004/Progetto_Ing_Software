@@ -1,0 +1,44 @@
+{
+    "anno": 7,
+    
+    "meccaniche":{
+        "usoDadi": true,
+        "usoCompetenze": true,
+        "usoHorcrux": true,
+        "versioneEroi": "gioco7",
+        "upgradeEroi": true
+    },
+
+    "luoghi":[
+        "godricsHollow1",
+        "gringott2",
+        "stanzaDelleNecessita3",
+        "castelloDiHogwarts4"
+    ],
+
+    "aggiunteMazzoNegozio":[
+        "spadaGrifondoro7"
+    ],
+
+    "aggiuntaMalvagi":[
+        "lordVoldemort7"
+    ],
+
+    "aggiuntaArtiOscure":[
+        "avadaKedavra7",
+        "imperio7",
+        "ardemonio7",
+        "crucio7"
+    ],
+
+    "aggiuntaHorcrux":[
+        "diario7",
+        "anello7",
+        "medaglione7",
+        "coppa7",
+        "diadema7",
+        "nagini7"
+    ]
+
+
+}

@@ -178,7 +178,7 @@
   "gioco4": [
     {
       "nome": "Avada Kedavra",
-      "id": "Avada_kedavra4",
+      "id": "avadaKedavra4",
       "class": "ArtiOscure",
       "descrizione": "Tutti perdono 3 vite. Se stordito aggiunge segnalino luogo e pesca nuova carta Arti Oscure.",
       "costo": 0,
@@ -192,7 +192,7 @@
     },
     {
       "nome": "Crucio",
-      "id": "Crucio4",
+      "id": "crucio4",
       "class": "ArtiOscure",
       "descrizione": "Eroe attivo perde 1 vita e pesca nuova carta Arti Oscure.",
       "costo": 0,
@@ -205,7 +205,7 @@
     },
     {
       "nome": "Erede di Serpeverde",
-      "id": "Erede_di_serpeverde4",
+      "id": "eredeDiSerpeverde4",
       "class": "ArtiOscure",
       "descrizione": "Tira dado: Cuore=tutti perdono 1 vita; Token=segnalino luogo; Guarigione=guarisci malvagi; Scarta=tutti scartano.",
       "costo": 0,
@@ -242,7 +242,7 @@
     },
     {
       "nome": "Morsmordre",
-      "id": "Morsmordre4",
+      "id": "morsmordre4",
       "class": "ArtiOscure",
       "descrizione": "Tutti perdono 1 vita e aggiunge 1 segnalino luogo.",
       "costo": 0,
@@ -255,19 +255,38 @@
     },
     {
       "nome": "Rigenerazione",
-      "id": "Rigenerazione4",
+      "id": "rigenerazione4",
       "class": "ArtiOscure",
       "descrizione": "Tutti i malvagi guadagnano 2 punti vita.",
       "costo": 0,
       "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco4/Rigenerazione.png",
       "effetti": [{"type": "CURARE_MALVAGI", "qta": 2, "target": "TUTTI_MALVAGI", "durata": "ISTANTANEO"}],
       "triggers": []
-    }
+    },
+    {
+        "nome": "Avada Kedavra",
+        "id": "avadaKedavra5",
+        "class": "ArtiOscure",
+        "descrizione": "L'eroe attivo perde 3 punti vita. Se stordito aggiunge segnalino luogo e pesca nuova Arti Oscure.",
+        "costo": 0,
+        "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco5/avada_kedavra5.png",
+        "effetti": [
+          {"type": "PERDERE_VITA", "qta": 3, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+          {
+            "type": "STORDIMENTO",
+            "effects": [
+              {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
+            ]
+          },
+          {"type": "RIVELA_CARTA", "qta": 1, "target": "TAVOLO", "durata": "ISTANTANEO"}
+        ],
+        "triggers": []
+      }
   ],
     "gioco5": [
       {
         "nome": "Avada Kedavra",
-        "id": "avada_kedavra5",
+        "id": "avadaKedavra5",
         "class": "ArtiOscure",
         "descrizione": "L'eroe attivo perde 3 punti vita. Se stordito aggiunge segnalino luogo e pesca nuova Arti Oscure.",
         "costo": 0,
@@ -299,7 +318,7 @@
       },
       {
         "nome": "Decreto Educativo",
-        "id": "decreto_educativo5",
+        "id": "decretoEducativo5",
         "class": "ArtiOscure",
         "descrizione": "Per ogni carta in mano con costo ≥4, l'eroe attivo perde 1 punto vita.",
         "costo": 0,
@@ -404,7 +423,7 @@
       },
       {
         "nome": "Avada Kedavra",
-        "id": "avada_kedavra7",
+        "id": "avadaKedavra7",
         "class": "ArtiOscure",
         "descrizione": "L'eroe attivo perde 3 punti vita. Se stordito aggiunge segnalino luogo e pesca nuova Arti Oscure.",
         "costo": 0,

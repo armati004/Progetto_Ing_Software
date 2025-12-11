@@ -1,0 +1,58 @@
+{
+    "anno": 6,
+    
+    "meccaniche":{
+        "usoDadi": true,
+        "usoCompetenze": true,
+        "usoHorcrux": false,
+        "versioneEroi": "gioco3",
+        "upgradeEroi": false
+    },
+
+    "luoghi":[
+        "knockturnAlley1",
+        "laTana2",
+        "torreDiAstronomia3"
+    ],
+
+    "aggiunteMazzoNegozio":[
+        "bacchettaSambuco6",
+        "confundus6",
+        "horaceLumacorno6",
+        "felixFelicis6",
+        "bezoar6",
+        "deluminatore6",
+        "pozioniAvanzate6",
+        "confundus6",
+        "confundus6",
+        "confundus6",
+        "felixFelicis6",
+        "bezoar6"
+    ],
+
+    "aggiuntaMalvagi":[
+        "bellatrixLestrange6",
+        "fenrirGreyback6",
+        "lordVoldemort6"
+    ],
+
+    "aggiuntaArtiOscure":[
+        "morsmordre6",
+        "sectumsempra6",
+        "sectumsempra6"
+    ],
+
+    "aggiuntaCompetenze": [
+        "artimanzia6",
+        "curaMagiche6",
+        "difesaOscure6",
+        "divinazione6",
+        "erbologia6",
+        "incanti6",
+        "pozioni6",
+        "storiaMagia6",
+        "trasfigurazione6",
+        "lezioniVolo6"
+    ]
+
+}
