@@ -86,7 +86,7 @@ public class Giocatore {
 	    System.out.println("Giocata: " + carta.getNome() + " | Mano: " + mano.size());
 	}
 	
-	//cerca nel mazzo degli scarti un tipo di carta (oggetto, incantesimo e alleato)
+	//cerca nel mazzo degli scarti un tipo di carta (oggetto e incantesimo e alleato)
 	private List<Carta> cercaNelMazzo(String tipo) {	
 	    List<Carta> carteCorrispondenti = new ArrayList<>();
 	    
