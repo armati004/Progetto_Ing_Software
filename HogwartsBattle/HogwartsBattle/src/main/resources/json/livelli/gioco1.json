@@ -1,0 +1,70 @@
+{
+    "anno": 1,
+    
+    "meccaniche":{
+        "usoDadi": false,
+        "usoCompetenze": false,
+        "usoHorcrux": false,
+        "versioneEroi": "gioco1",
+        "upgradeEroi": false
+    },
+
+    "luoghi":[
+        "diagon_alley_1",
+        "specchio_delle_brame_2"   
+    ],
+
+    "aggiunteMazzoNegozio":[
+        "lumos1",
+        "descendo1",
+        "cappelloParlante1",
+        "attrezzaturaQuidditch1",
+        "oliverBaston1",
+        "wingardiumLeviosa1",
+        "rubeusHagrid1",
+        "albusSilente1",
+        "boccinoOro1",
+        "incendio1",
+        "essenzaDittamo1",
+        "reparo1",
+        "incendio1",
+        "incendio1",
+        "incendio1",
+        "reparo1",
+        "reparo1",
+        "reparo1",
+        "reparo1",
+        "reparo1",
+        "essenzaDittamo1",
+        "essenzaDittamo1",
+        "essenzaDittamo1",
+        "wingardiumLeviosa1",
+        "wingardiumLeviosa1",
+        "descendo1",
+        "lumos1",
+        "attrezzaturaQuidditch1",
+        "attrezzaturaQuidditch1",
+        "attrezzaturaQuidditch1"
+    ],
+
+    "aggiuntaMalvagi":[
+        "dracoMalfoy1",
+        "quiriusRaptor1",
+        "tigerGoyle1"
+    ],
+
+    "aggiuntaArtiOscure":[
+        "voldemort1",
+        "expulso1",
+        "flipendo1",
+        "pietrificazione1",
+        "pietrificazione1",
+        "flipendo1",
+        "expulso1",
+        "expulso1",
+        "voldemort1",
+        "voldemort1"
+    ]
+
+
+}
