@@ -93,7 +93,7 @@
   "gioco3": [
     {
       "nome": "Expecto Patronum",
-      "id": "expecto_patronum3",
+      "id": "expectoPatronum3",
       "class": "Incantesimo",
       "descrizione": "Guadagni 1 attacco e rimuovi 1 segnalino nero dal luogo.",
       "costo": 5,
@@ -106,7 +106,7 @@
     },
     {
       "nome": "Petrificus Totalus",
-      "id": "petrificus_Totalus3",
+      "id": "petrificusTotalus3",
       "class": "Incantesimo",
       "descrizione": "Guadagni 1 attacco. Scegli malvagio: blocca sue abilità fino all'inizio del prossimo turno.",
       "costo": 6,
@@ -173,5 +173,9 @@
       }]
     }
   ],
-  "gioco7": []
+  "gioco7": [
+    {
+      
+    }
+  ]
 }
