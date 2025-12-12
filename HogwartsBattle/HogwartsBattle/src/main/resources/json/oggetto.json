@@ -45,7 +45,7 @@
         },
         {
             "nome": "Essenza di dittamo",
-            "id": "Essenza_Dittamo1",
+            "id": "essenzaDittamo1",
             "class": "Oggetto",
             "descrizione": "Un eroe guadagna 2 Punti Vita",
             "costo": 2,

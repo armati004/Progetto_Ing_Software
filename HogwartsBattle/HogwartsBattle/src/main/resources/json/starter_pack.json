@@ -60,14 +60,28 @@
                 }
             ]
         },
-        {
-            "nome": "Alohomora"
-        }
+		{
+		  "nome": "Alohomora",
+		  "id": "Alohomora_Harry",
+		  "class": "Incantesimo",
+		  "descrizione": "Guadagni 1 influenza",
+		  "costo": 5,
+		  "pathImmagine": "../Immagini_carte/Starter_Pack/Harry/Alohomora_Harry.png",
+		  "effetti": [{"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}],
+		  "triggers": []
+		}
     ],
     "Hermione":[
-        {
-            "nome": "Alohomora"
-        },
+		{
+		  "nome": "Alohomora",
+		  "id": "Alohomora_Hermione",
+		  "class": "Incantesimo",
+		  "descrizione": "Guadagni 1 influenza",
+		  "costo": 5,
+		  "pathImmagine": "../Immagini_carte/Starter_Pack/Hermione/Alohomora_Hermione.png",
+		  "effetti": [{"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}],
+		  "triggers": []
+		},
         {
             "nome": "Favola di Beda il Bardo",
             "id": "favolaBeda0",
@@ -125,9 +139,16 @@
         }
     ],
     "Neville":[
-        {
-            "nome": "Alohomora"
-        },
+		{
+		  "nome": "Alohomora",
+		  "id": "Alohomora_Neville",
+		  "class": "Incantesimo",
+		  "descrizione": "Guadagni 1 influenza",
+		  "costo": 5,
+		  "pathImmagine": "../Immagini_carte/Starter_Pack/Neville/Alohomora_Neville.png",
+		  "effetti": [{"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}],
+		  "triggers": []
+		},
         {
             "nome": "Mandragola",
             "id": "mandragola0",
@@ -185,9 +206,16 @@
         }
     ],
     "Ron":[
-        {
-            "nome": "Alohomora"
-        },
+		{
+		  "nome": "Alohomora",
+		  "id": "Alohomora_Ron",
+		  "class": "Incantesimo",
+		  "descrizione": "Guadagni 1 influenza",
+		  "costo": 5,
+		  "pathImmagine": "../Immagini_carte/Starter_Pack/Ron/Alohomora_Ron.png",
+		  "effetti": [{"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}],
+		  "triggers": []
+		},
         {
             "nome": "Gelatine tutti gusti",
             "id": "gelatineTuttiGusti0",

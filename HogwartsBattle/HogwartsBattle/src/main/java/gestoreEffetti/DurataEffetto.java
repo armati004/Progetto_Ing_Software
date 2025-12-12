@@ -1,5 +1,5 @@
 package gestoreEffetti;
 
 public enum DurataEffetto {
-	ISTANTANEO, TEMPORANEO, CONTINUO, RIPETIBILE;
+	ISTANTANEO, TEMPORANEO, CONTINUO;
 }

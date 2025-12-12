@@ -8,19 +8,19 @@
       "costo": 0,
       "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco1/Colui_che_non_deve_essere_nominato.png",
       "effetti": [
-        {"type": "AGGIUNGI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO"}
+        {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
       ],
       "triggers": []
     },
     {
       "nome": "Expulso",
-      "id": "Expulso1",
+      "id": "expulso1",
       "class": "ArtiOscure",
       "descrizione": "L'eroe attivo perde 2 punti vita.",
       "costo": 0,
       "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco1/Expulso.png",
       "effetti": [
-        {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO"}
+        {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
       ],
       "triggers": []
     },
@@ -32,8 +32,8 @@
       "costo": 0,
       "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco1/Flipendo.png",
       "effetti": [
-        {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO"},
-        {"type": "SCARTA_CARTA", "qta": 1, "target": "EROE_ATTIVO"}
+        {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+        {"type": "RIVELA_CARTA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
       ],
       "triggers": []
     },
@@ -45,8 +45,8 @@
       "costo": 0,
       "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco1/Pietrificazione.png",
       "effetti": [
-        {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"},
-        {"type": "BLOCCO_PESCA_EXTRA", "qta": 1, "target": "TUTTI_GLI_EROI"}
+        {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+        {"type": "NON_PESCARE_CARTE", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
       ],
       "triggers": []
     }
@@ -54,30 +54,30 @@
   "gioco2": [
     {
       "nome": "Mano della gloria",
-      "id": "Mano_della_gloria2",
+      "id": "manoDellaGloria2",
       "class": "ArtiOscure",
       "descrizione": "L'eroe attivo perde 1 punto vita e aggiunge 1 segnalino luogo.",
       "costo": 0,
       "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco2/Mano_della_gloria2.png",
       "effetti": [
-        {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO"},
-        {"type": "AGGIUNGI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO"}
+        {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+        {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
       ],
       "triggers": []
     },
     {
       "nome": "Oblivion",
-      "id": "Oblivion2",
+      "id": "oblivion2",
       "class": "ArtiOscure",
       "descrizione": "Scegli: tutti scartano 1 incantesimo OPPURE tutti perdono 2 punti vita.",
       "costo": 0,
       "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco2/Oblivion.png",
       "effetti": [
         {
-          "type": "SCELTA_SWITCH",
+          "type": "SCELTA",
           "cases": [
-            {"result": "scarta", "effects": [{"type": "SCARTA_INCANTESIMO", "qta": 1, "target": "TUTTI_GLI_EROI"}]},
-            {"result": "vita", "effects": [{"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI"}]}
+            {"result": "scarta", "effects": [{"type": "SCARTA_INCANTESIMO", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}]},
+            {"result": "vita", "effects": [{"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}]}
           ]
         }
       ],
@@ -92,10 +92,10 @@
       "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco2/Relascio.png",
       "effetti": [
         {
-          "type": "SCELTA_SWITCH",
+          "type": "SCELTA",
           "cases": [
-            {"result": "oggetto", "effects": [{"type": "SCARTA_OGGETTO", "qta": 1, "target": "TUTTI_GLI_EROI"}]},
-            {"result": "vita", "effects": [{"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI"}]}
+            {"result": "oggetto", "effects": [{"type": "SCARTA_OGGETTO", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}]},
+            {"result": "vita", "effects": [{"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}]}
           ]
         }
       ],
@@ -110,10 +110,10 @@
       "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco2/Veleno.png",
       "effetti": [
         {
-          "type": "SCELTA_SWITCH",
+          "type": "SCELTA",
           "cases": [
-            {"result": "alleato", "effects": [{"type": "SCARTA_ALLEATO", "qta": 1, "target": "TUTTI_GLI_EROI"}]},
-            {"result": "vita", "effects": [{"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI"}]}
+            {"result": "alleato", "effects": [{"type": "SCARTA_ALLEATO", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}]},
+            {"result": "vita", "effects": [{"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}]}
           ]
         }
       ],
@@ -123,20 +123,20 @@
   "gioco3": [
     {
       "nome": "Bacio del dissennatore",
-      "id": "Bacio_del_dissennatore3",
+      "id": "bacioDelDissennatore3",
       "class": "ArtiOscure",
       "descrizione": "L'eroe attivo e tutti gli eroi perdono 1 punto vita ciascuno.",
       "costo": 0,
       "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco3/Bacio_del_dissennatore.png",
       "effetti": [
-        {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO"},
-        {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"}
+        {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+        {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
       ],
       "triggers": []
     },
     {
       "nome": "Oppugno",
-      "id": "Oppugno3",
+      "id": "oppugno3",
       "class": "ArtiOscure",
       "descrizione": "Tutti rivelano cima mazzo. Se moneta ≥1, tutti scartano 1 carta e perdono 2 vite.",
       "costo": 0,
@@ -147,45 +147,65 @@
           "type": "SE_MONETA_AL_MENO",
           "qta": 1,
           "then": [
-            {"type": "SCARTA_CARTA", "qta": 1, "target": "TUTTI_GLI_EROI"},
-            {"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI"}
+            {"type": "RIVELA_CARTA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+            {"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
           ]
         }
       ],
       "triggers": []
+    },
+    {
+      "nome": "TarantaAllegra",
+      "id": "tarantallegra3",
+      "class": "ArtiOscure",
+      "descrizione": "L'eroe attivo perde 1 Punto Vita e non può assegnare più di 1 Segnalino Attacco a ciascun Malvagio fino alla fine di questo turno.",
+      "costo": 0,
+      "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco3/Tarantallegra3.png",
+      "effetti": [
+        {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+      ],
+      "triggers": [
+        {
+          "type": "ASSEGNA_PIU_ATTACCHI",
+          "effectToExecute": [
+            {"type": "LIMITA_ATTACCO", "target": "MALVAGIO"}
+          ]
+          
+        }
+      ]
     }
   ],
   "gioco4": [
     {
       "nome": "Avada Kedavra",
-      "id": "Avada_kedavra4",
+      "id": "avadaKedavra4",
       "class": "ArtiOscure",
       "descrizione": "Tutti perdono 3 vite. Se stordito aggiunge segnalino luogo e pesca nuova carta Arti Oscure.",
       "costo": 0,
       "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco4/Avada_kedavra4.png",
       "effetti": [
-        {"type": "PERDERE_VITA", "qta": 3, "target": "TUTTI_GLI_EROI"},
-        {"type": "SE_STORDITO", "effects": [{"type": "AGGIUNGI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO"}]},
-        {"type": "PESCA_ARTI_OSCURE_EXTRA", "qta": 1, "target": "TAVOLO"}
+        {"type": "PERDERE_VITA", "qta": 3, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+        {"type": "STORDIMENTO", "effects": [{"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}]},
+        {"type": "RIVELA_CARTA", "qta": 1, "target": "TAVOLO", "durata": "ISTANTANEO"}
       ],
       "triggers": []
     },
     {
       "nome": "Crucio",
-      "id": "Crucio4",
+      "id": "crucio4",
       "class": "ArtiOscure",
       "descrizione": "Eroe attivo perde 1 vita e pesca nuova carta Arti Oscure.",
       "costo": 0,
       "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco4/Crucio4.png",
       "effetti": [
-        {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO"},
-        {"type": "PESCA_ARTI_OSCURE_EXTRA", "qta": 1, "target": "TAVOLO"}
+        {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+        {"type": "RIVELA_CARTA", "qta": 1, "target": "TAVOLO", "durata": "ISTANTANEO"}
       ],
       "triggers": []
     },
     {
       "nome": "Erede di Serpeverde",
-      "id": "Erede_di_serpeverde4",
+      "id": "eredeDiSerpeverde4",
       "class": "ArtiOscure",
       "descrizione": "Tira dado: Cuore=tutti perdono 1 vita; Token=segnalino luogo; Guarigione=guarisci malvagi; Scarta=tutti scartano.",
       "costo": 0,
@@ -194,10 +214,10 @@
         {
           "type": "SCELTA_DADO",
           "cases": [
-            {"result": "cuore", "effects": [{"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"}]},
-            {"result": "token", "effects": [{"type": "AGGIUNGI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO"}]},
-            {"result": "guarigione", "effects": [{"type": "GUARISCI_MALVAGI", "qta": 1, "target": "TUTTI_MALVAGI"}]},
-            {"result": "scarta", "effects": [{"type": "SCARTA_CARTA", "qta": 1, "target": "TUTTI_GLI_EROI"}]}
+            {"result": "cuore", "effects": [{"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}]},
+            {"result": "token", "effects": [{"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}]},
+            {"result": "guarigione", "effects": [{"type": "CURARE_MALVAGI", "qta": 1, "target": "TUTTI_MALVAGI", "durata": "ISTANTANEO"}]},
+            {"result": "scarta", "effects": [{"type": "RIVELA_CARTA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}]}
           ]
         }
       ],
@@ -214,53 +234,72 @@
         {
           "type": "SCEGLI_EROE",
           "target": "ALTRO_EROE",
-          "effects": [{"type": "PERDERE_VITA", "qta": 2, "target": "EROE_SCELTO"}]
+          "effects": [{"type": "PERDERE_VITA", "qta": 2, "target": "EROE_SCELTO", "durata": "ISTANTANEO"}]
         },
-        {"type": "PESCA_ARTI_OSCURE_EXTRA", "qta": 1, "target": "TAVOLO"}
+        {"type": "RIVELA_CARTA", "qta": 1, "target": "TAVOLO", "durata": "ISTANTANEO"}
       ],
       "triggers": []
     },
     {
       "nome": "Morsmordre",
-      "id": "Morsmordre4",
+      "id": "morsmordre4",
       "class": "ArtiOscure",
       "descrizione": "Tutti perdono 1 vita e aggiunge 1 segnalino luogo.",
       "costo": 0,
       "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco4/Morsmordre4.png",
       "effetti": [
-        {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"},
-        {"type": "AGGIUNGI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO"}
+        {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+        {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
       ],
       "triggers": []
     },
     {
       "nome": "Rigenerazione",
-      "id": "Rigenerazione4",
+      "id": "rigenerazione4",
       "class": "ArtiOscure",
       "descrizione": "Tutti i malvagi guadagnano 2 punti vita.",
       "costo": 0,
       "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco4/Rigenerazione.png",
-      "effetti": [{"type": "GUARISCI_MALVAGI", "qta": 2, "target": "TUTTI_MALVAGI"}],
+      "effetti": [{"type": "CURARE_MALVAGI", "qta": 2, "target": "TUTTI_MALVAGI", "durata": "ISTANTANEO"}],
       "triggers": []
-    }
-  ],
-    "gioco5": [
-      {
+    },
+    {
         "nome": "Avada Kedavra",
-        "id": "avada_kedavra5",
+        "id": "avadaKedavra5",
         "class": "ArtiOscure",
         "descrizione": "L'eroe attivo perde 3 punti vita. Se stordito aggiunge segnalino luogo e pesca nuova Arti Oscure.",
         "costo": 0,
         "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco5/avada_kedavra5.png",
         "effetti": [
-          {"type": "PERDERE_VITA", "qta": 3, "target": "EROE_ATTIVO"},
+          {"type": "PERDERE_VITA", "qta": 3, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
           {
-            "type": "SE_STORDITO",
+            "type": "STORDIMENTO",
             "effects": [
-              {"type": "AGGIUNGI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO"}
+              {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
             ]
           },
-          {"type": "PESCA_ARTI_OSCURE_EXTRA", "qta": 1, "target": "TAVOLO"}
+          {"type": "RIVELA_CARTA", "qta": 1, "target": "TAVOLO", "durata": "ISTANTANEO"}
+        ],
+        "triggers": []
+      }
+  ],
+    "gioco5": [
+      {
+        "nome": "Avada Kedavra",
+        "id": "avadaKedavra5",
+        "class": "ArtiOscure",
+        "descrizione": "L'eroe attivo perde 3 punti vita. Se stordito aggiunge segnalino luogo e pesca nuova Arti Oscure.",
+        "costo": 0,
+        "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco5/avada_kedavra5.png",
+        "effetti": [
+          {"type": "PERDERE_VITA", "qta": 3, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+          {
+            "type": "STORDIMENTO",
+            "effects": [
+              {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
+            ]
+          },
+          {"type": "RIVELA_CARTA", "qta": 1, "target": "TAVOLO", "durata": "ISTANTANEO"}
         ],
         "triggers": []
       },
@@ -272,14 +311,14 @@
         "costo": 0,
         "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco5/crucio5.png",
         "effetti": [
-          {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO"},
-          {"type": "PESCA_ARTI_OSCURE_EXTRA", "qta": 1, "target": "TAVOLO"}
+          {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+          {"type": "RIVELA_CARTA", "qta": 1, "target": "TAVOLO", "durata": "ISTANTANEO"}
         ],
         "triggers": []
       },
       {
         "nome": "Decreto Educativo",
-        "id": "decreto_educativo5",
+        "id": "decretoEducativo5",
         "class": "ArtiOscure",
         "descrizione": "Per ogni carta in mano con costo ≥4, l'eroe attivo perde 1 punto vita.",
         "costo": 0,
@@ -289,7 +328,7 @@
             "type": "PER_CARTA_COSTO_MINIMO",
             "minCosto": 4,
             "then": [
-              {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO"}
+              {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
             ]
           }
         ],
@@ -303,8 +342,8 @@
         "costo": 0,
         "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco5/imperio5.png",
         "effetti": [
-          {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO"},
-          {"type": "PESCA_ARTI_OSCURE_EXTRA", "qta": 1, "target": "TAVOLO"}
+          {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+          {"type": "RIVELA_CARTA", "qta": 1, "target": "TAVOLO", "durata": "ISTANTANEO"}
         ],
         "triggers": []
       },
@@ -320,8 +359,8 @@
             "type": "EFFETTO_CONDITIONALE",
             "condition": {"tipoCarta": "incantesimo"},
             "then": [
-              {"type": "SCARTA_CARTA", "qta": 1, "target": "EROE_RIVELANTE"},
-              {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_RIVELANTE"}
+              {"type": "RIVELA_CARTA", "qta": 1, "target": "EROE_RIVELANTE", "durata": "ISTANTANEO"},
+              {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_RIVELANTE", "durata": "ISTANTANEO"}
             ]
           }
         ],
@@ -335,8 +374,8 @@
         "costo": 0,
         "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco5/morsmordre5.png",
         "effetti": [
-          {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"},
-          {"type": "AGGIUNGI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO"}
+          {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+          {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
         ],
         "triggers": []
       }
@@ -350,8 +389,8 @@
         "costo": 0,
         "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco6/morsmordre6.png",
         "effetti": [
-          {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"},
-          {"type": "AGGIUNGI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO"}
+          {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+          {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
         ],
         "triggers": []
       },
@@ -363,8 +402,8 @@
         "costo": 0,
         "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco6/sectumsempra.png",
         "effetti": [
-          {"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI"},
-          {"type": "BLOCCO_GUADAGNO_VITA_TURNO", "target": "TUTTI_GLI_EROI"}
+          {"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+          {"type": "NON_GUADAGNARE_VITA", "target": "TUTTI_GLI_EROI", "durata": "TEMPORANEO"}
         ],
         "triggers": [{"type": "ON_EFFETTO_SCATENATO"}]
       }
@@ -378,26 +417,26 @@
         "costo": 0,
         "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco7/ardemonio.png",
         "effetti": [
-          {"type": "PERDERE_VITA", "qta": 3, "target": "TUTTI_GLI_EROI"}
+          {"type": "PERDERE_VITA", "qta": 3, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
         ],
         "triggers": []
       },
       {
         "nome": "Avada Kedavra",
-        "id": "avada_kedavra7",
+        "id": "avadaKedavra7",
         "class": "ArtiOscure",
         "descrizione": "L'eroe attivo perde 3 punti vita. Se stordito aggiunge segnalino luogo e pesca nuova Arti Oscure.",
         "costo": 0,
         "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco7/avada_kedavra7.png",
         "effetti": [
-          {"type": "PERDERE_VITA", "qta": 3, "target": "EROE_ATTIVO"},
+          {"type": "PERDERE_VITA", "qta": 3, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
           {
-            "type": "SE_STORDITO",
+            "type": "STORDIMENTO",
             "effects": [
-              {"type": "AGGIUNGI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO"}
+              {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
             ]
           },
-          {"type": "PESCA_ARTI_OSCURE_EXTRA", "qta": 1, "target": "TAVOLO"}
+          {"type": "RIVELA_CARTA", "qta": 1, "target": "TAVOLO", "durata": "ISTANTANEO"}
         ],
         "triggers": []
       },
@@ -409,8 +448,8 @@
         "costo": 0,
         "pathImmagine": "../Immagini_carte/Arti_Oscure/Gioco7/crucio7.png",
         "effetti": [
-          {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO"},
-          {"type": "PESCA_ARTI_OSCURE_EXTRA", "qta": 1, "target": "TAVOLO"}
+          {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+          {"type": "RIVELA_CARTA", "qta": 1, "target": "TAVOLO", "durata": "ISTANTANEO"}
         ],
         "triggers": []
       },
@@ -425,9 +464,9 @@
           {
             "type": "SCEGLI_EROE",
             "target": "ALTRO_EROE",
-            "effects": [{"type": "PERDERE_VITA", "qta": 2, "target": "EROE_SCELTO"}]
+            "effects": [{"type": "PERDERE_VITA", "qta": 2, "target": "EROE_SCELTO", "durata": "ISTANTANEO"}]
           },
-          {"type": "PESCA_ARTI_OSCURE_EXTRA", "qta": 1, "target": "TAVOLO"}
+          {"type": "RIVELA_CARTA", "qta": 1, "target": "TAVOLO", "durata": "ISTANTANEO"}
         ],
         "triggers": []
       }
