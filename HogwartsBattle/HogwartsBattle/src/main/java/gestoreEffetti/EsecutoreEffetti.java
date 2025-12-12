@@ -35,8 +35,10 @@ public class EsecutoreEffetti {
 		case DADO_TASSOROSSO:
 			break;
 		case GUADAGNARE_ATTACCO:
+			guadagnareAttacco(effetto, stato, giocatore, effetto.getQta());
 			break;
 		case GUADAGNARE_INFLUENZA:
+			guadagnareInfluenza(effetto, stato, giocatore, effetto.getQta());
 			break;
 		case GUADAGNARE_VITA:
 			break;
@@ -63,8 +65,10 @@ public class EsecutoreEffetti {
 		case NON_RIMUOVERE_MARCHI:
 			break;
 		case PERDERE_VITA:
+			perdereVita(effetto, stato, giocatore, effetto.getQta());
 			break;
 		case PESCARE_CARTA:
+			pescaCarta(effetto, stato, giocatore, effetto.getQta());
 			break;
 		case RIMUOVERE_ATTACCO:
 			break;
@@ -117,4 +121,23 @@ public class EsecutoreEffetti {
 			return;
 		}
 	}
+
+	public static void guadagnareAttacco (Effetto effetto, StatoDiGioco stato, Giocatore attivo, int valore) {
+		attivo.setAttacco(attivo.getAttacco() + valore);
+	}
+	public static void guadagnareSalute (Effetto effetto, StatoDiGioco stato, Giocatore attivo, int valore) {
+		attivo.setSalute(attivo.getSalute() + valore);
+	}
+	public static void guadagnareInfluenza (Effetto effetto, StatoDiGioco stato, Giocatore attivo, int valore) {
+		attivo.setGettone(attivo.getGettone() + valore);
+	}
+	public static void pescaCarta(Effetto effetto, StatoDiGioco stato, Giocatore attivo, int qta) {
+		for(int i = 0; i < qta; i++) {
+			attivo.getMazzo().pescaCarta();
+		}
+	}
+	public static void perdereVita (Effetto effetto, StatoDiGioco stato, Giocatore attivo, int valore) {
+		attivo.setSalute(attivo.getSalute() - valore);
+	}
+
 }
