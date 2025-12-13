@@ -48,7 +48,7 @@ public class Carta {
 		
 		if(this.getTriggers() != null && !(this.getTriggers().isEmpty())) {
 			for(Trigger trigger : this.getTriggers()) {
-				stato.getGestoreTrigger().registraTrigger(trigger.getType(), trigger.getEffectToExecute(), this);
+				stato.getGestoreTrigger().registraTrigger(trigger.getType(), trigger.getEffectToExecute(), this, trigger.getDurata());
 			}
 		}
 	}

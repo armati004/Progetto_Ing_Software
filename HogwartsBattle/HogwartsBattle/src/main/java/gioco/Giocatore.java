@@ -8,7 +8,7 @@ import carte.Eroe;
 import carte.Mazzo;
 
 public class Giocatore {
-    private Eroe  eroe;
+    private Eroe eroe;
     private int salute;
     private final int saluteMax = 10;
     private Mazzo mazzo;
@@ -17,7 +17,7 @@ public class Giocatore {
     private int gettone;
     private int attacco;
 	
-    
+    //Manca il costruttore
     
     public Eroe getEroe() {
 		return eroe;
@@ -59,11 +59,12 @@ public class Giocatore {
 		this.attacco = attacco;
 	}
 	
+	//Il mazzo non è una lista
 	private void scartaCarta(Mazzo mazzo, Carta carta) {
 		mazzo.remove(carta);
 	}
 
-	
+	//I metodi vanno sopra i getter e i setter
 	private void giocaCarta(StatoDiGioco stato, Carta carta) {
 	    // Verifica che la carta sia nella mano
 	    if (!mano.contains(carta)) {

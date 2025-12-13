@@ -11,13 +11,15 @@ public class Trigger {
 	@SerializedName("qta-quorum")
 	private final Integer qtaQuorum;
 	private Boolean attivato1Volta;
+	private DurataEffetto durata;
 	
-	public Trigger(TipoTrigger type, BersaglioEffetto target, Integer qtaQuorum, Boolean attivato1Volta, List<Effetto> effectToExecute) {
+	public Trigger(TipoTrigger type, BersaglioEffetto target, Integer qtaQuorum, Boolean attivato1Volta, List<Effetto> effectToExecute, DurataEffetto durata) {
 		this.type = type;
 		this.target = target;
 		this.qtaQuorum = qtaQuorum;
 		this.setAttivato1Volta(attivato1Volta);
 		this.setEffectToExecute(effectToExecute);
+		this.durata = durata;
 	}
 
 	public TipoTrigger getType() {
@@ -46,5 +48,9 @@ public class Trigger {
 
 	public void setAttivato1Volta(Boolean attivato1Volta) {
 		this.attivato1Volta = attivato1Volta;
+	}
+
+	public DurataEffetto getDurata() {
+		return durata;
 	}
 }

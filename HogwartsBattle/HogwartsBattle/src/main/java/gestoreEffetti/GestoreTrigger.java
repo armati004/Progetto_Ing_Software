@@ -13,14 +13,20 @@ import gioco.StatoDiGioco;
 public class GestoreTrigger {
 	private final Map<TipoTrigger, List<TriggerAttivato>> registro = new EnumMap<>(TipoTrigger.class);
 	
-	public void registraTrigger(TipoTrigger tipo, List<Effetto> effetti, Carta sorgente) {
-		TriggerAttivato attivato = new TriggerAttivato(sorgente, effetti);
+	public void registraTrigger(TipoTrigger tipo, List<Effetto> effetti, Carta sorgente, DurataEffetto durata) {
+		TriggerAttivato attivato = new TriggerAttivato(sorgente, effetti, durata);
 		this.registro.computeIfAbsent(tipo, _ -> new ArrayList<>()).add(attivato);
 	}
 	
 	public void rimuoviTrigger(Carta sorgente) {
 		for(List<TriggerAttivato> lista : registro.values()) {
 			lista.removeIf(attivato -> attivato.getSorgente().equals(sorgente));
+		}
+	}
+	
+	public void rimuoviTriggerFineTurno() {
+		for(List<TriggerAttivato> lista : registro.values()) {
+			lista.removeIf(attivato -> attivato.getDurata() == DurataEffetto.TEMPORANEO);
 		}
 	}
 	
@@ -42,10 +48,12 @@ public class GestoreTrigger {
 class TriggerAttivato {
 	private Carta sorgente;
 	private List<Effetto> effetti;
+	private DurataEffetto durata;
 	
-	public TriggerAttivato(Carta sorgente, List<Effetto> effetti) {
+	public TriggerAttivato(Carta sorgente, List<Effetto> effetti, DurataEffetto durata) {
 		this.sorgente = sorgente;
 		this.effetti = effetti;
+		this.durata = durata;
 	}
 
 	public Carta getSorgente() {
@@ -54,5 +62,9 @@ class TriggerAttivato {
 
 	public List<Effetto> getEffetti() {
 		return effetti;
+	}
+	
+	public DurataEffetto getDurata() {
+		return durata;
 	}
 }
