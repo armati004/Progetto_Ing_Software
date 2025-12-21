@@ -20,6 +20,10 @@ public class Horcrux extends Carta {
 	}
 	
 	public Boolean applicaRisultatoDado(Entita facciaDado) {
+		if (segnaliniRichiesti.contains(facciaDado) && !segnaliniAssegnati.contains(facciaDado)) {
+			segnaliniAssegnati.add(facciaDado);
+			return true;
+		}
 		return false;
 	}
 	
