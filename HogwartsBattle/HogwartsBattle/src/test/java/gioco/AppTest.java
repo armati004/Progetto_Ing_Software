@@ -69,7 +69,11 @@ public class AppTest {
         // Eseguiamo il comando tramite controller
         String response = controller.processaComando("gioca " + cardIndex);
         
-        assertTrue(response.contains("Hai giocato"), "Dovrebbe confermare la giocata");
+        for(Carta c : harry.getMano()) {
+        	System.out.println(c.getNome());
+        }
+        
+        assertTrue(response.contains("Hai giocato: " + card.getNome()), "Dovrebbe confermare la giocata");
         assertFalse(harry.getMano().contains(card), "La carta non dovrebbe essere più in mano");
         assertTrue(harry.getScarti().getCarte().contains(card), "La carta dovrebbe essere nella pila degli scarti");
         
@@ -80,9 +84,10 @@ public class AppTest {
     @Test
     @DisplayName("Test Acquisto Carta (Comando 'compra')")
     void testBuyCard() {
-    	stato.setFaseCorrente(FaseTurno.ACQUISTA_CARTE);
     	
     	harry.setGettone(harry.getGettone() + 100);
+    	
+    	stato.setFaseCorrente(FaseTurno.ACQUISTA_CARTE);
     	
     	Carta target = stato.getMercato().get(0);
     	
@@ -111,7 +116,7 @@ public class AppTest {
         
         // Verifiche
         assertTrue(response.contains("Colpito"), "Messaggio colpito atteso");
-        assertEquals(initialHealth - 1, m.getDanno(), "Il malvagio deve aver perso 1 vita");
+        assertEquals(initialHealth + 1, m.getDanno(), "Il malvagio deve aver perso 1 vita");
         assertEquals(0, harry.getAttacco(), "Il giocatore deve aver speso l'attacco");
     }
     

@@ -78,6 +78,7 @@ public class StatoDiGioco {
         
         // 4. Setup Iniziale del Tavolo
         setupTabellone();
+        
     }
 
     // ----------------------------------------------------------------

@@ -52,9 +52,9 @@ public class InputController {
         int index = Integer.parseInt(parts[1]);
         if (index < 0 || index >= player.getMano().size()) return "Indice carta non valido.";
 
-        Carta Carta = player.getMano().get(index);
-        player.giocaCarta(stato, Carta);
-        return "Hai giocato: " + Carta.getNome();
+        Carta carta = player.getMano().get(index);
+        player.giocaCarta(stato, carta);
+        return "Hai giocato: " + carta.getNome();
     }
 
     private String handleAttack(String[] parts, Giocatore player) {

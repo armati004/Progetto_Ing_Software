@@ -1,8 +1,13 @@
 package data;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Meccanica {
+	@SerializedName("usoDadi")
 	private Boolean contieneDadi;
+	@SerializedName("usoCompetenze")
 	private Boolean contieneCompetenze;
+	@SerializedName("usoHorcrux")
 	private Boolean contieneHorcrux;
 	private String versioneEroi;
 	
