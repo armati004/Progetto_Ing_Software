@@ -9,7 +9,7 @@ public class EsecutoreEffetti {
 	public static void eseguiEffetto(Effetto effetto, StatoDiGioco stato, Giocatore giocatore) {
 		switch(effetto.getType()) {
 		case AGGIUNGERE_MARCHIO_NERO:
-			aggiungereMarchioNero(effetto, stato, giocatore);
+			aggiungereMarchioNero(effetto, stato, giocatore); 
 			break;
 		case ALLEATO_IN_MAZZO:
 			break;
@@ -35,7 +35,7 @@ public class EsecutoreEffetti {
 		case DADO_TASSOROSSO:
 			break;
 		case GUADAGNARE_ATTACCO:
-			guadagnareAttacco(effetto, stato, giocatore, effetto.getQta());
+			guadagnareAttacco(effetto, stato, giocatore);
 			break;
 		case GUADAGNARE_INFLUENZA:
 			guadagnareInfluenza(effetto, stato, giocatore, effetto.getQta());
@@ -122,11 +122,11 @@ public class EsecutoreEffetti {
 		}
 	}
 
-	public static void guadagnareAttacco (Effetto effetto, StatoDiGioco stato, Giocatore attivo, int valore) {
+	public static void guadagnareAttacco (Effetto effetto, StatoDiGioco stato, Giocatore attivo) {
 		//regola attiva funziona che se l'effetto ritorna true significa che c'è un blocco sull'effetto quindi non si puo fare
 		//se l'effetto ritorna flase significa che non c'è un blocco sull'effetto quindi si puo fare
-		if(stato.getGestoreEffetti().regolaAttiva(effetto.getType()) == false) { 
-		attivo.setAttacco(attivo.getAttacco() + valore);
+		if(stato.getGestoreEffetti().regolaAttiva(TipoEffetto.NON_GUADAGNARE_ATTACCHI) == false) { 
+		attivo.setAttacco(attivo.getAttacco() + effetto.getQta());
 		} else {
 			System.out.println("C'è un blocco su questo effetto, NON SI PUO FARE!");
 			return;
