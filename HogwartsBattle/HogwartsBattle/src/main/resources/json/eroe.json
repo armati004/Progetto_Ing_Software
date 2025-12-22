@@ -38,6 +38,7 @@
         "triggers":[
             {
                 "type": "RIMOZIONE_MARCHIO_NERO",
+                "durata": "CONTINUO",
                 "attivato1Volta":false,
                 "effectToExecute":[
                     {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_SCELTO", "targetCount": 1}
@@ -54,6 +55,7 @@
         "triggers":[
             {
                 "type": "INCANTESIMI_GIOCATI",
+                "durata": "CONTINUO",
                 "qta-quorum":4,
                 "attivato1Volta": false,
                 "effectToExecute":[
@@ -71,6 +73,7 @@
         "triggers":[
             {
                 "type": "GUADAGNA_VITA",
+                "durata": "CONTINUO",
                 "attivato1Volta":false,
                 "effectToExecute": [
                     {"type": "GUADAGNARE_VITA", "qta": 1, "target": "EROE_ATTIVO"}
@@ -87,6 +90,7 @@
         "triggers":[
             {
                 "type": "ATTACCHI_ASSEGNATI",
+                "durata": "CONTINUO",
                 "qta-quorum": 3,
                 "effectToExecute": [
                     {"type": "GUADAGNARE_VITA", "qta": 2, "target": "EROE_SCELTO", "targetCount": 1}
@@ -104,6 +108,7 @@
         "triggers":[
             {
                 "type": "RIMOZIONE_MARCHIO_NERO",
+                "durata": "CONTINUO",
                 "attivato1Volta":false,
                 "effectToExecute":[
                     {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_SCELTO", "targetCount": 2}
@@ -120,6 +125,7 @@
         "triggers":[
             {
                 "type": "INCANTESIMI_GIOCATI",
+                "durata": "CONTINUO",
                 "qta-quorum":4,
                 "attivato1Volta": false,
                 "effectToExecute":[
@@ -137,6 +143,7 @@
         "triggers":[
             {
                 "type": "GUADAGNA_VITA",
+                "durata": "CONTINUO",
                 "effectToExecute": [
                     {"type": "GUADAGNARE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI"}
                 ]
@@ -152,6 +159,7 @@
         "triggers":[
         {
             "type": "ATTACCHI_ASSEGNATI",
+            "durata": "CONTINUO",
             "qta-quorum": 3,
             "effectToExecute": [
                 {"type": "GUADAGNARE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI"}

@@ -31,6 +31,7 @@
             "triggers":[
                 {
                     "type": "NEMICO_SCONFITTO",
+                    "durata":"TEMPORANEO",
                     "effectToExecute":[
                         {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
@@ -55,7 +56,7 @@
                         "hasCardInHand": "Mantello0"
                     },
                     "effectToExecute":[
-                        {"type": "LIMITARE_DANNO", "qta": 1, "target": "EROE_ATTIVO"}
+                        {"type": "LIMITARE_DANNO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -113,8 +114,9 @@
             "triggers":[
                 {
                     "type": "ACQUISTA_INCANTESIMO",
+                    "durata":"TEMPORANEO",
                     "effectToExecute":[
-                        {"type": "mettiInCimaMazzo", "target": "EROE_ATTIVO"}
+                        {"type": "mettiInCimaMazzo", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -198,8 +200,9 @@
             "triggers":[
                 {
                     "type": "AUTO_SCARTO",
+                    "durata":"TEMPORANEO",
                     "effectToExecute":[
-                        {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO"}
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -229,8 +232,9 @@
             "triggers":[
                 {
                     "type": "GIOCA_ALLEATO",
+                    "durata":"TEMPORANEO",
                     "effectToExecute":[
-                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"}
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -266,8 +270,9 @@
             "triggers":[
                 {
                     "type": "NEMICO_SCONFITTO",
+                    "durata":"TEMPORANEO",
                     "effectToExecute":[
-                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO"}
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]

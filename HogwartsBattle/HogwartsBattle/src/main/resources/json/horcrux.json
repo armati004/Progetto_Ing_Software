@@ -41,6 +41,7 @@
       "triggers": [
         {
           "type": "ATTACCHI_ASSEGNATI",
+          "durata": "CONTINUO",
           "qtaQuorum": 2,
           "effectToExecute": [
             { "type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO", "durata":"ISTANTANEO"}
@@ -116,6 +117,7 @@
       "triggers": [
         {
           "type": "TUTTE_TIPOLOGIE",
+          "durata": "CONTINUO",
           "condition": { "needsAllyItemSpellInHand": true },
           "effectToExecute": [
             { "type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO", "durata":"ISTANTANEO" }

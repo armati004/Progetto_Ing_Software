@@ -27,8 +27,9 @@
             "triggers":[
                 {
                     "type": "NEMICO_SCONFITTO",
+                    "durata": "TEMPORANEO",
                     "effectToExecute":[
-                        {"type": "GUADAGNARE_VITA", "qta":2, "target": "EROE_SCELTO", "targetCount": 1}
+                        {"type": "GUADAGNARE_VITA", "qta":2, "target": "EROE_SCELTO", "targetCount": 1, "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -102,8 +103,9 @@
             "triggers":[
                 {
                     "type": "AUTO_SCARTO",
+                    "durata": "TEMPORANEO",
                     "effectToExecute":[
-                        {"type": "PESCARE_CARTA", "qta": 1, "target": "EROE_ATTIVO"}
+                        {"type": "PESCARE_CARTA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -160,8 +162,9 @@
             "triggers":[
                 {
                     "type": "SCARTA_INCANTESIMO",
+                    "durata": "TEMPORANEO",
                     "effectToExecute":[
-                        {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO"}
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -230,8 +233,9 @@
             "triggers":[
                 {
                     "type": "GIOCA_ALLEATO",
+                    "durata": "TEMPORANEO",
                     "effectToExecute":[
-                        {"type": "GUADAGNARE_VITA", "qta": 2, "target": "EROE_ATTIVO"}
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -275,9 +279,10 @@
             "triggers":[
                 {
                     "type": "NEMICO_SCONFITTO",
+                    "durata":"TEMPORANEO",
                     "effectToExecute":[
-                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO"},
-                        {"type": "GUADAGNARE_VITA", "qta":1, "target":"EROE_ATTIVO"}
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_VITA", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -324,8 +329,9 @@
             "triggers":[
                 {
                     "type": "WEASLEY_IN_MANO",
+                    "durata": "TEMPORANEO",
                     "effectToExecute":[
-                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI"}
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -344,8 +350,9 @@
             "triggers":[
                 {
                     "type": "WEASLEY_IN_MANO",
+                    "durata": "TEMPORANEO",
                     "effectToExecute":[
-                        {"type": "GUADAGNARE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"}
+                        {"type": "GUADAGNARE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -377,8 +384,9 @@
             "triggers":[
                 {
                     "type": "GIOCA_OGGETTO",
+                    "durata":"TEMPORANEO",
                     "effectToExecute":[
-                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO"}
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -394,6 +402,7 @@
                 {
                     "type": "SCELTA",
                     "target":"EROE_ATTIVO",
+                    "durata":"TEMPORANEO",
                     "opzioni":[
                         {"type": "GUADAGNARE_INFLUENZA", "qta": 3, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
                         {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
@@ -415,6 +424,7 @@
                 {
                     "type":"SCELTA",
                     "target":"TUTTI_GLI_EROI",
+                    "durata":"TEMPORANEO",
                     "opzioni":[
                         {"type":"GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
                         {"type":"GUADAGNARE_VITA","qta":1,"target":"EROE_ATTIVO", "durata": "ISTANTANEO"}

@@ -9,12 +9,14 @@
             "triggers":[
                 {
                     "type": "DADO_TIRATO",
+                    "durata": "CONTINUO",
                     "effectToExecute":[
                         {"type": "RITIRA_DADO", "qta":1, "target": "EROE_ATTIVO"}
                     ]
                 },
                 {
                     "type": "COSTO_MINORE_1",
+                    "durata": "CONTINUO",
                     "effectToExecute":[
                         {"type": "SCONTO_ACQUISTO_CASATA", "qta":1, "target": "EROE_ATTIVO"}
                     ]
@@ -30,12 +32,14 @@
             "triggers":[
                 {
                     "type": "ASSEGNA_SEGNALINO_CREATURE",
+                    "durata": "CONTINUO",
                     "effectToExecute":[
                         {"type": "GUADAGNARE_VITA", "qta":2, "target": "EROE_SCELTO", "targetCount": 1}
                     ]
                 },
                 {
                     "type": "NEMICO_SCONFITTO",
+                    "durata": "CONTINUO",
                     "effectToExecute":[
                         {"type": "RIMUOVERE_MARCHIO_NERO", "qta":1, "target": "LUOGO"}
                     ]
@@ -51,6 +55,7 @@
             "triggers":[
                 {
                     "type": "SCARTA_CARTA_MALUS",
+                    "durata": "CONTINUO",
                     "effectToExecute":[
                         {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"EROE_ATTIVO"},
                         {"type": "GUADAGNARE_VITA", "qta":1, "target": "EROE_ATTIVO"}
@@ -67,6 +72,7 @@
             "triggers":[
                 {
                     "type": "GIOCA_OGGETTO",
+                    "durata": "CONTINUO",
                     "effectToExecute":[
                         {"type":"GUARDA_CARTA_CIMA", "qta":1, "target":"EROE_ATTIVO"},
                         {
@@ -91,6 +97,7 @@
             "triggers":[
                 {
                     "type": "GUADAGNA_VITA_QUORUM",
+                    "durata": "CONTINUO",
                     "qtaQuorum": 3,
                     "attivato1Volta": false,
                     "effectToExecute":[
@@ -123,6 +130,7 @@
             "triggers":[
                 {
                     "type": "GIOCA_TUTTO",
+                    "durata": "CONTINUO",
                     "attivato1Volta": false,
                     "effectToExecute":[
                         {"type": "GUADAGNARE_ATTACCO", "qta":1, "target": "EROE_SCELTO", "targetCount":1},
@@ -140,6 +148,7 @@
             "triggers":[
                 {
                     "type": "ACQUISTA_INCANTESIMO",
+                    "durata": "CONTINUO",
                     "attivato1Volta": false,
                     "effectToExecute":[
                         {"type": "GUADAGNARE_INFLUENZA", "qta":1, "target": "EROE_SCELTO", "targetCount":1}

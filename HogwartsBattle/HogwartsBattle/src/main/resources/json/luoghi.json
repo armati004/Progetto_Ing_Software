@@ -105,7 +105,8 @@
       "marchiNeriMax": 7,
       "effettoEntrata": {
         "type": "allHeroesDiscard",
-        "targetCardType": "Ally"
+        "targetCardType": "Ally",
+        "durata": "ISTANTANEO"
       }
     }
   ],
@@ -137,7 +138,8 @@
       "marchiNeriMax": 7,
       "effettoEntrata": {
         "type": "allHeroesDiscard",
-        "targetCardType": "Spell"
+        "targetCardType": "Spell",
+        "durata": "ISTANTANEO"
       }
     }
   ],
@@ -169,7 +171,8 @@
       "marchiNeriMax": 8,
       "effettoEntrata": {
         "type": "allHeroesDiscard",
-        "targetCardType": "Item"
+        "targetCardType": "Item",
+        "durata": "ISTANTANEO"
       }
     }
   ],
@@ -212,7 +215,8 @@
         "steps": [
           {
             "type": "allHeroesLoseLife",
-            "qta": 2
+            "qta": 2,
+            "durata": "ISTANTANEO"
           },
           {
             "type": "activeHeroOptional",
@@ -220,11 +224,13 @@
               {
                 "cost": {
                   "type": "discardAttacco",
-                  "qta": 5
+                  "qta": 5,
+                  "durata": "ISTANTANEO"
                 },
                 "reward": {
                   "type": "removeLocationToken",
                   "qta": 1,
+                  "durata": "ISTANTANEO",
                   "target": "location"
                 }
               }

@@ -37,8 +37,9 @@
             "triggers":[
                 {
                     "type": "ACQUISTO_ALLEATO",
+                    "durata":"TEMPORANEO",
                     "effectToExecute":[
-                        {"type": "ALLEATO_IN_MAZZO", "target": "EROE_ATTIVO"}
+                        {"type": "ALLEATO_IN_MAZZO", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -69,8 +70,9 @@
             "triggers":[
                 {
                     "type": "NEMICO_SCONFITTO",
+                    "durata":"TEMPORANEO",
                     "effectToExecute":[
-                        {"type": "GUADAGNARE_INFLUENZA","qta":2, "target": "EROE_ATTIVO"}
+                        {"type": "GUADAGNARE_INFLUENZA","qta":2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -114,6 +116,7 @@
             "triggers":[
                 {
                     "type": "AUTO_SCARTO",
+                    "durata":"TEMPORANEO",
                     "effectToExecute":[
                         {"type": "GUADAGNARE_INFLUENZA", "qta":1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
                         {"type": "GUADAGNARE_VITA", "qta":1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
@@ -134,8 +137,9 @@
             "triggers":[
                 {
                     "type":"AUTO_SCARTO",
+                    "durata":"TEMPORANEO",
                     "effectToExecute":[
-                        {"type":"PESCARE_CARTA", "qta":1, "target":"TUTTI_GLI_EROI"}
+                        {"type":"PESCARE_CARTA", "qta":1, "target":"TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -216,9 +220,10 @@
                     "type":"INCANTESIMI_GIOCATI",
                     "qtaQuorum":2,
                     "attivato1Volta": false,
+                    "durata":"TEMPORANEO",
                     "effectToExecute":[
-                        {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"EROE_ATTIVO"},
-                        {"type":"GUADAGNARE_VITA", "qta":1, "target":"EROE_ATTIVO"}
+                        {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type":"GUADAGNARE_VITA", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
@@ -235,6 +240,7 @@
             "triggers":[
                 {
                     "type":"GIOCA_INCANTESIMO",
+                    "durata":"TEMPORANEO",
                     "effectToExecute":[
                         {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
                         {"type":"GUADAGNARE_VITA", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
@@ -306,9 +312,10 @@
                 {
                     "type":"SALUTE_MASSIMA",
                     "target": "TUTTI_GLI_EROI",
+                    "durata":"TEMPORANEO",
                     "effectToExecute":[
-                        {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"EROE_ATTIVO"},
-                        {"type":"PESCARE_CARTA", "qta":1, "target":"EROE_ATTIVO"}
+                        {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type":"PESCARE_CARTA", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
                     ]
                 }
             ]
