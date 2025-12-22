@@ -15,32 +15,38 @@
                                 {
                                     "type": "PESCARE_CARTA",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "GUADAGNARE_VITA",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "GUADAGNARE_INFLUENZA",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "GUADAGNARE_ATTACCO",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "GUADAGNARE_ATTACCO",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "GUADAGNARE_ATTACCO",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 }
                             ]
                         }
@@ -55,6 +61,7 @@
             "triggers":[
                 {
                     "type": "DADO_TIRATO",
+                    "durata": "ISTANTANEO",
                     "effectToExecute":[
                         {
                             "type": "RANDOM",
@@ -63,32 +70,38 @@
                                 {
                                     "type": "GUADAGNARE_VITA",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "GUADAGNARE_INFLUENZA",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "GUADAGNARE_ATTACCO",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "PESCARE_CARTA",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "PESCARE_CARTA",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "PESCARE_CARTA",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 }
                             ]
                         }
@@ -103,6 +116,7 @@
             "triggers":[
                 {
                     "type": "DADO_TIRATO",
+                    "durata": "ISTANTANEO",
                     "effectToExecute":[
                         {
                             "type": "RANDOM",
@@ -111,32 +125,38 @@
                                 {
                                     "type": "GUADAGNARE_INFLUENZA",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "PESCARE_CARTA",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "GUADAGNARE_ATTACCO",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "GUADAGNARE_VITA",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "GUADAGNARE_INFLUENZA",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "GUADAGNARE_INFLUENZA",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 }
                             ]
                         }
@@ -151,6 +171,7 @@
             "triggers":[
                 {
                     "type": "DADO_TIRATO",
+                    "durata": "ISTANTANEO",
                     "effectToExecute":[
                         {
                             "type": "RANDOM",
@@ -159,32 +180,38 @@
                                 {
                                     "type": "GUADAGNARE_VITA",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "GUADAGNARE_ATTACCO",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "PESCARE_CARTA",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "GUADAGNARE_VITA",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "GUADAGNARE_VITA",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 },
                                 {
                                     "type": "GUADAGNARE_INFLUENZA",
                                     "qta": 1,
-                                    "target": "TUTTI_GLI_EROI"
+                                    "target": "TUTTI_GLI_EROI",
+                                    "durata": "ISTANTANEO"
                                 }
                             ]
                         }

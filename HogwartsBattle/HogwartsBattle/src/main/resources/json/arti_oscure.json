@@ -167,6 +167,7 @@
       "triggers": [
         {
           "type": "ASSEGNA_PIU_ATTACCHI",
+          "durata": "TEMPORANEO",
           "effectToExecute": [
             {"type": "LIMITA_ATTACCO", "target": "MALVAGIO"}
           ]
@@ -332,7 +333,7 @@
             ]
           }
         ],
-        "triggers": [{"type": "ON_CONTROLLO_MANO"}]
+        "triggers": [{"type": "ON_CONTROLLO_MANO", "durata": "TEMPORANEO"}]
       },
       {
         "nome": "Imperio",
@@ -364,7 +365,7 @@
             ]
           }
         ],
-        "triggers": [{"type": "ON_TUTTI_RIVELANO_CIMA_MAZZO"}]
+        "triggers": [{"type": "ON_TUTTI_RIVELANO_CIMA_MAZZO", "durata": "TEMPORANEO"}]
       },
       {
         "nome": "Morsmordre",
@@ -405,7 +406,7 @@
           {"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
           {"type": "NON_GUADAGNARE_VITA", "target": "TUTTI_GLI_EROI", "durata": "TEMPORANEO"}
         ],
-        "triggers": [{"type": "ON_EFFETTO_SCATENATO"}]
+        "triggers": [{"type": "ON_EFFETTO_SCATENATO", "durata": "TEMPORANEO"}]
       }
     ],
     "gioco7": [
