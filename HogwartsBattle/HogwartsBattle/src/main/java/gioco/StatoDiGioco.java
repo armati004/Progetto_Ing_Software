@@ -16,7 +16,7 @@ import gestoreEffetti.TipoTrigger;
 public class StatoDiGioco {
 	// --- Core State ---
     private int annoCorrente;
-    private TurnPhase currentPhase;
+    private FaseTurno faseCorrente;
     private boolean gameOver = false;
     private boolean victory = false;
 
@@ -53,7 +53,7 @@ public class StatoDiGioco {
         this.annoCorrente = config.getAnno();
         this.giocatori = giocatori;
         this.giocatoreCorrente = 0;
-        this.currentPhase = TurnPhase.DARK_ARTS; // Si inizia sempre dai cattivi
+        this.faseCorrente = FaseTurno.ARTI_OSCURE; // Si inizia sempre dai cattivi
         
         this.hasHorcruxes = config.getContieneHorcrux();
 
@@ -261,12 +261,53 @@ public class StatoDiGioco {
         System.out.println("Il turno passa a: " + giocatori.get(giocatoreCorrente).getEroe().getNome());
     }
     
+	public int getAnnoCorrente() {
+		return annoCorrente;
+	}
+
+	public void setAnnoCorrente(int annoCorrente) {
+		this.annoCorrente = annoCorrente;
+	}
+
+	public Luogo getCurrentLocation() {
+		return currentLocation;
+	}
+
+	public void setCurrentLocation(Luogo currentLocation) {
+		this.currentLocation = currentLocation;
+	}
+
+	public FaseTurno getFaseCorrente() {
+		return faseCorrente;
+	}
+
+	public void setFaseCorrente(FaseTurno faseCorrente) {
+		this.faseCorrente = faseCorrente;
+	}
+
 	public List<Giocatore> getGiocatori() {
 		return giocatori;
 	}
 	public void setGiocatori(List<Giocatore> giocatori) {
 		this.giocatori = giocatori;
 	}
+	
+	public int getGiocatoreCorrente() {
+		return giocatoreCorrente;
+	}
+
+	public void setGiocatoreCorrente(int giocatoreCorrente) {
+		this.giocatoreCorrente = giocatoreCorrente;
+	}
+
+	public List<Malvagio> getMalvagiAttivi() {
+		return malvagiAttivi;
+	}
+
+	public List<Carta> getMercato() {
+		return mercato;
+	}
+
 	public GestoreEffetti getGestoreEffetti() {
 		return gestoreEffetti;
 	}
@@ -278,5 +319,13 @@ public class StatoDiGioco {
 	}
 	public void setGestoreTrigger(GestoreTrigger gestoreTrigger) {
 		this.gestoreTrigger = gestoreTrigger;
+	}
+
+	public boolean isGameOver() {
+		return gameOver;
+	}
+
+	public void setGameOver(boolean gameOver) {
+		this.gameOver = gameOver;
 	}
 }

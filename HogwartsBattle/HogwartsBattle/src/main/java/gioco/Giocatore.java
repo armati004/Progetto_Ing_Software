@@ -19,7 +19,7 @@ public class Giocatore {
 	
     
     
-    public Giocatore(Eroe eroe, int salute, Mazzo mazzo, Mazzo scarti, List<Carta> mano, int gettone, int attacco) {
+    /*public Giocatore(Eroe eroe, int salute, Mazzo mazzo, Mazzo scarti, List<Carta> mano, int gettone, int attacco) {
 		this.eroe = eroe;
 		this.salute = saluteMax;
 		this.mazzo = mazzo;
@@ -27,7 +27,18 @@ public class Giocatore {
 		this.mano = mano;
 		this.gettone = gettone;
 		this.attacco = attacco;
-	}
+	}*/
+    
+    public Giocatore(Eroe eroe) {
+    	this.eroe = eroe;
+    	this.salute = saluteMax;
+    	this.mazzo = new Mazzo();
+    	this.mazzo.inizializzaMazzo(eroe.getNome());
+    	this.scarti = new Mazzo();
+    	this.mano = new ArrayList<>();
+    	this.gettone = 0;
+    	this.attacco = 0;
+    }
     
     public void scartaCarta(/*Mazzo mazzo,*/ Carta carta) {
 		this.getScarti().getCarte().add(carta);
@@ -70,6 +81,8 @@ public class Giocatore {
 		return carteCorrispondenti;
 		//una volta ritornate dovra poi scegliere quale vuole aggiungere al mazzo
 	}
+	
+	//Aggiungere un metodo per comprare le carte
 	
 
 	public Eroe getEroe() {

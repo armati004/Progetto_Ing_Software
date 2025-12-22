@@ -3,11 +3,24 @@ package carte;
 import java.util.ArrayList;
 import java.util.List;
 
+import data.CardFactory;
+import data.StarterPackLoader;
+
 public class Mazzo {
     private List<Carta> carte = new ArrayList<>();
     
     public Mazzo() {
         // Non serve più nulla!
+    }
+    
+    public List<Carta> inizializzaMazzo(String nomeEroe) {
+    	List<String> idStarterPack = StarterPackLoader.getDeckPerEroe(nomeEroe);
+    	
+    	for(String id : idStarterPack) {
+    		carte.add(CardFactory.creaCarta(id));
+    	}
+    	
+    	return carte;
     }
 
     public void aggiungiCarta(Carta carta) {
