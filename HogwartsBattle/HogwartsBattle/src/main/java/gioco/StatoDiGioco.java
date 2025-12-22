@@ -77,7 +77,7 @@ public class StatoDiGioco {
         populateDecks(config);
         
         // 4. Setup Iniziale del Tavolo
-        setupBoard();
+        setupTabellone();
     }
 
     // ----------------------------------------------------------------
@@ -118,13 +118,13 @@ public class StatoDiGioco {
 
     private void setupTabellone() {
         // 1. Riempi il Mercato (6 slot)
-        refillMarket();
+        rifornisciMercato();
 
         // 2. Rivela il primo Malvagio
         // (La regola cambia in base all'anno, es. Anno 1 = 1 Malvagio, Anno 7 = 3 Malvagi)
         int initialVillains = (annoCorrente >= 3) ? 2 : 1; 
         for (int i = 0; i < initialVillains; i++) {
-            addActiveVillain();
+            addMalvagioAttivo();
         }
         
         // 3. Rivela Horcrux (se Anno 7)
@@ -182,7 +182,7 @@ public class StatoDiGioco {
 
     public void distruggiHorcrux(Horcrux h) {
         System.out.println("Horcrux distrutto: " + h.getNome());
-        h.onDefeat(this, getGiocatori().get(giocatoreCorrente));
+        //h.onDefeat(this, getGiocatori().get(giocatoreCorrente));
         
         horcruxAttivi.remove(h);
         if (!mazzoHorcrux.isEmpty()) {
@@ -225,14 +225,32 @@ public class StatoDiGioco {
         gestoreEffetti.fineTurno();
         
         // 3. Reset del Giocatore (Scarta mano, risorse a 0, pesca 5)
-        p.discardHand();
-        p.resetResources();
-        p.drawCards(5);
+        if(!g.getMano().isEmpty()) {
+        	while(!g.getMano().isEmpty()) {
+        		g.scartaCarta(g.getMano().get(0));
+        	}
+        }
+        g.setAttacco(0);
+        g.setGettone(0);
+        
+        if(g.getMazzo().getCarte().isEmpty()) {
+        	g.getMazzo().getCarte().addAll(g.getScarti().getCarte());
+        	g.getScarti().getCarte().removeAll(g.getScarti().getCarte());
+        }
+        
+        for(int i = 0; i < 5; i++) {
+        	if(!g.getMazzo().getCarte().isEmpty()) {
+        		g.getMano().add(g.getMazzo().pescaCarta());
+        	}
+        	else {
+        		break;
+        	}
+        }
         
         // 4. Reset Competenze
-        if (p.getProficiency() != null) {
+        /*if (p.getProficiency() != null) {
             p.getProficiency().refreshTurn();
-        }
+        }*/
         
         // 5. Riempi Mercato (nel caso ci fossero buchi non riempiti)
         rifornisciMercato();
@@ -242,6 +260,7 @@ public class StatoDiGioco {
         
         System.out.println("Il turno passa a: " + giocatori.get(giocatoreCorrente).getEroe().getNome());
     }
+    
 	public List<Giocatore> getGiocatori() {
 		return giocatori;
 	}

@@ -20,7 +20,6 @@ public class Giocatore {
     
     
     public Giocatore(Eroe eroe, int salute, Mazzo mazzo, Mazzo scarti, List<Carta> mano, int gettone, int attacco) {
-		super();
 		this.eroe = eroe;
 		this.salute = saluteMax;
 		this.mazzo = mazzo;
@@ -30,8 +29,12 @@ public class Giocatore {
 		this.attacco = attacco;
 	}
     
+    public void scartaCarta(/*Mazzo mazzo,*/ Carta carta) {
+		this.getScarti().getCarte().add(carta);
+		this.getMano().remove(carta);
+	}
 	
-	private void giocaCarta(StatoDiGioco stato, Carta carta) {
+	public void giocaCarta(StatoDiGioco stato, Carta carta) {
 	    // Verifica che la carta sia nella mano
 	    if (!mano.contains(carta)) {
 	        System.out.println("Carta non trovata nella mano!");
@@ -54,7 +57,7 @@ public class Giocatore {
 	}
 	
 	//cerca nel mazzo degli scarti un tipo di carta (oggetto e incantesimo e alleato)
-	private List<Carta> cercaNelMazzo(String tipo) {	
+	public List<Carta> cercaNelMazzo(String tipo) {	
 	    List<Carta> carteCorrispondenti = new ArrayList<>();
 	    
 	    for (int i = 0; i < mazzo.getCarte().size(); i++) { 
@@ -109,12 +112,4 @@ public class Giocatore {
 		this.attacco = attacco;
 	}
 	
-	private void scartaCarta(Mazzo mazzo, Carta carta) {
-		this.getScarti().getCarte().add(carta);
-		this.getMano().remove(carta);
-	}
-
-
-
-    
 }
