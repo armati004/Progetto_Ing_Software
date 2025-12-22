@@ -122,10 +122,10 @@ public class EsecutoreEffetti {
 		}
 	}
 
-	public static void guadagnareAttacco (TipoEffetto tipoEf, Effetto effetto, StatoDiGioco stato, Giocatore attivo, int valore) {
+	public static void guadagnareAttacco (Effetto effetto, StatoDiGioco stato, Giocatore attivo, int valore) {
 		//regola attiva funziona che se l'effetto ritorna true significa che c'è un blocco sull'effetto quindi non si puo fare
 		//se l'effetto ritorna flase significa che non c'è un blocco sull'effetto quindi si puo fare
-		if(stato.getGestoreEffetti().regolaAttiva(tipoEf) == false) { 
+		if(stato.getGestoreEffetti().regolaAttiva(effetto.getType()) == false) { 
 		attivo.setAttacco(attivo.getAttacco() + valore);
 		} else {
 			System.out.println("C'è un blocco su questo effetto, NON SI PUO FARE!");
