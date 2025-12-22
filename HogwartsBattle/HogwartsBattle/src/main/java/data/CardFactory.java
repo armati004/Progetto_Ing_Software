@@ -31,7 +31,7 @@ public class CardFactory {
     	caricaCarte("incantesimo.json");
     	caricaCarte("oggetto.json");
     	caricaCarte("arti_oscure.json");
-    	caricaCarte("starterPack.json");
+    	caricaCarte("starter_pack.json");
         
         System.out.println("CardFactory inizializzata. Carte caricate: " + registroCarte.size());
         inizializzata = true;

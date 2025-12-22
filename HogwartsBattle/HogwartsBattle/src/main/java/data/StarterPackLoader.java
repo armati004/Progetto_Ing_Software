@@ -19,7 +19,7 @@ public class StarterPackLoader {
 
 	public static void inizializza() {
 		try (Reader reader = new InputStreamReader(
-				StarterPackLoader.class.getClassLoader().getResourceAsStream("json/livelli/starter_pack.json"))) {
+				StarterPackLoader.class.getClassLoader().getResourceAsStream("json/starter_pack.json"))) {
 			Gson gson = new Gson();
 			
 			Type type = new TypeToken<Map<String, List<Carta>>>(){}.getType();
