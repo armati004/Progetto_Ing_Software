@@ -1,6 +1,7 @@
 package gioco;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import carte.Carta;
@@ -11,8 +12,8 @@ public class Giocatore {
     private Eroe  eroe;
     private int salute;
     private final int saluteMax = 10;
-    private Mazzo mazzo;
-    private Mazzo scarti;
+    private Mazzo mazzo;	//dove si pescano le carte
+    private Mazzo scarti;	//dove si mettono le carte dopo averle giocate
     private List<Carta> mano;
     private int gettone;
     private int attacco;
@@ -82,7 +83,12 @@ public class Giocatore {
 		//una volta ritornate dovra poi scegliere quale vuole aggiungere al mazzo
 	}
 	
-	//Aggiungere un metodo per comprare le carte
+	public void acquistaCarta(List<Carta> mercato, Carta carta) {
+	    this.setGettone(gettone - carta.getCosto());
+	    scarti.aggiungiCarta(carta);
+	    mercato.remove(carta);
+	}
+
 	
 
 	public Eroe getEroe() {

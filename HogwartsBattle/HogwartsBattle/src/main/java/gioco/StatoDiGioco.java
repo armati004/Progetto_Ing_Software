@@ -328,4 +328,40 @@ public class StatoDiGioco {
 	public void setGameOver(boolean gameOver) {
 		this.gameOver = gameOver;
 	}
+
+	public boolean isVictory() {
+		return victory;
+	}
+
+	public LinkedList<Luogo> getListaLuoghi() {
+		return listaLuoghi;
+	}
+
+	public LinkedList<Carta> getMazzoNegozio() {
+		return mazzoNegozio;
+	}
+
+	public LinkedList<Malvagio> getMazzoMalvagi() {
+		return mazzoMalvagi;
+	}
+
+	public LinkedList<ArteOscura> getMazzoArtiOscure() {
+		return mazzoArtiOscure;
+	}
+
+	public LinkedList<Horcrux> getMazzoHorcrux() {
+		return mazzoHorcrux;
+	}
+
+	public List<Horcrux> getHorcruxAttivi() {
+		return horcruxAttivi;
+	}
+
+	public List<ArteOscura> getScartiArtiOscure() {
+		return scartiArtiOscure;
+	}
+
+	public boolean isHasHorcruxes() {
+		return hasHorcruxes;
+	}
 }

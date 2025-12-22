@@ -99,6 +99,7 @@ public class Malvagio extends Carta{
 	private final int vita;
 	private int danno;
     private List<Effetto> rewards;
+    
 	
     public Malvagio(String nome, String id, String classe, String descrizione, int costo, String pathImmagine,
 			List<Effetto> effetti, List<Trigger> triggers, List<Effetto> rewards, int vita) {

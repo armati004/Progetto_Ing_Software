@@ -94,7 +94,7 @@ public class InputController {
         Carta c = market.get(index);
         
         if (player.getGettone() >= c.getCosto()) {
-            player.compraCarta(c);
+            player.acquistaCarta(stato.getMazzoNegozio(),c);
             stato.rimpiazzaCartaMercato(index);
             return "Hai comprato: " + c.getNome();
         } else {
