@@ -1,4 +1,9 @@
-.project
+# no questo non va in gitignore
+# .project
+# questi sì invece 
+.metadata
+target
+# da rivedere 
 /Diagrammi/.metadata
 /Diagrammi/.metadata
 /Diagrammi/.metadata
