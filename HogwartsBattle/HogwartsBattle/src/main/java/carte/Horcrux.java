@@ -7,6 +7,7 @@ import java.util.Set;
 import gestoreEffetti.Effetto;
 import gestoreEffetti.Trigger;
 import grafica.Entita;
+import java.util.Collections; // assicurati che sia importato in testa al file
 
 public class Horcrux extends Carta {
 	
@@ -21,7 +22,7 @@ public class Horcrux extends Carta {
 		super(nome, id, classe, descrizione, costo, pathImmagine, effetti, triggers);
 		this.segnaliniRichiesti = segnaliniRichiesti;
 		this.segnaliniAssegnati = new HashSet<>();
-		this.reward = reward;
+		this.ricompensa = ricompensa;
 	}
 	
 	public Boolean applicaRisultatoDado(Entita facciaDado) {
@@ -31,19 +32,28 @@ public class Horcrux extends Carta {
 		}
 		return false;
 	}
-	
-	//Aggiungi metodo per i reward
-	
-	public Boolean horcruxDistrutto() {
-		return segnaliniAssegnati.containsAll(segnaliniRichiesti);
-	}
+    
+    public Boolean horcruxDistrutto() {
+        return segnaliniAssegnati != null
+        &&segnaliniRichiesti != null
+        &&segnaliniAssegnati.containsAll(segnaliniRichiesti);
+    }
 
-	public List<Entita> getSegnaliniRichiesti() {
-		return segnaliniRichiesti;
-	}
+    public List<Entita> getSegnaliniRichiesti() {
+        return segnaliniRichiesti;
+    }
 
-	public List<Effetto> getReward() {
-		return reward;
-	}
+    public List<Effetto> getRicompensa() {
+        return reward == null ? Collections.emptyList() : Collections.unmodifiableList(reward);
+    }
+
+    public void applicaRicompensa() {
+        if (ricompensa == null) return;
+        for (effetto e : reward) {
+            if (e != null) {
+                e.applica();
+            }
+        }
+    }
 
 }
