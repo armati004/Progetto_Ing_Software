@@ -13,49 +13,80 @@ public class InputController {
 	}
 	
 	public String processaComando(String input) {
-		if (input == null || input.trim().isEmpty()) return "Comando vuoto.";
+	    if (input == null || input.trim().isEmpty()) return "Comando vuoto.";
 
-        String[] parts = input.trim().split(" ");
-        String command = parts[0].toLowerCase();
-        Giocatore player = stato.getGiocatori().get(stato.getGiocatoreCorrente());
+	    String[] parts = input.trim().split(" ");
+	    String command = parts[0].toLowerCase();
 
-        try {
-            switch (command) {
-                case "gioca":
-                    return handlePlayCard(parts, player);
-                case "attacca":
-                    return handleAttack(parts, player);
-                case "compra":
-                    return handleBuy(parts, player);
-                case "next":
-                    return handleNextPhase();
-                case "debug_add_res": // Comando cheat per i test
-                    player.setAttacco(5);
-                    player.setGettone(5);
-                    return "Risorse aggiunte (Cheat).";
-                default:
-                    return "Comando non riconosciuto: " + command;
-            }
-        } catch (NumberFormatException e) {
-            return "Errore: Devi inserire un numero valido dopo il comando.";
-        } catch (IndexOutOfBoundsException e) {
-            return "Errore: Indice non valido.";
-        } catch (Exception e) {
-            return "Errore generico: " + e.getMessage();
-        }
+	    // --- CORREZIONE 1: Controllo di Sicurezza sul Giocatore ---
+	    // Verifichiamo che l'indice del giocatore corrente sia valido per la lista attuale
+	    int indiceGiocatore = stato.getGiocatoreCorrente();
+	    if (stato.getGiocatori() == null || stato.getGiocatori().isEmpty()) {
+	        return "ERRORE GRAVE: Nessun giocatore presente nel GameState.";
+	    }
+	    if (indiceGiocatore < 0 || indiceGiocatore >= stato.getGiocatori().size()) {
+	        return "ERRORE GRAVE: Indice giocatore corrente (" + indiceGiocatore + ") fuori dai limiti (Giocatori: " + stato.getGiocatori().size() + ")";
+	    }
+
+	    // Ora siamo sicuri che questa riga non lancerà eccezioni
+	    Giocatore player = stato.getGiocatori().get(indiceGiocatore);
+
+	    try {
+	        switch (command) {
+	            case "gioca":
+	                // Passiamo 'parts' per controllare se c'è l'argomento
+	                return handlePlayCard(parts, player);
+	            case "attacca":
+	                return handleAttack(parts, player); // Assicurati di avere controlli simili qui
+	            case "compra":
+	                return handleBuy(parts, player);    // E qui
+	            case "next":
+	                return handleNextPhase();
+	            case "debug_add_res":
+	                player.setAttacco(5);
+	                player.setGettone(5);
+	                return "Risorse aggiunte (Cheat).";
+	            default:
+	                return "Comando non riconosciuto: " + command;
+	        }
+	    } catch (NumberFormatException e) {
+	        return "Errore: Devi inserire un numero valido dopo il comando.";
+	    } catch (IndexOutOfBoundsException e) {
+	        // Stampiamo lo stack trace per capire DOVE succede l'errore se capita ancora
+	        e.printStackTrace(); 
+	        return "Errore: Indice non valido (Vedi console per dettagli).";
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return "Errore generico: " + e.getMessage();
+	    }
 	}
-	
-	private String handlePlayCard(String[] parts, Giocatore player) {
-        if (stato.getFaseCorrente() != FaseTurno.GIOCA_CARTE) 
-            return "Non puoi giocare carte ora. Fase attuale: " + stato.getFaseCorrente();
-        
-        int index = Integer.parseInt(parts[1]);
-        if (index < 0 || index >= player.getMano().size()) return "Indice carta non valido.";
 
-        Carta carta = player.getMano().get(index);
-        player.giocaCarta(stato, carta);
-        return "Hai giocato: " + carta.getNome();
-    }
+	private String handlePlayCard(String[] parts, Giocatore player) {
+	    if (stato.getFaseCorrente() != FaseTurno.GIOCA_CARTE) 
+	        return "Non puoi giocare carte ora. Fase attuale: " + stato.getFaseCorrente();
+	    
+	    // --- CORREZIONE 2: Controllo Input Utente ---
+	    if (parts.length < 2) {
+	        return "Comando incompleto. Sintassi corretta: 'gioca <numero_carta>'";
+	    }
+
+	    try {
+	        // Sottraiamo 1 per l'indice array (0-based)
+	        int index = Integer.parseInt(parts[1]) - 1;
+	        
+	        // Controllo range dell'array
+	        if (index < 0 || index >= player.getMano().size()) {
+	            return "Indice carta non valido. Scegli un numero tra 1 e " + player.getMano().size();
+	        }
+
+	        Carta carta = player.getMano().get(index);
+	        player.giocaCarta(stato, carta);
+	        return "Hai giocato: " + carta.getNome();
+	        
+	    } catch (NumberFormatException e) {
+	        return "Devi inserire un numero valido. Es: 'gioca 1'";
+	    }
+	}
 
     private String handleAttack(String[] parts, Giocatore player) {
         if (stato.getFaseCorrente() != FaseTurno.ATTACCA) 

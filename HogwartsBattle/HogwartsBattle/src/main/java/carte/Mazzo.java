@@ -28,9 +28,14 @@ public class Mazzo {
     }
 
     public Carta pescaCarta() {
-        Carta carta = carte.get(0);
-        carte.remove(0);
-        return carta;
+        if(!carte.isEmpty()) {
+        	Carta carta = carte.get(0);
+            carte.remove(0);
+            return carta;
+        }
+        else {
+        	return null;
+        }
     }
 
     public int size() {

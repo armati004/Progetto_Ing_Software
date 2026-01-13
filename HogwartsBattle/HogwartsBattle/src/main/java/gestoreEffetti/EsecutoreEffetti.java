@@ -140,9 +140,17 @@ public class EsecutoreEffetti {
 		attivo.setGettone(attivo.getGettone() + valore);
 	}
 	public static void pescaCarta(Effetto effetto, StatoDiGioco stato, Giocatore attivo, int qta) {
-		for(int i = 0; i < qta; i++) {
-			attivo.getMazzo().pescaCarta();
-		}
+	    for(int i = 0; i < qta; i++) {
+	        // 1. CATTURA la carta restituita dal metodo
+	        Carta cartaPescata = attivo.getMazzo().pescaCarta();
+	        
+	        // 2. AGGIUNGILA alla mano (se il mazzo non era vuoto)
+	        if (cartaPescata != null) {
+	            attivo.getMano().add(cartaPescata);
+	        }
+	    }
+	    // Debug utile per verificare che funzioni
+	    // System.out.println("DEBUG: Pescate " + qta + " carte. Mano attuale: " + attivo.getMano().size());
 	}
 	public static void perdereVita (Effetto effetto, StatoDiGioco stato, Giocatore attivo, int valore) {
 		attivo.setSalute(attivo.getSalute() - valore);

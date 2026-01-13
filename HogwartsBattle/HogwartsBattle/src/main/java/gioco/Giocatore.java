@@ -46,27 +46,28 @@ public class Giocatore {
 		this.getMano().remove(carta);
 	}
 	
-	public void giocaCarta(StatoDiGioco stato, Carta carta) {
-	    // Verifica che la carta sia nella mano
-	    if (!mano.contains(carta)) {
-	        System.out.println("Carta non trovata nella mano!");
-	        return;
-	    }
-	    // Rimuovi dalla mano
-	    mano.remove(carta);
-	    // Sposta carta negli scarti
-	    scarti.aggiungiCarta(carta);
-	    
-	    carta.applicaEffetto(stato, this);
-	    
-	    for (int i = 0; i < 5; i++) {
-	        Carta pescata = mazzo.pescaCarta();
-	        if (pescata != null) {
-	            mano.add(pescata);
-	        }
-	    }
-	    System.out.println("Giocata: " + carta.getNome() + " | Mano: " + mano.size());
-	}
+    public void giocaCarta(StatoDiGioco stato, Carta carta) {
+        // Verifica difensiva
+        if (!mano.contains(carta)) {
+            System.out.println("ERRORE: La carta " + carta.getNome() + " non è nella mano!");
+            return;
+        }
+
+        // 1. Applica l'effetto PRIMA di spostarla (a volte conta l'ordine, ma è convenzione)
+        //    oppure DOPO, dipende se l'effetto richiede che la carta sia in gioco.
+        //    Solitamente: La giochi -> Applichi effetto -> Va negli scarti.
+        carta.applicaEffetto(stato, this);
+
+        // 2. Rimuovi dalla mano
+        mano.remove(carta);
+
+        // 3. Sposta carta negli scarti (o in una pila "carte giocate" se le vuoi tenere visibili fino a fine turno)
+        scarti.aggiungiCarta(carta);
+
+        System.out.println("Giocata: " + carta.getNome());
+        
+        // NOTA: NON pescare qui! La pesca avviene nel metodo cleanupTurn/fineTurno del GameState.
+    }
 	
 	//cerca nel mazzo degli scarti un tipo di carta (oggetto e incantesimo e alleato)
 	public List<Carta> cercaNelMazzo(String tipo) {	
