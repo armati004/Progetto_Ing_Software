@@ -30,7 +30,7 @@ public class Luogo extends Carta {
         Effetto effettoEntrata
     ) {
         super(nome, id, classe, descrizione, costo, pathImmagine, effetti, triggers);
-        this.numero = numero;
+        this.numero = 0;
         this.nDarkEvents = nDarkEvents;
         this.marchiNeriMax = marchiNeriMax;
         this.effettoEntrata = effettoEntrata;
