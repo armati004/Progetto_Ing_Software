@@ -17,7 +17,10 @@ public class Giocatore {
     private List<Carta> mano;
     private int gettone;
     private int attacco;
+
+	private SelettoreCarta selettoreCarta;
 	
+
     
     
     /*public Giocatore(Eroe eroe, int salute, Mazzo mazzo, Mazzo scarti, List<Carta> mano, int gettone, int attacco) {
@@ -58,6 +61,11 @@ public class Giocatore {
         //    Solitamente: La giochi -> Applichi effetto -> Va negli scarti.
         carta.applicaEffetto(stato, this);
 
+		// Aggiungi alla lista degli alleati giocati in questo turno, se applicabile
+		// ai fini di effetti che dipendono da questo (come Pozione polisucco)
+		if (carta.getClasse().equals("Alleato")) {
+			stato.getAlleatiGiocatiInQuestoTurno().add((carte.Alleato) carta);
+		}
         // 2. Rimuovi dalla mano
         mano.remove(carta);
 
@@ -132,4 +140,8 @@ public class Giocatore {
 		this.attacco = attacco;
 	}
 	
+	public Carta scegliCarta(List<Carta> mazzo) {
+		return selettoreCarta.selezionaCarta(mazzo);
+	}
+
 }
