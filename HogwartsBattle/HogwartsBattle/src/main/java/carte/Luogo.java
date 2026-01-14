@@ -10,7 +10,7 @@ import gestoreEffetti.EsecutoreEffetti;
 import gestoreEffetti.Trigger;
 
 public class Luogo extends Carta {
-    private int numero;
+    private int numeroMarchiNeri;
     private int nDarkEvents;
     private int marchiNeriMax;
     private Object effettoEntrata; // Puoi tipizzare con una classe EffettoEntrata se hai già una struttura
@@ -24,20 +24,20 @@ public class Luogo extends Carta {
         String pathImmagine,
         List<Effetto> effetti,
         List<Trigger> triggers,
-        int numero,
+        int numeroMarchiNeri,
         int nDarkEvents,
         int marchiNeriMax,
         Effetto effettoEntrata
     ) {
         super(nome, id, classe, descrizione, costo, pathImmagine, effetti, triggers);
-        this.numero = numero;
+        this.numeroMarchiNeri = 0;
         this.nDarkEvents = nDarkEvents;
         this.marchiNeriMax = marchiNeriMax;
         this.effettoEntrata = effettoEntrata;
     }
 
-    public int getNumero() {
-        return numero;
+    public int getNumeroMarchiNeri() {
+        return numeroMarchiNeri;
     }
 
     public int getNDarkEvents() {
@@ -52,8 +52,8 @@ public class Luogo extends Carta {
         return effettoEntrata;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setNumeroMarchiNeri(int numeroMarchiNeri) {
+        this.numeroMarchiNeri = numeroMarchiNeri;
     }
 
     public void setNDarkEvents(int nDarkEvents) {

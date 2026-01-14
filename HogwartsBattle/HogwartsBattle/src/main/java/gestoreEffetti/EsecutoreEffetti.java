@@ -1,7 +1,11 @@
 package gestoreEffetti;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import carte.Alleato;
 import carte.Carta;
+import carte.Luogo;
 import gioco.Giocatore;
 import gioco.StatoDiGioco;
 
@@ -19,10 +23,12 @@ public class EsecutoreEffetti {
 		case CERCA_ALLEATO:
 			break;
 		case CERCA_INCANTESIMO:
+			cercaIncantesimo(effetto, stato, giocatore);
 			break;
 		case CERCA_OGGETTO:
 			break;
 		case COPIA_EFFETTO:
+			copiaEffetto(effetto, stato, giocatore);
 			break;
 		case DADO_CORVONERO:
 			break;
@@ -41,6 +47,7 @@ public class EsecutoreEffetti {
 			guadagnareInfluenza(effetto, stato, giocatore, effetto.getQta());
 			break;
 		case GUADAGNARE_VITA:
+			guadagnareSalute(effetto, stato, giocatore, effetto.getQta());
 			break;
 		case INCANTESIMO_IN_MAZZO:
 			break;
@@ -73,6 +80,7 @@ public class EsecutoreEffetti {
 		case RIMUOVERE_ATTACCO:
 			break;
 		case RIMUOVERE_MARCHIO_NERO:
+			rimuovereMarchioNero(effetto, stato, stato.getCurrentLocation(), effetto.getQta());
 			break;
 		case RITIRA_DADO:
 			break;
@@ -81,8 +89,10 @@ public class EsecutoreEffetti {
 		case RIVELA_NUOVO_EVENTO:
 			break;
 		case SCARTARE_CARTA:
+			scartaCarta(effetto, stato, giocatore, effetto.getQta());
 			break;
 		case SCARTA_ALLEATO:
+			scartaAlleato(effetto, stato, giocatore);
 			break;
 		case SCARTA_INFLUENZA:
 			break;
@@ -156,4 +166,89 @@ public class EsecutoreEffetti {
 		attivo.setSalute(attivo.getSalute() - valore);
 	}
 
+	// i seguenti metodi vanno testati
+	public static void rimuovereMarchioNero (Effetto effetto, StatoDiGioco stato, Luogo luogo, int qta) {
+		int numeroLuogo = luogo.getNumeroMarchiNeri();
+		if(luogo.getNumeroMarchiNeri() - qta < 0) {
+			luogo.setNumeroMarchiNeri(0);
+			return;
+		}
+		else{
+			luogo.setNumeroMarchiNeri(numeroLuogo - qta);
+			return;
+		}
+	}
+
+	//attualmente non implementa il caso che debbano venire scartate più carte dallo stesso effetto
+	//scarta una carta a scelta del giocatore dalla sua mano
+	public static void scartaCarta(Effetto effetto, StatoDiGioco stato, Giocatore attivo, int qta) {
+		for(int i = 0; i < qta; i++) {
+			if(attivo.getMano().isEmpty()) {
+				return;
+			}
+			Carta sceltaCarta = attivo.scegliCarta(attivo.getMano());
+			if (attivo.getMano().contains(sceltaCarta)) {
+				attivo.getMano().remove(sceltaCarta);
+				attivo.getScarti().aggiungiCarta(sceltaCarta);
+			}
+			else {
+				throw new IllegalArgumentException("La carta selezionata non è nella mano del giocatore.");
+			}
+		}	
+	}
+
+	//copia l'effetto di un alleato giocato in questo turno
+	public static void copiaEffetto (Effetto effetto, StatoDiGioco stato, Giocatore attivo) {
+		List<Carta> alleatiGiocati = stato.getAlleatiGiocatiInQuestoTurno();
+		if(alleatiGiocati.isEmpty()) {
+			return;
+		}
+		else {
+
+			Carta alleatoScelto = attivo.scegliCarta(alleatiGiocati);
+			if(alleatoScelto != null) {
+				for(Effetto e : alleatoScelto.getEffetti()) {
+					EsecutoreEffetti.eseguiEffetto(e, stato, attivo);
+				}
+			}
+		}
+	}
+
+	public static void cercaIncantesimo(Effetto effetto, StatoDiGioco stato, Giocatore attivo) {
+		List<Carta> incantesimiInScarto = new ArrayList<Carta>();
+		for (Carta c : attivo.getScarti().getCarte()) {
+			if (c.getClasse().equals("Incantesimo")) {
+				incantesimiInScarto.add(c);
+			}
+		}
+		if(incantesimiInScarto.isEmpty()) {
+			return;
+		}
+		else {
+			Carta incantesimoScelto = attivo.scegliCarta(incantesimiInScarto);
+			if(incantesimoScelto != null) {
+				attivo.getMano().add(incantesimoScelto);
+				attivo.getScarti().getCarte().remove(incantesimoScelto);
+			}
+		}
+	}
+
+	public static void scartaAlleato(Effetto effetto, StatoDiGioco stato, Giocatore attivo) {
+		List<Carta> alleatiInMano = new ArrayList<Carta>();
+		for (Carta c : attivo.getMano()) {
+			if (c.getClasse().equals("Alleato")) {
+				alleatiInMano.add(c);
+			}
+		}
+		if(alleatiInMano.isEmpty()) {
+			return;
+		}
+		else {
+			Carta alleatoScelto = attivo.scegliCarta(alleatiInMano);
+			if(alleatoScelto != null) {
+				attivo.getMano().remove(alleatoScelto);
+				attivo.getScarti().aggiungiCarta(alleatoScelto);
+			}
+		}
+	}
 }

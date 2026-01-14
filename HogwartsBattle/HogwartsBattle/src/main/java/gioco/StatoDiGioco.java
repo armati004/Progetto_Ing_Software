@@ -23,6 +23,7 @@ public class StatoDiGioco {
     // --- Entità di Gioco ---
     private List<Giocatore> giocatori;
     private int giocatoreCorrente;
+    private List<Carta> alleatiGiocatiInQuestoTurno; // Lista degli alleati giocati nel turno corrente
     private Luogo currentLocation;
     private LinkedList<Luogo> listaLuoghi; // I luoghi da proteggere
 
@@ -72,6 +73,7 @@ public class StatoDiGioco {
         this.malvagiAttivi = new ArrayList<>();
         this.horcruxAttivi = new ArrayList<>();
         this.scartiArtiOscure = new ArrayList<>();
+        this.alleatiGiocatiInQuestoTurno = new ArrayList<>();
 
         // 3. Carica i Mazzi usando gli ID della Configurazione
         populateDecks(config);
@@ -255,8 +257,11 @@ public class StatoDiGioco {
         
         // 5. Riempi Mercato (nel caso ci fossero buchi non riempiti)
         rifornisciMercato();
+
+        // 6. Pulisci la lista degli alleati giocati in questo turno
+        alleatiGiocatiInQuestoTurno.clear();
         
-        // 6. Passa al prossimo giocatore
+        // 7. Passa al prossimo giocatore
         giocatoreCorrente = (giocatoreCorrente + 1) % giocatori.size();
         
         System.out.println("Il turno passa a: " + giocatori.get(giocatoreCorrente).getEroe().getNome());
@@ -365,4 +370,8 @@ public class StatoDiGioco {
 	public boolean isHasHorcruxes() {
 		return hasHorcruxes;
 	}
+    public List<Carta> getAlleatiGiocatiInQuestoTurno() {
+        return alleatiGiocatiInQuestoTurno;
+    }
+    
 }
