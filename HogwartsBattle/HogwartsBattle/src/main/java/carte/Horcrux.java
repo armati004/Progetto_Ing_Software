@@ -22,7 +22,7 @@ public class Horcrux extends Carta {
 		super(nome, id, classe, descrizione, costo, pathImmagine, effetti, triggers);
 		this.segnaliniRichiesti = segnaliniRichiesti;
 		this.segnaliniAssegnati = new HashSet<>();
-		this.ricompensa = ricompensa;
+		this.reward = reward;
 	}
 	
 	public Boolean applicaRisultatoDado(Entita facciaDado) {
@@ -48,10 +48,10 @@ public class Horcrux extends Carta {
     }
 
     public void applicaRicompensa() {
-        if (ricompensa == null) return;
-        for (effetto e : reward) {
+        if (reward == null) return;
+        for (Effetto e : reward) {
             if (e != null) {
-                e.applica();
+                e.applicaEffetto();
             }
         }
     }

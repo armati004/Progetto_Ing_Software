@@ -393,5 +393,9 @@ public class StatoDiGioco {
     public List<Carta> getAlleatiGiocatiInQuestoTurno() {
         return alleatiGiocatiInQuestoTurno;
     }
+
+    public Map<Malvagio, Giocatore> getMalvagiBloccati() {
+        return malvagiBloccati;
+    }
     
 }
