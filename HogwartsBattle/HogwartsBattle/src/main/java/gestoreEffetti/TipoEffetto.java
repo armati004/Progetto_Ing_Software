@@ -157,6 +157,11 @@ public enum TipoEffetto {
 	 */
 	CERCA_INCANTESIMO,
 	/**
+	 * Effetto che blocca le abilità di un malvagio
+	 * legato all'effetto del petrificus
+	 */
+	BLOCCA_ABILITA_MALVAGIO,
+	/**
 	 * Effetto sconfitta di un nemico che permette di cercare
 	 * nella pila degli scarti un oggetto e metterlo in mano
 	 */

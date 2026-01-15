@@ -6,29 +6,34 @@ import java.util.List;
 import carte.Alleato;
 import carte.Carta;
 import carte.Luogo;
+import carte.Malvagio;
 import gioco.Giocatore;
 import gioco.StatoDiGioco;
 
 public class EsecutoreEffetti {
-	public static void eseguiEffetto(Effetto effetto, StatoDiGioco stato, Giocatore giocatore) {
+	public static void eseguiEffetto(Effetto effetto, StatoDiGioco stato, Giocatore bersaglio) {
+		
 		switch(effetto.getType()) {
 		case AGGIUNGERE_MARCHIO_NERO:
-			aggiungereMarchioNero(effetto, stato, giocatore); 
+			aggiungereMarchioNero(effetto, stato, bersaglio); 
 			break;
 		case ALLEATO_IN_MAZZO:
 			break;
 		case ALLEATO_IN_MANO:
-			verificaAlleatoInMano(effetto, stato, giocatore);
+			verificaAlleatoInMano(effetto, stato, bersaglio);
+			break;
+		case BLOCCA_ABILITA_MALVAGIO:
+			bloccaAbilitaMalvagio(effetto, stato, bersaglio);
 			break;
 		case CERCA_ALLEATO:
 			break;
 		case CERCA_INCANTESIMO:
-			cercaIncantesimo(effetto, stato, giocatore);
+			cercaIncantesimo(effetto, stato, bersaglio);
 			break;
 		case CERCA_OGGETTO:
 			break;
 		case COPIA_EFFETTO:
-			copiaEffetto(effetto, stato, giocatore);
+			copiaEffetto(effetto, stato, bersaglio);
 			break;
 		case DADO_CORVONERO:
 			break;
@@ -41,13 +46,13 @@ public class EsecutoreEffetti {
 		case DADO_TASSOROSSO:
 			break;
 		case GUADAGNARE_ATTACCO:
-			guadagnareAttacco(effetto, stato, giocatore);
+			guadagnareAttacco(effetto, stato, bersaglio);
 			break;
 		case GUADAGNARE_INFLUENZA:
-			guadagnareInfluenza(effetto, stato, giocatore, effetto.getQta());
+			guadagnareInfluenza(effetto, stato, bersaglio, effetto.getQta());
 			break;
 		case GUADAGNARE_VITA:
-			guadagnareSalute(effetto, stato, giocatore, effetto.getQta());
+			guadagnareSalute(effetto, stato, bersaglio, effetto.getQta());
 			break;
 		case INCANTESIMO_IN_MAZZO:
 			break;
@@ -72,10 +77,10 @@ public class EsecutoreEffetti {
 		case NON_RIMUOVERE_MARCHI:
 			break;
 		case PERDERE_VITA:
-			perdereVita(effetto, stato, giocatore, effetto.getQta());
+			perdereVita(effetto, stato, bersaglio, effetto.getQta());
 			break;
 		case PESCARE_CARTA:
-			pescaCarta(effetto, stato, giocatore, effetto.getQta());
+			pescaCarta(effetto, stato, bersaglio, effetto.getQta());
 			break;
 		case RIMUOVERE_ATTACCO:
 			break;
@@ -89,10 +94,10 @@ public class EsecutoreEffetti {
 		case RIVELA_NUOVO_EVENTO:
 			break;
 		case SCARTARE_CARTA:
-			scartaCarta(effetto, stato, giocatore, effetto.getQta());
+			scartaCarta(effetto, stato, bersaglio, effetto.getQta());
 			break;
 		case SCARTA_ALLEATO:
-			scartaAlleato(effetto, stato, giocatore);
+			scartaAlleato(effetto, stato, bersaglio);
 			break;
 		case SCARTA_INFLUENZA:
 			break;
@@ -111,8 +116,8 @@ public class EsecutoreEffetti {
 		
 	}
 	
-	public static void aggiungereMarchioNero(Effetto effetto, StatoDiGioco stato, Giocatore attivo) {
-		
+	public static void aggiungereMarchioNero(Effetto effetto, StatoDiGioco stato, Giocatore bersaglio) {
+		stato.getCurrentLocation().setNumeroMarchiNeri(stato.getCurrentLocation().getNumeroMarchiNeri() + effetto.getQta());
 	}	
 	
 	public static void verificaAlleatoInMano(Effetto effetto, StatoDiGioco stato, Giocatore attivo) {
@@ -197,18 +202,27 @@ public class EsecutoreEffetti {
 		}	
 	}
 
+	public static void scartaCartaForzata(Giocatore attivo, Carta carta) {
+		if (attivo.getMano().contains(carta)) {
+			attivo.getMano().remove(carta);
+			attivo.getScarti().aggiungiCarta(carta);
+		} else {
+			throw new IllegalArgumentException("La carta selezionata non è nella mano del giocatore.");
+		}
+	}
+
 	//copia l'effetto di un alleato giocato in questo turno
-	public static void copiaEffetto (Effetto effetto, StatoDiGioco stato, Giocatore attivo) {
+	public static void copiaEffetto (Effetto effetto, StatoDiGioco stato, Giocatore bersaglio) {
 		List<Carta> alleatiGiocati = stato.getAlleatiGiocatiInQuestoTurno();
 		if(alleatiGiocati.isEmpty()) {
 			return;
 		}
 		else {
 
-			Carta alleatoScelto = attivo.scegliCarta(alleatiGiocati);
+			Carta alleatoScelto = bersaglio.scegliCarta(alleatiGiocati);
 			if(alleatoScelto != null) {
 				for(Effetto e : alleatoScelto.getEffetti()) {
-					EsecutoreEffetti.eseguiEffetto(e, stato, attivo);
+					EsecutoreEffetti.eseguiEffetto(e, stato, bersaglio);
 				}
 			}
 		}
@@ -249,6 +263,32 @@ public class EsecutoreEffetti {
 				attivo.getMano().remove(alleatoScelto);
 				attivo.getScarti().aggiungiCarta(alleatoScelto);
 			}
+		}
+	}
+
+	public static void bloccaAbilitaMalvagio (Effetto effetto, StatoDiGioco stato, Giocatore giocatore) {
+		List<Malvagio> malvagiAttivi = stato.getMalvagiAttivi();
+		if (malvagiAttivi.isEmpty()) {
+			return;
+		}
+		else if (malvagiAttivi.size() == 1) {
+			Malvagio malvagioSingolo = malvagiAttivi.get(0);
+			malvagioSingolo.setAbilitaBloccata(true);
+		}
+		else {
+			Malvagio malvagioScelto = (Malvagio) giocatore.scegliCarta(new ArrayList<Carta>(malvagiAttivi));
+			if(malvagioScelto != null) {
+				malvagioScelto.setAbilitaBloccata(true);
+				stato.getMalvagiBloccati().put(malvagioScelto, giocatore);
+			}
+		}
+	}
+
+	public static void rivelaCarta (Effetto effetto, StatoDiGioco stato, Giocatore bersaglio) {
+		Carta primaCarta = bersaglio.getMazzo().get(0);
+		if (primaCarta.getCosto() > 0){
+			scartaCartaForzata(bersaglio, primaCarta);
+			aggiungereMarchioNero(effetto, stato, bersaglio);
 		}
 	}
 }
