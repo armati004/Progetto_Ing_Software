@@ -57,6 +57,6 @@ public class HorcruxFactory {
 
 		return new Horcrux(data.getNome(), data.getId(), data.getClasse(), data.getDescrizione(), data.getCosto(),
 				data.getPathImmagine(), data.getEffetti(), data.getTriggers(), data.getSegnaliniRichiesti(),
-				data.getReward());
+				data.getRicompensa());
 	}
 }
