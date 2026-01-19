@@ -12,13 +12,14 @@
       "triggers": [
         {
           "type": "AGGIUNTA_MARCHIO_NERO",
+          "durata": "CONTINUO",
           "effectToExecute": [
-            { "type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO" }
+            { "type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO" }
           ]
         }
       ],
       "reward": [
-        { "type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO" }
+        { "type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO" }
       ]
     },
 
@@ -34,14 +35,15 @@
       "triggers": [
         {
           "type": "EROE_ATTIVO",
+          "durata": "CONTINUO",
           "effectToExecute": [
-            { "type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO" }
+            { "type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO" }
           ]
         }
       ],
       "reward": [
-        { "type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI" },
-        { "type": "GUADAGNARE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI" }
+        { "type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO" },
+        { "type": "GUADAGNARE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO" }
       ]
     },
 
@@ -57,14 +59,15 @@
       "triggers": [
         {
           "type": "SCARTA_CARTA_MALUS",
+          "durata": "CONTINUO",
           "cause": ["darkArtsEvent", "villainEffect"],
           "effectToExecute": [
-            { "type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVANTE" }
+            { "type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVANTE", "durata": "ISTANTANEO" }
           ]
         }
       ],
       "reward": [
-        { "type": "PESCARE_CARTA", "qta": 1, "target": "TUTTI_GLI_EROI" }
+        { "type": "PESCARE_CARTA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO" }
       ]
     }
   ],
@@ -83,14 +86,15 @@
       "triggers": [
         {
           "type": "PESCA_CARTA_BONUS",
+          "durata": "CONTINUO",
           "effectToExecute": [
-            {"type": "NON_PESCARE_CARTE", "target": "TUTTI_GLI_EROI"}
+            {"type": "NON_PESCARE_CARTE", "target": "TUTTI_GLI_EROI", "durata": "CONTINUO"}
           ]
         }
       ],
       "reward": [
-        {"type": "PESCARE_CARTA", "qta": 1, "target": "TUTTI_GLI_EROI"},
-        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO"}
+        {"type": "PESCARE_CARTA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
       ]
     },
 
@@ -106,14 +110,15 @@
       "triggers": [
         {
           "type": "AGGIUNTA_MARCHIO_NERO",
+          "durata": "CONTINUO",
           "effectToExecute": [
-            {"type": "CURARE_MALVAGI", "qta": 1, "target": "TUTTI_I_MALVAGI"}
+            {"type": "CURARE_MALVAGI", "qta": 1, "target": "TUTTI_I_MALVAGI", "durata": "ISTANTANEO"}
           ]
         }
       ],
       "reward": [
-        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI"},
-        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO"}
+        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
       ]
     },
 
@@ -129,13 +134,15 @@
       "triggers": [
         {
           "type": "ALLEATO_IN_MANO",
+          "durata": "CONTINUO",
           "repeat": "perogni",
           "effectToExecute": [
             {
               "type": "chooseEffect",
+              "durata": "ISTANTANEO",
               "options": [
-                {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO"},
-                {"type": "SCARTARE_CARTA", "qta": 1, "target": "EROE_ATTIVO"}
+                {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "SCARTARE_CARTA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
               ]
             }
           ]
@@ -144,9 +151,10 @@
       "reward": [
         {
           "type": "chooseEffect",
+          "durata": "ISTANTANEO",
           "options": [
-            {"type": "GUADAGNARE_VITA", "qta": 2, "target": "EROE_ATTIVO"},
-            {"type": "CERCA_ALLEATO", "qta": 1, "target": "TUTTI_GLI_EROI" }
+            {"type": "GUADAGNARE_VITA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+            {"type": "CERCA_ALLEATO", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO" }
           ]
         }
       ]
@@ -167,14 +175,15 @@
       "triggers": [
         {
           "type": "EROE_ATTIVO",
+          "durata": "CONTINUO",
           "effectToExecute": [
-            {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO"}
+            {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
           ]
         }
       ],
       "reward": [
-        {"type": "GUADAGNARE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI"},
-        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO"}
+        {"type": "GUADAGNARE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
       ]
     },
 
@@ -190,22 +199,24 @@
       "triggers": [
         {
           "type": "EROE_ATTIVO",
+          "durata": "CONTINUO",
           "effectToExecute": [
-            {"type": "RIVELA_CARTA", "target": "EROE_ATTIVO"},
+            {"type": "RIVELA_CARTA", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
             {
               "type": "ifCoinValueAtLeast",
               "qta": 1,
+              "durata": "ISTANTANEO",
               "then": [
-                {"type": "SCARTARE_CARTA", "qta": 1, "target": "EROE_ATTIVO"},
-                {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO"}
+                {"type": "SCARTARE_CARTA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
               ]
             }
           ]
         }
       ],
       "reward": [
-        {"type": "CERCA_INCANTESIMO", "target": "TUTTI_GLI_EROI"},
-        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO"}
+        {"type": "CERCA_INCANTESIMO", "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
       ]
     }
   ],
@@ -225,13 +236,14 @@
       "triggers": [
         {
           "type": "TENTA_RIMUOVI_MARCHIO_NERO",
+          "durata": "CONTINUO",
           "effectToExecute": [
-            {"type": "NON_RIMUOVERE_MARCHI", "target": "TUTTI_GLI_EROI"}
+            {"type": "NON_RIMUOVERE_MARCHI", "target": "TUTTI_GLI_EROI", "durata": "CONTINUO"}
           ]
         }
       ],
       "reward": [
-        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 2, "target": "LUOGO"}
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 2, "target": "LUOGO", "durata": "ISTANTANEO"}
       ]
     },
 
@@ -247,14 +259,15 @@
       "triggers": [
         {
           "type": "RIVELA_MORSMORDRE_O_MALVAGIO",
+          "durata": "CONTINUO",
           "effectToExecute": [
-            {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"}
+            {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
           ]
         }
       ],
       "reward": [
-        {"type": "GUADAGNARE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"},
-        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO"}
+        {"type": "GUADAGNARE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
       ]
     }
   ],
@@ -274,15 +287,16 @@
       "triggers": [
         {
           "type": "ACQUISTA_CARTA_UMBRIDGE",
+          "durata": "CONTINUO",
           "qtaQuorum": 4,
           "effectToExecute": [
-            {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"}
+            {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
           ]
         }
       ],
       "reward": [
-        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI"},
-        {"type": "GUADAGNARE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI"}
+        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+        {"type": "GUADAGNARE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
       ]
     },
 
@@ -298,20 +312,22 @@
       "triggers": [
         {
           "type": "EROE_ATTIVO",
+          "durata": "CONTINUO",
           "effectToExecute": [
-            {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO"},
-            {"type": "SCARTARE_CARTA", "qta": 1, "target": "EROE_ATTIVO"}
+            {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+            {"type": "SCARTARE_CARTA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
           ]
         },
         {
           "type": "ATTACCA_VOLDY",
+          "durata": "CONTINUO",
           "effectToExecute": [
-            {"type": "NON_ATTACCARE_VOLDY", "target": "SE_STESSO"}
+            {"type": "NON_ATTACCARE_VOLDY", "target": "SE_STESSO", "durata": "CONTINUO"}
           ]
         }
       ],
       "reward": [
-        {"type": "VITTORIA", "target": "TUTTI_GLI_EROI"}
+        {"type": "VITTORIA", "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
       ]
     },
 
@@ -327,14 +343,15 @@
       "triggers": [
         {
           "type": "RIVELA_MORSMORDRE_O_MALVAGIO",
+          "durata": "CONTINUO",
           "effectToExecute": [
-            {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"}
+            {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
           ]
         }
       ],
       "reward": [
-        {"type": "GUADAGNARE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"},
-        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO"}
+        {"type": "GUADAGNARE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
       ]
     }
   ],
@@ -354,14 +371,15 @@
       "triggers": [
         {
           "type": "INIZIO_TURNO_GENERALE",
+          "durata": "CONTINUO",
           "effectToExecute": [
-            {"type": "RIVELA_NUOVO_EVENTO", "qta": 1}
+            {"type": "RIVELA_NUOVO_EVENTO", "qta": 1, "durata": "ISTANTANEO"}
           ]
         }
       ],
       "reward": [
-        {"type": "CERCA_OGGETTO", "target": "TUTTI_GLI_EROI"},
-        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 2, "target": "LUOGO"}
+        {"type": "CERCA_OGGETTO", "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 2, "target": "LUOGO", "durata": "ISTANTANEO"}
       ]
     },
 
@@ -377,14 +395,15 @@
       "triggers": [
         {
           "type": "TENTA_GUADAGNA_VITA",
+          "durata": "CONTINUO",
           "effectToExecute": [
-            {"type": "NON_GUADAGNARE_VITA", "target": "TUTTI_GLI_EROI"}
+            {"type": "NON_GUADAGNARE_VITA", "target": "TUTTI_GLI_EROI", "durata": "CONTINUO"}
           ]
         }
       ],
       "reward": [
-        {"type": "GUADAGNARE_VITA", "qta": 3, "target": "TUTTI_GLI_EROI"},
-        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 2, "target": "LUOGO"}
+        {"type": "GUADAGNARE_VITA", "qta": 3, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 2, "target": "LUOGO", "durata": "ISTANTANEO"}
       ]
     },
 
@@ -398,16 +417,17 @@
       "vita": "15",
       "path-img": "../Immagini_carte/Malvagi/Gioco6/Lord_Voldemort6.png",
       "effetti": [
-        {"type": "DADO_VOLDEMORT", "target": "currentEnemy"},
+        {"type": "DADO_VOLDEMORT", "target": "currentEnemy", "durata": "ISTANTANEO"},
         {
           "type": "ATTACCA_VOLDY",
+          "durata": "CONTINUO",
           "effectToExecute": [
-            {"type": "NON_ATTACCARE_VOLDY", "target": "SE_STESSO"}
+            {"type": "NON_ATTACCARE_VOLDY", "target": "SE_STESSO", "durata": "CONTINUO"}
           ]
         }
       ],
       "reward": [
-        {"type": "VITTORIA", "target": "TUTTI_GLI_EROI"}
+        {"type": "VITTORIA", "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
       ]
     }
   ],
@@ -427,25 +447,28 @@
       "triggers": [
         {
           "type": "INIZIO_TURNO_GENERALE",
+          "durata": "CONTINUO",
           "effectToExecute": [
-            {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO"}
+            {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
           ]
         },
         {
           "type": "RIMOZIONE_MARCHIO_NERO",
+          "durata": "CONTINUO",
           "effectToExecute": [
-            {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI"}
+            {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
           ]
         },
         {
           "type": "ATTACCA_VOLDY",
+          "durata": "CONTINUO",
           "effectToExecute": [
-            {"type": "NON_ATTACCARE_VOLDY", "qta": null, "target": "SE_STESSO"}
+            {"type": "NON_ATTACCARE_VOLDY", "qta": null, "target": "SE_STESSO", "durata": "CONTINUO"}
           ]
         }
       ],
       "reward": [
-        {"type": "VITTORIA", "target": "TUTTI_GLI_EROI"}
+        {"type": "VITTORIA", "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
       ]
     }
   ]
