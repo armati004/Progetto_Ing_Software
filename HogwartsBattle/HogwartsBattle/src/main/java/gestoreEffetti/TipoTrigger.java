@@ -174,5 +174,7 @@ public enum TipoTrigger {
 	/**
 	 * Trigger quando si prova a guadagnare vita
 	 */
-	TENTA_GUADAGNA_VITA;
+	TENTA_GUADAGNA_VITA,
+	
+
 }
