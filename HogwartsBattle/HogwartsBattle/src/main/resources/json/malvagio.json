@@ -199,15 +199,7 @@
           "type": "EROE_ATTIVO",
           "durata":"CONTINUO",
           "effectToExecute": [
-            {"type": "RIVELA_CARTA", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
-            {
-              "type": "ifCoinValueAtLeast",
-              "qta": 1,
-              "then": [
-                {"type": "SCARTARE_CARTA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
-                {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
-              ]
-            }
+            {"type": "RIVELA_CARTA", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
           ]
         }
       ],

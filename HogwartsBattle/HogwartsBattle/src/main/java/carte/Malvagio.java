@@ -99,6 +99,7 @@ public class Malvagio extends Carta{
 	private final int vita;
 	private int danno;
     private List<Effetto> rewards;
+    private boolean abilitaBloccata;
     
 	
     public Malvagio(String nome, String id, String classe, String descrizione, int costo, String pathImmagine,
@@ -107,6 +108,7 @@ public class Malvagio extends Carta{
 		this.rewards = rewards;
 		this.vita = vita;
 		this.danno = 0;
+        this.abilitaBloccata = false;
 	}
 
 	/*private String name;
@@ -147,7 +149,13 @@ public class Malvagio extends Carta{
 	public List<Effetto> getRewards() {
 		return rewards;
 	}
+    public boolean getAbilitaBloccata() {
+        return abilitaBloccata;
+    }
 
+    public void setAbilitaBloccata(boolean abilitaBloccata) {
+        this.abilitaBloccata = abilitaBloccata;
+    }
 }
 
 //classe gioco

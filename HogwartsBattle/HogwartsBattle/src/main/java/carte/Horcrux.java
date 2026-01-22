@@ -5,10 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import gestoreEffetti.Effetto;
-import gestoreEffetti.EsecutoreEffetti;
 import gestoreEffetti.Trigger;
-import gioco.Giocatore;
-import gioco.StatoDiGioco;
 import grafica.Entita;
 import java.util.Collections; // assicurati che sia importato in testa al file
 
@@ -46,15 +43,15 @@ public class Horcrux extends Carta {
         return segnaliniRichiesti;
     }
 
-    public List<Effetto> getReward() {
+    public List<Effetto> getRicompensa() {
         return reward == null ? Collections.emptyList() : Collections.unmodifiableList(reward);
     }
 
-    public void applicaRicompensa(StatoDiGioco stato, Giocatore g) {
+    public void applicaRicompensa() {
         if (reward == null) return;
         for (Effetto e : reward) {
             if (e != null) {
-                EsecutoreEffetti.eseguiEffetto(e, stato, g);;
+                e.applicaEffetto();
             }
         }
     }

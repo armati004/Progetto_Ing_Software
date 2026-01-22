@@ -2,8 +2,10 @@ package gioco;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import carte.*;
 import data.CardFactory;
@@ -26,6 +28,8 @@ public class StatoDiGioco {
     private List<Carta> alleatiGiocatiInQuestoTurno; // Lista degli alleati giocati nel turno corrente
     private Luogo currentLocation;
     private LinkedList<Luogo> listaLuoghi; // I luoghi da proteggere
+    private final Map<Malvagio, Giocatore> malvagiBloccati = new HashMap<>(); // lista di malvagi bloccati e chi l'ha bloccato
+
 
     // --- Mazzi (Riserve) ---
     // Usiamo LinkedList come Stack/Coda
@@ -263,7 +267,23 @@ public class StatoDiGioco {
         
         // 7. Passa al prossimo giocatore
         giocatoreCorrente = (giocatoreCorrente + 1) % giocatori.size();
-        
+
+        //8. se il giocatore successivo ha bloccato un malvagio esso si sblocca
+        if (malvagiBloccati.containsValue(giocatori.get(giocatoreCorrente))) {
+            Malvagio malvagioDaSbloccare = null;
+            for (Map.Entry<Malvagio, Giocatore> entry : malvagiBloccati.entrySet()) {
+                if (entry.getValue().equals(giocatori.get(giocatoreCorrente))) {
+                    malvagioDaSbloccare = entry.getKey();
+                    break;
+                }
+            }
+            if (malvagioDaSbloccare != null) {
+                malvagiBloccati.remove(malvagioDaSbloccare);
+                malvagioDaSbloccare.setAbilitaBloccata(false);
+                System.out.println("Le abilità di " + malvagioDaSbloccare.getNome() + " sono state sbloccate.");
+            }
+        }
+
         System.out.println("Il turno passa a: " + giocatori.get(giocatoreCorrente).getEroe().getNome());
     }
     
@@ -372,6 +392,10 @@ public class StatoDiGioco {
 	}
     public List<Carta> getAlleatiGiocatiInQuestoTurno() {
         return alleatiGiocatiInQuestoTurno;
+    }
+
+    public Map<Malvagio, Giocatore> getMalvagiBloccati() {
+        return malvagiBloccati;
     }
     
 }
