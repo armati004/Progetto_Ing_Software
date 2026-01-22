@@ -144,4 +144,30 @@ public class Giocatore {
 		return selettoreCarta.selezionaCarta(mazzo);
 	}
 
+	public void aggiungiSalute(int qta) {
+	    this.salute += qta;
+	    if (this.salute > this.saluteMax) {
+	        this.salute = this.saluteMax;
+	    }
+	}
+
+	public void rimuoviSalute(int qta) {
+	    this.salute -= qta;
+	    if (this.salute < 0) {
+	        this.salute = 0; // Gestiremo il Game Over nello StatoDiGioco
+	    }
+	}
+
+	public void aggiungiGettone(int qta) {
+	    this.gettone += qta;
+	}
+
+	public void aggiungiAttacco(int qta) {
+	    this.attacco += qta;
+	}
+
+	public void rimuoviAttacco(int qta) {
+	    this.attacco -= qta;
+	    if (this.attacco < 0) this.attacco = 0;
+	}
 }

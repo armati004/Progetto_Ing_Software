@@ -48,7 +48,13 @@ public class Carta {
 		
 		if(this.getTriggers() != null && !(this.getTriggers().isEmpty())) {
 			for(Trigger trigger : this.getTriggers()) {
-				stato.getGestoreTrigger().registraTrigger(trigger.getType(), trigger.getEffectToExecute(), this, trigger.getDurata());
+				stato.getGestoreTrigger().registraTrigger(
+					    trigger.getType(), 
+					    trigger.getEffectToExecute(), 
+					    this, 
+					    trigger.getDurata(), 
+					    trigger.getAttivato1Volta() // <--- NIENTE punto e virgola qui!
+					); // <--- Il punto e virgola e la parentesi di chiusura vanno QUI
 			}
 		}
 	}
