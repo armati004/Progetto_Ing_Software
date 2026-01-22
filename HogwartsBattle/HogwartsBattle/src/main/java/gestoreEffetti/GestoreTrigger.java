@@ -115,10 +115,12 @@ public class GestoreTrigger {
                 break;
 
             
-            case INCANTESIMI_GIOCATI: // Per Hermione
-                int conta = 0;
-                if (conta < 4) return false; 
-                break;
+            case INCANTESIMI_GIOCATI:
+            	// Nota: Richiede che tu tenga traccia delle carte giocate nel turno. 
+                int countSpell = 0;
+                if (stato.getAlleatiGiocatiInQuestoTurno() != null) {
+                }
+                return true; // Placeholder per evitare blocchi
 
             case TUTTE_TIPOLOGIE: // Per Diadema Corvonero
                 boolean ally = false, spell = false, item = false;
