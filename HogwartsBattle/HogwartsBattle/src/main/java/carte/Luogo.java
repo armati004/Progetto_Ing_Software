@@ -13,7 +13,7 @@ public class Luogo extends Carta {
     private int numeroMarchiNeri;
     private int nDarkEvents;
     private int marchiNeriMax;
-    private Object effettoEntrata; // Puoi tipizzare con una classe EffettoEntrata se hai già una struttura
+    private Effetto effettoEntrata; // Puoi tipizzare con una classe EffettoEntrata se hai già una struttura
 
     public Luogo(
         String nome,
@@ -48,7 +48,7 @@ public class Luogo extends Carta {
         return marchiNeriMax;
     }
 
-    public Object getEffettoEntrata() {
+    public Effetto getEffettoEntrata() {
         return effettoEntrata;
     }
 
@@ -64,9 +64,25 @@ public class Luogo extends Carta {
         this.marchiNeriMax = marchiNeriMax;
     }
 
-    public void setEffettoEntrata(Object effettoEntrata) {
+    public void setEffettoEntrata(Effetto effettoEntrata) {
         this.effettoEntrata = effettoEntrata;
     }
+
+	public boolean aggiungiMarchioNero(Integer marchi) {
+		this.setNumeroMarchiNeri(this.getNumeroMarchiNeri() + marchi);
+		if(this.getNumeroMarchiNeri() >= this.getMarchiNeriMax()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public void rimuoviMarchioNero(Integer qta) {
+		if(this.getNumeroMarchiNeri() > 0) {
+			this.setNumeroMarchiNeri(this.getNumeroMarchiNeri() - qta);
+		}
+	}
 
     // Puoi aggiungere metodi specifici per attivare effettoEntrata qui
 }

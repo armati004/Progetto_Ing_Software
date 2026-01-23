@@ -32,6 +32,8 @@ public class AppTest {
         ProficiencyFactory.inizializza();
         HorcruxFactory.inizializza();
         HeroFactory.inizializza();
+        LocationFactory.inizializza();
+        DiceFactory.inizializza();
     }
     
     @BeforeEach
@@ -56,6 +58,9 @@ public class AppTest {
     	assertEquals(6, stato.getMercato().size(), "Il mercato deve avere 6 carte");
     	assertEquals(1, stato.getMalvagiAttivi().size(), "Anno 1 inizia con 1 malvagio");
     	assertEquals("Harry Potter", stato.getGiocatori().get(stato.getGiocatoreCorrente()).getEroe().getNome());
+    	assertNotNull(harry.getMano(), "La mano è caricata correttamente");
+    	assertEquals(5, harry.getMano().size(), "In mano ci devono essere 5 carte");
+    	assertNotNull(stato.getDadi(), "I dadi sono stati caricati");
     }
     
     @Test

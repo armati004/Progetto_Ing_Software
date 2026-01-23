@@ -170,7 +170,7 @@ public enum TipoTrigger {
 	/**
 	 * Trigger che si attiva quando si riceve danno
 	 */
-	RiCEVI_DANNO,
+	RICEVI_DANNO,
 	/**
 	 * Trigger quando si prova a guadagnare vita
 	 */

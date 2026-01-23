@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="grafica.controllers.GameBoardController">
+  <columnConstraints>
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="10.0" percentWidth="25.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" percentWidth="75.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" percentHeight="75.0" prefHeight="30.0" vgrow="ALWAYS" />
+    <RowConstraints minHeight="10.0" percentHeight="25.0" prefHeight="30.0" vgrow="ALWAYS" />
+  </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <VBox fx:id="topBar" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+      <StackPane fx:id="rootStackPane" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <children>
+            <ImageView fitHeight="810.0" fitWidth="1203.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" smooth="false">
+               <image>
+                  <Image url="@../Immagini_carte/Tabellone/tabellone.png" />
+               </image>
+            </ImageView>
+            <GridPane fx:id="gridZone" prefHeight="810.0" prefWidth="1440.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="0.0" percentHeight="5.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Pane fx:id="luogoAttivo" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" GridPane.columnIndex="15" GridPane.columnSpan="14" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.rowSpan="14" GridPane.valignment="CENTER" />
+                  <Pane fx:id="mazzoMalvagi" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" GridPane.columnIndex="15" GridPane.columnSpan="14" GridPane.halignment="CENTER" GridPane.rowIndex="32" GridPane.rowSpan="14" GridPane.valignment="CENTER" />
+                  <Pane fx:id="malvagio1" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" GridPane.columnIndex="15" GridPane.columnSpan="14" GridPane.halignment="CENTER" GridPane.rowIndex="51" GridPane.rowSpan="14" GridPane.valignment="CENTER" />
+                  <Pane fx:id="malvagio2" layoutX="226.0" layoutY="520.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" GridPane.columnIndex="31" GridPane.columnSpan="14" GridPane.halignment="CENTER" GridPane.rowIndex="51" GridPane.rowSpan="14" GridPane.valignment="CENTER" />
+                  <Pane fx:id="malvagio3" layoutX="456.0" layoutY="526.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" GridPane.columnIndex="46" GridPane.columnSpan="14" GridPane.halignment="CENTER" GridPane.rowIndex="51" GridPane.rowSpan="14" GridPane.valignment="CENTER" />
+                  <Pane fx:id="mazzoArtiOscure" layoutX="226.0" layoutY="142.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" GridPane.columnIndex="35" GridPane.columnSpan="11" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.rowSpan="14" GridPane.valignment="CENTER" />
+                  <Pane fx:id="scartiArtiOscure" layoutX="514.0" layoutY="142.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" GridPane.columnIndex="48" GridPane.columnSpan="10" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.rowSpan="14" GridPane.valignment="CENTER" />
+                  <Pane fx:id="mazzoHorcrux" layoutX="701.0" layoutY="142.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" GridPane.columnIndex="33" GridPane.columnSpan="10" GridPane.halignment="CENTER" GridPane.rowIndex="32" GridPane.rowSpan="14" GridPane.valignment="CENTER" />
+                  <Pane fx:id="scartiMalvagi" layoutX="485.0" layoutY="334.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" GridPane.columnIndex="47" GridPane.columnSpan="13" GridPane.halignment="CENTER" GridPane.rowIndex="32" GridPane.rowSpan="14" GridPane.valignment="CENTER" />
+                  <Pane fx:id="mazzoNegozio" layoutX="687.0" layoutY="334.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" GridPane.columnIndex="70" GridPane.columnSpan="8" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.rowSpan="16" GridPane.valignment="CENTER" />
+                  <Pane fx:id="mercato1" layoutX="1018.0" layoutY="40.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" GridPane.columnIndex="63" GridPane.columnSpan="9" GridPane.halignment="CENTER" GridPane.rowIndex="21" GridPane.rowSpan="16" GridPane.valignment="CENTER" />
+                  <Pane fx:id="mercato2" layoutX="917.0" layoutY="223.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" GridPane.columnIndex="76" GridPane.columnSpan="9" GridPane.halignment="CENTER" GridPane.rowIndex="21" GridPane.rowSpan="16" GridPane.valignment="CENTER" />
+                  <Pane fx:id="mercato3" layoutX="1104.0" layoutY="223.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" GridPane.columnIndex="63" GridPane.columnSpan="9" GridPane.halignment="CENTER" GridPane.rowIndex="40" GridPane.rowSpan="16" GridPane.valignment="CENTER" />
+                  <Pane fx:id="mercato4" layoutX="917.0" layoutY="415.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" GridPane.columnIndex="76" GridPane.columnSpan="9" GridPane.halignment="CENTER" GridPane.rowIndex="40" GridPane.rowSpan="16" GridPane.valignment="CENTER" />
+                  <Pane fx:id="mercato5" layoutX="1104.0" layoutY="415.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" GridPane.columnIndex="63" GridPane.columnSpan="9" GridPane.halignment="CENTER" GridPane.rowIndex="59" GridPane.rowSpan="16" GridPane.valignment="CENTER" />
+                  <Pane fx:id="mercato6" layoutX="917.0" layoutY="607.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="0.0" GridPane.columnIndex="76" GridPane.columnSpan="9" GridPane.halignment="CENTER" GridPane.rowIndex="59" GridPane.rowSpan="16" GridPane.valignment="CENTER" />
+               </children>
+            </GridPane>
+            <VBox fx:id="centerBoard" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="100.0" />
+         </children>
+      </StackPane>
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2147483647" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+         <children>
+            <HBox fx:id="playerZone" layoutX="14.0" layoutY="65.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>

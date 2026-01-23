@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import carte.Carta;
+import carte.Competenza;
 import carte.Eroe;
 import carte.Mazzo;
 
@@ -17,6 +18,7 @@ public class Giocatore {
     private List<Carta> mano;
     private int gettone;
     private int attacco;
+    private Competenza competenza;
 
 	private SelettoreCarta selettoreCarta;
 	
@@ -40,14 +42,25 @@ public class Giocatore {
     	this.mazzo.inizializzaMazzo(eroe.getNome());
     	this.scarti = new Mazzo();
     	this.mano = new ArrayList<>();
+    	inizializzaMano();
     	this.gettone = 0;
     	this.attacco = 0;
+    	this.competenza = null;
     }
     
     public void scartaCarta(/*Mazzo mazzo,*/ Carta carta) {
 		this.getScarti().getCarte().add(carta);
 		this.getMano().remove(carta);
 	}
+    
+    public void inizializzaMano() {
+    	for(int i = 0; i < 5; i++) {
+    		Carta cartaPescata = mazzo.pescaCarta();
+    		if(cartaPescata != null) {
+    			mano.add(cartaPescata);
+    		}
+    	}
+    }
 	
     public void giocaCarta(StatoDiGioco stato, Carta carta) {
         // Verifica difensiva
@@ -98,7 +111,50 @@ public class Giocatore {
 	    mercato.remove(carta);
 	}
 
-	
+	// ============================================
+	// AGGIUNGERE A GIOCATORE.JAVA
+	// ============================================
+
+	/**
+	 * Pesca una carta dal mazzo.
+	 * Se il mazzo è vuoto, rimescola gli scarti nel mazzo.
+	 * 
+	 * @return true se pescata con successo, false se impossibile pescare
+	 */
+	public boolean pescaCarta() {
+	    // Se il mazzo è vuoto, rimescola gli scarti
+	    if (mazzo.isEmpty()) {
+	        System.out.println("  🔄 Mazzo vuoto! Rimescolo scarti...");
+	        
+	        // Se anche gli scarti sono vuoti, non si può pescare
+	        if (scarti.isEmpty()) {
+	            System.out.println("  ⚠️ Nessuna carta da pescare (mazzo e scarti vuoti)");
+	            return false;
+	        }
+	        
+	        // Rimescola: sposta tutte le carte dagli scarti al mazzo
+	        while (!scarti.isEmpty()) {
+	            Carta carta = scarti.pescaCarta();  // Prende dalla cima degli scarti
+	            if (carta != null) {
+	                mazzo.aggiungiCarta(carta);
+	            }
+	        }
+	        
+	        // Mescola il mazzo
+	        mazzo.mescola();
+	        
+	        System.out.println("  ✓ Mazzo rimescolato: " + mazzo.size() + " carte");
+	    }
+	    
+	    // Pesca carta
+	    Carta carta = mazzo.pescaCarta();
+	    if (carta != null) {
+	        mano.add(carta);
+	        return true;
+	    }
+	    
+	    return false;
+	}
 
 	public Eroe getEroe() {
 		return eroe;
@@ -142,6 +198,14 @@ public class Giocatore {
 	
 	public Carta scegliCarta(List<Carta> mazzo) {
 		return selettoreCarta.selezionaCarta(mazzo);
+	}
+
+	public Competenza getCompetenza() {
+		return competenza;
+	}
+
+	public void setCompetenza(Competenza competenza) {
+		this.competenza = competenza;
 	}
 
 }

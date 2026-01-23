@@ -2,6 +2,7 @@ package carte;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 import data.CardFactory;
 import data.StarterPackLoader;
@@ -14,13 +15,34 @@ public class Mazzo {
     }
     
     public List<Carta> inizializzaMazzo(String nomeEroe) {
-    	List<String> idStarterPack = StarterPackLoader.getDeckPerEroe(nomeEroe);
-    	
-    	for(String id : idStarterPack) {
-    		carte.add(CardFactory.creaCarta(id));
-    	}
-    	
-    	return carte;
+        // 1. Svuota il mazzo attuale per sicurezza
+        this.carte.clear(); 
+
+        // 2. Chiede al Loader la lista degli ID (Stringhe)
+        List<String> idStarterPack = StarterPackLoader.getIdsStarterPack(nomeEroe);
+        
+        // 3. Converte ogni ID in una Carta vera e la aggiunge
+        for(String id : idStarterPack) {
+        	if(id.contains("Alohomora")) {
+        		for(int i = 0; i < 7; i++) {
+        			Carta c = CardFactory.creaCarta(id);
+                    if (c != null) {
+                        this.carte.add(c);
+                    }
+        		}
+        	}
+        	else {
+        		Carta c = CardFactory.creaCarta(id);
+                if (c != null) {
+                    this.carte.add(c);
+                } else {
+                    System.err.println("⚠️ Attenzione: Carta con ID '" + id + "' non trovata nella Factory.");
+                }
+        	}
+        }
+        
+        System.out.println("✅ Mazzo inizializzato per " + nomeEroe + " con " + this.carte.size() + " carte.");
+        return this.carte;
     }
 
     public void aggiungiCarta(Carta carta) {
@@ -37,7 +59,19 @@ public class Mazzo {
         	return null;
         }
     }
+    /**
+     * Mescola casualmente le carte nel mazzo
+     */
+    public void mescola() {
+        Collections.shuffle(carte);
+    }
 
+    /**
+     * Verifica se il mazzo è vuoto
+     */
+    public boolean isEmpty() {
+        return carte.isEmpty();
+    }
     public int size() {
         return carte.size();
     }

@@ -2,12 +2,16 @@ package gioco;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import carte.*;
 import data.CardFactory;
+import data.DiceFactory;
 import data.GameConfig;
+import data.LocationFactory;
 import data.VillainFactory;
 import gestoreEffetti.GestoreEffetti;
 import gestoreEffetti.GestoreTrigger;
@@ -26,8 +30,21 @@ public class StatoDiGioco {
     private List<Carta> alleatiGiocatiInQuestoTurno; // Lista degli alleati giocati nel turno corrente
     private Luogo currentLocation;
     private LinkedList<Luogo> listaLuoghi; // I luoghi da proteggere
+    private Luogo luogoAttuale;
+    private int luoghiConquistati = 0;
 
-    // --- Mazzi (Riserve) ---
+    public Luogo getLuogoAttuale() {
+		return luogoAttuale;
+	}
+
+	public void setLuogoAttuale(Luogo luogoAttuale) {
+		this.luogoAttuale = luogoAttuale;
+	}
+
+	public Map<String, Dado> getDadi() {
+		return dadi;
+	}
+	// --- Mazzi (Riserve) ---
     // Usiamo LinkedList come Stack/Coda
     private LinkedList<Carta> mazzoNegozio;       // Il mazzo da cui si pesca per il mercato
     private LinkedList<Malvagio> mazzoMalvagi;     // Il mazzo dei cattivi
@@ -43,6 +60,9 @@ public class StatoDiGioco {
     // --- Managers ---
     private GestoreEffetti gestoreEffetti;
     private GestoreTrigger gestoreTrigger;
+    
+    private final Map<String, Dado> dadi;
+    private Map<Malvagio, Integer> attacchiAssegnati;
 
     // --- Configurazione ---
     private boolean hasHorcruxes;
@@ -74,6 +94,12 @@ public class StatoDiGioco {
         this.horcruxAttivi = new ArrayList<>();
         this.scartiArtiOscure = new ArrayList<>();
         this.alleatiGiocatiInQuestoTurno = new ArrayList<>();
+        
+        this.dadi = new HashMap<>();
+        if(config.getContieneDadi() == true) {
+        	caricaDadi();
+        }
+        this.attacchiAssegnati = new HashMap<>();
 
         // 3. Carica i Mazzi usando gli ID della Configurazione
         populateDecks(config);
@@ -106,10 +132,23 @@ public class StatoDiGioco {
         }
         Collections.shuffle(mazzoArtiOscure);
 
-        // Popola Luoghi (TODO: LocationFactory non l'abbiamo scritta, assumiamo ci sia o si faccia a mano qui)
-        // Per ora creo location fittizie per il test
-        // locationDeck.add(new Location("Diagon Alley", 4)); 
-        // currentLocation = locationDeck.poll();
+     // Luoghi
+        if (config.getLuoghiId() != null && !config.getLuoghiId().isEmpty()) {
+            for (String id : config.getLuoghiId()) {
+                try {
+                    Luogo luogo = LocationFactory.creaLuogo(id);
+                    listaLuoghi.add(luogo);
+                } catch (Exception e) {
+                    System.err.println("⚠️ Errore caricamento luogo: " + id);
+                }
+            }
+            
+            // Imposta il primo luogo come attuale
+            if (!listaLuoghi.isEmpty()) {
+                luogoAttuale = listaLuoghi.getFirst();
+                System.out.println("🏰 Luogo iniziale: " + luogoAttuale.getNome());
+            }
+        }
 
         // Popola Horcrux (Solo Anno 7)
         if (hasHorcruxes) {
@@ -133,6 +172,21 @@ public class StatoDiGioco {
         // 3. Rivela Horcrux (se Anno 7)
         if (hasHorcruxes && !mazzoHorcrux.isEmpty()) {
             horcruxAttivi.add(mazzoHorcrux.pop());
+        }
+    }
+    
+    private void caricaDadi() {
+        System.out.println("🎲 Caricamento dadi delle casate...");
+        
+        try {
+            Map<String, Dado> dadiCasate = DiceFactory.creaDadiCasate();
+            this.dadi.putAll(dadiCasate);
+            
+            System.out.println("✅ Caricati " + dadiCasate.size() + " dadi");
+            
+        } catch (Exception e) {
+            System.err.println("⚠️ Errore nel caricamento dei dadi: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -262,9 +316,105 @@ public class StatoDiGioco {
         alleatiGiocatiInQuestoTurno.clear();
         
         // 7. Passa al prossimo giocatore
-        giocatoreCorrente = (giocatoreCorrente + 1) % giocatori.size();
+        giocatoreCorrente += 1;
+        
+        if(giocatoreCorrente == giocatori.size()) {
+        	giocatoreCorrente = 0;
+        }
         
         System.out.println("Il turno passa a: " + giocatori.get(giocatoreCorrente).getEroe().getNome());
+    }
+    
+    private void verificaCondizioneVittoria() {
+        // Vittoria: Tutti i malvagi sconfitti
+        if (mazzoMalvagi.isEmpty() && malvagiAttivi.isEmpty()) {
+            if (hasHorcruxes) {
+                if (mazzoHorcrux.isEmpty() && horcruxAttivi.isEmpty()) {
+                    setVictory(true);
+                }
+            } else {
+                setVictory(true);
+            }
+        }
+    }
+    
+    public void incrementaLuoghiConquistati() {
+        luoghiConquistati++;
+        
+        if (luoghiConquistati >= getTotaleLuoghi()) {
+            setGameOver(true);
+        }
+    }
+    
+ // ============================================
+ // TRACKING ATTACCHI AI MALVAGI
+ // ============================================
+
+ /**
+  * Assegna attacchi a un malvagio
+  */
+ public void assegnaAttacco(Malvagio malvagio, int quantita) {
+     if (malvagio == null || quantita <= 0) return;
+     
+     int attuali = attacchiAssegnati.getOrDefault(malvagio, 0);
+     attacchiAssegnati.put(malvagio, attuali + quantita);
+     
+     System.out.println("⚔️ Assegnati " + quantita + " attacchi a " + malvagio.getNome() + 
+                      " (Totale: " + (attuali + quantita) + ")");
+ }
+
+ /**
+  * Ottiene la mappa degli attacchi assegnati
+  */
+ public Map<Malvagio, Integer> getAttacchiAssegnati() {
+     return attacchiAssegnati;
+ }
+
+ /**
+  * Resetta gli attacchi assegnati (chiamato a inizio turno)
+  */
+ public void resetAttacchi() {
+     attacchiAssegnati.clear();
+     System.out.println("🔄 Attacchi resettati");
+ }
+
+ /**
+  * Applica gli attacchi assegnati ai malvagi e li rimuove se sconfitti
+  */
+ public void applicaAttacchi() {
+     List<Malvagio> malvagiDaRimuovere = new ArrayList<>();
+     
+     for (Map.Entry<Malvagio, Integer> entry : attacchiAssegnati.entrySet()) {
+         Malvagio malvagio = entry.getKey();
+         int attacchi = entry.getValue();
+         
+         // Applica danno
+         malvagio.setDanno(malvagio.getDanno() + attacchi);
+         
+         System.out.println("⚔️ " + malvagio.getNome() + " riceve " + attacchi + " danni " +
+                          "(Vita: " + malvagio.getVita() + ")");
+         
+         // Se sconfitto, aggiungilo alla lista di rimozione
+         if (malvagio.getDanno() >= malvagio.getVita()) {
+             System.out.println("💀 " + malvagio.getNome() + " è stato sconfitto!");
+             malvagiDaRimuovere.add(malvagio);
+             
+             // Trigger NEMICO_SCONFITTO
+             gestoreTrigger.attivaTrigger(TipoTrigger.NEMICO_SCONFITTO, this, this.getGiocatori().get(this.getGiocatoreCorrente()));
+         }
+     }
+     
+     // Rimuovi i malvagi sconfitti
+     for (Malvagio malvagio : malvagiDaRimuovere) {
+         malvagiAttivi.remove(malvagio);
+     }
+     
+     // Resetta gli attacchi dopo averli applicati
+     resetAttacchi();
+ }
+    
+    public int getTotaleLuoghi() {
+        return listaLuoghi.size();
     }
     
 	public int getAnnoCorrente() {
@@ -373,5 +523,17 @@ public class StatoDiGioco {
     public List<Carta> getAlleatiGiocatiInQuestoTurno() {
         return alleatiGiocatiInQuestoTurno;
     }
+
+	public void setVictory(boolean b) {
+		this.victory = b;
+	}
+	
+	public int getLuoghiConquistati() {
+		return luoghiConquistati;
+	}
     
+	// Aggiungi metodo per ottenere un dado specifico
+	public Dado getDado(String nome) {
+	    return dadi.get(nome);
+	}
 }

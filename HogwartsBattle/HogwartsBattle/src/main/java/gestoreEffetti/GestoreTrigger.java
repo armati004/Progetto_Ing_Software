@@ -13,9 +13,28 @@ import gioco.StatoDiGioco;
 public class GestoreTrigger {
 	private final Map<TipoTrigger, List<TriggerAttivato>> registro = new EnumMap<>(TipoTrigger.class);
 	
+	/**
+	 * Registra un trigger SOLO se non è già registrato per questa carta
+	 * ⭐ FIX: Previene registrazioni duplicate
+	 */
 	public void registraTrigger(TipoTrigger tipo, List<Effetto> effetti, Carta sorgente, DurataEffetto durata) {
+		// ⭐ Controlla se il trigger è già registrato per questa carta
+		List<TriggerAttivato> triggerEsistenti = registro.get(tipo);
+		
+		if (triggerEsistenti != null) {
+			for (TriggerAttivato esistente : triggerEsistenti) {
+				// Se è già registrato per questa carta specifica, non aggiungere
+				if (esistente.getSorgente() == sorgente) {
+					System.out.println("⚠️ Trigger " + tipo + " già registrato per " + sorgente.getNome() + " - SALTATO");
+					return;
+				}
+			}
+		}
+		
+		// Se non è duplicato, registra
 		TriggerAttivato attivato = new TriggerAttivato(sorgente, effetti, durata);
 		this.registro.computeIfAbsent(tipo, _ -> new ArrayList<>()).add(attivato);
+		System.out.println("✅ Trigger " + tipo + " registrato per " + sorgente.getNome());
 	}
 	
 	public void rimuoviTrigger(Carta sorgente) {

@@ -5,28 +5,28 @@
         "id": "harry1",
         "class": "Eroe",
         "descrizione": "Non posso essere un ma-ma-mago. Cioè io sono... Harry. Soltanto Harry.",
-        "path-img": "../Immagini_carte/Eroi/Gioco1/Harry1.png"
+        "path-img": "/Immagini_carte/Eroi/Gioco1/Harry1.png"
     },
     {
         "nome": "Hermione Granger",
         "id": "hermione1",
         "class": "Eroe",
         "descrizione": "Ora se non è un problema, andrò a dormire prima che qualcuno di voi due abbia un'altra geniale idea per farci uccidere o peggio, espellere",
-        "path-img": "../Immagini_carte/Eroi/Gioco1/Hermione1.png"
+        "path-img": "/Immagini_carte/Eroi/Gioco1/Hermione1.png"
     },
     {
         "nome": "Neville Longbottom",
         "id": "neville1",
         "class": "Eroe",
         "descrizione": "L'unico problema è che non riesco a ricordare cos'ho dimenticato.",
-        "path-img": "../Immagini_carte/Eroi/Gioco1/Neville1.png"
+        "path-img": "/Immagini_carte/Eroi/Gioco1/Neville1.png"
     },
     {
         "nome": "Ron Weasley",
         "id": "ron1",
         "class": "Eroe",
         "descrizione": "Cosa pensate stiano facendo ingabbiando una cosa del genere in una scuola?",
-        "path-img": "../Immagini_carte/Eroi/Gioco1/Ron1.png"
+        "path-img": "/Immagini_carte/Eroi/Gioco1/Ron1.png"
     }],
     "gioco3": [
     {
@@ -34,7 +34,7 @@
         "id": "harry3",
         "class": "Eroe",
         "descrizione": "La prima volta che un Segnalino Controllo è rimosso da un Luogo ogni turno, un Eroe a tua scelta guadagna 1 Segnalino Attacco",
-        "path-img": "../Immagini_carte/Eroi/Gioco3/Harry3.png",
+        "path-img": "/Immagini_carte/Eroi/Gioco3/Harry3.png",
         "triggers":[
             {
                 "type": "RIMOZIONE_MARCHIO_NERO",
@@ -51,7 +51,7 @@
         "id": "hermione3",
         "class": "Eroe",
         "descrizione": "Se giochi 4 o più Incantesimi nel tuo turno, un Eroe a tua scelta guadagna 1 Segnalino Influenza",
-        "path-img": "../Immagini_carte/Eroi/Gioco3/Hermione3.png",
+        "path-img": "/Immagini_carte/Eroi/Gioco3/Hermione3.png",
         "triggers":[
             {
                 "type": "INCANTESIMI_GIOCATI",
@@ -69,7 +69,7 @@
         "id": "neville3",
         "class": "Eroe",
         "descrizione": "La prima volta che ciascun Eroe guadagna dei Punti Vita nel tuo turno, egli guadagna un'ulteriore Punto Vita",
-        "path-img": "../Immagini_carte/Eroi/Gioco3/Neville3.png",
+        "path-img": "/Immagini_carte/Eroi/Gioco3/Neville3.png",
         "triggers":[
             {
                 "type": "GUADAGNA_VITA",
@@ -86,7 +86,7 @@
         "id": "ron3",
         "class": "Eroe",
         "descrizione": "Se assegni 3 o più Segnalini Attacco nel tuo turno, un Eroe guadagna 2 Punti Vita",
-        "path-img": "../Immagini_carte/Eroi/Gioco3/Ron3.png",
+        "path-img": "/Immagini_carte/Eroi/Gioco3/Ron3.png",
         "triggers":[
             {
                 "type": "ATTACCHI_ASSEGNATI",
@@ -104,7 +104,7 @@
         "id": "harry7",
         "class": "Eroe",
         "descrizione": "La prima volta che un Segnalino Controllo è rimosso da un Luogo ogni turno, fino a due Eroi guadagnano 1 Segnalino Attacco",
-        "path-img": "../Immagini_carte/Eroi/Gioco7/Harry7.png",
+        "path-img": "/Immagini_carte/Eroi/Gioco7/Harry7.png",
         "triggers":[
             {
                 "type": "RIMOZIONE_MARCHIO_NERO",
@@ -121,7 +121,7 @@
         "id": "hermione7",
         "class": "Eroe",
         "descrizione": "Se giochi 4 o più Incantesimi nel tuo turno, Ciascun Eroe guadagna 1 Segnalino Influenza",
-        "path-img": "../Immagini_carte/Eroi/Gioco7/Hermione7.png",
+        "path-img": "/Immagini_carte/Eroi/Gioco7/Hermione7.png",
         "triggers":[
             {
                 "type": "INCANTESIMI_GIOCATI",
@@ -139,7 +139,7 @@
         "id": "neville7",
         "class": "Eroe",
         "descrizione": "Ogni volta che ciascun Eroe guadagna dei Punti Vita nel tuo turno, esso guadagna un'ulteriore Punto Vita",
-        "path-img": "../Immagini_carte/Eroi/Gioco7/Neville7.png",
+        "path-img": "/Immagini_carte/Eroi/Gioco7/Neville7.png",
         "triggers":[
             {
                 "type": "GUADAGNA_VITA",
@@ -155,7 +155,7 @@
         "id": "ron7",
         "class": "Eroe",
         "descrizione": "Se assegni 3 o più Segnalini Attacco nel tuo turno, ciascun Eroe guadagna 2 Punti Vita",
-        "path-img": "../Immagini_carte/Eroi/Gioco7/Ron7.png",
+        "path-img": "/Immagini_carte/Eroi/Gioco7/Ron7.png",
         "triggers":[
         {
             "type": "ATTACCHI_ASSEGNATI",

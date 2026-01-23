@@ -3,7 +3,7 @@
         {
             "nome": "Dado Serpeverde",
             "id": "dadoSerpeverde",
-            "path-img": "../Immagini_carte/Dadi/dadoSerpeverde.png",
+            "path-img": "/Immagini_carte/Dadi/dadoSerpeverde.png",
             "triggers":[
                 {
                     "type": "DADO_TIRATO",
@@ -57,7 +57,7 @@
         {
             "nome": "Dado Corvonero",
             "id": "dadoCorvonero",
-            "path-img": "../Immagini_carte/Dadi/dadoCorvonero.png",
+            "path-img": "/Immagini_carte/Dadi/dadoCorvonero.png",
             "triggers":[
                 {
                     "type": "DADO_TIRATO",
@@ -112,7 +112,7 @@
         {
             "nome": "Dado Grifondoro",
             "id": "dadoGrifondoro",
-            "path-img": "../Immagini_carte/Dadi/dadoGrifondoro.png",
+            "path-img": "/Immagini_carte/Dadi/dadoGrifondoro.png",
             "triggers":[
                 {
                     "type": "DADO_TIRATO",
@@ -167,7 +167,7 @@
         {
             "nome": "Dado Tassorosso",
             "id": "dadoTassorosso",
-            "path-img": "../Immagini_carte/Dadi/dadoTassorosso.png",
+            "path-img": "/Immagini_carte/Dadi/dadoTassorosso.png",
             "triggers":[
                 {
                     "type": "DADO_TIRATO",

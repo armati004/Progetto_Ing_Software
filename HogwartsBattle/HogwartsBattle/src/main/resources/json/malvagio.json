@@ -8,7 +8,7 @@
       "Descrizione-ricompensa": "Rimuovi 1 Marchio Nero dalla locazione",
       "costo": "0",
       "vita": "6",
-      "path-img": "../Immagini_carte/Malvagi/Gioco1/Draco_Malfoy.png",
+      "path-img": "/Immagini_carte/Malvagi/Gioco1/Draco_Malfoy.png",
       "triggers": [
         {
           "type": "AGGIUNTA_MARCHIO_NERO",
@@ -31,16 +31,11 @@
       "Descrizione-ricompensa": "Tutti gli eroi guadagnano 1 Influenza e 1 Punto Vita",
       "costo": "0",
       "vita": "6",
-      "path-img": "../Immagini_carte/Malvagi/Gioco1/Quirinus_Raptor.png",
-      "triggers": [
-        {
-          "type": "EROE_ATTIVO",
-          "durata":"CONTINUO",
-          "effectToExecute": [
-            { "type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO" }
-          ]
-        }
-      ],
+      "path-img": "/Immagini_carte/Malvagi/Gioco1/Quirinus_Raptor.png",
+	  "effetti": [
+		{ "type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO" }
+	  ],
+      "triggers": [],
       "reward": [
         { "type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO" },
         { "type": "GUADAGNARE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO" }
@@ -55,11 +50,10 @@
       "Descrizione-ricompensa": "Tutti gli eroi pescano una carta",
       "costo": "0",
       "vita": "5",
-      "path-img": "../Immagini_carte/Malvagi/Gioco1/Tiger_Goyle.png",
+      "path-img": "/Immagini_carte/Malvagi/Gioco1/Tiger_Goyle.png",
       "triggers": [
         {
           "type": "SCARTA_CARTA_MALUS",
-          "cause": ["darkArtsEvent", "villainEffect"],
           "durata":"CONTINUO",
           "effectToExecute": [
             { "type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVANTE", "durata": "ISTANTANEO" }
@@ -73,7 +67,7 @@
   ],
 
 
-  "gioco 2": [
+  "gioco2": [
     {
       "nome": "Basilisco",
       "id": "basilisco2",
@@ -82,15 +76,12 @@
       "Descrizione-ricompensa": "Tutti gli eroi pescano una carta, rimuovi 1 marchio nero dalla locazione",
       "costo": "0",
       "vita": "8",
-      "path-img": "../Immagini_carte/Malvagi/Gioco2/Basilisco.png",
+      "path-img": "/Immagini_carte/Malvagi/Gioco2/Basilisco.png",
+	  "effetti":[
+		{"type": "NON_PESCARE_CARTE", "target": "TUTTI_GLI_EROI", "durata": "CONTINUO"}
+	  ],
       "triggers": [
-        {
-          "type": "PESCA_CARTA_BONUS",
-          "durata":"CONTINUO",
-          "effectToExecute": [
-            {"type": "NON_PESCARE_CARTE", "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
-          ]
-        }
+        
       ],
       "reward": [
         {"type": "PESCARE_CARTA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
@@ -106,7 +97,7 @@
       "Descrizione-ricompensa": "Tutti gli eroi guadagnano 1 influenza, rimuovi 1 Marchio Nero dalla locazione",
       "costo": "0",
       "vita": "7",
-      "path-img": "../Immagini_carte/Malvagi/Gioco2/Lucius_Malfoy.png",
+      "path-img": "/Immagini_carte/Malvagi/Gioco2/Lucius_Malfoy.png",
       "triggers": [
         {
           "type": "AGGIUNTA_MARCHIO_NERO",
@@ -130,26 +121,21 @@
       "Descrizione-ricompensa": "Tutti gli eroi scelgono uno: guadagnano 2 Punti Vita; oppure cercare un alleato nella propria pila degli scarti e metterlo nella propria mano",
       "costo": "0",
       "vita": "6",
-      "path-img": "../Immagini_carte/Malvagi/Gioco2/Tom_Riddle.png",
+      "path-img": "/Immagini_carte/Malvagi/Gioco2/Tom_Riddle.png",
+	  "effetti": [
+		{"type": "ALLEATO_IN_MANO", "durata":"ISTANTANEO",
+		"options": [
+		     {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+		     {"type": "SCARTARE_CARTA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+		 ]
+	}
+	  ],
       "triggers": [
-        {
-          "type": "ALLEATO_IN_MANO",
-          "repeat": "perogni",
-          "durata":"CONTINUO",
-          "effectToExecute": [
-            {
-              "type": "chooseEffect",
-              "options": [
-                {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
-                {"type": "SCARTARE_CARTA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
-              ]
-            }
-          ]
-        }
+        
       ],
       "reward": [
         {
-          "type": "chooseEffect",
+          "type": "SCELTA",
           "options": [
             {"type": "GUADAGNARE_VITA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
             {"type": "CERCA_ALLEATO", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO" }
@@ -160,7 +146,7 @@
   ],
 
 
-  "gioco 3": [
+  "gioco3": [
     {
       "nome": "Dissennatore",
       "id": "dissennatore3",
@@ -169,15 +155,12 @@
       "Descrizione-ricompensa": "Tutti gli eroi guadagnano 2 Punti Vita, rimuovi 1 Marchio Nero dalla locazione",
       "costo": "0",
       "vita": "8",
-      "path-img": "../Immagini_carte/Malvagi/Gioco3/Dissennatore.png",
+      "path-img": "/Immagini_carte/Malvagi/Gioco3/Dissennatore.png",
+	  "effetti": [
+		{"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+	  ],
       "triggers": [
-        {
-          "type": "EROE_ATTIVO",
-          "durata": "CONTINUO",
-          "effectToExecute": [
-            {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
-          ]
-        }
+        
       ],
       "reward": [
         {"type": "GUADAGNARE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
@@ -193,23 +176,12 @@
       "Descrizione-ricompensa":"Tutti gli eroi possono cercare un incantesimo nella loro pila degli scarti e metterlo in mano,rimuovi 1 Marchio Nero dalla locazione",
       "costo": "0",
       "vita": "7",
-      "path-img": "../Immagini_carte/Malvagi/Gioco3/Peter_Minus.png",
+      "path-img": "/Immagini_carte/Malvagi/Gioco3/Peter_Minus.png",
+	  "effetti":[
+		{"type": "RIVELA_CARTA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+	  ],
       "triggers": [
-        {
-          "type": "EROE_ATTIVO",
-          "durata":"CONTINUO",
-          "effectToExecute": [
-            {"type": "RIVELA_CARTA", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
-            {
-              "type": "ifCoinValueAtLeast",
-              "qta": 1,
-              "then": [
-                {"type": "SCARTARE_CARTA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
-                {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
-              ]
-            }
-          ]
-        }
+        
       ],
       "reward": [
         {"type": "CERCA_INCANTESIMO", "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
@@ -220,24 +192,21 @@
 
 
 
-  "gioco 4": [
+  "gioco4": [
     {
       "nome": "Barty Crouch JR",
       "id": "bartyCrouchJR4",
       "class": "Malvagio",
       "Descrizione": "Gli Eroi non possono rimuovere Segnalini Controllo dal Luogo",
-      "Descizione-ricompensa": "Rimuovi 2 Marchio Nero dalla locazione",
+      "Descrizione-ricompensa": "Rimuovi 2 Marchio Nero dalla locazione",
       "costo": "0",
       "vita": "7",
-      "path-img": "../Immagini_carte/Malvagi/Gioco4/Barty_Crouch_JR.png",
-      "triggers": [
-        {
-          "type": "TENTA_RIMUOVI_MARCHIO_NERO",
-          "durata": "CONTINUO",
-          "effectToExecute": [
-            {"type": "NON_RIMUOVERE_MARCHI", "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
-          ]
-        }
+      "path-img": "/Immagini_carte/Malvagi/Gioco4/Barty_Crouch_JR.png",
+      "effetti":[
+		{"type": "NON_RIMUOVERE_MARCHI", "target": "TUTTI_GLI_EROI", "durata": "CONTINUO"}
+	  ],
+	  "triggers": [
+        
       ],
       "reward": [
         {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 2, "target": "LUOGO", "durata": "ISTANTANEO"}
@@ -249,10 +218,10 @@
       "id": "mangiamorte4",
       "class": "Malvagio",
       "Descrizione": "Ogni volta che Morsmordre! o un nuovo malvagio è rivelato, tutti gli Eroi perdono 1 Punto Vita",
-      "Descizione-ricompensa": "Tutti gli eroi guadagnano 1 Punto Vita, rimuovi 1 Marchio Nero dalla locazione",
+      "Descrizione-ricompensa": "Tutti gli eroi guadagnano 1 Punto Vita, rimuovi 1 Marchio Nero dalla locazione",
       "costo": "0",
       "vita": "7",
-      "path-img": "../Immagini_carte/Malvagi/Gioco4/Mangiamorte4.png",
+      "path-img": "/Immagini_carte/Malvagi/Gioco4/Mangiamorte4.png",
       "triggers": [
         {
           "type": "RIVELA_MORSMORDRE_O_MALVAGIO",
@@ -271,7 +240,7 @@
 
 
 
-  "gioco 5": [
+  "gioco5": [
     {
       "nome": "Dolores Umbridge",
       "id": "doloresUmbridge5",
@@ -280,7 +249,7 @@
       "Descrizione-ricompensa": "Tutti gli eroi guadagnano 1 Influenza e 2 Punti Vita",
       "costo": "0",
       "vita": "7",
-      "path-img": "../Immagini_carte/Malvagi/Gioco5/Dolores_Umbridge.png",
+      "path-img": "/Immagini_carte/Malvagi/Gioco5/Dolores_Umbridge.png",
       "triggers": [
         {
           "type": "ACQUISTA_CARTA_UMBRIDGE",
@@ -305,16 +274,12 @@
       "Descrizione-ricompensa": "Gli eroi vincono",
       "costo": "0",
       "vita": "10",
-      "path-img": "../Immagini_carte/Malvagi/Gioco5/Lord_Voldemort5.png",
+      "path-img": "/Immagini_carte/Malvagi/Gioco5/Lord_Voldemort5.png",
+	  "effetti": [
+		{"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+		{"type": "SCARTARE_CARTA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+	  ],
       "triggers": [
-        {
-          "type": "EROE_ATTIVO",
-          "durata":"CONTINUO",
-          "effectToExecute": [
-            {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
-            {"type": "SCARTARE_CARTA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
-          ]
-        },
         {
           "type": "ATTACCA_VOLDY",
           "effectToExecute": [
@@ -335,7 +300,7 @@
       "Descrizione-ricompensa": "Tutti gli eroi guadagnano 1 Punto Vita, rimuovi 1 Marchio Nero dalla locazione",
       "costo": "0",
       "vita": "7",
-      "path-img": "../Immagini_carte/Malvagi/Gioco5/Mangiamorte5.png",
+      "path-img": "/Immagini_carte/Malvagi/Gioco5/Mangiamorte5.png",
       "triggers": [
         {
           "type": "RIVELA_MORSMORDRE_O_MALVAGIO",
@@ -354,7 +319,7 @@
 
 
 
-  "gioco 6": [
+  "gioco6": [
     {
       "nome": "Bellatrix Lestrange",
       "id": "bellatrixLestrange6",
@@ -362,16 +327,13 @@
       "Descrizione": "Rivela un Evento Arti Oscure aggiuntivo ogni turno.",
       "Descrizione-ricompensa": "Tutti gli eroi possono cercare un oggetto nella loro pila degli scarti e metterlo in mano, rimuovi 2 Marchio Nero dalla locazione",
       "costo": "0",
-      "vita": 9,
-      "path-img": "../Immagini_carte/Malvagi/Gioco6/Bellatrix_Lestrange.png",
+      "vita": "9",
+      "path-img": "/Immagini_carte/Malvagi/Gioco6/Bellatrix_Lestrange.png",
+	  "effetti":[
+		{"type": "RIVELA_NUOVO_EVENTO", "qta": 1, "durata": "ISTANTANEO"}
+	  ],
       "triggers": [
-        {
-          "type": "INIZIO_TURNO_GENERALE",
-          "durata":"CONTINUO",
-          "effectToExecute": [
-            {"type": "RIVELA_NUOVO_EVENTO", "qta": 1, "durata": "ISTANTANEO"}
-          ]
-        }
+        
       ],
       "reward": [
         {"type": "CERCA_OGGETTO", "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
@@ -387,15 +349,12 @@
       "Descrizione-ricompensa": "Tutti gli eroi guadagnano 3 Punti Vita, rimuovi 2 Marchio Nero dalla locazione",
       "costo": "0",
       "vita": "8",
-      "path-img": "../Immagini_carte/Malvagi/Gioco6/Fenrir_Greyback.png",
+      "path-img": "/Immagini_carte/Malvagi/Gioco6/Fenrir_Greyback.png",
+	  "effetti":[
+		{"type": "NON_GUADAGNARE_VITA", "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+	  ],
       "triggers": [
-        {
-          "type": "TENTA_GUADAGNA_VITA",
-          "durata":"CONTINUO",
-          "effectToExecute": [
-            {"type": "NON_GUADAGNARE_VITA", "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
-          ]
-        }
+        
       ],
       "reward": [
         {"type": "GUADAGNARE_VITA", "qta": 3, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
@@ -411,17 +370,19 @@
       "Descrizione-ricompensa": "Gli eroi vincono",
       "costo": "0",
       "vita": "15",
-      "path-img": "../Immagini_carte/Malvagi/Gioco6/Lord_Voldemort6.png",
+      "path-img": "/Immagini_carte/Malvagi/Gioco6/Lord_Voldemort6.png",
       "effetti": [
-        {"type": "DADO_VOLDEMORT", "target": "currentEnemy"},
-        {
-          "type": "ATTACCA_VOLDY",
-          "durata": "CONTINUO",
-          "effectToExecute": [
-            {"type": "NON_ATTACCARE_VOLDY", "target": "SE_STESSO", "durata": "ISTANTANEO"}
-          ]
-        }
+        {"type": "DADO_VOLDEMORT", "target": "currentEnemy"}
       ],
+	  "triggers":[
+		{
+		          "type": "ATTACCA_VOLDY",
+		          "durata": "CONTINUO",
+		          "effectToExecute": [
+		            {"type": "NON_ATTACCARE_VOLDY", "target": "SE_STESSO", "durata": "ISTANTANEO"}
+		          ]
+		        }
+	  ],
       "reward": [
         {"type": "VITTORIA", "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
       ]
@@ -430,7 +391,7 @@
 
 
 
-  "gioco 7": [
+  "gioco7": [
     {
       "nome": "Lord Voldemort",
       "id": "lordVoldemort7",
@@ -439,15 +400,11 @@
       "Descrizione-ricompensa": "Gli eroi vincono",
       "costo": "0",
       "vita": "20",
-      "path-img": "../Immagini_carte/Malvagi/Gioco7/Lord_Voldemort7.png",
+      "path-img": "/Immagini_carte/Malvagi/Gioco7/Lord_Voldemort7.png",
+	  "effetti":[
+		{"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
+	  ],
       "triggers": [
-        {
-          "type": "INIZIO_TURNO_GENERALE",
-          "durata":"CONTINUO",
-          "effectToExecute": [
-            {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
-          ]
-        },
         {
           "type": "RIMOZIONE_MARCHIO_NERO",
           "durata":"CONTINUO",

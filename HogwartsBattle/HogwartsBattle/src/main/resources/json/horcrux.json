@@ -7,7 +7,7 @@
       "Descrizione": "Ogni volta che un eroe gioca un Alleato, quell'eroe perde 1 vita.",
       "distruggi": "Carta o Punto Vita",
       "Descrizione-ricompensa": "Se giochi con due o più alleati, qualsiasi eroe guadagna 2 Punti Vita",
-      "path-img": "../Immagini_carte/Horcrux/Diario.png",
+      "path-img": "/Immagini_carte/Horcrux/Diario.png",
       "destroyCondition": [
         "VITA",
         "CARTA"
@@ -33,7 +33,7 @@
       "Descrizione": "Ogni volta che un Eroe infligge 2 o più danni a un Villain, quell'Eroe perde 2 Punti Vita.",
       "distruggi": "Potere o Influenza", 
       "Descrizione-ricompensa": "Una volta per turno, puoi scartare due carte. Se lo fai, rimuovi 1 Marchio Nero dalla posizione",
-      "path-img": "../Immagini_carte/Horcrux/Anello.png",
+      "path-img": "/Immagini_carte/Horcrux/Anello.png",
       "destroyCondition": [
         "ATTACCO",
         "INFLUENZA"
@@ -64,7 +64,7 @@
       "Descrizione": "Gli eroi non possono guadagnare attacchi o monete durante il turno di altri eroi.",
       "distruggi": "Attacco o Punto VIta",
       "Descrizione-ricompensa": "Una volta per turno, puoi scartare una carta. Se fai rotolare il dado della casa Serpeverde.",
-      "path-img": "../Immagini_carte/Horcrux/Medaglione.png",
+      "path-img": "/Immagini_carte/Horcrux/Medaglione.png",
       "destroyCondition": [
         "ATTACCO",
         "VITA"
@@ -88,7 +88,7 @@
       "Descrizione": "All'inizio di ogni turno, rimuovi 1 danno da tutti i villain.",
       "distruggi": "Punto Vita o Influenza",
       "Descrizione-ricompensa": "Una volta per turno, puoi scartare una carta. Se lo fai, tira il dado della casa Tassorosso",
-      "path-img": "../Immagini_carte/Horcrux/Coppa.png",
+      "path-img": "/Immagini_carte/Horcrux/Coppa.png",
       "destroyCondition": [
         "VITA",
         "INFLUENZA"
@@ -109,7 +109,7 @@
       "description": "All'inizio di ogni turno, se l’eroe attivo ha almeno un Alleato, Oggetto e Magia in mano, perde 2 vita.",
       "distruggi": "Carta o Attacco",
       "Descrizione-ricompensa": "Una volta per turno, puoi scartare una carta. Se lo fai, tira il dado della casa Corvonero",
-      "path-img": "../Immagini_carte/Horcrux/Diadema.png",
+      "path-img": "/Immagini_carte/Horcrux/Diadema.png",
       "destroyCondition": [
         "CARTA",
         "ATTACCO"
@@ -137,7 +137,7 @@
       "description": "All'inizio di ogni turno, l'eroe attivo perde 1 vita e non può guadagnare vita in quel turno.",
       "distruggi": "Carta o Attacco o Punto Vita",
       "rewardDescription": "Una volta per partita, puoi scartarlo per rimuoverne 3 Marchi Neri dalla posizione",
-      "path-img": "../Immagini_carte/Horcrux/Nagini.png",
+      "path-img": "/Immagini_carte/Horcrux/Nagini.png",
       "destroyCondition": [
         "ATTACCO",
         "CARTA",

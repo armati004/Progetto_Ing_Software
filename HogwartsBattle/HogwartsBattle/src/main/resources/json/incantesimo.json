@@ -6,7 +6,7 @@
       "class": "Incantesimo",
       "descrizione": "Guadagni 2 attacco.",
       "costo": 5,
-      "pathImmagine": "../Immagini_carte/Incantesimo/Gioco1/Descendo.png",
+      "pathImmagine": "/Immagini_carte/Negozio/Gioco1/Descendo.png",
       "effetti": [{"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}],
       "triggers": []
     },
@@ -16,7 +16,7 @@
       "class": "Incantesimo",
       "descrizione": "Guadagni 1 attacco e peschi 1 carta.",
       "costo": 4,
-      "pathImmagine": "../Immagini_carte/Incantesimo/Gioco1/Incendio.png",
+      "pathImmagine": "/Immagini_carte/Negozio/Gioco1/Incendio.png",
       "effetti": [
         {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
         {"type": "PESCARE_CARTA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
@@ -29,7 +29,7 @@
       "class": "Incantesimo",
       "descrizione": "Tutti gli eroi pescano 1 carta.",
       "costo": 4,
-      "pathImmagine": "../Immagini_carte/Incantesimo/Gioco1/Lumos.png",
+      "pathImmagine": "/Immagini_carte/Negozio/Gioco1/Lumos.png",
       "effetti": [{"type": "PESCARE_CARTA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}],
       "triggers": []
     },
@@ -39,7 +39,7 @@
       "class": "Incantesimo",
       "descrizione": "Scegli: guadagni 2 monete OPPURE peschi 1 carta.",
       "costo": 3,
-      "pathImmagine": "../Immagini_carte/Incantesimo/Gioco1/Reparo.png",
+      "pathImmagine": "/Immagini_carte/Negozio/Gioco1/Reparo.png",
       "effetti": [{
         "type": "SCELTA",
         "target": "EROE_ATTIVO",
@@ -57,7 +57,7 @@
       "class": "Incantesimo",
       "descrizione": "Guadagni 1 moneta e acquisisci carta dalla cima del mazzo.",
       "costo": 2,
-      "pathImmagine": "../Immagini_carte/Incantesimo/Gioco1/Wingardium_Leviosa.png",
+      "pathImmagine": "/Immagini_carte/Negozio/Gioco1/Wingardium_Leviosa.png",
       "effetti": [
         {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
         {"type": "GUARDA_CARTA_CIMA", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
@@ -72,7 +72,7 @@
       "class": "Incantesimo",
       "descrizione": "Guadagni 2 attacco e peschi 1 carta.",
       "costo": 6,
-      "pathImmagine": "../Immagini_carte/Incantesimo/Gioco2/Expelliarmus.png",
+      "pathImmagine": "/Immagini_carte/Negozio/Gioco2/Expelliarmus.png",
       "effetti": [
         {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
         {"type": "PESCARE_CARTA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
@@ -85,7 +85,7 @@
       "class": "Incantesimo",
       "descrizione": "Rimuovi 1 segnalino nero dal luogo.",
       "costo": 3,
-      "pathImmagine": "../Immagini_carte/Incantesimo/Gioco2/Finite2.png",
+      "pathImmagine": "/Immagini_carte/Negozio/Gioco2/Finite2.png",
       "effetti": [{"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}],
       "triggers": []
     }
@@ -97,7 +97,7 @@
       "class": "Incantesimo",
       "descrizione": "Guadagni 1 attacco e rimuovi 1 segnalino nero dal luogo.",
       "costo": 5,
-      "pathImmagine": "../Immagini_carte/Incantesimo/Gioco3/Expecto_patronum.png",
+      "pathImmagine": "/Immagini_carte/Negozio/Gioco3/Expecto_patronum.png",
       "effetti": [
         {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
         {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
@@ -110,7 +110,7 @@
       "class": "Incantesimo",
       "descrizione": "Guadagni 1 attacco. Scegli malvagio: blocca sue abilità fino all'inizio del prossimo turno.",
       "costo": 6,
-      "pathImmagine": "../Immagini_carte/Incantesimo/Gioco3/Petrificus_Totalus.png",
+      "pathImmagine": "/Immagini_carte/Negozio/Gioco3/Petrificus_Totalus.png",
       "effetti": [
         {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
         {
@@ -129,7 +129,7 @@
       "class": "Incantesimo",
       "descrizione": "Scegli: guadagni 2 monete OPPURE cerchi 1 oggetto nella pila scarti.",
       "costo": 4,
-      "pathImmagine": "../Immagini_carte/Incantesimo/Gioco4/Accio.png",
+      "pathImmagine": "/Immagini_carte/Negozio/Gioco4/Accio.png",
       "effetti": [{
         "type": "SCELTA",
         "target": "EROE_ATTIVO",
@@ -147,7 +147,7 @@
       "class": "Incantesimo",
       "descrizione": "Guadagni 1 attacco e 1 punto vita.",
       "costo": 5,
-      "pathImmagine": "../Immagini_carte/Incantesimo/Gioco4/Protego.png",
+      "pathImmagine": "/Immagini_carte/Negozio/Gioco4/Protego.png",
       "effetti": [
         {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
         {"type": "GUADAGNARE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
@@ -163,7 +163,7 @@
       "class": "Incantesimo",
       "descrizione": "Guadagni 1 attacco. Se tutti i malvagi hanno ≥1 token attacco, rimuovi 1 segnalino luogo.",
       "costo": 3,
-      "pathImmagine": "../Immagini_carte/Incantesimo/Gioco6/Confundus.png",
+      "pathImmagine": "/Immagini_carte/Negozio/Gioco6/Confundus.png",
       "effetti": [
         {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
       ],

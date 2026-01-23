@@ -1,152 +1,429 @@
 package gioco;
 
-import java.util.List;
-
+import javafx.application.Platform;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import carte.Carta;
-import carte.Malvagio;
+import gestoreEffetti.Effetto;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicReference;
 
+/**
+ * InputController - Gestisce tutte le interazioni utente con dialoghi modali
+ * VERSIONE CORRETTA con migliore gestione thread JavaFX
+ */
 public class InputController {
-	private StatoDiGioco stato;
-	
-	public InputController(StatoDiGioco stato) {
-		this.stato = stato;
-	}
-	
-	public String processaComando(String input) {
-	    if (input == null || input.trim().isEmpty()) return "Comando vuoto.";
-
-	    String[] parts = input.trim().split(" ");
-	    String command = parts[0].toLowerCase();
-
-	    // --- CORREZIONE 1: Controllo di Sicurezza sul Giocatore ---
-	    // Verifichiamo che l'indice del giocatore corrente sia valido per la lista attuale
-	    int indiceGiocatore = stato.getGiocatoreCorrente();
-	    if (stato.getGiocatori() == null || stato.getGiocatori().isEmpty()) {
-	        return "ERRORE GRAVE: Nessun giocatore presente nel GameState.";
-	    }
-	    if (indiceGiocatore < 0 || indiceGiocatore >= stato.getGiocatori().size()) {
-	        return "ERRORE GRAVE: Indice giocatore corrente (" + indiceGiocatore + ") fuori dai limiti (Giocatori: " + stato.getGiocatori().size() + ")";
-	    }
-
-	    // Ora siamo sicuri che questa riga non lancerà eccezioni
-	    Giocatore player = stato.getGiocatori().get(indiceGiocatore);
-
-	    try {
-	        switch (command) {
-	            case "gioca":
-	                // Passiamo 'parts' per controllare se c'è l'argomento
-	                return handlePlayCard(parts, player);
-	            case "attacca":
-	                return handleAttack(parts, player); // Assicurati di avere controlli simili qui
-	            case "compra":
-	                return handleBuy(parts, player);    // E qui
-	            case "next":
-	                return handleNextPhase();
-	            case "debug_add_res":
-	                player.setAttacco(5);
-	                player.setGettone(5);
-	                return "Risorse aggiunte (Cheat).";
-	            default:
-	                return "Comando non riconosciuto: " + command;
-	        }
-	    } catch (NumberFormatException e) {
-	        return "Errore: Devi inserire un numero valido dopo il comando.";
-	    } catch (IndexOutOfBoundsException e) {
-	        // Stampiamo lo stack trace per capire DOVE succede l'errore se capita ancora
-	        e.printStackTrace(); 
-	        return "Errore: Indice non valido (Vedi console per dettagli).";
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        return "Errore generico: " + e.getMessage();
-	    }
-	}
-
-	private String handlePlayCard(String[] parts, Giocatore player) {
-	    if (stato.getFaseCorrente() != FaseTurno.GIOCA_CARTE) 
-	        return "Non puoi giocare carte ora. Fase attuale: " + stato.getFaseCorrente();
-	    
-	    // --- CORREZIONE 2: Controllo Input Utente ---
-	    if (parts.length < 2) {
-	        return "Comando incompleto. Sintassi corretta: 'gioca <numero_carta>'";
-	    }
-
-	    try {
-	        // Sottraiamo 1 per l'indice array (0-based)
-	        int index = Integer.parseInt(parts[1]) - 1;
-	        
-	        // Controllo range dell'array
-	        if (index < 0 || index >= player.getMano().size()) {
-	            return "Indice carta non valido. Scegli un numero tra 1 e " + player.getMano().size();
-	        }
-
-	        Carta carta = player.getMano().get(index);
-	        player.giocaCarta(stato, carta);
-	        return "Hai giocato: " + carta.getNome();
-	        
-	    } catch (NumberFormatException e) {
-	        return "Devi inserire un numero valido. Es: 'gioca 1'";
-	    }
-	}
-
-    private String handleAttack(String[] parts, Giocatore player) {
-        if (stato.getFaseCorrente() != FaseTurno.ATTACCA) 
-            return "Devi essere nella fase di attacco.";
-
-        int index = Integer.parseInt(parts[1]);
-        List<Malvagio> villains = stato.getMalvagiAttivi();
-        
-        if (index < 0 || index >= villains.size()) return "Indice malvagio non valido.";
-        
-        Malvagio v = villains.get(index);
-        
-        if (player.getAttacco() < 1) return "Non hai abbastanza Attacco.";
-        //if (!v.canTakeDamage(stato)) return v.getNome() + " è immune!";
-
-        player.setAttacco(player.getAttacco() - 1);
-        v.setDanno(v.getDanno() + 1);
-        
-        String result = "Colpito " + v.getNome() + ". Vita rimanente: " + v.getDanno();
-        if (v.getDanno() >= v.getVita()) {
-            stato.sconfiggiMalvagio(v);
-            result += " (SCONFITTO!)";
+    
+    /**
+     * Chiede al giocatore di scegliere una carta da una lista
+     */
+    public static Carta scegliCarta(List<Carta> carte, String titolo, String messaggio) {
+        if (carte == null || carte.isEmpty()) {
+            return null;
         }
-        return result;
-    }
-
-    private String handleBuy(String[] parts, Giocatore player) {
-        if (stato.getFaseCorrente() != FaseTurno.ACQUISTA_CARTE) 
-            return "Devi essere nella fase di acquisto.";
-
-        int index = Integer.parseInt(parts[1]);
-        List<Carta> market = stato.getMercato();
         
-        if (index < 0 || index >= market.size()) return "Indice mercato non valido.";
+        if (carte.size() == 1) {
+            return carte.get(0);
+        }
         
-        Carta c = market.get(index);
+        // ⭐ FIX: Se siamo già sul thread JavaFX, esegui direttamente
+        if (Platform.isFxApplicationThread()) {
+            return scegliCartaSync(carte, titolo, messaggio);
+        }
         
-        if (player.getGettone() >= c.getCosto()) {
-            player.acquistaCarta(stato.getMazzoNegozio(),c);
-            stato.rimpiazzaCartaMercato(index);
-            return "Hai comprato: " + c.getNome();
-        } else {
-            return "Influenza insufficiente. Costo: " + c.getCosto() + ", Hai: " + player.getGettone();
+        // Altrimenti usa CountDownLatch per sincronizzare
+        AtomicReference<Carta> risultato = new AtomicReference<>(null);
+        CountDownLatch latch = new CountDownLatch(1);
+        
+        Platform.runLater(() -> {
+            try {
+                risultato.set(scegliCartaSync(carte, titolo, messaggio));
+            } catch (Exception e) {
+                e.printStackTrace();
+                risultato.set(carte.get(0));
+            } finally {
+                latch.countDown();
+            }
+        });
+        
+        try {
+            latch.await();
+            return risultato.get() != null ? risultato.get() : carte.get(0);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return carte.get(0);
         }
     }
-
-    private String handleNextPhase() {
-        FaseTurno current = stato.getFaseCorrente();
+    
+    /**
+     * Metodo sincrono per scegliere carta (deve essere chiamato sul thread JavaFX)
+     */
+    private static Carta scegliCartaSync(List<Carta> carte, String titolo, String messaggio) {
+        AtomicReference<Carta> risultato = new AtomicReference<>(null);
         
-        if (current == FaseTurno.GIOCA_CARTE) {
-            stato.setFaseCorrente(FaseTurno.ATTACCA);
-            return "Passato alla fase ATTACCO.";
-        } else if (current == FaseTurno.ATTACCA) {
-            stato.setFaseCorrente(FaseTurno.ACQUISTA_CARTE);
-            return "Passato alla fase ACQUISTO.";
-        } else if (current == FaseTurno.ACQUISTA_CARTE) {
-            stato.fineTurno();
-            stato.setFaseCorrente(FaseTurno.ARTI_OSCURE); // O gestione automatica successiva
-            return "Turno finito. Tocca a: " + stato.getGiocatori().get(stato.getGiocatoreCorrente()).getEroe().getNome();
+        Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initStyle(StageStyle.UTILITY);
+        dialog.setTitle(titolo);
+        
+        VBox layout = new VBox(15);
+        layout.setPadding(new Insets(20));
+        layout.setAlignment(Pos.CENTER);
+        layout.setStyle("-fx-background-color: #2a2a2a;");
+        
+        Label titleLabel = new Label(messaggio);
+        titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+        titleLabel.setTextFill(Color.web("#FFD700"));
+        titleLabel.setWrapText(true);
+        titleLabel.setMaxWidth(350);
+        
+        VBox carteBox = new VBox(10);
+        carteBox.setAlignment(Pos.CENTER);
+        
+        for (Carta carta : carte) {
+            Button btn = new Button(carta.getNome() + " (Costo: " + carta.getCosto() + ")");
+            btn.setPrefWidth(300);
+            btn.setPrefHeight(40);
+            btn.setStyle(
+                "-fx-background-color: #0066cc; " +
+                "-fx-text-fill: white; " +
+                "-fx-font-size: 12px; " +
+                "-fx-font-weight: bold;"
+            );
+            
+            btn.setOnMouseEntered(e -> 
+                btn.setStyle(
+                    "-fx-background-color: #0052a3; " +
+                    "-fx-text-fill: white; " +
+                    "-fx-font-size: 12px; " +
+                    "-fx-font-weight: bold;"
+                )
+            );
+            
+            btn.setOnMouseExited(e -> 
+                btn.setStyle(
+                    "-fx-background-color: #0066cc; " +
+                    "-fx-text-fill: white; " +
+                    "-fx-font-size: 12px; " +
+                    "-fx-font-weight: bold;"
+                )
+            );
+            
+            btn.setOnAction(e -> {
+                risultato.set(carta);
+                dialog.close();
+            });
+            
+            carteBox.getChildren().add(btn);
         }
-        return "Impossibile cambiare fase manualmente ora.";
+        
+        layout.getChildren().addAll(titleLabel, carteBox);
+        
+        Scene scene = new Scene(layout);
+        dialog.setScene(scene);
+        dialog.showAndWait();
+        
+        return risultato.get() != null ? risultato.get() : carte.get(0);
+    }
+    
+    /**
+     * Chiede al giocatore di scegliere un effetto tra più opzioni
+     */
+    public static int scegliEffetto(List<Effetto> effetti, String titolo, String messaggio) {
+        if (effetti == null || effetti.isEmpty()) {
+            return -1;
+        }
+        
+        if (effetti.size() == 1) {
+            return 0;
+        }
+        
+        // ⭐ FIX: Controllo thread JavaFX
+        if (Platform.isFxApplicationThread()) {
+            return scegliEffettoSync(effetti, titolo, messaggio);
+        }
+        
+        AtomicReference<Integer> risultato = new AtomicReference<>(-1);
+        CountDownLatch latch = new CountDownLatch(1);
+        
+        Platform.runLater(() -> {
+            try {
+                risultato.set(scegliEffettoSync(effetti, titolo, messaggio));
+            } catch (Exception e) {
+                e.printStackTrace();
+                risultato.set(0);
+            } finally {
+                latch.countDown();
+            }
+        });
+        
+        try {
+            latch.await();
+            return risultato.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    
+    private static int scegliEffettoSync(List<Effetto> effetti, String titolo, String messaggio) {
+        AtomicReference<Integer> risultato = new AtomicReference<>(-1);
+        
+        Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initStyle(StageStyle.UTILITY);
+        dialog.setTitle(titolo);
+        
+        VBox layout = new VBox(15);
+        layout.setPadding(new Insets(20));
+        layout.setAlignment(Pos.CENTER);
+        layout.setStyle("-fx-background-color: #2a2a2a;");
+        
+        Label titleLabel = new Label(messaggio);
+        titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+        titleLabel.setTextFill(Color.web("#FFD700"));
+        titleLabel.setWrapText(true);
+        titleLabel.setMaxWidth(400);
+        
+        VBox effettiBox = new VBox(10);
+        effettiBox.setAlignment(Pos.CENTER);
+        
+        for (int i = 0; i < effetti.size(); i++) {
+            final int indice = i;
+            Effetto eff = effetti.get(i);
+            
+            String testo = "Opzione " + (i + 1) + ": " + eff.getType();
+            if (eff.getQta() != null && eff.getQta() > 0) {
+                testo += " (Quantità: " + eff.getQta() + ")";
+            }
+            
+            Button btn = new Button(testo);
+            btn.setPrefWidth(350);
+            btn.setPrefHeight(50);
+            btn.setStyle(
+                "-fx-background-color: #9966FF; " +
+                "-fx-text-fill: white; " +
+                "-fx-font-size: 12px; " +
+                "-fx-font-weight: bold;"
+            );
+            
+            btn.setOnMouseEntered(e -> 
+                btn.setStyle(
+                    "-fx-background-color: #7744DD; " +
+                    "-fx-text-fill: white; " +
+                    "-fx-font-size: 12px; " +
+                    "-fx-font-weight: bold;"
+                )
+            );
+            
+            btn.setOnMouseExited(e -> 
+                btn.setStyle(
+                    "-fx-background-color: #9966FF; " +
+                    "-fx-text-fill: white; " +
+                    "-fx-font-size: 12px; " +
+                    "-fx-font-weight: bold;"
+                )
+            );
+            
+            btn.setOnAction(e -> {
+                risultato.set(indice);
+                dialog.close();
+            });
+            
+            effettiBox.getChildren().add(btn);
+        }
+        
+        layout.getChildren().addAll(titleLabel, effettiBox);
+        
+        Scene scene = new Scene(layout);
+        dialog.setScene(scene);
+        dialog.showAndWait();
+        
+        return risultato.get() >= 0 ? risultato.get() : 0;
+    }
+    
+    /**
+     * Chiede al giocatore di scegliere un giocatore tra più opzioni
+     */
+    public static int scegliGiocatore(List<Giocatore> giocatori, String titolo, String messaggio) {
+        if (giocatori == null || giocatori.isEmpty()) {
+            return -1;
+        }
+        
+        if (giocatori.size() == 1) {
+            return 0;
+        }
+        
+        // ⭐ FIX: Controllo thread JavaFX
+        if (Platform.isFxApplicationThread()) {
+            return scegliGiocatoreSync(giocatori, titolo, messaggio);
+        }
+        
+        AtomicReference<Integer> risultato = new AtomicReference<>(-1);
+        CountDownLatch latch = new CountDownLatch(1);
+        
+        Platform.runLater(() -> {
+            try {
+                risultato.set(scegliGiocatoreSync(giocatori, titolo, messaggio));
+            } catch (Exception e) {
+                e.printStackTrace();
+                risultato.set(0);
+            } finally {
+                latch.countDown();
+            }
+        });
+        
+        try {
+            latch.await();
+            return risultato.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    
+    private static int scegliGiocatoreSync(List<Giocatore> giocatori, String titolo, String messaggio) {
+        AtomicReference<Integer> risultato = new AtomicReference<>(-1);
+        
+        Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initStyle(StageStyle.UTILITY);
+        dialog.setTitle(titolo);
+        
+        VBox layout = new VBox(15);
+        layout.setPadding(new Insets(20));
+        layout.setAlignment(Pos.CENTER);
+        layout.setStyle("-fx-background-color: #2a2a2a;");
+        
+        Label titleLabel = new Label(messaggio);
+        titleLabel.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+        titleLabel.setTextFill(Color.web("#FFD700"));
+        titleLabel.setWrapText(true);
+        titleLabel.setMaxWidth(350);
+        
+        VBox giocatoriBox = new VBox(10);
+        giocatoriBox.setAlignment(Pos.CENTER);
+        
+        for (int i = 0; i < giocatori.size(); i++) {
+            final int indice = i;
+            Giocatore g = giocatori.get(i);
+            
+            String testo = g.getEroe().getNome() + " (❤️ " + g.getSalute() + "/" + g.getSaluteMax() + ")";
+            
+            Button btn = new Button(testo);
+            btn.setPrefWidth(300);
+            btn.setPrefHeight(40);
+            btn.setStyle(
+                "-fx-background-color: #00AA66; " +
+                "-fx-text-fill: white; " +
+                "-fx-font-size: 12px; " +
+                "-fx-font-weight: bold;"
+            );
+            
+            btn.setOnMouseEntered(e -> 
+                btn.setStyle(
+                    "-fx-background-color: #008844; " +
+                    "-fx-text-fill: white; " +
+                    "-fx-font-size: 12px; " +
+                    "-fx-font-weight: bold;"
+                )
+            );
+            
+            btn.setOnMouseExited(e -> 
+                btn.setStyle(
+                    "-fx-background-color: #00AA66; " +
+                    "-fx-text-fill: white; " +
+                    "-fx-font-size: 12px; " +
+                    "-fx-font-weight: bold;"
+                )
+            );
+            
+            btn.setOnAction(e -> {
+                risultato.set(indice);
+                dialog.close();
+            });
+            
+            giocatoriBox.getChildren().add(btn);
+        }
+        
+        layout.getChildren().addAll(titleLabel, giocatoriBox);
+        
+        Scene scene = new Scene(layout);
+        dialog.setScene(scene);
+        dialog.showAndWait();
+        
+        return risultato.get() >= 0 ? risultato.get() : 0;
+    }
+    
+    /**
+     * Mostra un messaggio informativo
+     */
+    public static void mostraMessaggio(String titolo, String messaggio) {
+        // ⭐ FIX: Controllo thread JavaFX
+        if (Platform.isFxApplicationThread()) {
+            mostraMessaggioSync(titolo, messaggio);
+            return;
+        }
+        
+        CountDownLatch latch = new CountDownLatch(1);
+        
+        Platform.runLater(() -> {
+            try {
+                mostraMessaggioSync(titolo, messaggio);
+            } finally {
+                latch.countDown();
+            }
+        });
+        
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private static void mostraMessaggioSync(String titolo, String messaggio) {
+        Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initStyle(StageStyle.UTILITY);
+        dialog.setTitle(titolo);
+        
+        VBox layout = new VBox(15);
+        layout.setPadding(new Insets(20));
+        layout.setAlignment(Pos.CENTER);
+        layout.setStyle("-fx-background-color: #2a2a2a;");
+        
+        Label messageLabel = new Label(messaggio);
+        messageLabel.setFont(Font.font("Arial", 14));
+        messageLabel.setTextFill(Color.WHITE);
+        messageLabel.setWrapText(true);
+        messageLabel.setMaxWidth(400);
+        
+        Button okBtn = new Button("OK");
+        okBtn.setPrefWidth(100);
+        okBtn.setStyle(
+            "-fx-background-color: #0066cc; " +
+            "-fx-text-fill: white; " +
+            "-fx-font-size: 12px; " +
+            "-fx-font-weight: bold;"
+        );
+        okBtn.setOnAction(e -> dialog.close());
+        
+        layout.getChildren().addAll(messageLabel, okBtn);
+        
+        Scene scene = new Scene(layout);
+        dialog.setScene(scene);
+        dialog.showAndWait();
     }
 }
