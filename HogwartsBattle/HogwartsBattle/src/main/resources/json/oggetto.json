@@ -36,7 +36,7 @@
             ],
             "triggers":[
                 {
-                    "type": "ACQUISTO_ALLEATO",
+                    "type": "ACQUISTA_ALLEATO",
                     "durata":"TEMPORANEO",
                     "effectToExecute":[
                         {"type": "ALLEATO_IN_MAZZO", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}

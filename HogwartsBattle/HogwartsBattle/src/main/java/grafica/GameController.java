@@ -7,19 +7,26 @@ import javafx.scene.layout.Region;
 import gioco.*;
 import data.*;
 import carte.*;
+import grafica.screens.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * GameController - Classe principale che gestisce il flusso del gioco usando FXGL
- * VERSIONE CORRETTA con resize funzionante
+ * ⭐ VERSIONE CON SCHERMATE DI SELEZIONE INTEGRATE
  */
 public class GameController extends GameApplication {
     
     private StatoDiGioco stato;
     private GameBoardUI gameUI;
     private TurnManager turnManager;
-    private int annoSelezionato = 1;
+    
+    // ⭐ Parametri selezione
+    private int numeroGiocatori;
+    private int annoSelezionato = 1; // Modifica per testare anno 6
+    private List<Giocatore> giocatoriSelezionati;
+    
     private static GameController instance;
     
     public static void main(String[] args) {
@@ -49,6 +56,7 @@ public class GameController extends GameApplication {
         
         try {
             // Inizializza le factory
+            System.out.println("\n🔧 Inizializzazione Factory...");
             CardFactory.inizializza();
             HeroFactory.inizializza();
             DiceFactory.inizializza();
@@ -59,29 +67,146 @@ public class GameController extends GameApplication {
             
             System.out.println("✅ Tutte le factory inizializzate");
             
+            // ⭐ STEP 1: Mostra schermata selezione numero giocatori
+            mostraSchermataSelezioneNumeroGiocatori();
+            
+        } catch (Exception e) {
+            System.err.println("❌ Errore durante l'inizializzazione:");
+            e.printStackTrace();
+        }
+    }
+    
+    // ========================================
+    // ⭐ METODI DI AVVIO MODIFICATI
+    // ========================================
+    
+    /**
+     * STEP 1: Mostra schermata selezione numero giocatori
+     */
+    private void mostraSchermataSelezioneNumeroGiocatori() {
+        System.out.println("\n=== STEP 1: Selezione Numero Giocatori ===");
+        
+        PlayerCountSelectionScreen screen = new PlayerCountSelectionScreen(numero -> {
+            this.numeroGiocatori = numero;
+            System.out.println("✓ Numero giocatori: " + numeroGiocatori);
+            
+            // Rimuovi schermata precedente
+            FXGL.getGameScene().clearUINodes();
+            
+            // Vai allo step 2
+            mostraSchermataSelezioneEroi();
+        });
+        
+        // Aggiungi alla scena FXGL
+        FXGL.getGameScene().addUINode(screen);
+    }
+    
+    /**
+     * STEP 2: Mostra schermata selezione eroi
+     */
+    private void mostraSchermataSelezioneEroi() {
+        System.out.println("\n=== STEP 2: Selezione Eroi ===");
+        
+        HeroSelectionScreen screen = new HeroSelectionScreen(
+            numeroGiocatori,
+            annoSelezionato,
+            giocatori -> {
+                this.giocatoriSelezionati = giocatori;
+                
+                System.out.println("✓ Eroi selezionati:");
+                for (int i = 0; i < giocatoriSelezionati.size(); i++) {
+                    System.out.println("  Giocatore " + (i+1) + ": " + 
+                                     giocatoriSelezionati.get(i).getEroe().getNome());
+                }
+                
+                // Rimuovi schermata precedente
+                FXGL.getGameScene().clearUINodes();
+                
+                // Vai allo step 3 o avvia gioco
+                if (annoSelezionato == 6) {
+                    mostraSchermataSelezioneCompetenze();
+                } else {
+                    avviaGioco();
+                }
+            }
+        );
+        
+        // Aggiungi alla scena FXGL
+        FXGL.getGameScene().addUINode(screen);
+    }
+    
+    /**
+     * STEP 3: (Solo Anno 6) Mostra schermata selezione competenze
+     */
+    private void mostraSchermataSelezioneCompetenze() {
+        System.out.println("\n=== STEP 3: Selezione Competenze (Anno 6) ===");
+        
+        // Estrai i nomi degli eroi
+        List<String> nomiEroi = giocatoriSelezionati.stream()
+            .map(g -> g.getEroe().getNome())
+            .collect(Collectors.toList());
+        
+        ProficiencySelectionScreen screen = new ProficiencySelectionScreen(
+            nomiEroi,
+            competenzeSelezionate -> {
+                // Assegna le competenze ai giocatori
+                for (int i = 0; i < giocatoriSelezionati.size(); i++) {
+                    String idCompetenza = competenzeSelezionate.get(i);
+                    try {
+                        Competenza comp = ProficiencyFactory.creaCompetenza(idCompetenza);
+                        giocatoriSelezionati.get(i).setCompetenza(comp);
+                        System.out.println("✓ " + nomiEroi.get(i) + " ha ricevuto: " + comp.getNome());
+                    } catch (Exception e) {
+                        System.err.println("⚠️ Errore assegnazione competenza a " + nomiEroi.get(i));
+                    }
+                }
+                
+                // Rimuovi schermata precedente
+                FXGL.getGameScene().clearUINodes();
+                
+                // Ora avvia il gioco
+                avviaGioco();
+            }
+        );
+        
+        // Aggiungi alla scena FXGL
+        FXGL.getGameScene().addUINode(screen);
+    }
+    
+    /**
+     * STEP 4: Avvia il gioco vero e proprio
+     */
+    private void avviaGioco() {
+        System.out.println("\n=== STEP 4: Avvio Gioco ===");
+        
+        try {
             // Carica la configurazione del gioco
             GameLoader loader = new GameLoader();
             GameConfig config = loader.caricaConfigurazione(annoSelezionato);
             
             System.out.println("📋 Configurazione anno " + annoSelezionato + " caricata");
             
-            // Crea i giocatori
-            List<Giocatore> giocatori = creaGiocatori(config);
+            // Crea lo stato di gioco con i giocatori selezionati
+            stato = new StatoDiGioco(config, giocatoriSelezionati);
             
-            System.out.println("👥 Creati " + giocatori.size() + " giocatori");
+            System.out.println("\n✅ Gioco avviato!");
+            System.out.println("   Anno: " + annoSelezionato);
+            System.out.println("   Giocatori: " + giocatoriSelezionati.size());
             
-            // Crea lo stato di gioco
-            stato = new StatoDiGioco(config, giocatori);
+            for (int i = 0; i < giocatoriSelezionati.size(); i++) {
+                Giocatore g = giocatoriSelezionati.get(i);
+                System.out.println("   [" + (i+1) + "] " + g.getEroe().getNome() +
+                                 (g.getCompetenza() != null ? " (" + g.getCompetenza().getNome() + ")" : ""));
+            }
             
-            System.out.println("🎮 Stato di gioco inizializzato");
-            System.out.println("📍 Luogo attuale: " + stato.getLuogoAttuale().getNome());
+            System.out.println("🏰 Luogo attuale: " + stato.getLuogoAttuale().getNome());
             System.out.println("👹 Malvagi attivi: " + stato.getMalvagiAttivi().size());
             System.out.println("🛒 Carte nel mercato: " + stato.getMercato().size());
             
             // Crea l'interfaccia grafica principale
             gameUI = new GameBoardUI(stato);
             
-            // ⭐ FIX: Imposta dimensioni fisse e binding per resize
+            // Imposta dimensioni fisse e binding per resize
             gameUI.setMinSize(1920, 1080);
             gameUI.setPrefSize(1920, 1080);
             gameUI.setMaxSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
@@ -89,7 +214,7 @@ public class GameController extends GameApplication {
             // Aggiungi l'UI alla scena FXGL
             FXGL.getGameScene().addUINode(gameUI);
             
-            // ⭐ FIX: Binding per resize dinamico
+            // Binding per resize dinamico
             FXGL.getGameScene().getRoot().widthProperty().addListener((obs, oldVal, newVal) -> {
                 gameUI.setPrefWidth(newVal.doubleValue());
                 gameUI.layout();
@@ -109,28 +234,14 @@ public class GameController extends GameApplication {
             grafica.utils.ImageLoader.stampaReport();
             
         } catch (Exception e) {
-            System.err.println("❌ Errore di avvio: " + e.getMessage());
+            System.err.println("❌ Errore durante l'avvio del gioco:");
             e.printStackTrace();
         }
     }
     
-    /**
-     * Crea i giocatori per il gioco
-     */
-    private List<Giocatore> creaGiocatori(GameConfig config) {
-        List<Giocatore> giocatori = new ArrayList<>();
-        List<Eroe> eroiDisponibili = config.getEroiDisponibili();
-        
-        int numeroGiocatori = config.getNumeroGiocatori();
-        
-        for (int i = 0; i < numeroGiocatori && i < eroiDisponibili.size(); i++) {
-            Giocatore g = new Giocatore(eroiDisponibili.get(i));
-            giocatori.add(g);
-            System.out.println("✨ Giocatore " + (i + 1) + ": " + g.getEroe().getNome());
-        }
-        
-        return giocatori;
-    }
+    // ========================================
+    // ⭐ METODI ORIGINALI NON MODIFICATI
+    // ========================================
     
     /**
      * Inizia il turno del primo giocatore
@@ -143,7 +254,6 @@ public class GameController extends GameApplication {
     
     /**
      * Gioca una carta dalla mano del giocatore corrente
-     * ⭐ CORRETTO: giocaCarta(stato, carta)
      */
     public void giocaCarta(int indiceInMano) {
         Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
@@ -151,7 +261,7 @@ public class GameController extends GameApplication {
         if (stato.getFaseCorrente() == FaseTurno.GIOCA_CARTE) {
             if (indiceInMano >= 0 && indiceInMano < giocatore.getMano().size()) {
                 Carta carta = giocatore.getMano().get(indiceInMano);
-                giocatore.giocaCarta(stato, carta);  // ⭐ FIX: aggiungo stato
+                giocatore.giocaCarta(stato, carta);
                 gameUI.aggiorna();
                 System.out.println("▶️ Giocata carta: " + carta.getNome());
             }
@@ -160,7 +270,7 @@ public class GameController extends GameApplication {
     
     /**
      * Acquista una carta dal mercato
-     * ⭐ CORRETTO: usa acquistaCarta() del giocatore e rifornisce mercato
+     * ⭐ CORRETTO: rimossa duplicazione
      */
     public void acquistaCarta(int indiceInMercato) {
         Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
@@ -169,11 +279,12 @@ public class GameController extends GameApplication {
             if (indiceInMercato >= 0 && indiceInMercato < stato.getMercato().size()) {
                 Carta carta = stato.getMercato().get(indiceInMercato);
                 if (giocatore.getGettone() >= carta.getCosto()) {
-                    // ⭐ FIX: usa il metodo corretto del giocatore
+                    // ⭐ FIX: acquistaCarta() GIÀ aggiunge agli scarti e rimuove dal mercato
                     giocatore.acquistaCarta(stato.getMercato(), carta);
-                    giocatore.getScarti().aggiungiCarta(carta);
-                    stato.getMercato().remove(carta);
-                    stato.rifornisciMercato();  // ⭐ FIX: rifornisce il mercato
+                    
+                    // ⭐ FIX: rifornisce mercato
+                    stato.rifornisciMercato();
+                    
                     gameUI.aggiorna();
                     System.out.println("💰 Acquistata carta: " + carta.getNome());
                 } else {
@@ -186,19 +297,18 @@ public class GameController extends GameApplication {
     
     /**
      * Attacca un malvagio
-     * ⭐ CORRETTO: passa l'oggetto Malvagio a assegnaAttacco()
      */
     public void attaccaMalvagio(int indiceMalvagio) {
         Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
         
         if (stato.getFaseCorrente() == FaseTurno.ATTACCA) {
             if (indiceMalvagio >= 0 && indiceMalvagio < stato.getMalvagiAttivi().size()) {
-                Malvagio malvagio = stato.getMalvagiAttivi().get(indiceMalvagio);  // ⭐ FIX: ottiene il Malvagio
+                Malvagio malvagio = stato.getMalvagiAttivi().get(indiceMalvagio);
                 if (giocatore.getAttacco() > 0) {
-                    stato.assegnaAttacco(malvagio, 1);  // ⭐ FIX: passa il Malvagio, non l'indice
-                    giocatore.setAttacco(giocatore.getAttacco() - 1);  // ⭐ FIX: riduce attacco manualmente
+                    stato.assegnaAttacco(malvagio, 1);
+                    giocatore.setAttacco(giocatore.getAttacco() - 1);
                     
-                    // ⭐ FIX: Se il malvagio è sconfitto, rivela un nuovo malvagio
+                    // Se il malvagio è sconfitto, rivela un nuovo malvagio
                     if (malvagio.getDanno() >= malvagio.getVita()) {
                         stato.sconfiggiMalvagio(malvagio);
                         

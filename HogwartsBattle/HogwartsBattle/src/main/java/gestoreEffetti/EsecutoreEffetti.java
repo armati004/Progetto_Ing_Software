@@ -272,6 +272,17 @@ public class EsecutoreEffetti {
         }
     }
 
+    /**
+     * ⭐ GESTIONE PERDERE VITA CON STORDIMENTO E PASSAGGIO LUOGO
+     * Quando un giocatore scende a 0 vita:
+     * 1. Aggiunge 1 marchio nero al luogo
+     * 2. Controlla se il luogo è perso (marchi neri >= max)
+     * 3. Se perso, passa al prossimo luogo
+     * 4. Verifica se tutti i luoghi sono persi (sconfitta)
+     * 5. Scarta tutte le carte e azzera segnalini
+     * 6. Ripristina vita al massimo
+     * 7. Il turno passa al giocatore successivo
+     */
     private static void perdereVita(Effetto effetto, StatoDiGioco stato, Giocatore giocatore) {
         if (effetto.getQta() == null || effetto.getQta() <= 0)
             return;
@@ -293,14 +304,50 @@ public class EsecutoreEffetti {
 
             stato.getGestoreTrigger().attivaTrigger(TipoTrigger.RICEVI_DANNO, stato, g);
             
+            // ⭐ GESTIONE STORDIMENTO
             if (g.getSalute() == 0) {
-                System.out.println("😵 " + g.getEroe().getNome() + " è stordito!");
+                System.out.println("\n😵 " + g.getEroe().getNome() + " è STORDITO!");
+                
+                // 1. Aggiungi marchio nero
+                int marchiAttuali = stato.getLuogoAttuale().getNumeroMarchiNeri();
+                int marchiMax = stato.getLuogoAttuale().getMarchiNeriMax();
+                
+                System.out.println("  🌑 Aggiunto 1 Marchio Nero al luogo");
+                stato.getLuogoAttuale().setNumeroMarchiNeri(marchiAttuali + 1);
+                
+                // 2. Controlla se il luogo è perso
+                if (stato.getLuogoAttuale().getNumeroMarchiNeri() >= marchiMax) {
+                    // ⭐ Passa al prossimo luogo
+                    stato.passaAlProssimoLuogo();
+                    
+                    // La verifica sconfitta è già dentro passaAlProssimoLuogo()
+                } else {
+                    System.out.println("  🌑 Marchi Neri: " + 
+                        stato.getLuogoAttuale().getNumeroMarchiNeri() + "/" + marchiMax);
+                }
+                
+                // 3. Scarta tutte le carte dalla mano
+                System.out.println("  🗑️ Scartate tutte le carte dalla mano (" + g.getMano().size() + ")");
+                while (!g.getMano().isEmpty()) {
+                    Carta carta = g.getMano().get(0);
+                    g.getMano().remove(0);
+                    g.getScarti().aggiungiCarta(carta);
+                }
+                
+                // 4. Azzera segnalini
+                System.out.println("  💰 Azzerati attacco e gettone");
+                g.setAttacco(0);
+                g.setGettone(0);
+                
+                // 5. Ripristina vita al massimo
+                g.setSalute(g.getSaluteMax());
+                System.out.println("  ❤️ Vita ripristinata a " + g.getSaluteMax());
+                
+                // 6. Attiva trigger stordimento (per eventuali effetti)
                 stato.getGestoreTrigger().attivaTrigger(TipoTrigger.STORDIMENTO, stato, g);
-            }
-
-            if (verificaSconfitta(stato)) {
-                System.out.println("💀 SCONFITTA! Tutti gli eroi sono stati sconfitti!");
-                stato.setVictory(false);
+                
+                // 7. Il turno passa automaticamente
+                System.out.println("  ⏭️ Il turno passa al giocatore successivo\n");
             }
         }
     }
@@ -411,8 +458,7 @@ public class EsecutoreEffetti {
         stato.getGestoreTrigger().attivaTrigger(TipoTrigger.AGGIUNTA_MARCHIO_NERO, stato, giocatore);
         
         if (stato.getLuogoAttuale().getNumeroMarchiNeri() >= stato.getLuogoAttuale().getMarchiNeriMax()) {
-            System.out.println("💀 SCONFITTA! Troppi marchi neri!");
-            stato.setVictory(false);
+        	stato.passaAlProssimoLuogo();
         }
     }
 
@@ -727,12 +773,4 @@ public class EsecutoreEffetti {
         return bersagli;
     }
     
-    private static boolean verificaSconfitta(StatoDiGioco stato) {
-        for (Giocatore g : stato.getGiocatori()) {
-            if (g.getSalute() > 0) {
-                return false;
-            }
-        }
-        return true;
-    }
 }

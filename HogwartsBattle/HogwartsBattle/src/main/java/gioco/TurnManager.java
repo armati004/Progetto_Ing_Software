@@ -2,6 +2,8 @@ package gioco;
 
 import carte.ArteOscura;
 import carte.Malvagio;
+import gestoreEffetti.EsecutoreEffetti;
+import gestoreEffetti.TipoEffetto;
 import carte.Horcrux;
 
 import java.util.List;
@@ -114,6 +116,18 @@ public class TurnManager {
 
         if (malvagi.isEmpty()) {
             System.out.println("✓ Nessun malvagio attivo");
+            if(!stato.getMazzoMalvagi().isEmpty()) {
+            	stato.addMalvagioAttivo();
+            	Giocatore giocatoreAttivo = stato.getGiocatori().get(stato.getGiocatoreCorrente());
+
+                for (Malvagio malvagio : malvagi) {
+                    System.out.println("  • " + malvagio.getNome() +
+                                     " (" + malvagio.getDanno() + "⚔️/" + malvagio.getVita() + " ❤️)");
+
+                    // ⭐ FIX: Applica l'effetto del malvagio
+                    malvagio.applicaEffetto(stato, giocatoreAttivo);
+                }
+            }
         } else {
             System.out.println("Malvagi attivi: " + malvagi.size());
 
@@ -168,6 +182,9 @@ public class TurnManager {
         System.out.println("\n🔄 === FINE TURNO ===");
         
         Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
+        
+        stato.getGestoreEffetti().fineTurno();
+        stato.getGestoreTrigger().rimuoviTriggerFineTurno();
         
         // 1. Scarta mano
         int carteScartatate = giocatore.getMano().size();

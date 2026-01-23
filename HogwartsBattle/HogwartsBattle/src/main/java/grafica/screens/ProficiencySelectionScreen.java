@@ -1,11 +1,12 @@
 package grafica.screens;
 
 import carte.Competenza;
+import com.almasb.fxgl.dsl.FXGL;
 import data.ProficiencyFactory;
-import grafica.managers.GameFlowManager;
-
+import grafica.utils.ImageLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,9 +17,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -27,17 +27,30 @@ import java.util.function.Consumer;
  * 
  * Permette a ciascun giocatore di scegliere una competenza tra tutte quelle disponibili.
  * Tutte le competenze sono disponibili contemporaneamente.
+ * 
+ * ⭐ VERSIONE FXGL con binding automatico
  */
 public class ProficiencySelectionScreen extends StackPane {
     
-    private static final double WINDOW_WIDTH = 1920;
-    private static final double WINDOW_HEIGHT = 1080;
+    // ⭐ Lista delle competenze per il Gioco 6
+    private static final List<String> COMPETENZE_GIOCO_6 = Arrays.asList(
+        "artimanzia6",
+        "curaMagiche6",
+        "difesaOscure6",
+        "divinazione6",
+        "erbologia6",
+        "incanti6",
+        "pozioni6",
+        "storiaMagia6",
+        "trasfigurazione6",
+        "lezioniVolo6"
+    );
     
     private int numeroGiocatori;
     private int giocatoreCorrente;
-    private List<String> eroiGiocatori; // Nomi degli eroi per visualizzazione
+    private List<String> eroiGiocatori; // Nomi degli eroi
     
-    // Selezioni
+    // Selezioni (ID competenze)
     private List<String> competenzeSelezionate;
     
     // UI Components
@@ -47,11 +60,14 @@ public class ProficiencySelectionScreen extends StackPane {
     private FlowPane proficienciesContainer;
     private VBox selectedInfoBox;
     
-    // Callback quando la selezione è completa
+    // Callback
     private Consumer<List<String>> onSelectionComplete;
     
     /**
      * Costruttore
+     * 
+     * @param eroiGiocatori Lista dei nomi degli eroi (per visualizzazione)
+     * @param onComplete Callback con lista ID competenze selezionate
      */
     public ProficiencySelectionScreen(List<String> eroiGiocatori, Consumer<List<String>> onComplete) {
         this.numeroGiocatori = eroiGiocatori.size();
@@ -60,6 +76,10 @@ public class ProficiencySelectionScreen extends StackPane {
         this.competenzeSelezionate = new ArrayList<>();
         this.onSelectionComplete = onComplete;
         
+        // ⭐ FXGL: Binding automatico
+        this.prefWidthProperty().bind(FXGL.getGameScene().getRoot().widthProperty());
+        this.prefHeightProperty().bind(FXGL.getGameScene().getRoot().heightProperty());
+        
         inizializzaUI();
     }
     
@@ -67,10 +87,10 @@ public class ProficiencySelectionScreen extends StackPane {
      * Inizializza l'interfaccia
      */
     private void inizializzaUI() {
-        this.setPrefSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        
-        // Sfondo
-        Rectangle bg = new Rectangle(WINDOW_WIDTH, WINDOW_HEIGHT);
+        // Sfondo con binding
+        Rectangle bg = new Rectangle();
+        bg.widthProperty().bind(this.widthProperty());
+        bg.heightProperty().bind(this.heightProperty());
         bg.setFill(Color.rgb(15, 10, 30));
         this.getChildren().add(bg);
         
@@ -81,7 +101,7 @@ public class ProficiencySelectionScreen extends StackPane {
         
         // Titolo
         titleText = new Text("⚡ ANNO 6: SELEZIONE COMPETENZE ⚡");
-        titleText.setFont(Font.font("Trajan Pro", FontWeight.BOLD, 48));
+        titleText.setFont(Font.font("Arial", FontWeight.BOLD, 48));
         titleText.setFill(Color.GOLD);
         titleText.setStroke(Color.DARKRED);
         titleText.setStrokeWidth(3);
@@ -102,10 +122,16 @@ public class ProficiencySelectionScreen extends StackPane {
         instructionText.setFont(Font.font("Arial", FontWeight.BOLD, 26));
         instructionText.setFill(Color.CYAN);
         
-        // Container competenze (FlowPane per gestire meglio il wrap)
+        // Container competenze con ScrollPane
         proficienciesContainer = new FlowPane(20, 20);
         proficienciesContainer.setAlignment(Pos.CENTER);
-        proficienciesContainer.setPrefWrapLength(WINDOW_WIDTH - 100);
+        proficienciesContainer.setPadding(new Insets(20));
+        
+        // Wrap in ScrollPane per gestire molte competenze
+        ScrollPane scrollPane = new ScrollPane(proficienciesContainer);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setStyle("-fx-background: transparent; -fx-background-color: transparent;");
+        scrollPane.setPrefHeight(500);
         
         // Info selezioni
         selectedInfoBox = new VBox(10);
@@ -119,7 +145,7 @@ public class ProficiencySelectionScreen extends StackPane {
             titleText,
             subtitle,
             instructionText,
-            proficienciesContainer,
+            scrollPane,
             selectedInfoBox
         );
         
@@ -135,15 +161,16 @@ public class ProficiencySelectionScreen extends StackPane {
     private void mostraCompetenze() {
         proficienciesContainer.getChildren().clear();
         
-        List<String> competenzeDisponibili = GameFlowManager.getCompetenzeDisponibili();
-        
-        for (String idCompetenza : competenzeDisponibili) {
+        for (String idCompetenza : COMPETENZE_GIOCO_6) {
             try {
                 Competenza comp = ProficiencyFactory.creaCompetenza(idCompetenza);
-                VBox compCard = creaCompetenzaCard(comp);
-                proficienciesContainer.getChildren().add(compCard);
+                if (comp != null) {
+                    VBox compCard = creaCompetenzaCard(comp);
+                    proficienciesContainer.getChildren().add(compCard);
+                }
             } catch (Exception e) {
-                System.err.println("Errore caricamento competenza: " + idCompetenza);
+                System.err.println("⚠️ Errore caricamento competenza: " + idCompetenza);
+                e.printStackTrace();
             }
         }
         
@@ -156,13 +183,13 @@ public class ProficiencySelectionScreen extends StackPane {
     private VBox creaCompetenzaCard(Competenza competenza) {
         VBox card = new VBox(12);
         card.setAlignment(Pos.CENTER);
-        card.setPrefSize(240, 380);
+        card.setPrefSize(200, 320);
         card.setStyle("-fx-background-color: rgba(40, 20, 60, 0.95); " +
                      "-fx-background-radius: 15; " +
                      "-fx-border-color: purple; " +
                      "-fx-border-width: 3; " +
                      "-fx-border-radius: 15; " +
-                     "-fx-padding: 15; " +
+                     "-fx-padding: 12; " +
                      "-fx-cursor: hand;");
         
         DropShadow shadow = new DropShadow();
@@ -171,32 +198,33 @@ public class ProficiencySelectionScreen extends StackPane {
         card.setEffect(shadow);
         
         try {
-            // Immagine competenza
-            Image compImage = caricaImmagine(competenza.getPathImmagine());
+            // ⭐ USA ImageLoader
+            Image compImage = ImageLoader.caricaImmagine(competenza.getPathImmagine());
             ImageView imageView = new ImageView(compImage);
-            imageView.setFitWidth(200);
-            imageView.setFitHeight(260);
+            imageView.setFitWidth(170);
+            imageView.setFitHeight(220);
             imageView.setPreserveRatio(true);
             
-            Rectangle clip = new Rectangle(200, 260);
+            Rectangle clip = new Rectangle(170, 220);
             clip.setArcWidth(12);
             clip.setArcHeight(12);
             imageView.setClip(clip);
             
             // Nome
             Text nameText = new Text(competenza.getNome());
-            nameText.setFont(Font.font("Arial", FontWeight.BOLD, 17));
+            nameText.setFont(Font.font("Arial", FontWeight.BOLD, 14));
             nameText.setFill(Color.LIGHTBLUE);
-            nameText.setWrappingWidth(220);
+            nameText.setWrappingWidth(180);
             nameText.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
             
             card.getChildren().addAll(imageView, nameText);
             
         } catch (Exception e) {
+            // Fallback: solo testo
             Text nameText = new Text(competenza.getNome());
-            nameText.setFont(Font.font("Arial", FontWeight.BOLD, 18));
+            nameText.setFont(Font.font("Arial", FontWeight.BOLD, 16));
             nameText.setFill(Color.WHITE);
-            nameText.setWrappingWidth(220);
+            nameText.setWrappingWidth(180);
             nameText.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
             card.getChildren().add(nameText);
         }
@@ -208,7 +236,7 @@ public class ProficiencySelectionScreen extends StackPane {
                          "-fx-border-color: cyan; " +
                          "-fx-border-width: 4; " +
                          "-fx-border-radius: 15; " +
-                         "-fx-padding: 15; " +
+                         "-fx-padding: 12; " +
                          "-fx-cursor: hand;");
             card.setScaleX(1.05);
             card.setScaleY(1.05);
@@ -220,7 +248,7 @@ public class ProficiencySelectionScreen extends StackPane {
                          "-fx-border-color: purple; " +
                          "-fx-border-width: 3; " +
                          "-fx-border-radius: 15; " +
-                         "-fx-padding: 15; " +
+                         "-fx-padding: 12; " +
                          "-fx-cursor: hand;");
             card.setScaleX(1.0);
             card.setScaleY(1.0);
@@ -239,11 +267,12 @@ public class ProficiencySelectionScreen extends StackPane {
      */
     private void selezionaCompetenza(String idCompetenza, String nomeCompetenza) {
         competenzeSelezionate.add(idCompetenza);
-        giocatoreCorrente++;
         
-        String nomeEroe = eroiGiocatori.get(giocatoreCorrente - 1);
-        System.out.println("✓ " + nomeEroe + " (Giocatore " + giocatoreCorrente + 
+        String nomeEroe = eroiGiocatori.get(giocatoreCorrente);
+        System.out.println("✓ " + nomeEroe + " (Giocatore " + (giocatoreCorrente + 1) + 
                           ") ha scelto: " + nomeCompetenza);
+        
+        giocatoreCorrente++;
         
         // Verifica se tutti hanno scelto
         if (giocatoreCorrente >= numeroGiocatori) {
@@ -311,29 +340,5 @@ public class ProficiencySelectionScreen extends StackPane {
             emptyText.setFill(Color.GRAY);
             selectedInfoBox.getChildren().add(emptyText);
         }
-    }
-    
-    /**
-     * Carica un'immagine
-     */
-    private Image caricaImmagine(String path) throws Exception {
-        String cleanPath = path.replace("../", "").replace("\\", "/");
-        
-        try {
-            var stream = getClass().getClassLoader().getResourceAsStream(cleanPath);
-            if (stream != null) return new Image(stream);
-        } catch (Exception e) { }
-        
-        try {
-            File file = new File(cleanPath);
-            if (file.exists()) return new Image(new FileInputStream(file));
-        } catch (Exception e) { }
-        
-        try {
-            File projectFile = new File("/mnt/project/" + cleanPath);
-            if (projectFile.exists()) return new Image(new FileInputStream(projectFile));
-        } catch (Exception e) { }
-        
-        throw new Exception("Impossibile caricare: " + path);
     }
 }

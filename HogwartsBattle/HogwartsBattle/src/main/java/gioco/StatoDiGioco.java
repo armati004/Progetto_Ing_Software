@@ -225,29 +225,6 @@ public class StatoDiGioco {
     }
 
     /**
-     * Sconfigge un Malvagio.
-     */
-    public void sconfiggiMalvagio(Malvagio m) {
-        System.out.println(m.getNome() + " è stato sconfitto!");
-        m.defeat(this, giocatori.get(giocatoreCorrente));
-        
-        malvagiAttivi.remove(m);
-        // Aggiungi subito il rimpiazzo (regola standard)
-        
-        gestoreTrigger.attivaTrigger(TipoTrigger.NEMICO_SCONFITTO, this, giocatori.get(giocatoreCorrente));
-    }
-
-    public void distruggiHorcrux(Horcrux h) {
-        System.out.println("Horcrux distrutto: " + h.getNome());
-        //h.onDefeat(this, getGiocatori().get(giocatoreCorrente));
-        
-        horcruxAttivi.remove(h);
-        if (!mazzoHorcrux.isEmpty()) {
-            horcruxAttivi.add(mazzoHorcrux.pop());
-        }
-    }
-
-    /**
      * Riempie gli slot vuoti del mercato.
      */
     public void rifornisciMercato() {
@@ -325,19 +302,133 @@ public class StatoDiGioco {
         System.out.println("Il turno passa a: " + giocatori.get(giocatoreCorrente).getEroe().getNome());
     }
     
+    /**
+     * Verifica le condizioni di vittoria
+     * VITTORIA: Tutti i malvagi sono stati sconfitti
+     * (e se anno >= 4, anche tutti gli horcrux distrutti)
+     */
     private void verificaCondizioneVittoria() {
         // Vittoria: Tutti i malvagi sconfitti
-        if (mazzoMalvagi.isEmpty() && malvagiAttivi.isEmpty()) {
-            if (hasHorcruxes) {
-                if (mazzoHorcrux.isEmpty() && horcruxAttivi.isEmpty()) {
-                    setVictory(true);
-                }
-            } else {
+        boolean malvagiSconfitti = mazzoMalvagi.isEmpty() && malvagiAttivi.isEmpty();
+        
+        if (hasHorcruxes) {
+            // Anno >= 4: Servono anche horcrux distrutti
+            boolean horcruxDistrutto = mazzoHorcrux.isEmpty() && horcruxAttivi.isEmpty();
+            
+            if (malvagiSconfitti && horcruxDistrutto) {
+                System.out.println("\n🎉 ===== VITTORIA! =====");
+                System.out.println("✅ Tutti i malvagi sconfitti!");
+                System.out.println("✅ Tutti gli Horcrux distrutti!");
+                System.out.println("🏆 Gli eroi hanno salvato Hogwarts!");
                 setVictory(true);
+                setGameOver(true);
+            }
+        } else {
+            // Anno < 4: Solo malvagi
+            if (malvagiSconfitti) {
+                System.out.println("\n🎉 ===== VITTORIA! =====");
+                System.out.println("✅ Tutti i malvagi sconfitti!");
+                System.out.println("🏆 Gli eroi hanno salvato Hogwarts!");
+                setVictory(true);
+                setGameOver(true);
             }
         }
     }
-    
+
+    /**
+     * Verifica le condizioni di sconfitta
+     * SCONFITTA: Tutti i luoghi sono stati persi
+     * (Un luogo è perso quando marchi neri >= max)
+     */
+    private void verificaCondizioneSconfitta() {
+        // Conta quanti luoghi sono persi
+        int luoghiPersi = 0;
+        int luoghiTotali = listaLuoghi.size();
+        
+        for (Luogo luogo : listaLuoghi) {
+            if (luogo.getNumeroMarchiNeri() >= luogo.getMarchiNeriMax()) {
+                luoghiPersi++;
+            }
+        }
+        
+        // Sconfitta: Tutti i luoghi persi
+        if (luoghiPersi >= luoghiTotali) {
+            System.out.println("\n💀 ===== SCONFITTA! =====");
+            System.out.println("❌ Tutti i luoghi sono stati persi!");
+            System.out.println("🌑 Marchi Neri hanno sopraffatto Hogwarts!");
+            setVictory(false);
+            setGameOver(true);
+        }
+    }
+
+    /**
+     * Passa al prossimo luogo quando l'attuale è perso
+     * Chiamato quando marchi neri >= max
+     */
+    public void passaAlProssimoLuogo() {
+        if (luogoAttuale == null) {
+            System.out.println("⚠️ Nessun luogo attuale!");
+            return;
+        }
+        
+        System.out.println("\n💀 LUOGO PERSO: " + luogoAttuale.getNome());
+        System.out.println("   Marchi Neri: " + luogoAttuale.getNumeroMarchiNeri() + "/" + 
+                           luogoAttuale.getMarchiNeriMax());
+        
+        // Trova l'indice del luogo attuale
+        int indiceLuogoAttuale = listaLuoghi.indexOf(luogoAttuale);
+        
+        if (indiceLuogoAttuale == -1) {
+            System.out.println("⚠️ Luogo attuale non trovato nella lista!");
+            return;
+        }
+        
+        // Controlla se ci sono altri luoghi
+        if (indiceLuogoAttuale < listaLuoghi.size() - 1) {
+            // Passa al prossimo luogo
+            luogoAttuale = listaLuoghi.get(indiceLuogoAttuale + 1);
+            System.out.println("🏰 Nuovo luogo: " + luogoAttuale.getNome());
+            System.out.println("   Marchi Neri: " + luogoAttuale.getNumeroMarchiNeri() + "/" + 
+                             luogoAttuale.getMarchiNeriMax());
+        } else {
+            System.out.println("⚠️ Era l'ultimo luogo!");
+        }
+        
+        // Verifica se tutti i luoghi sono persi
+        verificaCondizioneSconfitta();
+    }
+
+    /**
+     * Metodo chiamato quando un malvagio viene sconfitto
+     * ⭐ MODIFICATO: Aggiunge verifica vittoria
+     */
+    public void sconfiggiMalvagio(Malvagio m) {
+        System.out.println("💀 " + m.getNome() + " è stato sconfitto!");
+        m.defeat(this, giocatori.get(giocatoreCorrente));
+        
+        malvagiAttivi.remove(m);
+        
+        gestoreTrigger.attivaTrigger(TipoTrigger.NEMICO_SCONFITTO, this, giocatori.get(giocatoreCorrente));
+        
+        // ⭐ Verifica condizione vittoria
+        verificaCondizioneVittoria();
+    }
+
+    /**
+     * Metodo chiamato quando un Horcrux viene distrutto
+     * ⭐ MODIFICATO: Aggiunge verifica vittoria
+     */
+    public void distruggiHorcrux(Horcrux h) {
+        System.out.println("💀 Horcrux distrutto: " + h.getNome());
+        
+        horcruxAttivi.remove(h);
+        if (!mazzoHorcrux.isEmpty()) {
+            horcruxAttivi.add(mazzoHorcrux.pop());
+        }
+        
+        // ⭐ Verifica condizione vittoria
+        verificaCondizioneVittoria();
+    }
     public void incrementaLuoghiConquistati() {
         luoghiConquistati++;
         
