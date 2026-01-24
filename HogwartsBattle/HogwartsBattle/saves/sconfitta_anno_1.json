@@ -1,0 +1,23 @@
+{
+  "annoCorrente": 1,
+  "numeroGiocatori": 4,
+  "vittoriaUltimaPartita": false,
+  "giocatori": [
+    {
+      "nomeEroe": "Ron Weasley"
+    },
+    {
+      "nomeEroe": "Hermione Granger"
+    },
+    {
+      "nomeEroe": "Harry Potter"
+    },
+    {
+      "nomeEroe": "Neville Longbottom"
+    }
+  ],
+  "timestamp": 1769203283632,
+  "dataOra": "2026-01-23 22:21:23",
+  "nomePartita": "sconfitta_anno_1",
+  "giocatoreCorrente": 3
+}

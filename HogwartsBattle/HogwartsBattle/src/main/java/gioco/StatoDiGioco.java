@@ -304,33 +304,77 @@ public class StatoDiGioco {
     
     /**
      * Verifica le condizioni di vittoria
-     * VITTORIA: Tutti i malvagi sono stati sconfitti
-     * (e se anno >= 4, anche tutti gli horcrux distrutti)
+     * VITTORIA: Tutti i malvagi sconfitti (+ horcrux se anno >= 4)
+     * 
+     * Quando la vittoria viene rilevata, notifica automaticamente il GameController
+     * per mostrare la schermata di vittoria
      */
     private void verificaCondizioneVittoria() {
+        // Debug: Stampa stato corrente
+        System.out.println("\n🔍 Verifica Condizione Vittoria:");
+        System.out.println("  Mazzo malvagi vuoto: " + mazzoMalvagi.isEmpty());
+        System.out.println("  Malvagi attivi: " + malvagiAttivi.size());
+        System.out.println("  Ha Horcruxes: " + hasHorcruxes);
+        
         // Vittoria: Tutti i malvagi sconfitti
         boolean malvagiSconfitti = mazzoMalvagi.isEmpty() && malvagiAttivi.isEmpty();
         
         if (hasHorcruxes) {
             // Anno >= 4: Servono anche horcrux distrutti
-            boolean horcruxDistrutto = mazzoHorcrux.isEmpty() && horcruxAttivi.isEmpty();
+            boolean horcruxDistrutto = mazzoHorcrux.isEmpty() && 
+                                       (horcruxAttivi == null || horcruxAttivi.isEmpty());
+            
+            System.out.println("  Mazzo horcrux vuoto: " + mazzoHorcrux.isEmpty());
+            System.out.println("  Horcrux attivi: " + (horcruxAttivi != null ? horcruxAttivi.size() : 0));
+            System.out.println("  Malvagi sconfitti: " + malvagiSconfitti);
+            System.out.println("  Horcrux distrutto: " + horcruxDistrutto);
             
             if (malvagiSconfitti && horcruxDistrutto) {
-                System.out.println("\n🎉 ===== VITTORIA! =====");
-                System.out.println("✅ Tutti i malvagi sconfitti!");
-                System.out.println("✅ Tutti gli Horcrux distrutti!");
+                System.out.println("\n🎉 ========================================");
+                System.out.println("🎉 ===== VITTORIA! =====");
+                System.out.println("🎉 ========================================");
+                System.out.println("✅ Tutti i malvagi sono stati sconfitti!");
+                System.out.println("✅ Tutti gli Horcrux sono stati distrutti!");
                 System.out.println("🏆 Gli eroi hanno salvato Hogwarts!");
+                System.out.println("🎉 ========================================\n");
+                
                 setVictory(true);
                 setGameOver(true);
+                
+                // ⭐ FONDAMENTALE: Notifica GameController
+                javafx.application.Platform.runLater(() -> {
+                    System.out.println("📢 Notifica GameController della vittoria...");
+                    if (grafica.GameController.getInstance() != null) {
+                        grafica.GameController.getInstance().onVittoria();
+                    } else {
+                        System.err.println("❌ GameController.getInstance() è null!");
+                    }
+                });
             }
         } else {
             // Anno < 4: Solo malvagi
+            System.out.println("  Malvagi sconfitti: " + malvagiSconfitti);
+            
             if (malvagiSconfitti) {
-                System.out.println("\n🎉 ===== VITTORIA! =====");
-                System.out.println("✅ Tutti i malvagi sconfitti!");
+                System.out.println("\n🎉 ========================================");
+                System.out.println("🎉 ===== VITTORIA! =====");
+                System.out.println("🎉 ========================================");
+                System.out.println("✅ Tutti i malvagi sono stati sconfitti!");
                 System.out.println("🏆 Gli eroi hanno salvato Hogwarts!");
+                System.out.println("🎉 ========================================\n");
+                
                 setVictory(true);
                 setGameOver(true);
+                
+                // ⭐ FONDAMENTALE: Notifica GameController
+                javafx.application.Platform.runLater(() -> {
+                    System.out.println("📢 Notifica GameController della vittoria...");
+                    if (grafica.GameController.getInstance() != null) {
+                        grafica.GameController.getInstance().onVittoria();
+                    } else {
+                        System.err.println("❌ GameController.getInstance() è null!");
+                    }
+                });
             }
         }
     }
@@ -339,25 +383,59 @@ public class StatoDiGioco {
      * Verifica le condizioni di sconfitta
      * SCONFITTA: Tutti i luoghi sono stati persi
      * (Un luogo è perso quando marchi neri >= max)
+     * 
+     * Quando la sconfitta viene rilevata, notifica automaticamente il GameController
+     * per mostrare la schermata di Game Over
      */
     private void verificaCondizioneSconfitta() {
+        if (listaLuoghi == null || listaLuoghi.isEmpty()) {
+            System.out.println("⚠️ Lista luoghi vuota o null!");
+            return;
+        }
+        
         // Conta quanti luoghi sono persi
         int luoghiPersi = 0;
         int luoghiTotali = listaLuoghi.size();
         
-        for (Luogo luogo : listaLuoghi) {
-            if (luogo.getNumeroMarchiNeri() >= luogo.getMarchiNeriMax()) {
+        // Debug: Stampa stato luoghi
+        System.out.println("\n🔍 Verifica Condizione Sconfitta:");
+        for (int i = 0; i < listaLuoghi.size(); i++) {
+            Luogo luogo = listaLuoghi.get(i);
+            int marchi = luogo.getNumeroMarchiNeri();
+            int max = luogo.getMarchiNeriMax();
+            boolean perso = marchi >= max;
+            
+            System.out.println("  Luogo " + (i+1) + ": " + luogo.getNome());
+            System.out.println("    Marchi: " + marchi + "/" + max + " - " + (perso ? "❌ PERSO" : "✅ OK"));
+            
+            if (perso) {
                 luoghiPersi++;
             }
         }
         
+        System.out.println("  Totale luoghi persi: " + luoghiPersi + "/" + luoghiTotali);
+        
         // Sconfitta: Tutti i luoghi persi
         if (luoghiPersi >= luoghiTotali) {
-            System.out.println("\n💀 ===== SCONFITTA! =====");
+            System.out.println("\n💀 ========================================");
+            System.out.println("💀 ===== SCONFITTA! =====");
+            System.out.println("💀 ========================================");
             System.out.println("❌ Tutti i luoghi sono stati persi!");
-            System.out.println("🌑 Marchi Neri hanno sopraffatto Hogwarts!");
+            System.out.println("🌑 I Marchi Neri hanno sopraffatto Hogwarts!");
+            System.out.println("💀 ========================================\n");
+            
             setVictory(false);
             setGameOver(true);
+            
+            // ⭐ FONDAMENTALE: Notifica GameController
+            javafx.application.Platform.runLater(() -> {
+                System.out.println("📢 Notifica GameController della sconfitta...");
+                if (grafica.GameController.getInstance() != null) {
+                    grafica.GameController.getInstance().onSconfitta();
+                } else {
+                    System.err.println("❌ GameController.getInstance() è null!");
+                }
+            });
         }
     }
 
@@ -410,6 +488,8 @@ public class StatoDiGioco {
         
         gestoreTrigger.attivaTrigger(TipoTrigger.NEMICO_SCONFITTO, this, giocatori.get(giocatoreCorrente));
         
+        gestoreTrigger.rimuoviTrigger(m);
+        
         // ⭐ Verifica condizione vittoria
         verificaCondizioneVittoria();
     }
@@ -425,6 +505,8 @@ public class StatoDiGioco {
         if (!mazzoHorcrux.isEmpty()) {
             horcruxAttivi.add(mazzoHorcrux.pop());
         }
+        
+        gestoreTrigger.rimuoviTrigger(h);
         
         // ⭐ Verifica condizione vittoria
         verificaCondizioneVittoria();

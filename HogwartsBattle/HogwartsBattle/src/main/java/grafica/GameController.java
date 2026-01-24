@@ -13,8 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * GameController - Classe principale che gestisce il flusso del gioco usando FXGL
- * ⭐ VERSIONE CON SCHERMATE DI SELEZIONE INTEGRATE
+ * GameController - Classe principale con sistema salvataggio/caricamento integrato
  */
 public class GameController extends GameApplication {
     
@@ -22,10 +21,14 @@ public class GameController extends GameApplication {
     private GameBoardUI gameUI;
     private TurnManager turnManager;
     
-    // ⭐ Parametri selezione
+    // Parametri selezione
     private int numeroGiocatori;
-    private int annoSelezionato = 1; // Modifica per testare anno 6
+    private int annoSelezionato = 1;
     private List<Giocatore> giocatoriSelezionati;
+    
+    // Sistema salvataggio
+    private boolean caricamentoDaSalvataggio = false;
+    private GameSaveData saveDataCaricato = null;
     
     private static GameController instance;
     
@@ -67,8 +70,8 @@ public class GameController extends GameApplication {
             
             System.out.println("✅ Tutte le factory inizializzate");
             
-            // ⭐ STEP 1: Mostra schermata selezione numero giocatori
-            mostraSchermataSelezioneNumeroGiocatori();
+            // Mostra menu principale
+            mostraMenuPrincipale();
             
         } catch (Exception e) {
             System.err.println("❌ Errore durante l'inizializzazione:");
@@ -77,8 +80,84 @@ public class GameController extends GameApplication {
     }
     
     // ========================================
-    // ⭐ METODI DI AVVIO MODIFICATI
+    // MENU E NAVIGAZIONE
     // ========================================
+    
+    /**
+     * STEP 0: Mostra menu principale
+     */
+    private void mostraMenuPrincipale() {
+        System.out.println("\n=== MENU PRINCIPALE ===");
+        
+        MainMenuScreen screen = new MainMenuScreen(scelta -> {
+            FXGL.getGameScene().clearUINodes();
+            
+            switch (scelta) {
+                case "new_game":
+                    // Nuova partita
+                    annoSelezionato = 1;
+                    caricamentoDaSalvataggio = false;
+                    mostraSchermataSelezioneNumeroGiocatori();
+                    break;
+                    
+                case "continue":
+                    // Continua autosave
+                    GameSaveData autosave = SaveManager.caricaAutosave();
+                    if (autosave != null) {
+                        caricaPartitaDaSalvataggio(autosave);
+                    } else {
+                        System.err.println("❌ Nessun autosave trovato!");
+                        mostraMenuPrincipale();
+                    }
+                    break;
+                    
+                case "load_game":
+                    // Mostra lista salvataggi
+                    mostraSchermataCaricamento();
+                    break;
+                    
+                case "exit":
+                    // Esci dal gioco
+                    System.out.println("👋 Arrivederci!");
+                    FXGL.getGameController().exit();
+                    break;
+            }
+        });
+        
+        FXGL.getGameScene().addUINode(screen);
+    }
+    
+    /**
+     * Carica partita da salvataggio
+     */
+    private void caricaPartitaDaSalvataggio(GameSaveData saveData) {
+        System.out.println("\n=== CARICAMENTO PARTITA ===");
+        System.out.println("Anno: " + saveData.getAnnoCorrente());
+        System.out.println("Giocatori: " + saveData.getNumeroGiocatori());
+        
+        this.annoSelezionato = saveData.getAnnoCorrente();
+        this.numeroGiocatori = saveData.getNumeroGiocatori();
+        this.saveDataCaricato = saveData;
+        this.caricamentoDaSalvataggio = true;
+        
+        // Ricrea giocatori dal salvataggio
+        this.giocatoriSelezionati = ProgressionManager.ricreaGiocatoriDaSalvataggio(
+            saveData, 
+            annoSelezionato
+        );
+        
+        // Avvia il gioco
+        avviaGioco();
+    }
+    
+    /**
+     * Mostra schermata caricamento (da implementare)
+     */
+    private void mostraSchermataCaricamento() {
+        // TODO: Implementare lista salvataggi con UI
+        System.out.println("⚠️ Schermata caricamento non ancora implementata");
+        mostraMenuPrincipale();
+    }
     
     /**
      * STEP 1: Mostra schermata selezione numero giocatori
@@ -90,14 +169,10 @@ public class GameController extends GameApplication {
             this.numeroGiocatori = numero;
             System.out.println("✓ Numero giocatori: " + numeroGiocatori);
             
-            // Rimuovi schermata precedente
             FXGL.getGameScene().clearUINodes();
-            
-            // Vai allo step 2
             mostraSchermataSelezioneEroi();
         });
         
-        // Aggiungi alla scena FXGL
         FXGL.getGameScene().addUINode(screen);
     }
     
@@ -119,10 +194,8 @@ public class GameController extends GameApplication {
                                      giocatoriSelezionati.get(i).getEroe().getNome());
                 }
                 
-                // Rimuovi schermata precedente
                 FXGL.getGameScene().clearUINodes();
                 
-                // Vai allo step 3 o avvia gioco
                 if (annoSelezionato == 6) {
                     mostraSchermataSelezioneCompetenze();
                 } else {
@@ -131,7 +204,6 @@ public class GameController extends GameApplication {
             }
         );
         
-        // Aggiungi alla scena FXGL
         FXGL.getGameScene().addUINode(screen);
     }
     
@@ -141,7 +213,6 @@ public class GameController extends GameApplication {
     private void mostraSchermataSelezioneCompetenze() {
         System.out.println("\n=== STEP 3: Selezione Competenze (Anno 6) ===");
         
-        // Estrai i nomi degli eroi
         List<String> nomiEroi = giocatoriSelezionati.stream()
             .map(g -> g.getEroe().getNome())
             .collect(Collectors.toList());
@@ -149,7 +220,6 @@ public class GameController extends GameApplication {
         ProficiencySelectionScreen screen = new ProficiencySelectionScreen(
             nomiEroi,
             competenzeSelezionate -> {
-                // Assegna le competenze ai giocatori
                 for (int i = 0; i < giocatoriSelezionati.size(); i++) {
                     String idCompetenza = competenzeSelezionate.get(i);
                     try {
@@ -161,15 +231,11 @@ public class GameController extends GameApplication {
                     }
                 }
                 
-                // Rimuovi schermata precedente
                 FXGL.getGameScene().clearUINodes();
-                
-                // Ora avvia il gioco
                 avviaGioco();
             }
         );
         
-        // Aggiungi alla scena FXGL
         FXGL.getGameScene().addUINode(screen);
     }
     
@@ -177,16 +243,14 @@ public class GameController extends GameApplication {
      * STEP 4: Avvia il gioco vero e proprio
      */
     private void avviaGioco() {
-        System.out.println("\n=== STEP 4: Avvio Gioco ===");
+        System.out.println("\n=== AVVIO GIOCO ===");
         
         try {
-            // Carica la configurazione del gioco
             GameLoader loader = new GameLoader();
             GameConfig config = loader.caricaConfigurazione(annoSelezionato);
             
             System.out.println("📋 Configurazione anno " + annoSelezionato + " caricata");
             
-            // Crea lo stato di gioco con i giocatori selezionati
             stato = new StatoDiGioco(config, giocatoriSelezionati);
             
             System.out.println("\n✅ Gioco avviato!");
@@ -203,18 +267,14 @@ public class GameController extends GameApplication {
             System.out.println("👹 Malvagi attivi: " + stato.getMalvagiAttivi().size());
             System.out.println("🛒 Carte nel mercato: " + stato.getMercato().size());
             
-            // Crea l'interfaccia grafica principale
             gameUI = new GameBoardUI(stato);
             
-            // Imposta dimensioni fisse e binding per resize
             gameUI.setMinSize(1920, 1080);
             gameUI.setPrefSize(1920, 1080);
             gameUI.setMaxSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
             
-            // Aggiungi l'UI alla scena FXGL
             FXGL.getGameScene().addUINode(gameUI);
             
-            // Binding per resize dinamico
             FXGL.getGameScene().getRoot().widthProperty().addListener((obs, oldVal, newVal) -> {
                 gameUI.setPrefWidth(newVal.doubleValue());
                 gameUI.layout();
@@ -227,10 +287,8 @@ public class GameController extends GameApplication {
             
             System.out.println("🎨 Interfaccia grafica inizializzata");
             
-            // Inizia la partita
             iniziaPartita();
             
-            // Stampa report immagini
             grafica.utils.ImageLoader.stampaReport();
             
         } catch (Exception e) {
@@ -240,21 +298,133 @@ public class GameController extends GameApplication {
     }
     
     // ========================================
-    // ⭐ METODI ORIGINALI NON MODIFICATI
+    // GESTIONE VITTORIA E AVANZAMENTO
     // ========================================
     
     /**
-     * Inizia il turno del primo giocatore
+     * Chiamato quando il gioco viene vinto
      */
+    public void onVittoria() {
+        System.out.println("\n🎉 VITTORIA RILEVATA!");
+        
+        // Salva progresso
+        ProgressionManager.salvaProgressoVittoria(stato);
+        
+        // Autosave
+        SaveManager.autosave(stato);
+        
+        int annoCompletato = stato.getAnnoCorrente();
+        boolean ultimoAnno = ProgressionManager.giocoCompletato(stato);
+        
+        // Mostra schermata vittoria
+        FXGL.getGameScene().clearUINodes();
+        
+        VictoryScreen victoryScreen = new VictoryScreen(annoCompletato, scelta -> {
+            FXGL.getGameScene().clearUINodes();
+            
+            if (scelta.equals("continue") && !ultimoAnno) {
+                avanzaAnnoSuccessivo();
+            } else {
+                mostraMenuPrincipale();
+            }
+        });
+        
+        FXGL.getGameScene().addUINode(victoryScreen);
+    }
+    
+    /**
+     * Chiamato quando il gioco viene perso (sconfitta)
+     */
+    public void onSconfitta() {
+        System.out.println("\n💀 SCONFITTA RILEVATA!");
+        
+        // Salva comunque lo stato (opzionale)
+        SaveManager.salvaPartita(stato, "sconfitta_anno_" + stato.getAnnoCorrente());
+        
+        int annoFallito = stato.getAnnoCorrente();
+        String motivoSconfitta = "🌑 Tutti i luoghi sono stati persi!\nI Marchi Neri hanno sopraffatto Hogwarts!";
+        
+        // Mostra schermata Game Over
+        FXGL.getGameScene().clearUINodes();
+        
+        GameOverScreen gameOverScreen = new GameOverScreen(annoFallito, motivoSconfitta, scelta -> {
+            FXGL.getGameScene().clearUINodes();
+            
+            if (scelta.equals("retry")) {
+                // Riprova stesso anno
+                riprovaSconfittaAnno();
+            } else {
+                // Torna al menu
+                mostraMenuPrincipale();
+            }
+        });
+        
+        FXGL.getGameScene().addUINode(gameOverScreen);
+    }
+    
+    /**
+     * Riprova lo stesso anno dopo una sconfitta
+     */
+    private void riprovaSconfittaAnno() {
+        System.out.println("\n🔄 RIPROVA ANNO " + annoSelezionato);
+        
+        // Mantieni gli stessi giocatori e anno
+        // (giocatoriSelezionati e annoSelezionato già impostati)
+        
+        // Riavvia il gioco
+        avviaGioco();
+    }
+    
+    /**
+     * Avanza anno successivo
+     */
+    private void avanzaAnnoSuccessivo() {
+        int prossimoAnno = ProgressionManager.calcolaProssimoAnno(stato.getAnnoCorrente());
+        
+        System.out.println("\n📖 AVANZAMENTO ANNO " + prossimoAnno);
+        
+        List<Giocatore> giocatoriProssimoAnno = ProgressionManager.preparaGiocatoriProssimoAnno(
+            stato.getGiocatori(),
+            prossimoAnno
+        );
+        
+        this.annoSelezionato = prossimoAnno;
+        this.giocatoriSelezionati = giocatoriProssimoAnno;
+        this.numeroGiocatori = giocatoriProssimoAnno.size();
+        
+        // Se anno 6 e non hanno competenze, mostra selezione
+        boolean needProficiencySelection = (prossimoAnno == 6) && 
+            giocatoriProssimoAnno.stream().allMatch(g -> g.getCompetenza() == null);
+        
+        if (needProficiencySelection) {
+            mostraSchermataSelezioneCompetenze();
+        } else {
+            avviaGioco();
+        }
+    }
+    
+    /**
+     * Salvataggio rapido
+     */
+    public void salvaPartitaRapida() {
+        if (stato != null) {
+            boolean success = SaveManager.autosave(stato);
+            if (success) {
+                System.out.println("💾 Partita salvata automaticamente!");
+            }
+        }
+    }
+    
+    // ========================================
+    // METODI ORIGINALI (NON MODIFICATI)
+    // ========================================
+    
     public void iniziaPartita() {
         turnManager = new TurnManager(stato);
         turnManager.iniziaTurno();
         gameUI.aggiorna();
     }
     
-    /**
-     * Gioca una carta dalla mano del giocatore corrente
-     */
     public void giocaCarta(int indiceInMano) {
         Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
         
@@ -268,10 +438,6 @@ public class GameController extends GameApplication {
         }
     }
     
-    /**
-     * Acquista una carta dal mercato
-     * ⭐ CORRETTO: rimossa duplicazione
-     */
     public void acquistaCarta(int indiceInMercato) {
         Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
         
@@ -279,12 +445,8 @@ public class GameController extends GameApplication {
             if (indiceInMercato >= 0 && indiceInMercato < stato.getMercato().size()) {
                 Carta carta = stato.getMercato().get(indiceInMercato);
                 if (giocatore.getGettone() >= carta.getCosto()) {
-                    // ⭐ FIX: acquistaCarta() GIÀ aggiunge agli scarti e rimuove dal mercato
                     giocatore.acquistaCarta(stato.getMercato(), carta);
-                    
-                    // ⭐ FIX: rifornisce mercato
                     stato.rifornisciMercato();
-                    
                     gameUI.aggiorna();
                     System.out.println("💰 Acquistata carta: " + carta.getNome());
                 } else {
@@ -295,9 +457,6 @@ public class GameController extends GameApplication {
         }
     }
     
-    /**
-     * Attacca un malvagio
-     */
     public void attaccaMalvagio(int indiceMalvagio) {
         Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
         
@@ -308,11 +467,9 @@ public class GameController extends GameApplication {
                     stato.assegnaAttacco(malvagio, 1);
                     giocatore.setAttacco(giocatore.getAttacco() - 1);
                     
-                    // Se il malvagio è sconfitto, rivela un nuovo malvagio
                     if (malvagio.getDanno() >= malvagio.getVita()) {
                         stato.sconfiggiMalvagio(malvagio);
                         
-                        // Pesca nuovo malvagio se il mazzo non è vuoto
                         if (!stato.getMazzoMalvagi().isEmpty()) {
                             stato.addMalvagioAttivo();
                         }
@@ -325,9 +482,6 @@ public class GameController extends GameApplication {
         }
     }
     
-    /**
-     * Passa alla fase successiva
-     */
     public void prossimaFase() {
         turnManager.prossimaFase();
         gameUI.aggiorna();
@@ -336,23 +490,14 @@ public class GameController extends GameApplication {
         }
     }
     
-    /**
-     * Ottiene lo stato del gioco
-     */
     public StatoDiGioco getStato() {
         return stato;
     }
     
-    /**
-     * Ottiene l'UI principale
-     */
     public GameBoardUI getGameUI() {
         return gameUI;
     }
     
-    /**
-     * Ottiene l'istanza del controller
-     */
     public static GameController getInstance() {
         return instance;
     }

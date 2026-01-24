@@ -64,7 +64,7 @@
 		  "id": "Alohomora_Harry",
 		  "class": "Incantesimo",
 		  "descrizione": "Guadagni 1 influenza",
-		  "costo": 5,
+		  "costo": 0,
 		  "pathImmagine": "/Immagini_carte/Starter_Pack/Harry/Alohomora_Harry.png",
 		  "effetti": [{"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}],
 		  "triggers": []
@@ -76,7 +76,7 @@
 		  "id": "Alohomora_Hermione",
 		  "class": "Incantesimo",
 		  "descrizione": "Guadagni 1 influenza",
-		  "costo": 5,
+		  "costo": 0,
 		  "pathImmagine": "/Immagini_carte/Starter_Pack/Hermione/Alohomora_Hermione.png",
 		  "effetti": [{"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}],
 		  "triggers": []
@@ -146,7 +146,7 @@
 		  "id": "Alohomora_Neville",
 		  "class": "Incantesimo",
 		  "descrizione": "Guadagni 1 influenza",
-		  "costo": 5,
+		  "costo": 0,
 		  "pathImmagine": "/Immagini_carte/Starter_Pack/Neville/Alohomora_Neville.png",
 		  "effetti": [{"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}],
 		  "triggers": []
@@ -216,7 +216,7 @@
 		  "id": "Alohomora_Ron",
 		  "class": "Incantesimo",
 		  "descrizione": "Guadagni 1 influenza",
-		  "costo": 5,
+		  "costo": 0,
 		  "pathImmagine": "/Immagini_carte/Starter_Pack/Ron/Alohomora_Ron.png",
 		  "effetti": [{"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}],
 		  "triggers": []
