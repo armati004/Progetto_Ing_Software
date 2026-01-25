@@ -8,6 +8,7 @@ import carte.Carta;
 import carte.Competenza;
 import carte.Eroe;
 import carte.Mazzo;
+import gestoreEffetti.Trigger;
 
 public class Giocatore {
     private Eroe  eroe;
@@ -21,7 +22,8 @@ public class Giocatore {
     private Competenza competenza;
 
 	private SelettoreCarta selettoreCarta;
-	
+	private List<Carta> carteAcquistateQuestoTurno = new ArrayList<>();
+
 
     
     
@@ -63,31 +65,24 @@ public class Giocatore {
     }
 	
     public void giocaCarta(StatoDiGioco stato, Carta carta) {
-        // Verifica difensiva
         if (!mano.contains(carta)) {
             System.out.println("ERRORE: La carta " + carta.getNome() + " non è nella mano!");
             return;
         }
 
-        // 1. Applica l'effetto PRIMA di spostarla (a volte conta l'ordine, ma è convenzione)
-        //    oppure DOPO, dipende se l'effetto richiede che la carta sia in gioco.
-        //    Solitamente: La giochi -> Applichi effetto -> Va negli scarti.
+        // ⭐ NUOVO: Rimuovi trigger "in mano" PRIMA di giocare
+        rimuoviTriggersCartaDaMano(stato, carta);
+
         carta.applicaEffetto(stato, this);
 
-		// Aggiungi alla lista degli alleati giocati in questo turno, se applicabile
-		// ai fini di effetti che dipendono da questo (come Pozione polisucco)
-		if (carta.getClasse().equals("Alleato")) {
-			stato.getAlleatiGiocatiInQuestoTurno().add((carte.Alleato) carta);
-		}
-        // 2. Rimuovi dalla mano
+        if (carta.getClasse().equals("Alleato")) {
+            stato.getAlleatiGiocatiInQuestoTurno().add((carte.Alleato) carta);
+        }
+        
         mano.remove(carta);
-
-        // 3. Sposta carta negli scarti (o in una pila "carte giocate" se le vuoi tenere visibili fino a fine turno)
         scarti.aggiungiCarta(carta);
 
         System.out.println("Giocata: " + carta.getNome());
-        
-        // NOTA: NON pescare qui! La pesca avviene nel metodo cleanupTurn/fineTurno del GameState.
     }
 	
 	//cerca nel mazzo degli scarti un tipo di carta (oggetto e incantesimo e alleato)
@@ -107,8 +102,15 @@ public class Giocatore {
 	
 	public void acquistaCarta(List<Carta> mercato, Carta carta) {
 	    this.setGettone(gettone - carta.getCosto());
-	    scarti.aggiungiCarta(carta);
 	    mercato.remove(carta);
+	    
+	    // ⭐ MODIFICATO: NON aggiungere subito agli scarti
+	    // Lascia che il trigger/GameController decida dove va
+	    
+	    // ⭐ NUOVO: Traccia carta acquistata
+	    carteAcquistateQuestoTurno.add(carta);
+	    
+	    System.out.println("💰 Acquistata: " + carta.getNome());
 	}
 
 	// ============================================
@@ -154,6 +156,36 @@ public class Giocatore {
 	    }
 	    
 	    return false;
+	}
+	
+	/**
+	 * Registra i trigger delle carte nella mano
+	 */
+	public void registraTriggersInMano(StatoDiGioco stato) {
+	    for (Carta carta : mano) {
+	        if (carta.getTriggers() != null && !carta.getTriggers().isEmpty()) {
+	            for (Trigger trigger : carta.getTriggers()) {
+	                // Solo trigger che funzionano "in mano" (es. RICEVI_DANNO per Mantello)
+	                if (trigger.getType() == gestoreEffetti.TipoTrigger.RICEVI_DANNO) {
+	                    stato.getGestoreTrigger().registraTrigger(
+	                        trigger.getType(), 
+	                        trigger.getEffectToExecute(), 
+	                        carta, 
+	                        trigger.getDurata()
+	                    );
+	                }
+	            }
+	        }
+	    }
+	}
+
+	/**
+	 * Rimuove i trigger di una carta specifica
+	 */
+	public void rimuoviTriggersCartaDaMano(StatoDiGioco stato, Carta carta) {
+	    if (carta.getTriggers() != null && !carta.getTriggers().isEmpty()) {
+	        stato.getGestoreTrigger().rimuoviTrigger(carta);
+	    }
 	}
 
 	public Eroe getEroe() {
@@ -206,6 +238,14 @@ public class Giocatore {
 
 	public void setCompetenza(Competenza competenza) {
 		this.competenza = competenza;
+	}
+	
+	public List<Carta> getCarteAcquistateQuestoTurno() {
+	    return carteAcquistateQuestoTurno;
+	}
+
+	public void resetCarteAcquistate() {
+	    carteAcquistateQuestoTurno.clear();
 	}
 
 }

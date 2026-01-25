@@ -6,6 +6,7 @@ import gestoreEffetti.EsecutoreEffetti;
 import gestoreEffetti.TipoEffetto;
 import carte.Horcrux;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -22,6 +23,7 @@ public class TurnManager {
     
     public void iniziaTurno() {
         Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
+        giocatore.registraTriggersInMano(stato);
         
         System.out.println("\n" + "=".repeat(60));
         System.out.println("🎯 TURNO DI: " + giocatore.getEroe().getNome());
@@ -186,38 +188,52 @@ public class TurnManager {
         stato.getGestoreEffetti().fineTurno();
         stato.getGestoreTrigger().rimuoviTriggerFineTurno();
         
-        // 1. Scarta mano
-        int carteScartatate = giocatore.getMano().size();
-        while (!giocatore.getMano().isEmpty()) {
-            giocatore.scartaCarta(giocatore.getMano().get(0));
+        if (stato.isVittoriaPendente()) {
+            System.out.println("🎊 Turno concluso! Mostra schermata vittoria...");
+            
+            stato.setVictory(true);
+            stato.setGameOver(true);
+            
+            javafx.application.Platform.runLater(() -> {
+                if (grafica.GameController.getInstance() != null) {
+                    grafica.GameController.getInstance().onVittoria();
+                }
+            });
+        }else {
+        	// 1. Scarta mano
+            int carteScartatate = giocatore.getMano().size();
+            while (!giocatore.getMano().isEmpty()) {
+                giocatore.scartaCarta(giocatore.getMano().get(0));
+            }
+            System.out.println("  📤 Scartate " + carteScartatate + " carte");
+            
+            // 2. Ripristina segnalini
+            giocatore.setAttacco(0);
+            giocatore.setGettone(0);
+            System.out.println("  🔄 Segnalini ripristinati");
+            
+            // 3. Pesca 5 carte
+            if (giocatore.getMazzo().getCarte().isEmpty()) {
+                giocatore.getMazzo().getCarte().addAll(giocatore.getScarti().getCarte());
+                giocatore.getScarti().getCarte().clear();
+                Collections.shuffle(giocatore.getMazzo().getCarte());
+            }
+            
+            int carteDaPescare = Math.min(5, giocatore.getMazzo().getCarte().size());
+            for (int i = 0; i < carteDaPescare; i++) {
+                giocatore.pescaCarta();
+            }
+            
+            System.out.println("  🃏 Pescate " + carteDaPescare + " carte");
+            
+            // 4. Prossimo giocatore
+            int prossimoGiocatore = (stato.getGiocatoreCorrente() + 1) % stato.getGiocatori().size();
+            stato.setGiocatoreCorrente(prossimoGiocatore);
+            
+            System.out.println("\n✓ Turno completato");
+            
+            iniziaTurno();
         }
-        System.out.println("  📤 Scartate " + carteScartatate + " carte");
-        
-        // 2. Ripristina segnalini
-        giocatore.setAttacco(0);
-        giocatore.setGettone(0);
-        System.out.println("  🔄 Segnalini ripristinati");
-        
-        // 3. Pesca 5 carte
-        if (giocatore.getMazzo().getCarte().isEmpty()) {
-            giocatore.getMazzo().getCarte().addAll(giocatore.getScarti().getCarte());
-            giocatore.getScarti().getCarte().clear();
-        }
-        
-        int carteDaPescare = Math.min(5, giocatore.getMazzo().getCarte().size());
-        for (int i = 0; i < carteDaPescare; i++) {
-            giocatore.pescaCarta();
-        }
-        
-        System.out.println("  🃏 Pescate " + carteDaPescare + " carte");
-        
-        // 4. Prossimo giocatore
-        int prossimoGiocatore = (stato.getGiocatoreCorrente() + 1) % stato.getGiocatori().size();
-        stato.setGiocatoreCorrente(prossimoGiocatore);
-        
-        System.out.println("\n✓ Turno completato");
-        
-        iniziaTurno();
     }
     
     /**
@@ -241,7 +257,6 @@ public class TurnManager {
                 prossimaFase = FaseTurno.ATTACCA;
                 break;
             case ATTACCA:
-                stato.applicaAttacchi();
                 prossimaFase = FaseTurno.ACQUISTA_CARTE;
                 break;
             case ACQUISTA_CARTE:

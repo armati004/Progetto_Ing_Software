@@ -23,6 +23,7 @@ public class StatoDiGioco {
     private FaseTurno faseCorrente;
     private boolean gameOver = false;
     private boolean victory = false;
+    private boolean vittoriaPendente = false;
 
     // --- Entità di Gioco ---
     private List<Giocatore> giocatori;
@@ -130,6 +131,7 @@ public class StatoDiGioco {
         for (String id : config.getArtiOscureId()) {
             mazzoArtiOscure.add((ArteOscura) CardFactory.creaCarta(id));
         }
+        Collections.shuffle(mazzoArtiOscure);
         Collections.shuffle(mazzoArtiOscure);
 
      // Luoghi
@@ -310,71 +312,23 @@ public class StatoDiGioco {
      * per mostrare la schermata di vittoria
      */
     private void verificaCondizioneVittoria() {
-        // Debug: Stampa stato corrente
-        System.out.println("\n🔍 Verifica Condizione Vittoria:");
-        System.out.println("  Mazzo malvagi vuoto: " + mazzoMalvagi.isEmpty());
-        System.out.println("  Malvagi attivi: " + malvagiAttivi.size());
-        System.out.println("  Ha Horcruxes: " + hasHorcruxes);
-        
-        // Vittoria: Tutti i malvagi sconfitti
         boolean malvagiSconfitti = mazzoMalvagi.isEmpty() && malvagiAttivi.isEmpty();
         
         if (hasHorcruxes) {
-            // Anno >= 4: Servono anche horcrux distrutti
             boolean horcruxDistrutto = mazzoHorcrux.isEmpty() && 
                                        (horcruxAttivi == null || horcruxAttivi.isEmpty());
             
-            System.out.println("  Mazzo horcrux vuoto: " + mazzoHorcrux.isEmpty());
-            System.out.println("  Horcrux attivi: " + (horcruxAttivi != null ? horcruxAttivi.size() : 0));
-            System.out.println("  Malvagi sconfitti: " + malvagiSconfitti);
-            System.out.println("  Horcrux distrutto: " + horcruxDistrutto);
-            
             if (malvagiSconfitti && horcruxDistrutto) {
-                System.out.println("\n🎉 ========================================");
-                System.out.println("🎉 ===== VITTORIA! =====");
-                System.out.println("🎉 ========================================");
-                System.out.println("✅ Tutti i malvagi sono stati sconfitti!");
-                System.out.println("✅ Tutti gli Horcrux sono stati distrutti!");
-                System.out.println("🏆 Gli eroi hanno salvato Hogwarts!");
-                System.out.println("🎉 ========================================\n");
-                
-                setVictory(true);
-                setGameOver(true);
-                
-                // ⭐ FONDAMENTALE: Notifica GameController
-                javafx.application.Platform.runLater(() -> {
-                    System.out.println("📢 Notifica GameController della vittoria...");
-                    if (grafica.GameController.getInstance() != null) {
-                        grafica.GameController.getInstance().onVittoria();
-                    } else {
-                        System.err.println("❌ GameController.getInstance() è null!");
-                    }
-                });
+                System.out.println("\n🎉 VITTORIA! Concludi il turno per continuare");
+                setVittoriaPendente(true);
+                // ⭐ NON chiamare onVittoria() qui
+                // ⭐ NON impostare gameOver qui
             }
         } else {
-            // Anno < 4: Solo malvagi
-            System.out.println("  Malvagi sconfitti: " + malvagiSconfitti);
-            
             if (malvagiSconfitti) {
-                System.out.println("\n🎉 ========================================");
-                System.out.println("🎉 ===== VITTORIA! =====");
-                System.out.println("🎉 ========================================");
-                System.out.println("✅ Tutti i malvagi sono stati sconfitti!");
-                System.out.println("🏆 Gli eroi hanno salvato Hogwarts!");
-                System.out.println("🎉 ========================================\n");
-                
-                setVictory(true);
-                setGameOver(true);
-                
-                // ⭐ FONDAMENTALE: Notifica GameController
-                javafx.application.Platform.runLater(() -> {
-                    System.out.println("📢 Notifica GameController della vittoria...");
-                    if (grafica.GameController.getInstance() != null) {
-                        grafica.GameController.getInstance().onVittoria();
-                    } else {
-                        System.err.println("❌ GameController.getInstance() è null!");
-                    }
-                });
+                System.out.println("\n🎉 VITTORIA! Concludi il turno per continuare");
+                setVittoriaPendente(true);
+                // ⭐ NON chiamare onVittoria() qui
             }
         }
     }
@@ -574,12 +528,17 @@ public class StatoDiGioco {
              
              // Trigger NEMICO_SCONFITTO
              gestoreTrigger.attivaTrigger(TipoTrigger.NEMICO_SCONFITTO, this, this.getGiocatori().get(this.getGiocatoreCorrente()));
+             gestoreTrigger.rimuoviTrigger(malvagio);
+             sconfiggiMalvagio(malvagio);
          }
      }
      
      // Rimuovi i malvagi sconfitti
      for (Malvagio malvagio : malvagiDaRimuovere) {
          malvagiAttivi.remove(malvagio);
+         if (!mazzoMalvagi.isEmpty()) {
+             addMalvagioAttivo();
+         }
      }
      
      // Resetta gli attacchi dopo averli applicati
@@ -699,6 +658,14 @@ public class StatoDiGioco {
 
 	public void setVictory(boolean b) {
 		this.victory = b;
+	}
+	
+	public boolean isVittoriaPendente() {
+	    return vittoriaPendente;
+	}
+
+	public void setVittoriaPendente(boolean vittoriaPendente) {
+	    this.vittoriaPendente = vittoriaPendente;
 	}
 	
 	public int getLuoghiConquistati() {

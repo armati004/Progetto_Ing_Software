@@ -1,5 +1,5 @@
 {
-  "annoCorrente": 1,
+  "annoCorrente": 2,
   "numeroGiocatori": 4,
   "vittoriaUltimaPartita": false,
   "giocatori": [
@@ -16,8 +16,8 @@
       "nomeEroe": "Neville Longbottom"
     }
   ],
-  "timestamp": 1769273527915,
-  "dataOra": "2026-01-24 17:52:07",
-  "nomePartita": "sconfitta_anno_1",
+  "timestamp": 1769275021626,
+  "dataOra": "2026-01-24 18:17:01",
+  "nomePartita": "sconfitta_anno_2",
   "giocatoreCorrente": 0
 }

@@ -58,7 +58,7 @@
       "class": "ArtiOscure",
       "descrizione": "L'eroe attivo perde 1 punto vita e aggiunge 1 segnalino luogo.",
       "costo": 0,
-      "pathImmagine": "/Immagini_carte/Arti_Oscure/Gioco2/Mano_della_gloria2.png",
+      "pathImmagine": "/Immagini_carte/Arti_Oscure/Gioco2/Mano_della_gloria.png",
       "effetti": [
         {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
         {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}

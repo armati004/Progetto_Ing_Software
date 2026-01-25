@@ -1,7 +1,7 @@
 {
   "annoCorrente": 1,
   "numeroGiocatori": 4,
-  "vittoriaUltimaPartita": false,
+  "vittoriaUltimaPartita": true,
   "giocatori": [
     {
       "nomeEroe": "Harry Potter"
@@ -16,8 +16,8 @@
       "nomeEroe": "Neville Longbottom"
     }
   ],
-  "timestamp": 1769273527915,
-  "dataOra": "2026-01-24 17:52:07",
-  "nomePartita": "sconfitta_anno_1",
-  "giocatoreCorrente": 0
+  "timestamp": 1769274163639,
+  "dataOra": "2026-01-24 18:02:43",
+  "nomePartita": "progresso_anno_1",
+  "giocatoreCorrente": 3
 }
