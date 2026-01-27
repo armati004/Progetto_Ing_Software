@@ -100,14 +100,14 @@ public class Giocatore {
 		//una volta ritornate dovra poi scegliere quale vuole aggiungere al mazzo
 	}
 	
-	public void acquistaCarta(List<Carta> mercato, Carta carta) {
+	public void acquistaCarta(List<Carta> mercato, Carta carta, StatoDiGioco stato) {
 	    this.setGettone(gettone - carta.getCosto());
 	    mercato.remove(carta);
 	    
-	    // ⭐ MODIFICATO: NON aggiungere subito agli scarti
-	    // Lascia che il trigger/GameController decida dove va
+	    // ⭐ NUOVO: Segna carta come acquisita permanentemente
+	    stato.segnaCartaAcquisita(carta.getId());
 	    
-	    // ⭐ NUOVO: Traccia carta acquistata
+	    // Traccia carta acquistata questo turno
 	    carteAcquistateQuestoTurno.add(carta);
 	    
 	    System.out.println("💰 Acquistata: " + carta.getNome());

@@ -146,7 +146,7 @@
       "class": "ArtiOscure",
       "descrizione": "Tutti rivelano cima mazzo. Se moneta ≥1, tutti scartano 1 carta e perdono 2 vite.",
       "costo": 0,
-      "pathImmagine": "/Immagini_carte/Arti_Oscure/Gioco3/Oppugno3.png",
+      "pathImmagine": "/Immagini_carte/Arti_Oscure/Gioco3/Oppugno.png",
       "effetti": [
         {"type": "SCARTARE_CARTA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
         {"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
@@ -159,7 +159,7 @@
       "class": "ArtiOscure",
       "descrizione": "L'eroe attivo perde 1 Punto Vita e non può assegnare più di 1 Segnalino Attacco a ciascun Malvagio fino alla fine di questo turno.",
       "costo": 0,
-      "pathImmagine": "/Immagini_carte/Arti_Oscure/Gioco3/Tarantallegra3.png",
+      "pathImmagine": "/Immagini_carte/Arti_Oscure/Gioco3/Tarantallegra.png",
       "effetti": [
         {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
         {"type": "LIMITA_ATTACCO", "target": "TUTTI_I_MALVAGI", "durata": "TEMPORANEO"}

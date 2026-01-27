@@ -30,6 +30,9 @@ public class Anno {
 	// Nel JSON è "aggiuntaArtiOscure"
 	@SerializedName(value = "aggiuntaArtiOscure", alternate = { "nuoveArtiOscure", "darkArtsToAdd" })
 	private List<String> nuoveArtiOscure = new ArrayList<>();
+	
+	@SerializedName(value = "aggiuntaHorcrux", alternate = {"nuoviHorcrux", "horcruxToAdd"})
+	private List<String> nuoviHorcrux = new ArrayList<>();
 
 	// Getters
 	public int getAnno() {
@@ -54,6 +57,10 @@ public class Anno {
 
 	public List<String> getNuoveArtiOscure() {
 		return nuoveArtiOscure;
+	}
+	
+	public List<String> getNuoviHorcrux() {
+	    return nuoviHorcrux;
 	}
 
 }

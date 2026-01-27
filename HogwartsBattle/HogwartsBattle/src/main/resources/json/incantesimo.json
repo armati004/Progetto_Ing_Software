@@ -52,18 +52,25 @@
       "triggers": []
     },
     {
-      "nome": "Wingardium Leviosa",
-      "id": "wingardiumLeviosa1",
-      "class": "Incantesimo",
-      "descrizione": "Guadagni 1 moneta e acquisisci carta dalla cima del mazzo.",
-      "costo": 2,
-      "pathImmagine": "/Immagini_carte/Negozio/Gioco1/Wingardium_Leviosa.png",
-      "effetti": [
-        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
-        {"type": "GUARDA_CARTA_CIMA", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
-      ],
-      "triggers": []
-    }
+    "nome": "Wingardium Leviosa",
+    "id": "wingardiumLeviosa1",
+	"class": "Incantesimo",
+    "descrizione": "Guadagni 1 influenza\\nPuoi mettere gli oggetti che acquisti in cima al mazzo",
+    "costo": 2,
+	"pathImmagine": "/Immagini_carte/Negozio/Gioco1/Wingardium_Leviosa.png",
+    "effetti": [
+        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+    ],
+    "triggers": [
+        {
+            "type": "ACQUISTA_OGGETTO",
+            "durata": "TEMPORANEO",
+            "effectToExecute": [
+                {"type": "OGGETTO_IN_MAZZO", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ]
+        }
+    ]
+	}
   ],
   "gioco2": [
     {
@@ -85,7 +92,7 @@
       "class": "Incantesimo",
       "descrizione": "Rimuovi 1 segnalino nero dal luogo.",
       "costo": 3,
-      "pathImmagine": "/Immagini_carte/Negozio/Gioco2/Finite2.png",
+      "pathImmagine": "/Immagini_carte/Negozio/Gioco2/Finite.png",
       "effetti": [{"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}],
       "triggers": []
     }

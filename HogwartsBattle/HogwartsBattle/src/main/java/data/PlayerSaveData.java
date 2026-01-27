@@ -1,28 +1,23 @@
 package data;
 
-/**
- * Classe che rappresenta i dati salvati di un singolo giocatore
- */
+import java.util.List;
+
 public class PlayerSaveData {
     
     private String nomeEroe;
-    private String idCompetenza; // null se non ha competenza (anni < 6)
+    private String idCompetenza;
     
-    /**
-     * Costruttore vuoto per Gson
-     */
+    // ⭐ NUOVO: Salva ID delle carte nel mazzo
+    private List<String> carteNelMazzo;
+    
     public PlayerSaveData() {
     }
     
-    /**
-     * Costruttore
-     */
-    public PlayerSaveData(String nomeEroe, String idCompetenza) {
+    public PlayerSaveData(String nomeEroe, String idCompetenza, List<String> carteNelMazzo) {
         this.nomeEroe = nomeEroe;
         this.idCompetenza = idCompetenza;
+        this.carteNelMazzo = carteNelMazzo;
     }
-    
-    // Getters e Setters
     
     public String getNomeEroe() {
         return nomeEroe;
@@ -40,11 +35,21 @@ public class PlayerSaveData {
         this.idCompetenza = idCompetenza;
     }
     
+    // ⭐ NUOVO: Getter/Setter carte
+    public List<String> getCarteNelMazzo() {
+        return carteNelMazzo;
+    }
+    
+    public void setCarteNelMazzo(List<String> carteNelMazzo) {
+        this.carteNelMazzo = carteNelMazzo;
+    }
+    
     @Override
     public String toString() {
         return "PlayerSaveData{" +
                "eroe='" + nomeEroe + '\'' +
                (idCompetenza != null ? ", competenza='" + idCompetenza + '\'' : "") +
+               ", carte=" + (carteNelMazzo != null ? carteNelMazzo.size() : 0) +
                '}';
     }
 }

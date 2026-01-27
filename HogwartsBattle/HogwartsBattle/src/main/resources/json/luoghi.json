@@ -43,8 +43,8 @@
       "id": "cameraDeiSegreti3",
       "numero": 3,
       "path-img": "/Immagini_carte/Luoghi/Gioco2/Camera_dei_Segreti.png",
-      "nDarkEvents": null,
-      "marchiNeriMax": null,
+      "nDarkEvents": 2,
+      "marchiNeriMax": 5,
       "effettoEntrata": null
     }
   ],
@@ -214,8 +214,9 @@
       "effettoEntrata": {
         "steps": [
           {
-            "type": "allHeroesLoseLife",
+            "type": "PERDERE_VITA",
             "qta": 2,
+			"target": TUTTI_GLI_EROI,
             "durata": "ISTANTANEO"
           },
           {

@@ -20,6 +20,7 @@ public class GameConfig {
     private List<String> malvagiId = new ArrayList<>();
     private List<String> artiOscureId = new ArrayList<>();
     private List<String> luoghiId = new ArrayList<>();
+    private List<String> horcruxId = new ArrayList<>();
     
     // ✅ Lista ID eroi disponibili per questo anno
     private List<String> eroiDisponibiliId = new ArrayList<>();
@@ -203,7 +204,15 @@ public class GameConfig {
         this.luoghiId = luoghiId;
     }
 
-    public Boolean getContieneDadi() {
+    public List<String> getHorcruxId() {
+		return horcruxId;
+	}
+
+	public void setHorcruxId(List<String> horcruxId) {
+		this.horcruxId = horcruxId;
+	}
+
+	public Boolean getContieneDadi() {
         return contieneDadi;
     }
 

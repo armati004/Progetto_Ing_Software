@@ -1,56 +1,88 @@
 {
-    "dadi":[
+    "dadi": [
+        {
+            "nome": "Dado Grifondoro",
+            "id": "dadoGrifondoro",
+            "path-img": "/Immagini_carte/Dadi/dadoGrifondoro.png",
+            "opzioni": [
+                {
+                    "type": "GUADAGNARE_INFLUENZA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "PESCARE_CARTA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_ATTACCO",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_VITA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_INFLUENZA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_INFLUENZA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                }
+            ]
+        },
         {
             "nome": "Dado Serpeverde",
             "id": "dadoSerpeverde",
             "path-img": "/Immagini_carte/Dadi/dadoSerpeverde.png",
-            "triggers":[
+            "opzioni": [
                 {
-                    "type": "DADO_TIRATO",
-                    "effectToExecute":[
-                        {
-                            "type": "RANDOM",
-                            "target": "EROE_ATTIVO",
-                            "options":[
-                                {
-                                    "type": "PESCARE_CARTA",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "GUADAGNARE_VITA",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "GUADAGNARE_INFLUENZA",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "GUADAGNARE_ATTACCO",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "GUADAGNARE_ATTACCO",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "GUADAGNARE_ATTACCO",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "PESCARE_CARTA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_VITA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_INFLUENZA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_ATTACCO",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_ATTACCO",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_ATTACCO",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
                 }
             ]
         },
@@ -58,109 +90,42 @@
             "nome": "Dado Corvonero",
             "id": "dadoCorvonero",
             "path-img": "/Immagini_carte/Dadi/dadoCorvonero.png",
-            "triggers":[
+            "opzioni": [
                 {
-                    "type": "DADO_TIRATO",
-                    "durata": "ISTANTANEO",
-                    "effectToExecute":[
-                        {
-                            "type": "RANDOM",
-                            "target": "EROE_ATTIVO",
-                            "options":[
-                                {
-                                    "type": "GUADAGNARE_VITA",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "GUADAGNARE_INFLUENZA",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "GUADAGNARE_ATTACCO",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "PESCARE_CARTA",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "PESCARE_CARTA",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "PESCARE_CARTA",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "nome": "Dado Grifondoro",
-            "id": "dadoGrifondoro",
-            "path-img": "/Immagini_carte/Dadi/dadoGrifondoro.png",
-            "triggers":[
+                    "type": "GUADAGNARE_VITA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
                 {
-                    "type": "DADO_TIRATO",
-                    "durata": "ISTANTANEO",
-                    "effectToExecute":[
-                        {
-                            "type": "RANDOM",
-                            "target": "EROE_ATTIVO",
-                            "options":[
-                                {
-                                    "type": "GUADAGNARE_INFLUENZA",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "PESCARE_CARTA",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "GUADAGNARE_ATTACCO",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "GUADAGNARE_VITA",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "GUADAGNARE_INFLUENZA",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "GUADAGNARE_INFLUENZA",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "GUADAGNARE_INFLUENZA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_ATTACCO",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "PESCARE_CARTA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "PESCARE_CARTA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "PESCARE_CARTA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
                 }
             ]
         },
@@ -168,54 +133,42 @@
             "nome": "Dado Tassorosso",
             "id": "dadoTassorosso",
             "path-img": "/Immagini_carte/Dadi/dadoTassorosso.png",
-            "triggers":[
+            "opzioni": [
                 {
-                    "type": "DADO_TIRATO",
-                    "durata": "ISTANTANEO",
-                    "effectToExecute":[
-                        {
-                            "type": "RANDOM",
-                            "target": "EROE_ATTIVO",
-                            "options":[
-                                {
-                                    "type": "GUADAGNARE_VITA",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "GUADAGNARE_ATTACCO",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "PESCARE_CARTA",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "GUADAGNARE_VITA",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "GUADAGNARE_VITA",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                },
-                                {
-                                    "type": "GUADAGNARE_INFLUENZA",
-                                    "qta": 1,
-                                    "target": "TUTTI_GLI_EROI",
-                                    "durata": "ISTANTANEO"
-                                }
-                            ]
-                        }
-                    ]
+                    "type": "GUADAGNARE_VITA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_ATTACCO",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "PESCARE_CARTA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_VITA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_VITA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_INFLUENZA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
                 }
             ]
         }

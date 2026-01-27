@@ -8,7 +8,7 @@
       "distruggi": "Carta o Punto Vita",
       "Descrizione-ricompensa": "Se giochi con due o più alleati, qualsiasi eroe guadagna 2 Punti Vita",
       "path-img": "/Immagini_carte/Horcrux/Diario.png",
-      "destroyCondition": [
+      "segnaliniRichiesti": [
         "VITA",
         "CARTA"
       ],
@@ -34,7 +34,7 @@
       "distruggi": "Potere o Influenza", 
       "Descrizione-ricompensa": "Una volta per turno, puoi scartare due carte. Se lo fai, rimuovi 1 Marchio Nero dalla posizione",
       "path-img": "/Immagini_carte/Horcrux/Anello.png",
-      "destroyCondition": [
+      "segnaliniRichiesti": [
         "ATTACCO",
         "INFLUENZA"
       ],
@@ -65,7 +65,7 @@
       "distruggi": "Attacco o Punto VIta",
       "Descrizione-ricompensa": "Una volta per turno, puoi scartare una carta. Se fai rotolare il dado della casa Serpeverde.",
       "path-img": "/Immagini_carte/Horcrux/Medaglione.png",
-      "destroyCondition": [
+      "segnaliniRichiesti": [
         "ATTACCO",
         "VITA"
       ],
@@ -89,7 +89,7 @@
       "distruggi": "Punto Vita o Influenza",
       "Descrizione-ricompensa": "Una volta per turno, puoi scartare una carta. Se lo fai, tira il dado della casa Tassorosso",
       "path-img": "/Immagini_carte/Horcrux/Coppa.png",
-      "destroyCondition": [
+      "segnaliniRichiesti": [
         "VITA",
         "INFLUENZA"
       ],
@@ -110,7 +110,7 @@
       "distruggi": "Carta o Attacco",
       "Descrizione-ricompensa": "Una volta per turno, puoi scartare una carta. Se lo fai, tira il dado della casa Corvonero",
       "path-img": "/Immagini_carte/Horcrux/Diadema.png",
-      "destroyCondition": [
+      "segnaliniRichiesti": [
         "CARTA",
         "ATTACCO"
       ],
@@ -138,7 +138,7 @@
       "distruggi": "Carta o Attacco o Punto Vita",
       "rewardDescription": "Una volta per partita, puoi scartarlo per rimuoverne 3 Marchi Neri dalla posizione",
       "path-img": "/Immagini_carte/Horcrux/Nagini.png",
-      "destroyCondition": [
+      "segnaliniRichiesti": [
         "ATTACCO",
         "CARTA",
         "VITA"

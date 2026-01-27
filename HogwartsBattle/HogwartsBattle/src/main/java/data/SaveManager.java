@@ -2,6 +2,8 @@ package data;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import carte.Carta;
 import gioco.Giocatore;
 import gioco.StatoDiGioco;
 
@@ -10,7 +12,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -35,16 +39,42 @@ public class SaveManager {
      */
     public static boolean salvaPartita(StatoDiGioco stato, String nomeSalvataggio) {
         try {
-            // Crea directory saves se non esiste
             createSaveDirectory();
             
-            // Estrai dati dai giocatori
+            // ⭐ NUOVO: Se non è autosave, genera nome unico
+            String nomeFinal = nomeSalvataggio;
+            if (!nomeSalvataggio.equals(DEFAULT_SAVE_NAME)) {
+                nomeFinal = generaNomeUnico(nomeSalvataggio);
+            }
+            
+            // Estrai dati giocatori
             List<PlayerSaveData> playerData = new ArrayList<>();
             for (Giocatore g : stato.getGiocatori()) {
                 String nomeEroe = g.getEroe().getNome();
                 String idCompetenza = g.getCompetenza() != null ? g.getCompetenza().getId() : null;
-                playerData.add(new PlayerSaveData(nomeEroe, idCompetenza));
+                
+                // ⭐ NUOVO: Salva carte acquisite
+                List<String> carteIds = new ArrayList<>();
+                carteIds.addAll(getCarteIds(g.getMazzo().getCarte()));
+                carteIds.addAll(getCarteIds(g.getScarti().getCarte()));
+                carteIds.addAll(getCarteIds(g.getMano()));
+                
+                PlayerSaveData psd = new PlayerSaveData(nomeEroe, idCompetenza, carteIds);
+                psd.setCarteNelMazzo(carteIds); // ⭐ Salva IDs
+                playerData.add(psd);
             }
+            
+            // ⭐ NUOVO: Aggiungi carte acquisite globali
+            List<String> carteNegozio = new ArrayList<>();
+            if (stato.getMazzoNegozio() != null) {
+                carteNegozio.addAll(getCarteIds(new ArrayList<>(stato.getMazzoNegozio())));
+            }
+            if (stato.getMercato() != null) {
+                carteNegozio.addAll(getCarteIds(stato.getMercato()));
+            }
+
+            //saveData.setCarteNegozioRimaste(carteNegozio);
+            System.out.println("💾 Salvate " + carteNegozio.size() + " carte del negozio");
             
             // Crea oggetto salvataggio
             GameSaveData saveData = new GameSaveData(
@@ -53,30 +83,59 @@ public class SaveManager {
                 playerData,
                 stato.getGiocatoreCorrente(),
                 stato.isVictory(),
-                nomeSalvataggio
+                nomeFinal,
+                new ArrayList<>(carteNegozio) // ⭐ NUOVO parametro
             );
             
-            // Serializza in JSON
+            // Serializza e salva
             String json = gson.toJson(saveData);
+            Path filePath = Paths.get(SAVE_DIRECTORY, nomeFinal + SAVE_FILE_EXTENSION);
+            Files.writeString(filePath, json);
             
-            // Scrivi su file
-            String filename = SAVE_DIRECTORY + "/" + nomeSalvataggio + SAVE_FILE_EXTENSION;
-            try (FileWriter writer = new FileWriter(filename)) {
-                writer.write(json);
-            }
-            
-            System.out.println("💾 Partita salvata: " + filename);
-            System.out.println("   Anno: " + saveData.getAnnoCorrente());
-            System.out.println("   Giocatori: " + saveData.getNumeroGiocatori());
-            System.out.println("   Data: " + saveData.getDataOra());
-            
+            System.out.println("💾 Partita salvata: " + nomeFinal);
             return true;
             
-        } catch (IOException e) {
-            System.err.println("❌ Errore nel salvataggio: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("❌ Errore salvataggio: " + e.getMessage());
             e.printStackTrace();
             return false;
         }
+    }
+
+    /**
+     * ⭐ NUOVO METODO: Genera nome unico per salvataggio
+     */
+    private static String generaNomeUnico(String nomeBase) {
+        Path filePath = Paths.get(SAVE_DIRECTORY, nomeBase + SAVE_FILE_EXTENSION);
+        
+        // Se file non esiste, usa nome base
+        if (!Files.exists(filePath)) {
+            return nomeBase;
+        }
+        
+        // Altrimenti aggiungi numero progressivo
+        int counter = 1;
+        String nomeNuovo;
+        do {
+            nomeNuovo = nomeBase + "_" + counter;
+            filePath = Paths.get(SAVE_DIRECTORY, nomeNuovo + SAVE_FILE_EXTENSION);
+            counter++;
+        } while (Files.exists(filePath));
+        
+        return nomeNuovo;
+    }
+
+    /**
+     * ⭐ HELPER: Estrae IDs da lista carte
+     */
+    private static List<String> getCarteIds(List<Carta> carte) {
+        List<String> ids = new ArrayList<>();
+        for (Carta c : carte) {
+            if (c != null && c.getId() != null) {
+                ids.add(c.getId());
+            }
+        }
+        return ids;
     }
     
     /**

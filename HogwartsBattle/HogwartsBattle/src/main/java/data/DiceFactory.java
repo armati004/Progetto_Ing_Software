@@ -97,12 +97,12 @@ public class DiceFactory {
             throw new IllegalArgumentException("Dado non trovato con ID: " + idDado);
         }
         
-        // Crea una nuova istanza con tutti i dati
+        // ⭐ AGGIORNATO: Nuovo costruttore
         return new Dado(
             data.getNome(),
             data.getId(),
             data.getPathImg(),
-            data.getTriggers()
+            data.getOpzioni()  // ⭐ CAMBIATO da getTriggers()
         );
     }
     

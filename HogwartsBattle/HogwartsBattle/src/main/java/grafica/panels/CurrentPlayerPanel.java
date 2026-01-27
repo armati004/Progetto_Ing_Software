@@ -76,7 +76,55 @@ public class CurrentPlayerPanel extends HBox {
         section.setPadding(new Insets(15));
         section.setAlignment(Pos.TOP_CENTER);
         
-        Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
+     // ⭐ DIFESA 1: Verifica stato
+        if (stato == null) {
+            System.err.println("❌ CurrentPlayerPanel: stato è NULL!");
+            Label errorLabel = new Label("⚠️ Errore: stato non valido");
+            errorLabel.setTextFill(Color.RED);
+            errorLabel.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+            section.getChildren().add(errorLabel);
+            return section;
+        }
+        
+        // ⭐ DIFESA 2: Verifica lista giocatori
+        if (stato.getGiocatori() == null) {
+            System.err.println("❌ CurrentPlayerPanel: lista giocatori è NULL!");
+            Label errorLabel = new Label("⚠️ Errore: giocatori non validi");
+            errorLabel.setTextFill(Color.RED);
+            section.getChildren().add(errorLabel);
+            return section;
+        }
+        
+        if (stato.getGiocatori().isEmpty()) {
+            System.err.println("❌ CurrentPlayerPanel: lista giocatori vuota!");
+            Label errorLabel = new Label("⚠️ Errore: nessun giocatore");
+            errorLabel.setTextFill(Color.RED);
+            section.getChildren().add(errorLabel);
+            return section;
+        }
+        
+        int indiceGiocatore = stato.getGiocatoreCorrente();
+        
+        // ⭐ DIFESA 3: Verifica indice valido
+        if (indiceGiocatore < 0 || indiceGiocatore >= stato.getGiocatori().size()) {
+            System.err.println("❌ CurrentPlayerPanel: indice non valido: " + indiceGiocatore + 
+                             " (max: " + (stato.getGiocatori().size() - 1) + ")");
+            Label errorLabel = new Label("⚠️ Errore: giocatore non valido");
+            errorLabel.setTextFill(Color.RED);
+            section.getChildren().add(errorLabel);
+            return section;
+        }
+        
+        // ⭐ ORA È SICURO
+        Giocatore giocatore = stato.getGiocatori().get(indiceGiocatore);
+        
+        if (giocatore == null || giocatore.getEroe() == null) {
+            System.err.println("❌ CurrentPlayerPanel: giocatore o eroe NULL!");
+            Label errorLabel = new Label("⚠️ Errore: dati giocatore");
+            errorLabel.setTextFill(Color.RED);
+            section.getChildren().add(errorLabel);
+            return section;
+        }
         
         // Nome eroe
         Label heroNameLabel = new Label("⭐ " + giocatore.getEroe().getNome());
@@ -102,7 +150,13 @@ public class CurrentPlayerPanel extends HBox {
         influenceLabel.setTextFill(Color.web("#FFD700"));
         influenceLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         
-        statsBox.getChildren().addAll(healthLabel, attackLabel, influenceLabel);
+     // ⭐ NUOVO: Carte nel mazzo
+        int carteNelMazzo = giocatore.getMazzo().getCarte().size();
+        Label deckLabel = new Label("📚 Carte nel mazzo: " + carteNelMazzo);
+        deckLabel.setTextFill(Color.web("#66CCFF"));
+        deckLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+
+        statsBox.getChildren().addAll(healthLabel, attackLabel, influenceLabel, deckLabel);
         
         // Fase corrente
         Label faseLabel = new Label("Fase: " + getNomeFase(stato.getFaseCorrente()));

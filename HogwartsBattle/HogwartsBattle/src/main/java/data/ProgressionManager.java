@@ -2,10 +2,13 @@ package data;
 
 import gioco.Giocatore;
 import gioco.StatoDiGioco;
+import carte.Carta;
 import carte.Eroe;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Manager per la progressione attraverso gli anni/livelli
@@ -46,45 +49,6 @@ public class ProgressionManager {
      * @param prossimoAnno Prossimo anno
      * @return Nuova lista giocatori per il prossimo anno
      */
-    public static List<Giocatore> preparaGiocatoriProssimoAnno(List<Giocatore> giocatoriPrecedenti, int prossimoAnno) {
-        List<Giocatore> nuoviGiocatori = new ArrayList<>();
-        
-        System.out.println("\n🎓 ========================================");
-        System.out.println("🎓 AVANZAMENTO ANNO " + prossimoAnno);
-        System.out.println("🎓 ========================================");
-        
-        for (Giocatore vecchioG : giocatoriPrecedenti) {
-            // Ricrea l'eroe per il nuovo anno
-            String nomeEroe = vecchioG.getEroe().getNome();
-            Eroe nuovoEroe = HeroFactory.creaEroe(nomeEroe, prossimoAnno);
-            
-            // Crea nuovo giocatore
-            Giocatore nuovoG = new Giocatore(nuovoEroe);
-            
-            // Se aveva una competenza, mantienila
-            if (vecchioG.getCompetenza() != null && prossimoAnno >= 6) {
-                nuovoG.setCompetenza(vecchioG.getCompetenza());
-                System.out.println("  📚 " + nomeEroe + " mantiene: " + 
-                                 vecchioG.getCompetenza().getNome());
-            } else {
-                System.out.println("  🎓 " + nomeEroe + " avanza all'anno " + prossimoAnno);
-            }
-            
-            nuoviGiocatori.add(nuovoG);
-        }
-        
-        System.out.println("🎓 ========================================\n");
-        
-        return nuoviGiocatori;
-    }
-    
-    /**
-     * Ricrea i giocatori da un salvataggio
-     * 
-     * @param saveData Dati del salvataggio
-     * @param anno Anno per cui creare gli eroi
-     * @return Lista giocatori ricreati
-     */
     public static List<Giocatore> ricreaGiocatoriDaSalvataggio(GameSaveData saveData, int anno) {
         List<Giocatore> giocatori = new ArrayList<>();
         
@@ -104,8 +68,28 @@ public class ProgressionManager {
                 } catch (Exception e) {
                     System.err.println("  ⚠️ Errore caricamento competenza: " + playerData.getIdCompetenza());
                 }
+            }
+            
+            // ⭐ NUOVO: Ricarica carte acquisite
+            if (playerData.getCarteNelMazzo() != null && !playerData.getCarteNelMazzo().isEmpty()) {
+                // Rimuovi carte starter pack (già aggiunte da Giocatore costruttore)
+                giocatore.getMazzo().getCarte().clear();
+                giocatore.getScarti().getCarte().clear();
+                
+                // Aggiungi carte salvate
+                for (String cartaID : playerData.getCarteNelMazzo()) {
+                    try {
+                        Carta carta = CardFactory.creaCarta(cartaID);
+                        giocatore.getMazzo().aggiungiCarta(carta);
+                    } catch (Exception e) {
+                        System.err.println("  ⚠️ Errore caricamento carta: " + cartaID);
+                    }
+                }
+                
+                System.out.println("  ✓ " + playerData.getNomeEroe() + " - " + 
+                                 playerData.getCarteNelMazzo().size() + " carte caricate");
             } else {
-                System.out.println("  ✓ " + playerData.getNomeEroe());
+                System.out.println("  ✓ " + playerData.getNomeEroe() + " - carte starter pack");
             }
             
             giocatori.add(giocatore);
@@ -113,6 +97,76 @@ public class ProgressionManager {
         
         return giocatori;
     }
+
+    // ============================================
+    // MODIFICA 4: ProgressionManager.preparaGiocatoriProssimoAnno()
+    // ============================================
+
+    public static List<Giocatore> preparaGiocatoriProssimoAnno(
+    	    List<Giocatore> giocatoriPrecedenti, 
+    	    int prossimoAnno,
+    	    StatoDiGioco stato) {  // ⭐ NUOVO parametro
+    	    
+    	    List<Giocatore> nuoviGiocatori = new ArrayList<>();
+    	    
+    	    // ⭐ NUOVO: Raccogli tutte le carte dai giocatori precedenti
+    	    Set<String> carteGiocatori = new HashSet<>();
+    	    for (Giocatore vecchioG : giocatoriPrecedenti) {
+    	        // Carte nel mazzo
+    	        for (Carta c : vecchioG.getMazzo().getCarte()) {
+    	            carteGiocatori.add(c.getId());
+    	        }
+    	        // Carte negli scarti
+    	        for (Carta c : vecchioG.getScarti().getCarte()) {
+    	            carteGiocatori.add(c.getId());
+    	        }
+    	        // Carte in mano
+    	        for (Carta c : vecchioG.getMano()) {
+    	            carteGiocatori.add(c.getId());
+    	        }
+    	    }
+    	    
+    	    // ⭐ NUOVO: Aggiorna set carte acquisite nello stato
+    	    stato.setCarteAcquisiteDaiGiocatori(carteGiocatori);
+    	    
+    	    System.out.println("📌 Carte nei mazzi giocatori: " + carteGiocatori.size());
+    	    
+    	 // Crea nuovi giocatori per il prossimo anno
+    	    for (Giocatore vecchioG : giocatoriPrecedenti) {
+    	        // Crea nuovo eroe per il prossimo anno
+    	        String nomeEroe = vecchioG.getEroe().getNome();
+    	        Eroe nuovoEroe = HeroFactory.creaEroe(nomeEroe, prossimoAnno);
+    	        Giocatore nuovoGiocatore = new Giocatore(nuovoEroe);
+    	        
+    	        // Mantieni la competenza se presente
+    	        if (vecchioG.getCompetenza() != null) {
+    	            nuovoGiocatore.setCompetenza(vecchioG.getCompetenza());
+    	        }
+    	        
+    	        // Trasferisci le carte dal vecchio mazzo
+    	        nuovoGiocatore.getMazzo().getCarte().clear();
+    	        nuovoGiocatore.getScarti().getCarte().clear();
+    	        
+    	        // Aggiungi tutte le carte del vecchio giocatore
+    	        for (Carta c : vecchioG.getMazzo().getCarte()) {
+    	            nuovoGiocatore.getMazzo().aggiungiCarta(c);
+    	        }
+    	        for (Carta c : vecchioG.getScarti().getCarte()) {
+    	            nuovoGiocatore.getMazzo().aggiungiCarta(c);
+    	        }
+    	        for (Carta c : vecchioG.getMano()) {
+    	            nuovoGiocatore.getMazzo().aggiungiCarta(c);
+    	        }
+    	        
+    	        nuoviGiocatori.add(nuovoGiocatore);
+    	        
+    	        System.out.println("✅ " + nomeEroe + " pronto per anno " + prossimoAnno + 
+    	                         " (carte: " + nuovoGiocatore.getMazzo().getCarte().size() + ")");
+    	    }
+
+    	    return nuoviGiocatori;
+    	}
+
     
     /**
      * Gestisce la vittoria e l'avanzamento automatico

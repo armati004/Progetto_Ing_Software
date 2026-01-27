@@ -9,6 +9,8 @@ import carte.*;
 import gioco.Giocatore;
 import gioco.StatoDiGioco;
 import gioco.InputController;
+import grafica.Entita;
+import grafica.GameController;
 import grafica.panels.MessagePanel;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -84,24 +86,24 @@ public class EsecutoreEffetti {
 
 		// === SCELTE ===
 		case SCELTA:
-			gestisciScelta(effetto, stato, giocatore);
+			scelta(effetto, stato, giocatore);
 			break;
 		case SCELTA_MULTIPLA:
-			gestisciSceltaMultipla(effetto, stato, giocatore);
+			sceltaPerTuttiIGiocatori(effetto.getOpzioni().get(0), effetto.getOpzioni().get(1),stato);
 			break;
 
 		// === DADI ===
 		case DADO_GRIFONDORO:
-			tiraDado(effetto, stato, giocatore, "grifondoro");
+			tiraDado(stato, giocatore);
 			break;
 		case DADO_SERPEVERDE:
-			tiraDado(effetto, stato, giocatore, "serpeverde");
+			tiraDado(stato, giocatore);
 			break;
 		case DADO_CORVONERO:
-			tiraDado(effetto, stato, giocatore, "corvonero");
+			tiraDado(stato, giocatore);
 			break;
 		case DADO_TASSOROSSO:
-			tiraDado(effetto, stato, giocatore, "tassorosso");
+			tiraDado(stato, giocatore);
 			break;
 		case DADO_MALVAGIO:
 			tiraDadoMalvagio(effetto, stato, giocatore);
@@ -380,34 +382,31 @@ public class EsecutoreEffetti {
 	}
 
 	private static void scartareCarta(Effetto effetto, StatoDiGioco stato, Giocatore giocatore) {
-		if (effetto.getQta() == null || effetto.getQta() <= 0)
-			return;
-
-		List<Giocatore> bersagli = determinaBersagli(effetto, stato, giocatore);
-
-		for (Giocatore g : bersagli) {
-			int carteScartate = 0;
-
-			for (int i = 0; i < effetto.getQta() && !g.getMano().isEmpty(); i++) {
-				// ⭐ USA InputController per far scegliere la carta
-				Carta carta = InputController.scegliCarta(new ArrayList<>(g.getMano()), "Scarta Carta",
-						"Scegli una carta da scartare (" + (i + 1) + "/" + effetto.getQta() + ")");
-
-				if (carta != null) {
-					g.getMano().remove(carta);
-					g.getScarti().aggiungiCarta(carta);
-					carteScartate++;
-					System.out.println("🗑️ " + g.getEroe().getNome() + " scarta: " + carta.getNome());
-
-					stato.getGestoreTrigger().attivaTrigger(TipoTrigger.AUTO_SCARTO, stato, g);
-				}
-			}
-
-			if (carteScartate > 0) {
-				stato.getGestoreTrigger().attivaTrigger(TipoTrigger.SCARTA_CARTA_MALUS, stato, g);
-				stato.getGestoreTrigger().attivaTrigger(TipoTrigger.SCARTA_CARTA_BONUS, stato, g);
-			}
-		}
+		int qta = effetto.getQta() != null ? effetto.getQta() : 1;
+	    
+	    if (giocatore.getMano().isEmpty()) {
+	        System.out.println("⚠️ " + giocatore.getEroe().getNome() + " non ha carte da scartare");
+	        return;
+	    }
+	    
+	    // ⭐ MODIFICATO: Passa giocatore per mostrare nome
+	    InputController.getInstance().mostraSelezioneCartePerScartare(
+	        giocatore,           // ⭐ Giocatore (per nome)
+	        TipoEffetto.SCARTARE_CARTA,
+	        qta,
+	        carteSelezionate -> {
+	            for (Carta c : carteSelezionate) {
+	                giocatore.getMano().remove(c);
+	                giocatore.getScarti().aggiungiCarta(c);
+	                System.out.println("  📤 " + giocatore.getEroe().getNome() + 
+	                                 " scarta: " + c.getNome());
+	            }
+	            
+	            if (grafica.GameController.getInstance() != null) {
+	                grafica.GameController.getInstance().getGameUI().aggiorna();
+	            }
+	        }
+	    );
 	}
 
 	private static void scartareTipoCarta(Effetto effetto, StatoDiGioco stato, Giocatore giocatore,
@@ -502,7 +501,7 @@ public class EsecutoreEffetti {
 		}
 	}
 
-	private static void gestisciScelta(Effetto effetto, StatoDiGioco stato, Giocatore giocatore) {
+	private static void scelta(Effetto effetto, StatoDiGioco stato, Giocatore giocatore) {
 		List<Effetto> opzioni = effetto.getOpzioni();
 
 		if (opzioni == null || opzioni.size() < 2) {
@@ -513,10 +512,105 @@ public class EsecutoreEffetti {
 		Effetto opzioneA = opzioni.get(0);
 		Effetto opzioneB = opzioni.get(1);
 
-		// ⭐ NUOVO: Verifica se opzione A è possibile
+		// ⭐ NUOVO: Controlla se scelta riguarda tutti i giocatori
+		if (effetto.getTarget() == BersaglioEffetto.TUTTI_GLI_EROI) {
+			// Ogni giocatore deve scegliere individualmente
+			sceltaPerTuttiIGiocatori(opzioneA, opzioneB, stato);
+		} else {
+			// Scelta per un solo giocatore (normale)
+			sceltaPerSingoloGiocatore(opzioneA, opzioneB, stato, giocatore);
+		}
+	}
+
+	/**
+	 * Gestisce scelta quando ogni giocatore deve decidere individualmente
+	 */
+	private static void sceltaPerTuttiIGiocatori(Effetto opzioneA, Effetto opzioneB, StatoDiGioco stato) {
+		System.out.println("🎲 Scelta multipla: ogni giocatore sceglie per sé");
+
+		// ⭐ NUOVO: Coda di giocatori che devono scegliere
+		List<Giocatore> giocatoriDaScegliere = new ArrayList<>(stato.getGiocatori());
+
+		// Mostra dialog per il primo giocatore
+		mostraDialogSceltaSequenziale(0, giocatoriDaScegliere, opzioneA, opzioneB, stato);
+	}
+
+	/**
+	 * Mostra dialog di scelta in sequenza per ogni giocatore
+	 */
+	private static void mostraDialogSceltaSequenziale(int indiceCorrente, List<Giocatore> giocatori, Effetto opzioneA,
+			Effetto opzioneB, StatoDiGioco stato) {
+		if (indiceCorrente >= giocatori.size()) {
+			// Tutti hanno scelto
+			System.out.println("✅ Tutti i giocatori hanno fatto la loro scelta");
+
+			// Aggiorna UI
+			if (grafica.GameController.getInstance() != null) {
+				grafica.GameController.getInstance().getGameUI().aggiorna();
+			}
+			return;
+		}
+
+		Giocatore giocatoreCorrente = giocatori.get(indiceCorrente);
+
+		// Verifica se opzione A è possibile per questo giocatore
+		boolean opzioneAPossibile = verificaSceltaPossibile(opzioneA, giocatoreCorrente);
+
+		if (!opzioneAPossibile) {
+			// Auto-esegue opzione B
+			System.out.println(
+					"⚡ " + giocatoreCorrente.getEroe().getNome() + ": opzione 1 impossibile, eseguo opzione 2");
+			eseguiEffetto(opzioneB, stato, giocatoreCorrente);
+
+			// Prossimo giocatore
+			mostraDialogSceltaSequenziale(indiceCorrente + 1, giocatori, opzioneA, opzioneB, stato);
+			return;
+		}
+
+		// ⭐ MOSTRA DIALOG per questo giocatore specifico
+		javafx.application.Platform.runLater(() -> {
+			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+			// ⭐ IMPORTANTE: Nome del giocatore nel titolo E header
+			alert.setTitle("Scelta - " + giocatoreCorrente.getEroe().getNome());
+			alert.setHeaderText(giocatoreCorrente.getEroe().getNome() + ", fai la tua scelta:");
+
+			String descrizioneA = getDescrizioneEffetto(opzioneA);
+			String descrizioneB = getDescrizioneEffetto(opzioneB);
+
+			alert.setContentText("Opzione 1: " + descrizioneA + "\n\n" + "Opzione 2: " + descrizioneB);
+
+			ButtonType btnOpzioneA = new ButtonType("Opzione 1");
+			ButtonType btnOpzioneB = new ButtonType("Opzione 2");
+
+			alert.getButtonTypes().setAll(btnOpzioneA, btnOpzioneB);
+
+			// ⭐ IMPORTANTE: Dialog MODALE (blocca fino a risposta)
+			alert.showAndWait().ifPresent(risposta -> {
+				if (risposta == btnOpzioneA) {
+					System.out.println("✓ " + giocatoreCorrente.getEroe().getNome() + " sceglie opzione 1");
+					eseguiEffetto(opzioneA, stato, giocatoreCorrente);
+				} else {
+					System.out.println("✓ " + giocatoreCorrente.getEroe().getNome() + " sceglie opzione 2");
+					eseguiEffetto(opzioneB, stato, giocatoreCorrente);
+				}
+
+				// ⭐ RICORSIONE: Mostra dialog per prossimo giocatore
+				mostraDialogSceltaSequenziale(indiceCorrente + 1, giocatori, opzioneA, opzioneB, stato);
+			});
+		});
+	}
+
+	/**
+	 * Gestisce scelta per un singolo giocatore (normale)
+	 */
+	private static void sceltaPerSingoloGiocatore(Effetto opzioneA, Effetto opzioneB, StatoDiGioco stato,
+			Giocatore giocatore) {
+		// Verifica se opzione A è possibile
 		boolean opzioneAPossibile = verificaSceltaPossibile(opzioneA, giocatore);
 
 		if (!opzioneAPossibile) {
+			// Auto-esegue opzione B
 			System.out.println("⚡ Scelta automatica: opzione 1 impossibile, eseguo opzione 2");
 
 			if (grafica.GameController.getInstance() != null) {
@@ -529,19 +623,8 @@ public class EsecutoreEffetti {
 			return;
 		}
 
-		// ⭐ MODIFICATO: Mostra dialog con nome giocatore
+		// Mostra dialog normale
 		mostraDialogScelta(opzioneA, opzioneB, stato, giocatore);
-	}
-
-	private static void gestisciSceltaMultipla(Effetto effetto, StatoDiGioco stato, Giocatore giocatore) {
-		if (effetto.getOpzioni() == null || effetto.getOpzioni().isEmpty()) {
-			System.err.println("⚠️ Scelta multipla senza opzioni");
-			return;
-		}
-
-		for (Effetto opzione : effetto.getOpzioni()) {
-			eseguiEffetto(opzione, stato, giocatore);
-		}
 	}
 
 	private static void mostraDialogScelta(Effetto opzioneA, Effetto opzioneB, StatoDiGioco stato,
@@ -613,26 +696,109 @@ public class EsecutoreEffetti {
 		}
 	}
 
-	private static void tiraDado(Effetto effetto, StatoDiGioco stato, Giocatore giocatore, String tipoDado) {
-		Dado dado = stato.getDadi().get(tipoDado);
-		if (dado == null) {
-			System.err.println("⚠️ Dado non trovato: " + tipoDado);
-			return;
-		}
+	/**
+	 * Tira un dado e applica il risultato
+	 */
+	public static void tiraDado(StatoDiGioco stato, Giocatore giocatore) {
+	    if (stato.getDadi() == null || stato.getDadi().isEmpty()) {
+	        System.out.println("⚠️ Nessun dado disponibile!");
+	        return;
+	    }
 
-		List<Effetto> opzioniDado = effetto.getOpzioni();
-		if (opzioniDado == null || opzioniDado.size() < 6) {
-			System.err.println("⚠️ Dado deve avere 6 opzioni");
-			return;
-		}
+	    // ⭐ SEMPLIFICATO: Il dado gestisce tutto internamente
+	    Dado dado = stato.getDadi().get(0); // O logica per scegliere dado corretto
+	    Effetto effettoEseguito = dado.tiraDado(stato, giocatore);
+	    
+	    // ⭐ NUOVO: Applica risultato agli Horcrux (se Anno 7)
+	    if (effettoEseguito != null && stato.getHorcruxAttivi() != null && 
+	        !stato.getHorcruxAttivi().isEmpty()) {
+	        applicaRisultatoDadoAHorcrux(effettoEseguito, stato, giocatore);
+	    }
+	    
+	    // Trigger DADO_TIRATO per altre meccaniche
+	    stato.getGestoreTrigger().attivaTrigger(
+	        TipoTrigger.DADO_TIRATO, 
+	        stato, 
+	        giocatore
+	    );
+	}
+	
+	/**
+	 * Applica il risultato del dado agli Horcrux attivi
+	 */
+	private static void applicaRisultatoDadoAHorcrux(Effetto effetto, 
+	                                                StatoDiGioco stato, 
+	                                                Giocatore giocatore) {
+	    // Converti effetto in Entità
+	    Entita risultatoDado = convertiEffettoInEntita(effetto);
+	    
+	    if (risultatoDado == null) {
+	        return; // Effetto non rilevante per Horcrux
+	    }
+	    
+	    System.out.println("🎲 Risultato dado per Horcrux: " + risultatoDado);
+	    
+	    // Applica a tutti gli Horcrux attivi
+	    List<Horcrux> horcruxDaDistruggere = new ArrayList<>();
+	    
+	    for (Horcrux horcrux : stato.getHorcruxAttivi()) {
+	        boolean segnalinoAssegnato = horcrux.applicaRisultatoDado(risultatoDado);
+	        
+	        if (segnalinoAssegnato) {
+	            System.out.println("  ✓ Segnalino " + risultatoDado + " → " + 
+	                             horcrux.getNome());
+	        }
+	        
+	        if (horcrux.horcruxDistrutto()) {
+	            System.out.println("  🔥 HORCRUX DISTRUTTO: " + horcrux.getNome());
+	            horcruxDaDistruggere.add(horcrux);
+	        }
+	    }
+	    
+	    // Distruggi Horcrux completati
+	    for (Horcrux h : horcruxDaDistruggere) {
+	        // Applica ricompensa
+	        h.applicaRicompensa(stato, giocatore);
+	        
+	        // Rimuovi
+	        stato.getHorcruxAttivi().remove(h);
+	        
+	        // Messaggio
+	        if (GameController.getInstance() != null) {
+	            GameController.getInstance().getGameUI().getMessagePanel().mostraMessaggio(
+	                "🔥 " + h.getNome() + " DISTRUTTO!",
+	                MessagePanel.TipoMessaggio.MALVAGIO
+	            );
+	        }
+	    }
+	}
 
-		stato.getGestoreTrigger().attivaTrigger(TipoTrigger.DADO_TIRATO, stato, giocatore);
-
-		dado.tiraDado(stato, giocatore, opzioniDado);
+	/**
+	 * Converte tipo effetto in Entità per Horcrux
+	 */
+	private static Entita convertiEffettoInEntita(Effetto effetto) {
+	    switch (effetto.getType()) {
+	        case GUADAGNARE_ATTACCO:
+	            return Entita.ATTACCO;
+	            
+	        case GUADAGNARE_INFLUENZA:
+	            return Entita.INFLUENZA;
+	            
+	        case GUADAGNARE_VITA:
+	        case PERDERE_VITA:
+	            return Entita.VITA;
+	            
+	        case PESCARE_CARTA:
+	        case SCARTARE_CARTA:
+	            return Entita.CARTA;
+	            
+	        default:
+	            return null;
+	    }
 	}
 
 	private static void tiraDadoMalvagio(Effetto effetto, StatoDiGioco stato, Giocatore giocatore) {
-		tiraDado(effetto, stato, giocatore, "serpeverde");
+		tiraDado(stato, giocatore);
 	}
 
 	private static void mettiCartaInCimaMazzo(Effetto effetto, StatoDiGioco stato, Giocatore giocatore,
