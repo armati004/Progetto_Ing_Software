@@ -1,10 +1,12 @@
-//
-public enum FaseTurno{
-    ARTI_OSCURE,
-    MALVAGI,
-    HORCRUX,
-    GIOCO_CARTE,
-    ATTACCO_MALVAGI, 
-    ACQUISTO_CARTA,
-    FINE_TURNO
+package gioco;
+
+public enum FaseTurno {
+	ARTI_OSCURE, 
+	MALVAGI, 
+	HORCRUX, 
+	GIOCA_CARTE, 
+	RACCOLTA_INGREDIENTI,
+	ATTACCA, 
+	ACQUISTA_CARTE, 
+	FINE_TURNO;
 }
