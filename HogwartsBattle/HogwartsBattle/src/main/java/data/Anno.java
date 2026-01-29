@@ -3,58 +3,105 @@ package data;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Anno {
+	@SerializedName("anno")
 	private int anno;
-	private List<String> nuoveCarteNegozio = new ArrayList<>();
-	private List<String> nuoviMalvagi = new ArrayList<>();
-	private List<String> nuoveArtiOscure = new ArrayList<>();
-	private List<String> luoghi = new ArrayList<>();
+
+	// Mappiamo "meccaniche" dal JSON
+	@SerializedName("meccaniche")
 	private Meccanica meccanica;
-	
-	
+
+	// Mappiamo "luoghi"
+	@SerializedName("luoghi")
+	private List<String> luoghi = new ArrayList<>();
+
+	// --- CORREZIONI CHIAVE QUI SOTTO ---
+
+	// Nel JSON è "aggiunteMazzoNegozio"
+	@SerializedName(value = "aggiunteMazzoNegozio", alternate = { "nuoveCarteNegozio", "hogwartsDeckToAdd" })
+	private List<String> nuoveCarteNegozio = new ArrayList<>();
+
+	// Nel JSON è "aggiuntaMalvagi"
+	@SerializedName(value = "aggiuntaMalvagi", alternate = { "nuoviMalvagi", "villainsToAdd" })
+	private List<String> nuoviMalvagi = new ArrayList<>();
+
+	// Nel JSON è "aggiuntaArtiOscure"
+	@SerializedName(value = "aggiuntaArtiOscure", alternate = { "nuoveArtiOscure", "darkArtsToAdd" })
+	private List<String> nuoveArtiOscure = new ArrayList<>();
+
+	// Encounter (Pack 1, 2, 3, 4)
+	@SerializedName("encounter")
+	private List<String> encounter = new ArrayList<>();
+
+	// Pozioni (Pack 2+)
+	@SerializedName("pozioni")
+	private List<String> pozioni = new ArrayList<>();
+
+	// Dark Arts Potions (Pack 3+)
+	@SerializedName("darkArtsPozioni")
+	private List<String> darkArtsPozioni = new ArrayList<>();
+
+	// Lato scaffali pozioni (A o B)
+	@SerializedName("potionShelfSide")
+	private String potionShelfSide;
+
+	// Competenze (Pack 2+)
+	@SerializedName("aggiuntaCompetenze")
+	private List<String> aggiuntaCompetenze = new ArrayList<>();
+
+	// Horcrux (Gioco 7)
+	@SerializedName("aggiuntaHorcrux")
+	private List<String> aggiuntaHorcrux = new ArrayList<>();
+
+	// Getters
 	public int getAnno() {
 		return anno;
 	}
 
-	public void setAnno(int anno) {
-		this.anno = anno;
-	}
-
-	public List<String> getNuoveCarteNegozio() {
-		return nuoveCarteNegozio;
-	}
-	
-	public void setNuoveCarteNegozio(List<String> nuoveCarteNegozio) {
-		this.nuoveCarteNegozio = nuoveCarteNegozio;
-	}
-	
-	public List<String> getNuoviMalvagi() {
-		return nuoviMalvagi;
-	}
-	
-	public void setNuoviMalvagi(List<String> nuoviMalvagi) {
-		this.nuoviMalvagi = nuoviMalvagi;
-	}
-
-	public List<String> getNuoveArtiOscure() {
-		return nuoveArtiOscure;
-	}
-
-	public void setNuoveArtiOscure(List<String> nuoveArtiOscure) {
-		this.nuoveArtiOscure = nuoveArtiOscure;
+	public Meccanica getMeccanica() {
+		return meccanica;
 	}
 
 	public List<String> getLuoghi() {
 		return luoghi;
 	}
 
-	public void setLuoghi(List<String> luoghi) {
-		this.luoghi = luoghi;
+	public List<String> getNuoveCarteNegozio() {
+		return nuoveCarteNegozio;
 	}
 
-	public Meccanica getMeccanica() {
-		return meccanica;
+	public List<String> getNuoviMalvagi() {
+		return nuoviMalvagi;
 	}
-	
-	
+
+	public List<String> getNuoveArtiOscure() {
+		return nuoveArtiOscure;
+	}
+
+	public List<String> getEncounter() {
+		return encounter;
+	}
+
+	public List<String> getPozioni() {
+		return pozioni;
+	}
+
+	public List<String> getDarkArtsPozioni() {
+		return darkArtsPozioni;
+	}
+
+	public String getPotionShelfSide() {
+		return potionShelfSide;
+	}
+
+	public List<String> getAggiuntaCompetenze() {
+		return aggiuntaCompetenze;
+	}
+
+	public List<String> getAggiuntaHorcrux() {
+		return aggiuntaHorcrux;
+	}
+
 }

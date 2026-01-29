@@ -27,7 +27,7 @@ public class ProficiencyFactory {
     }
     
     private static void caricaCompetenza(String nomeFile) {
-    	try(Reader reader = new InputStreamReader(ProficiencyFactory.class.getResourceAsStream("json/" + nomeFile))){
+    	try(Reader reader = new InputStreamReader(ProficiencyFactory.class.getClassLoader().getResourceAsStream("json/" + nomeFile))){
     		Gson gson = new Gson();
     		Type type = new TypeToken<Map<String, List<Competenza>>>(){}.getType();
             Map<String, List<Competenza>> data = gson.fromJson(reader, type);
