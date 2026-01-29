@@ -17,6 +17,7 @@ public class Carta {
 	private final String classe;
 	private final String descrizione;
 	private final int costo;
+	@SerializedName(value = "pathImmagine", alternate = {"path-img"})
 	private final String pathImmagine;
 	private List<Effetto> effetti;
 	private List<Trigger> triggers;
@@ -34,21 +35,23 @@ public class Carta {
 	}
 	
 	public void applicaEffetto(StatoDiGioco stato, Giocatore attivo) {
-		for(Effetto effetto : this.getEffetti()) {
-			if(effetto.getDurata() == DurataEffetto.ISTANTANEO) {
-				EsecutoreEffetti.eseguiEffetto(effetto, stato, attivo);
-			}
-			else if(effetto.getDurata() == DurataEffetto.TEMPORANEO) {
-				stato.getGestoreEffetti().aggiungiEffettoTemporaneo(effetto.getType(), this);
-			}
-			else if(effetto.getDurata() == DurataEffetto.CONTINUO) {
-				stato.getGestoreEffetti().aggiungiEffetto(effetto.getType(), this);
+		if(this.getEffetti() != null && !(this.getEffetti().isEmpty())) {
+			for(Effetto effetto : this.getEffetti()) {
+				if(effetto.getDurata() == DurataEffetto.ISTANTANEO) {
+					EsecutoreEffetti.eseguiEffetto(effetto, stato, attivo);
+				}
+				else if(effetto.getDurata() == DurataEffetto.TEMPORANEO) {
+					stato.getGestoreEffetti().aggiungiEffettoTemporaneo(effetto.getType(), this);
+				}
+				else if(effetto.getDurata() == DurataEffetto.CONTINUO) {
+					stato.getGestoreEffetti().aggiungiEffetto(effetto.getType(), this);
+				}
 			}
 		}
 		
 		if(this.getTriggers() != null && !(this.getTriggers().isEmpty())) {
 			for(Trigger trigger : this.getTriggers()) {
-				stato.getGestoreTrigger().registraTrigger(trigger.getType(), trigger.getEffectToExecute(), this);
+				stato.getGestoreTrigger().registraTrigger(trigger.getType(), trigger.getEffectToExecute(), this, trigger.getDurata());
 			}
 		}
 	}

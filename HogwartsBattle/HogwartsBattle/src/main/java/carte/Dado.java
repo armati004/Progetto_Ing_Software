@@ -3,6 +3,8 @@ package carte;
 import java.util.List;
 import java.util.Random;
 
+import com.google.gson.annotations.SerializedName;
+
 import gioco.StatoDiGioco;
 import gioco.Giocatore;
 import gestoreEffetti.Trigger;
@@ -19,10 +21,11 @@ public class Dado {
 
     private String nome;
     private String id;
+    @SerializedName(value = "pathImg", alternate = {"path-img"})
     private String pathImg;
     private List<Trigger> triggers;
 
-    private final Random random = new Random();
+    private transient Random random = new Random();
 
     public Dado(String nome, String id, String pathImg, List<Trigger> triggers) {
         this.nome = nome;
