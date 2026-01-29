@@ -4,20 +4,34 @@ import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Trigger - Rappresenta un trigger che attiva effetti in risposta a eventi
+ * VERSIONE CORRETTA per deserializzazione Gson
+ */
 public class Trigger {
-	private final TipoTrigger type;
+	private TipoTrigger type;
 	private List<Effetto> effectToExecute;
-	private final BersaglioEffetto target;
-	@SerializedName("qta-quorum")
-	private final Integer qtaQuorum;
-	private Boolean attivato1Volta;
+	private BersaglioEffetto target;
 	
-	public Trigger(TipoTrigger type, BersaglioEffetto target, Integer qtaQuorum, Boolean attivato1Volta, List<Effetto> effectToExecute) {
+	// ⭐ FIX: Supporta sia "qta-quorum" che "qtaQuorum" nei JSON
+	@SerializedName(value = "qta-quorum", alternate = {"qtaQuorum"})
+	private Integer qtaQuorum;
+	
+	private Boolean attivato1Volta;
+	private DurataEffetto durata;
+	
+	// ⭐ Costruttore vuoto necessario per Gson
+	public Trigger() {
+	}
+	
+	// Costruttore completo per creazione manuale
+	public Trigger(TipoTrigger type, BersaglioEffetto target, Integer qtaQuorum, Boolean attivato1Volta, List<Effetto> effectToExecute, DurataEffetto durata) {
 		this.type = type;
 		this.target = target;
 		this.qtaQuorum = qtaQuorum;
-		this.setAttivato1Volta(attivato1Volta);
-		this.setEffectToExecute(effectToExecute);
+		this.attivato1Volta = attivato1Volta;
+		this.effectToExecute = effectToExecute;
+		this.durata = durata;
 	}
 
 	public TipoTrigger getType() {
@@ -46,5 +60,25 @@ public class Trigger {
 
 	public void setAttivato1Volta(Boolean attivato1Volta) {
 		this.attivato1Volta = attivato1Volta;
+	}
+
+	public DurataEffetto getDurata() {
+		return durata;
+	}
+	
+	public void setType(TipoTrigger type) {
+		this.type = type;
+	}
+	
+	public void setTarget(BersaglioEffetto target) {
+		this.target = target;
+	}
+	
+	public void setQtaQuorum(Integer qtaQuorum) {
+		this.qtaQuorum = qtaQuorum;
+	}
+	
+	public void setDurata(DurataEffetto durata) {
+		this.durata = durata;
 	}
 }

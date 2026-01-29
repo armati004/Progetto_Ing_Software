@@ -1,217 +1,119 @@
 package gestoreEffetti;
 
 public enum TipoEffetto {
-	/**
-	 * Effetto che fa perdere una o più vite
-	 */
 	PERDERE_VITA, 
-	/**
-	 * Effetto che si attiva per limitare il danno subito
-	 */
 	LIMITARE_DANNO,
-	/**
-	 * Effetto che fa guadagnare una o più vite
-	 */
 	GUADAGNARE_VITA, 
-	/**
-	 * Effetto che fa aggiungere uno o più marchi neri al luogo
-	 */
 	AGGIUNGERE_MARCHIO_NERO, 
-	/**
-	 * Effetto che fa rimuovere uno o più marchi neri dal luogo
-	 */
 	RIMUOVERE_MARCHIO_NERO,
-	/**
-	 * Effetto che costringe a scartare una o più carte
-	 */
 	SCARTARE_CARTA, 
-	/**
-	 * Effetto che cura i malvagi
-	 */
 	CURARE_MALVAGI,
-	/**
-	 * Effetto che permette di pescare una o più carte
-	 */
 	PESCARE_CARTA, 
-	/**
-	 * Effetto che fa guadagnare uno o più gettoni
-	 */
 	GUADAGNARE_INFLUENZA, 
-	/**
-	 * Effetto che fa guadagnare uno o più segnalini attacco
-	 */
 	GUADAGNARE_ATTACCO, 
-	/**
-	 * Effetto che fa rimuovere uno o più segnalini attacco 
-	 * da uno o più malvagi 
-	 */
 	RIMUOVERE_ATTACCO, 
-	/**
-	 * Effetto che contiene delle opzioni tra cui scegliere
-	 */
 	SCELTA,
-	DADO_TASSOROSSO, DADO_GRIFONDORO, DADO_CORVONERO, DADO_SERPEVERDE, 
-	/**
-	 * Tira il dado di Serpeverde e, in base al risultato,
-	 * viene applicato un effetto negativo
-	 */
+	DADO_TASSOROSSO, 
+	DADO_GRIFONDORO, 
+	DADO_CORVONERO, 
+	DADO_SERPEVERDE, 
 	DADO_MALVAGIO,
-	/**
-	 * Effetto relativo alla carta competenza Artimanzia che riduce il costo
-	 * delle carte che hanno come effetto tirare un dado casata. 
-	 */
 	SCONTO_ACQUISTO_CASATA,
-	/**
-	 * Permette di tirare il dado due volte.
-	 */
 	RITIRA_DADO,
-	/**
-	 * Effetto della carta Cappello Parlante 
-	 * che permette di mettere gli alleati acquistati in cima al mazzo
-	 */
 	ALLEATO_IN_MAZZO, 
-	/**
-	 * Effetto della carta Giratempo dello starter pack di Hermione,
-	 * che permette di mettere gli incantesimi acquistati in cima al mazzo
-	 */
 	INCANTESIMO_IN_MAZZO,
-	/**
-	 * Effetto della carta Wingardium Leviosa
-	 * che permette di mettere gli oggetti acquistati in cima al mazzo
-	 */
 	OGGETTO_IN_MAZZO,
-	/**
-	 * Effetto della carta pozione polisucco, che copia gli effetti di un alleato
-	 * giocato in quel turno.
-	 */
 	COPIA_EFFETTO,
-	/**
-	 * Effetto della carta malvagio basilisco e della carta arti oscure pietrificazione 
-	 * che proibisce di pescare carte extra
-	 */
 	NON_PESCARE_CARTE,
-	/**
-	 * Effetto della carta malvagio Fenrir Greyback e della carta arti oscure Sectumsempra
-	 * che impedisce di guadagnare vite
-	 */
 	NON_GUADAGNARE_VITA,
-	/**
-	 * Effetto della carta malvagio Barty Crouch JR
-	 * che impedisce di rimuovere marchi neri dal luogo
-	 */
 	NON_RIMUOVERE_MARCHI,
-	/**
-	 * Effetto della carta Horcrux medaglione
-	 * che impedisce di guadagnare segnalini attacco
-	 * ai giocatori che NON sono l'eroe attivo
-	 */
 	NON_GUADAGNARE_ATTACCHI,
-	/**
-	 * Effetto della carta Horcrux medaglione
-	 * che impedisce di guadagnare gettoni (segnalini influenza)
-	 * ai giocatori che NON sono l'eroe attivo
-	 */
 	NON_GUADAGNARE_GETTONI, 
-	/**
-	 * Effetto che obbliga i giocatori a scartare una carta
-	 * di tipo incantesimo
-	 */
 	SCARTA_INCANTESIMO, 
-	/**
-	 * Effetto che obbliga i giocatori a scartare una carta
-	 * di tipo oggetto
-	 */
 	SCARTA_OGGETTO, 
-	/**
-	 * Effetto che obbliga i giocatori a scartare una carta
-	 * di tipo alleato
-	 */
 	SCARTA_ALLEATO, 
-	/**
-	 * Effetto che costringe il giocatore a rivelare la propria carta
-	 * in cima al mazzo. Se questa ha un valore superiore a quello indicato
-	 * dall'effetto, viene scartata e si attiva un altro effetto a seconda della carta
-	 * che implementa questo effetto
-	 */
 	RIVELA_CARTA,
-	/**
-	 * Effetto della carta malvagio Bellatrix Lestrange
-	 * e delle carte arti oscure Avada Kedavra, Imperio e Crucio,
-	 * che fanno rivelare un evento arti oscure aggiuntivo
-	 */
 	RIVELA_NUOVO_EVENTO, 
-	/**
-	 * Effetto della carta malvagio Dolores Umbridge
-	 * che fa perdere vite in caso di acquisto di una carta
-	 * con un costo di 4 o più.
-	 */
 	ACQUISTO_CARTA, 
-	/**
-	 * Effetto sconfitta di un nemico che permette di cercare
-	 * nella pila degli scarti un alleato e metterlo in mano
-	 */
 	CERCA_ALLEATO, 
-	/**
-	 * Effetto sconfitta di un nemico che permette di cercare
-	 * nella pila degli scarti un incantesimo e metterlo in mano
-	 */
 	CERCA_INCANTESIMO,
-	/**
-	 * Effetto sconfitta di un nemico che permette di cercare
-	 * nella pila degli scarti un oggetto e metterlo in mano
-	 */
 	CERCA_OGGETTO, 
-	/**
-	 * Effetto sconfitta di Voldemort che fa vincere gli eroi
-	 * quando viene sconfitto
-	 */
 	VITTORIA, 
-	/**
-	 * Effetto che impedisce di attaccare Voldemort quando
-	 * sono presenti altri malvagi
-	 */
 	NON_ATTACCARE_VOLDY,
-	/**
-	 * Effetto della carta malvagio Tom Riddle, 
-	 * che conta quanti alleati ci sono in mano e,
-	 * se il numero è diverso da 0, attiva la scelta
-	 * in base al numero di alleati
-	 */
 	ALLEATO_IN_MANO,
-	/**
-	 * Effetto della carta competenza lezioni di volo,
-	 * che permette di rimuovere x influenza come requisito
-	 * per il secondo effetto (x è definito nel JSON)
-	 */
 	SCARTA_INFLUENZA,
-	/**
-	 * Effetto della carta divinazione,
-	 * Permette di vedere la carta in cima al mazzo
-	 */
 	GUARDA_CARTA_CIMA,
-	/**
-	 * Seguito della carta divinazione,
-	 * Permette di lasciare la carta in cima al mazzo
-	 */
 	LASCIA_CARTA_CIMA,
-	/**
-	 * Seguito della carta divinazione,
-	 * Permette di scartare la carta in cima al mazzo
-	 */
 	SCARTA_CARTA_CIMA,
-	/**
-	 * Effetto della carta Trasfigurazione,
-	 * Permette di cercare una carta nel mazzo con un valore massimo definito nel json
-	 */
 	CERCA_CARTA_MAZZO,
-	/**
-	 * Mischia il mazzo
-	 */
 	MISCHIA_MAZZO, 
-	/**
-	 * Effetto che non permette di mettere più di un Segnalino Attacco ad un Malvagio
-	 */
 	LIMITA_ATTACCO,
-	SCELTA_MULTIPLA;
-
+	SCELTA_MULTIPLA,
+	
+	// ===== ESPANSIONE CHARMS & POTIONS =====
+	
+	// --- POZIONI (Pack 2+) ---
+	GUADAGNARE_INGREDIENTE,
+	BREW_POZIONE,
+	BREW_POZIONE_BANISH,
+	BREW_POZIONE_GRATIS,
+	SCARTA_INGREDIENTE,
+	SCELTA_ATTACCO_O_INFLUENZA,
+	SCELTA_VITA_O_RICICLO,
+	PESCA_CARTE,
+	RICICLA_CARTA_DA_SCARTO,
+	RIMUOVI_O_BANISH,
+	SCELTA_VITA_SINGOLA_O_TUTTI,
+	SCELTA_PESCA_O_BANISH,
+	SCELTA_PESCA_O_RIMUOVI,
+	BANISH_CARTA_MANO_O_SCARTO,
+	BANISH_CARTA_IN_MANO,
+	SCELTA_GUADAGNO_O_BANISH,
+	SCELTA_VITA_SINGOLA_O_BANISH,
+	RITORNA_A_VITA_MASSIMA,
+	RIMUOVERE_ATTACCO_DA_MALVAGIO,
+	
+	// --- DARK ARTS POTIONS (Pack 3+) ---
+	NON_GIOCARE_ALLEATI,
+	RIVELA_EVENTO_ARTI_OSCURE,
+	BANISH_TOP_DECK,
+	CONDIZIONALE_ALLEATI_IN_MANO,
+	CONDIZIONALE_ALLEATO_IN_MANO,
+	CONDIZIONALE_SCARTO,
+	DADO_SERPEVERDE_INIZIO_TURNO,
+	NON_GIOCARE_INCANTESIMI,
+	NON_ACQUISTARE_OGGETTI,
+	RIVELA_MANO,
+	SCARTA_MANO_INIZIO_TURNO,
+	LIMITE_CARTE_GIOCATE,
+	
+	// --- ENCOUNTER (Pack 1-4) ---
+	CONTROLLO_ITEMS_IN_MANO,
+	SCARTA_RISORSE_E_PERDI_VITA,
+	CONTROLLO_VALORE_CARTA_IN_MANO,
+	CONTROLLO_POZIONE_IN_MANO,
+	POZIONE_BREW_DANNO,
+	BREW_DARK_ARTS_CONTROLLO,
+	CREATURA_ATTIVA_DANNO,
+	BLOCCO_INGREDIENTI,
+	VOLDEMORT_DANNO_INIZIO_TURNO,
+	RIMUOVERE_ATTACCO_DA_VOLDEMORT,
+	HORCRUX_BLOCCO_VITA,
+	CONTROLLO_MALVAGI_ATTIVI,
+	RIMUOVERE_DARK_ARTS_POTIONS,
+	
+	// --- ENCOUNTER Pack 2-4 (carte reali) ---
+	RISOLVI_CREATURA_SCARTA_E_PESCA,
+	BANISH_POZIONI,
+	BREW_POZIONE_RIMUOVI_INFLUENZA,
+	ACQUISTA_ATTACCO,
+	GIOCA_CARTE_SIMBOLI_RIMUOVI_INGREDIENTI,
+	GIOCA_ITEM_MALFOY_SCARTA,
+	GIOCA_ITEM_SCARTA,
+	GIOCA_POZIONE_5_CONTROLLO,
+	SCARTA_POZIONI,
+	BREW_POZIONE_RIMUOVI_CONTROLLO,
+	CARTE_NERE_ATTIVE_SCARTA,
+	NESSUNA_CARTA_7_PERDI_VITA,
+	BATTAGLIA_HOGWARTS;
 }
