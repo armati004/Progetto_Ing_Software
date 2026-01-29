@@ -33,9 +33,13 @@ public class GameLoader {
 	            System.out.println("  ➕ Aggiunte " + carteAggiunte + " carte nuove anno " + annoTarget);
 	        }
 	    } else {
-	        // Caricamento normale per nuove partite
-	        for (int i = 1; i <= annoTarget; i++) {
-	            config.getCarteNegozioId().addAll(annoCorrente.getNuoveCarteNegozio());
+	    	if (annoCorrente != null && annoCorrente.getNuoveCarteNegozio() != null) {
+	            int carteAggiunte = 0;
+	            for (String cartaId : annoCorrente.getNuoveCarteNegozio()) {
+	            	config.getCarteNegozioId().add(cartaId);
+                    carteAggiunte++;
+	            }
+	            System.out.println("  ➕ Aggiunte " + carteAggiunte + " carte nuove anno " + annoTarget);
 	        }
 	    }
 

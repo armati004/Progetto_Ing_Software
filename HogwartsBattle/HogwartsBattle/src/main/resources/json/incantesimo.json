@@ -120,11 +120,7 @@
       "pathImmagine": "/Immagini_carte/Negozio/Gioco3/Petrificus_Totalus.png",
       "effetti": [
         {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
-        {
-          "type": "SCEGLI_MALVAGIO",
-          "effects": [{"type": "BLOCCA_ABILITA_MALVAGIO", "target": "MALVAGIO_SCELTO", "durata": "FINO_INIZIO_PROSSIMO_TURNO"}],
-          "durata": "ISTANTANEO"
-        }
+        {"type": "BLOCCA_ABILITA_MALVAGIO", "target": "MALVAGIO_SCELTO", "durata": "ISTANTANEO"}
       ],
       "triggers": []
     }

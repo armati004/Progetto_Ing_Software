@@ -129,7 +129,7 @@ public class CardClickHandler {
      * Verifica se Ã¨ possibile giocare carte nella fase attuale
      */
     private boolean puoGiocareCartaQuiFase(FaseTurno fase) {
-        return fase == FaseTurno.GIOCA_CARTE;
+        return (fase == FaseTurno.GIOCA_CARTE || fase == FaseTurno.ATTACCA);
     }
     
     /**

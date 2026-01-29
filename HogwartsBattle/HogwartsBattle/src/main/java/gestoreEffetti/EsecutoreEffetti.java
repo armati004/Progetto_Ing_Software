@@ -1,6 +1,7 @@
 package gestoreEffetti;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
@@ -11,6 +12,7 @@ import gioco.StatoDiGioco;
 import gioco.InputController;
 import grafica.Entita;
 import grafica.GameController;
+import grafica.panels.DialogHelper;
 import grafica.panels.MessagePanel;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -83,31 +85,37 @@ public class EsecutoreEffetti {
 		case CURARE_MALVAGI:
 			curareMalvagi(effetto, stato, giocatore);
 			break;
+		case BLOCCA_ABILITA_MALVAGIO:
+			bloccaMalvagio(effetto, stato, giocatore);
+			break;
 
 		// === SCELTE ===
 		case SCELTA:
 			scelta(effetto, stato, giocatore);
 			break;
 		case SCELTA_MULTIPLA:
-			sceltaPerTuttiIGiocatori(effetto.getOpzioni().get(0), effetto.getOpzioni().get(1),stato);
+			sceltaPerTuttiIGiocatori(effetto.getOpzioni().get(0), effetto.getOpzioni().get(1), stato);
 			break;
 
 		// === DADI ===
 		case DADO_GRIFONDORO:
-			tiraDado(stato, giocatore);
+			tiraDadoCasata(effetto, stato, giocatore, TipoEffetto.DADO_GRIFONDORO); // ✅ Specifico
 			break;
 		case DADO_SERPEVERDE:
-			tiraDado(stato, giocatore);
+			tiraDadoCasata(effetto, stato, giocatore, TipoEffetto.DADO_SERPEVERDE); // ✅ Specifico
 			break;
 		case DADO_CORVONERO:
-			tiraDado(stato, giocatore);
+			tiraDadoCasata(effetto, stato, giocatore, TipoEffetto.DADO_CORVONERO); // ✅ Specifico
 			break;
 		case DADO_TASSOROSSO:
-			tiraDado(stato, giocatore);
+			tiraDadoCasata(effetto, stato, giocatore, TipoEffetto.DADO_TASSOROSSO); // ✅ Specifico
 			break;
 		case DADO_MALVAGIO:
-			tiraDadoMalvagio(effetto, stato, giocatore);
+			tiraDadoMalvagio(effetto, stato, giocatore, TipoEffetto.DADO_SERPEVERDE);
 			break;
+		case SCEGLI_DADO:
+		    scegliDadoDaTirare(effetto, stato, giocatore);
+		    break;
 		case RITIRA_DADO:
 			break;
 
@@ -219,7 +227,13 @@ public class EsecutoreEffetti {
 			g.setAttacco(vecchioValore + effetto.getQta());
 			System.out.println("⚔️ " + g.getEroe().getNome() + " guadagna " + effetto.getQta() + " attacco");
 
-			stato.getGestoreTrigger().attivaTrigger(TipoTrigger.ATTACCHI_ASSEGNATI, stato, g);
+			if (giocatore.getEroe().getNome().contains("Ron") && giocatore.getAttacco() >= 3
+					&& giocatore.getEroe().getTriggers() != null) {
+				if (giocatore.getEroe().getTriggers().get(0).getAttivato1Volta() == false) {
+					stato.getGestoreTrigger().attivaTrigger(TipoTrigger.ATTACCHI_ASSEGNATI, stato, g);
+					giocatore.getEroe().getTriggers().get(0).setAttivato1Volta(true);
+				}
+			}
 		}
 	}
 
@@ -383,30 +397,25 @@ public class EsecutoreEffetti {
 
 	private static void scartareCarta(Effetto effetto, StatoDiGioco stato, Giocatore giocatore) {
 		int qta = effetto.getQta() != null ? effetto.getQta() : 1;
-	    
-	    if (giocatore.getMano().isEmpty()) {
-	        System.out.println("⚠️ " + giocatore.getEroe().getNome() + " non ha carte da scartare");
-	        return;
-	    }
-	    
-	    // ⭐ MODIFICATO: Passa giocatore per mostrare nome
-	    InputController.getInstance().mostraSelezioneCartePerScartare(
-	        giocatore,           // ⭐ Giocatore (per nome)
-	        TipoEffetto.SCARTARE_CARTA,
-	        qta,
-	        carteSelezionate -> {
-	            for (Carta c : carteSelezionate) {
-	                giocatore.getMano().remove(c);
-	                giocatore.getScarti().aggiungiCarta(c);
-	                System.out.println("  📤 " + giocatore.getEroe().getNome() + 
-	                                 " scarta: " + c.getNome());
-	            }
-	            
-	            if (grafica.GameController.getInstance() != null) {
-	                grafica.GameController.getInstance().getGameUI().aggiorna();
-	            }
-	        }
-	    );
+
+		if (giocatore.getMano().isEmpty()) {
+			System.out.println("⚠️ " + giocatore.getEroe().getNome() + " non ha carte da scartare");
+			return;
+		}
+
+		// ⭐ MODIFICATO: Passa giocatore per mostrare nome
+		InputController.getInstance().mostraSelezioneCartePerScartare(giocatore, // ⭐ Giocatore (per nome)
+				TipoEffetto.SCARTARE_CARTA, qta, carteSelezionate -> {
+					for (Carta c : carteSelezionate) {
+						giocatore.getMano().remove(c);
+						giocatore.getScarti().aggiungiCarta(c);
+						System.out.println("  📤 " + giocatore.getEroe().getNome() + " scarta: " + c.getNome());
+					}
+
+					if (grafica.GameController.getInstance() != null) {
+						grafica.GameController.getInstance().getGameUI().aggiorna();
+					}
+				});
 	}
 
 	private static void scartareTipoCarta(Effetto effetto, StatoDiGioco stato, Giocatore giocatore,
@@ -460,7 +469,8 @@ public class EsecutoreEffetti {
 		if (effetto.getQta() == null || effetto.getQta() <= 0)
 			return;
 
-		stato.getGestoreTrigger().attivaTrigger(TipoTrigger.TENTA_RIMUOVI_MARCHIO_NERO, stato, giocatore);
+		// stato.getGestoreTrigger().attivaTrigger(TipoTrigger.TENTA_RIMUOVI_MARCHIO_NERO,
+		// stato, giocatore);
 
 		if (stato.getGestoreEffetti().regolaAttiva(TipoEffetto.NON_RIMUOVERE_MARCHI)) {
 			System.out.println("⚠️ Non è possibile rimuovere marchi neri");
@@ -474,7 +484,14 @@ public class EsecutoreEffetti {
 		System.out.println("⚪ Rimossi " + rimosse + " marchi neri");
 
 		if (rimosse > 0) {
-			stato.getGestoreTrigger().attivaTrigger(TipoTrigger.RIMOZIONE_MARCHIO_NERO, stato, giocatore);
+			for (Giocatore g : stato.getGiocatori()) {
+				if (g.getEroe().getNome().contains("Harry") && g.getEroe().getTriggers() != null) {
+					if (g.getEroe().getTriggers().get(0).getAttivato1Volta() == false) {
+						stato.getGestoreTrigger().attivaTrigger(TipoTrigger.RIMOZIONE_MARCHIO_NERO, stato, giocatore);
+						g.getEroe().getTriggers().get(0).setAttivato1Volta(true);
+					}
+				}
+			}
 		}
 	}
 
@@ -494,10 +511,19 @@ public class EsecutoreEffetti {
 			return;
 
 		for (Malvagio malvagio : stato.getMalvagiAttivi()) {
-			int vecchiaVita = malvagio.getVita();
-			malvagio.setDanno(Math.min(malvagio.getDanno() - effetto.getQta(), malvagio.getVita()));
-			System.out
-					.println("💚 " + malvagio.getNome() + " recupera " + (vecchiaVita - malvagio.getDanno()) + " vita");
+			int dannoAttuale = malvagio.getDanno();
+			malvagio.setDanno(Math.max(0, dannoAttuale - effetto.getQta()));
+			System.out.println(
+					"💚 " + malvagio.getNome() + " recupera " + (dannoAttuale - malvagio.getDanno()) + " vita");
+		}
+	}
+
+	private static void bloccaMalvagio(Effetto effetto, StatoDiGioco stato, Giocatore giocatore) {
+		Malvagio selezionato = InputController.scegliMalvagio(stato.getMalvagiAttivi(), giocatore.getEroe().getNome(),
+				"Scegli un malvagio da bloccare");
+		if (selezionato != null) {
+			selezionato.setBloccoAbilita(true);
+			selezionato.setGiocatoreBloccante(giocatore);
 		}
 	}
 
@@ -529,10 +555,10 @@ public class EsecutoreEffetti {
 		System.out.println("🎲 Scelta multipla: ogni giocatore sceglie per sé");
 
 		// ⭐ NUOVO: Coda di giocatori che devono scegliere
-		List<Giocatore> giocatoriDaScegliere = new ArrayList<>(stato.getGiocatori());
+		// List<Giocatore> giocatoriDaScegliere = new ArrayList<>(stato.getGiocatori());
 
 		// Mostra dialog per il primo giocatore
-		mostraDialogSceltaSequenziale(0, giocatoriDaScegliere, opzioneA, opzioneB, stato);
+		mostraDialogScelta(opzioneA, opzioneB, stato, stato.getGiocatori().get(stato.getGiocatoreCorrente()));
 	}
 
 	/**
@@ -575,8 +601,8 @@ public class EsecutoreEffetti {
 			alert.setTitle("Scelta - " + giocatoreCorrente.getEroe().getNome());
 			alert.setHeaderText(giocatoreCorrente.getEroe().getNome() + ", fai la tua scelta:");
 
-			String descrizioneA = getDescrizioneEffetto(opzioneA);
-			String descrizioneB = getDescrizioneEffetto(opzioneB);
+			String descrizioneA = getDescrizioneEffetto(opzioneA, giocatoreCorrente);
+			String descrizioneB = getDescrizioneEffetto(opzioneB, giocatoreCorrente);
 
 			alert.setContentText("Opzione 1: " + descrizioneA + "\n\n" + "Opzione 2: " + descrizioneB);
 
@@ -632,49 +658,133 @@ public class EsecutoreEffetti {
 		javafx.application.Platform.runLater(() -> {
 			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 
-// ⭐ NUOVO: Titolo con nome giocatore
-			alert.setTitle("Scelta - " + giocatore.getEroe().getNome());
-			alert.setHeaderText(giocatore.getEroe().getNome() + ", fai la tua scelta:");
+			// ⭐ NUOVO: Titolo con nome giocatore
+			if (opzioneA.getTarget().equals(BersaglioEffetto.EROE_ATTIVANTE)
+					&& opzioneB.getTarget().equals(BersaglioEffetto.EROE_ATTIVANTE)) {
+				for (Giocatore g : stato.getGiocatori()) {
+					alert.setTitle("Scelta - " + g.getEroe().getNome());
+					alert.setHeaderText(g.getEroe().getNome() + ", fai la tua scelta:");
 
-			String descrizioneA = getDescrizioneEffetto(opzioneA);
-			String descrizioneB = getDescrizioneEffetto(opzioneB);
+					String descrizioneA = getDescrizioneEffetto(opzioneA, g);
+					String descrizioneB = getDescrizioneEffetto(opzioneB, g);
 
-			alert.setContentText("Opzione 1: " + descrizioneA + "\n\n" + "Opzione 2: " + descrizioneB);
+					alert.setContentText("Opzione 1: " + descrizioneA + "\n\n" + "Opzione 2: " + descrizioneB);
 
-			ButtonType btnOpzioneA = new ButtonType("Opzione 1");
-			ButtonType btnOpzioneB = new ButtonType("Opzione 2");
+					ButtonType btnOpzioneA = new ButtonType("Opzione 1");
+					ButtonType btnOpzioneB = new ButtonType("Opzione 2");
 
-			alert.getButtonTypes().setAll(btnOpzioneA, btnOpzioneB);
+					alert.getButtonTypes().setAll(btnOpzioneA, btnOpzioneB);
 
-			alert.showAndWait().ifPresent(risposta -> {
-				if (risposta == btnOpzioneA) {
-					eseguiEffetto(opzioneA, stato, giocatore);
-				} else {
-					eseguiEffetto(opzioneB, stato, giocatore);
+					alert.showAndWait().ifPresent(risposta -> {
+						if (risposta == btnOpzioneA) {
+							eseguiEffetto(opzioneA, stato, g);
+						} else {
+							eseguiEffetto(opzioneB, stato, g);
+						}
+
+						if (grafica.GameController.getInstance() != null) {
+							grafica.GameController.getInstance().getGameUI().aggiorna();
+						}
+					});
 				}
+			} else {
+				alert.setTitle("Scelta - " + giocatore.getEroe().getNome());
+				alert.setHeaderText(giocatore.getEroe().getNome() + ", fai la tua scelta:");
 
-				if (grafica.GameController.getInstance() != null) {
-					grafica.GameController.getInstance().getGameUI().aggiorna();
-				}
-			});
+				String descrizioneA = getDescrizioneEffetto(opzioneA, giocatore);
+				String descrizioneB = getDescrizioneEffetto(opzioneB, giocatore);
+
+				alert.setContentText("Opzione 1: " + descrizioneA + "\n\n" + "Opzione 2: " + descrizioneB);
+
+				ButtonType btnOpzioneA = new ButtonType("Opzione 1");
+				ButtonType btnOpzioneB = new ButtonType("Opzione 2");
+
+				alert.getButtonTypes().setAll(btnOpzioneA, btnOpzioneB);
+
+				alert.showAndWait().ifPresent(risposta -> {
+					if (risposta == btnOpzioneA) {
+						eseguiEffetto(opzioneA, stato, giocatore);
+					} else {
+						eseguiEffetto(opzioneB, stato, giocatore);
+					}
+
+					if (grafica.GameController.getInstance() != null) {
+						grafica.GameController.getInstance().getGameUI().aggiorna();
+					}
+				});
+			}
 		});
 	}
 
-	private static String getDescrizioneEffetto(Effetto effetto) {
+	private static String getDescrizioneEffetto(Effetto effetto, Giocatore giocatore) {
+		StringBuilder descrizione = new StringBuilder();
+
 		switch (effetto.getType()) {
 		case SCARTA_INCANTESIMO:
-			return "Scarta " + (effetto.getQta() != null ? effetto.getQta() : 1) + " incantesimo/i";
+			int qtaIncantesimi = effetto.getQta() != null ? effetto.getQta() : 1;
+			descrizione.append("Scarta ").append(qtaIncantesimi).append(" incantesimo/i");
+
+			// ✅ NUOVO: Mostra incantesimi disponibili
+			List<Carta> incantesimi = giocatore.getMano().stream()
+					.filter(c -> c.getClasse().equalsIgnoreCase("Incantesimo"))
+					.collect(java.util.stream.Collectors.toList());
+
+			if (!incantesimi.isEmpty()) {
+				descrizione.append("\n   Incantesimi in mano: ");
+				for (int i = 0; i < incantesimi.size(); i++) {
+					if (i > 0)
+						descrizione.append(", ");
+					descrizione.append(incantesimi.get(i).getNome());
+				}
+			}
+			break;
+
 		case SCARTA_OGGETTO:
-			return "Scarta " + (effetto.getQta() != null ? effetto.getQta() : 1) + " oggetto/i";
+			int qtaOggetti = effetto.getQta() != null ? effetto.getQta() : 1;
+			descrizione.append("Scarta ").append(qtaOggetti).append(" oggetto/i");
+
+			// ✅ NUOVO: Mostra incantesimi disponibili
+			List<Carta> oggetti = giocatore.getMano().stream().filter(c -> c.getClasse().equalsIgnoreCase("Oggetto"))
+					.collect(java.util.stream.Collectors.toList());
+
+			if (!oggetti.isEmpty()) {
+				descrizione.append("\n   Oggetti in mano: ");
+				for (int i = 0; i < oggetti.size(); i++) {
+					if (i > 0)
+						descrizione.append(", ");
+					descrizione.append(oggetti.get(i).getNome());
+				}
+			}
+			break;
 		case SCARTA_ALLEATO:
-			return "Scarta " + (effetto.getQta() != null ? effetto.getQta() : 1) + " alleato/i";
+			int qtaAlleati = effetto.getQta() != null ? effetto.getQta() : 1;
+			descrizione.append("Scarta ").append(qtaAlleati).append(" alleato/i");
+
+			// ✅ NUOVO: Mostra incantesimi disponibili
+			List<Carta> alleati = giocatore.getMano().stream().filter(c -> c.getClasse().equalsIgnoreCase("Alleato"))
+					.collect(java.util.stream.Collectors.toList());
+
+			if (!alleati.isEmpty()) {
+				descrizione.append("\n   Incantesimi in mano: ");
+				for (int i = 0; i < alleati.size(); i++) {
+					if (i > 0)
+						descrizione.append(", ");
+					descrizione.append(alleati.get(i).getNome());
+				}
+			}
+			break;
 		case PERDERE_VITA:
-			return "Perdi " + (effetto.getQta() != null ? effetto.getQta() : 1) + " ❤️ vita";
-		case AGGIUNGERE_MARCHIO_NERO:
-			return "Aggiungi " + (effetto.getQta() != null ? effetto.getQta() : 1) + " 🌑 marchio/i";
+			int qtaVita = effetto.getQta() != null ? effetto.getQta() : 1;
+			descrizione.append("Perdi ").append(qtaVita).append(" ❤️ vita");
+			// ✅ NUOVO: Mostra vita attuale
+			descrizione.append("\n   Vita attuale: ").append(giocatore.getSalute());
+			break;
 		default:
-			return effetto.getType().toString();
+			descrizione.append(effetto.getType().toString()).append(" ").append(effetto.getQta()).append(" ")
+					.append(effetto.getTarget());
 		}
+
+		return descrizione.toString();
 	}
 
 	/**
@@ -697,108 +807,286 @@ public class EsecutoreEffetti {
 	}
 
 	/**
-	 * Tira un dado e applica il risultato
+	 * Tira un dado di una casata specifica
 	 */
-	public static void tiraDado(StatoDiGioco stato, Giocatore giocatore) {
-	    if (stato.getDadi() == null || stato.getDadi().isEmpty()) {
-	        System.out.println("⚠️ Nessun dado disponibile!");
-	        return;
-	    }
+	private static void tiraDadoCasata(Effetto effetto, StatoDiGioco stato, Giocatore giocatore, TipoEffetto tipoDado) {
+		if (stato.getDadi() == null || stato.getDadi().isEmpty()) {
+			System.out.println("⚠️ Nessun dado disponibile!");
+			return;
+		}
 
-	    // ⭐ SEMPLIFICATO: Il dado gestisce tutto internamente
-	    Dado dado = stato.getDadi().get(0); // O logica per scegliere dado corretto
-	    Effetto effettoEseguito = dado.tiraDado(stato, giocatore);
-	    
-	    // ⭐ NUOVO: Applica risultato agli Horcrux (se Anno 7)
-	    if (effettoEseguito != null && stato.getHorcruxAttivi() != null && 
-	        !stato.getHorcruxAttivi().isEmpty()) {
-	        applicaRisultatoDadoAHorcrux(effettoEseguito, stato, giocatore);
-	    }
-	    
-	    // Trigger DADO_TIRATO per altre meccaniche
-	    stato.getGestoreTrigger().attivaTrigger(
-	        TipoTrigger.DADO_TIRATO, 
-	        stato, 
-	        giocatore
-	    );
+		// STEP 1: Trova il dado corretto
+		Dado dadoSelezionato = null;
+		String idDadoCercato = getIdDadoDaTipo(tipoDado);
+
+		// Cerca prima per ID esatto nella Map
+		dadoSelezionato = stato.getDadi().get(idDadoCercato); // ✅ Usa Map.get()
+
+		// Se non trovato, cerca per nome
+		if (dadoSelezionato == null) {
+			String nomeDadoCercato = getNomeDadoDaTipo(tipoDado);
+			for (Dado dado : stato.getDadi().values()) { // ✅ Usa Map.values()
+				if (dado.getNome().equalsIgnoreCase(nomeDadoCercato)) {
+					dadoSelezionato = dado;
+					break;
+				}
+			}
+		}
+
+		// STEP 2: Usa le opzioni integrate nel dado
+		List<Effetto> opzioniDado = dadoSelezionato.getOpzioni(); // ✅ Opzioni dal dado
+
+		// STEP 3: Tira il dado
+		Effetto effettoEseguito = dadoSelezionato.tiraDado(stato, giocatore, opzioniDado);
+
+		// ✅ STEP 4: Applica risultato agli Horcrux (se Anno 7)
+		if (effettoEseguito != null && stato.getHorcruxAttivi() != null && !stato.getHorcruxAttivi().isEmpty()) {
+			applicaRisultatoDadoAHorcrux(effettoEseguito, stato, giocatore);
+		}
+
+		// ✅ STEP 5: Trigger DADO_TIRATO
+		stato.getGestoreTrigger().attivaTrigger(TipoTrigger.DADO_TIRATO, stato, giocatore);
 	}
-	
+
+	private static String getIdDadoDaTipo(TipoEffetto tipo) {
+	    switch (tipo) {
+	        case DADO_GRIFONDORO:
+	            return "dadoGrifondoro";  // ✅ camelCase
+	        case DADO_SERPEVERDE:
+	            return "dadoSerpeverde";  // ✅ camelCase
+	        case DADO_CORVONERO:
+	            return "dadoCorvonero";  // ✅ camelCase
+	        case DADO_TASSOROSSO:
+	            return "dadoTassorosso";  // ✅ camelCase
+	        default:
+	            return "dado";
+	    }
+	}
+
+	/**
+	 * Permette al giocatore di scegliere quale dado tirare (Storia di Hogwarts)
+	 * Costruisce dinamicamente la lista dei dadi disponibili dalla Map
+	 */
+	private static void scegliDadoDaTirare(Effetto effetto, StatoDiGioco stato, Giocatore giocatore) {
+		if (stato.getDadi() == null || stato.getDadi().isEmpty()) {
+			System.out.println("⚠️ Nessun dado disponibile!");
+			return;
+		}
+		
+		// Costruisci lista dadi disponibili dinamicamente dalla Map
+		List<String> dadoIds = new ArrayList<>();
+		List<String> opzioniDadi = new ArrayList<>();
+		List<TipoEffetto> tipiDado = new ArrayList<>();
+		
+		// ✅ ID corretti dal JSON (camelCase)
+		String[] idsDaCercare = {"dadoGrifondoro", "dadoSerpeverde", "dadoCorvonero", "dadoTassorosso"};
+		String[] icone = {"🦁", "🐍", "🦅", "🦡"};
+		TipoEffetto[] tipi = {
+			TipoEffetto.DADO_GRIFONDORO, 
+			TipoEffetto.DADO_SERPEVERDE, 
+			TipoEffetto.DADO_CORVONERO, 
+			TipoEffetto.DADO_TASSOROSSO
+		};
+		
+		for (int i = 0; i < idsDaCercare.length; i++) {
+			String idDado = idsDaCercare[i];
+			
+			// Controlla se questo dado esiste nella Map
+			if (stato.getDadi().containsKey(idDado)) {
+				Dado dado = stato.getDadi().get(idDado);
+				dadoIds.add(idDado);
+				opzioniDadi.add(icone[i] + " " + dado.getNome());
+				tipiDado.add(tipi[i]);
+				
+				System.out.println("✓ Dado disponibile: " + dado.getNome() + " (ID: " + idDado + ")");
+			}
+		}
+		
+		// Verifica che ci siano dadi disponibili
+		if (opzioniDadi.isEmpty()) {
+			System.out.println("⚠️ Nessun dado delle casate disponibile!");
+			System.out.println("   Dadi presenti nella Map: " + stato.getDadi().keySet());
+			return;
+		}
+		
+		System.out.println("📜 Storia di Hogwarts attivata - " + opzioniDadi.size() + " dadi disponibili");
+		
+		// Mostra dialog con i dadi effettivamente disponibili
+		grafica.panels.DialogHelper.mostraSceltaMultipla(
+			"Storia di Hogwarts",
+			giocatore.getEroe().getNome() + ", scegli quale dado tirare:",
+			"Seleziona uno dei dadi delle casate disponibili:",
+			opzioniDadi,
+			indiceScelta -> {
+				if (indiceScelta >= 0 && indiceScelta < tipiDado.size()) {
+					TipoEffetto dadoScelto = tipiDado.get(indiceScelta);
+					String nomeDadoScelto = opzioniDadi.get(indiceScelta);
+					
+					System.out.println("✅ " + giocatore.getEroe().getNome() + " ha scelto: " + nomeDadoScelto);
+					
+					// Tira il dado scelto
+					tiraDadoCasata(effetto, stato, giocatore, dadoScelto);
+				}
+				
+				// Aggiorna UI
+				if (grafica.GameController.getInstance() != null) {
+					grafica.GameController.getInstance().getGameUI().aggiorna();
+				}
+			},
+			grafica.panels.DialogHelper.DialogStyle.DADO()
+		);
+	}
+
+	/**
+	 * Converte il tipo effetto nel nome del dado
+	 */
+	private static String getNomeDadoDaTipo(TipoEffetto tipo) {
+		switch (tipo) {
+		case DADO_GRIFONDORO:
+			return "Dado Grifondoro";
+		case DADO_SERPEVERDE:
+			return "Dado Serpeverde";
+		case DADO_CORVONERO:
+			return "Dado Corvonero";
+		case DADO_TASSOROSSO:
+			return "Dado Tassorosso";
+		default:
+			return "Dado";
+		}
+	}
+
+	/**
+	 * Ottiene la lista di 6 effetti per il dado specifico
+	 */
+	private static List<Effetto> getOpzioniDado(Effetto effetto, TipoEffetto tipoDado) {
+		// Se l'effetto ha già le opzioni definite, usale
+		if (effetto.getOpzioni() != null && effetto.getOpzioni().size() >= 6) {
+			return effetto.getOpzioni();
+		}
+
+		// Altrimenti, avvisa che le opzioni devono essere configurate
+		System.out.println("⚠️ Le opzioni del dado devono essere definite nell'effetto!");
+		return null;
+	}
+
 	/**
 	 * Applica il risultato del dado agli Horcrux attivi
 	 */
-	private static void applicaRisultatoDadoAHorcrux(Effetto effetto, 
-	                                                StatoDiGioco stato, 
-	                                                Giocatore giocatore) {
-	    // Converti effetto in Entità
-	    Entita risultatoDado = convertiEffettoInEntita(effetto);
-	    
-	    if (risultatoDado == null) {
-	        return; // Effetto non rilevante per Horcrux
-	    }
-	    
-	    System.out.println("🎲 Risultato dado per Horcrux: " + risultatoDado);
-	    
-	    // Applica a tutti gli Horcrux attivi
-	    List<Horcrux> horcruxDaDistruggere = new ArrayList<>();
-	    
-	    for (Horcrux horcrux : stato.getHorcruxAttivi()) {
-	        boolean segnalinoAssegnato = horcrux.applicaRisultatoDado(risultatoDado);
-	        
-	        if (segnalinoAssegnato) {
-	            System.out.println("  ✓ Segnalino " + risultatoDado + " → " + 
-	                             horcrux.getNome());
-	        }
-	        
-	        if (horcrux.horcruxDistrutto()) {
-	            System.out.println("  🔥 HORCRUX DISTRUTTO: " + horcrux.getNome());
-	            horcruxDaDistruggere.add(horcrux);
-	        }
-	    }
-	    
-	    // Distruggi Horcrux completati
-	    for (Horcrux h : horcruxDaDistruggere) {
-	        // Applica ricompensa
-	        h.applicaRicompensa(stato, giocatore);
-	        
-	        // Rimuovi
-	        stato.getHorcruxAttivi().remove(h);
-	        
-	        // Messaggio
-	        if (GameController.getInstance() != null) {
-	            GameController.getInstance().getGameUI().getMessagePanel().mostraMessaggio(
-	                "🔥 " + h.getNome() + " DISTRUTTO!",
-	                MessagePanel.TipoMessaggio.MALVAGIO
-	            );
-	        }
-	    }
+	private static void applicaRisultatoDadoAHorcrux(Effetto effetto, StatoDiGioco stato, Giocatore giocatore) {
+		// Converti effetto in Entità
+		Entita risultatoDado = convertiEffettoInEntita(effetto);
+
+		if (risultatoDado == null) {
+			return; // Effetto non rilevante per Horcrux
+		}
+
+		System.out.println("🎲 Risultato dado per Horcrux: " + risultatoDado);
+
+		// Applica a tutti gli Horcrux attivi
+		List<Horcrux> horcruxDaDistruggere = new ArrayList<>();
+
+		for (Horcrux horcrux : stato.getHorcruxAttivi()) {
+			boolean segnalinoAssegnato = horcrux.applicaRisultatoDado(risultatoDado);
+
+			if (segnalinoAssegnato) {
+				System.out.println("  ✓ Segnalino " + risultatoDado + " → " + horcrux.getNome());
+			}
+
+			if (horcrux.horcruxDistrutto()) {
+				System.out.println("  🔥 HORCRUX DISTRUTTO: " + horcrux.getNome());
+				horcruxDaDistruggere.add(horcrux);
+			}
+		}
+
+		// Distruggi Horcrux completati
+		for (Horcrux h : horcruxDaDistruggere) {
+			// Applica ricompensa
+			h.applicaRicompensa(stato, giocatore);
+
+			// Rimuovi
+			stato.getHorcruxAttivi().remove(h);
+
+			// Messaggio
+			if (GameController.getInstance() != null) {
+				GameController.getInstance().getGameUI().getMessagePanel()
+						.mostraMessaggio("🔥 " + h.getNome() + " DISTRUTTO!", MessagePanel.TipoMessaggio.MALVAGIO);
+			}
+		}
 	}
 
 	/**
 	 * Converte tipo effetto in Entità per Horcrux
 	 */
 	private static Entita convertiEffettoInEntita(Effetto effetto) {
-	    switch (effetto.getType()) {
-	        case GUADAGNARE_ATTACCO:
-	            return Entita.ATTACCO;
-	            
-	        case GUADAGNARE_INFLUENZA:
-	            return Entita.INFLUENZA;
-	            
-	        case GUADAGNARE_VITA:
-	        case PERDERE_VITA:
-	            return Entita.VITA;
-	            
-	        case PESCARE_CARTA:
-	        case SCARTARE_CARTA:
-	            return Entita.CARTA;
-	            
-	        default:
-	            return null;
-	    }
+		switch (effetto.getType()) {
+		case GUADAGNARE_ATTACCO:
+			return Entita.ATTACCO;
+
+		case GUADAGNARE_INFLUENZA:
+			return Entita.INFLUENZA;
+
+		case GUADAGNARE_VITA:
+		case PERDERE_VITA:
+			return Entita.VITA;
+
+		case PESCARE_CARTA:
+		case SCARTARE_CARTA:
+			return Entita.CARTA;
+
+		default:
+			return null;
+		}
 	}
 
-	private static void tiraDadoMalvagio(Effetto effetto, StatoDiGioco stato, Giocatore giocatore) {
-		tiraDado(stato, giocatore);
+	private static void tiraDadoMalvagio(Effetto effetto, StatoDiGioco stato, Giocatore giocatore,
+			TipoEffetto tipoDado) {
+		if (stato.getDadi() == null || stato.getDadi().isEmpty()) {
+			System.out.println("⚠️ Nessun dado disponibile!");
+			return;
+		}
+
+		// ✅ STEP 1: Trova il dado corretto in base al tipo
+		Dado dadoSelezionato = null;
+		String nomeDadoCercato = getNomeDadoDaTipo(tipoDado);
+
+		for (Dado dado : stato.getDadi().values()) {
+			if (dado.getNome().equalsIgnoreCase(nomeDadoCercato)
+					|| dado.getId().toLowerCase().contains(nomeDadoCercato.toLowerCase())) {
+				dadoSelezionato = dado;
+				break;
+			}
+		}
+
+		if (dadoSelezionato == null) {
+			System.out.println("⚠️ Dado " + nomeDadoCercato + " non trovato!");
+			return;
+		}
+
+		// ✅ STEP 2: Ottieni le 6 opzioni per questo dado
+		List<Effetto> opzioniDado = getOpzioniDado(effetto, tipoDado);
+
+		if (opzioniDado == null || opzioniDado.size() < 6) {
+			System.out.println("⚠️ Effetti del dado non configurati correttamente!");
+			return;
+		}
+
+		// ✅ STEP 3: Tira il dado con le opzioni corrette
+		Effetto effettoEseguito = dadoSelezionato.tiraDado(stato, giocatore, opzioniDado);
+
+		switch (convertiEffettoInEntita(effettoEseguito)) {
+		case ATTACCO:
+			perdereVita(effettoEseguito, stato, giocatore);
+			break;
+		case VITA:
+			rimuovereAttacco(effettoEseguito, stato, giocatore);
+			break;
+		case INFLUENZA:
+			aggiungereMarchioNero(effettoEseguito, stato, giocatore);
+			break;
+		case CARTA:
+			scartareCarta(effettoEseguito, stato, giocatore);
+			break;
+		}
 	}
 
 	private static void mettiCartaInCimaMazzo(Effetto effetto, StatoDiGioco stato, Giocatore giocatore,
@@ -896,6 +1184,9 @@ public class EsecutoreEffetti {
 				System.out.println("🌑 Arti Oscure: " + evento.getNome());
 				evento.applicaEffetto(stato, giocatore);
 			}
+			if (evento.getNome().contains("Morsmordre")) {
+				stato.getGestoreTrigger().attivaTrigger(TipoTrigger.RIVELA_MORSMORDRE_O_MALVAGIO, stato, giocatore);
+			}
 		}
 	}
 
@@ -987,12 +1278,14 @@ public class EsecutoreEffetti {
 
 		case EROE_SCELTO:
 			// ⭐ USA InputController
-			int indice = InputController.scegliGiocatore(stato.getGiocatori(), "Scegli Eroe",
-					"Scegli un eroe come bersaglio");
-			if (indice >= 0 && indice < stato.getGiocatori().size()) {
-				bersagli.add(stato.getGiocatori().get(indice));
-			} else {
-				bersagli.add(stato.getGiocatori().get(stato.getGiocatoreCorrente()));
+			for (int i = 0; i < effetto.getQtaTarget(); i++) {
+				int indice = InputController.scegliGiocatore(stato.getGiocatori(), "Scegli Eroe",
+						"Scegli un eroe come bersaglio");
+				if (indice >= 0 && indice < stato.getGiocatori().size()) {
+					bersagli.add(stato.getGiocatori().get(indice));
+				} else {
+					bersagli.add(stato.getGiocatori().get(stato.getGiocatoreCorrente()));
+				}
 			}
 			break;
 

@@ -4,6 +4,7 @@ import carte.ArteOscura;
 import carte.Malvagio;
 import gestoreEffetti.EsecutoreEffetti;
 import gestoreEffetti.TipoEffetto;
+import gestoreEffetti.TipoTrigger;
 import carte.Horcrux;
 
 import java.util.Collections;
@@ -96,6 +97,10 @@ public class TurnManager {
             Giocatore giocatoreAttivo = stato.getGiocatori().get(stato.getGiocatoreCorrente());
             arteOscura.applicaEffetto(stato, giocatoreAttivo);
             
+            if(arteOscura.getNome().contains("Morsmordre")) {
+				stato.getGestoreTrigger().attivaTrigger(TipoTrigger.RIVELA_MORSMORDRE_O_MALVAGIO, stato, giocatoreAttivo);
+			}
+            
             // ⭐ IMPORTANTE: Aggiorna l'ultima carta giocata
            // stato.setUltimaArteOscuraGiocata(arteOscura);
             
@@ -127,7 +132,14 @@ public class TurnManager {
                                      " (" + malvagio.getDanno() + "⚔️/" + malvagio.getVita() + " ❤️)");
 
                     // ⭐ FIX: Applica l'effetto del malvagio
-                    malvagio.applicaEffetto(stato, giocatoreAttivo);
+                    if(!malvagio.getBloccoAbilita()) {
+                    	malvagio.applicaEffetto(stato, giocatoreAttivo);
+                    }
+                    else if(malvagio.getGiocatoreBloccante().equals(giocatoreAttivo)) {
+                    	malvagio.setBloccoAbilita(false);
+                    	malvagio.setGiocatoreBloccante(null);
+                    	malvagio.applicaEffetto(stato, giocatoreAttivo);
+                    }
                 }
             }
         } else {
@@ -140,7 +152,14 @@ public class TurnManager {
                                  " (" + malvagio.getDanno() + "⚔️/" + malvagio.getVita() + " ❤️)");
 
                 // ⭐ FIX: Applica l'effetto del malvagio
-                malvagio.applicaEffetto(stato, giocatoreAttivo);
+                if(!malvagio.getBloccoAbilita()) {
+                	malvagio.applicaEffetto(stato, giocatoreAttivo);
+                }
+                else if(malvagio.getGiocatoreBloccante().equals(giocatoreAttivo)) {
+                	malvagio.setBloccoAbilita(false);
+                	malvagio.setGiocatoreBloccante(null);
+                	malvagio.applicaEffetto(stato, giocatoreAttivo);
+                }
             }
         }
 
@@ -188,6 +207,10 @@ public class TurnManager {
         stato.getGestoreEffetti().fineTurno();
         stato.getGestoreTrigger().rimuoviTriggerFineTurno();
         
+        for(Malvagio m : stato.getMalvagiAttivi()) {
+    		m.setAttaccoassegnato(false);
+    	}
+        
         if (stato.isVittoriaPendente()) {
             System.out.println("🎊 Turno concluso! Mostra schermata vittoria...");
             
@@ -210,6 +233,9 @@ public class TurnManager {
             // 2. Ripristina segnalini
             giocatore.setAttacco(0);
             giocatore.setGettone(0);
+            giocatore.setAlleatiGiocati(0);
+            giocatore.setIncantesimiGiocati(0);
+            giocatore.setOggettiGiocati(0);
             System.out.println("  🔄 Segnalini ripristinati");
             
             // 3. Pesca 5 carte

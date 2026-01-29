@@ -14,7 +14,7 @@ import javafx.util.Duration;
 public class MessagePanel extends VBox {
     
     private static final int MAX_MESSAGES = 5;
-    private static final double MESSAGE_DURATION = 3.0;
+    private static final double MESSAGE_DURATION = 4.0;
     
     public MessagePanel() {
         this.setAlignment(Pos.TOP_RIGHT);
@@ -56,7 +56,7 @@ public class MessagePanel extends VBox {
         icona.setFont(Font.font(20));
         
         Text testoLabel = new Text(testo);
-        testoLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        testoLabel.setFont(Font.font("Arial", FontWeight.BOLD, 20));
         testoLabel.setFill(Color.WHITE);
         testoLabel.setWrappingWidth(320);
         

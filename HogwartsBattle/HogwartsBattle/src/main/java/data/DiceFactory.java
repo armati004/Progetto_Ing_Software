@@ -118,12 +118,13 @@ public class DiceFactory {
         
         Map<String, Dado> dadiCasate = new HashMap<>();
         
-        String[] casate = {"grifondoro", "serpeverde", "corvonero", "tassorosso"};
+        String[] casate = {"dadoGrifondoro", "dadoSerpeverde", "dadoCorvonero", "dadoTassorosso"};
         
         for (String casata : casate) {
             try {
                 Dado dado = creaDado(casata);
-                dadiCasate.put(casata.toLowerCase(), dado);
+                dadiCasate.put(casata, dado);
+                System.out.println("✓ Caricato: " + dado.getNome() + " (ID: " + casata + ")");
             } catch (IllegalArgumentException e) {
                 System.err.println("⚠️ Dado della casata " + casata + " non trovato");
             }

@@ -294,7 +294,7 @@
             "class": "Alleato",
             "descrizione": "Guadagni 1 Segnalino Attacco e 2 Punti Vita.\n Tira un Dado Serpeverde",
             "costo": 6,
-            "path-img": "...",
+            "path-img": "/Immagini_carte/Negozio/Gioco4/Severus_Piton.png",
             "effetti":[
                 {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
                 {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},

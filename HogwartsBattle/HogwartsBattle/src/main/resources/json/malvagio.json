@@ -372,7 +372,7 @@
       "vita": "15",
       "path-img": "/Immagini_carte/Malvagi/Gioco6/Lord_Voldemort6.png",
       "effetti": [
-        {"type": "DADO_VOLDEMORT", "target": "currentEnemy"}
+        {"type": "DADO_MALVAGIO", "target": "TUTTI_GLI_EROI", durata: "ISTANTANEO"}
       ],
 	  "triggers":[
 		{

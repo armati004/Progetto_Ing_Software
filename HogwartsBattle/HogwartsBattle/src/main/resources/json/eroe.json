@@ -92,6 +92,7 @@
                 "type": "ATTACCHI_ASSEGNATI",
                 "durata": "CONTINUO",
                 "qta-quorum": 3,
+				"attivato1Volta": false,
                 "effectToExecute": [
                     {"type": "GUADAGNARE_VITA", "qta": 2, "target": "EROE_SCELTO", "targetCount": 1}
                 ]

@@ -2,10 +2,11 @@ package grafica;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import gioco.StatoDiGioco;
 import grafica.panels.PlayersStatsPanel;
 import grafica.panels.GameBoardPanel;
@@ -13,9 +14,7 @@ import grafica.panels.CurrentPlayerPanel;
 import grafica.panels.MessagePanel;
 
 /**
- * GameBoardUI - Componente principale che gestisce il layout del gioco
- * Divide lo spazio in 3 sezioni: top (statistiche), center (tabellone), bottom (giocatore corrente)
- * SUPPORTA RESIZE DINAMICO + MessagePanel in overlay
+ * GameBoardUI - Layout che si adatta al resize della finestra
  */
 public class GameBoardUI extends StackPane {
     
@@ -24,96 +23,87 @@ public class GameBoardUI extends StackPane {
     private GameBoardPanel boardPanel;
     private CurrentPlayerPanel playerPanel;
     private MessagePanel messagePanel;
+    private Label annoLabel;
     
-    /**
-     * Costruttore: inizializza i pannelli
-     */
     public GameBoardUI(StatoDiGioco stato) {
         this.stato = stato;
         
-        // Crea BorderPane per il layout principale
-        BorderPane mainLayout = new BorderPane();
-        mainLayout.setStyle("-fx-background-color: #1a1a1a; -fx-border-color: #666; -fx-border-width: 1;");
-        mainLayout.setPadding(new Insets(10));
+        // Layout principale con VBox per distribuire lo spazio
+        VBox mainLayout = new VBox(5);
+        mainLayout.setStyle("-fx-background-color: #1a1a1a;");
+        mainLayout.setPadding(new Insets(5));
         
-        // Crea i pannelli
+        // TOP: Anno + Stats (dimensioni fisse)
+        HBox topBar = creaTopBar();
+        topBar.setMinHeight(45);
+        topBar.setPrefHeight(50);
+        topBar.setMaxHeight(60);
+        
         this.statsPanel = new PlayersStatsPanel(stato);
+        statsPanel.setMinHeight(70);
+        statsPanel.setPrefHeight(85);
+        statsPanel.setMaxHeight(100);
+        
+        // CENTER: Board (si espande per riempire lo spazio disponibile)
         this.boardPanel = new GameBoardPanel(stato);
-        this.playerPanel = new CurrentPlayerPanel(stato);
-        
-        // Top: Statistiche giocatori (15%)
-        VBox topContainer = new VBox(statsPanel);
-        topContainer.setPrefHeight(150);
-        mainLayout.setTop(topContainer);
-        BorderPane.setMargin(topContainer, new Insets(0, 0, 10, 0));
-        
-        // Center: Tabellone (60%) - ESPANDIBILE
-        VBox centerContainer = new VBox(boardPanel);
         VBox.setVgrow(boardPanel, Priority.ALWAYS);
-        mainLayout.setCenter(centerContainer);
-        BorderPane.setMargin(centerContainer, new Insets(0, 0, 10, 0));
         
-        // Bottom: Giocatore corrente (25%)
-        VBox bottomContainer = new VBox(playerPanel);
-        bottomContainer.setPrefHeight(250);
-        bottomContainer.setMinHeight(200);
-        mainLayout.setBottom(bottomContainer);
+        // BOTTOM: Current Player (dimensioni con range)
+        this.playerPanel = new CurrentPlayerPanel(stato);
+        playerPanel.setMinHeight(180);
+        playerPanel.setPrefHeight(220);
+        playerPanel.setMaxHeight(300);
         
-        // Crea MessagePanel in overlay
+        // Aggiungi tutti
+        mainLayout.getChildren().addAll(topBar, statsPanel, boardPanel, playerPanel);
+        
+        // Message Panel overlay
         this.messagePanel = new MessagePanel();
         
-        // Aggiungi entrambi allo StackPane
         this.getChildren().addAll(mainLayout, messagePanel);
-        
-        // Allinea MessagePanel in alto a destra
         StackPane.setAlignment(messagePanel, Pos.TOP_RIGHT);
     }
     
-    /**
-     * Aggiorna tutti i pannelli
-     */
+    private HBox creaTopBar() {
+        HBox topBar = new HBox();
+        topBar.setAlignment(Pos.CENTER);
+        topBar.setPadding(new Insets(8));
+        topBar.setStyle(
+            "-fx-background-color: #000000;" +
+            "-fx-border-color: #FFD700;" +
+            "-fx-border-width: 0 0 3 0;"
+        );
+        
+        this.annoLabel = new Label("📚 ANNO " + stato.getAnnoCorrente());
+        annoLabel.setTextFill(Color.web("#FFD700"));
+        annoLabel.setFont(Font.font("Arial", FontWeight.BOLD, 32));
+        annoLabel.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(255, 215, 0, 0.9), 20, 0, 0, 0);");
+        
+        topBar.getChildren().add(annoLabel);
+        return topBar;
+    }
+    
     public void aggiorna() {
+        if (annoLabel != null) {
+            annoLabel.setText("📚 ANNO " + stato.getAnnoCorrente());
+        }
         if (statsPanel != null) statsPanel.aggiorna();
         if (boardPanel != null) boardPanel.aggiorna();
         if (playerPanel != null) playerPanel.aggiorna();
     }
     
-    /**
-     * Aggiorna solo il pannello del giocatore corrente
-     */
     public void aggiornaGiocatoreCorrente() {
         if (playerPanel != null) playerPanel.aggiorna();
     }
     
-    /**
-     * Aggiorna solo il tabellone
-     */
     public void aggiornaTabelone() {
         if (boardPanel != null) boardPanel.aggiorna();
         if (statsPanel != null) statsPanel.aggiorna();
     }
     
-    // ============================================
-    // GETTER
-    // ============================================
-    
-    public PlayersStatsPanel getStatsPanel() {
-        return statsPanel;
-    }
-    
-    public GameBoardPanel getBoardPanel() {
-        return boardPanel;
-    }
-    
-    public CurrentPlayerPanel getPlayerPanel() {
-        return playerPanel;
-    }
-    
-    public StatoDiGioco getStato() {
-        return stato;
-    }
-    
-    public MessagePanel getMessagePanel() {
-        return messagePanel;
-    }
+    public PlayersStatsPanel getStatsPanel() { return statsPanel; }
+    public GameBoardPanel getBoardPanel() { return boardPanel; }
+    public CurrentPlayerPanel getPlayerPanel() { return playerPanel; }
+    public StatoDiGioco getStato() { return stato; }
+    public MessagePanel getMessagePanel() { return messagePanel; }
 }

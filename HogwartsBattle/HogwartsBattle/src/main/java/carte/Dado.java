@@ -62,28 +62,27 @@ public class Dado {
     }
 
     /**
-     * Tira il dado: sceglie casualmente una delle 6 facce ed esegue l'effetto
+     * Tira il dado e applica un effetto casuale tra le 6 opzioni
      * 
      * @param stato Stato di gioco
      * @param attivo Giocatore attivo
-     * @return L'effetto selezionato (utile per Horcrux)
+     * @param opzioniEffetti Lista di 6 effetti possibili (uno per faccia del dado)
+     * @return L'effetto che è stato eseguito  // ✅ Ora restituisce l'effetto
      */
-    public Effetto tiraDado(StatoDiGioco stato, Giocatore attivo) {
-        if (opzioni == null || opzioni.size() != 6) {
-            System.err.println("❌ Dado " + nome + " non ha 6 opzioni valide!");
-            return null;
+    public Effetto tiraDado(StatoDiGioco stato, Giocatore attivo, List<Effetto> opzioniEffetti) {
+        if (opzioniEffetti == null || opzioniEffetti.size() < 6) {
+            throw new IllegalArgumentException("Deve essere fornita una lista di almeno 6 effetti per il dado.");
         }
 
-        // Genera numero casuale 0-5 (6 facce)
-        int indiceFaccia = random.nextInt(6);
-        Effetto effettoSelezionato = opzioni.get(indiceFaccia);
+        int indiceEffetto = random.nextInt(6);
+        Effetto effettoSelezionato = opzioniEffetti.get(indiceEffetto);
 
-        System.out.println("🎲 " + nome + " - Faccia " + (indiceFaccia + 1) + ": " + 
+        // ✅ Log migliorato
+        System.out.println("🎲 " + nome + " - Faccia " + (indiceEffetto + 1) + ": " + 
                          effettoSelezionato.getType());
 
-        // Esegui effetto
         EsecutoreEffetti.eseguiEffetto(effettoSelezionato, stato, attivo);
-
-        return effettoSelezionato;
+        
+        return effettoSelezionato;  // ✅ Restituisce l'effetto eseguito
     }
 }

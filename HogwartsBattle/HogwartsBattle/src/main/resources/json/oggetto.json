@@ -192,7 +192,7 @@
             "path-img":"/Immagini_carte/Negozio/Gioco4/Storia_di_Hogwarts.png",
             "effetti":[
                 {
-                    "type": "SCELTA",
+                    "type": "SCEGLI_DADO",
                     "target":"EROE_ATTIVO",
                     "opzioni":[
                         {"type": "DADO_TASSOROSSO", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},

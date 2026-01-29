@@ -5,7 +5,7 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import carte.Carta;
-
+import carte.Malvagio;
 import carte.Carta;
 import gioco.Giocatore;
 import gioco.StatoDiGioco;
@@ -65,8 +65,17 @@ public class GestoreTrigger {
 		List<TriggerAttivato> triggerDaAttivare = registro.get(tipo);
 		
 		for(TriggerAttivato attivato : triggerDaAttivare) {
-			for(Effetto effetto : attivato.getEffetti()) {
-				EsecutoreEffetti.eseguiEffetto(effetto, stato, giocatore);
+			if(attivato.getSorgente() instanceof Malvagio) {
+				if(!((Malvagio)attivato.getSorgente()).getBloccoAbilita()) {
+					for(Effetto effetto : attivato.getEffetti()) {
+						EsecutoreEffetti.eseguiEffetto(effetto, stato, giocatore);
+					}
+				}
+			}
+			else {
+				for(Effetto effetto : attivato.getEffetti()) {
+					EsecutoreEffetti.eseguiEffetto(effetto, stato, giocatore);
+				}
 			}
 		}
 	}

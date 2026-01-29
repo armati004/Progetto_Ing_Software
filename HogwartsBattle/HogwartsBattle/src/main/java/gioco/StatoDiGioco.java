@@ -314,6 +314,7 @@ public class StatoDiGioco {
 		if (!mazzoMalvagi.isEmpty()) {
 			Malvagio m = mazzoMalvagi.pop();
 			malvagiAttivi.add(m);
+			gestoreTrigger.attivaTrigger(TipoTrigger.RIVELA_MORSMORDRE_O_MALVAGIO, this, giocatori.get(giocatoreCorrente));
 			System.out.println("Nuovo Malvagio rivelato: " + m.getNome());
 		}
 	}
@@ -528,6 +529,8 @@ public class StatoDiGioco {
 		m.defeat(this, giocatori.get(giocatoreCorrente));
 
 		malvagiAttivi.remove(m);
+		
+		gestoreEffetti.rimuoviEffetto(m);
 
 		gestoreTrigger.attivaTrigger(TipoTrigger.NEMICO_SCONFITTO, this, giocatori.get(giocatoreCorrente));
 

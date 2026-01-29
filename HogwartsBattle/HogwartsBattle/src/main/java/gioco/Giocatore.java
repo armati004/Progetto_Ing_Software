@@ -8,6 +8,7 @@ import carte.Carta;
 import carte.Competenza;
 import carte.Eroe;
 import carte.Mazzo;
+import gestoreEffetti.TipoTrigger;
 import gestoreEffetti.Trigger;
 
 public class Giocatore {
@@ -20,6 +21,9 @@ public class Giocatore {
     private int gettone;
     private int attacco;
     private Competenza competenza;
+    private int alleatiGiocati;
+    private int incantesimiGiocati;
+    private int oggettiGiocati;
 
 	private SelettoreCarta selettoreCarta;
 	private List<Carta> carteAcquistateQuestoTurno = new ArrayList<>();
@@ -41,13 +45,14 @@ public class Giocatore {
     	this.eroe = eroe;
     	this.salute = saluteMax;
     	this.mazzo = new Mazzo();
-    	this.mazzo.inizializzaMazzo(eroe.getNome());
     	this.scarti = new Mazzo();
     	this.mano = new ArrayList<>();
-    	inizializzaMano();
     	this.gettone = 0;
     	this.attacco = 0;
     	this.competenza = null;
+    	this.setAlleatiGiocati(0);
+    	this.setIncantesimiGiocati(0);
+    	this.setOggettiGiocati(0);
     }
     
     public void scartaCarta(/*Mazzo mazzo,*/ Carta carta) {
@@ -75,8 +80,30 @@ public class Giocatore {
 
         carta.applicaEffetto(stato, this);
 
-        if (carta.getClasse().equals("Alleato")) {
-            stato.getAlleatiGiocatiInQuestoTurno().add((carte.Alleato) carta);
+        if (carta.getClasse().equalsIgnoreCase("Alleato")) {
+            alleatiGiocati++;
+        }
+        else if(carta.getClasse().equalsIgnoreCase("Incantesimo")) {
+        	incantesimiGiocati++;
+        }
+        else if(carta.getClasse().equalsIgnoreCase("Oggetto")) {
+        	oggettiGiocati++;
+        }
+        
+        if(incantesimiGiocati >= 4 && eroe.getNome().contains("Hermione") && eroe.getTriggers() != null) {
+        	if(eroe.getTriggers().get(0).getAttivato1Volta() == false) {
+        		stato.getGestoreTrigger().attivaTrigger(TipoTrigger.INCANTESIMI_GIOCATI, stato, this);
+        		eroe.getTriggers().get(0).setAttivato1Volta(true);
+        	}
+        }
+        
+        if(incantesimiGiocati >= 1 && alleatiGiocati >= 1 && oggettiGiocati >= 1) {
+        	stato.getGestoreTrigger().attivaTrigger(TipoTrigger.GIOCA_TUTTO, stato, this);
+        	stato.getGestoreTrigger().attivaTrigger(TipoTrigger.TUTTE_TIPOLOGIE, stato, this);
+        }
+        
+        if(alleatiGiocati >= 2) {
+        	stato.getGestoreTrigger().attivaTrigger(TipoTrigger.GIOCA_ALLEATO, stato, this);
         }
         
         mano.remove(carta);
@@ -240,6 +267,30 @@ public class Giocatore {
 		this.competenza = competenza;
 	}
 	
+	public int getAlleatiGiocati() {
+		return alleatiGiocati;
+	}
+
+	public void setAlleatiGiocati(int alleatiGiocati) {
+		this.alleatiGiocati = alleatiGiocati;
+	}
+
+	public int getIncantesimiGiocati() {
+		return incantesimiGiocati;
+	}
+
+	public void setIncantesimiGiocati(int incantesimiGiocati) {
+		this.incantesimiGiocati = incantesimiGiocati;
+	}
+
+	public int getOggettiGiocati() {
+		return oggettiGiocati;
+	}
+
+	public void setOggettiGiocati(int oggettiGiocati) {
+		this.oggettiGiocati = oggettiGiocati;
+	}
+
 	public List<Carta> getCarteAcquistateQuestoTurno() {
 	    return carteAcquistateQuestoTurno;
 	}

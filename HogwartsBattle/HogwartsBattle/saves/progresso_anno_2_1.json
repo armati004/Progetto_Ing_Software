@@ -1,0 +1,117 @@
+{
+  "annoCorrente": 2,
+  "numeroGiocatori": 4,
+  "vittoriaUltimaPartita": true,
+  "giocatori": [
+    {
+      "nomeEroe": "Harry Potter",
+      "carteNelMazzo": [
+        "reparo1",
+        "Alohomora_Harry",
+        "nimbusDuemilauno2",
+        "reparo1",
+        "firebolt0",
+        "Alohomora_Harry",
+        "Alohomora_Harry",
+        "mantelloInvisibilita0",
+        "reparo1",
+        "descendo1",
+        "Alohomora_Harry",
+        "boccinoOro1",
+        "incendio1",
+        "ginnyWeasley2",
+        "albusSilente1",
+        "edvige0",
+        "essenzaDittamo1",
+        "Alohomora_Harry",
+        "Alohomora_Harry",
+        "oliverBaston1",
+        "cappelloParlante1",
+        "Alohomora_Harry"
+      ]
+    },
+    {
+      "nomeEroe": "Hermione Granger",
+      "carteNelMazzo": [
+        "attrezzaturaQuidditch1",
+        "favolaBeda0",
+        "Alohomora_Hermione",
+        "wingardiumLeviosa1",
+        "giratempo0",
+        "Alohomora_Hermione",
+        "essenzaDittamo1",
+        "grattastinchi0",
+        "finite2",
+        "Alohomora_Hermione",
+        "reparo1",
+        "descendo1",
+        "wingardiumLeviosa1",
+        "dobbyElf2",
+        "attrezzaturaQuidditch1",
+        "reparo1",
+        "Alohomora_Hermione",
+        "Alohomora_Hermione",
+        "Alohomora_Hermione",
+        "lumos1",
+        "Alohomora_Hermione",
+        "nimbusDuemilauno2"
+      ]
+    },
+    {
+      "nomeEroe": "Ron Weasley",
+      "carteNelMazzo": [
+        "expelliarmus2",
+        "Alohomora_Ron",
+        "pozionePolisucco2",
+        "Alohomora_Ron",
+        "gelatineTuttiGusti0",
+        "leotardo0",
+        "incendio1",
+        "Alohomora_Ron",
+        "Alohomora_Ron",
+        "incendio1",
+        "rubeusHagrid1",
+        "lumos1",
+        "gilderoyAllock2",
+        "Alohomora_Ron",
+        "Alohomora_Ron",
+        "tornado110",
+        "Alohomora_Ron"
+      ]
+    },
+    {
+      "nomeEroe": "Neville Longbottom",
+      "carteNelMazzo": [
+        "Alohomora_Neville",
+        "Alohomora_Neville",
+        "essenzaDittamo1",
+        "reparo1",
+        "pozionePolisucco2",
+        "wingardiumLeviosa1",
+        "Alohomora_Neville",
+        "Alohomora_Neville",
+        "incendio1",
+        "attrezzaturaQuidditch1",
+        "essenzaDittamo1",
+        "Alohomora_Neville",
+        "Alohomora_Neville",
+        "Alohomora_Neville",
+        "ricordella0",
+        "attrezzaturaQuidditch1",
+        "mandragola0",
+        "oscar0",
+        "finite2"
+      ]
+    }
+  ],
+  "timestamp": 1769537472337,
+  "dataOra": "2026-01-27 19:11:12",
+  "nomePartita": "progresso_anno_2_1",
+  "giocatoreCorrente": 3,
+  "carteNegozioRimaste": [
+    "mollyWeasley2",
+    "expelliarmus2",
+    "arthurWeasley2",
+    "fannyFenice2"
+  ]
+}

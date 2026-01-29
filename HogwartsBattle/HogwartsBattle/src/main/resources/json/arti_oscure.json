@@ -78,8 +78,8 @@
           "target": "SCELTA_MULTIPLA",
           "durata": "ISTANTANEO",
           "opzioni": [
-            {"type": "SCARTA_INCANTESIMO", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
-            {"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+            {"type": "SCARTA_INCANTESIMO", "qta": 1, "target": "EROE_ATTIVANTE", "durata": "ISTANTANEO"},
+            {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVANTE", "durata": "ISTANTANEO"}
           ]
         }
       ],
@@ -98,8 +98,8 @@
           "target": "SCELTA_MULTIPLA",
           "durata": "ISTANTANEO",
           "opzioni": [
-            {"type": "SCARTA_OGGETTO", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
-            {"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+            {"type": "SCARTA_OGGETTO", "qta": 1, "target": "EROE_ATTIVANTE", "durata": "ISTANTANEO"},
+            {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVANTE", "durata": "ISTANTANEO"}
           ]
         }
       ],
@@ -118,8 +118,8 @@
           "target": "SCELTA_MULTIPLA",
           "durata": "ISTANTANEO",
           "opzioni": [
-            {"type": "SCARTA_ALLEATO", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
-            {"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+            {"type": "SCARTA_ALLEATO", "qta": 1, "target": "EROE_ATTIVANTE", "durata": "ISTANTANEO"},
+            {"type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVANTE", "durata": "ISTANTANEO"}
           ]
         }
       ],
@@ -184,15 +184,15 @@
       "costo": 0,
       "pathImmagine": "/Immagini_carte/Arti_Oscure/Gioco4/Avada_kedavra4.png",
       "effetti": [
-        {"type": "PERDERE_VITA", "qta": 3, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+        {"type": "PERDERE_VITA", "qta": 3, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+		{"type": "RIVELA_NUOVO_EVENTO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
       ],
       "triggers": [
         {
           "type": "STORDIMENTO",
-          "durata": "ISTANTANEO",
+          "durata": "TEMPORANEO",
           "effectToExecute": [
-            {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"},
-            {"type": "RIVELA_NUOVO_EVENTO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+            {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}            
           ]
         }
       ]
@@ -229,7 +229,44 @@
         {"type": "RIVELA_NUOVO_EVENTO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
       ],
       "triggers": []
-    }
+    },
+	{
+      "nome": "Erede di Serpeverde",
+      "id": "eredeDiSerpeverde4",
+      "class": "ArtiOscure",
+      "descrizione": "Tira il dado di Serpeverde: \nAttacco: Tutti perdono una vita \nInfluenza: Aggiungi 1 marchio nero al Luogo \nVita: Rimuovi 1 Attacco da tutti i malvagi \nCarta: Tutti scartano 1 carta",
+      "costo": 0,
+      "pathImmagine": "/Immagini_carte/Arti_Oscure/Gioco4/Erede_di_Serpeverde.png",
+      "effetti": [
+        {"type": "DADO_MALVAGIO", "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+      ],
+      "triggers": []
+	},
+	{
+      "nome": "Rigenerazione",
+      "id": "rigenerazione4",
+      "class": "ArtiOscure",
+      "descrizione": "Rimuovi 2 attacchi da tutti i malvagi",
+      "costo": 0,
+      "pathImmagine": "/Immagini_carte/Arti_Oscure/Gioco4/Rigenerazione.png",
+      "effetti": [
+        {"type": "CURARE_MALVAGI", "qta":2, "target": "TUTTI_I_MALVAGI", "durata": "ISTANTANEO"}
+      ],
+      "triggers": []
+	},
+	{
+      "nome": "Morsmordre",
+      "id": "morsmordre4",
+      "class": "ArtiOscure",
+      "descrizione": "Tutti gli eroi perdono 1 vita \nAggiungi 1 marchio nero al Luogo",
+      "costo": 0,
+      "pathImmagine": "/Immagini_carte/Arti_Oscure/Gioco4/Morsmordre4.png",
+      "effetti": [
+        {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+		{"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
+      ],
+      "triggers": []
+	}
   ],
   "gioco5": [
     {
