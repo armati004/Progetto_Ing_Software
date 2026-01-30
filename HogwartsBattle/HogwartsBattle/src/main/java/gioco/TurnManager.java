@@ -202,6 +202,10 @@ public class TurnManager {
     private void eseguiFineTurno() {
         System.out.println("\n🔄 === FINE TURNO ===");
         
+        for(Giocatore g : stato.getGiocatori()) {
+        	g.getEroe().getTriggers().get(0).setAttivato1Volta(false);
+        }
+        
         Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
         
         stato.getGestoreEffetti().fineTurno();
@@ -255,6 +259,8 @@ public class TurnManager {
             // 4. Prossimo giocatore
             int prossimoGiocatore = (stato.getGiocatoreCorrente() + 1) % stato.getGiocatori().size();
             stato.setGiocatoreCorrente(prossimoGiocatore);
+            
+            stato.getGiocatori().get(prossimoGiocatore).registraTriggersInMano(stato);
             
             System.out.println("\n✓ Turno completato");
             

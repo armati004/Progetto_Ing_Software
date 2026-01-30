@@ -68,13 +68,13 @@ public class GestoreTrigger {
 			if(attivato.getSorgente() instanceof Malvagio) {
 				if(!((Malvagio)attivato.getSorgente()).getBloccoAbilita()) {
 					for(Effetto effetto : attivato.getEffetti()) {
-						EsecutoreEffetti.eseguiEffetto(effetto, stato, giocatore);
+						EsecutoreEffetti.eseguiEffetto(effetto, stato, giocatore, attivato.getSorgente());
 					}
 				}
 			}
 			else {
 				for(Effetto effetto : attivato.getEffetti()) {
-					EsecutoreEffetti.eseguiEffetto(effetto, stato, giocatore);
+					EsecutoreEffetti.eseguiEffetto(effetto, stato, giocatore, attivato.getSorgente());
 				}
 			}
 		}

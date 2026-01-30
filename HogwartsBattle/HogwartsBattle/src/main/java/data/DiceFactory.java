@@ -118,7 +118,7 @@ public class DiceFactory {
         
         Map<String, Dado> dadiCasate = new HashMap<>();
         
-        String[] casate = {"dadoGrifondoro", "dadoSerpeverde", "dadoCorvonero", "dadoTassorosso"};
+        String[] casate = {"dadoGrifondoro", "dadoSerpeverde", "dadoCorvonero", "dadoTassorosso", "dadoMalvagio"};
         
         for (String casata : casate) {
             try {

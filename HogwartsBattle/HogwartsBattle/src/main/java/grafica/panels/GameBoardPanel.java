@@ -329,7 +329,7 @@ public class GameBoardPanel extends HBox {
         
         for (int i = 0; i < stato.getMalvagiAttivi().size(); i++) {
             Malvagio m = stato.getMalvagiAttivi().get(i);
-            VBox box = creaMalvagioBox(m, i);
+            HBox box = creaMalvagioBox(m, i);
             malvagiAttiviBox.getChildren().add(box);
         }
         
@@ -341,12 +341,30 @@ public class GameBoardPanel extends HBox {
         }
     }
     
-    private VBox creaMalvagioBox(Malvagio malvagio, int indice) {
-        VBox box = new VBox(5);
+    private HBox creaMalvagioBox(Malvagio malvagio, int indice) {
+        HBox box = new HBox(5);
         box.setStyle("-fx-border-color: #FF9999; -fx-border-width: 2; -fx-background-color: #2a0a0a; -fx-border-radius: 5; -fx-background-radius: 5;");
         box.setPadding(new Insets(10));
         box.setAlignment(Pos.TOP_CENTER);
         box.setPrefWidth(400);
+        
+        VBox imageContainer = new VBox(5);
+        imageContainer.setPadding(new Insets(10));
+        imageContainer.setAlignment(Pos.CENTER_RIGHT);
+        imageContainer.setMaxWidth(Double.MAX_VALUE);
+        imageContainer.setPrefWidth(1);
+        
+        VBox statsContainer = new VBox(5);
+        statsContainer.setPadding(new Insets(10));
+        statsContainer.setAlignment(Pos.CENTER);
+        statsContainer.setMaxWidth(Double.MAX_VALUE);
+        statsContainer.setPrefWidth(1);
+        
+        VBox descrContainer = new VBox(5);
+        descrContainer.setPadding(new Insets(10));
+        descrContainer.setAlignment(Pos.CENTER_LEFT);
+        descrContainer.setMaxWidth(Double.MAX_VALUE);
+        descrContainer.setPrefWidth(1);
         
         // Immagine
         if (malvagio.getPathImmagine() != null && !malvagio.getPathImmagine().isEmpty()) {
@@ -357,13 +375,13 @@ public class GameBoardPanel extends HBox {
                 iv.setFitHeight(100);
                 iv.setPreserveRatio(true);
                 iv.setSmooth(true);
-                box.getChildren().add(iv);
+                imageContainer.getChildren().add(iv);
             }
         }
         
         // Nome
         Label nome = new Label(malvagio.getNome());
-        nome.setFont(Font.font("Arial", FontWeight.BOLD, 13));
+        nome.setFont(Font.font("Arial", FontWeight.BOLD, 16));
         nome.setTextFill(Color.web("#FF6666"));
         nome.setWrapText(true);
         
@@ -371,7 +389,7 @@ public class GameBoardPanel extends HBox {
         HBox saluteRow = new HBox(5);
         saluteRow.setAlignment(Pos.CENTER);
         Label saluteLabel = new Label("Salute:");
-        saluteLabel.setFont(Font.font("Arial", 10));
+        saluteLabel.setFont(Font.font("Arial", 14));
         saluteLabel.setTextFill(Color.web("#CCCCCC"));
         Label saluteValue = new Label("❤️ " + malvagio.getDanno() + "/" + malvagio.getVita());
         saluteValue.setFont(Font.font("Arial", FontWeight.BOLD, 12));
@@ -382,14 +400,27 @@ public class GameBoardPanel extends HBox {
         HBox dannoRow = new HBox(5);
         dannoRow.setAlignment(Pos.CENTER);
         Label dannoLabel = new Label("Danno:");
-        dannoLabel.setFont(Font.font("Arial", 10));
+        dannoLabel.setFont(Font.font("Arial", 14));
         dannoLabel.setTextFill(Color.web("#CCCCCC"));
         Label dannoValue = new Label("⚔️ " + malvagio.getDanno());
-        dannoValue.setFont(Font.font("Arial", FontWeight.BOLD, 12));
+        dannoValue.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         dannoValue.setTextFill(Color.web("#FFAA66"));
         dannoRow.getChildren().addAll(dannoLabel, dannoValue);
         
-        box.getChildren().addAll(nome, saluteRow, dannoRow);
+        statsContainer.getChildren().addAll(nome, saluteRow, dannoRow);
+        
+        Label descrLabel = new Label(malvagio.getDescrizione());
+        descrLabel.setFont(Font.font("Arial", 14));
+        descrLabel.setTextFill(Color.web("#FF9999"));
+        descrLabel.setWrapText(true);
+        descrLabel.setMaxWidth(250);
+        descrContainer.getChildren().add(descrLabel);
+        
+        box.setHgrow(imageContainer, Priority.ALWAYS);
+        box.setHgrow(statsContainer, Priority.ALWAYS);
+        box.setHgrow(descrContainer, Priority.ALWAYS);
+        
+        box.getChildren().addAll(imageContainer, statsContainer, descrContainer);
         
         // Interattività
         box.setOnMouseClicked(e -> {

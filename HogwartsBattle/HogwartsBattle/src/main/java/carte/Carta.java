@@ -38,7 +38,7 @@ public class Carta {
 		if(this.getEffetti() != null && !(this.getEffetti().isEmpty())) {
 			for(Effetto effetto : this.getEffetti()) {
 				if(effetto.getDurata() == DurataEffetto.ISTANTANEO) {
-					EsecutoreEffetti.eseguiEffetto(effetto, stato, attivo);
+					EsecutoreEffetti.eseguiEffetto(effetto, stato, attivo, this);
 				}
 				else if(effetto.getDurata() == DurataEffetto.TEMPORANEO) {
 					stato.getGestoreEffetti().aggiungiEffettoTemporaneo(effetto.getType(), this);

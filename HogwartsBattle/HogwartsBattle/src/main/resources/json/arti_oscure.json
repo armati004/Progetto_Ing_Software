@@ -131,7 +131,7 @@
       "nome": "Bacio del dissennatore",
       "id": "bacioDelDissennatore3",
       "class": "ArtiOscure",
-      "descrizione": "L'eroe attivo e tutti gli eroi perdono 1 punto vita ciascuno.",
+      "descrizione": "L'eroe attivo perde 2 punti vita. Tutti gli altri ne perdono 1.",
       "costo": 0,
       "pathImmagine": "/Immagini_carte/Arti_Oscure/Gioco3/Bacio_del_dissennatore.png",
       "effetti": [

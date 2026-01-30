@@ -29,6 +29,7 @@ public class StatoDiGioco {
 	private boolean gameOver = false;
 	private boolean victory = false;
 	private boolean vittoriaPendente = false;
+	private boolean processandoTriggerVita = false; // Flag per prevenire loop infinito trigger GUADAGNA_VITA
 
 	// --- Entità di Gioco ---
 	private List<Giocatore> giocatori;
@@ -231,7 +232,13 @@ public class StatoDiGioco {
 		// 2. Rivela il primo Malvagio
 		// (La regola cambia in base all'anno, es. Anno 1 = 1 Malvagio, Anno 7 = 3
 		// Malvagi)
-		int initialVillains = (annoCorrente >= 3) ? 2 : 1;
+		int initialVillains = 1;
+		if(annoCorrente >= 3 && annoCorrente < 5) {
+			initialVillains = 2;
+		}
+		else if(annoCorrente >= 5) {
+			initialVillains = 3;
+		}
 		for (int i = 0; i < initialVillains; i++) {
 			addMalvagioAttivo();
 		}
@@ -519,6 +526,57 @@ public class StatoDiGioco {
 		// Verifica se tutti i luoghi sono persi
 		verificaCondizioneSconfitta();
 	}
+	
+	/**
+	 * Verifica se un malvagio può essere attaccato.
+	 * Negli anni 5, 6 e 7, Voldemort non può essere attaccato finché
+	 * non sono stati sconfitti tutti gli altri malvagi attivi.
+	 * 
+	 * @param malvagio Il malvagio da verificare
+	 * @return true se il malvagio può essere attaccato, false altrimenti
+	 */
+	public boolean puoAttaccareMalvagio(Malvagio malvagio) {
+	    // Anni 1-4: tutti i malvagi possono essere attaccati
+	    if (annoCorrente < 5) {
+	        return true;
+	    }
+	    
+	    // Anno 5+: verifica se il malvagio è Voldemort
+	    boolean isVoldemort = malvagio.getNome().contains("Voldemort");
+	    
+	    if (!isVoldemort) {
+	        // Se non è Voldemort, può sempre essere attaccato
+	        return true;
+	    }
+	    
+	    // È Voldemort: verifica se ci sono altri malvagi attivi non sconfitti
+	    for (Malvagio m : malvagiAttivi) {
+	        // Se trovo un malvagio diverso da Voldemort che non è sconfitto
+	        if (!m.getNome().contains("Voldemort") && !m.isSconfitto()) {
+	            return false; // Voldemort è bloccato
+	        }
+	    }
+	    
+	    // Tutti gli altri malvagi sono sconfitti: Voldemort può essere attaccato
+	    return true;
+	}
+	
+	/**
+	 * Ottiene il messaggio di blocco per Voldemort
+	 * 
+	 * @return Il messaggio da mostrare quando si tenta di attaccare Voldemort prematuramente
+	 */
+	public String getMessaggioBloccoVoldemort() {
+	    long malvagiRimasti = malvagiAttivi.stream()
+	        .filter(m -> !m.getNome().contains("Voldemort") && !m.isSconfitto())
+	        .count();
+	    
+	    if (malvagiRimasti == 1) {
+	        return "⚠️ Non puoi attaccare Voldemort! Sconfiggi prima l'altro malvagio!";
+	    } else {
+	        return "⚠️ Non puoi attaccare Voldemort! Sconfiggi prima gli altri " + malvagiRimasti + " malvagi!";
+	    }
+	}
 
 	/**
 	 * Metodo chiamato quando un malvagio viene sconfitto ⭐ MODIFICATO: Aggiunge
@@ -794,4 +852,21 @@ public class StatoDiGioco {
 	public Dado getDado(String nome) {
 		return dadi.get(nome);
 	}
+	
+	/**
+	 * Verifica se si sta processando un trigger GUADAGNA_VITA
+	 * Usato per prevenire loop infiniti quando un trigger guadagno vita
+	 * attiva un effetto che fa guadagnare altra vita
+	 */
+	public boolean isProcessandoTriggerVita() {
+		return processandoTriggerVita;
+	}
+	
+	/**
+	 * Imposta il flag di processamento trigger vita
+	 */
+	public void setProcessandoTriggerVita(boolean processando) {
+		this.processandoTriggerVita = processando;
+	}
+
 }

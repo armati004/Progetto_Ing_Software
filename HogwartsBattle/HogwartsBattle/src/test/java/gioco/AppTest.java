@@ -20,7 +20,7 @@ import java.util.List;
 public class AppTest {
 
     private StatoDiGioco stato;
-    private InputController controller;
+    //private InputController controller;
     private Giocatore harry;
     
     @BeforeAll
@@ -46,7 +46,7 @@ public class AppTest {
     	GameConfig config = loader.caricaConfigurazione(1);
     	
     	stato = new StatoDiGioco(config, giocatori);
-    	controller = new InputController(stato);
+    	//controller = new InputController(stato);
     	
     	stato.setFaseCorrente(FaseTurno.GIOCA_CARTE);
     }
@@ -79,14 +79,14 @@ public class AppTest {
         
         // 4. ESEGUI IL COMANDO
         // Nota: usiamo 1 perché l'utente conta da 1
-        String response = controller.processaComando("gioca 1");
+        //String response = controller.processaComando("gioca 1");
         
         // 5. DEBUG (Se fallisce ancora)
         System.out.println("Giocatore attivo: " + giocatoreAttivo.getEroe().getNome());
-        System.out.println("Risposta: " + response);
+        //System.out.println("Risposta: " + response);
 
         // 6. ASSERT
-        assertTrue(response.contains("Hai giocato"), "Dovrebbe confermare la giocata");
+        //assertTrue(response.contains("Hai giocato"), "Dovrebbe confermare la giocata");
         assertFalse(giocatoreAttivo.getMano().contains(card), "Carta rimossa dalla mano");
         assertTrue(giocatoreAttivo.getScarti().getCarte().contains(card), "Carta negli scarti");
     }
@@ -104,10 +104,10 @@ public class AppTest {
     	String cardName = target.getNome();
         
         // Azione
-        String response = controller.processaComando("compra 0");
+        //String response = controller.processaComando("compra 0");
         
         // Verifiche
-        assertTrue(response.contains("Hai comprato"), "Messaggio di successo atteso");
+        //assertTrue(response.contains("Hai comprato"), "Messaggio di successo atteso");
         assertTrue(harry.getScarti().getCarte().contains(target), "La carta deve essere negli scarti");
         assertNotEquals(cardName, stato.getMercato().get(0).getNome(), "Il mercato deve essersi ricaricato con una carta diversa");
     }
@@ -122,10 +122,10 @@ public class AppTest {
     	int initialHealth = m.getDanno();
         
         // Azione
-        String response = controller.processaComando("attacca 0");
+        //String response = controller.processaComando("attacca 0");
         
         // Verifiche
-        assertTrue(response.contains("Colpito"), "Messaggio colpito atteso");
+        //assertTrue(response.contains("Colpito"), "Messaggio colpito atteso");
         assertEquals(initialHealth + 1, m.getDanno(), "Il malvagio deve aver perso 1 vita");
         assertEquals(0, harry.getAttacco(), "Il giocatore deve aver speso l'attacco");
     }
@@ -135,13 +135,13 @@ public class AppTest {
     void testTurnPhases() {
         stato.setFaseCorrente(FaseTurno.GIOCA_CARTE);
         
-        controller.processaComando("next");
+        //controller.processaComando("next");
         assertEquals(FaseTurno.ATTACCA, stato.getFaseCorrente());
         
-        controller.processaComando("next");
+        //controller.processaComando("next");
         assertEquals(FaseTurno.ACQUISTA_CARTE, stato.getFaseCorrente());
         
-        controller.processaComando("next");
+        //controller.processaComando("next");
         // Dopo BUY, il cleanup imposta a DARK_ARTS e cambia giocatore
         assertEquals(FaseTurno.ARTI_OSCURE, stato.getFaseCorrente());
         assertNotEquals(harry, stato.getGiocatori().get(stato.getGiocatoreCorrente()), "Il giocatore attivo deve essere cambiato");

@@ -193,7 +193,7 @@ public class Giocatore {
 	        if (carta.getTriggers() != null && !carta.getTriggers().isEmpty()) {
 	            for (Trigger trigger : carta.getTriggers()) {
 	                // Solo trigger che funzionano "in mano" (es. RICEVI_DANNO per Mantello)
-	                if (trigger.getType() == gestoreEffetti.TipoTrigger.RICEVI_DANNO) {
+	                if (trigger.getType() == gestoreEffetti.TipoTrigger.RICEVI_DANNO || trigger.getType() == gestoreEffetti.TipoTrigger.AUTO_SCARTO) {
 	                    stato.getGestoreTrigger().registraTrigger(
 	                        trigger.getType(), 
 	                        trigger.getEffectToExecute(), 

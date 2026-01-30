@@ -237,16 +237,15 @@ public class GameController extends GameApplication {
 	 */
 	private void mostraMessaggioGiocoCompletato() {
 		javafx.application.Platform.runLater(() -> {
-			javafx.scene.control.Alert alert = new javafx.scene.control.Alert(
-					javafx.scene.control.Alert.AlertType.INFORMATION);
-
-			alert.setTitle("Gioco Completato!");
-			alert.setHeaderText("🏆 CONGRATULAZIONI! 🏆");
-			alert.setContentText("Avete completato tutti e 7 gli anni di Hogwarts Battle!\n\n"
-					+ "🎓 Hogwarts è al sicuro grazie a voi!\n\n"
-					+ "Potete iniziare una nuova partita dal menu principale.");
-
-			alert.showAndWait();
+			grafica.panels.DialogHelper.mostraMessaggio(
+				    "🎓 Gioco Completato!",
+				    "🎉 Congratulazioni!",
+				    "Hai completato tutti e 7 gli anni di Hogwarts!\n\n" +
+				    "━━━━━━━━━━━━━━━━━━━━━━\n\n" +
+				    "Il tuo viaggio magico è terminato.\n" +
+				    "Sei pronto per affrontare il mondo magico!",
+				    grafica.panels.DialogHelper.DialogStyle.CARTA()
+				);
 
 			// Torna al menu principale
 			FXGL.getGameScene().clearUINodes();
@@ -565,11 +564,19 @@ public class GameController extends GameApplication {
 			}
 			
 			if(annoSelezionato >= 5) {
+				Malvagio voldemort = null;
+				// Trova Voldemort senza modificare la lista durante l'iterazione
 				for(Malvagio m : stato.getMazzoMalvagi()) {
 					if(m.getNome().contains("Voldemort")) {
-						stato.getMazzoMalvagi().remove(m);
-						stato.getMazzoMalvagi().add(m);
+						voldemort = m;
+						break;
 					}
+				}
+				// Rimuovi e aggiungi alla fine
+				if(voldemort != null) {
+					stato.getMazzoMalvagi().remove(voldemort);
+					stato.getMazzoMalvagi().addLast(voldemort);
+					System.out.println("👹 Voldemort posizionato in fondo al mazzo malvagi");
 				}
 			}
 
@@ -851,35 +858,40 @@ public class GameController extends GameApplication {
 	 * Mostra dialog per scegliere dove posizionare carta acquistata
 	 */
 	private void mostraDialogPosizionamentoCarta(Carta carta, Giocatore giocatore, TipoTrigger tipoTrigger) {
-		javafx.application.Platform.runLater(() -> {
-			Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-
-			// ⭐ NUOVO: Titolo diverso in base al trigger
-			String nomeCartaTrigger = getNomeCartaTrigger(tipoTrigger);
-			alert.setTitle(nomeCartaTrigger);
-			alert.setHeaderText("Posizionamento carta acquistata");
-			alert.setContentText("Hai acquistato: " + carta.getNome() + " (" + carta.getClasse() + ")\n\n"
-					+ nomeCartaTrigger + " ti permette di metterla in cima al mazzo.\n\n" + "Dove vuoi posizionarla?");
-
-			ButtonType btnCimaMazzo = new ButtonType("⬆️ Cima del Mazzo");
-			ButtonType btnScarti = new ButtonType("📥 Scarti (normale)");
-
-			alert.getButtonTypes().setAll(btnCimaMazzo, btnScarti);
-
-			alert.showAndWait().ifPresent(scelta -> {
-				if (scelta == btnCimaMazzo) {
-					giocatore.getMazzo().getCarte().addFirst(carta);
-					System.out.println("  ⬆️ " + carta.getNome() + " → cima del mazzo");
-
-					gameUI.getMessagePanel().mostraMessaggio(carta.getNome() + " → Cima del mazzo",
-							MessagePanel.TipoMessaggio.INFO);
-				} else {
-					giocatore.getScarti().aggiungiCarta(carta);
-				}
-
-				gameUI.aggiorna();
-			});
-		});
+	    String nomeCartaTrigger = getNomeCartaTrigger(tipoTrigger);
+	    String descrizoneTrigger = nomeCartaTrigger + " ti permette di metterla in cima al mazzo.";
+	    
+	    grafica.panels.DialogHelper.mostraSceltaPosizionamentoCarta(
+	        carta.getNome(),
+	        carta.getClasse(),
+	        nomeCartaTrigger,
+	        descrizoneTrigger,
+	        inCima -> {
+	            if (inCima) {
+	                // Carta in cima al mazzo
+	                giocatore.getMazzo().getCarte().addFirst(carta);
+	                System.out.println("📚 " + carta.getNome() + " posizionata in cima al mazzo");
+	                
+	                if (gameUI != null && gameUI.getMessagePanel() != null) {
+	                    gameUI.getMessagePanel().mostraMessaggio(
+	                        carta.getNome() + " → cima al mazzo",
+	                        MessagePanel.TipoMessaggio.INFO
+	                    );
+	                }
+	            } else {
+	                // Carta negli scarti
+	                giocatore.getScarti().aggiungiCarta(carta);
+	                System.out.println("📥 " + carta.getNome() + " posizionata negli scarti");
+	                
+	                if (gameUI != null && gameUI.getMessagePanel() != null) {
+	                    gameUI.getMessagePanel().mostraMessaggio(
+	                        carta.getNome() + " → scarti",
+	                        MessagePanel.TipoMessaggio.INFO
+	                    );
+	                }
+	            }
+	        }
+	    );
 	}
 
 	/**
@@ -904,6 +916,15 @@ public class GameController extends GameApplication {
 		if (stato.getFaseCorrente() == FaseTurno.ATTACCA) {
 			if (indiceMalvagio >= 0 && indiceMalvagio < stato.getMalvagiAttivi().size()) {
 				Malvagio malvagio = stato.getMalvagiAttivi().get(indiceMalvagio);
+				
+				// ⭐ NUOVO: Verifica se il malvagio può essere attaccato (blocco Voldemort)
+			    if (!stato.puoAttaccareMalvagio(malvagio)) {
+			        String msg = stato.getMessaggioBloccoVoldemort();
+			        gameUI.getMessagePanel().mostraMessaggio(msg, MessagePanel.TipoMessaggio.ATTACCO);
+			        System.out.println("🚫 " + msg);
+			        return;  // Esci senza attaccare
+			    }
+				
 				if (giocatore.getAttacco() > 0 && !malvagio.getAttaccoassegnato()) {
 					stato.assegnaAttacco(malvagio, 1);
 					// ⭐ NUOVO: Messaggio attacco

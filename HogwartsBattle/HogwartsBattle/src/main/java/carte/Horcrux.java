@@ -58,7 +58,7 @@ public class Horcrux extends Carta {
         if (reward == null) return;
         for (Effetto e : reward) {
             if (e != null) {
-                EsecutoreEffetti.eseguiEffetto(e, stato, g);;
+                EsecutoreEffetti.eseguiEffetto(e, stato, g, this);;
             }
         }
     }

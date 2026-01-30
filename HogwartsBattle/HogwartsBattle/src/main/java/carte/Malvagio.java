@@ -134,7 +134,7 @@ public class Malvagio extends Carta{
     public void defeat(StatoDiGioco stato, Giocatore g) {
         System.out.println("Sconfitto " + this.getNome());
         for(Effetto e : this.getReward()) {
-        	EsecutoreEffetti.eseguiEffetto(e, stato, g);
+        	EsecutoreEffetti.eseguiEffetto(e, stato, g, this);
         }
     }
     

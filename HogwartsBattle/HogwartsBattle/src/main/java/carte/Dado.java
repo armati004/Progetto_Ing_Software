@@ -81,7 +81,7 @@ public class Dado {
         System.out.println("🎲 " + nome + " - Faccia " + (indiceEffetto + 1) + ": " + 
                          effettoSelezionato.getType());
 
-        EsecutoreEffetti.eseguiEffetto(effettoSelezionato, stato, attivo);
+        EsecutoreEffetti.eseguiEffetto(effettoSelezionato, stato, attivo, null);
         
         return effettoSelezionato;  // ✅ Restituisce l'effetto eseguito
     }
