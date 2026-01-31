@@ -42,6 +42,7 @@ public class Mazzo {
         }
         
         System.out.println("✅ Mazzo inizializzato per " + nomeEroe + " con " + this.carte.size() + " carte.");
+        Collections.shuffle(carte);
         return this.carte;
     }
 

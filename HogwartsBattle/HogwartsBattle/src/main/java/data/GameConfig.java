@@ -301,45 +301,13 @@ public class GameConfig {
         return contieneDarkArtsPozioni;
     }
 
-	public void setCarteNegozioId(List<String> carteNegozioId) {
-		this.carteNegozioId = carteNegozioId;
+	public void setContieneDarkArtsPozioni(boolean b) {
+		// TODO Auto-generated method stub
+		
 	}
 
-	public void setMalvagiId(List<String> malvagiId) {
-		this.malvagiId = malvagiId;
+	public void setContieneEncounter(boolean b) {
+		// TODO Auto-generated method stub
+		
 	}
-
-	public void setArtiOscureId(List<String> artiOscureId) {
-		this.artiOscureId = artiOscureId;
-	}
-
-	public void setEncounterId(List<String> encounterId) {
-		this.encounterId = encounterId;
-	}
-
-	public void setContieneDadi(Boolean contieneDadi) {
-		this.contieneDadi = contieneDadi;
-	}
-
-	public void setContieneCompetenze(Boolean contieneCompetenze) {
-		this.contieneCompetenze = contieneCompetenze;
-	}
-
-	public void setContieneHorcrux(Boolean contieneHorcrux) {
-		this.contieneHorcrux = contieneHorcrux;
-	}
-
-	public void setContieneEncounter(Boolean contieneEncounter) {
-		this.contieneEncounter = contieneEncounter;
-	}
-
-	public void setContienePozioni(Boolean contienePozioni) {
-		this.contienePozioni = contienePozioni;
-	}
-
-	public void setContieneDarkArtsPozioni(Boolean contieneDarkArtsPozioni) {
-		this.contieneDarkArtsPozioni = contieneDarkArtsPozioni;
-	}
-    
-    
 }

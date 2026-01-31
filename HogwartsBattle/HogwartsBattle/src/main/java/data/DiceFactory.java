@@ -97,12 +97,12 @@ public class DiceFactory {
             throw new IllegalArgumentException("Dado non trovato con ID: " + idDado);
         }
         
-        // Crea una nuova istanza con tutti i dati
+        // ⭐ AGGIORNATO: Nuovo costruttore
         return new Dado(
             data.getNome(),
             data.getId(),
             data.getPathImg(),
-            data.getTriggers()
+            data.getOpzioni()  // ⭐ CAMBIATO da getTriggers()
         );
     }
     
@@ -118,12 +118,13 @@ public class DiceFactory {
         
         Map<String, Dado> dadiCasate = new HashMap<>();
         
-        String[] casate = {"grifondoro", "serpeverde", "corvonero", "tassorosso"};
+        String[] casate = {"dadoGrifondoro", "dadoSerpeverde", "dadoCorvonero", "dadoTassorosso", "dadoMalvagio"};
         
         for (String casata : casate) {
             try {
                 Dado dado = creaDado(casata);
-                dadiCasate.put(casata.toLowerCase(), dado);
+                dadiCasate.put(casata, dado);
+                System.out.println("✓ Caricato: " + dado.getNome() + " (ID: " + casata + ")");
             } catch (IllegalArgumentException e) {
                 System.err.println("⚠️ Dado della casata " + casata + " non trovato");
             }

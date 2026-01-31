@@ -14,7 +14,7 @@ public class Effetto {
 	private BersaglioEffetto target;
 	private DurataEffetto durata;
 	
-	@SerializedName(value = "qta-target", alternate = {"qtaTarget"})
+	@SerializedName(value = "qta-target", alternate = {"qtaTarget", "targetCount"})
 	private Integer qtaTarget;
 	
 	// ⭐ FIX: Supporta sia "opzioni" che "options" nei JSON
@@ -92,5 +92,10 @@ public class Effetto {
 	
 	public void setRipetuto(Effetto ripetuto) {
 		this.ripetuto = ripetuto;
+	}
+
+	public void setTarget(String string) {
+		// TODO Auto-generated method stub
+		
 	}
 }

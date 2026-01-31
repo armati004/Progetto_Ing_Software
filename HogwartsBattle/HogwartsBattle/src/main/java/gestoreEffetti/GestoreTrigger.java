@@ -5,7 +5,7 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import carte.Carta;
-
+import carte.Malvagio;
 import carte.Carta;
 import gioco.Giocatore;
 import gioco.StatoDiGioco;
@@ -37,6 +37,14 @@ public class GestoreTrigger {
 		System.out.println("✅ Trigger " + tipo + " registrato per " + sorgente.getNome());
 	}
 	
+	/**
+	 * Verifica se esiste un trigger di un certo tipo
+	 */
+	public boolean hasTrigger(TipoTrigger tipo) {
+	    List<TriggerAttivato> triggers = registro.get(tipo);
+	    return triggers != null && !triggers.isEmpty();
+	}
+	
 	public void rimuoviTrigger(Carta sorgente) {
 		for(List<TriggerAttivato> lista : registro.values()) {
 			lista.removeIf(attivato -> attivato.getSorgente().equals(sorgente));
@@ -57,8 +65,17 @@ public class GestoreTrigger {
 		List<TriggerAttivato> triggerDaAttivare = registro.get(tipo);
 		
 		for(TriggerAttivato attivato : triggerDaAttivare) {
-			for(Effetto effetto : attivato.getEffetti()) {
-				EsecutoreEffetti.eseguiEffetto(effetto, stato, giocatore);
+			if(attivato.getSorgente() instanceof Malvagio) {
+				if(!((Malvagio)attivato.getSorgente()).getBloccoAbilita()) {
+					for(Effetto effetto : attivato.getEffetti()) {
+						EsecutoreEffetti.eseguiEffetto(effetto, stato, giocatore, attivato.getSorgente());
+					}
+				}
+			}
+			else {
+				for(Effetto effetto : attivato.getEffetti()) {
+					EsecutoreEffetti.eseguiEffetto(effetto, stato, giocatore, attivato.getSorgente());
+				}
 			}
 		}
 	}

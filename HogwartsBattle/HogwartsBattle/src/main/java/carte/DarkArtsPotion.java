@@ -1,9 +1,7 @@
 package carte;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import gestoreEffetti.Effetto;
 import gestoreEffetti.Trigger;
@@ -11,168 +9,102 @@ import gioco.Giocatore;
 import gioco.StatoDiGioco;
 
 /**
- * Rappresenta una Dark Arts Potion del Pack 3.
- * Queste sono carte Arti Oscure speciali che:
- * 1. Vengono pescate come eventi Arti Oscure
- * 2. Vanno posizionate face up davanti all'eroe che le pesca
- * 3. Hanno effetto ONGOING (si risolvono ogni turno)
- * 4. Possono essere "brewed" aggiungendo ingredienti
- * 5. Quando completate, vengono rimosse
+ * DarkArtsPotion - Carte Arti Oscure speciali (Pack 3+)
  * 
- * Estende ArteOscura per integrarsi nel mazzo Arti Oscure.
+ * Differenze dalle Arti Oscure normali:
+ * - Hanno effetti ONGOING (si risolvono ogni turno del giocatore)
+ * - Rimangono davanti al giocatore finché non vengono rimosse
+ * - Possono bloccare certe azioni (es. giocare alleati)
  */
 public class DarkArtsPotion extends ArteOscura {
-    // Ingredienti richiesti per completare (brewre) la pozione
-    private List<TipoIngrediente> ingredientiRichiesti;
     
-    // Ingredienti attualmente aggiunti
-    private Map<TipoIngrediente, Integer> ingredientiAttuali;
+    // Effetti che si risolvono ogni turno
+    private List<Effetto> effettiOngoing;
     
-    // Giocatore che ha questa pozione davanti
+    // Flag per bloccare azioni specifiche
+    private boolean bloccaAlleati;
+    private boolean bloccaIncantesimi;
+    private boolean bloccaOggetti;
+    
+    // Giocatore che ha questa pozione
     private Giocatore proprietario;
     
-    // Stato
-    private boolean completata;
+    public DarkArtsPotion() {
+        super();
+        this.effettiOngoing = new ArrayList<>();
+        this.bloccaAlleati = false;
+        this.bloccaIncantesimi = false;
+        this.bloccaOggetti = false;
+    }
     
-    /**
-     * Costruttore per Dark Arts Potion.
-     */
     public DarkArtsPotion(String nome, String id, String classe, String descrizione, 
                          int costo, String pathImmagine, List<Effetto> effetti, 
-                         List<Trigger> triggers, List<TipoIngrediente> ingredientiRichiesti) {
-        
+                         List<Trigger> triggers) {
         super(nome, id, classe, descrizione, costo, pathImmagine, effetti, triggers);
-        
-        this.ingredientiRichiesti = ingredientiRichiesti != null ? ingredientiRichiesti : new ArrayList<>();
-        this.ingredientiAttuali = new HashMap<>();
-        this.completata = false;
+        this.effettiOngoing = new ArrayList<>();
+        this.bloccaAlleati = false;
+        this.bloccaIncantesimi = false;
+        this.bloccaOggetti = false;
     }
     
     /**
-     * Applica l'effetto ongoing della Dark Arts Potion.
-     * Viene chiamato all'inizio di ogni turno del proprietario.
+     * Applica l'effetto ONGOING della Dark Arts Potion.
+     * Chiamato all'inizio di ogni turno del proprietario.
      */
-    @Override
-    public void applicaEffetto(StatoDiGioco stato, Giocatore attivo) {
-        if (completata) {
+    public void applicaEffettoOngoing(StatoDiGioco stato, Giocatore giocatore) {
+        if (effettiOngoing == null || effettiOngoing.isEmpty()) {
             return;
         }
         
         System.out.println("☠️ Dark Arts Potion ongoing: " + getNome());
         
-        // Applica gli effetti ongoing
-        super.applicaEffetto(stato, attivo);
+        for (Effetto effetto : effettiOngoing) {
+            gestoreEffetti.EsecutoreEffetti.eseguiEffetto(effetto, stato, giocatore);
+        }
     }
     
     /**
-     * Aggiunge un ingrediente alla Dark Arts Potion.
-     * Qualsiasi eroe può farlo, non solo il proprietario.
+     * Applica l'effetto normale quando viene pescata.
      */
-    public boolean aggiungiIngrediente(Ingrediente ingrediente) {
-        if (completata) {
-            System.out.println("⚠️ Questa Dark Arts Potion è già completata!");
-            return false;
-        }
-        
-        // Trova quale tipo di ingrediente manca
-        for (TipoIngrediente richiesto : ingredientiRichiesti) {
-            int richiesti = contaIngredientiRichiesti(richiesto);
-            int attuali = ingredientiAttuali.getOrDefault(richiesto, 0);
-            
-            if (attuali < richiesti) {
-                // Verifica se l'ingrediente fornito può soddisfare questo requisito
-                if (ingrediente.soddisfaRequisito(richiesto)) {
-                    ingredientiAttuali.put(richiesto, attuali + 1);
-                    ingrediente.setUsato(true);
-                    
-                    System.out.println("✓ Aggiunto " + ingrediente.getTipo() + " a Dark Arts Potion: " + getNome());
-                    
-                    // Verifica se la pozione è completa
-                    if (verificaCompletamento()) {
-                        completata = true;
-                        System.out.println("✅ Dark Arts Potion completata e rimossa: " + getNome());
-                    }
-                    
-                    return true;
-                }
-            }
-        }
-        
-        System.out.println("⚠️ Questo ingrediente non serve per questa Dark Arts Potion!");
-        return false;
-    }
-    
-    /**
-     * Conta quanti ingredienti di un certo tipo sono richiesti.
-     */
-    private int contaIngredientiRichiesti(TipoIngrediente tipo) {
-        int count = 0;
-        for (TipoIngrediente richiesto : ingredientiRichiesti) {
-            if (richiesto == tipo) {
-                count++;
-            }
-        }
-        return count;
-    }
-    
-    /**
-     * Verifica se tutti gli ingredienti richiesti sono stati aggiunti.
-     */
-    private boolean verificaCompletamento() {
-        for (TipoIngrediente richiesto : ingredientiRichiesti) {
-            int richiesti = contaIngredientiRichiesti(richiesto);
-            int attuali = ingredientiAttuali.getOrDefault(richiesto, 0);
-            
-            if (attuali < richiesti) {
-                return false;
-            }
-        }
-        return true;
-    }
-    
-    /**
-     * Ottiene una rappresentazione testuale degli ingredienti mancanti.
-     */
-    public String getIngredientiMancanti() {
-        StringBuilder sb = new StringBuilder();
-        Map<TipoIngrediente, Integer> mancanti = new HashMap<>();
-        
-        for (TipoIngrediente richiesto : ingredientiRichiesti) {
-            int richiesti = contaIngredientiRichiesti(richiesto);
-            int attuali = ingredientiAttuali.getOrDefault(richiesto, 0);
-            int mancante = richiesti - attuali;
-            
-            if (mancante > 0) {
-                mancanti.put(richiesto, mancante);
-            }
-        }
-        
-        if (mancanti.isEmpty()) {
-            return "Completa!";
-        }
-        
-        for (Map.Entry<TipoIngrediente, Integer> entry : mancanti.entrySet()) {
-            if (sb.length() > 0) {
-                sb.append(", ");
-            }
-            sb.append(entry.getValue()).append("x ").append(entry.getKey().getSimbolo());
-        }
-        
-        return sb.toString();
+    @Override
+    public void applicaEffetto(StatoDiGioco stato, Giocatore giocatore) {
+        // L'effetto normale è stato già applicato quando è stata pescata
+        // Qui non facciamo nulla perché l'effetto ongoing viene gestito separatamente
+        System.out.println("☠️ " + giocatore.getEroe().getNome() + " riceve Dark Arts Potion: " + getNome());
     }
     
     // Getters e Setters
     
-    public List<TipoIngrediente> getIngredientiRichiesti() {
-        return ingredientiRichiesti;
+    public List<Effetto> getEffettiOngoing() {
+        return effettiOngoing;
     }
     
-    public void setIngredientiRichiesti(List<TipoIngrediente> ingredientiRichiesti) {
-        this.ingredientiRichiesti = ingredientiRichiesti;
+    public void setEffettiOngoing(List<Effetto> effettiOngoing) {
+        this.effettiOngoing = effettiOngoing;
     }
     
-    public Map<TipoIngrediente, Integer> getIngredientiAttuali() {
-        return ingredientiAttuali;
+    public boolean bloccaAlleati() {
+        return bloccaAlleati;
+    }
+    
+    public void setBloccaAlleati(boolean bloccaAlleati) {
+        this.bloccaAlleati = bloccaAlleati;
+    }
+    
+    public boolean bloccaIncantesimi() {
+        return bloccaIncantesimi;
+    }
+    
+    public void setBloccaIncantesimi(boolean bloccaIncantesimi) {
+        this.bloccaIncantesimi = bloccaIncantesimi;
+    }
+    
+    public boolean bloccaOggetti() {
+        return bloccaOggetti;
+    }
+    
+    public void setBloccaOggetti(boolean bloccaOggetti) {
+        this.bloccaOggetti = bloccaOggetti;
     }
     
     public Giocatore getProprietario() {
@@ -183,17 +115,21 @@ public class DarkArtsPotion extends ArteOscura {
         this.proprietario = proprietario;
     }
     
-    public boolean isCompletata() {
-        return completata;
-    }
-    
-    public void setCompletata(boolean completata) {
-        this.completata = completata;
-    }
-    
     @Override
     public String toString() {
-        return "☠️ " + getNome() + " - " + 
-               (completata ? "✓ Completa" : "Mancano: " + getIngredientiMancanti());
+        return "☠️ Dark Arts Potion: " + getNome() + 
+               (bloccaAlleati ? " [Blocca Alleati]" : "") +
+               (bloccaIncantesimi ? " [Blocca Incantesimi]" : "") +
+               (bloccaOggetti ? " [Blocca Oggetti]" : "");
     }
+
+	public void setDescrizione(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setNome(String nome) {
+		// TODO Auto-generated method stub
+		
+	}
 }

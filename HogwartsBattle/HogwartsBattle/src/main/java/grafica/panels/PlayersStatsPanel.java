@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -12,126 +13,93 @@ import gioco.StatoDiGioco;
 import gioco.Giocatore;
 
 /**
- * PlayersStatsPanel - Mostra le statistiche di tutti i giocatori
- * Altezza: 15% dello schermo
- * Larghezza: 100%
+ * PlayersStatsPanel - Mostra info complete di tutti i giocatori
  */
 public class PlayersStatsPanel extends HBox {
     
     private StatoDiGioco stato;
-    private VBox[] playerCards;
     
     public PlayersStatsPanel(StatoDiGioco stato) {
         this.stato = stato;
         
-        // Configurazione del pannello
         setStyle("-fx-background-color: #1a1a1a;");
-        setSpacing(15);
-        setPadding(new Insets(10));
-        setAlignment(Pos.CENTER_LEFT);
+        setSpacing(10);
+        setPadding(new Insets(8));
+        setAlignment(Pos.CENTER);
         
-        // Crea una card per ogni giocatore
-        playerCards = new VBox[stato.getGiocatori().size()];
-        
-        for (int i = 0; i < stato.getGiocatori().size(); i++) {
-            playerCards[i] = creaPlayerCard(i);
-            getChildren().add(playerCards[i]);
-        }
+        aggiorna();
     }
     
-    /**
-     * Crea una card con le statistiche del giocatore
-     */
-    private VBox creaPlayerCard(int indiceGiocatore) {
-        Giocatore giocatore = stato.getGiocatori().get(indiceGiocatore);
+    private VBox creaPlayerCard(int indice) {
+        Giocatore g = stato.getGiocatori().get(indice);
         
-        VBox card = new VBox();
-        card.setStyle("-fx-border-color: #666; -fx-border-width: 2; " +
-                     "-fx-background-color: #2a2a2a; -fx-border-radius: 5;");
-        card.setPadding(new Insets(8));
-        card.setSpacing(5);
-        card.setPrefWidth(150);
+        VBox card = new VBox(5);
+        card.setStyle(
+            "-fx-border-width: 2;" +
+            "-fx-background-color: #2a2a2a;" +
+            "-fx-border-radius: 5;" +
+            "-fx-background-radius: 5;" +
+            "-fx-border-color: " + (indice == stato.getGiocatoreCorrente() ? "#00FF00" : "#666") + ";"
+        );
+        card.setPadding(new Insets(10));
+        card.setAlignment(Pos.CENTER);
+        HBox.setHgrow(card, Priority.ALWAYS);
         
         // Nome eroe
-        Label nomeLabel = new Label(giocatore.getEroe().getNome());
-        nomeLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
-        nomeLabel.setTextFill(Color.web("#FFD700")); // Oro
+        Label nome = new Label(g.getEroe().getNome());
+        nome.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        nome.setTextFill(Color.web("#FFD700"));
+        nome.setWrapText(true);
+        nome.setMaxWidth(Double.MAX_VALUE);
+        nome.setAlignment(Pos.CENTER);
         
-        // Salute
-        HBox saluteBox = creaStatRow("â¤ï¸", "Salute: " + giocatore.getSalute() + "/10");
+        HBox containerEroi = new HBox(15);
         
-        // Attacchi
-        HBox attacchiBox = creaStatRow("âš”ï¸", "Attacchi: " + giocatore.getAttacco());
+        // Salute con label
+        VBox saluteRow = new VBox(5);
+        saluteRow.setAlignment(Pos.CENTER);
+        Label saluteLabel = new Label("Salute:");
+        saluteLabel.setFont(Font.font("Arial", 14));
+        saluteLabel.setTextFill(Color.web("#CCCCCC"));
+        Label saluteValue = new Label("❤️ " + g.getSalute() + "/" + g.getSaluteMax());
+        saluteValue.setTextFill(Color.web("#FF6666"));
+        saluteValue.setFont(Font.font("Arial", FontWeight.BOLD, 12));
+        saluteRow.getChildren().addAll(saluteLabel, saluteValue);
         
-        // Influenza (Gettoni)
-        HBox influenzaBox = creaStatRow("ðŸª™", "Influenza: " + giocatore.getGettone());
+        // Attacco con label
+        VBox attaccoRow = new VBox(5);
+        attaccoRow.setAlignment(Pos.CENTER);
+        Label attaccoLabel = new Label("Attacco:");
+        attaccoLabel.setFont(Font.font("Arial", 14));
+        attaccoLabel.setTextFill(Color.web("#CCCCCC"));
+        Label attaccoValue = new Label("⚔️ " + g.getAttacco());
+        attaccoValue.setTextFill(Color.web("#FFAA66"));
+        attaccoValue.setFont(Font.font("Arial", FontWeight.BOLD, 12));
+        attaccoRow.getChildren().addAll(attaccoLabel, attaccoValue);
         
-        card.getChildren().addAll(nomeLabel, saluteBox, attacchiBox, influenzaBox);
+        // Influenza con label
+        VBox influenzaRow = new VBox(5);
+        influenzaRow.setAlignment(Pos.CENTER);
+        Label influenzaLabel = new Label("Influenza:");
+        influenzaLabel.setFont(Font.font("Arial", 14));
+        influenzaLabel.setTextFill(Color.web("#CCCCCC"));
+        Label influenzaValue = new Label("🪙 " + g.getGettone());
+        influenzaValue.setTextFill(Color.web("#FFD700"));
+        influenzaValue.setFont(Font.font("Arial", FontWeight.BOLD, 12));
+        influenzaRow.getChildren().addAll(influenzaLabel, influenzaValue);
         
-        // Evidenzia il giocatore corrente
-        if (indiceGiocatore == stato.getGiocatoreCorrente()) {
-            card.setStyle("-fx-border-color: #00FF00; -fx-border-width: 3; " +
-                         "-fx-background-color: #1a3a1a; -fx-border-radius: 5;");
-        }
+        containerEroi.setAlignment(Pos.CENTER);
         
+        containerEroi.getChildren().addAll(saluteRow, attaccoRow, influenzaRow);
+        
+        card.getChildren().addAll(nome, containerEroi);
         return card;
     }
     
-    /**
-     * Crea una riga con icona e etichetta
-     */
-    private HBox creaStatRow(String icon, String testo) {
-        HBox row = new HBox();
-        row.setSpacing(5);
-        row.setAlignment(Pos.CENTER_LEFT);
-        
-        Label iconLabel = new Label(icon);
-        iconLabel.setFont(Font.font("Arial", 12));
-        
-        Label textLabel = new Label(testo);
-        textLabel.setFont(Font.font("Arial", 11));
-        textLabel.setTextFill(Color.WHITE);
-        
-        row.getChildren().addAll(iconLabel, textLabel);
-        return row;
-    }
-    
-    /**
-     * Aggiorna tutte le statistiche dei giocatori
-     */
     public void aggiorna() {
+        getChildren().clear();
         for (int i = 0; i < stato.getGiocatori().size(); i++) {
-            aggiornaPlayerCard(i);
-        }
-    }
-    
-    /**
-     * Aggiorna una singola card del giocatore
-     */
-    private void aggiornaPlayerCard(int indiceGiocatore) {
-        Giocatore giocatore = stato.getGiocatori().get(indiceGiocatore);
-        VBox card = playerCards[indiceGiocatore];
-        
-        // Ricostruisci la card
-        card.getChildren().clear();
-        
-        Label nomeLabel = new Label(giocatore.getEroe().getNome());
-        nomeLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
-        nomeLabel.setTextFill(Color.web("#FFD700"));
-        
-        HBox saluteBox = creaStatRow("â¤ï¸", "Salute: " + giocatore.getSalute() + "/10");
-        HBox attacchiBox = creaStatRow("âš”ï¸", "Attacchi: " + giocatore.getAttacco());
-        HBox influenzaBox = creaStatRow("ðŸª™", "Influenza: " + giocatore.getGettone());
-        
-        card.getChildren().addAll(nomeLabel, saluteBox, attacchiBox, influenzaBox);
-        
-        // Evidenzia il giocatore corrente
-        if (indiceGiocatore == stato.getGiocatoreCorrente()) {
-            card.setStyle("-fx-border-color: #00FF00; -fx-border-width: 3; " +
-                         "-fx-background-color: #1a3a1a; -fx-border-radius: 5;");
-        } else {
-            card.setStyle("-fx-border-color: #666; -fx-border-width: 2; " +
-                         "-fx-background-color: #2a2a2a; -fx-border-radius: 5;");
+            getChildren().add(creaPlayerCard(i));
         }
     }
 }

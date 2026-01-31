@@ -5,10 +5,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Priority;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -19,16 +16,12 @@ import carte.Carta;
 import grafica.GameController;
 
 /**
- * CurrentPlayerPanel - Mostra l'eroe e la mano del giocatore corrente
- * VERSIONE CORRETTA con carte disposte in fila da 5
+ * CurrentPlayerPanel SEMPLICE - zero binding
  */
 public class CurrentPlayerPanel extends HBox {
     
     private StatoDiGioco stato;
     private GameController controller;
-    private VBox heroSection;
-    private ScrollPane handScrollPane;
-    private GridPane handGrid;
     private Button nextPhaseButton;
     
     public CurrentPlayerPanel(StatoDiGioco stato) {
@@ -36,174 +29,111 @@ public class CurrentPlayerPanel extends HBox {
         this.controller = GameController.getInstance();
         
         setStyle("-fx-background-color: #2a2a2a; -fx-border-color: #FFD700; -fx-border-width: 3;");
-        setSpacing(15);
-        setPadding(new Insets(15));
-        setMinHeight(200);
+        setSpacing(10);
+        setPadding(new Insets(10));
         
-        // SEZIONE SINISTRA: Eroe + Bottone
-        this.heroSection = creaSezioneEroe();
-        heroSection.setPrefWidth(350);
-        heroSection.setMinWidth(300);
-        HBox.setHgrow(heroSection, Priority.NEVER);
-        
-        // SEZIONE DESTRA: Mano di carte in griglia 5 colonne
-        this.handGrid = new GridPane();
-        handGrid.setHgap(8);
-        handGrid.setVgap(8);
-        handGrid.setPadding(new Insets(10));
-        handGrid.setStyle("-fx-background-color: #1a1a1a;");
-        
-        this.handScrollPane = new ScrollPane(handGrid);
-        handScrollPane.setStyle("-fx-background: #1a1a1a; -fx-border-color: #666; -fx-border-width: 1;");
-        handScrollPane.setFitToHeight(true);
-        handScrollPane.setFitToWidth(true);
-        handScrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
-        handScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-        
-        HBox.setHgrow(handScrollPane, Priority.ALWAYS);
-        
-        aggiornaMano();
-        
-        getChildren().addAll(heroSection, handScrollPane);
+        aggiorna();
     }
     
-    /**
-     * Crea sezione sinistra con info eroe
-     */
-    private VBox creaSezioneEroe() {
-        VBox section = new VBox(10);
+    private VBox creaHeroSection() {
+        VBox section = new VBox(6);
         section.setStyle("-fx-background-color: #1a1a1a; -fx-border-color: #FFD700; -fx-border-width: 2;");
-        section.setPadding(new Insets(15));
+        section.setPadding(new Insets(10));
         section.setAlignment(Pos.TOP_CENTER);
+        section.setPrefWidth(280);
         
-        Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
+        Giocatore g = stato.getGiocatori().get(stato.getGiocatoreCorrente());
         
-        // Nome eroe
-        Label heroNameLabel = new Label("⭐ " + giocatore.getEroe().getNome());
-        heroNameLabel.setFont(Font.font("Arial", FontWeight.BOLD, 18));
-        heroNameLabel.setTextFill(Color.web("#FFD700"));
-        heroNameLabel.setWrapText(true);
-        heroNameLabel.setAlignment(Pos.CENTER);
+        Label nome = new Label("⭐ " + g.getEroe().getNome());
+        nome.setFont(Font.font("Arial", FontWeight.BOLD, 16));
+        nome.setTextFill(Color.web("#FFD700"));
+        nome.setWrapText(true);
         
-        // Statistiche
-        VBox statsBox = new VBox(8);
-        statsBox.setPadding(new Insets(10));
-        statsBox.setStyle("-fx-border-color: #666; -fx-border-width: 0 0 2 0;");
+        Label desc = new Label(g.getEroe().getDescrizione());
+        desc.setFont(Font.font("Arial", 10));
+        desc.setTextFill(Color.web("#CCCCCC"));
+        desc.setWrapText(true);
+        desc.setMaxHeight(50);
+        desc.setStyle("-fx-padding: 5; -fx-background-color: rgba(255,255,255,0.05);");
         
-        Label healthLabel = new Label("❤️ Salute: " + giocatore.getSalute() + "/" + giocatore.getSaluteMax());
-        healthLabel.setTextFill(Color.web("#FF6666"));
-        healthLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        VBox stats = new VBox(3);
+        Label hp = new Label("❤️ Vita: " + g.getSalute() + "/" + g.getSaluteMax());
+        hp.setTextFill(Color.web("#FF6666"));
+        hp.setFont(Font.font("Arial", FontWeight.BOLD, 12));
         
-        Label attackLabel = new Label("⚔️ Attacco: " + giocatore.getAttacco());
-        attackLabel.setTextFill(Color.web("#FFAA66"));
-        attackLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        Label atk = new Label("⚔️ Attacchi: " + g.getAttacco());
+        atk.setTextFill(Color.web("#FFAA66"));
+        atk.setFont(Font.font("Arial", FontWeight.BOLD, 12));
         
-        Label influenceLabel = new Label("🪙 Influenza: " + giocatore.getGettone());
-        influenceLabel.setTextFill(Color.web("#FFD700"));
-        influenceLabel.setFont(Font.font("Arial", FontWeight.BOLD, 14));
+        Label inf = new Label("🪙 Influenza: " + g.getGettone());
+        inf.setTextFill(Color.web("#FFD700"));
+        inf.setFont(Font.font("Arial", FontWeight.BOLD, 12));
         
-        statsBox.getChildren().addAll(healthLabel, attackLabel, influenceLabel);
+        Label deck = new Label("📚 Carte nel mazzo: " + g.getMazzo().getCarte().size());
+        deck.setTextFill(Color.web("#66CCFF"));
+        deck.setFont(Font.font("Arial", FontWeight.BOLD, 12));
         
-        // Fase corrente
-        Label faseLabel = new Label("Fase: " + getNomeFase(stato.getFaseCorrente()));
-        faseLabel.setFont(Font.font("Arial", FontWeight.BOLD, 12));
-        faseLabel.setTextFill(Color.web("#66CCFF"));
-        faseLabel.setWrapText(true);
-        faseLabel.setAlignment(Pos.CENTER);
+        stats.getChildren().addAll(hp, atk, inf, deck);
         
-        // Bottone fase successiva
-        this.nextPhaseButton = new Button();
-        nextPhaseButton.setPrefWidth(320);
-        nextPhaseButton.setPrefHeight(50);
+        Region spacer = new Region();
+        VBox.setVgrow(spacer, Priority.ALWAYS);
+        
+        Label fase = new Label("Fase: " + getNomeFase(stato.getFaseCorrente()));
+        fase.setFont(Font.font("Arial", 10));
+        fase.setTextFill(Color.web("#66CCFF"));
+        fase.setWrapText(true);
+        
+        this.nextPhaseButton = new Button("▶️ " + getNomeFase(calcolaProssimaFase()));
+        nextPhaseButton.setMaxWidth(Double.MAX_VALUE);
+        nextPhaseButton.setPrefHeight(40);
         nextPhaseButton.setStyle(
-            "-fx-background-color: #0066cc; " +
-            "-fx-text-fill: white; " +
-            "-fx-font-size: 14px; " +
-            "-fx-font-weight: bold; " +
-            "-fx-padding: 10px; " +
-            "-fx-border-radius: 5; " +
-            "-fx-cursor: hand;"
+            "-fx-background-color: #0066cc; -fx-text-fill: white;" +
+            "-fx-font-size: 12px; -fx-font-weight: bold;"
         );
+        nextPhaseButton.setOnAction(e -> { if (controller != null) controller.prossimaFase(); });
         
-        aggiornaNomeBottoneFase();
-        
-        nextPhaseButton.setOnAction(e -> {
-            if (controller != null) {
-                controller.prossimaFase();
-            }
-        });
-        
-        nextPhaseButton.setOnMouseEntered(e -> 
-            nextPhaseButton.setStyle(
-                "-fx-background-color: #0052a3; " +
-                "-fx-text-fill: white; " +
-                "-fx-font-size: 14px; " +
-                "-fx-font-weight: bold; " +
-                "-fx-padding: 10px; " +
-                "-fx-border-radius: 5; " +
-                "-fx-cursor: hand;"
-            )
-        );
-        
-        nextPhaseButton.setOnMouseExited(e -> 
-            nextPhaseButton.setStyle(
-                "-fx-background-color: #0066cc; " +
-                "-fx-text-fill: white; " +
-                "-fx-font-size: 14px; " +
-                "-fx-font-weight: bold; " +
-                "-fx-padding: 10px; " +
-                "-fx-border-radius: 5; " +
-                "-fx-cursor: hand;"
-            )
-        );
-        
-        VBox.setVgrow(statsBox, Priority.ALWAYS);
-        
-        section.getChildren().addAll(heroNameLabel, statsBox, faseLabel, nextPhaseButton);
+        section.getChildren().addAll(nome, desc, stats, spacer, fase, nextPhaseButton);
         return section;
     }
     
-    /**
-     * Aggiorna la mano di carte - DISPONE IN GRIGLIA 5 COLONNE
-     */
-    private void aggiornaMano() {
-        handGrid.getChildren().clear();
+    private ScrollPane creaHandSection() {
+        GridPane grid = new GridPane();
+        grid.setHgap(6);
+        grid.setVgap(6);
+        grid.setPadding(new Insets(8));
         
-        Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
+        Giocatore g = stato.getGiocatori().get(stato.getGiocatoreCorrente());
+        int col = 0, row = 0;
         
-        int row = 0;
-        int col = 0;
-        
-        for (int i = 0; i < giocatore.getMano().size(); i++) {
-            Carta carta = giocatore.getMano().get(i);
-            CardButton cardButton = new CardButton(carta, i, giocatore.getMano().size());
-            
-            handGrid.add(cardButton, col, row);
-            
+        for (int i = 0; i < g.getMano().size(); i++) {
+            Carta carta = g.getMano().get(i);
+            CardButton btn = new CardButton(carta, i, g.getMano().size());
+            grid.add(btn, col, row);
             col++;
-            if (col >= 5) {  // ⭐ 5 carte per riga
-                col = 0;
-                row++;
-            }
+            if (col >= 5) { col = 0; row++; }
         }
+        
+        ScrollPane scroll = new ScrollPane(grid);
+        scroll.setStyle("-fx-background: #1a1a1a;");
+        scroll.setFitToHeight(true);
+        scroll.setFitToWidth(true);
+        HBox.setHgrow(scroll, Priority.ALWAYS);
+        
+        return scroll;
     }
     
     /**
      * Aggiorna il testo del bottone fase
      */
     public void aggiornaNomeBottoneFase() {
-        FaseTurno faseAttuale = stato.getFaseCorrente();
-        FaseTurno prossimaFase = calcolaProssimaFase(faseAttuale);
+        FaseTurno prossimaFase = calcolaProssimaFase();
         
         String nomeProssima = getNomeFase(prossimaFase);
         nextPhaseButton.setText("▶️ " + nomeProssima);
     }
     
-    /**
-     * Calcola prossima fase
-     */
-    private FaseTurno calcolaProssimaFase(FaseTurno faseCorrente) {
-        switch (faseCorrente) {
+    private FaseTurno calcolaProssimaFase() {
+        switch (stato.getFaseCorrente()) {
             case ARTI_OSCURE: return FaseTurno.MALVAGI;
             case MALVAGI: return stato.isHasHorcruxes() ? FaseTurno.HORCRUX : FaseTurno.GIOCA_CARTE;
             case HORCRUX: return FaseTurno.GIOCA_CARTE;
@@ -215,9 +145,6 @@ public class CurrentPlayerPanel extends HBox {
         }
     }
     
-    /**
-     * Nome user-friendly della fase
-     */
     private String getNomeFase(FaseTurno fase) {
         switch (fase) {
             case ARTI_OSCURE: return "Arti Oscure";
@@ -225,27 +152,14 @@ public class CurrentPlayerPanel extends HBox {
             case HORCRUX: return "Horcrux";
             case GIOCA_CARTE: return "Gioca Carte";
             case ATTACCA: return "Attacca";
-            case ACQUISTA_CARTE: return "Acquista Carte";
+            case ACQUISTA_CARTE: return "Acquista";
             case FINE_TURNO: return "Fine Turno";
             default: return "Prossima Fase";
         }
     }
     
-    /**
-     * Aggiorna tutto il pannello
-     */
     public void aggiorna() {
         getChildren().clear();
-        
-        this.heroSection = creaSezioneEroe();
-        heroSection.setPrefWidth(350);
-        heroSection.setMinWidth(300);
-        HBox.setHgrow(heroSection, Priority.NEVER);
-        
-        aggiornaMano();
-        
-        HBox.setHgrow(handScrollPane, Priority.ALWAYS);
-        
-        getChildren().addAll(heroSection, handScrollPane);
+        getChildren().addAll(creaHeroSection(), creaHandSection());
     }
 }

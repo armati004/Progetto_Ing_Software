@@ -1,5 +1,6 @@
 package grafica.screens;
 
+import com.almasb.fxgl.dsl.FXGL;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.effect.DropShadow;
@@ -14,11 +15,9 @@ import java.util.function.Consumer;
 
 /**
  * Schermata per selezionare il numero di giocatori (1-4)
+ * ⭐ VERSIONE FXGL con binding automatico
  */
 public class PlayerCountSelectionScreen extends StackPane {
-    
-    private static final double WINDOW_WIDTH = 1920;
-    private static final double WINDOW_HEIGHT = 1080;
     
     private Consumer<Integer> onPlayerCountSelected;
     
@@ -30,6 +29,10 @@ public class PlayerCountSelectionScreen extends StackPane {
     public PlayerCountSelectionScreen(Consumer<Integer> onPlayerCountSelected) {
         this.onPlayerCountSelected = onPlayerCountSelected;
         
+        // ⭐ FXGL: Binding automatico alle dimensioni della scena
+        this.prefWidthProperty().bind(FXGL.getGameScene().getRoot().widthProperty());
+        this.prefHeightProperty().bind(FXGL.getGameScene().getRoot().heightProperty());
+        
         inizializzaUI();
     }
     
@@ -37,10 +40,10 @@ public class PlayerCountSelectionScreen extends StackPane {
      * Inizializza l'interfaccia
      */
     private void inizializzaUI() {
-        this.setPrefSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        
-        // Sfondo scuro
-        Rectangle bg = new Rectangle(WINDOW_WIDTH, WINDOW_HEIGHT);
+        // Sfondo scuro con binding
+        Rectangle bg = new Rectangle();
+        bg.widthProperty().bind(this.widthProperty());
+        bg.heightProperty().bind(this.heightProperty());
         bg.setFill(Color.rgb(15, 10, 30));
         this.getChildren().add(bg);
         
@@ -51,7 +54,7 @@ public class PlayerCountSelectionScreen extends StackPane {
         
         // Titolo
         Text titleText = new Text("⚡ HOGWARTS BATTLE ⚡");
-        titleText.setFont(Font.font("Trajan Pro", FontWeight.BOLD, 64));
+        titleText.setFont(Font.font("Arial", FontWeight.BOLD, 64));
         titleText.setFill(Color.GOLD);
         titleText.setStroke(Color.DARKRED);
         titleText.setStrokeWidth(4);
@@ -118,10 +121,10 @@ public class PlayerCountSelectionScreen extends StackPane {
                 "-fx-border-width: 4;" +
                 "-fx-background-radius: 15;" +
                 "-fx-border-radius: 15;" +
-                "-fx-cursor: hand;" +
-                "-fx-scale-x: 1.05;" +
-                "-fx-scale-y: 1.05;"
+                "-fx-cursor: hand;"
             );
+            container.setScaleX(1.05);
+            container.setScaleY(1.05);
         });
         
         container.setOnMouseExited(e -> {
@@ -133,11 +136,13 @@ public class PlayerCountSelectionScreen extends StackPane {
                 "-fx-border-radius: 15;" +
                 "-fx-cursor: hand;"
             );
+            container.setScaleX(1.0);
+            container.setScaleY(1.0);
         });
         
         // Numero grande
         Text numeroText = new Text(String.valueOf(numero));
-        numeroText.setFont(Font.font("Trajan Pro", FontWeight.BOLD, 120));
+        numeroText.setFont(Font.font("Arial", FontWeight.BOLD, 120));
         numeroText.setFill(Color.GOLD);
         numeroText.setStroke(Color.DARKGOLDENROD);
         numeroText.setStrokeWidth(2);

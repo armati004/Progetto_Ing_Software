@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import gestoreEffetti.*;
+
 
 import carte.*;
 import data.CardFactory;
@@ -15,11 +17,8 @@ import data.LocationFactory;
 import data.VillainFactory;
 import data.PotionFactory;
 import data.DarkArtsPotionFactory;
-import gestoreEffetti.DarkArtsPotionManager;
-import gestoreEffetti.EncounterManager;
 import gestoreEffetti.GestoreEffetti;
 import gestoreEffetti.GestoreTrigger;
-import gestoreEffetti.PotionManager;
 
 /**
  * StatoDiGioco - Stato completo del gioco

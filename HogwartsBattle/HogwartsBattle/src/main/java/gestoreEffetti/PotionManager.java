@@ -1,4 +1,4 @@
-package gestoreEffetti;
+package gioco;
 
 import carte.*;
 import gestoreEffetti.EsecutoreEffetti;

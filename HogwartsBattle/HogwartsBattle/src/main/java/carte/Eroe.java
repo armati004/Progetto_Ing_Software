@@ -19,4 +19,8 @@ public class Eroe extends Carta {
         // Eventuali regole speciali degli eroi
         super.applicaEffetto(stato, attivo);
     }
+
+	public int getVita() {
+		return 0;
+	}
 }

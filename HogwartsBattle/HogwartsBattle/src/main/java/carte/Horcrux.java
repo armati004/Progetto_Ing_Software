@@ -45,6 +45,10 @@ public class Horcrux extends Carta {
     public List<Entita> getSegnaliniRichiesti() {
         return segnaliniRichiesti;
     }
+    
+    public Set<Entita> getSegnaliniAssegnati(){
+    	return segnaliniAssegnati;
+    }
 
     public List<Effetto> getRicompensa() {
         return reward == null ? Collections.emptyList() : Collections.unmodifiableList(reward);
@@ -54,7 +58,7 @@ public class Horcrux extends Carta {
         if (reward == null) return;
         for (Effetto e : reward) {
             if (e != null) {
-                EsecutoreEffetti.eseguiEffetto(e, stato, g);;
+                EsecutoreEffetti.eseguiEffetto(e, stato, g, this);;
             }
         }
     }

@@ -1,9 +1,12 @@
-package carte;
+package data;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import carte.Pozione;
+import carte.TipoIngrediente;
 import gestoreEffetti.Effetto;
 
 import java.io.FileReader;

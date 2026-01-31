@@ -3,247 +3,1014 @@ package grafica;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
+
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Region;
 import gioco.*;
 import data.*;
+import gestoreEffetti.TipoEffetto;
+import gestoreEffetti.TipoTrigger;
 import carte.*;
+import grafica.screens.*;
+import grafica.panels.MessagePanel;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
- * GameController - Classe principale che gestisce il flusso del gioco usando FXGL
- * VERSIONE CORRETTA con resize funzionante
+ * GameController - Classe principale con sistema salvataggio/caricamento
+ * integrato
  */
 public class GameController extends GameApplication {
-    
-    private StatoDiGioco stato;
-    private GameBoardUI gameUI;
-    private TurnManager turnManager;
-    private int annoSelezionato = 1;
-    private static GameController instance;
-    
-    public static void main(String[] args) {
-        launch(args);
-    }
-    
-    @Override
-    protected void initSettings(GameSettings settings) {
-        settings.setWidth(1920);
-        settings.setHeight(1080);
-        settings.setTitle("Harry Potter: Hogwarts Battle - Deck Building Game");
-        settings.setVersion("1.0");
-        settings.setMainMenuEnabled(false);
-        settings.setIntroEnabled(false);
-        settings.setProfilingEnabled(false);
-        settings.setCloseConfirmation(false);
-        settings.setFullScreenAllowed(true);
-        settings.setFullScreenFromStart(false);
-        settings.setManualResizeEnabled(true);
-        settings.setPreserveResizeRatio(false);
-        settings.setScaleAffectedOnResize(true);
-    }
-    
-    @Override
-    protected void initGame() {
-        instance = this;
-        
-        try {
-            // Inizializza le factory
-            CardFactory.inizializza();
-            HeroFactory.inizializza();
-            DiceFactory.inizializza();
-            LocationFactory.inizializza();
-            VillainFactory.inizializza();
-            ProficiencyFactory.inizializza();
-            HorcruxFactory.inizializza();
-            
-            System.out.println("✅ Tutte le factory inizializzate");
-            
-            // Carica la configurazione del gioco
-            GameLoader loader = new GameLoader();
-            GameConfig config = loader.caricaConfigurazione(annoSelezionato);
-            
-            System.out.println("📋 Configurazione anno " + annoSelezionato + " caricata");
-            
-            // Crea i giocatori
-            List<Giocatore> giocatori = creaGiocatori(config);
-            
-            System.out.println("👥 Creati " + giocatori.size() + " giocatori");
-            
-            // Crea lo stato di gioco
-            stato = new StatoDiGioco(config, giocatori);
-            
-            System.out.println("🎮 Stato di gioco inizializzato");
-            System.out.println("📍 Luogo attuale: " + stato.getLuogoAttuale().getNome());
-            System.out.println("👹 Malvagi attivi: " + stato.getMalvagiAttivi().size());
-            System.out.println("🛒 Carte nel mercato: " + stato.getMercato().size());
-            
-            // Crea l'interfaccia grafica principale
-            gameUI = new GameBoardUI(stato);
-            
-            // ⭐ FIX: Imposta dimensioni fisse e binding per resize
-            gameUI.setMinSize(1920, 1080);
-            gameUI.setPrefSize(1920, 1080);
-            gameUI.setMaxSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
-            
-            // Aggiungi l'UI alla scena FXGL
-            FXGL.getGameScene().addUINode(gameUI);
-            
-            // ⭐ FIX: Binding per resize dinamico
-            FXGL.getGameScene().getRoot().widthProperty().addListener((obs, oldVal, newVal) -> {
-                gameUI.setPrefWidth(newVal.doubleValue());
-                gameUI.layout();
-            });
-            
-            FXGL.getGameScene().getRoot().heightProperty().addListener((obs, oldVal, newVal) -> {
-                gameUI.setPrefHeight(newVal.doubleValue());
-                gameUI.layout();
-            });
-            
-            System.out.println("🎨 Interfaccia grafica inizializzata");
-            
-            // Inizia la partita
-            iniziaPartita();
-            
-            // Stampa report immagini
-            grafica.utils.ImageLoader.stampaReport();
-            
-        } catch (Exception e) {
-            System.err.println("❌ Errore di avvio: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-    
-    /**
-     * Crea i giocatori per il gioco
-     */
-    private List<Giocatore> creaGiocatori(GameConfig config) {
-        List<Giocatore> giocatori = new ArrayList<>();
-        List<Eroe> eroiDisponibili = config.getEroiDisponibili();
-        
-        int numeroGiocatori = config.getNumeroGiocatori();
-        
-        for (int i = 0; i < numeroGiocatori && i < eroiDisponibili.size(); i++) {
-            Giocatore g = new Giocatore(eroiDisponibili.get(i));
-            giocatori.add(g);
-            System.out.println("✨ Giocatore " + (i + 1) + ": " + g.getEroe().getNome());
-        }
-        
-        return giocatori;
-    }
-    
-    /**
-     * Inizia il turno del primo giocatore
-     */
-    public void iniziaPartita() {
-        turnManager = new TurnManager(stato);
-        turnManager.iniziaTurno();
-        gameUI.aggiorna();
-    }
-    
-    /**
-     * Gioca una carta dalla mano del giocatore corrente
-     * ⭐ CORRETTO: giocaCarta(stato, carta)
-     */
-    public void giocaCarta(int indiceInMano) {
-        Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
-        
-        if (stato.getFaseCorrente() == FaseTurno.GIOCA_CARTE) {
-            if (indiceInMano >= 0 && indiceInMano < giocatore.getMano().size()) {
-                Carta carta = giocatore.getMano().get(indiceInMano);
-                giocatore.giocaCarta(stato, carta);  // ⭐ FIX: aggiungo stato
-                gameUI.aggiorna();
-                System.out.println("▶️ Giocata carta: " + carta.getNome());
-            }
-        }
-    }
-    
-    /**
-     * Acquista una carta dal mercato
-     * ⭐ CORRETTO: usa acquistaCarta() del giocatore e rifornisce mercato
-     */
-    public void acquistaCarta(int indiceInMercato) {
-        Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
-        
-        if (stato.getFaseCorrente() == FaseTurno.ACQUISTA_CARTE) {
-            if (indiceInMercato >= 0 && indiceInMercato < stato.getMercato().size()) {
-                Carta carta = stato.getMercato().get(indiceInMercato);
-                if (giocatore.getGettone() >= carta.getCosto()) {
-                    // ⭐ FIX: usa il metodo corretto del giocatore
-                    giocatore.acquistaCarta(stato.getMercato(), carta);
-                    giocatore.getScarti().aggiungiCarta(carta);
-                    stato.getMercato().remove(carta);
-                    stato.rifornisciMercato();  // ⭐ FIX: rifornisce il mercato
-                    gameUI.aggiorna();
-                    System.out.println("💰 Acquistata carta: " + carta.getNome());
-                } else {
-                    System.out.println("❌ Gettoni insufficienti! Serve: " + carta.getCosto() + 
-                        ", Hai: " + giocatore.getGettone());
-                }
-            }
-        }
-    }
-    
-    /**
-     * Attacca un malvagio
-     * ⭐ CORRETTO: passa l'oggetto Malvagio a assegnaAttacco()
-     */
-    public void attaccaMalvagio(int indiceMalvagio) {
-        Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
-        
-        if (stato.getFaseCorrente() == FaseTurno.ATTACCA) {
-            if (indiceMalvagio >= 0 && indiceMalvagio < stato.getMalvagiAttivi().size()) {
-                Malvagio malvagio = stato.getMalvagiAttivi().get(indiceMalvagio);  // ⭐ FIX: ottiene il Malvagio
-                if (giocatore.getAttacco() > 0) {
-                    stato.assegnaAttacco(malvagio, 1);  // ⭐ FIX: passa il Malvagio, non l'indice
-                    giocatore.setAttacco(giocatore.getAttacco() - 1);  // ⭐ FIX: riduce attacco manualmente
-                    
-                    // ⭐ FIX: Se il malvagio è sconfitto, rivela un nuovo malvagio
-                    if (malvagio.getDanno() >= malvagio.getVita()) {
-                        stato.sconfiggiMalvagio(malvagio);
-                        
-                        // Pesca nuovo malvagio se il mazzo non è vuoto
-                        if (!stato.getMazzoMalvagi().isEmpty()) {
-                            stato.addMalvagioAttivo();
-                        }
-                    }
-                    
-                    gameUI.aggiorna();
-                    System.out.println("⚔️ Attaccato malvagio: " + malvagio.getNome());
-                }
-            }
-        }
-    }
-    
-    /**
-     * Passa alla fase successiva
-     */
-    public void prossimaFase() {
-        turnManager.prossimaFase();
-        gameUI.aggiorna();
-        if (gameUI.getPlayerPanel() != null) {
-            gameUI.getPlayerPanel().aggiornaNomeBottoneFase();
-        }
-    }
-    
-    /**
-     * Ottiene lo stato del gioco
-     */
-    public StatoDiGioco getStato() {
-        return stato;
-    }
-    
-    /**
-     * Ottiene l'UI principale
-     */
-    public GameBoardUI getGameUI() {
-        return gameUI;
-    }
-    
-    /**
-     * Ottiene l'istanza del controller
-     */
-    public static GameController getInstance() {
-        return instance;
-    }
+
+	private StatoDiGioco stato;
+	private GameBoardUI gameUI;
+	private TurnManager turnManager;
+
+	// Parametri selezione
+	private int numeroGiocatori;
+	private int annoSelezionato = 1;
+	private List<Giocatore> giocatoriSelezionati;
+
+	// Sistema salvataggio
+	private boolean caricamentoDaSalvataggio = false;
+	private GameSaveData saveDataCaricato = null;
+
+	private List<String> carteAcquisiteTemp = null;
+	private List<String> carteNegozioTemp = null; // ✅ NUOVO
+
+	private static GameController instance;
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+
+	@Override
+	protected void initSettings(GameSettings settings) {
+		settings.setWidth(1920);
+		settings.setHeight(1080);
+		settings.setTitle("Harry Potter: Hogwarts Battle - Deck Building Game");
+		settings.setVersion("1.0");
+		settings.setMainMenuEnabled(false);
+		settings.setIntroEnabled(false);
+		settings.setProfilingEnabled(false);
+		settings.setCloseConfirmation(false);
+		settings.setFullScreenAllowed(true);
+		settings.setFullScreenFromStart(false);
+		settings.setManualResizeEnabled(true);
+		settings.setPreserveResizeRatio(false);
+		settings.setScaleAffectedOnResize(true);
+	}
+
+	@Override
+	protected void initGame() {
+		instance = this;
+
+		try {
+			// Inizializza le factory
+			System.out.println("\n🔧 Inizializzazione Factory...");
+			CardFactory.inizializza();
+			HeroFactory.inizializza();
+			DiceFactory.inizializza();
+			LocationFactory.inizializza();
+			VillainFactory.inizializza();
+			ProficiencyFactory.inizializza();
+			HorcruxFactory.inizializza();
+
+			System.out.println("✅ Tutte le factory inizializzate");
+
+			// Mostra menu principale
+			mostraMenuPrincipale();
+
+		} catch (Exception e) {
+			System.err.println("❌ Errore durante l'inizializzazione:");
+			e.printStackTrace();
+		}
+	}
+
+	// ========================================
+	// MENU E NAVIGAZIONE
+	// ========================================
+
+	/**
+	 * STEP 0: Mostra menu principale
+	 */
+	private void mostraMenuPrincipale() {
+		System.out.println("\n=== MENU PRINCIPALE ===");
+
+		MainMenuScreen screen = new MainMenuScreen(scelta -> {
+			FXGL.getGameScene().clearUINodes();
+
+			switch (scelta) {
+			case "new_game":
+				// Nuova partita
+				annoSelezionato = 1;
+				caricamentoDaSalvataggio = false;
+				mostraSchermataSelezioneNumeroGiocatori();
+				break;
+
+			case "continue":
+				// Continua autosave
+				GameSaveData autosave = SaveManager.caricaAutosave();
+				if (autosave != null) {
+					caricaPartitaDaSalvataggio(autosave);
+				} else {
+					System.err.println("❌ Nessun autosave trovato!");
+					mostraMenuPrincipale();
+				}
+				break;
+
+			case "load_game":
+				// Mostra lista salvataggi
+				mostraSchermataCaricamento();
+				break;
+
+			case "exit":
+				// Esci dal gioco
+				System.out.println("👋 Arrivederci!");
+				FXGL.getGameController().exit();
+				break;
+			}
+		});
+
+		FXGL.getGameScene().addUINode(screen);
+	}
+
+	/**
+	 * Carica partita da salvataggio Se la partita è stata vinta, avanza all'anno
+	 * successivo
+	 */
+	private void caricaPartitaDaSalvataggio(GameSaveData saveData) {
+		System.out.println("\n=== CARICAMENTO PARTITA DA SALVATAGGIO ===");
+
+		// Verifica input
+		if (saveData == null) {
+			System.err.println("❌ SaveData è NULL!");
+			mostraMenuPrincipale();
+			return;
+		}
+
+		System.out.println("📂 Save Data:");
+		System.out.println("   Anno: " + saveData.getAnnoCorrente());
+		System.out.println("   Giocatori: " + saveData.getNumeroGiocatori());
+		System.out.println("   Vittoria: " + saveData.isVittoriaUltimaPartita());
+
+		this.numeroGiocatori = saveData.getNumeroGiocatori();
+		this.saveDataCaricato = saveData;
+		this.caricamentoDaSalvataggio = true;
+
+		// ⭐ NUOVO: Controlla se la partita era vinta
+		if (saveData.isVittoriaUltimaPartita()) {
+			// Avanza anno
+			int annoSuccessivo = saveData.getAnnoCorrente() + 1;
+
+			if (annoSuccessivo <= 7) {
+				this.annoSelezionato = annoSuccessivo;
+
+				// Ricrea giocatori
+				List<Giocatore> giocatoriTemp = ProgressionManager.ricreaGiocatoriDaSalvataggio(saveData,
+						saveData.getAnnoCorrente());
+
+				this.giocatoriSelezionati = new ArrayList<>();
+				for (Giocatore g : giocatoriTemp) {
+					String nomeEroe = g.getEroe().getNome();
+					Eroe nuovoEroe = HeroFactory.creaEroe(nomeEroe, annoSuccessivo);
+					Giocatore nuovoGiocatore = new Giocatore(nuovoEroe);
+
+					// Mantieni competenza
+					if (g.getCompetenza() != null) {
+						nuovoGiocatore.setCompetenza(g.getCompetenza());
+					}
+
+					// Trasferisci carte
+					nuovoGiocatore.getMazzo().getCarte().clear();
+					nuovoGiocatore.getScarti().getCarte().clear();
+					for (Carta c : g.getMazzo().getCarte()) {
+						nuovoGiocatore.getMazzo().aggiungiCarta(c);
+					}
+					for (Carta c : g.getScarti().getCarte()) {
+						nuovoGiocatore.getMazzo().aggiungiCarta(c);
+					}
+					for (Carta c : g.getMano()) {
+						nuovoGiocatore.getMazzo().aggiungiCarta(c);
+					}
+					
+					Collections.shuffle(nuovoGiocatore.getMazzo().getCarte());
+
+					this.giocatoriSelezionati.add(nuovoGiocatore);
+				}
+
+				// Salva dati per avviaGioco()
+				this.carteNegozioTemp = saveData.getCarteNegozioRimaste(); // ✅ NUOVO
+
+				// ⭐ NUOVO: Passa carte acquisite al controller
+				// Verranno usate in avviaGioco()
+				// this.carteAcquisiteTemp = saveData.getCarteAcquisite();
+
+				continuaGioco();
+			}
+		} else {
+			// Partita in corso
+			this.annoSelezionato = saveData.getAnnoCorrente();
+			this.giocatoriSelezionati = ProgressionManager.ricreaGiocatoriDaSalvataggio(saveData, annoSelezionato);
+			
+			this.carteNegozioTemp = saveData.getCarteNegozioRimaste(); // ✅ NUOVO
+
+			// ⭐ NUOVO: Passa carte acquisite
+			// this.carteAcquisiteTemp = saveData.getCarteAcquisite();
+
+			continuaGioco();
+		}
+	}
+
+	// ============================================
+	// NUOVO METODO: Messaggio gioco completato
+	// ============================================
+
+	/**
+	 * Mostra messaggio quando tutti gli anni sono stati completati
+	 */
+	private void mostraMessaggioGiocoCompletato() {
+		javafx.application.Platform.runLater(() -> {
+			grafica.panels.DialogHelper.mostraMessaggio(
+				    "🎓 Gioco Completato!",
+				    "🎉 Congratulazioni!",
+				    "Hai completato tutti e 7 gli anni di Hogwarts!\n\n" +
+				    "━━━━━━━━━━━━━━━━━━━━━━\n\n" +
+				    "Il tuo viaggio magico è terminato.\n" +
+				    "Sei pronto per affrontare il mondo magico!",
+				    grafica.panels.DialogHelper.DialogStyle.CARTA()
+				);
+
+			// Torna al menu principale
+			FXGL.getGameScene().clearUINodes();
+			mostraMenuPrincipale();
+		});
+	}
+
+	/**
+	 * Mostra schermata caricamento con lista salvataggi
+	 */
+	/**
+	 * Mostra schermata caricamento con lista salvataggi
+	 */
+	private void mostraSchermataCaricamento() {
+		System.out.println("\n=== SCHERMATA CARICAMENTO ===");
+
+		LoadGameScreen screen = new LoadGameScreen(
+				// Callback quando si carica una partita
+				saveData -> {
+					// ⭐ NON chiamare clearUINodes() qui!
+					// Lo farà avviaGioco() nel modo corretto
+					caricaPartitaDaSalvataggio(saveData);
+				},
+				// Callback per tornare indietro
+				unused -> {
+					FXGL.getGameScene().clearUINodes();
+					mostraMenuPrincipale();
+				});
+
+		FXGL.getGameScene().addUINode(screen);
+	}
+
+	/**
+	 * STEP 1: Mostra schermata selezione numero giocatori
+	 */
+	private void mostraSchermataSelezioneNumeroGiocatori() {
+		System.out.println("\n=== STEP 1: Selezione Numero Giocatori ===");
+
+		PlayerCountSelectionScreen screen = new PlayerCountSelectionScreen(numero -> {
+			this.numeroGiocatori = numero;
+			System.out.println("✓ Numero giocatori: " + numeroGiocatori);
+
+			FXGL.getGameScene().clearUINodes();
+			mostraSchermataSelezioneEroi();
+		});
+
+		FXGL.getGameScene().addUINode(screen);
+	}
+
+	/**
+	 * STEP 2: Mostra schermata selezione eroi
+	 */
+	private void mostraSchermataSelezioneEroi() {
+		System.out.println("\n=== STEP 2: Selezione Eroi ===");
+
+		HeroSelectionScreen screen = new HeroSelectionScreen(numeroGiocatori, annoSelezionato, giocatori -> {
+			this.giocatoriSelezionati = giocatori;
+
+			System.out.println("✓ Eroi selezionati:");
+			for (int i = 0; i < giocatoriSelezionati.size(); i++) {
+				System.out.println("  Giocatore " + (i + 1) + ": " + giocatoriSelezionati.get(i).getEroe().getNome());
+			}
+
+			FXGL.getGameScene().clearUINodes();
+
+			if (annoSelezionato == 6) {
+				mostraSchermataSelezioneCompetenze();
+			} else {
+				avviaGioco();
+			}
+		});
+
+		FXGL.getGameScene().addUINode(screen);
+	}
+
+	/**
+	 * STEP 3: (Solo Anno 6) Mostra schermata selezione competenze
+	 */
+	private void mostraSchermataSelezioneCompetenze() {
+		System.out.println("\n=== STEP 3: Selezione Competenze (Anno 6) ===");
+
+		List<String> nomiEroi = giocatoriSelezionati.stream().map(g -> g.getEroe().getNome())
+				.collect(Collectors.toList());
+
+		ProficiencySelectionScreen screen = new ProficiencySelectionScreen(nomiEroi, competenzeSelezionate -> {
+			for (int i = 0; i < giocatoriSelezionati.size(); i++) {
+				String idCompetenza = competenzeSelezionate.get(i);
+				try {
+					Competenza comp = ProficiencyFactory.creaCompetenza(idCompetenza);
+					giocatoriSelezionati.get(i).setCompetenza(comp);
+					System.out.println("✓ " + nomiEroi.get(i) + " ha ricevuto: " + comp.getNome());
+				} catch (Exception e) {
+					System.err.println("⚠️ Errore assegnazione competenza a " + nomiEroi.get(i));
+				}
+			}
+
+			FXGL.getGameScene().clearUINodes();
+			continuaGioco();
+		});
+
+		FXGL.getGameScene().addUINode(screen);
+	}
+
+	/**
+	 * STEP 4: Avvia il gioco vero e proprio
+	 */
+	private void avviaGioco() {
+		System.out.println("\n=== AVVIO GIOCO ===");
+
+		try {
+			// ⭐ STEP 1: Pulisci TUTTA l'UI esistente all'inizio
+			System.out.println("🧹 Pulizia UI esistente...");
+			FXGL.getGameScene().clearUINodes();
+
+			// ⭐ STEP 2: Reset variabili UI
+			gameUI = null;
+
+			// ⭐ STEP 3: Verifica prerequisiti
+			if (giocatoriSelezionati == null || giocatoriSelezionati.isEmpty()) {
+				System.err.println("❌ ERRORE: Nessun giocatore selezionato!");
+				mostraMenuPrincipale();
+				return;
+			}
+			for(Giocatore g : giocatoriSelezionati) {
+				g.getMazzo().inizializzaMazzo(g.getEroe().getNome());
+				g.inizializzaMano();
+			}
+
+			if (annoSelezionato < 1 || annoSelezionato > 7) {
+				System.err.println("❌ ERRORE: Anno non valido: " + annoSelezionato);
+				mostraMenuPrincipale();
+				return;
+			}
+
+			// ⭐ STEP 4: Carica configurazione
+			GameLoader loader = new GameLoader();
+			GameConfig config;
+
+			if (carteNegozioTemp != null && !carteNegozioTemp.isEmpty()) {
+				System.out.println("📦 Caricamento con carte negozio da salvataggio");
+				config = loader.caricaConfigurazione(annoSelezionato, carteNegozioTemp);
+				carteNegozioTemp = null; // Reset dopo l'uso
+			} else {
+				config = loader.caricaConfigurazione(annoSelezionato);
+			}
+
+			if (config == null) {
+				System.err.println("❌ ERRORE: Impossibile caricare configurazione anno " + annoSelezionato);
+				mostraMenuPrincipale();
+				return;
+			}
+
+			System.out.println("📋 Configurazione anno " + annoSelezionato + " caricata");
+
+			// ⭐ STEP 5: Crea stato di gioco
+			stato = new StatoDiGioco(config, giocatoriSelezionati);
+
+			// ⭐ NUOVO: Ripristina carte acquisite se presente
+			/*if (carteAcquisiteTemp != null && !carteAcquisiteTemp.isEmpty()) {
+				Set<String> carteSet = new HashSet<>(carteAcquisiteTemp);
+				stato.setCarteAcquisiteDaiGiocatori(carteSet);
+				System.out.println("✅ Ripristinate " + carteSet.size() + " carte acquisite");
+				carteAcquisiteTemp = null; // Reset
+			}*/
+
+			if (stato == null) {
+				System.err.println("❌ ERRORE: Stato di gioco non creato!");
+				mostraMenuPrincipale();
+				return;
+			}
+
+			if (stato.getGiocatori() == null || stato.getGiocatori().isEmpty()) {
+				System.err.println("❌ ERRORE: Stato senza giocatori!");
+				mostraMenuPrincipale();
+				return;
+			}
+
+			System.out.println("\n✅ Gioco avviato!");
+			System.out.println("   Anno: " + annoSelezionato);
+			System.out.println("   Giocatori: " + giocatoriSelezionati.size());
+
+			for (int i = 0; i < giocatoriSelezionati.size(); i++) {
+				Giocatore g = giocatoriSelezionati.get(i);
+				System.out.println("   [" + (i + 1) + "] " + g.getEroe().getNome()
+						+ (g.getCompetenza() != null ? " (" + g.getCompetenza().getNome() + ")" : ""));
+			}
+
+			System.out.println("🏰 Luogo attuale: " + stato.getLuogoAttuale().getNome());
+			System.out.println("👹 Malvagi attivi: " + stato.getMalvagiAttivi().size());
+			System.out.println("🛒 Carte nel mercato: " + stato.getMercato().size());
+
+			// ⭐ STEP 6: Crea interfaccia grafica (stato garantito valido)
+			gameUI = new GameBoardUI(stato);
+
+			if (gameUI == null) {
+				System.err.println("❌ ERRORE: UI non creata!");
+				mostraMenuPrincipale();
+				return;
+			}
+
+			gameUI.setMinSize(1920, 1080);
+			gameUI.setPrefSize(1920, 1080);
+			gameUI.setMaxSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
+
+			// ⭐ STEP 7: Aggiungi UI alla scena
+			FXGL.getGameScene().addUINode(gameUI);
+
+			// Listener resize
+			FXGL.getGameScene().getRoot().widthProperty().addListener((obs, oldVal, newVal) -> {
+				if (gameUI != null) {
+					gameUI.setPrefWidth(newVal.doubleValue());
+					gameUI.layout();
+				}
+			});
+
+			FXGL.getGameScene().getRoot().heightProperty().addListener((obs, oldVal, newVal) -> {
+				if (gameUI != null) {
+					gameUI.setPrefHeight(newVal.doubleValue());
+					gameUI.layout();
+				}
+			});
+
+			System.out.println("🎨 Interfaccia grafica inizializzata");
+
+			// ⭐ STEP 8: Inizia la partita
+			iniziaPartita();
+
+			grafica.utils.ImageLoader.stampaReport();
+
+		} catch (Exception e) {
+			System.err.println("❌ ERRORE CRITICO durante avvio gioco:");
+			e.printStackTrace();
+
+			// Fallback sicuro
+			try {
+				stato = null;
+				gameUI = null;
+				FXGL.getGameScene().clearUINodes();
+				mostraMenuPrincipale();
+			} catch (Exception e2) {
+				System.err.println("❌ ERRORE DOPPIO: impossibile recuperare");
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	private void continuaGioco() {
+		System.out.println("\n=== CONTINUA GIOCO ===");
+
+		try {
+			// ⭐ STEP 1: Pulisci TUTTA l'UI esistente all'inizio
+			System.out.println("🧹 Pulizia UI esistente...");
+			FXGL.getGameScene().clearUINodes();
+
+			// ⭐ STEP 2: Reset variabili UI
+			gameUI = null;
+
+			// ⭐ STEP 3: Verifica prerequisiti
+			if (giocatoriSelezionati == null || giocatoriSelezionati.isEmpty()) {
+				System.err.println("❌ ERRORE: Nessun giocatore selezionato!");
+				mostraMenuPrincipale();
+				return;
+			}
+			for(Giocatore g : giocatoriSelezionati) {
+				g.inizializzaMano();
+			}
+			
+			//Commentato perché il metodo viene chiamato dal secondo al settimo anno
+			/*if (annoSelezionato < 1 || annoSelezionato > 7) {
+				System.err.println("❌ ERRORE: Anno non valido: " + annoSelezionato);
+				mostraMenuPrincipale();
+				return;
+			}*/
+
+			// ⭐ STEP 4: Carica configurazione
+			GameLoader loader = new GameLoader();
+			GameConfig config;
+
+			if (carteNegozioTemp != null && !carteNegozioTemp.isEmpty()) {
+				System.out.println("📦 Caricamento con carte negozio da salvataggio");
+				config = loader.caricaConfigurazione(annoSelezionato, carteNegozioTemp);
+				carteNegozioTemp = null; // Reset dopo l'uso
+			} else {
+				config = loader.caricaConfigurazione(annoSelezionato);
+			}
+
+			if (config == null) {
+				System.err.println("❌ ERRORE: Impossibile caricare configurazione anno " + annoSelezionato);
+				mostraMenuPrincipale();
+				return;
+			}
+
+			System.out.println("📋 Configurazione anno " + annoSelezionato + " caricata");
+
+			// ⭐ STEP 5: Crea stato di gioco
+			stato = new StatoDiGioco(config, giocatoriSelezionati);
+
+			// ⭐ NUOVO: Ripristina carte acquisite se presente
+			if (carteAcquisiteTemp != null && !carteAcquisiteTemp.isEmpty()) {
+				Set<String> carteSet = new HashSet<>(carteAcquisiteTemp);
+				stato.setCarteAcquisiteDaiGiocatori(carteSet);
+				System.out.println("✅ Ripristinate " + carteSet.size() + " carte acquisite");
+				carteAcquisiteTemp = null; // Reset
+			}
+
+			if (stato == null) {
+				System.err.println("❌ ERRORE: Stato di gioco non creato!");
+				mostraMenuPrincipale();
+				return;
+			}
+
+			if (stato.getGiocatori() == null || stato.getGiocatori().isEmpty()) {
+				System.err.println("❌ ERRORE: Stato senza giocatori!");
+				mostraMenuPrincipale();
+				return;
+			}
+			
+			/*if(annoSelezionato >= 5) {
+				Malvagio voldemort = null;
+				LinkedList<Malvagio> malvagiTemp = new LinkedList<>();
+				// Trova Voldemort senza modificare la lista durante l'iterazione
+				for(Malvagio m : stato.getMazzoMalvagi()) {
+					if(m.getNome().contains("Voldemort")) {
+						voldemort = m;
+					}
+					else {
+						malvagiTemp.add(m);
+					}
+				}
+				Collections.shuffle(malvagiTemp);
+				// Rimuovi e aggiungi alla fine
+				if(voldemort != null) {
+					malvagiTemp.add(voldemort);
+					stato.setMazzoMalvagi(malvagiTemp);
+					System.out.println("👹 Voldemort posizionato in fondo al mazzo malvagi");
+				}
+			}*/
+
+			System.out.println("\n✅ Gioco avviato!");
+			System.out.println("   Anno: " + annoSelezionato);
+			System.out.println("   Giocatori: " + giocatoriSelezionati.size());
+
+			for (int i = 0; i < giocatoriSelezionati.size(); i++) {
+				Giocatore g = giocatoriSelezionati.get(i);
+				System.out.println("   [" + (i + 1) + "] " + g.getEroe().getNome()
+						+ (g.getCompetenza() != null ? " (" + g.getCompetenza().getNome() + ")" : ""));
+			}
+
+			System.out.println("🏰 Luogo attuale: " + stato.getLuogoAttuale().getNome());
+			System.out.println("👹 Malvagi attivi: " + stato.getMalvagiAttivi().size());
+			System.out.println("🛒 Carte nel mercato: " + stato.getMercato().size());
+
+			// ⭐ STEP 6: Crea interfaccia grafica (stato garantito valido)
+			gameUI = new GameBoardUI(stato);
+
+			if (gameUI == null) {
+				System.err.println("❌ ERRORE: UI non creata!");
+				mostraMenuPrincipale();
+				return;
+			}
+
+			gameUI.setMinSize(1920, 1080);
+			gameUI.setPrefSize(1920, 1080);
+			gameUI.setMaxSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
+
+			// ⭐ STEP 7: Aggiungi UI alla scena
+			FXGL.getGameScene().addUINode(gameUI);
+
+			// Listener resize
+			FXGL.getGameScene().getRoot().widthProperty().addListener((obs, oldVal, newVal) -> {
+				if (gameUI != null) {
+					gameUI.setPrefWidth(newVal.doubleValue());
+					gameUI.layout();
+				}
+			});
+
+			FXGL.getGameScene().getRoot().heightProperty().addListener((obs, oldVal, newVal) -> {
+				if (gameUI != null) {
+					gameUI.setPrefHeight(newVal.doubleValue());
+					gameUI.layout();
+				}
+			});
+
+			System.out.println("🎨 Interfaccia grafica inizializzata");
+
+			// ⭐ STEP 8: Inizia la partita
+			iniziaPartita();
+
+			grafica.utils.ImageLoader.stampaReport();
+
+		} catch (Exception e) {
+			System.err.println("❌ ERRORE CRITICO durante avvio gioco:");
+			e.printStackTrace();
+
+			// Fallback sicuro
+			try {
+				stato = null;
+				gameUI = null;
+				FXGL.getGameScene().clearUINodes();
+				mostraMenuPrincipale();
+			} catch (Exception e2) {
+				System.err.println("❌ ERRORE DOPPIO: impossibile recuperare");
+				e2.printStackTrace();
+			}
+		}
+	}
+
+	// ========================================
+	// GESTIONE VITTORIA E AVANZAMENTO
+	// ========================================
+
+	/**
+	 * Chiamato quando il gioco viene vinto
+	 */
+	public void onVittoria() {
+		System.out.println("\n🎉 VITTORIA RILEVATA!");
+
+		ProgressionManager.salvaProgressoVittoria(stato);
+		SaveManager.autosave(stato);
+
+		int annoCompletato = stato.getAnnoCorrente();
+		boolean ultimoAnno = ProgressionManager.giocoCompletato(stato);
+
+		// Mostra schermata vittoria
+		FXGL.getGameScene().clearUINodes();
+
+		VictoryScreen victoryScreen = new VictoryScreen(annoCompletato, scelta -> {
+			FXGL.getGameScene().clearUINodes();
+
+			if (scelta.equals("continue") && !ultimoAnno) {
+				// ⭐ MODIFICATO: Avanza senza tornare al menu
+				avanzaAnnoSuccessivo();
+			} else {
+				mostraMenuPrincipale();
+			}
+		});
+
+		// ⭐ OPZIONALE: Auto-avanza dopo 5 secondi se non ultimo anno
+		if (!ultimoAnno) {
+			javafx.animation.Timeline timeline = new javafx.animation.Timeline(
+					new javafx.animation.KeyFrame(javafx.util.Duration.seconds(10), event -> {
+						if (FXGL.getGameScene().getUINodes().contains(victoryScreen)) {
+							FXGL.getGameScene().clearUINodes();
+							avanzaAnnoSuccessivo();
+						}
+					}));
+			timeline.play();
+		}
+
+		FXGL.getGameScene().addUINode(victoryScreen);
+	}
+
+	/**
+	 * Chiamato quando il gioco viene perso (sconfitta)
+	 */
+	public void onSconfitta() {
+		System.out.println("\n💀 SCONFITTA RILEVATA!");
+
+		// Salva comunque lo stato (opzionale)
+		SaveManager.salvaPartita(stato, "sconfitta_anno_" + stato.getAnnoCorrente());
+
+		int annoFallito = stato.getAnnoCorrente();
+		String motivoSconfitta = "🌑 Tutti i luoghi sono stati persi!\nI Marchi Neri hanno sopraffatto Hogwarts!";
+
+		// Mostra schermata Game Over
+		FXGL.getGameScene().clearUINodes();
+
+		GameOverScreen gameOverScreen = new GameOverScreen(annoFallito, motivoSconfitta, scelta -> {
+			FXGL.getGameScene().clearUINodes();
+
+			if (scelta.equals("retry")) {
+				// Riprova stesso anno
+				riprovaSconfittaAnno();
+			} else {
+				// Torna al menu
+				mostraMenuPrincipale();
+			}
+		});
+
+		FXGL.getGameScene().addUINode(gameOverScreen);
+	}
+
+	/**
+	 * Riprova lo stesso anno dopo una sconfitta
+	 */
+	private void riprovaSconfittaAnno() {
+		System.out.println("\n🔄 RIPROVA ANNO " + annoSelezionato);
+
+		// Mantieni gli stessi giocatori e anno
+		// (giocatoriSelezionati e annoSelezionato già impostati)
+
+		// Riavvia il gioco
+		if(annoSelezionato != 1) {
+			continuaGioco();
+		}
+		else {
+			avviaGioco();
+		}
+	}
+
+	/**
+	 * Avanza anno successivo
+	 */
+	private void avanzaAnnoSuccessivo() {
+		int prossimoAnno = ProgressionManager.calcolaProssimoAnno(stato.getAnnoCorrente());
+
+		System.out.println("\n📖 AVANZAMENTO ANNO " + prossimoAnno);
+
+		List<Giocatore> giocatoriProssimoAnno = ProgressionManager.preparaGiocatoriProssimoAnno(stato.getGiocatori(),
+				prossimoAnno, stato);
+
+		this.annoSelezionato = prossimoAnno;
+		this.giocatoriSelezionati = giocatoriProssimoAnno;
+		this.numeroGiocatori = giocatoriProssimoAnno.size();
+
+		// Se anno 6 e non hanno competenze, mostra selezione
+		boolean needProficiencySelection = (prossimoAnno == 6)
+				&& giocatoriProssimoAnno.stream().allMatch(g -> g.getCompetenza() == null);
+
+		if (needProficiencySelection) {
+			mostraSchermataSelezioneCompetenze();
+		} else {
+			continuaGioco();
+		}
+	}
+
+	/**
+	 * Salvataggio rapido
+	 */
+	public void salvaPartitaRapida() {
+		if (stato != null) {
+			boolean success = SaveManager.autosave(stato);
+			if (success) {
+				System.out.println("💾 Partita salvata automaticamente!");
+			}
+		}
+	}
+
+	// ========================================
+	// METODI ORIGINALI (NON MODIFICATI)
+	// ========================================
+
+	public void iniziaPartita() {
+		turnManager = new TurnManager(stato);
+		turnManager.iniziaTurno();
+		gameUI.aggiorna();
+	}
+
+	public void giocaCarta(int indiceInMano) {
+		Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
+
+		if (stato.getFaseCorrente() == FaseTurno.GIOCA_CARTE || stato.getFaseCorrente() == FaseTurno.ATTACCA) {
+			if (indiceInMano >= 0 && indiceInMano < giocatore.getMano().size()) {
+				Carta carta = giocatore.getMano().get(indiceInMano);
+
+				// ⭐ NUOVO: Mostra messaggio
+				gameUI.getMessagePanel().mostraMessaggio(giocatore.getEroe().getNome() + " gioca: " + carta.getNome(),
+						MessagePanel.TipoMessaggio.GIOCA_CARTA);
+
+				giocatore.giocaCarta(stato, carta);
+				gameUI.aggiorna();
+			}
+		}
+	}
+
+	public void acquistaCarta(int indiceInMercato) {
+		Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
+
+		if (stato.getFaseCorrente() == FaseTurno.ACQUISTA_CARTE) {
+			if (indiceInMercato >= 0 && indiceInMercato < stato.getMercato().size()) {
+				Carta carta = stato.getMercato().get(indiceInMercato);
+				if (giocatore.getGettone() >= carta.getCosto()) {
+					gameUI.getMessagePanel().mostraMessaggio(
+							giocatore.getEroe().getNome() + " acquista: " + carta.getNome(),
+							MessagePanel.TipoMessaggio.ACQUISTA_CARTA);
+
+					giocatore.acquistaCarta(stato.getMercato(), carta, stato);
+
+					// ⭐ NUOVO: Gestisci trigger acquisto (Cappello Parlante)
+					gestisciTriggerAcquisto(carta, giocatore);
+
+					stato.rifornisciMercato();
+					gameUI.aggiorna();
+				}
+			}
+		}
+	}
+
+	/**
+	 * Gestisce trigger dopo acquisto (Cappello, Giratempo, Wingardium)
+	 */
+	private void gestisciTriggerAcquisto(Carta cartaAcquistata, Giocatore giocatore) {
+		TipoTrigger tipoTrigger = null;
+
+		// Determina tipo trigger in base alla classe carta
+		if (cartaAcquistata.getClasse().equalsIgnoreCase("Alleato")) {
+			tipoTrigger = gestoreEffetti.TipoTrigger.ACQUISTA_ALLEATO;
+		} else if (cartaAcquistata.getClasse().equalsIgnoreCase("Incantesimo")) {
+			tipoTrigger = gestoreEffetti.TipoTrigger.ACQUISTA_INCANTESIMO;
+		} else if (cartaAcquistata.getClasse().equalsIgnoreCase("Oggetto")) {
+			tipoTrigger = gestoreEffetti.TipoTrigger.ACQUISTA_OGGETTO;
+		}
+
+		if (tipoTrigger != null && stato.getGestoreTrigger().hasTrigger(tipoTrigger)) {
+			// C'è un trigger attivo
+			mostraDialogPosizionamentoCarta(cartaAcquistata, giocatore, tipoTrigger);
+		} else {
+			// Nessun trigger → carta va negli scarti
+			giocatore.getScarti().aggiungiCarta(cartaAcquistata);
+		}
+	}
+
+	/**
+	 * Mostra dialog per scegliere dove posizionare carta acquistata
+	 */
+	private void mostraDialogPosizionamentoCarta(Carta carta, Giocatore giocatore, TipoTrigger tipoTrigger) {
+	    String nomeCartaTrigger = getNomeCartaTrigger(tipoTrigger);
+	    String descrizoneTrigger = nomeCartaTrigger + " ti permette di metterla in cima al mazzo.";
+	    
+	    grafica.panels.DialogHelper.mostraSceltaPosizionamentoCarta(
+	        carta.getNome(),
+	        carta.getClasse(),
+	        nomeCartaTrigger,
+	        descrizoneTrigger,
+	        inCima -> {
+	            if (inCima) {
+	                // Carta in cima al mazzo
+	                giocatore.getMazzo().getCarte().addFirst(carta);
+	                System.out.println("📚 " + carta.getNome() + " posizionata in cima al mazzo");
+	                
+	                if (gameUI != null && gameUI.getMessagePanel() != null) {
+	                    gameUI.getMessagePanel().mostraMessaggio(
+	                        carta.getNome() + " → cima al mazzo",
+	                        MessagePanel.TipoMessaggio.INFO
+	                    );
+	                }
+	            } else {
+	                // Carta negli scarti
+	                giocatore.getScarti().aggiungiCarta(carta);
+	                System.out.println("📥 " + carta.getNome() + " posizionata negli scarti");
+	                
+	                if (gameUI != null && gameUI.getMessagePanel() != null) {
+	                    gameUI.getMessagePanel().mostraMessaggio(
+	                        carta.getNome() + " → scarti",
+	                        MessagePanel.TipoMessaggio.INFO
+	                    );
+	                }
+	            }
+	        }
+	    );
+	}
+
+	/**
+	 * Ottiene il nome della carta che ha attivato il trigger
+	 */
+	private String getNomeCartaTrigger(TipoTrigger tipo) {
+		switch (tipo) {
+		case ACQUISTA_ALLEATO:
+			return "Cappello Parlante";
+		case ACQUISTA_INCANTESIMO:
+			return "Giratempo";
+		case ACQUISTA_OGGETTO:
+			return "Wingardium Leviosa";
+		default:
+			return "Carta speciale";
+		}
+	}
+
+	public void attaccaMalvagio(int indiceMalvagio) {
+		Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
+
+		if (stato.getFaseCorrente() == FaseTurno.ATTACCA) {
+			if (indiceMalvagio >= 0 && indiceMalvagio < stato.getMalvagiAttivi().size()) {
+				Malvagio malvagio = stato.getMalvagiAttivi().get(indiceMalvagio);
+				
+				// ⭐ NUOVO: Verifica se il malvagio può essere attaccato (blocco Voldemort)
+			    if (!stato.puoAttaccareMalvagio(malvagio)) {
+			        String msg = stato.getMessaggioBloccoVoldemort();
+			        gameUI.getMessagePanel().mostraMessaggio(msg, MessagePanel.TipoMessaggio.ATTACCO);
+			        System.out.println("🚫 " + msg);
+			        return;  // Esci senza attaccare
+			    }
+				
+				if (giocatore.getAttacco() > 0 && !malvagio.getAttaccoassegnato()) {
+					stato.assegnaAttacco(malvagio, 1);
+					// ⭐ NUOVO: Messaggio attacco
+					String msg = giocatore.getEroe().getNome() + " attacca " + malvagio.getNome() + " ("
+							+ (malvagio.getDanno() + 1)+ "/" + malvagio.getVita() + " ❤️)";
+					gameUI.getMessagePanel().mostraMessaggio(msg, MessagePanel.TipoMessaggio.ATTACCO);
+					if (malvagio.getDanno() >= malvagio.getVita() - 1) {
+						// ⭐ NUOVO: Messaggio sconfitta
+						gameUI.getMessagePanel().mostraMessaggio("💀 " + malvagio.getNome() + " sconfitto!",
+								MessagePanel.TipoMessaggio.MALVAGIO);
+					}
+					stato.applicaAttacchi();
+					giocatore.setAttacco(giocatore.getAttacco() - 1);
+					
+					if(stato.getGestoreEffetti().regolaAttiva(TipoEffetto.LIMITA_ATTACCO)) {
+						malvagio.setAttaccoassegnato(true);
+					}
+
+					// Fase già richiamata nel metodo applicaAttacchi
+					/*
+					 * if (malvagio.getDanno() >= malvagio.getVita()) {
+					 * stato.sconfiggiMalvagio(malvagio);
+					 * 
+					 * if (!stato.getMazzoMalvagi().isEmpty()) { stato.addMalvagioAttivo(); } }
+					 */
+
+					gameUI.aggiorna();
+					System.out.println("⚔️ Attaccato malvagio: " + malvagio.getNome());
+				}
+				else {
+					String msg = "Non puoi attaccare questo malvagio";
+					gameUI.getMessagePanel().mostraMessaggio(msg, MessagePanel.TipoMessaggio.ATTACCO);
+				}
+			}
+		}
+	}
+
+	/**
+	 * Distrugge un Horcrux e applica la ricompensa
+	 */
+	private void distruggiHorcrux(Horcrux horcrux) {
+		Giocatore giocatoreCorrente = stato.getGiocatori().get(stato.getGiocatoreCorrente());
+
+		// Applica ricompensa
+		horcrux.applicaRicompensa(stato, giocatoreCorrente);
+
+		// Messaggio
+		gameUI.getMessagePanel().mostraMessaggio("🔥 " + horcrux.getNome() + " DISTRUTTO!",
+				MessagePanel.TipoMessaggio.MALVAGIO);
+
+		// Rimuovi da horcrux attivi
+		stato.distruggiHorcrux(horcrux);
+
+		// Verifica vittoria (tutti horcrux + tutti malvagi)
+		if (stato.isVittoriaPendente()) {
+			Platform.runLater(() -> {
+				gameUI.getMessagePanel().mostraMessaggio("🏆 TUTTI GLI HORCRUX DISTRUTTI!",
+						MessagePanel.TipoMessaggio.INFO);
+			});
+		}
+
+		gameUI.aggiorna();
+	}
+
+	public void prossimaFase() {
+		turnManager.prossimaFase();
+		gameUI.aggiorna();
+		if (gameUI.getPlayerPanel() != null) {
+			gameUI.getPlayerPanel().aggiornaNomeBottoneFase();
+		}
+	}
+
+	public StatoDiGioco getStato() {
+		return stato;
+	}
+
+	public GameBoardUI getGameUI() {
+		return gameUI;
+	}
+
+	public static GameController getInstance() {
+		return instance;
+	}
 }

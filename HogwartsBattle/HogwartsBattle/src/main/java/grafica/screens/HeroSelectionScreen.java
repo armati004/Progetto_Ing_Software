@@ -1,34 +1,37 @@
 package grafica.screens;
 
 import carte.Eroe;
+import com.almasb.fxgl.dsl.FXGL;
 import data.HeroFactory;
 import gioco.Giocatore;
+import grafica.utils.ImageLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-import com.almasb.fxgl.dsl.FXGL;
-
+/**
+ * Schermata per selezionare gli eroi
+ * ⭐ VERSIONE FXGL con binding automatico
+ */
 public class HeroSelectionScreen extends StackPane {
-
-    private final int numeroGiocatoriTotali;
-    private int indiceGiocatoreCorrente = 0; // 0 = Giocatore 1
-    private final int ANNO_PARTITA = 1; // Imposta l'anno di gioco (Default: 1)
-
-    // La lista si riempirà man mano che scelgono
-    private List<Giocatore> giocatoriSelezionati; 
     
+    private final int numeroGiocatoriTotali;
+    private int indiceGiocatoreCorrente = 0;
+    private final int annoPartita;
+
+    private List<Giocatore> giocatoriSelezionati; 
     private List<Eroe> eroiDisponibili; 
     private Consumer<List<Giocatore>> onSelectionComplete;
 
@@ -36,41 +39,57 @@ public class HeroSelectionScreen extends StackPane {
     private Text titleText;
     private HBox heroesGrid;
 
-    public HeroSelectionScreen(int numeroGiocatori, Consumer<List<Giocatore>> onSelectionComplete) {
+    /**
+     * Costruttore
+     * 
+     * @param numeroGiocatori Numero di giocatori
+     * @param annoPartita Anno di gioco (1-7)
+     * @param onSelectionComplete Callback quando completato
+     */
+    public HeroSelectionScreen(int numeroGiocatori, int annoPartita, Consumer<List<Giocatore>> onSelectionComplete) {
         this.numeroGiocatoriTotali = numeroGiocatori;
+        this.annoPartita = annoPartita;
         this.onSelectionComplete = onSelectionComplete;
         
-        // Inizializza la lista vuota (la riempiremo man mano)
         this.giocatoriSelezionati = new ArrayList<>();
-
-        // --- MODIFICA QUI: USIAMO IL TUO METODO GENERICO ---
         this.eroiDisponibili = new ArrayList<>();
         
-        // Assicurati che i nomi corrispondano esattamente a quelli gestiti nel tuo HeroFactory
-        this.eroiDisponibili.add(HeroFactory.creaEroe("Harry Potter", ANNO_PARTITA));
-        this.eroiDisponibili.add(HeroFactory.creaEroe("Ron Weasley", ANNO_PARTITA));
-        this.eroiDisponibili.add(HeroFactory.creaEroe("Hermione Granger", ANNO_PARTITA));
-        this.eroiDisponibili.add(HeroFactory.creaEroe("Neville Longbottom", ANNO_PARTITA));
-
-        initGraphics();
-     // --- FIX RESIZE ---
-        // Assicuriamoci che quando questa schermata viene aggiunta alla scena, si adatti
+        // ⭐ FXGL: Binding automatico
         this.prefWidthProperty().bind(FXGL.getGameScene().getRoot().widthProperty());
         this.prefHeightProperty().bind(FXGL.getGameScene().getRoot().heightProperty());
-        // ------------------
+        
+        // Carica i 4 eroi disponibili
+        this.eroiDisponibili.add(HeroFactory.creaEroe("Harry Potter", annoPartita));
+        this.eroiDisponibili.add(HeroFactory.creaEroe("Ron Weasley", annoPartita));
+        this.eroiDisponibili.add(HeroFactory.creaEroe("Hermione Granger", annoPartita));
+        this.eroiDisponibili.add(HeroFactory.creaEroe("Neville Longbottom", annoPartita));
+
+        initGraphics();
         aggiornaSchermata(); 
     }
 
     private void initGraphics() {
-        this.setStyle("-fx-background-color: #111;");
+        // Sfondo con binding
+        Rectangle bg = new Rectangle();
+        bg.widthProperty().bind(this.widthProperty());
+        bg.heightProperty().bind(this.heightProperty());
+        bg.setFill(Color.rgb(15, 10, 30));
+        this.getChildren().add(bg);
 
         mainContainer = new VBox(40);
         mainContainer.setAlignment(Pos.CENTER);
+        mainContainer.setPadding(new Insets(60));
 
         titleText = new Text();
-        titleText.setFont(Font.font("Cinzel", FontWeight.BOLD, 40));
-        titleText.setFill(Color.WHITE);
-        titleText.setEffect(new DropShadow(10, Color.GOLD));
+        titleText.setFont(Font.font("Arial", FontWeight.BOLD, 40));
+        titleText.setFill(Color.GOLD);
+        titleText.setStroke(Color.DARKRED);
+        titleText.setStrokeWidth(2);
+        
+        DropShadow shadow = new DropShadow();
+        shadow.setColor(Color.BLACK);
+        shadow.setRadius(15);
+        titleText.setEffect(shadow);
 
         heroesGrid = new HBox(30);
         heroesGrid.setAlignment(Pos.CENTER);
@@ -87,7 +106,6 @@ public class HeroSelectionScreen extends StackPane {
         heroesGrid.getChildren().clear();
 
         for (Eroe eroe : eroiDisponibili) {
-            // Controllo di sicurezza se la factory ha restituito null
             if (eroe != null) {
                 VBox card = creaCardEroe(eroe);
                 heroesGrid.getChildren().add(card);
@@ -98,30 +116,71 @@ public class HeroSelectionScreen extends StackPane {
     private VBox creaCardEroe(Eroe eroe) {
         VBox box = new VBox(15);
         box.setAlignment(Pos.CENTER);
-        box.setCursor(javafx.scene.Cursor.HAND);
+        box.setPrefSize(280, 420);
+        box.setStyle(
+            "-fx-background-color: rgba(40, 20, 60, 0.95);" +
+            "-fx-border-color: #8B7355;" +
+            "-fx-border-width: 3;" +
+            "-fx-background-radius: 15;" +
+            "-fx-border-radius: 15;" +
+            "-fx-cursor: hand;" +
+            "-fx-padding: 15;"
+        );
+        
+        DropShadow shadow = new DropShadow();
+        shadow.setColor(Color.BLACK);
+        shadow.setRadius(12);
+        box.setEffect(shadow);
 
-        ImageView img = new ImageView();
-        img.setFitHeight(300);
+        // ⭐ USA ImageLoader
+        Image heroImage = ImageLoader.caricaImmagine(eroe.getPathImmagine());
+        ImageView img = new ImageView(heroImage);
+        img.setFitHeight(320);
+        img.setFitWidth(250);
         img.setPreserveRatio(true);
-        caricaImmagineSicura(img, eroe.getPathImmagine());
+        
+        // Clip arrotondato
+        Rectangle clip = new Rectangle(250, 320);
+        clip.setArcWidth(12);
+        clip.setArcHeight(12);
+        img.setClip(clip);
 
         // Effetto Hover
-        img.setOnMouseEntered(e -> {
-            img.setScaleX(1.1);
-            img.setScaleY(1.1);
-            img.setEffect(new DropShadow(20, Color.GOLD));
+        box.setOnMouseEntered(e -> {
+            box.setStyle(
+                "-fx-background-color: rgba(60, 40, 90, 0.98);" +
+                "-fx-border-color: gold;" +
+                "-fx-border-width: 4;" +
+                "-fx-background-radius: 15;" +
+                "-fx-border-radius: 15;" +
+                "-fx-cursor: hand;" +
+                "-fx-padding: 15;"
+            );
+            box.setScaleX(1.05);
+            box.setScaleY(1.05);
         });
-        img.setOnMouseExited(e -> {
-            img.setScaleX(1.0);
-            img.setScaleY(1.0);
-            img.setEffect(null);
+        
+        box.setOnMouseExited(e -> {
+            box.setStyle(
+                "-fx-background-color: rgba(40, 20, 60, 0.95);" +
+                "-fx-border-color: #8B7355;" +
+                "-fx-border-width: 3;" +
+                "-fx-background-radius: 15;" +
+                "-fx-border-radius: 15;" +
+                "-fx-cursor: hand;" +
+                "-fx-padding: 15;"
+            );
+            box.setScaleX(1.0);
+            box.setScaleY(1.0);
         });
 
         Text nome = new Text(eroe.getNome().toUpperCase());
-        nome.setFont(Font.font(20));
-        nome.setFill(Color.LIGHTGRAY);
+        nome.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+        nome.setFill(Color.LIGHTBLUE);
+        nome.setWrappingWidth(250);
+        nome.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
 
-        // --- CLICK: CREAZIONE DEL GIOCATORE ---
+        // Click per selezionare
         box.setOnMouseClicked(e -> onEroeSelezionato(eroe));
 
         box.getChildren().addAll(img, nome);
@@ -129,12 +188,12 @@ public class HeroSelectionScreen extends StackPane {
     }
 
     private void onEroeSelezionato(Eroe eroeScelto) {
-        System.out.println("Giocatore " + (indiceGiocatoreCorrente + 1) + " ha scelto: " + eroeScelto.getNome());
+        System.out.println("✓ Giocatore " + (indiceGiocatoreCorrente + 1) + " ha scelto: " + eroeScelto.getNome());
 
-        // 1. Crea il giocatore passando l'eroe al costruttore
+        // 1. Crea il giocatore
         Giocatore nuovoGiocatore = new Giocatore(eroeScelto);
 
-        // 2. Aggiungi alla lista definitiva
+        // 2. Aggiungi alla lista
         giocatoriSelezionati.add(nuovoGiocatore);
 
         // 3. Rimuovi l'eroe dai disponibili
@@ -147,22 +206,10 @@ public class HeroSelectionScreen extends StackPane {
         if (indiceGiocatoreCorrente < numeroGiocatoriTotali) {
             aggiornaSchermata();
         } else {
-            System.out.println("Selezione completata. Avvio...");
+            System.out.println("✅ Selezione eroi completata!");
             if (onSelectionComplete != null) {
                 onSelectionComplete.accept(giocatoriSelezionati);
             }
-        }
-    }
-
-    private void caricaImmagineSicura(ImageView view, String path) {
-        try {
-            if (path == null) return;
-            String clean = path.replace("../", "/");
-            if (!clean.startsWith("/")) clean = "/" + clean;
-            InputStream is = getClass().getResourceAsStream(clean);
-            if (is != null) view.setImage(new Image(is));
-        } catch (Exception e) { 
-            System.err.println("Img mancante: " + path);
         }
     }
 }

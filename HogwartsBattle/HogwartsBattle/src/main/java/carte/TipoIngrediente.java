@@ -55,4 +55,8 @@ public enum TipoIngrediente {
     public String toString() {
         return simbolo + " " + nome;
     }
+
+	public static void main(String[] args) {
+		HeroFactory.creaEroe("Hermione Granger", 6)
+	}
 }
