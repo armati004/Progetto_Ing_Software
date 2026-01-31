@@ -57,6 +57,6 @@ public class VillainFactory {
     	}
     	
     	return new Malvagio(data.getNome(), data.getId(), data.getClasse(), data.getDescrizione(), data.getCosto(),
-    			data.getPathImmagine(), data.getEffetti(), data.getTriggers(), data.getRewards(), data.getVita());
+    			data.getPathImmagine(), data.getEffetti(), data.getTriggers(), data.getReward(), data.getVita());
     }
 }

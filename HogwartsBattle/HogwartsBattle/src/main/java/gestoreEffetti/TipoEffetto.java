@@ -212,6 +212,6 @@ public enum TipoEffetto {
 	 * Effetto che non permette di mettere più di un Segnalino Attacco ad un Malvagio
 	 */
 	LIMITA_ATTACCO,
-	SCELTA_MULTIPLA;
-
+	SCELTA_MULTIPLA,
+	BLOCCA_ABILITA_MALVAGIO, SCEGLI_DADO;
 }

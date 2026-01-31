@@ -1,0 +1,105 @@
+{
+  "annoCorrente": 1,
+  "numeroGiocatori": 4,
+  "vittoriaUltimaPartita": true,
+  "giocatori": [
+    {
+      "nomeEroe": "Harry Potter",
+      "carteNelMazzo": [
+        "Alohomora_Harry",
+        "Alohomora_Harry",
+        "mantelloInvisibilita0",
+        "firebolt0",
+        "Alohomora_Harry",
+        "reparo1",
+        "Alohomora_Harry",
+        "cappelloParlante1",
+        "edvige0",
+        "Alohomora_Harry",
+        "Alohomora_Harry",
+        "essenzaDittamo1",
+        "rubeusHagrid1",
+        "essenzaDittamo1",
+        "incendio1",
+        "Alohomora_Harry"
+      ]
+    },
+    {
+      "nomeEroe": "Ron Weasley",
+      "carteNelMazzo": [
+        "Alohomora_Ron",
+        "tornado110",
+        "Alohomora_Ron",
+        "descendo1",
+        "Alohomora_Ron",
+        "boccinoOro1",
+        "Alohomora_Ron",
+        "Alohomora_Ron",
+        "leotardo0",
+        "gelatineTuttiGusti0",
+        "Alohomora_Ron",
+        "wingardiumLeviosa1",
+        "essenzaDittamo1",
+        "Alohomora_Ron",
+        "reparo1"
+      ]
+    },
+    {
+      "nomeEroe": "Hermione Granger",
+      "carteNelMazzo": [
+        "Alohomora_Hermione",
+        "giratempo0",
+        "reparo1",
+        "favolaBeda0",
+        "incendio1",
+        "grattastinchi0",
+        "attrezzaturaQuidditch1",
+        "Alohomora_Hermione",
+        "reparo1",
+        "Alohomora_Hermione",
+        "Alohomora_Hermione",
+        "oliverBaston1",
+        "Alohomora_Hermione",
+        "essenzaDittamo1",
+        "Alohomora_Hermione",
+        "Alohomora_Hermione"
+      ]
+    },
+    {
+      "nomeEroe": "Neville Longbottom",
+      "carteNelMazzo": [
+        "Alohomora_Neville",
+        "Alohomora_Neville",
+        "Alohomora_Neville",
+        "reparo1",
+        "mandragola0",
+        "Alohomora_Neville",
+        "Alohomora_Neville",
+        "lumos1",
+        "descendo1",
+        "oscar0",
+        "ricordella0",
+        "Alohomora_Neville",
+        "Alohomora_Neville",
+        "reparo1"
+      ]
+    }
+  ],
+  "timestamp": 1769509545158,
+  "dataOra": "2026-01-27 11:25:45",
+  "nomePartita": "progresso_anno_1",
+  "giocatoreCorrente": 3,
+  "carteAcquisite": [
+    "essenzaDittamo1",
+    "oliverBaston1",
+    "cappelloParlante1",
+    "attrezzaturaQuidditch1",
+    "boccinoOro1",
+    "lumos1",
+    "wingardiumLeviosa1",
+    "reparo1",
+    "rubeusHagrid1",
+    "incendio1",
+    "descendo1"
+  ]
+}

@@ -10,10 +10,10 @@ import gestoreEffetti.EsecutoreEffetti;
 import gestoreEffetti.Trigger;
 
 public class Luogo extends Carta {
-    private int numero;
+    private int numeroMarchiNeri;
     private int nDarkEvents;
     private int marchiNeriMax;
-    private Object effettoEntrata; // Puoi tipizzare con una classe EffettoEntrata se hai già una struttura
+    private Effetto effettoEntrata; // Puoi tipizzare con una classe EffettoEntrata se hai già una struttura
 
     public Luogo(
         String nome,
@@ -24,20 +24,20 @@ public class Luogo extends Carta {
         String pathImmagine,
         List<Effetto> effetti,
         List<Trigger> triggers,
-        int numero,
+        int numeroMarchiNeri,
         int nDarkEvents,
         int marchiNeriMax,
         Effetto effettoEntrata
     ) {
         super(nome, id, classe, descrizione, costo, pathImmagine, effetti, triggers);
-        this.numero = numero;
+        this.numeroMarchiNeri = 0;
         this.nDarkEvents = nDarkEvents;
         this.marchiNeriMax = marchiNeriMax;
         this.effettoEntrata = effettoEntrata;
     }
 
-    public int getNumero() {
-        return numero;
+    public int getNumeroMarchiNeri() {
+        return numeroMarchiNeri;
     }
 
     public int getNDarkEvents() {
@@ -48,12 +48,12 @@ public class Luogo extends Carta {
         return marchiNeriMax;
     }
 
-    public Object getEffettoEntrata() {
+    public Effetto getEffettoEntrata() {
         return effettoEntrata;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setNumeroMarchiNeri(int numeroMarchiNeri) {
+        this.numeroMarchiNeri = numeroMarchiNeri;
     }
 
     public void setNDarkEvents(int nDarkEvents) {
@@ -64,9 +64,25 @@ public class Luogo extends Carta {
         this.marchiNeriMax = marchiNeriMax;
     }
 
-    public void setEffettoEntrata(Object effettoEntrata) {
+    public void setEffettoEntrata(Effetto effettoEntrata) {
         this.effettoEntrata = effettoEntrata;
     }
+
+	public boolean aggiungiMarchioNero(Integer marchi) {
+		this.setNumeroMarchiNeri(this.getNumeroMarchiNeri() + marchi);
+		if(this.getNumeroMarchiNeri() >= this.getMarchiNeriMax()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public void rimuoviMarchioNero(Integer qta) {
+		if(this.getNumeroMarchiNeri() > 0) {
+			this.setNumeroMarchiNeri(this.getNumeroMarchiNeri() - qta);
+		}
+	}
 
     // Puoi aggiungere metodi specifici per attivare effettoEntrata qui
 }

@@ -1,0 +1,103 @@
+{
+  "annoCorrente": 1,
+  "numeroGiocatori": 4,
+  "vittoriaUltimaPartita": true,
+  "giocatori": [
+    {
+      "nomeEroe": "Harry Potter",
+      "carteNelMazzo": [
+        "Alohomora_Harry",
+        "firebolt0",
+        "Alohomora_Harry",
+        "rubeusHagrid1",
+        "reparo1",
+        "lumos1",
+        "Alohomora_Harry",
+        "edvige0",
+        "Alohomora_Harry",
+        "essenzaDittamo1",
+        "wingardiumLeviosa1",
+        "Alohomora_Harry",
+        "mantelloInvisibilita0",
+        "Alohomora_Harry",
+        "Alohomora_Harry"
+      ]
+    },
+    {
+      "nomeEroe": "Ron Weasley",
+      "carteNelMazzo": [
+        "Alohomora_Ron",
+        "leotardo0",
+        "wingardiumLeviosa1",
+        "Alohomora_Ron",
+        "Alohomora_Ron",
+        "wingardiumLeviosa1",
+        "essenzaDittamo1",
+        "Alohomora_Ron",
+        "reparo1",
+        "descendo1",
+        "tornado110",
+        "gelatineTuttiGusti0",
+        "Alohomora_Ron",
+        "Alohomora_Ron",
+        "attrezzaturaQuidditch1",
+        "Alohomora_Ron"
+      ]
+    },
+    {
+      "nomeEroe": "Hermione Granger",
+      "carteNelMazzo": [
+        "Alohomora_Hermione",
+        "boccinoOro1",
+        "lumos1",
+        "giratempo0",
+        "Alohomora_Hermione",
+        "Alohomora_Hermione",
+        "Alohomora_Hermione",
+        "descendo1",
+        "favolaBeda0",
+        "grattastinchi0",
+        "attrezzaturaQuidditch1",
+        "Alohomora_Hermione",
+        "Alohomora_Hermione",
+        "Alohomora_Hermione",
+        "reparo1"
+      ]
+    },
+    {
+      "nomeEroe": "Neville Longbottom",
+      "carteNelMazzo": [
+        "essenzaDittamo1",
+        "oscar0",
+        "reparo1",
+        "Alohomora_Neville",
+        "Alohomora_Neville",
+        "incendio1",
+        "Alohomora_Neville",
+        "ricordella0",
+        "Alohomora_Neville",
+        "Alohomora_Neville",
+        "essenzaDittamo1",
+        "incendio1",
+        "mandragola0",
+        "Alohomora_Neville",
+        "Alohomora_Neville"
+      ]
+    }
+  ],
+  "timestamp": 1769520806819,
+  "dataOra": "2026-01-27 14:33:26",
+  "nomePartita": "progresso_anno_1_1",
+  "giocatoreCorrente": 3,
+  "carteNegozioRimaste": [
+    "attrezzaturaQuidditch1",
+    "albusSilente1",
+    "incendio1",
+    "cappelloParlante1",
+    "incendio1",
+    "oliverBaston1",
+    "reparo1",
+    "attrezzaturaQuidditch1",
+    "reparo1"
+  ]
+}

@@ -16,7 +16,7 @@ public class Alleato extends Carta {
         super(nome, id, classe, descrizione, costo, pathImmagine, effetti, triggers);
     }
 
-    @Override
+    /*@Override
     public void applicaEffetto(StatoDiGioco stato, Giocatore attivo) {
 
         for (Effetto e : getEffetti()) {
@@ -38,7 +38,7 @@ public class Alleato extends Carta {
             Effetto scelta = opzioni.get(0);
             EsecutoreEffetti.eseguiEffetto(scelta, stato, attivo);
         }
-    }
+    }*/
 
     
 }
