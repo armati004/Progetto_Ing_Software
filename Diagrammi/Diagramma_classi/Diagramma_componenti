@@ -1,0 +1,94 @@
+@startuml Harry Potter Card Game - Component Diagram
+skinparam componentStyle uml2
+
+' ============================================
+' CLIENT LAYER
+' ============================================
+package "Client Layer" {
+    [FXGL Game Engine] as Engine
+    [Input System] as Input
+    [UI Overlay] as UI
+}
+
+' ============================================
+' CORE LOGIC LAYER
+' ============================================
+package "Core Logic Layer" {
+    component "Game Controller" as Ctrl
+    component "Game State Manager" as GSM
+    component "Effect Processor" as Effects
+}
+
+' ============================================
+' DATA ACCESS LAYER
+' ============================================
+package "Data Access Layer" {
+    component "Game Loader" as Loader
+    component "JSON Parser (Gson)" as Gson
+    component "Card Factory" as CardFactory
+    component "Hero Factory" as HeroFactory
+    component "Villain Factory" as VillainFactory
+    component "Dice Factory" as DiceFactory
+    component "Proficiency Factory" as ProficiencyFactory
+    component "Starter Pack Loader" as StarterLoader
+}
+
+' ============================================
+' FILE SYSTEM - JSON FILES
+' ============================================
+database "File System" {
+    [alleato.json]
+    [incantesimo.json]
+    [oggetto.json]
+    [eroe.json]
+    [malvagio.json]
+    [competenza.json]
+    [dado.json]
+    [starter_pack.json]
+}
+
+' ============================================
+' RELATIONSHIPS
+' ============================================
+
+' Client to Core
+Input --> Ctrl : Events
+Engine --> UI : Renders
+
+' Core Logic
+Ctrl --> GSM : Update State
+GSM --> Effects : Trigger Effects
+GSM --> UI : Notify Changes
+
+' Data Access - Initialization
+Ctrl --> Loader : Init Game
+Loader --> CardFactory : Request Cards
+Loader --> HeroFactory : Request Heroes
+Loader --> VillainFactory : Request Villains
+Loader --> StarterLoader : Request Starter
+
+' Factories to Gson
+CardFactory --> Gson : Parse
+HeroFactory --> Gson : Parse
+VillainFactory --> Gson : Parse
+DiceFactory --> Gson : Parse
+ProficiencyFactory --> Gson : Parse
+StarterLoader --> Gson : Parse
+
+' Gson to JSON Files
+Gson ..> [alleato.json] : Read
+Gson ..> [incantesimo.json] : Read
+Gson ..> [oggetto.json] : Read
+Gson ..> [eroe.json] : Read
+Gson ..> [malvagio.json] : Read
+Gson ..> [competenza.json] : Read
+Gson ..> [dado.json] : Read
+Gson ..> [starter_pack.json] : Read
+
+' Factories to Game State
+CardFactory --> GSM : Inject Cards
+HeroFactory --> GSM : Inject Heroes
+VillainFactory --> GSM : Inject Villains
+DiceFactory --> GSM : Inject Dice
+
+@enduml
