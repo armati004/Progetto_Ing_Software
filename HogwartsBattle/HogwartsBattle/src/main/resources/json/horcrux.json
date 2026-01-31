@@ -4,11 +4,11 @@
       "id": "diario7",
       "nome": "Diario",
       "tipo": "horcrux",
-      "Descrizione": "Ogni volta che un eroe gioca un Alleato, quell'eroe perde 1 vita.",
+      "descrizione": "Ogni volta che un eroe gioca un Alleato, quell'eroe perde 1 vita.",
       "distruggi": "Carta o Punto Vita",
       "Descrizione-ricompensa": "Se giochi con due o più alleati, qualsiasi eroe guadagna 2 Punti Vita",
-      "path-img": "../Immagini_carte/Horcrux/Diario.png",
-      "destroyCondition": [
+      "path-img": "/Immagini_carte/Horcrux/Diario.png",
+      "segnaliniRichiesti": [
         "VITA",
         "CARTA"
       ],
@@ -27,20 +27,21 @@
       ]
     },
     {
-      "id": "Anello7",
+      "id": "anello7",
       "nome": "Anello",
       "tipo": "horcrux",
-      "Descrizione": "Ogni volta che un Eroe infligge 2 o più danni a un Villain, quell'Eroe perde 2 Punti Vita.",
+      "descrizione": "Ogni volta che un Eroe infligge 2 o più danni a un Villain, quell'Eroe perde 2 Punti Vita.",
       "distruggi": "Potere o Influenza", 
       "Descrizione-ricompensa": "Una volta per turno, puoi scartare due carte. Se lo fai, rimuovi 1 Marchio Nero dalla posizione",
-      "path-img": "../Immagini_carte/Horcrux/Anello.png",
-      "destroyCondition": [
+      "path-img": "/Immagini_carte/Horcrux/Anello.png",
+      "segnaliniRichiesti": [
         "ATTACCO",
         "INFLUENZA"
       ],
       "triggers": [
         {
           "type": "ATTACCHI_ASSEGNATI",
+          "durata": "CONTINUO",
           "qtaQuorum": 2,
           "effectToExecute": [
             { "type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO", "durata":"ISTANTANEO"}
@@ -57,14 +58,14 @@
       ]
     },
     {
-      "id": "Medaglione7",
+      "id": "medaglione7",
       "nome": "Medaglione",
       "tipo": "horcrux",
-      "Descrizione": "Gli eroi non possono guadagnare attacchi o monete durante il turno di altri eroi.",
+      "descrizione": "Gli eroi non possono guadagnare attacchi o monete durante il turno di altri eroi.",
       "distruggi": "Attacco o Punto VIta",
       "Descrizione-ricompensa": "Una volta per turno, puoi scartare una carta. Se fai rotolare il dado della casa Serpeverde.",
-      "path-img": "../Immagini_carte/Horcrux/Medaglione.png",
-      "destroyCondition": [
+      "path-img": "/Immagini_carte/Horcrux/Medaglione.png",
+      "segnaliniRichiesti": [
         "ATTACCO",
         "VITA"
       ],
@@ -81,14 +82,14 @@
       ]
     },
     {
-      "id": "Coppa7",
+      "id": "coppa7",
       "nome": "Coppa",
       "tipo": "horcrux",
-      "Descrizione": "All'inizio di ogni turno, rimuovi 1 danno da tutti i villain.",
+      "descrizione": "All'inizio di ogni turno, rimuovi 1 danno da tutti i villain.",
       "distruggi": "Punto Vita o Influenza",
       "Descrizione-ricompensa": "Una volta per turno, puoi scartare una carta. Se lo fai, tira il dado della casa Tassorosso",
-      "path-img": "../Immagini_carte/Horcrux/Coppa.png",
-      "destroyCondition": [
+      "path-img": "/Immagini_carte/Horcrux/Coppa.png",
+      "segnaliniRichiesti": [
         "VITA",
         "INFLUENZA"
       ],
@@ -102,20 +103,21 @@
       ]
     },
     {
-      "id": "Diadema7",
+      "id": "diadema7",
       "name": "Diadema",
       "type": "horcrux",
       "description": "All'inizio di ogni turno, se l’eroe attivo ha almeno un Alleato, Oggetto e Magia in mano, perde 2 vita.",
       "distruggi": "Carta o Attacco",
       "Descrizione-ricompensa": "Una volta per turno, puoi scartare una carta. Se lo fai, tira il dado della casa Corvonero",
-      "path-img": "../Immagini_carte/Horcrux/Diadema.png",
-      "destroyCondition": [
+      "path-img": "/Immagini_carte/Horcrux/Diadema.png",
+      "segnaliniRichiesti": [
         "CARTA",
         "ATTACCO"
       ],
       "triggers": [
         {
           "type": "TUTTE_TIPOLOGIE",
+          "durata": "CONTINUO",
           "condition": { "needsAllyItemSpellInHand": true },
           "effectToExecute": [
             { "type": "PERDERE_VITA", "qta": 2, "target": "EROE_ATTIVO", "durata":"ISTANTANEO" }
@@ -129,14 +131,14 @@
       ]
     },
     {
-      "id": "Nagini7",
+      "id": "nagini7",
       "name": "Nagini",
       "type": "horcrux",
       "description": "All'inizio di ogni turno, l'eroe attivo perde 1 vita e non può guadagnare vita in quel turno.",
       "distruggi": "Carta o Attacco o Punto Vita",
       "rewardDescription": "Una volta per partita, puoi scartarlo per rimuoverne 3 Marchi Neri dalla posizione",
-      "path-img": "../Immagini_carte/Horcrux/Nagini.png",
-      "destroyCondition": [
+      "path-img": "/Immagini_carte/Horcrux/Nagini.png",
+      "segnaliniRichiesti": [
         "ATTACCO",
         "CARTA",
         "VITA"

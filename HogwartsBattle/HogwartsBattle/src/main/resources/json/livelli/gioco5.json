@@ -1,0 +1,68 @@
+{
+    "anno": 5,
+    
+    "meccaniche":{
+        "usoDadi": true,
+        "usoCompetenze": true,
+        "usoHorcrux": false,
+        "usoPozioni": true,
+        "usoDarkArtsPozioni": false,
+        "versioneEroi": "gioco3",
+        "upgradeEroi": false
+    },
+
+    "luoghi":[
+        "ufficioOrdine1",
+        "ministeroDellaMagia2",
+        "dipartimentoMisteri3"
+    ],
+
+    "aggiunteMazzoNegozio":[
+        "patronus5",
+        "stupefy5",
+        "kingsley5",
+        "reducto5",
+        "roomRequirement5",
+        "tonks5",
+        "roomRequirement5",
+        "reducto5",
+        "reducto5",
+        "patronus5",
+        "patronus5",
+        "stupefy5",
+        "stupefy5"
+    ],
+
+    "aggiuntaMalvagi":[
+        "doloresUmbridge5",
+        "mangiamorte5"
+    ],
+
+    "aggiuntaArtiOscure":[
+        "avadaKedavra5",
+        "crucio5",
+        "imperio5",
+        "expulso5",
+        "morsmordre5",
+        "morsmordre5",
+        "expulso5"
+    ],
+
+    "encounter":[
+        "beforeWizengamot1",
+        "ministersOfMagic2",
+        "magicIsMight3"
+    ],
+
+    "pozioni":[
+        "ashwinderZeta2",
+        "calmingDraught2",
+        "wideyePotion2",
+        "exstimuloPotion2",
+        "pepperupPotion2",
+        "restorativeDraught2"
+    ],
+
+    "potionShelfSide": "A"
+
+}

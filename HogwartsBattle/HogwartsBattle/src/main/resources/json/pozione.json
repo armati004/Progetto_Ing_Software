@@ -1,0 +1,184 @@
+{
+  "pack2": [
+    {
+      "nome": "Ashwinder Zeta",
+      "id": "ashwinderZeta2",
+      "pack": 2,
+      "ingredientiRichiesti": ["WILD", "WILD", "WILD"],
+      "descrizioneEffettoNormale": "Gain 2 Attack and 2 Influence",
+      "effettoNormale": [
+        {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+        {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+      ],
+      "descrizioneEffettoBanish": "Banish this card, then gain 4 Attack and 4 Influence",
+      "effettoBanish": [
+        {"type": "GUADAGNARE_ATTACCO", "qta": 4, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+        {"type": "GUADAGNARE_INFLUENZA", "qta": 4, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+      ],
+      "path-img": "/Immagini_carte/Pozioni/Pack2/Ashwinder_Zeta.png"
+    },
+    {
+      "nome": "Calming Draught",
+      "id": "calmingDraught2",
+      "pack": 2,
+      "ingredientiRichiesti": ["WILD", "WILD", "HELLEBORE"],
+      "descrizioneEffettoNormale": "ALL Heroes gain 1 Attack and 1 Influence",
+      "effettoNormale": [
+        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+      ],
+      "descrizioneEffettoBanish": "Banish this card, then remove 1 Control from the Location",
+      "effettoBanish": [
+        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}
+      ],
+      "path-img": "/Immagini_carte/Pozioni/Pack2/Calming_Draught.png"
+    },
+    {
+      "nome": "Wideye Potion",
+      "id": "wideyePotion2",
+      "pack": 2,
+      "ingredientiRichiesti": ["WILD", "BICORN_HORN"],
+      "descrizioneEffettoNormale": "Gain 3 Attack",
+      "effettoNormale": [
+        {"type": "GUADAGNARE_ATTACCO", "qta": 3, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+      ],
+      "descrizioneEffettoBanish": "Banish this card, then ALL Heroes gain 2 Attack",
+      "effettoBanish": [
+        {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+      ],
+      "path-img": "/Immagini_carte/Pozioni/Pack2/Wideye_Potion.png"
+    },
+    {
+      "nome": "Exstimulo Potion",
+      "id": "exstimuloPotion2",
+      "pack": 2,
+      "ingredientiRichiesti": ["WILD", "MANDRAKE_LEAF"],
+      "descrizioneEffettoNormale": "Gain 2 Attack or 2 Influence",
+      "effettoNormale": [
+        {"type": "SCELTA_ATTACCO_O_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+      ],
+      "descrizioneEffettoBanish": "Banish this card, then gain 3 Attack and 3 Influence",
+      "effettoBanish": [
+        {"type": "GUADAGNARE_ATTACCO", "qta": 3, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+        {"type": "GUADAGNARE_INFLUENZA", "qta": 3, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+      ],
+      "path-img": "/Immagini_carte/Pozioni/Pack2/Exstimulo_Potion.png"
+    },
+    {
+      "nome": "Pepperup Potion",
+      "id": "pepperupPotion2",
+      "pack": 2,
+      "ingredientiRichiesti": ["FLOBBER_WORM", "FLOBBER_WORM", "WILD"],
+      "descrizioneEffettoNormale": "Choose one: Gain 2 Health or remove a card from your discard pile and shuffle it into your deck",
+      "effettoNormale": [
+        {"type": "SCELTA_VITA_O_RICICLO", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+      ],
+      "descrizioneEffettoBanish": "Banish this card, then ALL Heroes gain 1 Health and remove a card from discard",
+      "effettoBanish": [
+        {"type": "GUADAGNARE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+        {"type": "RICICLA_CARTA_DA_SCARTO", "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+      ],
+      "path-img": "/Immagini_carte/Pozioni/Pack2/Pepperup_Potion.png"
+    },
+    {
+      "nome": "Restorative Draught",
+      "id": "restorativeDraught2",
+      "pack": 2,
+      "ingredientiRichiesti": ["LACEWING_FLY", "LACEWING_FLY", "WILD"],
+      "descrizioneEffettoNormale": "Remove one card from your discard pile or banish this card, then ALL Heroes gain 2 Health",
+      "effettoNormale": [
+        {"type": "RIMUOVI_O_BANISH", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+        {"type": "GUADAGNARE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+      ],
+      "descrizioneEffettoBanish": "Banish this card, then ALL Heroes gain 2 Health",
+      "effettoBanish": [
+        {"type": "GUADAGNARE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+      ],
+      "path-img": "/Immagini_carte/Pozioni/Pack2/Restorative_Draught.png"
+    }
+  ],
+
+  "pack3": [
+    {
+      "nome": "Elixir of Life",
+      "id": "elixirOfLife3",
+      "pack": 3,
+      "ingredientiRichiesti": ["WILD", "BICORN_HORN"],
+      "descrizioneEffettoNormale": "Any one Hero gains 3 Health or banish this card, then ALL Heroes gain 2 Health. After you draw a card.",
+      "effettoNormale": [
+        {"type": "SCELTA_VITA_SINGOLA_O_TUTTI", "qta": 3, "target": "UN_EROE_O_TUTTI", "durata": "ISTANTANEO"},
+        {"type": "PESCA_CARTE", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+      ],
+      "descrizioneEffettoBanish": "Banish this card, then ALL Heroes gain 2 Health and draw a card",
+      "effettoBanish": [
+        {"type": "GUADAGNARE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+        {"type": "PESCA_CARTE", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+      ],
+      "path-img": "/Immagini_carte/Pozioni/Pack3/Elixir_of_Life.png"
+    },
+    {
+      "nome": "Revitalizing Bubbles",
+      "id": "revitalizingBubbles3",
+      "pack": 3,
+      "ingredientiRichiesti": ["WILD", "WILD", "MANDRAKE_LEAF"],
+      "descrizioneEffettoNormale": "Draw a card or banish this card, then draw 2 cards or remove a card in your discard pile",
+      "effettoNormale": [
+        {"type": "SCELTA_PESCA_O_BANISH", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+      ],
+      "descrizioneEffettoBanish": "Banish this card, then draw 2 cards or remove a card from discard",
+      "effettoBanish": [
+        {"type": "SCELTA_PESCA_O_RIMUOVI", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+      ],
+      "path-img": "/Immagini_carte/Pozioni/Pack3/Revitalizing_Bubbles.png"
+    },
+    {
+      "nome": "Shrinking Solution",
+      "id": "shrinkingSolution3",
+      "pack": 3,
+      "ingredientiRichiesti": ["FLOBBER_WORM", "LACEWING_FLY", "WILD"],
+      "descrizioneEffettoNormale": "Banish a card from your hand or discard pile",
+      "effettoNormale": [
+        {"type": "BANISH_CARTA_IN_MANO_O_SCARTO", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+      ],
+      "descrizioneEffettoBanish": "Banish this card, then ALL Heroes may banish a card from hand or discard pile",
+      "effettoBanish": [
+        {"type": "BANISH_CARTA_IN_MANO_O_SCARTO", "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+      ],
+      "path-img": "/Immagini_carte/Pozioni/Pack3/Shrinking_Solution.png"
+    },
+    {
+      "nome": "Felix Felicis Potion",
+      "id": "felixFelicisPotion3",
+      "pack": 3,
+      "ingredientiRichiesti": ["WILD", "HELLEBORE", "LACEWING_FLY"],
+      "descrizioneEffettoNormale": "Gain 1 Attack and 1 Influence or banish this card, then gain 2 Attack and 2 Influence",
+      "effettoNormale": [
+        {"type": "SCELTA_GUADAGNO_O_BANISH", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+      ],
+      "descrizioneEffettoBanish": "Banish this card, then gain 2 Attack and 2 Influence",
+      "effettoBanish": [
+        {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+        {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+      ],
+      "path-img": "/Immagini_carte/Pozioni/Pack3/Felix_Felicis_Potion.png"
+    }
+  ],
+
+  "pack4": [
+    {
+      "nome": "Ashwinder Essence",
+      "id": "ashwinderEssence4",
+      "pack": 4,
+      "ingredientiRichiesti": ["HELLEBORE", "FLOBBER_WORM"],
+      "descrizioneEffettoNormale": "Any one Hero gains 1 Health or banish this card, then ALL Heroes gain 1 Health",
+      "effettoNormale": [
+        {"type": "SCELTA_VITA_SINGOLA_O_BANISH", "qta": 1, "target": "UN_EROE", "durata": "ISTANTANEO"}
+      ],
+      "descrizioneEffettoBanish": "Banish this card, then ALL Heroes gain 1 Health",
+      "effettoBanish": [
+        {"type": "GUADAGNARE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+      ],
+      "path-img": "/Immagini_carte/Pozioni/Pack4/Ashwinder_Essence.png"
+    }
+  ]
+}

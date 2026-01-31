@@ -1,0 +1,187 @@
+{
+  "pack3": [
+    {
+      "nome": "Garroting Gas",
+      "id": "garrotingGas3",
+      "pack": 3,
+      "descrizione": "ONGOING: All Heroes lose 1 ❤️",
+      "ingredientiRichiesti": ["BICORN_HORN", "MANDRAKE_LEAF"],
+      "effetti": [
+        {"type": "PERDERE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ONGOING"}
+      ],
+      "path-img": "/Immagini_carte/DarkArtsPotions/Pack3/Garroting_Gas.png"
+    },
+    {
+      "nome": "Draught of Living Death",
+      "id": "draughtLivingDeath3",
+      "pack": 3,
+      "descrizione": "ONGOING: You and your neighbors banish the top card of your decks. Add 1 ⚡ to the Location.",
+      "ingredientiRichiesti": ["HELLEBORE", "LACEWING_FLY", "WILD"],
+      "effetti": [
+        {"type": "BANISH_TOP_DECK", "target": "EROE_ATTIVO_E_VICINI", "durata": "ONGOING"},
+        {"type": "AGGIUNGERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ONGOING"}
+      ],
+      "path-img": "/Immagini_carte/DarkArtsPotions/Pack3/Draught_of_Living_Death.png"
+    },
+    {
+      "nome": "Flesh-Eating Slug Repellent",
+      "id": "fleshEatingSlugRepellent3",
+      "pack": 3,
+      "descrizione": "ONGOING: If you have an Ally in hand, ALL Heroes lose 2 ❤️",
+      "ingredientiRichiesti": ["BICORN_HORN", "FLOBBER_WORM"],
+      "effetti": [
+        {
+          "type": "CONDIZIONALE_ALLEATO_IN_MANO",
+          "durata": "ONGOING",
+          "effettiCondizione": [
+            {"type": "PERDERE_VITA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+          ]
+        }
+      ],
+      "path-img": "/Immagini_carte/DarkArtsPotions/Pack3/Flesh_Eating_Slug_Repellent.png"
+    },
+    {
+      "nome": "Skele-Gro",
+      "id": "skeleGro3",
+      "pack": 3,
+      "descrizione": "ONGOING: You lose 1 ❤️ each time you play a Spell",
+      "ingredientiRichiesti": ["FLOBBER_WORM", "HELLEBORE"],
+      "triggers": [
+        {
+          "type": "GIOCA_INCANTESIMO",
+          "durata": "ONGOING",
+          "effectToExecute": [
+            {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+          ]
+        }
+      ],
+      "path-img": "/Immagini_carte/DarkArtsPotions/Pack3/Skele_Gro.png"
+    },
+    {
+      "nome": "Veritaserum",
+      "id": "veritaserum3",
+      "pack": 3,
+      "descrizione": "ONGOING: Reveal your hand. At the start of your turn, discard your hand.",
+      "ingredientiRichiesti": ["MANDRAKE_LEAF", "LACEWING_FLY"],
+      "effetti": [
+        {"type": "RIVELA_MANO", "target": "EROE_ATTIVO", "durata": "ONGOING"},
+        {"type": "SCARTA_MANO_INIZIO_TURNO", "target": "EROE_ATTIVO", "durata": "ONGOING"}
+      ],
+      "path-img": "/Immagini_carte/DarkArtsPotions/Pack3/Veritaserum.png"
+    },
+    {
+      "nome": "Babbling Beverage",
+      "id": "babblingBeverage3",
+      "pack": 3,
+      "descrizione": "ONGOING: You cannot acquire Items",
+      "ingredientiRichiesti": ["HELLEBORE", "WILD"],
+      "effetti": [
+        {"type": "NON_ACQUISTARE_OGGETTI", "target": "EROE_ATTIVO", "durata": "ONGOING"}
+      ],
+      "path-img": "/Immagini_carte/DarkArtsPotions/Pack3/Babbling_Beverage.png"
+    },
+    {
+      "nome": "Confusing Concoction",
+      "id": "confusingConcoction3",
+      "pack": 3,
+      "descrizione": "ONGOING: You cannot play Allies",
+      "ingredientiRichiesti": ["FLOBBER_WORM", "LACEWING_FLY"],
+      "effetti": [
+        {"type": "NON_GIOCARE_ALLEATI", "target": "EROE_ATTIVO", "durata": "ONGOING"}
+      ],
+      "path-img": "/Immagini_carte/DarkArtsPotions/Pack3/Confusing_Concoction.png"
+    },
+    {
+      "nome": "Befuddlement Draught",
+      "id": "befuddlementDraught3",
+      "pack": 3,
+      "descrizione": "ONGOING: At the start of your turn, roll the Slytherin die",
+      "ingredientiRichiesti": ["BICORN_HORN", "LACEWING_FLY"],
+      "effetti": [
+        {"type": "DADO_SERPEVERDE_INIZIO_TURNO", "target": "EROE_ATTIVO", "durata": "ONGOING"}
+      ],
+      "path-img": "/Immagini_carte/DarkArtsPotions/Pack3/Befuddlement_Draught.png"
+    }
+  ],
+
+  "pack4": [
+    {
+      "nome": "Hate Potion",
+      "id": "hatePotion4",
+      "pack": 4,
+      "descrizione": "ONGOING: You and your neighbors each lose 1 ❤️",
+      "ingredientiRichiesti": ["BICORN_HORN", "WILD"],
+      "effetti": [
+        {"type": "PERDERE_VITA", "qta": 1, "target": "EROE_ATTIVO_E_VICINI", "durata": "ONGOING"}
+      ],
+      "path-img": "/Immagini_carte/DarkArtsPotions/Pack4/Hate_Potion.png"
+    },
+    {
+      "nome": "Volubilis Potion",
+      "id": "volubilisPotion4",
+      "pack": 4,
+      "descrizione": "ONGOING: You cannot play Spells",
+      "ingredientiRichiesti": ["MANDRAKE_LEAF", "FLOBBER_WORM"],
+      "effetti": [
+        {"type": "NON_GIOCARE_INCANTESIMI", "target": "EROE_ATTIVO", "durata": "ONGOING"}
+      ],
+      "path-img": "/Immagini_carte/DarkArtsPotions/Pack4/Volubilis_Potion.png"
+    },
+    {
+      "nome": "Forgetfulness Potion",
+      "id": "forgetfulnessPotion4",
+      "pack": 4,
+      "descrizione": "ONGOING: You cannot gain ⚔️ or 💰",
+      "ingredientiRichiesti": ["FLOBBER_WORM", "HELLEBORE"],
+      "effetti": [
+        {"type": "NON_GUADAGNARE_ATTACCHI", "target": "EROE_ATTIVO", "durata": "ONGOING"},
+        {"type": "NON_GUADAGNARE_GETTONI", "target": "EROE_ATTIVO", "durata": "ONGOING"}
+      ],
+      "path-img": "/Immagini_carte/DarkArtsPotions/Pack4/Forgetfulness_Potion.png"
+    },
+    {
+      "nome": "Wiggenweld Potion (Dark)",
+      "id": "wiggenweldPotionDark4",
+      "pack": 4,
+      "descrizione": "ONGOING: Heroes cannot gain ❤️",
+      "ingredientiRichiesti": ["HELLEBORE", "LACEWING_FLY"],
+      "effetti": [
+        {"type": "NON_GUADAGNARE_VITA", "target": "TUTTI_GLI_EROI", "durata": "ONGOING"}
+      ],
+      "path-img": "/Immagini_carte/DarkArtsPotions/Pack4/Wiggenweld_Potion_Dark.png"
+    },
+    {
+      "nome": "Madness Draught",
+      "id": "madnessDraught4",
+      "pack": 4,
+      "descrizione": "ONGOING: At the start of your turn, reveal an additional Dark Arts event",
+      "ingredientiRichiesti": ["BICORN_HORN", "MANDRAKE_LEAF", "WILD"],
+      "effetti": [
+        {"type": "RIVELA_EVENTO_ARTI_OSCURE", "qta": 1, "target": "EROE_ATTIVO", "durata": "ONGOING"}
+      ],
+      "path-img": "/Immagini_carte/DarkArtsPotions/Pack4/Madness_Draught.png"
+    },
+    {
+      "nome": "Erumpent Potion",
+      "id": "erumpentPotion4",
+      "pack": 4,
+      "descrizione": "ONGOING: Remove 1 ⚔️ from ALL Villains at the start of your turn",
+      "ingredientiRichiesti": ["MANDRAKE_LEAF", "LACEWING_FLY", "WILD"],
+      "effetti": [
+        {"type": "RIMUOVERE_ATTACCO_DA_MALVAGIO", "qta": 1, "target": "TUTTI_I_MALVAGI", "durata": "ONGOING"}
+      ],
+      "path-img": "/Immagini_carte/DarkArtsPotions/Pack4/Erumpent_Potion.png"
+    },
+    {
+      "nome": "Wit-Sharpening Potion (Dark)",
+      "id": "witSharpeningPotionDark4",
+      "pack": 4,
+      "descrizione": "ONGOING: You may only play 2 cards per turn",
+      "ingredientiRichiesti": ["FLOBBER_WORM", "WILD"],
+      "effetti": [
+        {"type": "LIMITE_CARTE_GIOCATE", "qta": 2, "target": "EROE_ATTIVO", "durata": "ONGOING"}
+      ],
+      "path-img": "/Immagini_carte/DarkArtsPotions/Pack4/Wit_Sharpening_Potion_Dark.png"
+    }
+  ]
+}

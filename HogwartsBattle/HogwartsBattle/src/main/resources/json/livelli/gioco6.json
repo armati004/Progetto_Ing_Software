@@ -1,0 +1,82 @@
+{
+    "anno": 6,
+    
+    "meccaniche":{
+        "usoDadi": true,
+        "usoCompetenze": true,
+        "usoHorcrux": false,
+        "usoPozioni": true,
+        "usoDarkArtsPozioni": true,
+        "versioneEroi": "gioco3",
+        "upgradeEroi": false
+    },
+
+    "luoghi":[
+        "knockturnAlley1",
+        "laTana2",
+        "torreDiAstronomia3"
+    ],
+
+    "aggiunteMazzoNegozio":[
+        "bacchettaSambuco6",
+        "confundus6",
+        "horaceLumacorno6",
+        "felixFelicis6",
+        "bezoar6",
+        "deluminatore6",
+        "pozioniAvanzate6",
+        "confundus6",
+        "confundus6",
+        "confundus6",
+        "felixFelicis6",
+        "bezoar6"
+    ],
+
+    "aggiuntaMalvagi":[
+        "bellatrixLestrange6",
+        "fenrirGreyback6",
+        "lordVoldemort6"
+    ],
+
+    "aggiuntaArtiOscure":[
+        "morsmordre6",
+        "sectumsempra6",
+        "sectumsempra6"
+    ],
+
+    "encounter":[
+        "familyDisgraced1",
+        "viewSlughornMemory2",
+        "dumbledoreRequest3"
+    ],
+
+    "pozioni":[
+        "elixirOfLife3",
+        "revitalizingBubbles3",
+        "shrinkingSolution3",
+        "felixFelicisPotion3"
+    ],
+
+    "darkArtsPozioni":[
+        "sleepingDraught3",
+        "confusingConcoction3",
+        "forgetfulnessPotion3",
+        "babblingBeverage3"
+    ],
+
+    "potionShelfSide": "B",
+
+    "aggiuntaCompetenze": [
+        "artimanzia6",
+        "curaMagiche6",
+        "difesaOscure6",
+        "divinazione6",
+        "erbologia6",
+        "incanti6",
+        "pozioni6",
+        "storiaMagia6",
+        "trasfigurazione6",
+        "lezioniVolo6"
+    ]
+
+}
