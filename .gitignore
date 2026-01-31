@@ -1,5 +1,3 @@
-# no questo non va in gitignore
-# .project
 # questi sì invece 
 .metadata
 target
