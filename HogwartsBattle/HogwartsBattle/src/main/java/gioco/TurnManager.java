@@ -202,8 +202,10 @@ public class TurnManager {
     private void eseguiFineTurno() {
         System.out.println("\n🔄 === FINE TURNO ===");
         
-        for(Giocatore g : stato.getGiocatori()) {
-        	g.getEroe().getTriggers().get(0).setAttivato1Volta(false);
+        if(stato.getAnnoCorrente() >= 3) {
+        	for(Giocatore g : stato.getGiocatori()) {
+            	g.getEroe().getTriggers().get(0).setAttivato1Volta(false);
+            }
         }
         
         Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());

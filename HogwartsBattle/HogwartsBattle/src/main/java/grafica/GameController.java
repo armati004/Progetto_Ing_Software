@@ -18,6 +18,7 @@ import grafica.panels.MessagePanel;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -563,22 +564,26 @@ public class GameController extends GameApplication {
 				return;
 			}
 			
-			if(annoSelezionato >= 5) {
+			/*if(annoSelezionato >= 5) {
 				Malvagio voldemort = null;
+				LinkedList<Malvagio> malvagiTemp = new LinkedList<>();
 				// Trova Voldemort senza modificare la lista durante l'iterazione
 				for(Malvagio m : stato.getMazzoMalvagi()) {
 					if(m.getNome().contains("Voldemort")) {
 						voldemort = m;
-						break;
+					}
+					else {
+						malvagiTemp.add(m);
 					}
 				}
+				Collections.shuffle(malvagiTemp);
 				// Rimuovi e aggiungi alla fine
 				if(voldemort != null) {
-					stato.getMazzoMalvagi().remove(voldemort);
-					stato.getMazzoMalvagi().addLast(voldemort);
+					malvagiTemp.add(voldemort);
+					stato.setMazzoMalvagi(malvagiTemp);
 					System.out.println("👹 Voldemort posizionato in fondo al mazzo malvagi");
 				}
-			}
+			}*/
 
 			System.out.println("\n✅ Gioco avviato!");
 			System.out.println("   Anno: " + annoSelezionato);

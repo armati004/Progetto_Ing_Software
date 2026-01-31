@@ -177,9 +177,16 @@ public class StatoDiGioco {
 
 	    // Popola Mazzo Malvagi (nessun filtro)
 	    for (String id : config.getMalvagiId()) {
-	        mazzoMalvagi.add(VillainFactory.creaMalvagio(id));
+	        if(!id.contains("Voldemort")) {
+	        	mazzoMalvagi.add(VillainFactory.creaMalvagio(id));
+	        }
 	    }
 	    Collections.shuffle(mazzoMalvagi);
+	    for(String id : config.getMalvagiId()) {
+	    	if(id.contains("Voldemort"+annoCorrente)) {
+	    		mazzoMalvagi.addLast(VillainFactory.creaMalvagio(id));
+	    	}
+	    }
 
 	    // Popola Mazzo Arti Oscure (nessun filtro)
 	    for (String id : config.getArtiOscureId()) {
@@ -754,6 +761,10 @@ public class StatoDiGioco {
 
 	public List<Malvagio> getMalvagiAttivi() {
 		return malvagiAttivi;
+	}
+	
+	public void setMazzoMalvagi(LinkedList<Malvagio> mazzoMalvagi) {
+		this.mazzoMalvagi = mazzoMalvagi;
 	}
 
 	public List<Carta> getMercato() {
