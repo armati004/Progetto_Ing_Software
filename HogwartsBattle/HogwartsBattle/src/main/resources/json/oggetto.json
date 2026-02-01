@@ -267,7 +267,7 @@
             "class":"Oggetto",
             "descrizione": "Rimuovi fino a 2 Segnalini Controllo dal Luogo",
             "costo":6,
-            "path-img":"/Immagini_carte/Negozio/Gioco6/Bezoar.png",
+            "path-img":"/Immagini_carte/Negozio/Gioco6/Deluminatore.png",
             "effetti":[
                 {
                     "type": "SCELTA",

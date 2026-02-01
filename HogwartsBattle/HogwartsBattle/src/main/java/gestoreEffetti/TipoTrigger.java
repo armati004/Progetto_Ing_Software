@@ -175,5 +175,6 @@ public enum TipoTrigger {
 	 * Trigger quando si prova a guadagnare vita
 	 */
 	TENTA_GUADAGNA_VITA, 
-	ACQUISTA_OGGETTO;
+	ACQUISTA_OGGETTO,
+	TUTTI_MALVAGI_TOKEN_ATTACCO_MINIMO;
 }

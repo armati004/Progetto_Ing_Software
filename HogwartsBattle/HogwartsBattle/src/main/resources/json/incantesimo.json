@@ -171,7 +171,8 @@
         {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
       ],
       "triggers": [{
-        "condition": {"TUTTI_MALVAGI_TOKEN_ATTACCO_MINIMO": 1},
+		"type": "TUTTI_MALVAGI_TOKEN_ATTACCO_MINIMO",
+		"qta-quorum": 1,
         "durata": "ISTANTANEO",
         "effectToExecute": [{"type": "RIMUOVI_SEGNALINO_LUOGO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"}]
       }]
