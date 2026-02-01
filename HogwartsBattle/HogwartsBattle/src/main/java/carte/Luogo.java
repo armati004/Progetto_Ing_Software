@@ -1,12 +1,7 @@
 package carte;
 
 import java.util.List;
-import com.google.gson.annotations.SerializedName;
-import gioco.Giocatore;
-import gioco.StatoDiGioco;
-import gestoreEffetti.DurataEffetto;
 import gestoreEffetti.Effetto;
-import gestoreEffetti.EsecutoreEffetti;
 import gestoreEffetti.Trigger;
 
 public class Luogo extends Carta {
@@ -83,6 +78,33 @@ public class Luogo extends Carta {
 			this.setNumeroMarchiNeri(this.getNumeroMarchiNeri() - qta);
 		}
 	}
+
+	public String getControlloMax() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void aggiungiControllo(int quantita) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean isConquistato() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public String getControllo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void rimuoviControllo(int quantita) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
     // Puoi aggiungere metodi specifici per attivare effettoEntrata qui
 }

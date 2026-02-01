@@ -17,6 +17,8 @@ import java.util.List;
 /**
  * Factory per creare oggetti Pozione da file JSON.
  * Gestisce il caricamento delle pozioni per Pack 2, 3 e 4.
+ * 
+ * Sistema Pozioni - Pack 2+
  */
 public class PotionFactory {
     
@@ -34,14 +36,18 @@ public class PotionFactory {
         try (FileReader reader = new FileReader(POTION_JSON_PATH)) {
             Gson gson = new Gson();
             potionData = gson.fromJson(reader, JsonObject.class);
+            System.out.println("✅ Pozioni caricate da JSON");
         } catch (IOException e) {
-            System.err.println("Errore nel caricamento di " + POTION_JSON_PATH + ": " + e.getMessage());
+            System.err.println("❌ Errore nel caricamento di " + POTION_JSON_PATH + ": " + e.getMessage());
             potionData = new JsonObject();
         }
     }
     
     /**
      * Ottiene una pozione specifica tramite ID.
+     * 
+     * @param id ID della pozione da cercare
+     * @return Pozione trovata o null se non esiste
      */
     public static Pozione getPotionById(String id) {
         if (potionData == null) {
@@ -59,12 +65,15 @@ public class PotionFactory {
             }
         }
         
-        System.err.println("Pozione non trovata: " + id);
+        System.err.println("❌ Pozione non trovata: " + id);
         return null;
     }
     
     /**
      * Ottiene tutte le pozioni di un pack specifico.
+     * 
+     * @param pack Numero del pack (2, 3, 4)
+     * @return Lista di pozioni del pack
      */
     public static List<Pozione> getPotionsForPack(int pack) {
         if (potionData == null) {
@@ -89,6 +98,8 @@ public class PotionFactory {
     
     /**
      * Ottiene tutte le pozioni disponibili.
+     * 
+     * @return Lista completa di tutte le pozioni
      */
     public static List<Pozione> getAllPotions() {
         if (potionData == null) {
@@ -112,6 +123,9 @@ public class PotionFactory {
     
     /**
      * Parse un oggetto JSON in una Pozione.
+     * 
+     * @param json Oggetto JSON da parsare
+     * @return Pozione creata o null in caso di errore
      */
     private static Pozione parsePozione(JsonObject json) {
         try {
@@ -134,7 +148,7 @@ public class PotionFactory {
                         TipoIngrediente tipo = TipoIngrediente.valueOf(ing.getAsString());
                         ingredientiRichiesti.add(tipo);
                     } catch (IllegalArgumentException e) {
-                        System.err.println("Ingrediente non riconosciuto: " + ing.getAsString());
+                        System.err.println("⚠️ Ingrediente non riconosciuto: " + ing.getAsString());
                     }
                 }
             }
@@ -171,6 +185,8 @@ public class PotionFactory {
                 descrizioneEffettoNormale + " | BANISH: " + descrizioneEffettoBanish,
                 0, // costo
                 pathImmagine,
+                effettoBanish, 
+                null, 
                 pack,
                 ingredientiRichiesti,
                 descrizioneEffettoNormale,
@@ -181,7 +197,7 @@ public class PotionFactory {
             );
             
         } catch (Exception e) {
-            System.err.println("Errore nel parsing della pozione: " + e.getMessage());
+            System.err.println("❌ Errore nel parsing della pozione: " + e.getMessage());
             e.printStackTrace();
             return null;
         }

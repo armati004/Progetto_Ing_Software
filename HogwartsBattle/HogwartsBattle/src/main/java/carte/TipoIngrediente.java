@@ -3,6 +3,8 @@ package carte;
 /**
  * Enum che rappresenta i vari tipi di ingredienti per le Pozioni.
  * Ogni ingrediente è un token fisico sulla Potion Board.
+ * 
+ * Sistema Pozioni - Pack 2+
  */
 public enum TipoIngrediente {
     /**
@@ -55,8 +57,4 @@ public enum TipoIngrediente {
     public String toString() {
         return simbolo + " " + nome;
     }
-
-	public static void main(String[] args) {
-		HeroFactory.creaEroe("Hermione Granger", 6)
-	}
 }

@@ -14,9 +14,10 @@ public class Carta {
 	private final String nome;
 	private final String id;
 	@SerializedName("class")
-	private final String classe;
+	protected
+	final String classe;
 	private final String descrizione;
-	private final int costo;
+	protected final int costo;
 	@SerializedName(value = "pathImmagine", alternate = {"path-img"})
 	private final String pathImmagine;
 	private List<Effetto> effetti;
@@ -94,5 +95,20 @@ public class Carta {
 
 	public void setTriggers(List<Trigger> triggers) {
 		this.triggers = triggers;
+	}
+
+	public Object getTriggersInMano() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setNome(String nome2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Carta getCartaOrigine() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

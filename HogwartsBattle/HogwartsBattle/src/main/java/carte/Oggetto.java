@@ -2,14 +2,8 @@ package carte;
 
 import java.util.List;
 
-import gioco.Giocatore;
-import gioco.StatoDiGioco;
 import gestoreEffetti.Effetto;
 import gestoreEffetti.Trigger;
-import gestoreEffetti.EsecutoreEffetti;
-import gestoreEffetti.TipoEffetto; 
-import gestoreEffetti.BersaglioEffetto;
-import gestoreEffetti.DurataEffetto;
 
 /**
  * Oggetto = tipo di carta che estende Carta e delega gli effetti all'EsecutoreEffetti.

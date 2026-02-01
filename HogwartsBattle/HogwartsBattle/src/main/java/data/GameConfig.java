@@ -297,16 +297,36 @@ public class GameConfig {
         return contienePozioni;
     }
     
+    public Boolean getContieneDarkArtsPozioni1() {
+        return contieneDarkArtsPozioni;
+    }
+
+    public void setContieneDarkArtsPozioni1(boolean contieneDarkArtsPozioni) {
+        this.contieneDarkArtsPozioni = contieneDarkArtsPozioni;
+    }
+
+    public void setContieneEncounter1(boolean contieneEncounter) {
+        this.contieneEncounter = contieneEncounter;
+
+    }
+    
     public Boolean getContieneDarkArtsPozioni() {
         return contieneDarkArtsPozioni;
     }
 
-	public void setContieneDarkArtsPozioni(boolean b) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setContieneDarkArtsPozioni11(boolean contieneDarkArtsPozioni) {
+        this.contieneDarkArtsPozioni = contieneDarkArtsPozioni;
+    }
 
-	public void setContieneEncounter(boolean b) {
+    public void setContieneEncounter(boolean contieneEncounter) {
+        this.contieneEncounter = contieneEncounter;
+    }
+    
+    public void setContieneDarkArtsPozioni(boolean contieneDarkArtsPozioni) {
+        this.contieneDarkArtsPozioni = contieneDarkArtsPozioni;
+    }
+
+	public void setContienePozioni(boolean b) {
 		// TODO Auto-generated method stub
 		
 	}

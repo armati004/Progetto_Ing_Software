@@ -1,7 +1,11 @@
 package data;
 
 import carte.*;
+import gestoreEffetti.Effetto;
+import gestoreEffetti.Trigger;
+
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -100,5 +104,15 @@ public class CardFactory {
 
 	public static boolean isInizializzata() {
 		return inizializzata;
+	}
+
+	public static List<Effetto> parseEffetti(JsonArray effettiArray) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static List<Trigger> parseTriggers(Object object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

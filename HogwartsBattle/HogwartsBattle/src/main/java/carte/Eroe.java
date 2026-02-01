@@ -21,6 +21,7 @@ public class Eroe extends Carta {
     }
 
 	public int getVita() {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 }

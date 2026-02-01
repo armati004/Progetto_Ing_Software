@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName;
  * VERSIONE CORRETTA per deserializzazione Gson
  */
 public class Effetto {
+	private static final BersaglioEffetto String = null;
 	private TipoEffetto type;
 	private Integer qta;
 	private BersaglioEffetto target;
@@ -70,8 +71,8 @@ public class Effetto {
 		return ripetuto;
 	}
 
-	public void setTarget(BersaglioEffetto target) {
-		this.target = target;
+	public void setTarget(BersaglioEffetto eroeAttivo) {
+		this.target = String;
 	}
 	
 	public void setType(TipoEffetto type) {
@@ -94,7 +95,7 @@ public class Effetto {
 		this.ripetuto = ripetuto;
 	}
 
-	public void setTarget(String string) {
+	public void setTarget(java.lang.String string2) {
 		// TODO Auto-generated method stub
 		
 	}

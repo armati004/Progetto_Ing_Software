@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import gestoreEffetti.Effetto;
+import gestoreEffetti.TipoCondizioneEncounter;
+import gestoreEffetti.Trigger;
 import gioco.Giocatore;
 import gioco.StatoDiGioco;
 
@@ -21,8 +23,11 @@ public class Encounter {
     
     private String nome;
     private String id;
+    private String classe;
+    private String descrizione;
     private int pack;
     private int ordine;
+    private int costo;
     
     // Malvagi associati (quando uno è rivelato, attiva questo Encounter)
     private List<String> malvagiAssociati;
@@ -30,13 +35,14 @@ public class Encounter {
     // Effetto continuo (negativo) dell'Encounter
     private String descrizioneEffetto;
     private List<Effetto> effettiContinui;
+    private List<Trigger> triggers;
     
     // Condizione di completamento
     private String descrizioneCompletamento;
-    private String tipoCondizione;  // Es: "GIOCA_CARTE_TIPO", "ACQUISTA_INFLUENZA"
-    private int valoreRichiesto;     // Es: 4 carte, 8 influenza
-    private int valoreCarta;         // Per GIOCA_CARTE_VALORE: valore minimo carta
-    private String tipoCartaRichiesto; // Per GIOCA_CARTE_TIPO: "OGGETTO", "INCANTESIMO", ecc.
+    private TipoCondizioneEncounter tipoCondizione;
+    private int valoreRichiesto;
+    private int valoreCarta;
+    private String tipoCartaRichiesto;
     
     // Ricompensa quando completato
     private String descrizioneRicompensa;
@@ -44,17 +50,57 @@ public class Encounter {
     
     // Stato
     private boolean completato;
+    private int progressoAttuale;
+    private boolean rewardUsata;
     
     // Immagine
-    private String pathImg;
+    private String pathImmagine;
     
+    /**
+     * Costruttore vuoto.
+     */
     public Encounter() {
         this.malvagiAssociati = new ArrayList<>();
         this.effettiContinui = new ArrayList<>();
+        this.triggers = new ArrayList<>();
         this.reward = new ArrayList<>();
         this.completato = false;
+        this.progressoAttuale = 0;
+        this.rewardUsata = false;
     }
     
+    /**
+     * Costruttore completo.
+     */
+    public Encounter(String nome, String id, String classe, String descrizioneEffetto, 
+                     int costo, String pathImmagine, List<Effetto> effettiContinui, 
+                     List<Trigger> triggers, int pack, int ordine, 
+                     List<String> malvagiAssociati, String descrizioneCompletamento, 
+                     TipoCondizioneEncounter tipoCondizione, int valoreRichiesto, 
+                     String descrizioneRicompensa, List<Effetto> reward) {
+        
+        this.nome = nome;
+        this.id = id;
+        this.classe = classe;
+        this.descrizione = descrizioneEffetto;
+        this.descrizioneEffetto = descrizioneEffetto;
+        this.costo = costo;
+        this.pathImmagine = pathImmagine;
+        this.effettiContinui = effettiContinui != null ? effettiContinui : new ArrayList<>();
+        this.triggers = triggers != null ? triggers : new ArrayList<>();
+        this.pack = pack;
+        this.ordine = ordine;
+        this.malvagiAssociati = malvagiAssociati != null ? malvagiAssociati : new ArrayList<>();
+        this.descrizioneCompletamento = descrizioneCompletamento;
+        this.tipoCondizione = tipoCondizione;
+        this.valoreRichiesto = valoreRichiesto;
+        this.descrizioneRicompensa = descrizioneRicompensa;
+        this.reward = reward != null ? reward : new ArrayList<>();
+        this.completato = false;
+        this.progressoAttuale = 0;
+        this.rewardUsata = false;
+    }
+
     /**
      * Applica l'effetto continuo dell'Encounter.
      * Chiamato durante la fase appropriata del turno.
@@ -79,7 +125,7 @@ public class Encounter {
      * Applica la ricompensa quando l'Encounter viene completato.
      */
     public void applicaRicompensa(StatoDiGioco stato, Giocatore giocatore) {
-        if (!completato) {
+        if (!completato || rewardUsata) {
             return;
         }
         
@@ -92,9 +138,13 @@ public class Encounter {
         for (Effetto effetto : reward) {
             gestoreEffetti.EsecutoreEffetti.eseguiEffetto(effetto, stato, giocatore);
         }
+        
+        rewardUsata = true;
     }
     
-    // Getters e Setters
+    // ============================================================================
+    // GETTERS E SETTERS
+    // ============================================================================
     
     public String getNome() {
         return nome;
@@ -112,6 +162,22 @@ public class Encounter {
         this.id = id;
     }
     
+    public String getClasse() {
+        return classe;
+    }
+    
+    public void setClasse(String classe) {
+        this.classe = classe;
+    }
+    
+    public String getDescrizione() {
+        return descrizione;
+    }
+    
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
+    }
+    
     public int getPack() {
         return pack;
     }
@@ -126,6 +192,14 @@ public class Encounter {
     
     public void setOrdine(int ordine) {
         this.ordine = ordine;
+    }
+    
+    public int getCosto() {
+        return costo;
+    }
+    
+    public void setCosto(int costo) {
+        this.costo = costo;
     }
     
     public List<String> getMalvagiAssociati() {
@@ -152,6 +226,22 @@ public class Encounter {
         this.effettiContinui = effettiContinui;
     }
     
+    public List<Effetto> getEffetti() {
+        return effettiContinui;
+    }
+    
+    public void setEffetti(List<Effetto> effetti) {
+        this.effettiContinui = effetti;
+    }
+    
+    public List<Trigger> getTriggers() {
+        return triggers;
+    }
+    
+    public void setTriggers(List<Trigger> triggers) {
+        this.triggers = triggers;
+    }
+    
     public String getDescrizioneCompletamento() {
         return descrizioneCompletamento;
     }
@@ -160,11 +250,11 @@ public class Encounter {
         this.descrizioneCompletamento = descrizioneCompletamento;
     }
     
-    public String getTipoCondizione() {
+    public TipoCondizioneEncounter getTipoCondizione() {
         return tipoCondizione;
     }
     
-    public void setTipoCondizione(String tipoCondizione) {
+    public void setTipoCondizione(TipoCondizioneEncounter tipoCondizione) {
         this.tipoCondizione = tipoCondizione;
     }
     
@@ -216,12 +306,32 @@ public class Encounter {
         this.completato = completato;
     }
     
-    public String getPathImg() {
-        return pathImg;
+    public int getProgressoAttuale() {
+        return progressoAttuale;
     }
     
-    public void setPathImg(String pathImg) {
-        this.pathImg = pathImg;
+    public void setProgressoAttuale(int progressoAttuale) {
+        this.progressoAttuale = progressoAttuale;
+    }
+    
+    public boolean isRewardUsata() {
+        return rewardUsata;
+    }
+    
+    public void setRewardUsata(boolean rewardUsata) {
+        this.rewardUsata = rewardUsata;
+    }
+    
+    public void setRewardUsata() {
+        this.rewardUsata = true;
+    }
+    
+    public String getPathImmagine() {
+        return pathImmagine;
+    }
+    
+    public void setPathImmagine(String pathImmagine) {
+        this.pathImmagine = pathImmagine;
     }
     
     @Override
@@ -229,4 +339,9 @@ public class Encounter {
         return "🎯 " + nome + " - " + 
                (completato ? "✓ Completato" : descrizioneCompletamento);
     }
+
+	public void applicaReward(StatoDiGioco stato, Giocatore giocatore) {
+		// TODO Auto-generated method stub
+		
+	}
 }

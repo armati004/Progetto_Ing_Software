@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 
+import carte.Carta;
+
 /**
  * Trigger - Rappresenta un trigger che attiva effetti in risposta a eventi
  * VERSIONE CORRETTA per deserializzazione Gson
@@ -80,5 +82,10 @@ public class Trigger {
 	
 	public void setDurata(DurataEffetto durata) {
 		this.durata = durata;
+	}
+
+	public void setCartaOrigine(Carta carta) {
+		// TODO Auto-generated method stub
+		
 	}
 }

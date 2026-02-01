@@ -18,4 +18,11 @@ public class ArteOscura extends Carta {
     ) {
         super(nome, id, classe, descrizione, costo, pathImmagine, effetti, triggers);
     }
+
+	public void setDescrizione(String descrizione) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }

@@ -5,8 +5,6 @@ import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.dsl.FXGL;
 
 import javafx.application.Platform;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.layout.Region;
 import gioco.*;
 import data.*;
@@ -18,7 +16,6 @@ import grafica.panels.MessagePanel;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -221,9 +218,6 @@ public class GameController extends GameApplication {
 			this.giocatoriSelezionati = ProgressionManager.ricreaGiocatoriDaSalvataggio(saveData, annoSelezionato);
 			
 			this.carteNegozioTemp = saveData.getCarteNegozioRimaste(); // ✅ NUOVO
-
-			// ⭐ NUOVO: Passa carte acquisite
-			// this.carteAcquisiteTemp = saveData.getCarteAcquisite();
 
 			continuaGioco();
 		}
@@ -514,13 +508,6 @@ public class GameController extends GameApplication {
 				g.inizializzaMano();
 			}
 			
-			//Commentato perché il metodo viene chiamato dal secondo al settimo anno
-			/*if (annoSelezionato < 1 || annoSelezionato > 7) {
-				System.err.println("❌ ERRORE: Anno non valido: " + annoSelezionato);
-				mostraMenuPrincipale();
-				return;
-			}*/
-
 			// ⭐ STEP 4: Carica configurazione
 			GameLoader loader = new GameLoader();
 			GameConfig config;
@@ -564,27 +551,6 @@ public class GameController extends GameApplication {
 				return;
 			}
 			
-			/*if(annoSelezionato >= 5) {
-				Malvagio voldemort = null;
-				LinkedList<Malvagio> malvagiTemp = new LinkedList<>();
-				// Trova Voldemort senza modificare la lista durante l'iterazione
-				for(Malvagio m : stato.getMazzoMalvagi()) {
-					if(m.getNome().contains("Voldemort")) {
-						voldemort = m;
-					}
-					else {
-						malvagiTemp.add(m);
-					}
-				}
-				Collections.shuffle(malvagiTemp);
-				// Rimuovi e aggiungi alla fine
-				if(voldemort != null) {
-					malvagiTemp.add(voldemort);
-					stato.setMazzoMalvagi(malvagiTemp);
-					System.out.println("👹 Voldemort posizionato in fondo al mazzo malvagi");
-				}
-			}*/
-
 			System.out.println("\n✅ Gioco avviato!");
 			System.out.println("   Anno: " + annoSelezionato);
 			System.out.println("   Giocatori: " + giocatoriSelezionati.size());
@@ -694,6 +660,9 @@ public class GameController extends GameApplication {
 						}
 					}));
 			timeline.play();
+		}
+		else {
+			mostraMessaggioGiocoCompletato();
 		}
 
 		FXGL.getGameScene().addUINode(victoryScreen);
@@ -970,12 +939,7 @@ public class GameController extends GameApplication {
 	/**
 	 * Distrugge un Horcrux e applica la ricompensa
 	 */
-	private void distruggiHorcrux(Horcrux horcrux) {
-		Giocatore giocatoreCorrente = stato.getGiocatori().get(stato.getGiocatoreCorrente());
-
-		// Applica ricompensa
-		horcrux.applicaRicompensa(stato, giocatoreCorrente);
-
+	public void distruggiHorcrux(Horcrux horcrux) {
 		// Messaggio
 		gameUI.getMessagePanel().mostraMessaggio("🔥 " + horcrux.getNome() + " DISTRUTTO!",
 				MessagePanel.TipoMessaggio.MALVAGIO);

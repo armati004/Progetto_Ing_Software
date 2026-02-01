@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.List;
 
 /**
  * Gestisce il caricamento della configurazione di un anno specifico.
@@ -132,5 +133,10 @@ public class GameLoader {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public GameConfig caricaConfigurazione(int annoSelezionato, List<String> carteNegozioTemp) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

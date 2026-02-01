@@ -7,7 +7,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import carte.Encounter;
-import carte.TipoCondizioneEncounter;
+import gestoreEffetti.TipoCondizioneEncounter;
 import gestoreEffetti.Effetto;
 import gestoreEffetti.Trigger;
 
@@ -22,6 +22,9 @@ import java.util.Map;
 
 /**
  * Factory per creare Encounter da file JSON.
+ * Gestisce il caricamento degli Encounter per Pack 1-4.
+ * 
+ * Sistema Encounter - Pack 1-4
  */
 public class EncounterFactory {
     private static Map<String, Encounter> encounterCache = new HashMap<>();
@@ -51,16 +54,19 @@ public class EncounterFactory {
                 }
             }
             
-            System.out.println("Caricati " + encounterCache.size() + " encounter.");
+            System.out.println("✅ Caricati " + encounterCache.size() + " encounter");
             
         } catch (Exception e) {
-            System.err.println("Errore nel caricamento degli encounter: " + e.getMessage());
+            System.err.println("❌ Errore nel caricamento degli encounter: " + e.getMessage());
             e.printStackTrace();
         }
     }
     
     /**
      * Parsa un Encounter dal JSON.
+     * 
+     * @param json Oggetto JSON da parsare
+     * @return Encounter creato o null in caso di errore
      */
     private static Encounter parseEncounter(JsonObject json) {
         try {
@@ -119,7 +125,7 @@ public class EncounterFactory {
             return encounter;
             
         } catch (Exception e) {
-            System.err.println("Errore nel parsing dell'Encounter: " + e.getMessage());
+            System.err.println("❌ Errore nel parsing dell'Encounter: " + e.getMessage());
             e.printStackTrace();
             return null;
         }
@@ -127,6 +133,9 @@ public class EncounterFactory {
     
     /**
      * Ottiene un Encounter specifico dal suo ID.
+     * 
+     * @param id ID dell'encounter da cercare
+     * @return Copia dell'Encounter trovato o null se non esiste
      */
     public static Encounter getEncounterById(String id) {
         if (encounterCache.isEmpty()) {
@@ -135,7 +144,7 @@ public class EncounterFactory {
         
         Encounter original = encounterCache.get(id);
         if (original == null) {
-            System.err.println("Encounter con ID " + id + " non trovato!");
+            System.err.println("❌ Encounter con ID " + id + " non trovato!");
             return null;
         }
         
@@ -145,6 +154,9 @@ public class EncounterFactory {
     
     /**
      * Carica gli encounter per un pack specifico.
+     * 
+     * @param pack Numero del pack (1, 2, 3, 4)
+     * @return Lista di Encounter del pack, ordinati per ordine
      */
     public static List<Encounter> getEncounterPerPack(int pack) {
         if (encounterCache.isEmpty()) {
@@ -166,6 +178,9 @@ public class EncounterFactory {
     
     /**
      * Crea una copia di un Encounter per evitare modifiche all'originale.
+     * 
+     * @param original Encounter originale da copiare
+     * @return Nuova istanza di Encounter
      */
     private static Encounter copiaEncounter(Encounter original) {
         Encounter copia = new Encounter(

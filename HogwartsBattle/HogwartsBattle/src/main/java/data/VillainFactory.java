@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
+import carte.TipoSconfittaMalvagio1;
 
 import java.io.IOException;
 import java.io.InputStreamReader;

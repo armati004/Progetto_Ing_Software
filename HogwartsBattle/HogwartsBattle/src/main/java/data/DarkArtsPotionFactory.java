@@ -18,6 +18,8 @@ import java.util.List;
 /**
  * Factory per creare oggetti DarkArtsPotion da file JSON.
  * Gestisce il caricamento delle Dark Arts Potions per Pack 3 e 4.
+ * 
+ * Sistema Dark Arts Potions - Pack 3+
  */
 public class DarkArtsPotionFactory {
     
@@ -35,14 +37,18 @@ public class DarkArtsPotionFactory {
         try (FileReader reader = new FileReader(DARK_ARTS_POTION_JSON_PATH)) {
             Gson gson = new Gson();
             darkArtsPotionData = gson.fromJson(reader, JsonObject.class);
+            System.out.println("✅ Dark Arts Potions caricate da JSON");
         } catch (IOException e) {
-            System.err.println("Errore nel caricamento di " + DARK_ARTS_POTION_JSON_PATH + ": " + e.getMessage());
+            System.err.println("❌ Errore nel caricamento di " + DARK_ARTS_POTION_JSON_PATH + ": " + e.getMessage());
             darkArtsPotionData = new JsonObject();
         }
     }
     
     /**
      * Ottiene una Dark Arts Potion specifica tramite ID.
+     * 
+     * @param id ID della Dark Arts Potion da cercare
+     * @return DarkArtsPotion trovata o null se non esiste
      */
     public static DarkArtsPotion getDarkArtsPotionById(String id) {
         if (darkArtsPotionData == null) {
@@ -60,12 +66,15 @@ public class DarkArtsPotionFactory {
             }
         }
         
-        System.err.println("Dark Arts Potion non trovata: " + id);
+        System.err.println("❌ Dark Arts Potion non trovata: " + id);
         return null;
     }
     
     /**
      * Ottiene tutte le Dark Arts Potions di un pack specifico.
+     * 
+     * @param pack Numero del pack (3 o 4)
+     * @return Lista di Dark Arts Potions del pack
      */
     public static List<DarkArtsPotion> getDarkArtsPotionsForPack(int pack) {
         if (darkArtsPotionData == null) {
@@ -90,6 +99,8 @@ public class DarkArtsPotionFactory {
     
     /**
      * Ottiene tutte le Dark Arts Potions disponibili.
+     * 
+     * @return Lista completa di tutte le Dark Arts Potions
      */
     public static List<DarkArtsPotion> getAllDarkArtsPotions() {
         if (darkArtsPotionData == null) {
@@ -113,6 +124,9 @@ public class DarkArtsPotionFactory {
     
     /**
      * Parse un oggetto JSON in una DarkArtsPotion.
+     * 
+     * @param json Oggetto JSON da parsare
+     * @return DarkArtsPotion creata o null in caso di errore
      */
     private static DarkArtsPotion parseDarkArtsPotion(JsonObject json) {
         try {
@@ -136,7 +150,7 @@ public class DarkArtsPotionFactory {
                         TipoIngrediente tipo = TipoIngrediente.valueOf(ing.getAsString());
                         ingredientiRichiesti.add(tipo);
                     } catch (IllegalArgumentException e) {
-                        System.err.println("Ingrediente non riconosciuto: " + ing.getAsString());
+                        System.err.println("⚠️ Ingrediente non riconosciuto: " + ing.getAsString());
                     }
                 }
             }
@@ -169,7 +183,7 @@ public class DarkArtsPotionFactory {
             );
             
         } catch (Exception e) {
-            System.err.println("Errore nel parsing della Dark Arts Potion: " + e.getMessage());
+            System.err.println("❌ Errore nel parsing della Dark Arts Potion: " + e.getMessage());
             e.printStackTrace();
             return null;
         }

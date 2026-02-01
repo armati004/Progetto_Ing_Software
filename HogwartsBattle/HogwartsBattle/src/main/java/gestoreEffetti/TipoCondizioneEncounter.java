@@ -1,7 +1,8 @@
-package carte;
+package gestoreEffetti;
 
 /**
  * Enum che definisce i vari tipi di condizioni per completare un Encounter.
+ * Sistema Encounter - Pack 1-4
  */
 public enum TipoCondizioneEncounter {
     /**
@@ -85,5 +86,5 @@ public enum TipoCondizioneEncounter {
     /**
      * Condizione custom da verificare manualmente
      */
-    CUSTOM
+    CUSTOM, ACQUISTA_ATTACCO
 }

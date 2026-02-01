@@ -72,5 +72,5 @@ public enum TipoTrigger {
 	/** Trigger quando si sconfiggono malvagi multipli */
 	SCONFIGGI_MALVAGI,
 	/** Trigger quando si sconfigge creatura */
-	SCONFIGGI_CREATURA;
+	SCONFIGGI_CREATURA, ACQUISTA_OGGETTO;
 }

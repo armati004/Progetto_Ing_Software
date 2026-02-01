@@ -6,8 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import gestoreEffetti.*;
-
+import java.util.Set;
 
 import carte.*;
 import data.CardFactory;
@@ -17,20 +16,24 @@ import data.LocationFactory;
 import data.VillainFactory;
 import data.PotionFactory;
 import data.DarkArtsPotionFactory;
+import gestoreEffetti.DarkArtsPotionManager;
+import gestoreEffetti.EncounterManager;
 import gestoreEffetti.GestoreEffetti;
 import gestoreEffetti.GestoreTrigger;
+import gestoreEffetti.PotionManager;
 
 /**
- * StatoDiGioco - Stato completo del gioco
+ * Rappresenta lo stato completo del gioco.
+ * Gestisce tutti i mazzi, le entità attive, i giocatori e i manager dei vari sistemi.
  * 
- * AGGIORNATO per espansione Charms & Potions:
+ * ESPANSIONE CHARMS & POTIONS:
  * - Sistema Pozioni (Pack 2+)
  * - Sistema Dark Arts Potions (Pack 3+)
  * - Sistema Encounter (Pack 1-4)
  * - Gestori specializzati per ogni meccanica
  */
 public class StatoDiGioco {
-	// --- Core State ---
+    // --- Core State ---
     private int annoCorrente;
     private FaseTurno faseCorrente;
     private boolean gameOver = false;
@@ -61,13 +64,13 @@ public class StatoDiGioco {
     private GestoreEffetti gestoreEffetti;
     private GestoreTrigger gestoreTrigger;
     
-    // NUOVO: Pack 1 - Encounter System
+    // Sistema Encounter (Pack 1-4)
     private EncounterManager encounterManager;
     
-    // NUOVO: Pack 2 - Potion System
+    // Sistema Pozioni (Pack 2+)
     private PotionManager potionManager;
     
-    // NUOVO: Pack 3 - Dark Arts Potion System
+    // Sistema Dark Arts Potions (Pack 3+)
     private DarkArtsPotionManager darkArtsPotionManager;
     
     private final Map<String, Dado> dadi;
@@ -81,6 +84,9 @@ public class StatoDiGioco {
 
     /**
      * Costruttore: Inizializza tutto lo stato basandosi sulla Configurazione e i Giocatori.
+     * 
+     * @param config Configurazione dell'anno corrente
+     * @param giocatori Lista dei giocatori partecipanti
      */
     public StatoDiGioco(GameConfig config, List<Giocatore> giocatori) {
         this.annoCorrente = config.getAnno();
@@ -111,8 +117,8 @@ public class StatoDiGioco {
         this.alleatiGiocatiInQuestoTurno = new ArrayList<>();
         
         this.dadi = new HashMap<>();
-        if(config.getContieneDadi() == true) {
-        	caricaDadi();
+        if (config.getContieneDadi()) {
+            caricaDadi();
         }
         this.attacchiAssegnati = new HashMap<>();
         
@@ -128,6 +134,8 @@ public class StatoDiGioco {
     
     /**
      * Inizializza i manager delle espansioni in base alla configurazione.
+     * 
+     * @param config Configurazione di gioco
      */
     private void inizializzaManagerEspansione(GameConfig config) {
         // Pack 1: Encounter System
@@ -153,6 +161,11 @@ public class StatoDiGioco {
     // SEZIONE DI INIZIALIZZAZIONE
     // ----------------------------------------------------------------
 
+    /**
+     * Popola i mazzi di gioco con le carte dalla configurazione.
+     * 
+     * @param config Configurazione dell'anno
+     */
     private void populateDecks(GameConfig config) {
         // Popola Mazzo Hogwarts
         for (String id : config.getCarteNegozioId()) {
@@ -171,7 +184,7 @@ public class StatoDiGioco {
             mazzoArtiOscure.add((ArteOscura) CardFactory.creaCarta(id));
         }
         
-        // NUOVO: Aggiungi Dark Arts Potions al mazzo Arti Oscure (Pack 3+)
+        // Aggiungi Dark Arts Potions al mazzo Arti Oscure (Pack 3+)
         if (hasDarkArtsPotions && config.getDarkArtsPotionId() != null) {
             System.out.println("☠️ Aggiunta Dark Arts Potions al mazzo Arti Oscure...");
             for (String id : config.getDarkArtsPotionId()) {
@@ -203,13 +216,13 @@ public class StatoDiGioco {
         // Popola Horcrux (Anno 7)
         if (hasHorcruxes && config.getHorcruxId() != null) {
             for (String id : config.getHorcruxId()) {
-                // TODO: Horcrux factory
+                // TODO: Horcrux factory quando implementato
                 // mazzoHorcrux.add(HorcruxFactory.creaHorcrux(id));
             }
             Collections.shuffle(mazzoHorcrux);
         }
         
-        // NUOVO: Carica Encounter (Pack 1-4)
+        // Carica Encounter (Pack 1-4)
         if (hasEncounters && config.getEncounterId() != null && encounterManager != null) {
             System.out.println("🎯 Caricamento Encounter...");
             for (String id : config.getEncounterId()) {
@@ -218,7 +231,7 @@ public class StatoDiGioco {
             encounterManager.inizializza();
         }
         
-        // NUOVO: Carica Pozioni (Pack 2-4)
+        // Carica Pozioni (Pack 2-4)
         if (hasPotions && config.getPozioniId() != null && potionManager != null) {
             System.out.println("🧪 Caricamento Pozioni...");
             for (String id : config.getPozioniId()) {
@@ -235,11 +248,14 @@ public class StatoDiGioco {
         }
     }
 
+    /**
+     * Setup iniziale del tabellone di gioco.
+     */
     private void setupTabellone() {
         // 1. Riempi il Mercato (6 slot)
         rifornisciMercato();
 
-        // 2. Rivela il primo Malvagio
+        // 2. Rivela il primo Malvagio (2 per anno 3+)
         int initialVillains = (annoCorrente >= 3) ? 2 : 1; 
         for (int i = 0; i < initialVillains; i++) {
             addMalvagioAttivo();
@@ -251,6 +267,9 @@ public class StatoDiGioco {
         }
     }
     
+    /**
+     * Carica i dadi delle casate.
+     */
     private void caricaDadi() {
         System.out.println("🎲 Caricamento dadi delle casate...");
         
@@ -266,13 +285,15 @@ public class StatoDiGioco {
         }
     }
 
-    // ----------------------------------------------------------------
+    // [Continua nella parte 2...]
     // LOGICA DI GIOCO (AZIONI)
     // ----------------------------------------------------------------
 
     /**
      * Pesca una carta Arti Oscure, gestisce il mazzo vuoto.
-     * AGGIORNATO: Può pescare anche Dark Arts Potions (Pack 3+)
+     * Può pescare anche Dark Arts Potions (Pack 3+).
+     * 
+     * @return Carta Arti Oscure pescata o null se non disponibile
      */
     public ArteOscura pescaArteOscura() {
         if (mazzoArtiOscure.isEmpty()) {
@@ -289,8 +310,10 @@ public class StatoDiGioco {
         
         // Se è una Dark Arts Potion, gestiscila diversamente
         if (pescata instanceof DarkArtsPotion && darkArtsPotionManager != null) {
-            darkArtsPotionManager.assegnaPozioneAlGiocatore((DarkArtsPotion) pescata, 
-                                                           giocatori.get(giocatoreCorrente));
+            darkArtsPotionManager.assegnaPozioneAlGiocatore(
+                (DarkArtsPotion) pescata, 
+                giocatori.get(giocatoreCorrente)
+            );
         } else {
             scartiArtiOscure.add(pescata);
         }
@@ -319,7 +342,9 @@ public class StatoDiGioco {
     }
     
     /**
-     * Rimpiazza una carta specifica (usato dopo un acquisto).
+     * Rimpiazza una carta specifica nel mercato (usato dopo un acquisto).
+     * 
+     * @param indice Indice della carta da rimpiazzare
      */
     public void rimpiazzaCartaMercato(int indice) {
         if (indice >= 0 && indice < mercato.size()) {
@@ -334,53 +359,59 @@ public class StatoDiGioco {
     // GESTIONE FINE TURNO
     // ----------------------------------------------------------------
 
+    /**
+     * Gestisce la fine del turno corrente.
+     * Reset risorse, scarta mano, pesca nuove carte, passa al prossimo giocatore.
+     */
     public void fineTurno() {
-        Giocatore g = getGiocatori().get(giocatoreCorrente);
+        Giocatore g = giocatori.get(giocatoreCorrente);
         
         // 1. Pulizia EffectManager
         gestoreEffetti.fineTurno();
         
-        // 2. Reset del Giocatore (Scarta mano, risorse a 0, pesca 5)
-        if(!g.getMano().isEmpty()) {
-        	while(!g.getMano().isEmpty()) {
-        		g.scartaCarta(g.getMano().get(0));
-        	}
+        // 2. Scarta tutte le carte dalla mano
+        while (!g.getMano().isEmpty()) {
+            g.scartaCarta(g.getMano().get(0));
         }
+        
+        // 3. Reset risorse
         g.setAttacco(0);
         g.setGettone(0);
         
-        if(g.getMazzo().getCarte().isEmpty()) {
-        	g.getMazzo().getCarte().addAll(g.getScarti().getCarte());
-        	g.getScarti().getCarte().removeAll(g.getScarti().getCarte());
+        // 4. Rimescola scarti nel mazzo se necessario
+        if (g.getMazzo().getCarte().isEmpty()) {
+            g.getMazzo().getCarte().addAll(g.getScarti().getCarte());
+            g.getScarti().getCarte().clear();
+            Collections.shuffle(g.getMazzo().getCarte());
         }
         
-        for(int i = 0; i < 5; i++) {
-        	if(!g.getMazzo().getCarte().isEmpty()) {
-        		g.getMano().add(g.getMazzo().pescaCarta());
-        	}
-        	else {
-        		break;
-        	}
+        // 5. Pesca 5 carte
+        for (int i = 0; i < 5; i++) {
+            if (!g.getMazzo().getCarte().isEmpty()) {
+                g.getMano().add(g.getMazzo().pescaCarta());
+            } else {
+                break;
+            }
         }
         
-        // 3. Riempi Mercato
+        // 6. Riempi Mercato
         rifornisciMercato();
 
-        // 4. Pulisci la lista degli alleati giocati
+        // 7. Pulisci la lista degli alleati giocati
         alleatiGiocatiInQuestoTurno.clear();
         
-        // 5. NUOVO: Verifica completamento Encounter (Pack 1)
+        // 8. Verifica completamento Encounter (Pack 1)
         if (hasEncounters && encounterManager != null) {
             encounterManager.verificaCompletamentoEncounter();
         }
         
-        // 6. Passa al prossimo giocatore
-        giocatoreCorrente += 1;
-        if(giocatoreCorrente == giocatori.size()) {
-        	giocatoreCorrente = 0;
+        // 9. Passa al prossimo giocatore
+        giocatoreCorrente++;
+        if (giocatoreCorrente >= giocatori.size()) {
+            giocatoreCorrente = 0;
         }
         
-        // 7. Reset fase turno
+        // 10. Reset fase turno
         faseCorrente = FaseTurno.ARTI_OSCURE;
     }
 
@@ -388,6 +419,11 @@ public class StatoDiGioco {
     // GESTIONE LUOGO
     // ----------------------------------------------------------------
     
+    /**
+     * Aggiunge segnalini controllo al luogo attuale.
+     * 
+     * @param quantita Numero di segnalini da aggiungere
+     */
     public void aggiungiControlloLuogo(int quantita) {
         if (luogoAttuale != null) {
             luogoAttuale.aggiungiControllo(quantita);
@@ -400,6 +436,11 @@ public class StatoDiGioco {
         }
     }
     
+    /**
+     * Rimuove segnalini controllo dal luogo attuale.
+     * 
+     * @param quantita Numero di segnalini da rimuovere
+     */
     public void rimuoviControlloLuogo(int quantita) {
         if (luogoAttuale != null) {
             luogoAttuale.rimuoviControllo(quantita);
@@ -408,6 +449,9 @@ public class StatoDiGioco {
         }
     }
     
+    /**
+     * Gestisce la conquista di un luogo (game over se tutti i luoghi conquistati).
+     */
     private void conquistaLuogo() {
         System.out.println("💀 LUOGO CONQUISTATO: " + luogoAttuale.getNome());
         luoghiConquistati++;
@@ -434,178 +478,239 @@ public class StatoDiGioco {
     // ----------------------------------------------------------------
 
     public Luogo getLuogoAttuale() {
-		return luogoAttuale;
-	}
+        return luogoAttuale;
+    }
 
-	public void setLuogoAttuale(Luogo luogoAttuale) {
-		this.luogoAttuale = luogoAttuale;
-	}
+    public void setLuogoAttuale(Luogo luogoAttuale) {
+        this.luogoAttuale = luogoAttuale;
+    }
 
-	public Map<String, Dado> getDadi() {
-		return dadi;
-	}
+    public Map<String, Dado> getDadi() {
+        return dadi;
+    }
 
-	public Luogo getCurrentLocation() {
-		return currentLocation;
-	}
+    public Luogo getCurrentLocation() {
+        return currentLocation;
+    }
 
-	public void setCurrentLocation(Luogo currentLocation) {
-		this.currentLocation = currentLocation;
-	}
+    public void setCurrentLocation(Luogo currentLocation) {
+        this.currentLocation = currentLocation;
+    }
 
-	public FaseTurno getFaseCorrente() {
-		return faseCorrente;
-	}
+    public FaseTurno getFaseCorrente() {
+        return faseCorrente;
+    }
 
-	public void setFaseCorrente(FaseTurno faseCorrente) {
-		this.faseCorrente = faseCorrente;
-	}
+    public void setFaseCorrente(FaseTurno faseCorrente) {
+        this.faseCorrente = faseCorrente;
+    }
 
-	public List<Giocatore> getGiocatori() {
-		return giocatori;
-	}
-	
-	public void setGiocatori(List<Giocatore> giocatori) {
-		this.giocatori = giocatori;
-	}
-	
-	public int getGiocatoreCorrente() {
-		return giocatoreCorrente;
-	}
+    public List<Giocatore> getGiocatori() {
+        return giocatori;
+    }
+    
+    public void setGiocatori(List<Giocatore> giocatori) {
+        this.giocatori = giocatori;
+    }
+    
+    public int getGiocatoreCorrente() {
+        return giocatoreCorrente;
+    }
 
-	public void setGiocatoreCorrente(int giocatoreCorrente) {
-		this.giocatoreCorrente = giocatoreCorrente;
-	}
+    public void setGiocatoreCorrente(int giocatoreCorrente) {
+        this.giocatoreCorrente = giocatoreCorrente;
+    }
 
-	public List<Malvagio> getMalvagiAttivi() {
-		return malvagiAttivi;
-	}
+    public List<Malvagio> getMalvagiAttivi() {
+        return malvagiAttivi;
+    }
 
-	public List<Carta> getMercato() {
-		return mercato;
-	}
+    public List<Carta> getMercato() {
+        return mercato;
+    }
 
-	public GestoreEffetti getGestoreEffetti() {
-		return gestoreEffetti;
-	}
-	
-	public void setGestoreEffetti(GestoreEffetti gestoreEffetti) {
-		this.gestoreEffetti = gestoreEffetti;
-	}
-	
-	public GestoreTrigger getGestoreTrigger() {
-		return gestoreTrigger;
-	}
-	
-	public void setGestoreTrigger(GestoreTrigger gestoreTrigger) {
-		this.gestoreTrigger = gestoreTrigger;
-	}
+    public GestoreEffetti getGestoreEffetti() {
+        return gestoreEffetti;
+    }
+    
+    public void setGestoreEffetti(GestoreEffetti gestoreEffetti) {
+        this.gestoreEffetti = gestoreEffetti;
+    }
+    
+    public GestoreTrigger getGestoreTrigger() {
+        return gestoreTrigger;
+    }
+    
+    public void setGestoreTrigger(GestoreTrigger gestoreTrigger) {
+        this.gestoreTrigger = gestoreTrigger;
+    }
 
-	public boolean isGameOver() {
-		return gameOver;
-	}
+    public boolean isGameOver() {
+        return gameOver;
+    }
 
-	public void setGameOver(boolean gameOver) {
-		this.gameOver = gameOver;
-	}
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
+    }
 
-	public boolean isVictory() {
-		return victory;
-	}
+    public boolean isVictory() {
+        return victory;
+    }
 
-	public LinkedList<Luogo> getListaLuoghi() {
-		return listaLuoghi;
-	}
+    public void setVictory(boolean victory) {
+        this.victory = victory;
+    }
 
-	public LinkedList<Carta> getMazzoNegozio() {
-		return mazzoNegozio;
-	}
+    public LinkedList<Luogo> getListaLuoghi() {
+        return listaLuoghi;
+    }
 
-	public LinkedList<Malvagio> getMazzoMalvagi() {
-		return mazzoMalvagi;
-	}
+    public LinkedList<Carta> getMazzoNegozio() {
+        return mazzoNegozio;
+    }
 
-	public LinkedList<ArteOscura> getMazzoArtiOscure() {
-		return mazzoArtiOscure;
-	}
+    public LinkedList<Malvagio> getMazzoMalvagi() {
+        return mazzoMalvagi;
+    }
 
-	public LinkedList<Horcrux> getMazzoHorcrux() {
-		return mazzoHorcrux;
-	}
+    public LinkedList<ArteOscura> getMazzoArtiOscure() {
+        return mazzoArtiOscure;
+    }
 
-	public List<Horcrux> getHorcruxAttivi() {
-		return horcruxAttivi;
-	}
+    public LinkedList<Horcrux> getMazzoHorcrux() {
+        return mazzoHorcrux;
+    }
 
-	public List<ArteOscura> getScartiArtiOscure() {
-		return scartiArtiOscure;
-	}
+    public List<Horcrux> getHorcruxAttivi() {
+        return horcruxAttivi;
+    }
 
-	public boolean isHasHorcruxes() {
-		return hasHorcruxes;
-	}
-	
+    public List<ArteOscura> getScartiArtiOscure() {
+        return scartiArtiOscure;
+    }
+
+    public boolean isHasHorcruxes() {
+        return hasHorcruxes;
+    }
+    
     public List<Carta> getAlleatiGiocatiInQuestoTurno() {
         return alleatiGiocatiInQuestoTurno;
     }
-
-	public void setVictory(boolean b) {
-		this.victory = b;
-	}
-	
-	public int getLuoghiConquistati() {
-		return luoghiConquistati;
-	}
     
-	public Dado getDado(String nome) {
-	    return dadi.get(nome);
+    public int getLuoghiConquistati() {
+        return luoghiConquistati;
+    }
+    
+    public Dado getDado(String nome) {
+        return dadi.get(nome);
+    }
+    
+    public Map<Malvagio, Integer> getAttacchiAssegnati() {
+        return attacchiAssegnati;
+    }
+    
+    public int getAnnoCorrente() {
+        return annoCorrente;
+    }
+    
+    // ----------------------------------------------------------------
+    // GETTERS E SETTERS ESPANSIONE
+    // ----------------------------------------------------------------
+    
+    public boolean isHasEncounters() {
+        return hasEncounters;
+    }
+    
+    public boolean isHasPotions() {
+        return hasPotions;
+    }
+    
+    public boolean isHasDarkArtsPotions() {
+        return hasDarkArtsPotions;
+    }
+    
+    public EncounterManager getEncounterManager() {
+        return encounterManager;
+    }
+    
+    public void setEncounterManager(EncounterManager encounterManager) {
+        this.encounterManager = encounterManager;
+    }
+    
+    public PotionManager getPotionManager() {
+        return potionManager;
+    }
+    
+    public void setPotionManager(PotionManager potionManager) {
+        this.potionManager = potionManager;
+    }
+    
+    public DarkArtsPotionManager getDarkArtsPotionManager() {
+        return darkArtsPotionManager;
+    }
+    
+    public void setDarkArtsPotionManager(DarkArtsPotionManager darkArtsPotionManager) {
+        this.darkArtsPotionManager = darkArtsPotionManager;
+    }
+    
+    /**
+     * Ottiene l'attacco totale assegnato in questo turno.
+     * 
+     * @return Somma di tutti gli attacchi assegnati
+     */
+    public int getAttaccoAssegnatoQuestoTurno() {
+        return attacchiAssegnati.values().stream()
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
+
+	public boolean isProcessandoTriggerVita() {
+		// TODO Auto-generated method stub
+		return false;
 	}
-	
-	public Map<Malvagio, Integer> getAttacchiAssegnati() {
-		return attacchiAssegnati;
+
+	public void setProcessandoTriggerVita(boolean b) {
+		// TODO Auto-generated method stub
+		
 	}
-	
-	public int getAnnoCorrente() {
-		return annoCorrente;
+
+	public void passaAlProssimoLuogo() {
+		// TODO Auto-generated method stub
+		
 	}
-	
-	// ----------------------------------------------------------------
-	// GETTERS E SETTERS ESPANSIONE
-	// ----------------------------------------------------------------
-	
-	public boolean isHasEncounters() {
-		return hasEncounters;
+
+	public void setCarteAcquisiteDaiGiocatori(Set<String> carteSet) {
+		// TODO Auto-generated method stub
+		
 	}
-	
-	public boolean isHasPotions() {
-		return hasPotions;
+
+	public boolean puoAttaccareMalvagio(Malvagio malvagio) {
+		// TODO Auto-generated method stub
+		return false;
 	}
-	
-	public boolean isHasDarkArtsPotions() {
-		return hasDarkArtsPotions;
+
+	public String getMessaggioBloccoVoldemort() {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
-	public EncounterManager getEncounterManager() {
-		return encounterManager;
+
+	public void assegnaAttacco(Malvagio malvagio, int i) {
+		// TODO Auto-generated method stub
+		
 	}
-	
-	public void setEncounterManager(EncounterManager encounterManager) {
-		this.encounterManager = encounterManager;
+
+	public void applicaAttacchi() {
+		// TODO Auto-generated method stub
+		
 	}
-	
-	public PotionManager getPotionManager() {
-		return potionManager;
+
+	public void distruggiHorcrux(Horcrux horcrux) {
+		// TODO Auto-generated method stub
+		
 	}
-	
-	public void setPotionManager(PotionManager potionManager) {
-		this.potionManager = potionManager;
-	}
-	
-	public DarkArtsPotionManager getDarkArtsPotionManager() {
-		return darkArtsPotionManager;
-	}
-	
-	public void setDarkArtsPotionManager(DarkArtsPotionManager darkArtsPotionManager) {
-		this.darkArtsPotionManager = darkArtsPotionManager;
+
+	public boolean isVittoriaPendente() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

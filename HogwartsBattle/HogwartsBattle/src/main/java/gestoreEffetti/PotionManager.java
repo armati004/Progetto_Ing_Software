@@ -1,7 +1,7 @@
-package gioco;
+package gestoreEffetti;
 
 import carte.*;
-import gestoreEffetti.EsecutoreEffetti;
+import gioco.Giocatore;
 import gioco.StatoDiGioco;
 
 import java.util.ArrayList;
@@ -10,339 +10,218 @@ import java.util.List;
 
 /**
  * Gestisce il sistema completo delle pozioni:
- * - Potion Board con 2 pozioni disponibili
- * - 3 scaffali con ingredienti
- * - Requisiti per accedere agli scaffali
+ * - Potion Board con 2 scaffali di pozioni disponibili
+ * - Gestione ingredienti
  * - Brewing (completamento pozioni)
- * - Riciclo ingredienti
+ * - Requisiti per accedere agli scaffali
+ * 
+ * Sistema Pozioni - Pack 2+
  */
 public class PotionManager {
     private StatoDiGioco stato;
     
     // Potion Board - Mazzo e pozioni visibili
     private List<Pozione> mazzoPozioni;
-    private List<Pozione> pozioniDisponibili; // 2 pozioni visibili sulla board
-    
-    // Pozioni in progress (condivise tra tutti i giocatori)
-    private List<Pozione> pozioniInProgress;
-    
-    // Ingredienti - Pool e scaffali
-    private List<Ingrediente> poolIngredienti; // Ingredienti non ancora rivelati
-    private List<List<Ingrediente>> scaffali; // 3 scaffali con max 3 ingredienti ciascuno
-    private List<Ingrediente> ingredientiUsati; // Area ingredienti usati (per riciclo)
+    private List<Pozione> scaffaleA; // Primo scaffale di pozioni
+    private List<Pozione> scaffaleB; // Secondo scaffale di pozioni
     
     // Requisiti scaffali
-    private List<PotionShelfRequirement> requisitiScaffaliLatoA;
-    private List<PotionShelfRequirement> requisitiScaffaliLatoB;
     private String latoCorrente; // "A" o "B"
     
+    /**
+     * Costruttore del manager delle pozioni.
+     * 
+     * @param stato Stato di gioco corrente
+     */
     public PotionManager(StatoDiGioco stato) {
         this.stato = stato;
         this.mazzoPozioni = new ArrayList<>();
-        this.pozioniDisponibili = new ArrayList<>();
-        this.pozioniInProgress = new ArrayList<>();
-        this.poolIngredienti = new ArrayList<>();
-        this.scaffali = new ArrayList<>();
-        this.ingredientiUsati = new ArrayList<>();
-        this.requisitiScaffaliLatoA = new ArrayList<>();
-        this.requisitiScaffaliLatoB = new ArrayList<>();
+        this.scaffaleA = new ArrayList<>();
+        this.scaffaleB = new ArrayList<>();
         this.latoCorrente = "A"; // Default
-        
-        // Inizializza 3 scaffali vuoti
-        for (int i = 0; i < 3; i++) {
-            scaffali.add(new ArrayList<>());
-        }
-        
-        inizializzaRequisiti();
     }
     
     /**
-     * Inizializza i requisiti per i 3 scaffali (lato A e B).
+     * Inizializza la Potion Board distribuendo le pozioni tra gli scaffali.
      */
-    private void inizializzaRequisiti() {
-        // LATO A - Più facile
-        requisitiScaffaliLatoA.add(new PotionShelfRequirement(1, "A", 
-            TipoRequisitoScaffale.ACQUISTA_CARTA_VALORE, 4, "Acquire a card of 4 or more"));
-        requisitiScaffaliLatoA.add(new PotionShelfRequirement(2, "A", 
-            TipoRequisitoScaffale.GIOCA_ITEMS, 2, "Play 2 Items"));
-        requisitiScaffaliLatoA.add(new PotionShelfRequirement(3, "A", 
-            TipoRequisitoScaffale.SCARTA_CARTA, 1, "Discard a card"));
-        
-        // LATO B - Più difficile
-        requisitiScaffaliLatoB.add(new PotionShelfRequirement(1, "B", 
-            TipoRequisitoScaffale.EROE_STORDITO, 1, "A Hero is Stunned"));
-        requisitiScaffaliLatoB.add(new PotionShelfRequirement(2, "B", 
-            TipoRequisitoScaffale.CURA_ALTRO_EROE, 1, "Heal another Hero"));
-        requisitiScaffaliLatoB.add(new PotionShelfRequirement(3, "B", 
-            TipoRequisitoScaffale.ASSEGNA_ATTACCO, 3, "Assign 3 or more attack"));
-    }
-    
-    /**
-     * Inizializza la Potion Board.
-     */
-    public void inizializza(List<Pozione> pozioni, String lato) {
-        // Carica le pozioni
-        mazzoPozioni.addAll(pozioni);
+    public void inizializza() {
+        // Mescola il mazzo pozioni
         Collections.shuffle(mazzoPozioni);
         
-        // Rivela 2 pozioni
-        if (mazzoPozioni.size() >= 2) {
-            pozioniDisponibili.add(mazzoPozioni.remove(0));
-            pozioniDisponibili.add(mazzoPozioni.remove(0));
+        // Metti fino a 3 pozioni nello scaffale A
+        while (scaffaleA.size() < 3 && !mazzoPozioni.isEmpty()) {
+            scaffaleA.add(mazzoPozioni.remove(0));
         }
         
-        // Crea pool di ingredienti (3 set completi = 18 token totali)
-        for (int set = 0; set < 3; set++) {
-            poolIngredienti.add(new Ingrediente(TipoIngrediente.BICORN_HORN));
-            poolIngredienti.add(new Ingrediente(TipoIngrediente.MANDRAKE_LEAF));
-            poolIngredienti.add(new Ingrediente(TipoIngrediente.FLOBBER_WORM));
-            poolIngredienti.add(new Ingrediente(TipoIngrediente.HELLEBORE));
-            poolIngredienti.add(new Ingrediente(TipoIngrediente.LACEWING_FLY));
-            poolIngredienti.add(new Ingrediente(TipoIngrediente.WILD));
+        // Metti fino a 3 pozioni nello scaffale B
+        while (scaffaleB.size() < 3 && !mazzoPozioni.isEmpty()) {
+            scaffaleB.add(mazzoPozioni.remove(0));
         }
-        
-        Collections.shuffle(poolIngredienti);
-        
-        // Imposta lato requisiti
-        this.latoCorrente = lato;
-        
-        // Riempi scaffali inizialmente
-        riempiScaffali();
         
         System.out.println("🧪 Potion Board inizializzata!");
         System.out.println("   Lato requisiti: " + latoCorrente);
-        System.out.println("   Pozioni disponibili: " + pozioniDisponibili.size());
-        System.out.println("   Pool ingredienti: " + poolIngredienti.size());
+        System.out.println("   Scaffale A: " + scaffaleA.size() + " pozioni");
+        System.out.println("   Scaffale B: " + scaffaleB.size() + " pozioni");
     }
     
     /**
-     * Riempie gli scaffali con ingredienti dal pool.
-     * Gli ingredienti scorrono verso il basso per riempire spazi vuoti.
+     * Aggiunge un ingrediente al pool del giocatore specificato.
+     * 
+     * @param giocatore Giocatore che riceve l'ingrediente
+     * @param tipoIngrediente Tipo di ingrediente da aggiungere
      */
-    private void riempiScaffali() {
-        for (int i = 0; i < 3; i++) {
-            List<Ingrediente> scaffale = scaffali.get(i);
-            
-            // Riempi fino a 3 ingredienti per scaffale
-            while (scaffale.size() < 3 && !poolIngredienti.isEmpty()) {
-                scaffale.add(poolIngredienti.remove(0));
-            }
-        }
-    }
-    
-    /**
-     * Fase 4 del turno: Gather Potion Ingredients.
-     * Permette al giocatore di prendere 1 ingrediente da ogni scaffale se soddisfa i requisiti.
-     */
-    public void faseRaccoltaIngredienti() {
-        System.out.println("\n🧪 === FASE RACCOLTA INGREDIENTI ===");
-        System.out.println("Puoi prendere 1 ingrediente da ogni scaffale se soddisfi i requisiti:");
-        System.out.println("(Controlla dall'alto verso il basso)");
-        
-        List<PotionShelfRequirement> requisiti = latoCorrente.equals("A") ? 
-            requisitiScaffaliLatoA : requisitiScaffaliLatoB;
-        
-        for (int i = 0; i < 3; i++) {
-            PotionShelfRequirement requisito = requisiti.get(i);
-            List<Ingrediente> scaffale = scaffali.get(i);
-            
-            System.out.println("\n📦 Scaffale " + (i + 1) + ": " + requisito.getDescrizione());
-            System.out.println("   Ingredienti disponibili: " + scaffale);
-            
-            if (verificaRequisitoScaffale(requisito)) {
-                System.out.println("   ✓ Requisito soddisfatto! Puoi prendere 1 ingrediente.");
-            } else {
-                System.out.println("   ✗ Requisito NON soddisfatto");
-            }
+    public void aggiungiIngrediente(Giocatore giocatore, String tipoIngrediente) {
+        if (giocatore == null || tipoIngrediente == null) {
+            System.out.println("⚠️ Giocatore o tipo ingrediente null");
+            return;
         }
         
-        System.out.println("\n💡 Usa l'UI per selezionare gli ingredienti da prendere");
+        // Aggiungi l'ingrediente al giocatore
+        giocatore.aggiungiIngrediente(tipoIngrediente, 1);
+        System.out.println("✓ Ingrediente " + tipoIngrediente + " aggiunto a " + giocatore.getNome());
     }
     
     /**
-     * Verifica se il requisito di uno scaffale è soddisfatto.
+     * Brew (completa e gioca) una pozione.
+     * Il giocatore deve avere tutti gli ingredienti necessari.
+     * 
+     * @param giocatore Giocatore che vuole brewre la pozione
+     * @param pozione Pozione da completare
+     * @param usaBanish true se si vuole usare l'effetto banish
+     * @return true se il brewing è avvenuto con successo
      */
-    public boolean verificaRequisitoScaffale(PotionShelfRequirement requisito) {
-        switch (requisito.getTipo()) {
-            case ACQUISTA_CARTA_VALORE:
-                return verificaAcquistoCartaValore(requisito.getValore());
-                
-            case GIOCA_ITEMS:
-                return verificaItemsGiocati(requisito.getValore());
-                
-            case SCARTA_CARTA:
-                // Deve essere fatto manualmente dall'UI
-                return true;
-                
-            case CURA_ALTRO_EROE:
-                return verificaCuraAltroEroe();
-                
-            case EROE_STORDITO:
-                return verificaEroeStordito();
-                
-            case ASSEGNA_ATTACCO:
-                return stato.getAttaccoAssegnatoQuestoTurno() >= requisito.getValore();
-                
-            case GIOCA_INCANTESIMI:
-                return verificaIncantesimiGiocati(requisito.getValore());
-                
-            case ACQUISTA_INFLUENZA:
-                return stato.getInfluenzaSpesaQuestoTurno() >= requisito.getValore();
-                
-            case NESSUNO:
-                return true;
-                
-            default:
+    public boolean brewPozione(Giocatore giocatore, Pozione pozione, boolean usaBanish) {
+        if (giocatore == null || pozione == null) {
+            System.out.println("⚠️ Giocatore o pozione null");
+            return false;
+        }
+        
+        // Verifica se il giocatore ha gli ingredienti necessari
+        List<String> ingredientiRichiesti = new ArrayList<>();
+        for (TipoIngrediente tipo : pozione.getIngredientiRichiesti()) {
+            ingredientiRichiesti.add(tipo.name());
+        }
+        
+        // Conta ingredienti necessari
+        java.util.Map<String, Integer> ingredientiNecessari = new java.util.HashMap<>();
+        for (String ing : ingredientiRichiesti) {
+            ingredientiNecessari.put(ing, ingredientiNecessari.getOrDefault(ing, 0) + 1);
+        }
+        
+        // Verifica disponibilità
+        for (java.util.Map.Entry<String, Integer> entry : ingredientiNecessari.entrySet()) {
+            int disponibili = giocatore.getIngredienti().getOrDefault(entry.getKey(), 0);
+            if (disponibili < entry.getValue()) {
+                System.out.println("⚠️ Ingredienti insufficienti per " + pozione.getNome());
                 return false;
-        }
-    }
-    
-    /**
-     * Prende un ingrediente da uno scaffale (chiamato dall'UI).
-     */
-    public Ingrediente prendiIngrediente(int scaffaleIndex, int ingredienteIndex) {
-        if (scaffaleIndex < 0 || scaffaleIndex >= 3) {
-            System.out.println("⚠️ Indice scaffale non valido");
-            return null;
+            }
         }
         
-        List<Ingrediente> scaffale = scaffali.get(scaffaleIndex);
-        if (ingredienteIndex < 0 || ingredienteIndex >= scaffale.size()) {
-            System.out.println("⚠️ Indice ingrediente non valido");
-            return null;
+        // Consuma gli ingredienti
+        for (java.util.Map.Entry<String, Integer> entry : ingredientiNecessari.entrySet()) {
+            giocatore.rimuoviIngrediente(entry.getKey(), entry.getValue());
         }
         
-        Ingrediente ingrediente = scaffale.remove(ingredienteIndex);
-        System.out.println("✓ Preso: " + ingrediente.getTipo());
+        System.out.println("🧪 " + giocatore.getNome() + " sta preparando: " + pozione.getNome());
         
-        return ingrediente;
-    }
-    
-    /**
-     * Aggiunge un ingrediente a una pozione.
-     */
-    public boolean aggiungiIngredienteAPozione(Ingrediente ingrediente, Pozione pozione) {
-        boolean successo = pozione.aggiungiIngrediente(ingrediente);
-        
-        if (successo && pozione.isCompletata()) {
-            // Pozione completata!
-            System.out.println("🎉 Pozione completata: " + pozione.getNome());
-            System.out.println("   Puoi giocarla subito (solo effetto banish) o metterla negli scarti");
+        if (usaBanish) {
+            System.out.println("   Usando effetto BANISH");
+            // Con banish, applica effetto ma NON aggiunge al mazzo
+            List<Effetto> effetti = pozione.getEffettoBanish();
+            if (effetti != null && stato != null) {
+                for (Effetto effetto : effetti) {
+                    EsecutoreEffetti.eseguiEffetto(effetto, stato, giocatore);
+                }
+            }
+        } else {
+            System.out.println("   Usando effetto NORMALE");
+            // Applica effetto normale e aggiungi al mazzo
+            List<Effetto> effetti = pozione.getEffettoNormale();
+            if (effetti != null && stato != null) {
+                for (Effetto effetto : effetti) {
+                    EsecutoreEffetti.eseguiEffetto(effetto, stato, giocatore);
+                }
+            }
+            // Aggiungi pozione al mazzo del giocatore
+            giocatore.getMazzo().aggiungiCarta(pozione);
         }
         
-        return successo;
-    }
-    
-    /**
-     * Scarta un ingrediente raccolto (invece di aggiungerlo a una pozione).
-     */
-    public void scartaIngrediente(Ingrediente ingrediente) {
-        ingrediente.setUsato(true);
-        ingredientiUsati.add(ingrediente);
-        System.out.println("🗑️ Ingrediente scartato: " + ingrediente.getTipo());
-    }
-    
-    /**
-     * Fine fase raccolta: riempie gli scaffali.
-     */
-    public void fineFaseRaccolta() {
-        // Riempi scaffali
+        // Rimuovi pozione dallo scaffale
+        scaffaleA.remove(pozione);
+        scaffaleB.remove(pozione);
+        
+        // Incrementa contatore
+        giocatore.incrementaPozioniBrewate();
+        
+        // Riempi scaffali se necessario
         riempiScaffali();
         
-        // Se pool vuoto, ricicla ingredienti usati
-        if (poolIngredienti.isEmpty() && !ingredientiUsati.isEmpty()) {
-            System.out.println("♻️ Riciclo ingredienti usati...");
-            for (Ingrediente ing : ingredientiUsati) {
-                ing.setUsato(false);
-            }
-            poolIngredienti.addAll(ingredientiUsati);
-            ingredientiUsati.clear();
-            Collections.shuffle(poolIngredienti);
+        return true;
+    }
+    
+    /**
+     * Riempie gli scaffali con pozioni dal mazzo.
+     */
+    private void riempiScaffali() {
+        // Riempi scaffale A
+        while (scaffaleA.size() < 3 && !mazzoPozioni.isEmpty()) {
+            scaffaleA.add(mazzoPozioni.remove(0));
+        }
+        
+        // Riempi scaffale B
+        while (scaffaleB.size() < 3 && !mazzoPozioni.isEmpty()) {
+            scaffaleB.add(mazzoPozioni.remove(0));
         }
     }
     
     /**
-     * Quando una pozione è completata, la rimuove dalla board e ne rivela una nuova.
+     * Aggiunge una pozione al mazzo.
+     * 
+     * @param pozione Pozione da aggiungere
      */
-    public void rimuoviPozioneCompletata(Pozione pozione) {
-        if (pozioniDisponibili.remove(pozione)) {
-            // Rivela nuova pozione
-            if (!mazzoPozioni.isEmpty()) {
-                pozioniDisponibili.add(mazzoPozioni.remove(0));
-                System.out.println("🆕 Nuova pozione disponibile: " + 
-                    pozioniDisponibili.get(pozioniDisponibili.size() - 1).getNome());
-            }
+    public void aggiungiPozioneAlMazzo(Pozione pozione) {
+        if (pozione != null) {
+            mazzoPozioni.add(pozione);
+            System.out.println("✓ Pozione aggiunta al mazzo: " + pozione.getNome());
         }
     }
     
-    // ========== METODI DI VERIFICA REQUISITI ==========
-    
-    private boolean verificaAcquistoCartaValore(int valoreMinimo) {
-        List<Carta> acquistate = stato.getCarteAcquistateQuestoTurno();
-        if (acquistate != null) {
-            for (Carta carta : acquistate) {
-                if (carta.getCosto() >= valoreMinimo) {
-                    return true;
-                }
-            }
-        }
-        return false;
+    /**
+     * Ruota lo scaffale (cambia tra lato A e lato B).
+     * Questo cambia i requisiti per accedere agli scaffali.
+     */
+    public void ruotaScaffale() {
+        latoCorrente = latoCorrente.equals("A") ? "B" : "A";
+        System.out.println("🔄 Scaffale ruotato al lato: " + latoCorrente);
     }
     
-    private boolean verificaItemsGiocati(int numero) {
-        List<Carta> giocate = stato.getCarteGiocateQuestoTurno();
-        if (giocate != null) {
-            int count = 0;
-            for (Carta carta : giocate) {
-                if (carta instanceof Oggetto) {
-                    count++;
-                }
-            }
-            return count >= numero;
-        }
-        return false;
+    /**
+     * Ottiene lo scaffale corrente in base al lato.
+     * 
+     * @return Lista delle pozioni nello scaffale corrente
+     */
+    public List<Pozione> getScaffaleCorrente() {
+        return latoCorrente.equals("A") ? scaffaleA : scaffaleB;
     }
     
-    private boolean verificaCuraAltroEroe() {
-        // TODO: Implementare tracciamento cure nel StatoDiGioco
-        return false;
+    // =============== GETTERS E SETTERS ===============
+    
+    /**
+     * Ottiene lo scaffale A.
+     * 
+     * @return Lista delle pozioni nello scaffale A
+     */
+    public List<Pozione> getScaffaleA() {
+        return scaffaleA;
     }
     
-    private boolean verificaEroeStordito() {
-        // TODO: Implementare tracciamento stordimenti nel StatoDiGioco
-        return false;
-    }
-    
-    private boolean verificaIncantesimiGiocati(int numero) {
-        List<Carta> giocate = stato.getCarteGiocateQuestoTurno();
-        if (giocate != null) {
-            int count = 0;
-            for (Carta carta : giocate) {
-                if (carta instanceof Incantesimo) {
-                    count++;
-                }
-            }
-            return count >= numero;
-        }
-        return false;
-    }
-    
-    // ========== GETTERS ==========
-    
-    public List<Pozione> getPozioniDisponibili() {
-        return pozioniDisponibili;
-    }
-    
-    public List<Pozione> getPozioniInProgress() {
-        return pozioniInProgress;
-    }
-    
-    public List<List<Ingrediente>> getScaffali() {
-        return scaffali;
-    }
-    
-    public List<PotionShelfRequirement> getRequisitiScaffaliCorrente() {
-        return latoCorrente.equals("A") ? requisitiScaffaliLatoA : requisitiScaffaliLatoB;
+    /**
+     * Ottiene lo scaffale B.
+     * 
+     * @return Lista delle pozioni nello scaffale B
+     */
+    public List<Pozione> getScaffaleB() {
+        return scaffaleB;
     }
     
     public String getLatoCorrente() {
@@ -350,6 +229,12 @@ public class PotionManager {
     }
     
     public void setLatoCorrente(String lato) {
-        this.latoCorrente = lato;
+        if (lato.equals("A") || lato.equals("B")) {
+            this.latoCorrente = lato;
+        }
+    }
+    
+    public List<Pozione> getMazzoPozioni() {
+        return mazzoPozioni;
     }
 }
