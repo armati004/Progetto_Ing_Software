@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Manager per la progressione attraverso gli anni/livelli
+ * Manager per l'avanzamento attraverso gli anni/livelli
  */
 public class ProgressionManager {
     
@@ -51,7 +51,7 @@ public class ProgressionManager {
     public static List<Giocatore> ricreaGiocatoriDaSalvataggio(GameSaveData saveData, int anno) {
         List<Giocatore> giocatori = new ArrayList<>();
         
-        System.out.println("\n📂 Ricostruzione giocatori dall'anno " + anno);
+        System.out.println("Ricostruzione giocatori dall'anno " + anno);
         
         for (PlayerSaveData playerData : saveData.getGiocatori()) {
             // Crea eroe
@@ -63,13 +63,13 @@ public class ProgressionManager {
                 try {
                     carte.Competenza comp = ProficiencyFactory.creaCompetenza(playerData.getIdCompetenza());
                     giocatore.setCompetenza(comp);
-                    System.out.println("  ✓ " + playerData.getNomeEroe() + " + " + comp.getNome());
+                    System.out.println(playerData.getNomeEroe() + " + " + comp.getNome());
                 } catch (Exception e) {
-                    System.err.println("  ⚠️ Errore caricamento competenza: " + playerData.getIdCompetenza());
+                    System.err.println("Errore caricamento competenza: " + playerData.getIdCompetenza());
                 }
             }
             
-            // ⭐ NUOVO: Ricarica carte acquisite
+            // Ricarica carte acquisite
             if (playerData.getCarteNelMazzo() != null && !playerData.getCarteNelMazzo().isEmpty()) {
                 // Rimuovi carte starter pack (già aggiunte da Giocatore costruttore)
                 giocatore.getMazzo().getCarte().clear();
@@ -81,14 +81,14 @@ public class ProgressionManager {
                         Carta carta = CardFactory.creaCarta(cartaID);
                         giocatore.getMazzo().aggiungiCarta(carta);
                     } catch (Exception e) {
-                        System.err.println("  ⚠️ Errore caricamento carta: " + cartaID);
+                        System.err.println("Errore caricamento carta: " + cartaID);
                     }
                 }
                 
-                System.out.println("  ✓ " + playerData.getNomeEroe() + " - " + 
+                System.out.println(playerData.getNomeEroe() + " - " + 
                                  playerData.getCarteNelMazzo().size() + " carte caricate");
             } else {
-                System.out.println("  ✓ " + playerData.getNomeEroe() + " - carte starter pack");
+                System.out.println(playerData.getNomeEroe() + " - carte starter pack");
             }
             
             giocatori.add(giocatore);
@@ -97,10 +97,6 @@ public class ProgressionManager {
         return giocatori;
     }
 
-    // ============================================
-    // MODIFICA 4: ProgressionManager.preparaGiocatoriProssimoAnno()
-    // ============================================
-
     public static List<Giocatore> preparaGiocatoriProssimoAnno(
     	    List<Giocatore> giocatoriPrecedenti, 
     	    int prossimoAnno,
@@ -108,7 +104,7 @@ public class ProgressionManager {
     	    
     	    List<Giocatore> nuoviGiocatori = new ArrayList<>();
     	    
-    	    // ⭐ NUOVO: Raccogli tutte le carte dai giocatori precedenti
+    	    // Raccogli tutte le carte dai giocatori precedenti
     	    Set<String> carteGiocatori = new HashSet<>();
     	    for (Giocatore vecchioG : giocatoriPrecedenti) {
     	        // Carte nel mazzo
@@ -125,7 +121,7 @@ public class ProgressionManager {
     	        }
     	    }
     	    
-    	    // ⭐ NUOVO: Aggiorna set carte acquisite nello stato
+    	    // Aggiorna set carte acquisite nello stato
     	    stato.setCarteAcquisiteDaiGiocatori(carteGiocatori);
     	    
     	    System.out.println("📌 Carte nei mazzi giocatori: " + carteGiocatori.size());
@@ -159,7 +155,7 @@ public class ProgressionManager {
     	        
     	        nuoviGiocatori.add(nuovoGiocatore);
     	        
-    	        System.out.println("✅ " + nomeEroe + " pronto per anno " + prossimoAnno + 
+    	        System.out.println(nomeEroe + " pronto per anno " + prossimoAnno + 
     	                         " (carte: " + nuovoGiocatore.getMazzo().getCarte().size() + ")");
     	    }
 
@@ -180,20 +176,20 @@ public class ProgressionManager {
         
         int annoCorrente = stato.getAnnoCorrente();
         
-        System.out.println("\n🎉 ========================================");
-        System.out.println("🎉 ANNO " + annoCorrente + " COMPLETATO!");
-        System.out.println("🎉 ========================================");
+        System.out.println("========================================");
+        System.out.println("ANNO " + annoCorrente + " COMPLETATO!");
+        System.out.println("========================================");
         
         if (annoCorrente >= MAX_ANNO) {
-            System.out.println("🏆 ========================================");
-            System.out.println("🏆 GIOCO COMPLETATO!");
-            System.out.println("🏆 Avete completato tutti e 7 gli anni!");
-            System.out.println("🏆 ========================================");
+            System.out.println("========================================");
+            System.out.println("GIOCO COMPLETATO!");
+            System.out.println("Avete completato tutti e 7 gli anni!");
+            System.out.println("========================================");
             return MAX_ANNO; // Gioco finito
         } else {
             int prossimoAnno = annoCorrente + 1;
-            System.out.println("📖 Preparatevi per l'Anno " + prossimoAnno + "...");
-            System.out.println("🎉 ========================================\n");
+            System.out.println("Preparatevi per l'Anno " + prossimoAnno + "...");
+            System.out.println("========================================");
             return prossimoAnno;
         }
     }
@@ -218,7 +214,7 @@ public class ProgressionManager {
      */
     public static boolean salvaProgressoVittoria(StatoDiGioco stato) {
         if (!stato.isVictory()) {
-            System.out.println("⚠️ Non puoi salvare il progresso: partita non vinta");
+            System.out.println("Non puoi salvare il progresso: partita non vinta");
             return false;
         }
         

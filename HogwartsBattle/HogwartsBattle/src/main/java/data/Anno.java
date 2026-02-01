@@ -17,7 +17,7 @@ public class Anno {
 	@SerializedName("luoghi")
 	private List<String> luoghi = new ArrayList<>();
 
-	// --- CORREZIONI CHIAVE QUI SOTTO ---
+	// --- CORREZIONI ---
 
 	// Nel JSON è "aggiunteMazzoNegozio"
 	@SerializedName(value = "aggiunteMazzoNegozio", alternate = { "nuoveCarteNegozio", "hogwartsDeckToAdd" })

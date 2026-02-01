@@ -3,6 +3,8 @@ package data;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import carte.Carta;
+
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.lang.reflect.Type;
@@ -19,17 +21,17 @@ public class StarterPackLoader {
     public static void inizializza() {
         if (inizializzato) return;
 
-        // Assicurati che il path sia corretto per le risorse
+        // Verificare che il path sia corretto per le risorse
         String path = "/json/starter_pack.json";
+        InputStream is = StarterPackLoader.class.getClassLoader().getResourceAsStream(path);
+    	if (is == null) {
+    	    System.err.println("File non trovato: " + path);
+    	    return;
+    	}
         
-        try (Reader reader = new InputStreamReader(StarterPackLoader.class.getResourceAsStream(path))) {
-            if (reader == null) {
-                System.err.println("CRITICO: starter_pack.json non trovato in " + path);
-                return;
-            }
-
+        try (Reader reader = new InputStreamReader(is)) {
+            
             Gson gson = new Gson();
-            // Leggiamo la struttura { "harry": [carta1, carta2], "ron": [...] }
             Type type = new TypeToken<Map<String, List<Carta>>>(){}.getType();
             Map<String, List<Carta>> data = gson.fromJson(reader, type);
             
@@ -56,7 +58,6 @@ public class StarterPackLoader {
     }
 
     /**
-     * QUESTO È IL METODO CHE MANCAVA!
      * Crea una lista di oggetti Carta reali usando CardFactory
      */
     public static List<Carta> creaMazzoPerEroe(String nomeEroe) {

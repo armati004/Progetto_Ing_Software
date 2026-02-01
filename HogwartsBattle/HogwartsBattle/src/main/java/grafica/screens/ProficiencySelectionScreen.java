@@ -76,10 +76,6 @@ public class ProficiencySelectionScreen extends StackPane {
         this.competenzeSelezionate = new ArrayList<>();
         this.onSelectionComplete = onComplete;
         
-        // ⭐ FXGL: Binding automatico
-        this.prefWidthProperty().bind(FXGL.getGameScene().getRoot().widthProperty());
-        this.prefHeightProperty().bind(FXGL.getGameScene().getRoot().heightProperty());
-        
         inizializzaUI();
     }
     
@@ -87,10 +83,13 @@ public class ProficiencySelectionScreen extends StackPane {
      * Inizializza l'interfaccia
      */
     private void inizializzaUI() {
-        // Sfondo con binding
-        Rectangle bg = new Rectangle();
-        bg.widthProperty().bind(this.widthProperty());
-        bg.heightProperty().bind(this.heightProperty());
+    	double width = FXGL.getAppWidth();
+        double height = FXGL.getAppHeight();
+        this.setPrefSize(width, height);
+        this.setMinSize(width, height);
+        this.setMaxSize(width, height);
+        
+        Rectangle bg = new Rectangle(width, height);
         bg.setFill(Color.rgb(15, 10, 30));
         this.getChildren().add(bg);
         
@@ -169,7 +168,7 @@ public class ProficiencySelectionScreen extends StackPane {
                     proficienciesContainer.getChildren().add(compCard);
                 }
             } catch (Exception e) {
-                System.err.println("⚠️ Errore caricamento competenza: " + idCompetenza);
+                System.err.println("Errore caricamento competenza: " + idCompetenza);
                 e.printStackTrace();
             }
         }

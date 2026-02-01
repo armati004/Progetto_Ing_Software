@@ -22,10 +22,10 @@ public class GameConfig {
     private List<String> luoghiId = new ArrayList<>();
     private List<String> horcruxId = new ArrayList<>();
     
-    // ✅ Lista ID eroi disponibili per questo anno
+    // Lista ID eroi disponibili per questo anno
     private List<String> eroiDisponibiliId = new ArrayList<>();
     
-    // ✅ Numero giocatori per questo anno
+    // Numero giocatori per questo anno
     private int numeroGiocatori = 4;  // Default 4 giocatori
     
     private Boolean contieneDadi = false;
@@ -57,7 +57,7 @@ public class GameConfig {
                 luoghi.add(luogo);
                 
             } catch (IllegalArgumentException e) {
-                System.err.println("⚠️ Luogo non trovato: " + id);
+                System.err.println("Luogo non trovato: " + id);
             }
         }
         
@@ -70,45 +70,45 @@ public class GameConfig {
     
     /**
      * Ottiene la lista di eroi disponibili per questo anno
-     * ✅ AGGIORNATO: Passa l'anno corrente a HeroFactory per ottenere la versione corretta
+     * FIX: Passa l'anno corrente a HeroFactory per ottenere la versione corretta
      */
     public List<Eroe> getEroiDisponibili() {
         List<Eroe> eroi = new ArrayList<>();
         
         // Se non ci sono ID specificati, carica tutti gli eroi di base
         if (eroiDisponibiliId.isEmpty()) {
-            System.out.println("📋 Nessun eroe specificato nel JSON, carico i 4 eroi di base per anno " + anno);
+            System.out.println("Nessun eroe specificato nel JSON, carico i 4 eroi di base per anno " + anno);
             
             // Carica i 4 eroi principali CON L'ANNO CORRETTO
             try {
-                eroi.add(HeroFactory.creaEroe("Harry Potter", anno));        // ✅ Con anno
-                eroi.add(HeroFactory.creaEroe("Hermione Granger", anno));    // ✅ Con anno
-                eroi.add(HeroFactory.creaEroe("Ron Weasley", anno));         // ✅ Con anno
-                eroi.add(HeroFactory.creaEroe("Neville Longbottom", anno));  // ✅ Con anno
+                eroi.add(HeroFactory.creaEroe("Harry Potter", anno));
+                eroi.add(HeroFactory.creaEroe("Hermione Granger", anno));
+                eroi.add(HeroFactory.creaEroe("Ron Weasley", anno));
+                eroi.add(HeroFactory.creaEroe("Neville Longbottom", anno));
                 
-                System.out.println("✓ Caricati 4 eroi di base (versione anno " + anno + ")");
+                System.out.println("Caricati 4 eroi di base (versione anno " + anno + ")");
                 
             } catch (Exception e) {
-                System.err.println("❌ Errore caricamento eroi di default: " + e.getMessage());
+                System.err.println("Errore caricamento eroi di default: " + e.getMessage());
                 e.printStackTrace();
             }
         } else {
-            System.out.println("📋 Carico " + eroiDisponibiliId.size() + " eroi specificati per anno " + anno);
+            System.out.println("Carico " + eroiDisponibiliId.size() + " eroi specificati per anno " + anno);
             
             // Carica eroi specificati CON L'ANNO CORRETTO
             for (String eroId : eroiDisponibiliId) {
                 try {
-                    // ✅ IMPORTANTE: Converte ID in nome per HeroFactory
+                    // Converte ID in nome per HeroFactory
                     String nomeEroe = convertiIdInNome(eroId);
-                    Eroe eroe = HeroFactory.creaEroe(nomeEroe, anno);  // ✅ Con anno
+                    Eroe eroe = HeroFactory.creaEroe(nomeEroe, anno);
                     eroi.add(eroe);
                     
-                    System.out.println("  ✓ Caricato: " + nomeEroe + " (anno " + anno + ")");
+                    System.out.println("Caricato: " + nomeEroe + " (anno " + anno + ")");
                     
                 } catch (IllegalArgumentException e) {
-                    System.err.println("  ⚠️ Eroe non trovato: " + eroId);
+                    System.err.println("Eroe non trovato: " + eroId);
                 } catch (Exception e) {
-                    System.err.println("  ❌ Errore caricamento eroe " + eroId + ": " + e.getMessage());
+                    System.err.println("Errore caricamento eroe " + eroId + ": " + e.getMessage());
                 }
             }
         }
@@ -120,15 +120,14 @@ public class GameConfig {
      * Converte un ID eroe (snake_case o camelCase) in nome completo
      * 
      * Esempi:
-     * - "harry_potter" → "Harry Potter"
-     * - "harryPotter" → "Harry Potter"
-     * - "hermione_granger" → "Hermione Granger"
+     * "harry_potter" in "Harry Potter"
+     * "harryPotter" in "Harry Potter"
+     * "hermione_granger" in "Hermione Granger"
      */
     private String convertiIdInNome(String id) {
         // Rimuovi underscore e sostituisci con spazio
         String nome = id.replace("_", " ");
         
-        // Capitalizza ogni parola
         String[] parole = nome.split(" ");
         StringBuilder nomeFormattato = new StringBuilder();
         
@@ -171,9 +170,9 @@ public class GameConfig {
         return eroiDisponibiliId;
     }
     
-    // ============================================
-    // GETTERS E SETTERS ESISTENTI
-    // ============================================
+    
+    // GETTERS E SETTERS
+    
     
     public int getAnno() {
         return anno;

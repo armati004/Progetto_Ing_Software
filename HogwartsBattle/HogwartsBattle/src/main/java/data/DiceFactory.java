@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import carte.Dado;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.lang.reflect.Type;
@@ -39,19 +40,16 @@ public class DiceFactory {
      * Carica i dadi da un file JSON.
      */
     private static void caricaDadi(String nomeFile) {
-        try (Reader reader = new InputStreamReader(
-                DiceFactory.class.getClassLoader().getResourceAsStream("json/" + nomeFile))) {
-            
-            if (reader == null) {
-                System.err.println("⚠️ File non trovato: json/" + nomeFile);
-                return;
-            }
+    	InputStream is = DiceFactory.class.getClassLoader().getResourceAsStream("json/" + nomeFile);
+    	if (is == null) {
+    	    System.err.println("File non trovato: json/" + nomeFile);
+    	    return;
+    	}
+    	
+        try (Reader reader = new InputStreamReader(is)) {
             
             Gson gson = new Gson();
             
-            // Il JSON potrebbe essere strutturato come: {"dadi": [...]}
-            // O direttamente come array: [...]
-            // Assumiamo struttura simile alle carte
             Type type = new TypeToken<Map<String, List<Dado>>>(){}.getType();
             Map<String, List<Dado>> data = gson.fromJson(reader, type);
             
@@ -71,10 +69,10 @@ public class DiceFactory {
             }
             
         } catch (IOException e) {
-            System.err.println("❌ Errore nel caricamento di " + nomeFile);
+            System.err.println("Errore nel caricamento di " + nomeFile);
             e.printStackTrace();
         } catch (Exception e) {
-            System.err.println("❌ Errore generico nel parsing di " + nomeFile);
+            System.err.println("Errore generico nel parsing di " + nomeFile);
             e.printStackTrace();
         }
     }

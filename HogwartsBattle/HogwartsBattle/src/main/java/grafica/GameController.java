@@ -40,7 +40,7 @@ public class GameController extends GameApplication {
 	private GameSaveData saveDataCaricato = null;
 
 	private List<String> carteAcquisiteTemp = null;
-	private List<String> carteNegozioTemp = null; // ✅ NUOVO
+	private List<String> carteNegozioTemp = null; // NUOVO
 
 	private static GameController instance;
 
@@ -71,7 +71,7 @@ public class GameController extends GameApplication {
 
 		try {
 			// Inizializza le factory
-			System.out.println("\n🔧 Inizializzazione Factory...");
+			System.out.println("\nInizializzazione Factory...");
 			CardFactory.inizializza();
 			HeroFactory.inizializza();
 			DiceFactory.inizializza();
@@ -80,13 +80,13 @@ public class GameController extends GameApplication {
 			ProficiencyFactory.inizializza();
 			HorcruxFactory.inizializza();
 
-			System.out.println("✅ Tutte le factory inizializzate");
+			System.out.println("Tutte le factory inizializzate");
 
 			// Mostra menu principale
 			mostraMenuPrincipale();
 
 		} catch (Exception e) {
-			System.err.println("❌ Errore durante l'inizializzazione:");
+			System.err.println("Errore durante l'inizializzazione:");
 			e.printStackTrace();
 		}
 	}
@@ -118,7 +118,7 @@ public class GameController extends GameApplication {
 				if (autosave != null) {
 					caricaPartitaDaSalvataggio(autosave);
 				} else {
-					System.err.println("❌ Nessun autosave trovato!");
+					System.err.println("Nessun autosave trovato!");
 					mostraMenuPrincipale();
 				}
 				break;
@@ -130,7 +130,7 @@ public class GameController extends GameApplication {
 
 			case "exit":
 				// Esci dal gioco
-				System.out.println("👋 Arrivederci!");
+				System.out.println("Arrivederci!");
 				FXGL.getGameController().exit();
 				break;
 			}
@@ -148,12 +148,12 @@ public class GameController extends GameApplication {
 
 		// Verifica input
 		if (saveData == null) {
-			System.err.println("❌ SaveData è NULL!");
+			System.err.println("SaveData è NULL!");
 			mostraMenuPrincipale();
 			return;
 		}
 
-		System.out.println("📂 Save Data:");
+		System.out.println("   Save Data:");
 		System.out.println("   Anno: " + saveData.getAnnoCorrente());
 		System.out.println("   Giocatori: " + saveData.getNumeroGiocatori());
 		System.out.println("   Vittoria: " + saveData.isVittoriaUltimaPartita());
@@ -204,11 +204,7 @@ public class GameController extends GameApplication {
 				}
 
 				// Salva dati per avviaGioco()
-				this.carteNegozioTemp = saveData.getCarteNegozioRimaste(); // ✅ NUOVO
-
-				// ⭐ NUOVO: Passa carte acquisite al controller
-				// Verranno usate in avviaGioco()
-				// this.carteAcquisiteTemp = saveData.getCarteAcquisite();
+				this.carteNegozioTemp = saveData.getCarteNegozioRimaste(); 
 
 				continuaGioco();
 			}
@@ -217,14 +213,14 @@ public class GameController extends GameApplication {
 			this.annoSelezionato = saveData.getAnnoCorrente();
 			this.giocatoriSelezionati = ProgressionManager.ricreaGiocatoriDaSalvataggio(saveData, annoSelezionato);
 			
-			this.carteNegozioTemp = saveData.getCarteNegozioRimaste(); // ✅ NUOVO
+			this.carteNegozioTemp = saveData.getCarteNegozioRimaste(); // NUOVO
 
 			continuaGioco();
 		}
 	}
 
 	// ============================================
-	// NUOVO METODO: Messaggio gioco completato
+	// Messaggio gioco completato
 	// ============================================
 
 	/**
@@ -233,8 +229,8 @@ public class GameController extends GameApplication {
 	private void mostraMessaggioGiocoCompletato() {
 		javafx.application.Platform.runLater(() -> {
 			grafica.panels.DialogHelper.mostraMessaggio(
-				    "🎓 Gioco Completato!",
-				    "🎉 Congratulazioni!",
+				    "Gioco Completato!",
+				    "Congratulazioni!",
 				    "Hai completato tutti e 7 gli anni di Hogwarts!\n\n" +
 				    "━━━━━━━━━━━━━━━━━━━━━━\n\n" +
 				    "Il tuo viaggio magico è terminato.\n" +
@@ -260,8 +256,6 @@ public class GameController extends GameApplication {
 		LoadGameScreen screen = new LoadGameScreen(
 				// Callback quando si carica una partita
 				saveData -> {
-					// ⭐ NON chiamare clearUINodes() qui!
-					// Lo farà avviaGioco() nel modo corretto
 					caricaPartitaDaSalvataggio(saveData);
 				},
 				// Callback per tornare indietro
@@ -281,7 +275,7 @@ public class GameController extends GameApplication {
 
 		PlayerCountSelectionScreen screen = new PlayerCountSelectionScreen(numero -> {
 			this.numeroGiocatori = numero;
-			System.out.println("✓ Numero giocatori: " + numeroGiocatori);
+			System.out.println("Numero giocatori: " + numeroGiocatori);
 
 			FXGL.getGameScene().clearUINodes();
 			mostraSchermataSelezioneEroi();
@@ -299,7 +293,7 @@ public class GameController extends GameApplication {
 		HeroSelectionScreen screen = new HeroSelectionScreen(numeroGiocatori, annoSelezionato, giocatori -> {
 			this.giocatoriSelezionati = giocatori;
 
-			System.out.println("✓ Eroi selezionati:");
+			System.out.println("Eroi selezionati:");
 			for (int i = 0; i < giocatoriSelezionati.size(); i++) {
 				System.out.println("  Giocatore " + (i + 1) + ": " + giocatoriSelezionati.get(i).getEroe().getNome());
 			}
@@ -331,9 +325,9 @@ public class GameController extends GameApplication {
 				try {
 					Competenza comp = ProficiencyFactory.creaCompetenza(idCompetenza);
 					giocatoriSelezionati.get(i).setCompetenza(comp);
-					System.out.println("✓ " + nomiEroi.get(i) + " ha ricevuto: " + comp.getNome());
+					System.out.println(nomiEroi.get(i) + " ha ricevuto: " + comp.getNome());
 				} catch (Exception e) {
-					System.err.println("⚠️ Errore assegnazione competenza a " + nomiEroi.get(i));
+					System.err.println("Errore assegnazione competenza a " + nomiEroi.get(i));
 				}
 			}
 
@@ -352,7 +346,7 @@ public class GameController extends GameApplication {
 
 		try {
 			// ⭐ STEP 1: Pulisci TUTTA l'UI esistente all'inizio
-			System.out.println("🧹 Pulizia UI esistente...");
+			System.out.println("Pulizia UI esistente...");
 			FXGL.getGameScene().clearUINodes();
 
 			// ⭐ STEP 2: Reset variabili UI
@@ -360,7 +354,7 @@ public class GameController extends GameApplication {
 
 			// ⭐ STEP 3: Verifica prerequisiti
 			if (giocatoriSelezionati == null || giocatoriSelezionati.isEmpty()) {
-				System.err.println("❌ ERRORE: Nessun giocatore selezionato!");
+				System.err.println("ERRORE: Nessun giocatore selezionato!");
 				mostraMenuPrincipale();
 				return;
 			}
@@ -370,7 +364,7 @@ public class GameController extends GameApplication {
 			}
 
 			if (annoSelezionato < 1 || annoSelezionato > 7) {
-				System.err.println("❌ ERRORE: Anno non valido: " + annoSelezionato);
+				System.err.println("ERRORE: Anno non valido: " + annoSelezionato);
 				mostraMenuPrincipale();
 				return;
 			}
@@ -380,45 +374,37 @@ public class GameController extends GameApplication {
 			GameConfig config;
 
 			if (carteNegozioTemp != null && !carteNegozioTemp.isEmpty()) {
-				System.out.println("📦 Caricamento con carte negozio da salvataggio");
+				System.out.println("Caricamento con carte negozio da salvataggio");
 				config = loader.caricaConfigurazione(annoSelezionato, carteNegozioTemp);
-				carteNegozioTemp = null; // Reset dopo l'uso
+				carteNegozioTemp = null; 
 			} else {
 				config = loader.caricaConfigurazione(annoSelezionato);
 			}
 
 			if (config == null) {
-				System.err.println("❌ ERRORE: Impossibile caricare configurazione anno " + annoSelezionato);
+				System.err.println("ERRORE: Impossibile caricare configurazione anno " + annoSelezionato);
 				mostraMenuPrincipale();
 				return;
 			}
 
-			System.out.println("📋 Configurazione anno " + annoSelezionato + " caricata");
+			System.out.println("Configurazione anno " + annoSelezionato + " caricata");
 
 			// ⭐ STEP 5: Crea stato di gioco
 			stato = new StatoDiGioco(config, giocatoriSelezionati);
 
-			// ⭐ NUOVO: Ripristina carte acquisite se presente
-			/*if (carteAcquisiteTemp != null && !carteAcquisiteTemp.isEmpty()) {
-				Set<String> carteSet = new HashSet<>(carteAcquisiteTemp);
-				stato.setCarteAcquisiteDaiGiocatori(carteSet);
-				System.out.println("✅ Ripristinate " + carteSet.size() + " carte acquisite");
-				carteAcquisiteTemp = null; // Reset
-			}*/
-
 			if (stato == null) {
-				System.err.println("❌ ERRORE: Stato di gioco non creato!");
+				System.err.println("ERRORE: Stato di gioco non creato!");
 				mostraMenuPrincipale();
 				return;
 			}
 
 			if (stato.getGiocatori() == null || stato.getGiocatori().isEmpty()) {
-				System.err.println("❌ ERRORE: Stato senza giocatori!");
+				System.err.println("ERRORE: Stato senza giocatori!");
 				mostraMenuPrincipale();
 				return;
 			}
 
-			System.out.println("\n✅ Gioco avviato!");
+			System.out.println("\nGioco avviato!");
 			System.out.println("   Anno: " + annoSelezionato);
 			System.out.println("   Giocatori: " + giocatoriSelezionati.size());
 
@@ -428,15 +414,15 @@ public class GameController extends GameApplication {
 						+ (g.getCompetenza() != null ? " (" + g.getCompetenza().getNome() + ")" : ""));
 			}
 
-			System.out.println("🏰 Luogo attuale: " + stato.getLuogoAttuale().getNome());
-			System.out.println("👹 Malvagi attivi: " + stato.getMalvagiAttivi().size());
-			System.out.println("🛒 Carte nel mercato: " + stato.getMercato().size());
+			System.out.println("Luogo attuale: " + stato.getLuogoAttuale().getNome());
+			System.out.println("Malvagi attivi: " + stato.getMalvagiAttivi().size());
+			System.out.println("Carte nel mercato: " + stato.getMercato().size());
 
 			// ⭐ STEP 6: Crea interfaccia grafica (stato garantito valido)
 			gameUI = new GameBoardUI(stato);
 
 			if (gameUI == null) {
-				System.err.println("❌ ERRORE: UI non creata!");
+				System.err.println("ERRORE: UI non creata!");
 				mostraMenuPrincipale();
 				return;
 			}
@@ -463,7 +449,7 @@ public class GameController extends GameApplication {
 				}
 			});
 
-			System.out.println("🎨 Interfaccia grafica inizializzata");
+			System.out.println("Interfaccia grafica inizializzata");
 
 			// ⭐ STEP 8: Inizia la partita
 			iniziaPartita();
@@ -471,17 +457,16 @@ public class GameController extends GameApplication {
 			grafica.utils.ImageLoader.stampaReport();
 
 		} catch (Exception e) {
-			System.err.println("❌ ERRORE CRITICO durante avvio gioco:");
+			System.err.println("ERRORE CRITICO durante avvio gioco:");
 			e.printStackTrace();
 
-			// Fallback sicuro
 			try {
 				stato = null;
 				gameUI = null;
 				FXGL.getGameScene().clearUINodes();
 				mostraMenuPrincipale();
 			} catch (Exception e2) {
-				System.err.println("❌ ERRORE DOPPIO: impossibile recuperare");
+				System.err.println("ERRORE DOPPIO: impossibile recuperare");
 				e2.printStackTrace();
 			}
 		}
@@ -492,7 +477,7 @@ public class GameController extends GameApplication {
 
 		try {
 			// ⭐ STEP 1: Pulisci TUTTA l'UI esistente all'inizio
-			System.out.println("🧹 Pulizia UI esistente...");
+			System.out.println("Pulizia UI esistente...");
 			FXGL.getGameScene().clearUINodes();
 
 			// ⭐ STEP 2: Reset variabili UI
@@ -500,7 +485,7 @@ public class GameController extends GameApplication {
 
 			// ⭐ STEP 3: Verifica prerequisiti
 			if (giocatoriSelezionati == null || giocatoriSelezionati.isEmpty()) {
-				System.err.println("❌ ERRORE: Nessun giocatore selezionato!");
+				System.err.println("ERRORE: Nessun giocatore selezionato!");
 				mostraMenuPrincipale();
 				return;
 			}
@@ -513,20 +498,20 @@ public class GameController extends GameApplication {
 			GameConfig config;
 
 			if (carteNegozioTemp != null && !carteNegozioTemp.isEmpty()) {
-				System.out.println("📦 Caricamento con carte negozio da salvataggio");
+				System.out.println("Caricamento con carte negozio da salvataggio");
 				config = loader.caricaConfigurazione(annoSelezionato, carteNegozioTemp);
-				carteNegozioTemp = null; // Reset dopo l'uso
+				carteNegozioTemp = null;
 			} else {
 				config = loader.caricaConfigurazione(annoSelezionato);
 			}
 
 			if (config == null) {
-				System.err.println("❌ ERRORE: Impossibile caricare configurazione anno " + annoSelezionato);
+				System.err.println("ERRORE: Impossibile caricare configurazione anno " + annoSelezionato);
 				mostraMenuPrincipale();
 				return;
 			}
 
-			System.out.println("📋 Configurazione anno " + annoSelezionato + " caricata");
+			System.out.println("Configurazione anno " + annoSelezionato + " caricata");
 
 			// ⭐ STEP 5: Crea stato di gioco
 			stato = new StatoDiGioco(config, giocatoriSelezionati);
@@ -535,23 +520,23 @@ public class GameController extends GameApplication {
 			if (carteAcquisiteTemp != null && !carteAcquisiteTemp.isEmpty()) {
 				Set<String> carteSet = new HashSet<>(carteAcquisiteTemp);
 				stato.setCarteAcquisiteDaiGiocatori(carteSet);
-				System.out.println("✅ Ripristinate " + carteSet.size() + " carte acquisite");
+				System.out.println("Ripristinate " + carteSet.size() + " carte acquisite");
 				carteAcquisiteTemp = null; // Reset
 			}
 
 			if (stato == null) {
-				System.err.println("❌ ERRORE: Stato di gioco non creato!");
+				System.err.println("ERRORE: Stato di gioco non creato!");
 				mostraMenuPrincipale();
 				return;
 			}
 
 			if (stato.getGiocatori() == null || stato.getGiocatori().isEmpty()) {
-				System.err.println("❌ ERRORE: Stato senza giocatori!");
+				System.err.println("ERRORE: Stato senza giocatori!");
 				mostraMenuPrincipale();
 				return;
 			}
 			
-			System.out.println("\n✅ Gioco avviato!");
+			System.out.println("\nGioco avviato!");
 			System.out.println("   Anno: " + annoSelezionato);
 			System.out.println("   Giocatori: " + giocatoriSelezionati.size());
 
@@ -561,15 +546,15 @@ public class GameController extends GameApplication {
 						+ (g.getCompetenza() != null ? " (" + g.getCompetenza().getNome() + ")" : ""));
 			}
 
-			System.out.println("🏰 Luogo attuale: " + stato.getLuogoAttuale().getNome());
-			System.out.println("👹 Malvagi attivi: " + stato.getMalvagiAttivi().size());
-			System.out.println("🛒 Carte nel mercato: " + stato.getMercato().size());
+			System.out.println("Luogo attuale: " + stato.getLuogoAttuale().getNome());
+			System.out.println("Malvagi attivi: " + stato.getMalvagiAttivi().size());
+			System.out.println("Carte nel mercato: " + stato.getMercato().size());
 
 			// ⭐ STEP 6: Crea interfaccia grafica (stato garantito valido)
 			gameUI = new GameBoardUI(stato);
 
 			if (gameUI == null) {
-				System.err.println("❌ ERRORE: UI non creata!");
+				System.err.println("ERRORE: UI non creata!");
 				mostraMenuPrincipale();
 				return;
 			}
@@ -596,7 +581,7 @@ public class GameController extends GameApplication {
 				}
 			});
 
-			System.out.println("🎨 Interfaccia grafica inizializzata");
+			System.out.println("Interfaccia grafica inizializzata");
 
 			// ⭐ STEP 8: Inizia la partita
 			iniziaPartita();
@@ -604,7 +589,7 @@ public class GameController extends GameApplication {
 			grafica.utils.ImageLoader.stampaReport();
 
 		} catch (Exception e) {
-			System.err.println("❌ ERRORE CRITICO durante avvio gioco:");
+			System.err.println("ERRORE CRITICO durante avvio gioco:");
 			e.printStackTrace();
 
 			// Fallback sicuro
@@ -614,7 +599,7 @@ public class GameController extends GameApplication {
 				FXGL.getGameScene().clearUINodes();
 				mostraMenuPrincipale();
 			} catch (Exception e2) {
-				System.err.println("❌ ERRORE DOPPIO: impossibile recuperare");
+				System.err.println("ERRORE DOPPIO: impossibile recuperare");
 				e2.printStackTrace();
 			}
 		}
@@ -628,7 +613,7 @@ public class GameController extends GameApplication {
 	 * Chiamato quando il gioco viene vinto
 	 */
 	public void onVittoria() {
-		System.out.println("\n🎉 VITTORIA RILEVATA!");
+		System.out.println("\nVITTORIA RILEVATA!");
 
 		ProgressionManager.salvaProgressoVittoria(stato);
 		SaveManager.autosave(stato);
@@ -678,7 +663,7 @@ public class GameController extends GameApplication {
 		SaveManager.salvaPartita(stato, "sconfitta_anno_" + stato.getAnnoCorrente());
 
 		int annoFallito = stato.getAnnoCorrente();
-		String motivoSconfitta = "🌑 Tutti i luoghi sono stati persi!\nI Marchi Neri hanno sopraffatto Hogwarts!";
+		String motivoSconfitta = "Tutti i luoghi sono stati persi!\nI Marchi Neri hanno sopraffatto Hogwarts!";
 
 		// Mostra schermata Game Over
 		FXGL.getGameScene().clearUINodes();
@@ -702,7 +687,7 @@ public class GameController extends GameApplication {
 	 * Riprova lo stesso anno dopo una sconfitta
 	 */
 	private void riprovaSconfittaAnno() {
-		System.out.println("\n🔄 RIPROVA ANNO " + annoSelezionato);
+		System.out.println("\nRIPROVA ANNO " + annoSelezionato);
 
 		// Mantieni gli stessi giocatori e anno
 		// (giocatoriSelezionati e annoSelezionato già impostati)
@@ -722,7 +707,7 @@ public class GameController extends GameApplication {
 	private void avanzaAnnoSuccessivo() {
 		int prossimoAnno = ProgressionManager.calcolaProssimoAnno(stato.getAnnoCorrente());
 
-		System.out.println("\n📖 AVANZAMENTO ANNO " + prossimoAnno);
+		System.out.println("\nAVANZAMENTO ANNO " + prossimoAnno);
 
 		List<Giocatore> giocatoriProssimoAnno = ProgressionManager.preparaGiocatoriProssimoAnno(stato.getGiocatori(),
 				prossimoAnno, stato);
@@ -749,14 +734,10 @@ public class GameController extends GameApplication {
 		if (stato != null) {
 			boolean success = SaveManager.autosave(stato);
 			if (success) {
-				System.out.println("💾 Partita salvata automaticamente!");
+				System.out.println("Partita salvata automaticamente!");
 			}
 		}
 	}
-
-	// ========================================
-	// METODI ORIGINALI (NON MODIFICATI)
-	// ========================================
 
 	public void iniziaPartita() {
 		turnManager = new TurnManager(stato);
@@ -771,7 +752,6 @@ public class GameController extends GameApplication {
 			if (indiceInMano >= 0 && indiceInMano < giocatore.getMano().size()) {
 				Carta carta = giocatore.getMano().get(indiceInMano);
 
-				// ⭐ NUOVO: Mostra messaggio
 				gameUI.getMessagePanel().mostraMessaggio(giocatore.getEroe().getNome() + " gioca: " + carta.getNome(),
 						MessagePanel.TipoMessaggio.GIOCA_CARTA);
 
@@ -793,10 +773,7 @@ public class GameController extends GameApplication {
 							MessagePanel.TipoMessaggio.ACQUISTA_CARTA);
 
 					giocatore.acquistaCarta(stato.getMercato(), carta, stato);
-
-					// ⭐ NUOVO: Gestisci trigger acquisto (Cappello Parlante)
 					gestisciTriggerAcquisto(carta, giocatore);
-
 					stato.rifornisciMercato();
 					gameUI.aggiorna();
 				}
@@ -823,7 +800,7 @@ public class GameController extends GameApplication {
 			// C'è un trigger attivo
 			mostraDialogPosizionamentoCarta(cartaAcquistata, giocatore, tipoTrigger);
 		} else {
-			// Nessun trigger → carta va negli scarti
+			// Nessun trigger in carta va negli scarti
 			giocatore.getScarti().aggiungiCarta(cartaAcquistata);
 		}
 	}
@@ -844,22 +821,22 @@ public class GameController extends GameApplication {
 	            if (inCima) {
 	                // Carta in cima al mazzo
 	                giocatore.getMazzo().getCarte().addFirst(carta);
-	                System.out.println("📚 " + carta.getNome() + " posizionata in cima al mazzo");
+	                System.out.println(carta.getNome() + " posizionata in cima al mazzo");
 	                
 	                if (gameUI != null && gameUI.getMessagePanel() != null) {
 	                    gameUI.getMessagePanel().mostraMessaggio(
-	                        carta.getNome() + " → cima al mazzo",
+	                        carta.getNome() + " in cima al mazzo",
 	                        MessagePanel.TipoMessaggio.INFO
 	                    );
 	                }
 	            } else {
 	                // Carta negli scarti
 	                giocatore.getScarti().aggiungiCarta(carta);
-	                System.out.println("📥 " + carta.getNome() + " posizionata negli scarti");
+	                System.out.println(carta.getNome() + " posizionata negli scarti");
 	                
 	                if (gameUI != null && gameUI.getMessagePanel() != null) {
 	                    gameUI.getMessagePanel().mostraMessaggio(
-	                        carta.getNome() + " → scarti",
+	                        carta.getNome() + " in scarti",
 	                        MessagePanel.TipoMessaggio.INFO
 	                    );
 	                }
@@ -891,22 +868,22 @@ public class GameController extends GameApplication {
 			if (indiceMalvagio >= 0 && indiceMalvagio < stato.getMalvagiAttivi().size()) {
 				Malvagio malvagio = stato.getMalvagiAttivi().get(indiceMalvagio);
 				
-				// ⭐ NUOVO: Verifica se il malvagio può essere attaccato (blocco Voldemort)
+				// Verifica se il malvagio può essere attaccato (blocco Voldemort)
 			    if (!stato.puoAttaccareMalvagio(malvagio)) {
 			        String msg = stato.getMessaggioBloccoVoldemort();
 			        gameUI.getMessagePanel().mostraMessaggio(msg, MessagePanel.TipoMessaggio.ATTACCO);
 			        System.out.println("🚫 " + msg);
-			        return;  // Esci senza attaccare
+			        return;
 			    }
 				
 				if (giocatore.getAttacco() > 0 && !malvagio.getAttaccoassegnato()) {
 					stato.assegnaAttacco(malvagio, 1);
-					// ⭐ NUOVO: Messaggio attacco
+					// Messaggio attacco
 					String msg = giocatore.getEroe().getNome() + " attacca " + malvagio.getNome() + " ("
 							+ (malvagio.getDanno() + 1)+ "/" + malvagio.getVita() + " ❤️)";
 					gameUI.getMessagePanel().mostraMessaggio(msg, MessagePanel.TipoMessaggio.ATTACCO);
 					if (malvagio.getDanno() >= malvagio.getVita() - 1) {
-						// ⭐ NUOVO: Messaggio sconfitta
+						// Messaggio sconfitta
 						gameUI.getMessagePanel().mostraMessaggio("💀 " + malvagio.getNome() + " sconfitto!",
 								MessagePanel.TipoMessaggio.MALVAGIO);
 					}
@@ -917,16 +894,8 @@ public class GameController extends GameApplication {
 						malvagio.setAttaccoassegnato(true);
 					}
 
-					// Fase già richiamata nel metodo applicaAttacchi
-					/*
-					 * if (malvagio.getDanno() >= malvagio.getVita()) {
-					 * stato.sconfiggiMalvagio(malvagio);
-					 * 
-					 * if (!stato.getMazzoMalvagi().isEmpty()) { stato.addMalvagioAttivo(); } }
-					 */
-
 					gameUI.aggiorna();
-					System.out.println("⚔️ Attaccato malvagio: " + malvagio.getNome());
+					System.out.println("Attaccato malvagio: " + malvagio.getNome());
 				}
 				else {
 					String msg = "Non puoi attaccare questo malvagio";
@@ -941,7 +910,7 @@ public class GameController extends GameApplication {
 	 */
 	public void distruggiHorcrux(Horcrux horcrux) {
 		// Messaggio
-		gameUI.getMessagePanel().mostraMessaggio("🔥 " + horcrux.getNome() + " DISTRUTTO!",
+		gameUI.getMessagePanel().mostraMessaggio(horcrux.getNome() + " DISTRUTTO!",
 				MessagePanel.TipoMessaggio.MALVAGIO);
 
 		// Rimuovi da horcrux attivi
@@ -950,7 +919,7 @@ public class GameController extends GameApplication {
 		// Verifica vittoria (tutti horcrux + tutti malvagi)
 		if (stato.isVittoriaPendente()) {
 			Platform.runLater(() -> {
-				gameUI.getMessagePanel().mostraMessaggio("🏆 TUTTI GLI HORCRUX DISTRUTTI!",
+				gameUI.getMessagePanel().mostraMessaggio("TUTTI GLI HORCRUX DISTRUTTI!",
 						MessagePanel.TipoMessaggio.INFO);
 			});
 		}

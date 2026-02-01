@@ -129,7 +129,7 @@ public class CurrentPlayerPanel extends HBox {
         FaseTurno prossimaFase = calcolaProssimaFase();
         
         String nomeProssima = getNomeFase(prossimaFase);
-        nextPhaseButton.setText("▶️ " + nomeProssima);
+        nextPhaseButton.setText(nomeProssima);
     }
     
     private FaseTurno calcolaProssimaFase() {

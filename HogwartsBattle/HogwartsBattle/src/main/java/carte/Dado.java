@@ -78,7 +78,7 @@ public class Dado {
         Effetto effettoSelezionato = opzioniEffetti.get(indiceEffetto);
 
         // ✅ Log migliorato
-        System.out.println("🎲 " + nome + " - Faccia " + (indiceEffetto + 1) + ": " + 
+        System.out.println(nome + " - Faccia " + (indiceEffetto + 1) + ": " + 
                          effettoSelezionato.getType());
 
         EsecutoreEffetti.eseguiEffetto(effettoSelezionato, stato, attivo, null);

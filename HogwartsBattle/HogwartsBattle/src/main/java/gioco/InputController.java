@@ -86,7 +86,7 @@ public class InputController {
 	}
 
 	/**
-	 * NUOVO: Chiede al giocatore di scegliere una carta con contesto dettagliato
+	 * Chiede al giocatore di scegliere una carta con contesto dettagliato
 	 * 
 	 * @param carte          Lista delle carte tra cui scegliere
 	 * @param nomeGiocatore  Nome del giocatore che sta scegliendo
@@ -109,16 +109,16 @@ public class InputController {
 		String titolo = tipoAzione + " - " + nomeGiocatore;
 
 		StringBuilder messaggio = new StringBuilder();
-		messaggio.append("🎴 ").append(nomeGiocatore).append("\n");
-		messaggio.append("━━━━━━━━━━━━━━━━━━━━━━\n\n");
+		messaggio.append(nomeGiocatore).append("\n");
+		messaggio.append("━━━━━━━━━━━━━━━━━━━━━\n\n");
 		messaggio.append("Azione: ").append(tipoAzione).append("\n");
 
 		if (cartaAttivante != null && !cartaAttivante.isEmpty()) {
-			messaggio.append("⚡ Attivato da: ").append(cartaAttivante).append("\n");
+			messaggio.append("Attivato da: ").append(cartaAttivante).append("\n");
 		}
 
 		if (motivazione != null && !motivazione.isEmpty()) {
-			messaggio.append("📋 Motivazione: ").append(motivazione).append("\n");
+			messaggio.append("Motivazione: ").append(motivazione).append("\n");
 		}
 
 		messaggio.append("\nScegli una carta:");
@@ -151,7 +151,7 @@ public class InputController {
 	}
 
 	/**
-	 * Metodo sincrono per scegliere carta (deve essere chiamato sul thread JavaFX)
+	 * Metodo per scegliere carta (deve essere chiamato sul thread JavaFX)
 	 */
 	private static Carta scegliCartaSync(List<Carta> carte, String titolo, String messaggio) {
 		AtomicReference<Carta> risultato = new AtomicReference<>(null);
@@ -232,7 +232,7 @@ public class InputController {
 		}
 		
 		// ScrollPane se ci sono molte carte
-		if (carte.size() > 5) {
+		if (carte.size() > 10) {
 			ScrollPane scrollPane = new ScrollPane(carteBox);
 			scrollPane.setMaxHeight(350);
 			scrollPane.setFitToWidth(true);
@@ -288,7 +288,7 @@ public class InputController {
 	}
 
 	/**
-	 * Metodo sincrono per scegliere carta (deve essere chiamato sul thread JavaFX)
+	 * Metodo per scegliere carta (deve essere chiamato sul thread JavaFX)
 	 */
 	private static Malvagio scegliMalvagioSync(List<Malvagio> carte, String titolo, String messaggio) {
 		AtomicReference<Malvagio> risultato = new AtomicReference<>(null);
@@ -390,7 +390,7 @@ public class InputController {
 
 
 	/**
-	 * Chiede al giocatore di scegliere un effetto tra piÃ¹ opzioni
+	 * Chiede al giocatore di scegliere un effetto tra più opzioni
 	 */
 	public static int scegliEffetto(List<Effetto> effetti, String titolo, String messaggio) {
 		if (effetti == null || effetti.isEmpty()) {
@@ -623,7 +623,7 @@ public class InputController {
 	}
 
 	/**
-	 * Chiede al giocatore di scegliere un giocatore tra piÃ¹ opzioni
+	 * Chiede al giocatore di scegliere un giocatore tra più opzioni
 	 */
 	public static int scegliGiocatore(List<Giocatore> giocatori, String titolo, String messaggio) {
 		if (giocatori == null || giocatori.isEmpty()) {
@@ -962,7 +962,7 @@ public class InputController {
 		HBox buttons = new HBox(15);
 		buttons.setAlignment(Pos.CENTER);
 
-		Button btnOk = new Button("âœ“ CONFERMA");
+		Button btnOk = new Button("CONFERMA");
 		btnOk.setPrefWidth(150);
 		btnOk.setPrefHeight(40);
 		btnOk.setStyle("-fx-background-color: #00AA66; " + "-fx-text-fill: white; " + "-fx-font-size: 14px; "
@@ -977,13 +977,13 @@ public class InputController {
 				stage.close();
 			} else {
 				// Mostra errore
-				infoText.setText("âŒ Devi selezionare esattamente " + quantita + " carta/e! (Selezionate: "
+				infoText.setText("Devi selezionare esattamente " + quantita + " carta/e! (Selezionate: "
 						+ selezionate.size() + ")");
 				infoText.setFill(Color.RED);
 			}
 		});
 
-		Button btnCancel = new Button("âœ— ANNULLA");
+		Button btnCancel = new Button("ANNULLA");
 		btnCancel.setPrefWidth(150);
 		btnCancel.setPrefHeight(40);
 		btnCancel.setStyle("-fx-background-color: #AA0000; " + "-fx-text-fill: white; " + "-fx-font-size: 14px; "
@@ -1002,12 +1002,8 @@ public class InputController {
 		stage.showAndWait();
 	}
 
-	// ============================================
-	// METODI CON CONTESTO DETTAGLIATO (NUOVI)
-	// ============================================
-
 	/**
-	 * NUOVO: Scelta effetto con contesto completo
+	 * Scelta effetto con contesto completo
 	 * 
 	 * @param effetti             Lista effetti tra cui scegliere
 	 * @param nomeGiocatore       Nome del giocatore
@@ -1028,15 +1024,15 @@ public class InputController {
 		String titolo = "Scelta Effetto - " + nomeGiocatore;
 
 		StringBuilder messaggio = new StringBuilder();
-		messaggio.append("💫 ").append(nomeGiocatore).append("\n");
-		messaggio.append("━━━━━━━━━━━━━━━━━━━━━━\n\n");
+		messaggio.append(nomeGiocatore).append("\n");
+		messaggio.append("━━━━━━━━━━━━━━━━━━━━\n\n");
 
 		if (cartaAttivante != null && !cartaAttivante.isEmpty()) {
-			messaggio.append("🎴 Carta: ").append(cartaAttivante).append("\n");
+			messaggio.append("Carta: ").append(cartaAttivante).append("\n");
 		}
 
 		if (descrizioneContesto != null && !descrizioneContesto.isEmpty()) {
-			messaggio.append("📋 ").append(descrizioneContesto).append("\n");
+			messaggio.append(descrizioneContesto).append("\n");
 		}
 
 		messaggio.append("\nScegli quale effetto applicare:");
@@ -1069,7 +1065,7 @@ public class InputController {
 	}
 
 	/**
-	 * NUOVO: Scelta giocatore con contesto completo
+	 * Scelta giocatore
 	 * 
 	 * @param giocatori           Lista giocatori
 	 * @param nomeGiocatoreAttivo Giocatore che sta facendo la scelta
@@ -1092,7 +1088,7 @@ public class InputController {
 
 		StringBuilder messaggio = new StringBuilder();
 		messaggio.append(nomeGiocatoreAttivo).append("\n");
-		messaggio.append("━━━━━━━━━━━━━━━━━━━━━\n\n");
+		messaggio.append("━━━━━━━━━━━━━━━━━━━\n\n");
 		messaggio.append("Azione: ").append(tipoAzione).append("\n");
 
 		if (cartaAttivante != null && !cartaAttivante.isEmpty()) {
@@ -1133,7 +1129,7 @@ public class InputController {
 	}
 
 	/**
-	 * NUOVO: Mostra messaggio con contesto dettagliato
+	 * Mostra messaggio con contesto dettagliato
 	 * 
 	 * @param nomeGiocatore  Nome del giocatore coinvolto
 	 * @param tipoAzione     Tipo di azione/evento
@@ -1146,24 +1142,24 @@ public class InputController {
 		String titolo = tipoAzione + " - " + nomeGiocatore;
 
 		StringBuilder messaggioCompleto = new StringBuilder();
-		messaggioCompleto.append("👤 ").append(nomeGiocatore).append("\n");
-		messaggioCompleto.append("━━━━━━━━━━━━━━━━━━━━━━\n\n");
+		messaggioCompleto.append(nomeGiocatore).append("\n");
+		messaggioCompleto.append("━━━━━━━━━━━━━━━━━━━━\n\n");
 
 		if (cartaAttivante != null && !cartaAttivante.isEmpty()) {
-			messaggioCompleto.append("🎴 Carta: ").append(cartaAttivante).append("\n\n");
+			messaggioCompleto.append("Carta: ").append(cartaAttivante).append("\n\n");
 		}
 
 		messaggioCompleto.append(messaggio);
 
 		if (dettagli != null && !dettagli.isEmpty()) {
-			messaggioCompleto.append("\n\n").append("ℹ️ ").append(dettagli);
+			messaggioCompleto.append("\n\n").append(dettagli);
 		}
 
 		mostraMessaggio(titolo, messaggioCompleto.toString());
 	}
 
 	/**
-	 * NUOVO: Mostra messaggio trigger attivato
+	 * Mostra messaggio trigger attivato
 	 * 
 	 * @param nomeTrigger        Nome del trigger
 	 * @param nomeGiocatore      Giocatore che ha attivato il trigger
@@ -1172,11 +1168,11 @@ public class InputController {
 	 */
 	public static void mostraMessaggioTrigger(String nomeTrigger, String nomeGiocatore, String cartaAttivante,
 			String descrizioneEffetto) {
-		String titolo = "⚡ Trigger Attivato!";
+		String titolo = "Trigger Attivato!";
 
 		StringBuilder messaggio = new StringBuilder();
-		messaggio.append("⚡ TRIGGER ATTIVATO\n");
-		messaggio.append("━━━━━━━━━━━━━━━━━━━━━━\n\n");
+		messaggio.append("TRIGGER ATTIVATO\n");
+		messaggio.append("━━━━━━━━━━━━━━━━━━━━\n\n");
 		messaggio.append("Trigger: ").append(nomeTrigger).append("\n");
 		messaggio.append("Giocatore: ").append(nomeGiocatore).append("\n");
 
@@ -1184,7 +1180,7 @@ public class InputController {
 			messaggio.append("Attivato da: ").append(cartaAttivante).append("\n");
 		}
 
-		messaggio.append("\n💫 Effetto:\n").append(descrizioneEffetto);
+		messaggio.append("\nEffetto:\n").append(descrizioneEffetto);
 
 		mostraMessaggio(titolo, messaggio.toString());
 	}

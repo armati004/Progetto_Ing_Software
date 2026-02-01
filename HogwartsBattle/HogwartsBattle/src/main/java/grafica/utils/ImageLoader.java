@@ -137,7 +137,7 @@ public class ImageLoader {
     
     /**
      * STRATEGIA 2: Path esatto come nei JSON
-     * NON usa path hardcodati - prova il path così com'è
+     * NON usa path hardcoded - prova il path così com'è
      */
     private static Image caricaDaJSON(String originalPath, String cleanPath) {
         if (DEBUG) System.out.println("     Strategia 2: Path dai JSON");

@@ -125,7 +125,7 @@ public class CardButton extends VBox {
     }
     
     private void handleCardClick() {
-        System.out.println("🎮 CardButton clicked: " + carta.getNome() + " (indice: " + indice + ")");
+        System.out.println("CardButton clicked: " + carta.getNome() + " (indice: " + indice + ")");
         clickHandler.onCartaManoClicked(carta, indice);
     }
     

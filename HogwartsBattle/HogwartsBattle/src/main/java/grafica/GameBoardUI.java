@@ -74,7 +74,7 @@ public class GameBoardUI extends StackPane {
             "-fx-border-width: 0 0 3 0;"
         );
         
-        this.annoLabel = new Label("📚 ANNO " + stato.getAnnoCorrente());
+        this.annoLabel = new Label("ANNO " + stato.getAnnoCorrente());
         annoLabel.setTextFill(Color.web("#FFD700"));
         annoLabel.setFont(Font.font("Arial", FontWeight.BOLD, 32));
         annoLabel.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(255, 215, 0, 0.9), 20, 0, 0, 0);");
@@ -85,7 +85,7 @@ public class GameBoardUI extends StackPane {
     
     public void aggiorna() {
         if (annoLabel != null) {
-            annoLabel.setText("📚 ANNO " + stato.getAnnoCorrente());
+            annoLabel.setText("ANNO " + stato.getAnnoCorrente());
         }
         if (statsPanel != null) statsPanel.aggiorna();
         if (boardPanel != null) boardPanel.aggiorna();

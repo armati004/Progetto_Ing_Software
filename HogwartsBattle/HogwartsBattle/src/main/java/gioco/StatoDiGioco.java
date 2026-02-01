@@ -124,38 +124,14 @@ public class StatoDiGioco {
 
 	private void populateDecks(GameConfig config) {
 		// ⭐ Popola Mazzo Hogwarts - FILTRA carte già acquisite
-	    System.out.println("📦 Carte nel config anno " + config.getAnno() + ": " + 
+	    System.out.println("Carte nel config anno " + config.getAnno() + ": " + 
 	                     config.getCarteNegozioId().size());
-	    System.out.println("📦 Carte già acquisite: " + carteAcquisiteDaiGiocatori.size());
+	    System.out.println("Carte già acquisite: " + carteAcquisiteDaiGiocatori.size());
 	    
 	    int carteAggiunte = 0;
 	    int carteFiltrate = 0;
 	    
-	 // ⭐ FILTRA carte già acquisite
-	    /*if (config.getCarteNegozioId() != null) {
-	        for (String id : config.getCarteNegozioId()) {
-	            // ⭐ Salta se già acquisita
-	            if (carteAcquisiteDaiGiocatori != null && 
-	                carteAcquisiteDaiGiocatori.contains(id)) {
-	                System.out.println("  ⏭️ Carta già acquisita, skip: " + id);
-	                continue;
-	            }
-	            
-	            try {
-	                Carta carta = CardFactory.creaCarta(id);
-	                if (carta != null) {
-	                    mazzoNegozio.add(carta);
-	                }
-	            } catch (Exception e) {
-	                System.err.println("⚠️ Carta non trovata: " + id);
-	            }
-	        }
-	        
-	        Collections.shuffle(mazzoNegozio);
-	        System.out.println("✅ Negozio: " + mazzoNegozio.size() + " carte");
-	    }*/
-	    
-	    System.out.println("📦 Carte negozio da caricare: " + config.getCarteNegozioId().size());
+	    System.out.println("Carte negozio da caricare: " + config.getCarteNegozioId().size());
 	    
 	    if (config.getCarteNegozioId() != null) {
 	        for (String id : config.getCarteNegozioId()) {
@@ -166,11 +142,11 @@ public class StatoDiGioco {
 	        }
 	        
 	        Collections.shuffle(mazzoNegozio);
-	        System.out.println("✅ Negozio caricato: " + mazzoNegozio.size() + " carte");
+	        System.out.println(" Negozio caricato: " + mazzoNegozio.size() + " carte");
 	    }
 	    
-	    System.out.println("📦 Carte aggiunte al negozio: " + carteAggiunte);
-	    System.out.println("📦 Carte filtrate (già acquisite): " + carteFiltrate);
+	    System.out.println("Carte aggiunte al negozio: " + carteAggiunte);
+	    System.out.println("Carte filtrate (già acquisite): " + carteFiltrate);
 	    
 	    Collections.shuffle(mazzoNegozio);
 
@@ -201,33 +177,32 @@ public class StatoDiGioco {
 	                Luogo luogo = LocationFactory.creaLuogo(id);
 	                listaLuoghi.add(luogo);
 	            } catch (Exception e) {
-	                System.err.println("⚠️ Errore caricamento luogo: " + id);
+	                System.err.println("Errore caricamento luogo: " + id);
 	            }
 	        }
 	        
 	        if (!listaLuoghi.isEmpty()) {
 	            luogoAttuale = listaLuoghi.getFirst();
-	            System.out.println("🏰 Luogo iniziale: " + luogoAttuale.getNome());
+	            System.out.println("Luogo iniziale: " + luogoAttuale.getNome());
 	        }
 	    }
 
-	 // ⭐ HORCRUX (Anno 7)
+	 // HORCRUX (Anno 7)
 	    if (hasHorcruxes && config.getHorcruxId() != null && !config.getHorcruxId().isEmpty()) {
-	        System.out.println("🔮 Caricamento Horcrux...");
+	        System.out.println("Caricamento Horcrux...");
 	        
 	        for (String id : config.getHorcruxId()) {
 	            try {
 	                Horcrux horcrux = HorcruxFactory.creaHorcrux(id);
 	                mazzoHorcrux.add(horcrux);
-	                System.out.println("  ✓ Horcrux aggiunto: " + horcrux.getNome());
+	                System.out.println("Horcrux aggiunto: " + horcrux.getNome());
 	            } catch (Exception e) {
-	                System.err.println("  ⚠️ Errore caricamento horcrux: " + id);
+	                System.err.println("Errore caricamento horcrux: " + id);
 	                e.printStackTrace();
 	            }
 	        }
 	        
-	        Collections.shuffle(mazzoHorcrux);
-	        System.out.println("🔮 Totale Horcrux nel mazzo: " + mazzoHorcrux.size());
+	        System.out.println("Totale Horcrux nel mazzo: " + mazzoHorcrux.size());
 	    }
 	}
 
@@ -264,14 +239,14 @@ public class StatoDiGioco {
 		
 		if(annoCorrente >= 3) {
 		    for(Giocatore g : giocatori) {
-		        // ✅ Controlla che l'eroe abbia triggers prima di iterare
+		        //  Controlla che l'eroe abbia triggers prima di iterare
 		        if(g.getEroe().getTriggers() != null) {
 		            for(Trigger t : g.getEroe().getTriggers()) {
 		                gestoreTrigger.registraTrigger(t.getType(), t.getEffectToExecute(), g.getEroe(), t.getDurata());
 		            }
 		        }
 		        if(annoCorrente >= 6) {
-		            // ✅ Controlla che la competenza esista e abbia triggers
+		            //  Controlla che la competenza esista e abbia triggers
 		            if(g.getCompetenza() != null && g.getCompetenza().getTriggers() != null) {
 		                for(Trigger t : g.getCompetenza().getTriggers()) {
 		                    gestoreTrigger.registraTrigger(t.getType(), t.getEffectToExecute(), g.getEroe(), t.getDurata());
@@ -283,16 +258,16 @@ public class StatoDiGioco {
 	}
 
 	private void caricaDadi() {
-		System.out.println("🎲 Caricamento dadi delle casate...");
+		System.out.println("Caricamento dadi delle casate...");
 
 		try {
 			Map<String, Dado> dadiCasate = DiceFactory.creaDadiCasate();
 			this.dadi.putAll(dadiCasate);
 
-			System.out.println("✅ Caricati " + dadiCasate.size() + " dadi");
+			System.out.println("Caricati " + dadiCasate.size() + " dadi");
 
 		} catch (Exception e) {
-			System.err.println("⚠️ Errore nel caricamento dei dadi: " + e.getMessage());
+			System.err.println("Errore nel caricamento dei dadi: " + e.getMessage());
 			e.printStackTrace();
 		}
 	}
@@ -360,13 +335,10 @@ public class StatoDiGioco {
 	public void fineTurno() {
 		Giocatore g = getGiocatori().get(giocatoreCorrente);
 
-		// 1. Trigger Fine Turno
-		// triggerManager.fire(TriggerType.ON_TURN_END, this, p);
-
-		// 2. Pulizia EffectManager
+		// 1. Pulizia EffectManager
 		gestoreEffetti.fineTurno();
 
-		// 3. Reset del Giocatore (Scarta mano, risorse a 0, pesca 5)
+		// 2. Reset del Giocatore (Scarta mano, risorse a 0, pesca 5)
 		if (!g.getMano().isEmpty()) {
 			while (!g.getMano().isEmpty()) {
 				g.scartaCarta(g.getMano().get(0));
@@ -388,18 +360,13 @@ public class StatoDiGioco {
 			}
 		}
 
-		// 4. Reset Competenze
-		/*
-		 * if (p.getProficiency() != null) { p.getProficiency().refreshTurn(); }
-		 */
-
-		// 5. Riempi Mercato (nel caso ci fossero buchi non riempiti)
+		// 3. Riempi Mercato (nel caso ci fossero buchi non riempiti)
 		rifornisciMercato();
 
-		// 6. Pulisci la lista degli alleati giocati in questo turno
+		// 4. Pulisci la lista degli alleati giocati in questo turno
 		alleatiGiocatiInQuestoTurno.clear();
 
-		// 7. Passa al prossimo giocatore
+		// 5. Passa al prossimo giocatore
 		giocatoreCorrente += 1;
 
 		if (giocatoreCorrente == giocatori.size()) {
@@ -411,7 +378,7 @@ public class StatoDiGioco {
 
 	/**
 	 * Verifica le condizioni di vittoria VITTORIA: Tutti i malvagi sconfitti (+
-	 * horcrux se anno >= 4)
+	 * horcrux se anno = 7)
 	 * 
 	 * Quando la vittoria viene rilevata, notifica automaticamente il GameController
 	 * per mostrare la schermata di vittoria
@@ -425,14 +392,11 @@ public class StatoDiGioco {
 			if (malvagiSconfitti && horcruxDistrutto) {
 				System.out.println("\n🎉 VITTORIA! Concludi il turno per continuare");
 				setVittoriaPendente(true);
-				// ⭐ NON chiamare onVittoria() qui
-				// ⭐ NON impostare gameOver qui
 			}
 		} else {
 			if (malvagiSconfitti) {
 				System.out.println("\n🎉 VITTORIA! Concludi il turno per continuare");
 				setVittoriaPendente(true);
-				// ⭐ NON chiamare onVittoria() qui
 			}
 		}
 	}
@@ -446,7 +410,7 @@ public class StatoDiGioco {
 	 */
 	private void verificaCondizioneSconfitta() {
 		if (listaLuoghi == null || listaLuoghi.isEmpty()) {
-			System.out.println("⚠️ Lista luoghi vuota o null!");
+			System.out.println("Lista luoghi vuota o null!");
 			return;
 		}
 
@@ -455,7 +419,7 @@ public class StatoDiGioco {
 		int luoghiTotali = listaLuoghi.size();
 
 		// Debug: Stampa stato luoghi
-		System.out.println("\n🔍 Verifica Condizione Sconfitta:");
+		System.out.println("\nVerifica Condizione Sconfitta:");
 		for (int i = 0; i < listaLuoghi.size(); i++) {
 			Luogo luogo = listaLuoghi.get(i);
 			int marchi = luogo.getNumeroMarchiNeri();
@@ -463,7 +427,7 @@ public class StatoDiGioco {
 			boolean perso = marchi >= max;
 
 			System.out.println("  Luogo " + (i + 1) + ": " + luogo.getNome());
-			System.out.println("    Marchi: " + marchi + "/" + max + " - " + (perso ? "❌ PERSO" : "✅ OK"));
+			System.out.println("    Marchi: " + marchi + "/" + max + " - " + (perso ? "PERSO" : " OK"));
 
 			if (perso) {
 				luoghiPersi++;
@@ -474,23 +438,23 @@ public class StatoDiGioco {
 
 		// Sconfitta: Tutti i luoghi persi
 		if (luoghiPersi >= luoghiTotali) {
-			System.out.println("\n💀 ========================================");
-			System.out.println("💀 ===== SCONFITTA! =====");
-			System.out.println("💀 ========================================");
-			System.out.println("❌ Tutti i luoghi sono stati persi!");
-			System.out.println("🌑 I Marchi Neri hanno sopraffatto Hogwarts!");
-			System.out.println("💀 ========================================\n");
+			System.out.println("\n========================================");
+			System.out.println("===== SCONFITTA! =====");
+			System.out.println("========================================");
+			System.out.println("Tutti i luoghi sono stati persi!");
+			System.out.println("I Marchi Neri hanno sopraffatto Hogwarts!");
+			System.out.println("========================================\n");
 
 			setVictory(false);
 			setGameOver(true);
 
 			// ⭐ FONDAMENTALE: Notifica GameController
 			javafx.application.Platform.runLater(() -> {
-				System.out.println("📢 Notifica GameController della sconfitta...");
+				System.out.println("Notifica GameController della sconfitta...");
 				if (grafica.GameController.getInstance() != null) {
 					grafica.GameController.getInstance().onSconfitta();
 				} else {
-					System.err.println("❌ GameController.getInstance() è null!");
+					System.err.println("GameController.getInstance() è null!");
 				}
 			});
 		}
@@ -502,11 +466,11 @@ public class StatoDiGioco {
 	 */
 	public void passaAlProssimoLuogo() {
 		if (luogoAttuale == null) {
-			System.out.println("⚠️ Nessun luogo attuale!");
+			System.out.println("Nessun luogo attuale!");
 			return;
 		}
 
-		System.out.println("\n💀 LUOGO PERSO: " + luogoAttuale.getNome());
+		System.out.println("\nLUOGO PERSO: " + luogoAttuale.getNome());
 		System.out.println(
 				"   Marchi Neri: " + luogoAttuale.getNumeroMarchiNeri() + "/" + luogoAttuale.getMarchiNeriMax());
 
@@ -514,7 +478,7 @@ public class StatoDiGioco {
 		int indiceLuogoAttuale = listaLuoghi.indexOf(luogoAttuale);
 
 		if (indiceLuogoAttuale == -1) {
-			System.out.println("⚠️ Luogo attuale non trovato nella lista!");
+			System.out.println("Luogo attuale non trovato nella lista!");
 			return;
 		}
 
@@ -522,11 +486,11 @@ public class StatoDiGioco {
 		if (indiceLuogoAttuale < listaLuoghi.size() - 1) {
 			// Passa al prossimo luogo
 			luogoAttuale = listaLuoghi.get(indiceLuogoAttuale + 1);
-			System.out.println("🏰 Nuovo luogo: " + luogoAttuale.getNome());
+			System.out.println("Nuovo luogo: " + luogoAttuale.getNome());
 			System.out.println(
 					"   Marchi Neri: " + luogoAttuale.getNumeroMarchiNeri() + "/" + luogoAttuale.getMarchiNeriMax());
 		} else {
-			System.out.println("⚠️ Era l'ultimo luogo!");
+			System.out.println("Era l'ultimo luogo!");
 		}
 
 		// Verifica se tutti i luoghi sono persi
@@ -578,9 +542,9 @@ public class StatoDiGioco {
 	        .count();
 	    
 	    if (malvagiRimasti == 1) {
-	        return "⚠️ Non puoi attaccare Voldemort! Sconfiggi prima l'altro malvagio!";
+	        return "Non puoi attaccare Voldemort! Sconfiggi prima l'altro malvagio!";
 	    } else {
-	        return "⚠️ Non puoi attaccare Voldemort! Sconfiggi prima gli altri " + malvagiRimasti + " malvagi!";
+	        return "Non puoi attaccare Voldemort! Sconfiggi prima gli altri " + malvagiRimasti + " malvagi!";
 	    }
 	}
 
@@ -589,7 +553,7 @@ public class StatoDiGioco {
 	 * verifica vittoria
 	 */
 	public void sconfiggiMalvagio(Malvagio m) {
-		System.out.println("💀 " + m.getNome() + " è stato sconfitto!");
+		System.out.println("" + m.getNome() + " è stato sconfitto!");
 		m.defeat(this, giocatori.get(giocatoreCorrente));
 
 		malvagiAttivi.remove(m);
@@ -609,7 +573,7 @@ public class StatoDiGioco {
 	 * verifica vittoria
 	 */
 	public void distruggiHorcrux(Horcrux h) {
-		System.out.println("💀 Horcrux distrutto: " + h.getNome());
+		System.out.println("Horcrux distrutto: " + h.getNome());
 		
 		h.applicaRicompensa(this, this.getGiocatori().get(giocatoreCorrente));
 
@@ -621,7 +585,7 @@ public class StatoDiGioco {
 		gestoreTrigger.rimuoviTrigger(h);
 		gestoreEffetti.rimuoviEffetto(h);
 
-		// ⭐ Verifica condizione vittoria
+		// Verifica condizione vittoria
 		verificaCondizioneVittoria();
 	}
 
@@ -647,7 +611,7 @@ public class StatoDiGioco {
 		int attuali = attacchiAssegnati.getOrDefault(malvagio, 0);
 		attacchiAssegnati.put(malvagio, attuali + quantita);
 
-		System.out.println("⚔️ Assegnati " + quantita + " attacchi a " + malvagio.getNome() + " (Totale: "
+		System.out.println("Assegnati " + quantita + " attacchi a " + malvagio.getNome() + " (Totale: "
 				+ (attuali + quantita) + ")");
 	}
 
@@ -663,7 +627,7 @@ public class StatoDiGioco {
 	 */
 	public void resetAttacchi() {
 		attacchiAssegnati.clear();
-		System.out.println("🔄 Attacchi resettati");
+		System.out.println("Attacchi resettati");
 	}
 
 	/**
@@ -679,12 +643,12 @@ public class StatoDiGioco {
 			// Applica danno
 			malvagio.setDanno(malvagio.getDanno() + attacchi);
 
-			System.out.println("⚔️ " + malvagio.getNome() + " riceve " + attacchi + " danni " + "(Vita: "
+			System.out.println(malvagio.getNome() + " riceve " + attacchi + " danni " + "(Vita: "
 					+ malvagio.getVita() + ")");
 
 			// Se sconfitto, aggiungilo alla lista di rimozione
 			if (malvagio.getDanno() >= malvagio.getVita()) {
-				System.out.println("💀 " + malvagio.getNome() + " è stato sconfitto!");
+				System.out.println("" + malvagio.getNome() + " è stato sconfitto!");
 				malvagiDaRimuovere.add(malvagio);
 
 				// Trigger NEMICO_SCONFITTO
@@ -712,7 +676,7 @@ public class StatoDiGioco {
 	 */
 	public void segnaCartaAcquisita(String idCarta) {
 	    carteAcquisiteDaiGiocatori.add(idCarta);
-	    System.out.println("  📌 Carta acquisita permanentemente: " + idCarta);
+	    System.out.println("Carta acquisita permanentemente: " + idCarta);
 	}
 
 	public int getTotaleLuoghi() {
@@ -859,7 +823,6 @@ public class StatoDiGioco {
 		return luoghiConquistati;
 	}
 
-	// Aggiungi metodo per ottenere un dado specifico
 	public Dado getDado(String nome) {
 		return dadi.get(nome);
 	}

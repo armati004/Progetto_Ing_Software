@@ -788,7 +788,7 @@ public class DialogHelper {
     }
     
     // ==========================================
-    // METODI CONTESTUALI (NUOVI)
+    // METODI CONTESTUALI
     // ==========================================
     
     /**
@@ -818,7 +818,7 @@ public class DialogHelper {
                           "Opzione 2: " + opzione2;
         
         mostraScelta("Scelta - " + nomeGiocatore, header, contenuto, 
-                    "✓ Opzione 1", "✓ Opzione 2", callback, DialogStyle.EFFETTO());
+                    "Opzione 1", "Opzione 2", callback, DialogStyle.EFFETTO());
     }
     
     /**
@@ -835,7 +835,7 @@ public class DialogHelper {
             String descrizioneEffetto,
             Runnable callback
     ) {
-        String header = "⚡ Trigger attivato!";
+        String header = "Trigger attivato!";
         String contenuto = "Trigger: " + nomeTrigger + "\n" +
                           "Attivato da: " + nomeAttivante + "\n\n" +
                           "━━━━━━━━━━━━━━━━━━━━━━\n\n" +
@@ -864,7 +864,7 @@ public class DialogHelper {
             String attivante,
             String risultato
     ) {
-        String header = "💫 Effetto applicato";
+        String header = "Effetto applicato";
         String contenuto = "Effetto: " + nomeEffetto + "\n" +
                           "Attivato da: " + attivante + "\n" +
                           "Bersaglio: " + bersaglio + "\n\n" +
@@ -891,15 +891,15 @@ public class DialogHelper {
             String descrizoneTrigger,
             Consumer<Boolean> callback
     ) {
-        String header = "📍 Posizionamento carta acquistata";
+        String header = "Posizionamento carta acquistata";
         String contenuto = "Hai acquistato: " + nomeCarta + " (" + tipoCarta + ")\n\n" +
                           "━━━━━━━━━━━━━━━━━━━━━━\n\n" +
-                          "⚡ Trigger attivo: " + nomeTrigger + "\n" +
+                          "Trigger attivo: " + nomeTrigger + "\n" +
                           descrizoneTrigger + "\n\n" +
                           "Dove vuoi posizionare la carta?";
         
         mostraScelta("Posizionamento - " + nomeCarta, header, contenuto,
-                    "📚 In cima al mazzo", "📥 Negli scarti", callback, DialogStyle.TRIGGER());
+                    "In cima al mazzo", "Negli scarti", callback, DialogStyle.TRIGGER());
     }
     
     /**
@@ -916,7 +916,7 @@ public class DialogHelper {
     ) {
         String header = nomeGiocatore + ", conferma la tua azione:";
         mostraScelta("Conferma - " + nomeGiocatore, header, domanda, 
-                    "✓ Sì", "✗ No", callback, DialogStyle.SCELTA());
+                    "Sì", "No", callback, DialogStyle.SCELTA());
     }
     
     // ==========================================

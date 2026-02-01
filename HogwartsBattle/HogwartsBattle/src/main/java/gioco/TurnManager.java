@@ -25,7 +25,7 @@ public class TurnManager {
         giocatore.registraTriggersInMano(stato);
         
         System.out.println("\n" + "=".repeat(60));
-        System.out.println("🎯 TURNO DI: " + giocatore.getEroe().getNome());
+        System.out.println("TURNO DI: " + giocatore.getEroe().getNome());
         System.out.println("=".repeat(60));
         
         stato.resetAttacchi();
@@ -59,7 +59,7 @@ public class TurnManager {
                 break;
         }
         
-        // ⭐ Aggiorna UI dopo ogni fase automatica
+        // Aggiorna UI dopo ogni fase automatica
         aggiornaUI();
     }
     
@@ -76,7 +76,7 @@ public class TurnManager {
                 });
             }
         } catch (Exception e) {
-            System.err.println("⚠️ Errore aggiornamento UI: " + e.getMessage());
+            System.err.println("Errore aggiornamento UI: " + e.getMessage());
         }
     }
     
@@ -84,12 +84,12 @@ public class TurnManager {
      * FASE 1: Rivela e applica carta Arti Oscure
      */
     private void eseguiFaseArtiOscure() {
-        System.out.println("\n🌑 === FASE ARTI OSCURE ===");
+        System.out.println("\n=== FASE ARTI OSCURE ===");
         
         ArteOscura arteOscura = stato.pescaArteOscura();
         
         if (arteOscura != null) {
-            System.out.println("📜 Rivelata: " + arteOscura.getNome());
+            System.out.println("Rivelata: " + arteOscura.getNome());
             System.out.println("   " + arteOscura.getDescrizione());
             
             Giocatore giocatoreAttivo = stato.getGiocatori().get(stato.getGiocatoreCorrente());
@@ -99,12 +99,12 @@ public class TurnManager {
 				stato.getGestoreTrigger().attivaTrigger(TipoTrigger.RIVELA_MORSMORDRE_O_MALVAGIO, stato, giocatoreAttivo);
 			}
             
-            // ⭐ IMPORTANTE: Aggiorna l'ultima carta giocata
+           // Aggiorna l'ultima carta giocata
            // stato.setUltimaArteOscuraGiocata(arteOscura);
             
-            System.out.println("✓ Effetto Arti Oscure applicato");
+            System.out.println("Effetto Arti Oscure applicato");
         } else {
-            System.out.println("⚠️ Nessuna carta Arti Oscure disponibile");
+            System.out.println("Nessuna carta Arti Oscure disponibile");
         }
         
         prossimaFase();
@@ -115,12 +115,12 @@ public class TurnManager {
      * ⭐ FIX: Ora applica VERAMENTE gli effetti
      */
     private void eseguiFaseMalvagi() {
-        System.out.println("\n👹 === FASE MALVAGI ===");
+        System.out.println("\n=== FASE MALVAGI ===");
 
         List<Malvagio> malvagi = stato.getMalvagiAttivi();
 
         if (malvagi.isEmpty()) {
-            System.out.println("✓ Nessun malvagio attivo");
+            System.out.println("Nessun malvagio attivo");
             if(!stato.getMazzoMalvagi().isEmpty()) {
             	stato.addMalvagioAttivo();
             	Giocatore giocatoreAttivo = stato.getGiocatori().get(stato.getGiocatoreCorrente());
@@ -129,7 +129,7 @@ public class TurnManager {
                     System.out.println("  • " + malvagio.getNome() +
                                      " (" + malvagio.getDanno() + "⚔️/" + malvagio.getVita() + " ❤️)");
 
-                    // ⭐ FIX: Applica l'effetto del malvagio
+                    // Applica l'effetto del malvagio
                     if(!malvagio.getBloccoAbilita()) {
                     	malvagio.applicaEffetto(stato, giocatoreAttivo);
                     }
@@ -149,7 +149,7 @@ public class TurnManager {
                 System.out.println("  • " + malvagio.getNome() +
                                  " (" + malvagio.getDanno() + "⚔️/" + malvagio.getVita() + " ❤️)");
 
-                // ⭐ FIX: Applica l'effetto del malvagio
+                // Applica l'effetto del malvagio
                 if(!malvagio.getBloccoAbilita()) {
                 	malvagio.applicaEffetto(stato, giocatoreAttivo);
                 }
@@ -179,7 +179,7 @@ public class TurnManager {
         List<Horcrux> horcruxAttivi = stato.getHorcruxAttivi();
         
         if (horcruxAttivi.isEmpty()) {
-            System.out.println("✓ Nessun Horcrux attivo");
+            System.out.println("Nessun Horcrux attivo");
         } else {
             System.out.println("Horcrux attivi: " + horcruxAttivi.size());
             
@@ -262,7 +262,7 @@ public class TurnManager {
             
             stato.getGiocatori().get(prossimoGiocatore).registraTriggersInMano(stato);
             
-            System.out.println("\n✓ Turno completato");
+            System.out.println("\nTurno completato");
             
             iniziaTurno();
         }

@@ -26,13 +26,12 @@ public class GameSaveData {
 	private List<String> carteNegozioRimaste;
 
 	/**
-	 * Costruttore vuoto per Gson
+	 * Costruttore vuoto per Gson serve quando si caricano i dati dal JSON
 	 */
 	public GameSaveData() {
 	}
 
 	/**
-	 * Costruttore completo
 	 */
 	public GameSaveData(int annoCorrente, int numeroGiocatori, List<PlayerSaveData> giocatori, int giocatoreCorrente,
 			boolean vittoriaUltimaPartita, String nomePartita, List<String> carteAcquisite) {

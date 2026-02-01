@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import carte.Luogo;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.lang.reflect.Type;
@@ -39,13 +40,13 @@ public class LocationFactory {
 	 * Carica i luoghi da un file JSON.
 	 */
 	private static void caricaLuoghi(String nomeFile) {
-		try (Reader reader = new InputStreamReader(
-				LocationFactory.class.getClassLoader().getResourceAsStream("json/" + nomeFile))) {
-
-			if (reader == null) {
-				System.err.println("⚠️ File non trovato: json/" + nomeFile);
-				return;
-			}
+		InputStream is = LocationFactory.class.getClassLoader().getResourceAsStream("json/" + nomeFile);
+    	if (is == null) {
+    	    System.err.println("File non trovato: json/" + nomeFile);
+    	    return;
+    	}
+		
+		try (Reader reader = new InputStreamReader(is)) {
 
 			Gson gson = new Gson();
 
@@ -100,36 +101,6 @@ public class LocationFactory {
 		return new Luogo(data.getNome(), data.getId(), data.getClasse(), data.getDescrizione(), data.getCosto(),
 				data.getPathImmagine(), data.getEffetti(), data.getTriggers(), data.getNumeroMarchiNeri(),
 				data.getNDarkEvents(), data.getMarchiNeriMax(), data.getEffettoEntrata()); // Determina il numero giocatori dalla versione;
-	}
-
-	/**
-	 * Determina il numero di giocatori supportato dal luogo. Alcuni luoghi hanno
-	 * versioni diverse per 2-3 o 4-5 giocatori.
-	 */
-	private static int determinePlayerCount(String idLuogo) {
-		// Se l'ID contiene indicatori di player count, estraili
-		// Altrimenti usa il default (qualsiasi numero)
-		if (idLuogo.contains("_2-3")) {
-			return 3; // Max 3 giocatori
-		} else if (idLuogo.contains("_4-5")) {
-			return 5; // Max 5 giocatori
-		}
-		return 5; // Default: supporta tutti i player count
-	}
-
-	/**
-	 * Ottiene tutti i luoghi di un anno specifico.
-	 * 
-	 * @param anno L'anno del gioco (1-7)
-	 * @return Lista degli ID dei luoghi per quell'anno
-	 */
-	public static List<String> getLuoghiPerAnno(int anno) {
-		String chiaveAnno = "gioco" + anno;
-
-		// Questo richiederebbe di mantenere una mappa separata
-		// Per ora restituiamo una lista vuota
-		// TODO: Implementare se necessario
-		return List.of();
 	}
 
 	/**

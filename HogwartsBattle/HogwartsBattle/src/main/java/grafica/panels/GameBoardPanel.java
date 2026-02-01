@@ -73,7 +73,7 @@ public class GameBoardPanel extends HBox {
         mazzoMalvagiBox.setAlignment(Pos.CENTER);
         mazzoMalvagiBox.setPrefHeight(120);
         
-        Label malvagiTitle = new Label("👹 MAZZO MALVAGI");
+        Label malvagiTitle = new Label("MAZZO MALVAGI");
         malvagiTitle.setFont(Font.font("Arial", FontWeight.BOLD, 16));
         malvagiTitle.setTextFill(Color.web("#FF6666"));
         
@@ -104,7 +104,7 @@ public class GameBoardPanel extends HBox {
         mazzoArtiOscureBox.setAlignment(Pos.CENTER);
         mazzoArtiOscureBox.setPrefWidth(150);
         
-        Label artiTitle = new Label("🌑 ARTI OSCURE");
+        Label artiTitle = new Label("ARTI OSCURE");
         artiTitle.setFont(Font.font("Arial", FontWeight.BOLD, 11));
         artiTitle.setTextFill(Color.web("#9966FF"));
         
@@ -120,7 +120,7 @@ public class GameBoardPanel extends HBox {
         ultimaArtiOscureBox.setPadding(new Insets(10));
         ultimaArtiOscureBox.setAlignment(Pos.TOP_CENTER);
         
-        Label ultimaTitle = new Label("📜 ULTIMA CARTA");
+        Label ultimaTitle = new Label("ULTIMA CARTA");
         ultimaTitle.setFont(Font.font("Arial", FontWeight.BOLD, 16));
         ultimaTitle.setTextFill(Color.web("#9966FF"));
         ultimaArtiOscureBox.getChildren().add(ultimaTitle);
@@ -134,8 +134,6 @@ public class GameBoardPanel extends HBox {
         descrArtiOscureContainer.setPadding(new Insets(10));
         descrArtiOscureContainer.setAlignment(Pos.CENTER);
         aggiornaArtiOscure();
-        //ultimaArtiOscureBox.getChildren().addAll(imageArtiOscureContainer, descrArtiOscureContainer);
-        
         
         HBox.setHgrow(ultimaArtiOscureBox, Priority.ALWAYS);
         artiRow.getChildren().addAll(mazzoArtiOscureBox, ultimaArtiOscureBox);
@@ -148,7 +146,7 @@ public class GameBoardPanel extends HBox {
             horcruxBox.setAlignment(Pos.CENTER);
             horcruxBox.setPrefWidth(160);
             
-            Label horcruxTitle = new Label("💀 HORCRUX");
+            Label horcruxTitle = new Label("HORCRUX");
             horcruxTitle.setFont(Font.font("Arial", FontWeight.BOLD, 12));
             horcruxTitle.setTextFill(Color.web("#00FF00"));
             horcruxBox.getChildren().add(horcruxTitle);
@@ -162,7 +160,7 @@ public class GameBoardPanel extends HBox {
         malvagiAttiviBox.setPadding(new Insets(10));
         malvagiAttiviBox.setAlignment(Pos.TOP_CENTER);
         
-        Label malvagiTitle = new Label("⚔️ MALVAGI ATTIVI");
+        Label malvagiTitle = new Label("MALVAGI ATTIVI");
         malvagiTitle.setFont(Font.font("Arial", FontWeight.BOLD, 14));
         malvagiTitle.setTextFill(Color.web("#FF6666"));
         malvagiTitle.setMaxWidth(Double.MAX_VALUE);
@@ -178,7 +176,7 @@ public class GameBoardPanel extends HBox {
     private VBox creaDestra() {
         VBox v = new VBox(10);
         
-        Label mercatoTitle = new Label("🛒 MERCATO HOGWARTS");
+        Label mercatoTitle = new Label("MERCATO HOGWARTS");
         mercatoTitle.setFont(Font.font("Arial", FontWeight.BOLD, 16));
         mercatoTitle.setTextFill(Color.web("#FFD700"));
         mercatoTitle.setMaxWidth(Double.MAX_VALUE);
@@ -476,7 +474,6 @@ public class GameBoardPanel extends HBox {
                     }
                 }
                 
-                // ... (Codice esistente per caricare i testi nel descrArtiOscureContainer) ...
                 Label nome = new Label(ultima.getNome());
                 nome.setFont(Font.font("Arial", FontWeight.BOLD, 14));
                 nome.setTextFill(Color.WHITE);
@@ -491,17 +488,10 @@ public class GameBoardPanel extends HBox {
                 
                 descrArtiOscureContainer.getChildren().addAll(nome, desc);
                 
-                // --- MODIFICA QUI ---
-                
-                // Creiamo un contenitore orizzontale temporaneo
                 HBox rigaContenuto = new HBox(10); // 10 è lo spazio tra immagine e descrizione
                 rigaContenuto.setAlignment(Pos.CENTER); // Centra il contenuto
                 
-                // Aggiungiamo i due container (immagine e descrizione) dentro l'HBox
                 rigaContenuto.getChildren().addAll(imageArtiOscureContainer, descrArtiOscureContainer);
-                
-                // Aggiungiamo l'HBox al contenitore principale (che è verticale)
-                // Risultato: Titolo (sopra) -> HBox con Immagine + Descrizione (sotto)
                 ultimaArtiOscureBox.getChildren().add(rigaContenuto);
                 
             }

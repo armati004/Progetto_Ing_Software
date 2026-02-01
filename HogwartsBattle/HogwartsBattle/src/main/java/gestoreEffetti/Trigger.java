@@ -13,7 +13,7 @@ public class Trigger {
 	private List<Effetto> effectToExecute;
 	private BersaglioEffetto target;
 	
-	// ⭐ FIX: Supporta sia "qta-quorum" che "qtaQuorum" nei JSON
+	// FIX: Supporta sia "qta-quorum" che "qtaQuorum" nei JSON
 	@SerializedName(value = "qta-quorum", alternate = {"qtaQuorum"})
 	private Integer qtaQuorum;
 	

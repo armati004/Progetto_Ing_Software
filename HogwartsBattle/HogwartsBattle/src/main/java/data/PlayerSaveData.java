@@ -7,7 +7,6 @@ public class PlayerSaveData {
     private String nomeEroe;
     private String idCompetenza;
     
-    // ⭐ NUOVO: Salva ID delle carte nel mazzo
     private List<String> carteNelMazzo;
     
     public PlayerSaveData() {
@@ -35,7 +34,6 @@ public class PlayerSaveData {
         this.idCompetenza = idCompetenza;
     }
     
-    // ⭐ NUOVO: Getter/Setter carte
     public List<String> getCarteNelMazzo() {
         return carteNelMazzo;
     }

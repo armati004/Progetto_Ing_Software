@@ -55,8 +55,8 @@ public class HeroSelectionScreen extends StackPane {
         this.eroiDisponibili = new ArrayList<>();
         
         // ⭐ FXGL: Binding automatico
-        this.prefWidthProperty().bind(FXGL.getGameScene().getRoot().widthProperty());
-        this.prefHeightProperty().bind(FXGL.getGameScene().getRoot().heightProperty());
+       // this.prefWidthProperty().bind(FXGL.getGameScene().getRoot().widthProperty());
+       // this.prefHeightProperty().bind(FXGL.getGameScene().getRoot().heightProperty());
         
         // Carica i 4 eroi disponibili
         this.eroiDisponibili.add(HeroFactory.creaEroe("Harry Potter", annoPartita));
@@ -69,10 +69,14 @@ public class HeroSelectionScreen extends StackPane {
     }
 
     private void initGraphics() {
-        // Sfondo con binding
-        Rectangle bg = new Rectangle();
-        bg.widthProperty().bind(this.widthProperty());
-        bg.heightProperty().bind(this.heightProperty());
+    	double width = FXGL.getAppWidth();
+        double height = FXGL.getAppHeight();
+        this.setPrefSize(width, height);
+        this.setMinSize(width, height);
+        this.setMaxSize(width, height);
+        
+        Rectangle bg = new Rectangle(width, height);
+        
         bg.setFill(Color.rgb(15, 10, 30));
         this.getChildren().add(bg);
 

@@ -29,10 +29,6 @@ public class PlayerCountSelectionScreen extends StackPane {
     public PlayerCountSelectionScreen(Consumer<Integer> onPlayerCountSelected) {
         this.onPlayerCountSelected = onPlayerCountSelected;
         
-        // ⭐ FXGL: Binding automatico alle dimensioni della scena
-        this.prefWidthProperty().bind(FXGL.getGameScene().getRoot().widthProperty());
-        this.prefHeightProperty().bind(FXGL.getGameScene().getRoot().heightProperty());
-        
         inizializzaUI();
     }
     
@@ -40,10 +36,14 @@ public class PlayerCountSelectionScreen extends StackPane {
      * Inizializza l'interfaccia
      */
     private void inizializzaUI() {
-        // Sfondo scuro con binding
-        Rectangle bg = new Rectangle();
-        bg.widthProperty().bind(this.widthProperty());
-        bg.heightProperty().bind(this.heightProperty());
+    	double width = FXGL.getAppWidth();
+        double height = FXGL.getAppHeight();
+        this.setPrefSize(width, height);
+        this.setMinSize(width, height);
+        this.setMaxSize(width, height);
+        
+        Rectangle bg = new Rectangle(width, height);
+        
         bg.setFill(Color.rgb(15, 10, 30));
         this.getChildren().add(bg);
         

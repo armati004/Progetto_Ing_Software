@@ -79,5 +79,5 @@ public class Luogo extends Carta {
 		}
 	}
 
-    // Puoi aggiungere metodi specifici per attivare effettoEntrata qui
+    
 }

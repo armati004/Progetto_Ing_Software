@@ -27,19 +27,6 @@ public class Giocatore {
 	private SelettoreCarta selettoreCarta;
 	private List<Carta> carteAcquistateQuestoTurno = new ArrayList<>();
 
-
-    
-    
-    /*public Giocatore(Eroe eroe, int salute, Mazzo mazzo, Mazzo scarti, List<Carta> mano, int gettone, int attacco) {
-		this.eroe = eroe;
-		this.salute = saluteMax;
-		this.mazzo = mazzo;
-		this.scarti = scarti;
-		this.mano = mano;
-		this.gettone = gettone;
-		this.attacco = attacco;
-	}*/
-    
     public Giocatore(Eroe eroe) {
     	this.eroe = eroe;
     	this.salute = saluteMax;
@@ -54,7 +41,7 @@ public class Giocatore {
     	this.setOggettiGiocati(0);
     }
     
-    public void scartaCarta(/*Mazzo mazzo,*/ Carta carta) {
+    public void scartaCarta(Carta carta) {
 		this.getScarti().getCarte().add(carta);
 		this.getMano().remove(carta);
 	}
@@ -74,7 +61,7 @@ public class Giocatore {
             return;
         }
 
-        // ⭐ NUOVO: Rimuovi trigger "in mano" PRIMA di giocare
+        // Rimuovi trigger "in mano" PRIMA di giocare
         rimuoviTriggersCartaDaMano(stato, carta);
 
         carta.applicaEffetto(stato, this);
@@ -123,20 +110,20 @@ public class Giocatore {
 	        }
 	    }
 		return carteCorrispondenti;
-		//una volta ritornate dovra poi scegliere quale vuole aggiungere al mazzo
+		//una volta ritornate dovrà poi scegliere quale vuole aggiungere al mazzo
 	}
 	
 	public void acquistaCarta(List<Carta> mercato, Carta carta, StatoDiGioco stato) {
 	    this.setGettone(gettone - carta.getCosto());
 	    mercato.remove(carta);
 	    
-	    // ⭐ NUOVO: Segna carta come acquisita permanentemente
+	    // Segna carta come acquisita permanentemente
 	    stato.segnaCartaAcquisita(carta.getId());
 	    
 	    // Traccia carta acquistata questo turno
 	    carteAcquistateQuestoTurno.add(carta);
 	    
-	    System.out.println("💰 Acquistata: " + carta.getNome());
+	    System.out.println("Acquistata: " + carta.getNome());
 	}
 
 	// ============================================
@@ -152,11 +139,11 @@ public class Giocatore {
 	public boolean pescaCarta() {
 	    // Se il mazzo è vuoto, rimescola gli scarti
 	    if (mazzo.isEmpty()) {
-	        System.out.println("  🔄 Mazzo vuoto! Rimescolo scarti...");
+	        System.out.println("Mazzo vuoto! Rimescolo scarti...");
 	        
 	        // Se anche gli scarti sono vuoti, non si può pescare
 	        if (scarti.isEmpty()) {
-	            System.out.println("  ⚠️ Nessuna carta da pescare (mazzo e scarti vuoti)");
+	            System.out.println("Nessuna carta da pescare (mazzo e scarti vuoti)");
 	            return false;
 	        }
 	        
@@ -171,7 +158,7 @@ public class Giocatore {
 	        // Mescola il mazzo
 	        mazzo.mescola();
 	        
-	        System.out.println("  ✓ Mazzo rimescolato: " + mazzo.size() + " carte");
+	        System.out.println("Mazzo rimescolato: " + mazzo.size() + " carte");
 	    }
 	    
 	    // Pesca carta

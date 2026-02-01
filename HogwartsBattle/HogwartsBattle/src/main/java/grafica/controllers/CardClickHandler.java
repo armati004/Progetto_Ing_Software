@@ -10,9 +10,9 @@ import carte.Carta;
  * CardClickHandler - Gestisce l'interazione tra i click sulle carte
  * e le azioni nel gioco
  * 
- * ResponsabilitÃ :
+ * Responsabilità :
  * - Determinare quale azione eseguire in base alla fase e al tipo di carta
- * - Validare se l'azione Ã¨ legale
+ * - Validare se l'azione è legale
  * - Delegare l'esecuzione al GameController
  */
 public class CardClickHandler {
@@ -35,18 +35,18 @@ public class CardClickHandler {
         Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
         FaseTurno faseAttuale = stato.getFaseCorrente();
         
-        System.out.println("ðŸŽ¯ Click su carta: " + carta.getNome() + " (indice: " + indiceInMano + ")");
-        System.out.println("ðŸ“ Fase corrente: " + faseAttuale);
+        System.out.println("Click su carta: " + carta.getNome() + " (indice: " + indiceInMano + ")");
+        System.out.println("Fase corrente: " + faseAttuale);
         
-        // Valida se Ã¨ possibile giocare carte in questa fase
+        // Valida se è possibile giocare carte in questa fase
         if (!puoGiocareCartaQuiFase(faseAttuale)) {
-            System.out.println("âŒ Non puoi giocare carte nella fase " + faseAttuale);
+            System.out.println("Non puoi giocare carte nella fase " + faseAttuale);
             return;
         }
         
-        // Valida se la carta Ã¨ ancora in mano
+        // Valida se la carta è ancora in mano
         if (indiceInMano < 0 || indiceInMano >= giocatore.getMano().size()) {
-            System.out.println("âŒ Indice carta non valido");
+            System.out.println("Indice carta non valido");
             return;
         }
         
@@ -64,25 +64,25 @@ public class CardClickHandler {
         Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
         FaseTurno faseAttuale = stato.getFaseCorrente();
         
-        System.out.println("ðŸŽ¯ Click su carta mercato: " + carta.getNome() + 
+        System.out.println("Click su carta mercato: " + carta.getNome() + 
                          " (costo: " + carta.getCosto() + ")");
-        System.out.println("ðŸ“ Fase corrente: " + faseAttuale);
+        System.out.println("Fase corrente: " + faseAttuale);
         
-        // Valida se Ã¨ la fase di acquisto
+        // Valida se è la fase di acquisto
         if (faseAttuale != FaseTurno.ACQUISTA_CARTE) {
-            System.out.println("âŒ Non puoi acquistare carte nella fase " + faseAttuale);
+            System.out.println("Non puoi acquistare carte nella fase " + faseAttuale);
             return;
         }
         
         // Valida l'indice
         if (indiceInMercato < 0 || indiceInMercato >= stato.getMercato().size()) {
-            System.out.println("âŒ Indice carta mercato non valido");
+            System.out.println("Indice carta mercato non valido");
             return;
         }
         
         // Valida l'influenza
         if (giocatore.getGettone() < carta.getCosto()) {
-            System.out.println("âŒ Influenza insufficiente. Serve: " + carta.getCosto() + 
+            System.out.println("Influenza insufficiente. Serve: " + carta.getCosto() + 
                              ", Hai: " + giocatore.getGettone());
             return;
         }
@@ -100,24 +100,24 @@ public class CardClickHandler {
         Giocatore giocatore = stato.getGiocatori().get(stato.getGiocatoreCorrente());
         FaseTurno faseAttuale = stato.getFaseCorrente();
         
-        System.out.println("ðŸŽ¯ Click su malvagio (indice: " + indiceMalvagio + ")");
-        System.out.println("ðŸ“ Fase corrente: " + faseAttuale);
+        System.out.println("Click su malvagio (indice: " + indiceMalvagio + ")");
+        System.out.println("Fase corrente: " + faseAttuale);
         
-        // Valida se Ã¨ la fase di attacco
+        // Valida se è la fase di attacco
         if (faseAttuale != FaseTurno.ATTACCA) {
-            System.out.println("âŒ Non puoi attaccare nella fase " + faseAttuale);
+            System.out.println("Non puoi attaccare nella fase " + faseAttuale);
             return;
         }
         
         // Valida se il giocatore ha segnalini attacco
         if (giocatore.getAttacco() <= 0) {
-            System.out.println("âŒ Non hai segnalini attacco disponibili");
+            System.out.println("Non hai segnalini attacco disponibili");
             return;
         }
         
         // Valida l'indice del malvagio
         if (indiceMalvagio < 0 || indiceMalvagio >= stato.getMalvagiAttivi().size()) {
-            System.out.println("âŒ Indice malvagio non valido");
+            System.out.println("Indice malvagio non valido");
             return;
         }
         
@@ -126,14 +126,14 @@ public class CardClickHandler {
     }
     
     /**
-     * Verifica se Ã¨ possibile giocare carte nella fase attuale
+     * Verifica se è possibile giocare carte nella fase attuale
      */
     private boolean puoGiocareCartaQuiFase(FaseTurno fase) {
         return (fase == FaseTurno.GIOCA_CARTE || fase == FaseTurno.ATTACCA);
     }
     
     /**
-     * Ottiene la descrizione dell'azione che si puÃ² fare con questa carta
+     * Ottiene la descrizione dell'azione che si puà² fare con questa carta
      * in base alla fase attuale
      */
     public String getDescrzioneAzione(Carta carta, FaseTurno faseAttuale) {
@@ -154,7 +154,7 @@ public class CardClickHandler {
     
     /**
      * Valida un'intera azione di click e restituisce un messaggio
-     * @return true se l'azione Ã¨ valida, false altrimenti
+     * @return true se l'azione è valida, false altrimenti
      */
     public boolean validaAzione(Carta carta, int indice, String tipoCarta) {
         FaseTurno faseAttuale = stato.getFaseCorrente();

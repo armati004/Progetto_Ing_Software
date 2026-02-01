@@ -11,7 +11,7 @@ public class Mazzo {
     private List<Carta> carte = new ArrayList<>();
     
     public Mazzo() {
-        // Non serve più nulla!
+        // Il costruttore serve solo per inizializzare la classe
     }
     
     public List<Carta> inizializzaMazzo(String nomeEroe) {
@@ -36,12 +36,12 @@ public class Mazzo {
                 if (c != null) {
                     this.carte.add(c);
                 } else {
-                    System.err.println("⚠️ Attenzione: Carta con ID '" + id + "' non trovata nella Factory.");
+                    System.err.println("Attenzione: Carta con ID '" + id + "' non trovata nella Factory.");
                 }
         	}
         }
         
-        System.out.println("✅ Mazzo inizializzato per " + nomeEroe + " con " + this.carte.size() + " carte.");
+        System.out.println("Mazzo inizializzato per " + nomeEroe + " con " + this.carte.size() + " carte.");
         Collections.shuffle(carte);
         return this.carte;
     }

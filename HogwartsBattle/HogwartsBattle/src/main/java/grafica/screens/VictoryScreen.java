@@ -75,7 +75,7 @@ public class VictoryScreen extends StackPane {
         Text messageText;
         
         if (ultimoAnno) {
-            messageText = new Text("🏆 Avete completato tutti e 7 gli anni!\n🎓 Hogwarts è salva!");
+            messageText = new Text("🏆 Avete completato tutti e 7 gli anni!\n Hogwarts è salva!");
         } else {
             int prossimoAnno = annoCompletato + 1;
             messageText = new Text("📖 Siete pronti per l'Anno " + prossimoAnno + "?");

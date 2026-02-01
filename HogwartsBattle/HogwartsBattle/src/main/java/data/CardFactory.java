@@ -69,8 +69,8 @@ public class CardFactory {
 			return null;
 		}
 
-		// Assicurati che nel JSON il campo sia "class": "ArtiOscure"
-		// Il toLowerCase() lo renderà "artioscure"
+		// Nel JSON il campo sia "class": "ArtiOscure"
+		
 		String tipo = (data.getClasse() != null) ? data.getClasse().toLowerCase() : "sconosciuto";
 
 		switch (tipo) {
@@ -84,17 +84,16 @@ public class CardFactory {
 			return new Oggetto(data.getNome(), data.getId(), "Oggetto", data.getDescrizione(), data.getCosto(),
 					data.getPathImmagine(), data.getEffetti(), data.getTriggers());
 
-		// AGGIUNGI O CORREGGI QUESTO CASO:
 		case "artioscure":
 			return new ArteOscura(data.getNome(), data.getId(), "ArtiOscure", data.getDescrizione(), data.getCosto(),
 					data.getPathImmagine(), data.getEffetti(), data.getTriggers());
-		case "arti_oscure": // Per sicurezza, gestiamo entrambi i casi
+		case "arti_oscure":
 			return new ArteOscura(data.getNome(), data.getId(), "ArtiOscure", data.getDescrizione(), data.getCosto(),
 					data.getPathImmagine(), data.getEffetti(), data.getTriggers());
 		default:
-			System.err.println("⚠️ Attenzione: Tipo '" + tipo + "' non riconosciuto per la carta " + idCarta
+			System.err.println("Attenzione: Tipo '" + tipo + "' non riconosciuto per la carta " + idCarta
 					+ ". Ritorno carta generica.");
-			return data; // Questo è quello che causava l'errore!
+			return data;
 		}
 	}
 

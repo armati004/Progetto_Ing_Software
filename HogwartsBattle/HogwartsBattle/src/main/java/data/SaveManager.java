@@ -38,7 +38,7 @@ public class SaveManager {
         try {
             createSaveDirectory();
             
-            // ⭐ NUOVO: Se non è autosave, genera nome unico
+            // Se non è autosave, genera nome unico
             String nomeFinal = nomeSalvataggio;
             if (!nomeSalvataggio.equals(DEFAULT_SAVE_NAME)) {
                 nomeFinal = generaNomeUnico(nomeSalvataggio);
@@ -50,7 +50,7 @@ public class SaveManager {
                 String nomeEroe = g.getEroe().getNome();
                 String idCompetenza = g.getCompetenza() != null ? g.getCompetenza().getId() : null;
                 
-                // ⭐ NUOVO: Salva carte acquisite
+                //Salva carte acquisite
                 List<String> carteIds = new ArrayList<>();
                 carteIds.addAll(getCarteIds(g.getMazzo().getCarte()));
                 carteIds.addAll(getCarteIds(g.getScarti().getCarte()));
@@ -61,7 +61,7 @@ public class SaveManager {
                 playerData.add(psd);
             }
             
-            // ⭐ NUOVO: Aggiungi carte acquisite globali
+            //Aggiungi carte acquisite globali
             List<String> carteNegozio = new ArrayList<>();
             if (stato.getMazzoNegozio() != null) {
                 carteNegozio.addAll(getCarteIds(new ArrayList<>(stato.getMazzoNegozio())));
@@ -70,7 +70,6 @@ public class SaveManager {
                 carteNegozio.addAll(getCarteIds(stato.getMercato()));
             }
 
-            //saveData.setCarteNegozioRimaste(carteNegozio);
             System.out.println("💾 Salvate " + carteNegozio.size() + " carte del negozio");
             
             // Crea oggetto salvataggio
@@ -81,7 +80,7 @@ public class SaveManager {
                 stato.getGiocatoreCorrente(),
                 stato.isVictory(),
                 nomeFinal,
-                new ArrayList<>(carteNegozio) // ⭐ NUOVO parametro
+                new ArrayList<>(carteNegozio)
             );
             
             // Serializza e salva
@@ -89,11 +88,11 @@ public class SaveManager {
             Path filePath = Paths.get(SAVE_DIRECTORY, nomeFinal + SAVE_FILE_EXTENSION);
             Files.writeString(filePath, json);
             
-            System.out.println("💾 Partita salvata: " + nomeFinal);
+            System.out.println("Partita salvata: " + nomeFinal);
             return true;
             
         } catch (Exception e) {
-            System.err.println("❌ Errore salvataggio: " + e.getMessage());
+            System.err.println("Errore salvataggio: " + e.getMessage());
             e.printStackTrace();
             return false;
         }
@@ -147,7 +146,7 @@ public class SaveManager {
             File file = new File(filename);
             
             if (!file.exists()) {
-                System.err.println("❌ File di salvataggio non trovato: " + filename);
+                System.err.println("File di salvataggio non trovato: " + filename);
                 return null;
             }
             
@@ -157,15 +156,15 @@ public class SaveManager {
             // Deserializza
             GameSaveData saveData = gson.fromJson(json, GameSaveData.class);
             
-            System.out.println("📂 Partita caricata: " + filename);
-            System.out.println("   Anno: " + saveData.getAnnoCorrente());
-            System.out.println("   Giocatori: " + saveData.getNumeroGiocatori());
-            System.out.println("   Data salvataggio: " + saveData.getDataOra());
+            System.out.println("Partita caricata: " + filename);
+            System.out.println("Anno: " + saveData.getAnnoCorrente());
+            System.out.println("Giocatori: " + saveData.getNumeroGiocatori());
+            System.out.println("Data salvataggio: " + saveData.getDataOra());
             
             return saveData;
             
         } catch (IOException e) {
-            System.err.println("❌ Errore nel caricamento: " + e.getMessage());
+            System.err.println("Errore nel caricamento: " + e.getMessage());
             e.printStackTrace();
             return null;
         }
@@ -197,7 +196,7 @@ public class SaveManager {
             return saves;
             
         } catch (Exception e) {
-            System.err.println("❌ Errore nella lista salvataggi: " + e.getMessage());
+            System.err.println("Errore nella lista salvataggi: " + e.getMessage());
             return new ArrayList<>();
         }
     }
@@ -216,16 +215,16 @@ public class SaveManager {
             if (file.exists()) {
                 boolean deleted = file.delete();
                 if (deleted) {
-                    System.out.println("🗑️ Salvataggio eliminato: " + filename);
+                    System.out.println("Salvataggio eliminato: " + filename);
                 }
                 return deleted;
             } else {
-                System.err.println("❌ File non trovato: " + filename);
+                System.err.println("File non trovato: " + filename);
                 return false;
             }
             
         } catch (Exception e) {
-            System.err.println("❌ Errore nell'eliminazione: " + e.getMessage());
+            System.err.println("Errore nell'eliminazione: " + e.getMessage());
             return false;
         }
     }
@@ -259,7 +258,7 @@ public class SaveManager {
         File saveDir = new File(SAVE_DIRECTORY);
         if (!saveDir.exists()) {
             saveDir.mkdirs();
-            System.out.println("📁 Creata directory: " + SAVE_DIRECTORY);
+            System.out.println("Creata directory: " + SAVE_DIRECTORY);
         }
     }
     
