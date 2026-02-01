@@ -1,7 +1,6 @@
 package data;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * Classe che rappresenta i dati salvati di una partita Include solo le

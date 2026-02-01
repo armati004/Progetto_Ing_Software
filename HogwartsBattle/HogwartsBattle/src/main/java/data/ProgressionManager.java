@@ -16,7 +16,6 @@ import java.util.Set;
 public class ProgressionManager {
     
     private static final int MAX_ANNO = 7;
-    private static final int MIN_ANNO = 1;
     
     /**
      * Verifica se è possibile avanzare all'anno successivo

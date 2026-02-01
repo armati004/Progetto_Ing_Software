@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import carte.Carta;
 import carte.Malvagio;
-import carte.Carta;
 import gioco.Giocatore;
 import gioco.StatoDiGioco;
 

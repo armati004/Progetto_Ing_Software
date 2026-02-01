@@ -2,8 +2,6 @@ package gioco;
 
 import carte.ArteOscura;
 import carte.Malvagio;
-import gestoreEffetti.EsecutoreEffetti;
-import gestoreEffetti.TipoEffetto;
 import gestoreEffetti.TipoTrigger;
 import carte.Horcrux;
 

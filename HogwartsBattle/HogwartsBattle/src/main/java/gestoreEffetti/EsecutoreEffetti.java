@@ -1,10 +1,8 @@
 package gestoreEffetti;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 import carte.*;
 import gioco.Giocatore;
@@ -12,10 +10,7 @@ import gioco.StatoDiGioco;
 import gioco.InputController;
 import grafica.Entita;
 import grafica.GameController;
-import grafica.panels.DialogHelper;
 import grafica.panels.MessagePanel;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 
 /**
  * Esecutore centralizzato per tutti gli effetti del gioco. VERSIONE COMPLETA
@@ -591,57 +586,6 @@ public class EsecutoreEffetti {
 	}
 
 	/**
-	 * Mostra dialog di scelta in sequenza per ogni giocatore
-	 */
-	private static void mostraDialogSceltaSequenziale(int indiceCorrente, List<Giocatore> giocatori, Effetto opzioneA,
-			Effetto opzioneB, StatoDiGioco stato, Carta attivante) {
-		if (indiceCorrente >= giocatori.size()) {
-			// Tutti hanno scelto
-			System.out.println("âœ… Tutti i giocatori hanno fatto la loro scelta");
-
-			// Aggiorna UI
-			if (grafica.GameController.getInstance() != null) {
-				grafica.GameController.getInstance().getGameUI().aggiorna();
-			}
-			return;
-		}
-
-		Giocatore giocatoreCorrente = giocatori.get(indiceCorrente);
-
-		// Verifica se opzione A Ã¨ possibile per questo giocatore
-		boolean opzioneAPossibile = verificaSceltaPossibile(opzioneA, giocatoreCorrente);
-
-		if (!opzioneAPossibile) {
-			// Auto-esegue opzione B
-			System.out.println(
-					"âš¡ " + giocatoreCorrente.getEroe().getNome() + ": opzione 1 impossibile, eseguo opzione 2");
-			eseguiEffetto(opzioneB, stato, giocatoreCorrente, attivante);
-
-			// Prossimo giocatore
-			mostraDialogSceltaSequenziale(indiceCorrente + 1, giocatori, opzioneA, opzioneB, stato, attivante);
-			return;
-		}
-
-		// ★ MOSTRA DIALOG usando DialogHelper con contesto dettagliato
-		String descrizioneA = getDescrizioneEffetto(opzioneA, giocatoreCorrente);
-		String descrizioneB = getDescrizioneEffetto(opzioneB, giocatoreCorrente);
-
-		grafica.panels.DialogHelper.mostraSceltaEffetto(giocatoreCorrente.getEroe().getNome(), "Scelta Effetto",
-				"Scegli l'effetto da applicare:", descrizioneA, descrizioneB, scelta -> {
-					if (scelta) {
-						System.out.println("✓ " + giocatoreCorrente.getEroe().getNome() + " sceglie opzione 1");
-						eseguiEffetto(opzioneA, stato, giocatoreCorrente, attivante);
-					} else {
-						System.out.println("✓ " + giocatoreCorrente.getEroe().getNome() + " sceglie opzione 2");
-						eseguiEffetto(opzioneB, stato, giocatoreCorrente, attivante);
-					}
-
-					// ★ RICORSIONE: Mostra dialog per prossimo giocatore
-					mostraDialogSceltaSequenziale(indiceCorrente + 1, giocatori, opzioneA, opzioneB, stato, attivante);
-				});
-	}
-
-	/**
 	 * Gestisce scelta per un singolo giocatore (normale)
 	 */
 	private static void sceltaPerSingoloGiocatore(Effetto opzioneA, Effetto opzioneB, StatoDiGioco stato,
@@ -946,20 +890,6 @@ public class EsecutoreEffetti {
 	}
 
 	/**
-	 * Ottiene la lista di 6 effetti per il dado specifico
-	 */
-	private static List<Effetto> getOpzioniDado(Effetto effetto, TipoEffetto tipoDado) {
-		// Se l'effetto ha giÃ  le opzioni definite, usale
-		if (effetto.getOpzioni() != null && effetto.getOpzioni().size() >= 6) {
-			return effetto.getOpzioni();
-		}
-
-		// Altrimenti, avvisa che le opzioni devono essere configurate
-		System.out.println("âš ï¸ Le opzioni del dado devono essere definite nell'effetto!");
-		return null;
-	}
-
-	/**
 	 * Applica il risultato del dado agli Horcrux attivi
 	 */
 	private static void applicaRisultatoDadoAHorcrux(Effetto effetto, StatoDiGioco stato, Giocatore giocatore) {
@@ -990,11 +920,8 @@ public class EsecutoreEffetti {
 
 		// Distruggi Horcrux completati
 		for (Horcrux h : horcruxDaDistruggere) {
-			// Applica ricompensa
-			h.applicaRicompensa(stato, giocatore);
-
 			// Rimuovi
-			stato.getHorcruxAttivi().remove(h);
+			GameController.getInstance().distruggiHorcrux(h);
 
 			// Messaggio
 			if (GameController.getInstance() != null) {
@@ -1028,51 +955,7 @@ public class EsecutoreEffetti {
 		}
 	}
 
-	private static void tiraDadoMalvagio(Effetto effetto, StatoDiGioco stato, Giocatore giocatore,
-			TipoEffetto tipoDado) {
-		if (stato.getDadi() == null || stato.getDadi().isEmpty()) {
-			System.out.println("âš ï¸ Nessun dado disponibile!");
-			return;
-		}
-
-		// âœ… STEP 1: Trova il dado corretto in base al tipo
-		Dado dadoSelezionato = null;
-		String nomeDadoCercato = getNomeDadoDaTipo(tipoDado);
-
-		for (Dado dado : stato.getDadi().values()) {
-			if (dado.getNome().equalsIgnoreCase(nomeDadoCercato)
-					|| dado.getId().toLowerCase().contains(nomeDadoCercato.toLowerCase())) {
-				dadoSelezionato = dado;
-				break;
-			}
-		}
-
-		if (dadoSelezionato == null) {
-			System.out.println("âš ï¸ Dado " + nomeDadoCercato + " non trovato!");
-			return;
-		}
-
-		// âœ… STEP 2: Ottieni le 6 opzioni per questo dado
-		List<Effetto> opzioniDado = getOpzioniDado(effetto, tipoDado);
-
-		if (opzioniDado == null || opzioniDado.size() < 6) {
-			System.out.println("âš ï¸ Effetti del dado non configurati correttamente!");
-			return;
-		}
-
-		// âœ… STEP 3: Tira il dado con le opzioni corrette
-		Effetto effettoEseguito = dadoSelezionato.tiraDado(stato, giocatore, opzioniDado);
-
-		eseguiEffetto(effettoEseguito, stato, giocatore, null);
-
-		/*
-		 * switch (convertiEffettoInEntita(effettoEseguito)) { case ATTACCO:
-		 * perdereVita(effettoEseguito, stato, giocatore, attivante); break; case VITA:
-		 * rimuovereAttacco(effettoEseguito, stato, giocatore); break; case INFLUENZA:
-		 * aggiungereMarchioNero(effettoEseguito, stato, giocatore); break; case CARTA:
-		 * scartareCarta(effettoEseguito, stato, giocatore); break; }
-		 */
-	}
+	
 
 	private static void mettiCartaInCimaMazzo(Effetto effetto, StatoDiGioco stato, Giocatore giocatore,
 			Class<? extends Carta> tipo) {

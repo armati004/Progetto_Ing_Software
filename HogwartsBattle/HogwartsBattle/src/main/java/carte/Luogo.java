@@ -1,12 +1,7 @@
 package carte;
 
 import java.util.List;
-import com.google.gson.annotations.SerializedName;
-import gioco.Giocatore;
-import gioco.StatoDiGioco;
-import gestoreEffetti.DurataEffetto;
 import gestoreEffetti.Effetto;
-import gestoreEffetti.EsecutoreEffetti;
 import gestoreEffetti.Trigger;
 
 public class Luogo extends Carta {

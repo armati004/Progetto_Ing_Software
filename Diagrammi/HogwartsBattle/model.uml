@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_model" name="HogwartsBattle">
+  <packagedElement xmi:type="uml:Package" xmi:id="_pkg_carte" name="carte">
+    <packagedElement xmi:type="uml:Class" xmi:id="_Carta" name="Carta" isAbstract="true">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Carta_nome" name="nome" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Carta_id" name="id" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Carta_classe" name="classe" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Carta_descrizione" name="descrizione" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Carta_costo" name="costo" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Carta_pathImmagine" name="pathImmagine" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Carta_effetti" name="effetti" visibility="private" type="_Effetto">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_YdHtoP9bEfCj0_b-FntSEw" name="LiteralInteger1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_YdIUsP9bEfCj0_b-FntSEw" name="LiteralUnlimitedNatural1" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Carta_triggers" name="triggers" visibility="private" type="_Trigger">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XJkbEP9bEfCj0_b-FntSEw" name="LiteralInteger1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XJmQQP9bEfCj0_b-FntSEw" name="LiteralUnlimitedNatural1" value="*"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Carta_applicaEffetto" name="applicaEffetto" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Carta_getNome" name="getNome" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Carta_getId" name="getId" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Carta_getClasse" name="getClasse" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Carta_getDescrizione" name="getDescrizione" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Carta_getCosto" name="getCosto" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Carta_getPathImmagine" name="getPathImmagine" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Carta_getEffetti" name="getEffetti" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Carta_getTriggers" name="getTriggers" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Carta_setEffetti" name="setEffetti" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Carta_setTriggers" name="setTriggers" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Eroe" name="Eroe">
+      <generalization xmi:type="uml:Generalization" xmi:id="_Eroe_gen" general="_Carta"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Alleato" name="Alleato">
+      <generalization xmi:type="uml:Generalization" xmi:id="_Alleato_gen" general="_Carta"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Incantesimo" name="Incantesimo">
+      <generalization xmi:type="uml:Generalization" xmi:id="_Incantesimo_gen" general="_Carta"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Oggetto" name="Oggetto">
+      <generalization xmi:type="uml:Generalization" xmi:id="_Oggetto_gen" general="_Carta"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ArteOscura" name="ArteOscura">
+      <generalization xmi:type="uml:Generalization" xmi:id="_ArteOscura_gen" general="_Carta"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Competenza" name="Competenza">
+      <generalization xmi:type="uml:Generalization" xmi:id="_Competenza_gen" general="_Carta"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Competenza_attivabile" name="attivabile" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Competenza_commento" name="commento" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Competenza_isAttivabile" name="isAttivabile" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Competenza_getCommento" name="getCommento" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Competenza_setCommento" name="setCommento" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Luogo" name="Luogo">
+      <generalization xmi:type="uml:Generalization" xmi:id="_Luogo_gen" general="_Carta"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Luogo_numeroMarchiNeri" name="numeroMarchiNeri" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Luogo_nDarkEvents" name="nDarkEvents" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Luogo_marchiNeriMax" name="marchiNeriMax" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Luogo_effettoEntrata" name="effettoEntrata" visibility="private" type="_Effetto"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Luogo_getNumeroMarchiNeri" name="getNumeroMarchiNeri" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Luogo_getNDarkEvents" name="getNDarkEvents" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Luogo_getMarchiNeriMax" name="getMarchiNeriMax" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Luogo_getEffettoEntrata" name="getEffettoEntrata" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Luogo_aggiungiMarchioNero" name="aggiungiMarchioNero" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Luogo_rimuoviMarchioNero" name="rimuoviMarchioNero" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Malvagio" name="Malvagio">
+      <generalization xmi:type="uml:Generalization" xmi:id="_Malvagio_gen" general="_Carta"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Malvagio_vita" name="vita" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Malvagio_danno" name="danno" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Malvagio_bloccoAbilita" name="bloccoAbilita" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Malvagio_defeat" name="defeat" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Malvagio_isSconfitto" name="isSconfitto" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Malvagio_getVita" name="getVita" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Malvagio_getDanno" name="getDanno" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Malvagio_getBloccoAbilita" name="getBloccoAbilita" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Horcrux" name="Horcrux">
+      <generalization xmi:type="uml:Generalization" xmi:id="_Horcrux_gen" general="_Carta"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Horcrux_difesa" name="difesa" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Horcrux_getDifesa" name="getDifesa" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Mazzo" name="Mazzo">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Mazzo_carte" name="carte" visibility="private" type="_Carta">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Mazzo_carte_upper" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_YILewv9jEfCN4tLu-FGA9A" name="giocatore" type="_Giocatore" association="_YIK3sP9jEfCN4tLu-FGA9A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eLNYMP9jEfCN4tLu-FGA9A" name="LiteralInteger1" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eLNYMf9jEfCN4tLu-FGA9A" name="LiteralUnlimitedNatural1" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_a90PIv9jEfCN4tLu-FGA9A" name="giocatore" type="_Giocatore" association="_a9zoEP9jEfCN4tLu-FGA9A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ddRUIP9jEfCN4tLu-FGA9A" name="LiteralInteger1" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ddRUIf9jEfCN4tLu-FGA9A" name="LiteralUnlimitedNatural1" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Mazzo_pescaCarta" name="pescaCarta" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Mazzo_mescola" name="mescola" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Mazzo_aggiungiCarta" name="aggiungiCarta" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Mazzo_getCarte" name="getCarte" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Dado" name="Dado">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Dado_id" name="id" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Dado_nome" name="nome" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Dado_lancia" name="lancia" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Dado_getId" name="getId" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Dado_getNome" name="getNome" visibility="public"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_pkg_gioco" name="gioco">
+    <packagedElement xmi:type="uml:Class" xmi:id="_Giocatore" name="Giocatore">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Giocatore_salute" name="salute" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Giocatore_saluteMax" name="saluteMax" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Giocatore_gettone" name="gettone" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Giocatore_attacco" name="attacco" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Giocatore_eroe" name="eroe" visibility="private" type="_Eroe"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Giocatore_mazzo" name="mazzo" visibility="private" type="_Mazzo"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Giocatore_scarti" name="scarti" visibility="private" type="_Mazzo"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Giocatore_competenza" name="competenza" visibility="private" type="_Competenza"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Giocatore_mano" name="mano" visibility="private" type="_Carta">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Giocatore_mano_upper" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="__wGgoP9iEfCN4tLu-FGA9A" name="statodigioco" type="_StatoDiGioco" association="__wBBEP9iEfCN4tLu-FGA9A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__wHuwP9iEfCN4tLu-FGA9A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__wHuwf9iEfCN4tLu-FGA9A" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Giocatore_inizializzaMano" name="inizializzaMano" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Giocatore_giocaCarta" name="giocaCarta" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Giocatore_pescaCarta" name="pescaCarta" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Giocatore_riceviDanno" name="riceviDanno" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Giocatore_acquistaCarta" name="acquistaCarta" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Giocatore_scartaCarta" name="scartaCarta" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Giocatore_getSalute" name="getSalute" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Giocatore_setSalute" name="setSalute" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Giocatore_getGettone" name="getGettone" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Giocatore_setGettone" name="setGettone" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Giocatore_getAttacco" name="getAttacco" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Giocatore_setAttacco" name="setAttacco" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Giocatore_getEroe" name="getEroe" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Giocatore_getMazzo" name="getMazzo" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Giocatore_getScarti" name="getScarti" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Giocatore_getMano" name="getMano" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Giocatore_getCompetenza" name="getCompetenza" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_StatoDiGioco" name="StatoDiGioco">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_StatoDiGioco_annoCorrente" name="annoCorrente" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_StatoDiGioco_giocatoreCorrente" name="giocatoreCorrente" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_StatoDiGioco_gameOver" name="gameOver" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_StatoDiGioco_victory" name="victory" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_StatoDiGioco_faseCorrente" name="faseCorrente" visibility="private" type="_FaseTurno"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_StatoDiGioco_currentLocation" name="currentLocation" visibility="private" type="_Luogo"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_StatoDiGioco_gestoreEffetti" name="gestoreEffetti" visibility="private" type="_GestoreEffetti"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_StatoDiGioco_gestoreTrigger" name="gestoreTrigger" visibility="private" type="_GestoreTrigger"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_StatoDiGioco_giocatori" name="giocatori" visibility="private" type="_Giocatore">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bQapwP9dEfCj0_b-FntSEw" name="LiteralInteger1" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bQce8P9dEfCj0_b-FntSEw" name="LiteralUnlimitedNatural1" value="4"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_StatoDiGioco_mercato" name="mercato" visibility="private" type="_Carta">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ckAYkP9dEfCj0_b-FntSEw" name="LiteralInteger1" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ckBmsP9dEfCj0_b-FntSEw" name="LiteralUnlimitedNatural1" value="6"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_StatoDiGioco_malvagiAttivi" name="malvagiAttivi" visibility="private" type="_Malvagio">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dmctAP9dEfCj0_b-FntSEw" name="LiteralInteger1" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dmd7IP9dEfCj0_b-FntSEw" name="LiteralUnlimitedNatural1" value="3"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_9Hd1BP9jEfCN4tLu-FGA9A" name="gestoreeffetti" type="_GestoreEffetti" association="_9HdN8P9jEfCN4tLu-FGA9A"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_StatoDiGioco_rifornisciMercato" name="rifornisciMercato" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_StatoDiGioco_addMalvagioAttivo" name="addMalvagioAttivo" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_StatoDiGioco_checkVittoria" name="checkVittoria" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_StatoDiGioco_checkGameOver" name="checkGameOver" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_StatoDiGioco_applicaAttacchi" name="applicaAttacchi" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_StatoDiGioco_fineTurno" name="fineTurno" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_StatoDiGioco_pescaArteOscura" name="pescaArteOscura" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_StatoDiGioco_getGiocatori" name="getGiocatori" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_StatoDiGioco_getMercato" name="getMercato" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_StatoDiGioco_getMalvagiAttivi" name="getMalvagiAttivi" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_StatoDiGioco_getGestoreEffetti" name="getGestoreEffetti" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_StatoDiGioco_getGestoreTrigger" name="getGestoreTrigger" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_FaseTurno" name="FaseTurno">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_FaseTurno_ARTI_OSCURE" name="ARTI_OSCURE"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_FaseTurno_MALVAGI" name="MALVAGI"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_FaseTurno_HORCRUX" name="HORCRUX"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_FaseTurno_GIOCA_CARTE" name="GIOCA_CARTE"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_FaseTurno_ATTACCA" name="ATTACCA"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_FaseTurno_ACQUISTA_CARTE" name="ACQUISTA_CARTE"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_FaseTurno_FINE_TURNO" name="FINE_TURNO"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_TurnManager" name="TurnManager">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_TurnManager_stato" name="stato" visibility="private" type="_StatoDiGioco"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_TurnManager_iniziaTurno" name="iniziaTurno" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_TurnManager_eseguiFaseAutomatica" name="eseguiFaseAutomatica" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_TurnManager_eseguiFaseArtiOscure" name="eseguiFaseArtiOscure" visibility="private"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_TurnManager_eseguiFaseMalvagi" name="eseguiFaseMalvagi" visibility="private"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_TurnManager_eseguiFineTurno" name="eseguiFineTurno" visibility="private"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_InputController" name="InputController">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_InputController_scegliGiocatore" name="scegliGiocatore" visibility="public" isStatic="true"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_InputController_scegliCarta" name="scegliCarta" visibility="public" isStatic="true"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_InputController_scegliMalvagio" name="scegliMalvagio" visibility="public" isStatic="true"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_pkg_gestoreEffetti" name="gestoreEffetti">
+    <packagedElement xmi:type="uml:Class" xmi:id="_Effetto" name="Effetto">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Effetto_type" name="type" visibility="private" type="_TipoEffetto"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Effetto_qta" name="qta" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Effetto_target" name="target" visibility="private" type="_BersaglioEffetto"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Effetto_durata" name="durata" visibility="private" type="_DurataEffetto"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Effetto_qtaTarget" name="qtaTarget" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Effetto_opzioni" name="opzioni" visibility="private" type="_Effetto">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Effetto_opzioni_upper" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Effetto_ripetuto" name="ripetuto" visibility="private" type="_Effetto"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Effetto_getType" name="getType" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Effetto_getQta" name="getQta" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Effetto_getTarget" name="getTarget" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Effetto_getDurata" name="getDurata" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Effetto_getQtaTarget" name="getQtaTarget" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Effetto_getOpzioni" name="getOpzioni" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Effetto_getRipetuto" name="getRipetuto" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Effetto_setTarget" name="setTarget" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Effetto_setType" name="setType" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Effetto_setQta" name="setQta" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Effetto_setDurata" name="setDurata" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Effetto_setQtaTarget" name="setQtaTarget" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Effetto_setOpzioni" name="setOpzioni" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Effetto_setRipetuto" name="setRipetuto" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_TipoEffetto" name="TipoEffetto">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_PERDERE_VITA" name="PERDERE_VITA"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_LIMITARE_DANNO" name="LIMITARE_DANNO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_GUADAGNARE_VITA" name="GUADAGNARE_VITA"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_AGGIUNGERE_MARCHIO_NERO" name="AGGIUNGERE_MARCHIO_NERO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_RIMUOVERE_MARCHIO_NERO" name="RIMUOVERE_MARCHIO_NERO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_SCARTARE_CARTA" name="SCARTARE_CARTA"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_CURARE_MALVAGI" name="CURARE_MALVAGI"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_PESCARE_CARTA" name="PESCARE_CARTA"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_GUADAGNARE_INFLUENZA" name="GUADAGNARE_INFLUENZA"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_GUADAGNARE_ATTACCO" name="GUADAGNARE_ATTACCO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_RIMUOVERE_ATTACCO" name="RIMUOVERE_ATTACCO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_SCELTA" name="SCELTA"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_DADO_TASSOROSSO" name="DADO_TASSOROSSO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_DADO_GRIFONDORO" name="DADO_GRIFONDORO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_DADO_CORVONERO" name="DADO_CORVONERO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_DADO_SERPEVERDE" name="DADO_SERPEVERDE"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_DADO_MALVAGIO" name="DADO_MALVAGIO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_SCONTO_ACQUISTO_CASATA" name="SCONTO_ACQUISTO_CASATA"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_RITIRA_DADO" name="RITIRA_DADO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_ALLEATO_IN_MAZZO" name="ALLEATO_IN_MAZZO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_INCANTESIMO_IN_MAZZO" name="INCANTESIMO_IN_MAZZO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_OGGETTO_IN_MAZZO" name="OGGETTO_IN_MAZZO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_COPIA_ALLEATO" name="COPIA_ALLEATO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_RITORNO_CARTA_IN_MANO" name="RITORNO_CARTA_IN_MANO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_SCARTA_INCANTESIMO" name="SCARTA_INCANTESIMO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_SCARTA_OGGETTO" name="SCARTA_OGGETTO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_SCARTA_ALLEATO" name="SCARTA_ALLEATO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_RIVELA_CARTA" name="RIVELA_CARTA"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_RIVELA_NUOVO_EVENTO" name="RIVELA_NUOVO_EVENTO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_ACQUISTO_CARTA" name="ACQUISTO_CARTA"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_CERCA_ALLEATO" name="CERCA_ALLEATO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_CERCA_INCANTESIMO" name="CERCA_INCANTESIMO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_CERCA_OGGETTO" name="CERCA_OGGETTO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_VITTORIA" name="VITTORIA"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_NON_ATTACCARE_VOLDY" name="NON_ATTACCARE_VOLDY"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_ALLEATO_IN_MANO" name="ALLEATO_IN_MANO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_SCARTA_INFLUENZA" name="SCARTA_INFLUENZA"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_GUARDA_CARTA_CIMA" name="GUARDA_CARTA_CIMA"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_LASCIA_CARTA_CIMA" name="LASCIA_CARTA_CIMA"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_SCARTA_CARTA_CIMA" name="SCARTA_CARTA_CIMA"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_CERCA_CARTA_MAZZO" name="CERCA_CARTA_MAZZO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_MISCHIA_MAZZO" name="MISCHIA_MAZZO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_LIMITA_ATTACCO" name="LIMITA_ATTACCO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_SCELTA_MULTIPLA" name="SCELTA_MULTIPLA"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_BLOCCA_ABILITA_MALVAGIO" name="BLOCCA_ABILITA_MALVAGIO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoEffetto_SCEGLI_DADO" name="SCEGLI_DADO"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_BersaglioEffetto" name="BersaglioEffetto">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BersaglioEffetto_EROE_ATTIVO" name="EROE_ATTIVO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BersaglioEffetto_SE_STESSO" name="SE_STESSO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BersaglioEffetto_TUTTI_GLI_EROI" name="TUTTI_GLI_EROI"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BersaglioEffetto_EROI_NON_ATTIVI" name="EROI_NON_ATTIVI"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BersaglioEffetto_EROE_SCELTO" name="EROE_SCELTO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BersaglioEffetto_EROE_ATTIVANTE" name="EROE_ATTIVANTE"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BersaglioEffetto_ALLEATO_GIOCATO" name="ALLEATO_GIOCATO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BersaglioEffetto_TUTTI_I_MALVAGI" name="TUTTI_I_MALVAGI"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BersaglioEffetto_MALVAGIO_SCELTO" name="MALVAGIO_SCELTO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BersaglioEffetto_LUOGO" name="LUOGO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_BersaglioEffetto_SCELTA_MULTIPLA" name="SCELTA_MULTIPLA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_DurataEffetto" name="DurataEffetto">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_DurataEffetto_ISTANTANEO" name="ISTANTANEO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_DurataEffetto_TEMPORANEO" name="TEMPORANEO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_DurataEffetto_CONTINUO" name="CONTINUO"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Trigger" name="Trigger">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Trigger_type" name="type" visibility="private" type="_TipoTrigger"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Trigger_effectToExecute" name="effectToExecute" visibility="private" type="_Effetto">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Trigger_effectToExecute_upper" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Trigger_target" name="target" visibility="private" type="_BersaglioEffetto"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Trigger_qtaQuorum" name="qtaQuorum" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Trigger_attivato1Volta" name="attivato1Volta" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Trigger_durata" name="durata" visibility="private" type="_DurataEffetto"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Trigger_getType" name="getType" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Trigger_getEffectToExecute" name="getEffectToExecute" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Trigger_getTarget" name="getTarget" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Trigger_getQtaQuorum" name="getQtaQuorum" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Trigger_getAttivato1Volta" name="getAttivato1Volta" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Trigger_getDurata" name="getDurata" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Trigger_setType" name="setType" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Trigger_setEffectToExecute" name="setEffectToExecute" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Trigger_setTarget" name="setTarget" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Trigger_setQtaQuorum" name="setQtaQuorum" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Trigger_setAttivato1Volta" name="setAttivato1Volta" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_Trigger_setDurata" name="setDurata" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_TipoTrigger" name="TipoTrigger">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_NEMICO_SCONFITTO" name="NEMICO_SCONFITTO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_EROE_ATTIVO" name="EROE_ATTIVO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_AUTO_SCARTO" name="AUTO_SCARTO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_SCARTA_INCANTESIMO" name="SCARTA_INCANTESIMO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_GIOCA_ALLEATO" name="GIOCA_ALLEATO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_ACQUISTA_ALLEATO" name="ACQUISTA_ALLEATO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_WEASLEY_IN_MANO" name="WEASLEY_IN_MANO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_PESCA_CARTA_BONUS" name="PESCA_CARTA_BONUS"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_GIOCA_OGGETTO" name="GIOCA_OGGETTO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_SALUTE_MASSIMA" name="SALUTE_MASSIMA"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_RIMOZIONE_MARCHIO_NERO" name="RIMOZIONE_MARCHIO_NERO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_INCANTESIMI_GIOCATI" name="INCANTESIMI_GIOCATI"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_GIOCA_INCANTESIMO" name="GIOCA_INCANTESIMO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_GUADAGNA_VITA" name="GUADAGNA_VITA"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_ATTACCHI_ASSEGNATI" name="ATTACCHI_ASSEGNATI"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_STORDIMENTO" name="STORDIMENTO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_AGGIUNTA_MARCHIO_NERO" name="AGGIUNTA_MARCHIO_NERO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_SCARTA_CARTA_MALUS" name="SCARTA_CARTA_MALUS"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_SCARTA_CARTA_BONUS" name="SCARTA_CARTA_BONUS"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_ACQUISTA_INCANTESIMO" name="ACQUISTA_INCANTESIMO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_ACQUISTA_OGGETTO" name="ACQUISTA_OGGETTO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_RICEVI_DANNO" name="RICEVI_DANNO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_RIVELA_MORSMORDRE_O_MALVAGIO" name="RIVELA_MORSMORDRE_O_MALVAGIO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_INIZIO_TURNO" name="INIZIO_TURNO"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_TipoTrigger_FINE_TURNO" name="FINE_TURNO"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_EsecutoreEffetti" name="EsecutoreEffetti">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_EsecutoreEffetti_eseguiEffetto" name="eseguiEffetto" visibility="public" isStatic="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_GestoreEffetti" name="GestoreEffetti">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_9Hd1Af9jEfCN4tLu-FGA9A" name="statodigioco" type="_StatoDiGioco" association="_9HdN8P9jEfCN4tLu-FGA9A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FrBxgP9kEfCN4tLu-FGA9A" name="LiteralInteger1" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FrBxgf9kEfCN4tLu-FGA9A" name="LiteralUnlimitedNatural1" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GestoreEffetti_aggiungiEffetto" name="aggiungiEffetto" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GestoreEffetti_aggiungiEffettoTemporaneo" name="aggiungiEffettoTemporaneo" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GestoreEffetti_rimuoviEffetto" name="rimuoviEffetto" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GestoreEffetti_fineTurno" name="fineTurno" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GestoreEffetti_regolaAttiva" name="regolaAttiva" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_GestoreTrigger" name="GestoreTrigger">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_-xRrcv9jEfCN4tLu-FGA9A" name="statodigioco" type="_StatoDiGioco" association="_-xREYP9jEfCN4tLu-FGA9A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_CWdpcP9kEfCN4tLu-FGA9A" name="LiteralInteger1" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_CWeQgP9kEfCN4tLu-FGA9A" name="LiteralUnlimitedNatural1" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GestoreTrigger_registraTrigger" name="registraTrigger" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GestoreTrigger_hasTrigger" name="hasTrigger" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GestoreTrigger_rimuoviTrigger" name="rimuoviTrigger" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GestoreTrigger_rimuoviTriggerFineTurno" name="rimuoviTriggerFineTurno" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GestoreTrigger_attivaTrigger" name="attivaTrigger" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_TriggerAttivato" name="TriggerAttivato">
+      <ownedComment xmi:type="uml:Comment" xmi:id="_TriggerAttivato_comment" annotatedElement="_TriggerAttivato">
+        <body>Classe interna a GestoreTrigger</body>
+      </ownedComment>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_TriggerAttivato_sorgente" name="sorgente" visibility="private" type="_Carta"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_TriggerAttivato_effetti" name="effetti" visibility="private" type="_Effetto">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_TriggerAttivato_effetti_upper" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_TriggerAttivato_durata" name="durata" visibility="private" type="_DurataEffetto"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_TriggerAttivato_getSorgente" name="getSorgente" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_TriggerAttivato_getEffetti" name="getEffetti" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_TriggerAttivato_getDurata" name="getDurata" visibility="public"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_pkg_data" name="data">
+    <packagedElement xmi:type="uml:Class" xmi:id="_CardFactory" name="CardFactory">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_CardFactory_inizializza" name="inizializza" visibility="public" isStatic="true"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_CardFactory_creaCarta" name="creaCarta" visibility="public" isStatic="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_HeroFactory" name="HeroFactory">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_HeroFactory_inizializza" name="inizializza" visibility="public" isStatic="true"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_HeroFactory_creaEroe" name="creaEroe" visibility="public" isStatic="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_VillainFactory" name="VillainFactory">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_VillainFactory_inizializza" name="inizializza" visibility="public" isStatic="true"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_VillainFactory_creaMalvagio" name="creaMalvagio" visibility="public" isStatic="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_LocationFactory" name="LocationFactory">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_LocationFactory_inizializza" name="inizializza" visibility="public" isStatic="true"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_LocationFactory_creaLuogo" name="creaLuogo" visibility="public" isStatic="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_HorcruxFactory" name="HorcruxFactory">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_HorcruxFactory_inizializza" name="inizializza" visibility="public" isStatic="true"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_HorcruxFactory_creaHorcrux" name="creaHorcrux" visibility="public" isStatic="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ProficiencyFactory" name="ProficiencyFactory">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ProficiencyFactory_inizializza" name="inizializza" visibility="public" isStatic="true"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ProficiencyFactory_creaCompetenza" name="creaCompetenza" visibility="public" isStatic="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_DiceFactory" name="DiceFactory">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_DiceFactory_inizializza" name="inizializza" visibility="public" isStatic="true"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_DiceFactory_creaDado" name="creaDado" visibility="public" isStatic="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_GameConfig" name="GameConfig">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_GameConfig_anno" name="anno" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_GameConfig_contieneHorcrux" name="contieneHorcrux" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_GameConfig_contieneDadi" name="contieneDadi" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_NB0_8v9kEfCN4tLu-FGA9A" name="statodigioco" type="_StatoDiGioco" association="_NB0Y4P9kEfCN4tLu-FGA9A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Pcd2YP9kEfCN4tLu-FGA9A" name="LiteralInteger1" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Pcd2Yf9kEfCN4tLu-FGA9A" name="LiteralUnlimitedNatural1" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GameConfig_getAnno" name="getAnno" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GameConfig_getContieneHorcrux" name="getContieneHorcrux" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GameConfig_getContieneDadi" name="getContieneDadi" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_GameLoader" name="GameLoader">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_JdxqYv9kEfCN4tLu-FGA9A" name="gameconfig" type="_GameConfig" association="_JdxDUP9kEfCN4tLu-FGA9A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JdxqY_9kEfCN4tLu-FGA9A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JdxqZP9kEfCN4tLu-FGA9A" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GameLoader_caricaGioco" name="caricaGioco" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_SaveManager" name="SaveManager">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_SaveManager_salvaGioco" name="salvaGioco" visibility="public" isStatic="true"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_SaveManager_caricaGioco" name="caricaGioco" visibility="public" isStatic="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_StarterPackLoader" name="StarterPackLoader">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_StarterPackLoader_carica" name="carica" visibility="public" isStatic="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ProgressionManager" name="ProgressionManager">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ProgressionManager_avanzaAnno" name="avanzaAnno" visibility="public" isStatic="true"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ProgressionManager_getCarteAnno" name="getCarteAnno" visibility="public" isStatic="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_GameSaveData" name="GameSaveData"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_PlayerSaveData" name="PlayerSaveData"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Anno" name="Anno">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_UTl9Yv9kEfCN4tLu-FGA9A" name="gameconfig" type="_GameConfig" association="_UTlWUP9kEfCN4tLu-FGA9A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_UTl9Y_9kEfCN4tLu-FGA9A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_UTmkcP9kEfCN4tLu-FGA9A" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_pkg_grafica" name="grafica">
+    <packagedElement xmi:type="uml:Class" xmi:id="_GameBoardUI" name="GameBoardUI">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_GameBoardUI_stato" name="stato" visibility="private" type="_StatoDiGioco"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_gE_H0v9kEfCN4tLu-FGA9A" name="statodigioco" type="_StatoDiGioco" association="_gE-gwP9kEfCN4tLu-FGA9A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_gE_u4P9kEfCN4tLu-FGA9A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_gE_u4f9kEfCN4tLu-FGA9A" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GameBoardUI_aggiorna" name="aggiorna" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GameBoardUI_getMessagePanel" name="getMessagePanel" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_GameBoardPanel" name="GameBoardPanel">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_bkEhYv9kEfCN4tLu-FGA9A" name="gameboardui" type="_GameBoardUI" association="_bkD6UP9kEfCN4tLu-FGA9A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bkEhY_9kEfCN4tLu-FGA9A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bkEhZP9kEfCN4tLu-FGA9A" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GameBoardPanel_aggiorna" name="aggiorna" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GameBoardPanel_mostraMercato" name="mostraMercato" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GameBoardPanel_mostraMalvagi" name="mostraMalvagi" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_MessagePanel" name="MessagePanel">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_ZSzCUv9kEfCN4tLu-FGA9A" name="gameboardui" type="_GameBoardUI" association="_ZSybQP9kEfCN4tLu-FGA9A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZSzCU_9kEfCN4tLu-FGA9A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZSzpYP9kEfCN4tLu-FGA9A" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_MessagePanel_mostraMessaggio" name="mostraMessaggio" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_PlayersStatsPanel" name="PlayersStatsPanel">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_eS7UUv9kEfCN4tLu-FGA9A" name="gameboardui" type="_GameBoardUI" association="_eS6tQP9kEfCN4tLu-FGA9A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_eS7UU_9kEfCN4tLu-FGA9A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_eS7UVP9kEfCN4tLu-FGA9A" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_PlayersStatsPanel_aggiorna" name="aggiorna" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_CurrentPlayerPanel" name="CurrentPlayerPanel">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_a0ih4f9kEfCN4tLu-FGA9A" name="gameboardui" type="_GameBoardUI" association="_a0hTwP9kEfCN4tLu-FGA9A">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_a0ih4v9kEfCN4tLu-FGA9A"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_a0ih4_9kEfCN4tLu-FGA9A" value="1"/>
+      </ownedAttribute>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_CurrentPlayerPanel_aggiorna" name="aggiorna" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_CurrentPlayerPanel_mostraMano" name="mostraMano" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_CardButton" name="CardButton">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_CardButton_setCard" name="setCard" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_CardButton_getCard" name="getCard" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_CardClickHandler" name="CardClickHandler">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_CardClickHandler_handle" name="handle" visibility="public"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_ImageLoader" name="ImageLoader">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_ImageLoader_caricaImmagine" name="caricaImmagine" visibility="public" isStatic="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_DialogHelper" name="DialogHelper">
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_DialogHelper_mostraMessaggio" name="mostraMessaggio" visibility="public" isStatic="true"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_DialogHelper_mostraScelta" name="mostraScelta" visibility="public" isStatic="true"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Entita" name="Entita"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_GameController" name="GameController">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_GameController_stato" name="stato" visibility="private" type="_StatoDiGioco"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_GameController_turnManager" name="turnManager" visibility="private" type="_TurnManager"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GameController_iniziaPartita" name="iniziaPartita" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GameController_giocaCarta" name="giocaCarta" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GameController_acquistaCarta" name="acquistaCarta" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GameController_attaccaMalvagio" name="attaccaMalvagio" visibility="public"/>
+      <ownedOperation xmi:type="uml:Operation" xmi:id="_GameController_passaFase" name="passaFase" visibility="public"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="__wBBEP9iEfCN4tLu-FGA9A" memberEnd="__wGgoP9iEfCN4tLu-FGA9A __wIV0P9iEfCN4tLu-FGA9A" navigableOwnedEnd="__wIV0P9iEfCN4tLu-FGA9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="__wF5kP9iEfCN4tLu-FGA9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="__wF5kf9iEfCN4tLu-FGA9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="__wIV0P9iEfCN4tLu-FGA9A" name="giocatore" type="_Giocatore" association="__wBBEP9iEfCN4tLu-FGA9A">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hD-VEP9jEfCN4tLu-FGA9A" name="LiteralInteger1" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hD-8IP9jEfCN4tLu-FGA9A" name="LiteralUnlimitedNatural1" value="4"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_OQ53oP9jEfCN4tLu-FGA9A" memberEnd="_OQ6esv9jEfCN4tLu-FGA9A _OQ7Fwv9jEfCN4tLu-FGA9A" navigableOwnedEnd="_OQ7Fwv9jEfCN4tLu-FGA9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_OQ6esP9jEfCN4tLu-FGA9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_OQ6esf9jEfCN4tLu-FGA9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_OQ7Fwv9jEfCN4tLu-FGA9A" name="faseturno" type="_FaseTurno" association="_OQ53oP9jEfCN4tLu-FGA9A"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_OQ6esv9jEfCN4tLu-FGA9A" name="turnmanager" type="_TurnManager" association="_OQ53oP9jEfCN4tLu-FGA9A">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VawPMP9jEfCN4tLu-FGA9A" name="LiteralInteger1" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VawPMf9jEfCN4tLu-FGA9A" name="LiteralUnlimitedNatural1" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_SEXiMP9jEfCN4tLu-FGA9A" memberEnd="_SEYJQv9jEfCN4tLu-FGA9A _SEYJRf9jEfCN4tLu-FGA9A" navigableOwnedEnd="_SEYJRf9jEfCN4tLu-FGA9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_SEYJQP9jEfCN4tLu-FGA9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_SEYJQf9jEfCN4tLu-FGA9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_SEYJRf9jEfCN4tLu-FGA9A" name="faseturno" type="_FaseTurno" association="_SEXiMP9jEfCN4tLu-FGA9A"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_SEYJQv9jEfCN4tLu-FGA9A" name="statodigioco" type="_StatoDiGioco" association="_SEXiMP9jEfCN4tLu-FGA9A">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Uq1OIP9jEfCN4tLu-FGA9A" name="LiteralInteger1" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Uq11MP9jEfCN4tLu-FGA9A" name="LiteralUnlimitedNatural1" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_YIK3sP9jEfCN4tLu-FGA9A" memberEnd="_YILewv9jEfCN4tLu-FGA9A _YILexf9jEfCN4tLu-FGA9A" navigableOwnedEnd="_YILexf9jEfCN4tLu-FGA9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_YILewP9jEfCN4tLu-FGA9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_YILewf9jEfCN4tLu-FGA9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_YILexf9jEfCN4tLu-FGA9A" name="mazzo" type="_Mazzo" association="_YIK3sP9jEfCN4tLu-FGA9A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_a9zoEP9jEfCN4tLu-FGA9A" memberEnd="_a90PIv9jEfCN4tLu-FGA9A _a902Mf9jEfCN4tLu-FGA9A" navigableOwnedEnd="_a902Mf9jEfCN4tLu-FGA9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_a90PIP9jEfCN4tLu-FGA9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_a90PIf9jEfCN4tLu-FGA9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_a902Mf9jEfCN4tLu-FGA9A" name="scarti" type="_Mazzo" association="_a9zoEP9jEfCN4tLu-FGA9A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_sXssEP9jEfCN4tLu-FGA9A" memberEnd="_sXtTIf9jEfCN4tLu-FGA9A _sXtTJP9jEfCN4tLu-FGA9A" navigableOwnedEnd="_sXtTJP9jEfCN4tLu-FGA9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_sXssEf9jEfCN4tLu-FGA9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_sXtTIP9jEfCN4tLu-FGA9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_sXtTJP9jEfCN4tLu-FGA9A" name="statodigioco" type="_StatoDiGioco" association="_sXssEP9jEfCN4tLu-FGA9A"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_sXtTIf9jEfCN4tLu-FGA9A" name="gamecontroller" type="_GameController" association="_sXssEP9jEfCN4tLu-FGA9A">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_sXtTIv9jEfCN4tLu-FGA9A"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_sXtTI_9jEfCN4tLu-FGA9A" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_tN2Q8P9jEfCN4tLu-FGA9A" memberEnd="_tN24Av9jEfCN4tLu-FGA9A _tN3fEv9jEfCN4tLu-FGA9A" navigableOwnedEnd="_tN3fEv9jEfCN4tLu-FGA9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_tN24AP9jEfCN4tLu-FGA9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_tN24Af9jEfCN4tLu-FGA9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_tN3fEv9jEfCN4tLu-FGA9A" name="turnmanager" type="_TurnManager" association="_tN2Q8P9jEfCN4tLu-FGA9A"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_tN24Av9jEfCN4tLu-FGA9A" name="gamecontroller" type="_GameController" association="_tN2Q8P9jEfCN4tLu-FGA9A">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_tN3fEP9jEfCN4tLu-FGA9A"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_tN3fEf9jEfCN4tLu-FGA9A" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_2reB8P9jEfCN4tLu-FGA9A" memberEnd="_2repAv9jEfCN4tLu-FGA9A _2repBf9jEfCN4tLu-FGA9A" navigableOwnedEnd="_2repBf9jEfCN4tLu-FGA9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_2repAP9jEfCN4tLu-FGA9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_2repAf9jEfCN4tLu-FGA9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_2repBf9jEfCN4tLu-FGA9A" name="tipoeffetto" type="_TipoEffetto" association="_2reB8P9jEfCN4tLu-FGA9A"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_2repAv9jEfCN4tLu-FGA9A" name="effetto" type="_Effetto" association="_2reB8P9jEfCN4tLu-FGA9A">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4vZBgP9jEfCN4tLu-FGA9A" name="LiteralInteger1" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4vZBgf9jEfCN4tLu-FGA9A" name="LiteralUnlimitedNatural1" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_9HdN8P9jEfCN4tLu-FGA9A" memberEnd="_9Hd1Af9jEfCN4tLu-FGA9A _9Hd1BP9jEfCN4tLu-FGA9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_9HdN8f9jEfCN4tLu-FGA9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_9Hd1AP9jEfCN4tLu-FGA9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_-xREYP9jEfCN4tLu-FGA9A" memberEnd="_-xRrcv9jEfCN4tLu-FGA9A _-xSSgf9jEfCN4tLu-FGA9A" navigableOwnedEnd="_-xSSgf9jEfCN4tLu-FGA9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_-xRrcP9jEfCN4tLu-FGA9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_-xRrcf9jEfCN4tLu-FGA9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_-xSSgf9jEfCN4tLu-FGA9A" name="gestoretrigger" type="_GestoreTrigger" association="_-xREYP9jEfCN4tLu-FGA9A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_JdxDUP9kEfCN4tLu-FGA9A" memberEnd="_JdxqYv9kEfCN4tLu-FGA9A _JdxqZf9kEfCN4tLu-FGA9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_JdxqYP9kEfCN4tLu-FGA9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_JdxqYf9kEfCN4tLu-FGA9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_JdxqZf9kEfCN4tLu-FGA9A" name="gameloader" type="_GameLoader" association="_JdxDUP9kEfCN4tLu-FGA9A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_NB0Y4P9kEfCN4tLu-FGA9A" memberEnd="_NB0_8v9kEfCN4tLu-FGA9A _NB0_9f9kEfCN4tLu-FGA9A" navigableOwnedEnd="_NB0_9f9kEfCN4tLu-FGA9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_NB0_8P9kEfCN4tLu-FGA9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_NB0_8f9kEfCN4tLu-FGA9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_NB0_9f9kEfCN4tLu-FGA9A" name="gameconfig" type="_GameConfig" association="_NB0Y4P9kEfCN4tLu-FGA9A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_UTlWUP9kEfCN4tLu-FGA9A" memberEnd="_UTl9Yv9kEfCN4tLu-FGA9A _UTmkcf9kEfCN4tLu-FGA9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_UTl9YP9kEfCN4tLu-FGA9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_UTl9Yf9kEfCN4tLu-FGA9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_UTmkcf9kEfCN4tLu-FGA9A" name="anno" type="_Anno" association="_UTlWUP9kEfCN4tLu-FGA9A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ZSybQP9kEfCN4tLu-FGA9A" memberEnd="_ZSzCUv9kEfCN4tLu-FGA9A _ZSzpYf9kEfCN4tLu-FGA9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_ZSzCUP9kEfCN4tLu-FGA9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_ZSzCUf9kEfCN4tLu-FGA9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_ZSzpYf9kEfCN4tLu-FGA9A" name="messagepanel" type="_MessagePanel" association="_ZSybQP9kEfCN4tLu-FGA9A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_a0hTwP9kEfCN4tLu-FGA9A" memberEnd="_a0ih4f9kEfCN4tLu-FGA9A _a0ih5P9kEfCN4tLu-FGA9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_a0h60P9kEfCN4tLu-FGA9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_a0ih4P9kEfCN4tLu-FGA9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_a0ih5P9kEfCN4tLu-FGA9A" name="currentplayerpanel" type="_CurrentPlayerPanel" association="_a0hTwP9kEfCN4tLu-FGA9A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_bkD6UP9kEfCN4tLu-FGA9A" memberEnd="_bkEhYv9kEfCN4tLu-FGA9A _bkEhZf9kEfCN4tLu-FGA9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_bkEhYP9kEfCN4tLu-FGA9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_bkEhYf9kEfCN4tLu-FGA9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_bkEhZf9kEfCN4tLu-FGA9A" name="gameboardpanel" type="_GameBoardPanel" association="_bkD6UP9kEfCN4tLu-FGA9A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_eS6tQP9kEfCN4tLu-FGA9A" memberEnd="_eS7UUv9kEfCN4tLu-FGA9A _eS7UVf9kEfCN4tLu-FGA9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_eS7UUP9kEfCN4tLu-FGA9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_eS7UUf9kEfCN4tLu-FGA9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_eS7UVf9kEfCN4tLu-FGA9A" name="playersstatspanel" type="_PlayersStatsPanel" association="_eS6tQP9kEfCN4tLu-FGA9A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_gE-gwP9kEfCN4tLu-FGA9A" memberEnd="_gE_H0v9kEfCN4tLu-FGA9A _gE_u4v9kEfCN4tLu-FGA9A">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_gE_H0P9kEfCN4tLu-FGA9A" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_gE_H0f9kEfCN4tLu-FGA9A" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_gE_u4v9kEfCN4tLu-FGA9A" name="gameboardui" type="_GameBoardUI" association="_gE-gwP9kEfCN4tLu-FGA9A"/>
+  </packagedElement>
+</uml:Model>

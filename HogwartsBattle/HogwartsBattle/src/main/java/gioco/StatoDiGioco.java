@@ -8,7 +8,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import carte.*;
 import data.CardFactory;
@@ -620,6 +619,7 @@ public class StatoDiGioco {
 		}
 
 		gestoreTrigger.rimuoviTrigger(h);
+		gestoreEffetti.rimuoviEffetto(h);
 
 		// ⭐ Verifica condizione vittoria
 		verificaCondizioneVittoria();
