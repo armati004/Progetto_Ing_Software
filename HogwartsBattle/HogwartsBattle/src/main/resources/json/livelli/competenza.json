@@ -1,0 +1,189 @@
+{
+    "competenze":[
+        {
+            "nome": "Artimanzia",
+            "id": "artimanzia6",
+            "tipo": "Competenza",
+            "descrizione": "Le carte che ti permettono di tirare un Dado Casata ti costano 1 Segnalino Influenza in meno.\nOgni volta che tiri un dado puoi decidere di ritirarlo un'altra volta",
+            "path-img":"/Immagini_carte/Competenze/Artimanzia.png",
+            "triggers":[
+                {
+                    "type": "DADO_TIRATO",
+                    "durata": "CONTINUO",
+                    "effectToExecute":[
+                        {"type": "RITIRA_DADO", "qta":1, "target": "EROE_ATTIVO"}
+                    ]
+                },
+                {
+                    "type": "COSTO_MINORE_1",
+                    "durata": "CONTINUO",
+                    "effectToExecute":[
+                        {"type": "SCONTO_ACQUISTO_CASATA", "qta":1, "target": "EROE_ATTIVO"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Cura delle creature magiche",
+            "id": "curaMagiche6",
+            "tipo": "Competenza",
+            "descrizione": "La prima volta che assegni 1 o più Segnalini Attacco o Segnalini Influenza ad una creatura, un eroe guadagna 2 Punti Vita. Se sconfiggi una creatura rimuovi anche 1 Segnalino Controllo dal Luogo",
+            "path-img":"/Immagini_carte/Competenze/Cura_delle_creature_magiche.png",
+            "triggers":[
+                {
+                    "type": "ASSEGNA_SEGNALINO_CREATURE",
+                    "durata": "CONTINUO",
+                    "effectToExecute":[
+                        {"type": "GUADAGNARE_VITA", "qta":2, "target": "EROE_SCELTO", "targetCount": 1}
+                    ]
+                },
+                {
+                    "type": "NEMICO_SCONFITTO",
+                    "durata": "CONTINUO",
+                    "effectToExecute":[
+                        {"type": "RIMUOVERE_MARCHIO_NERO", "qta":1, "target": "LUOGO"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Difesa contro le arti oscure",
+            "id": "difesaOscure6",
+            "tipo": "Competenza",
+            "descrizione": "Ogni volta che un evento Arti Oscure o un Malvagio ti obbliga a scartare una carta, guadagni 1 Segnalino Attacco e 1 Punto Vita",
+            "path-img":"/Immagini_carte/Competenze/Difesa_contro_le_arti_oscure.png",
+            "triggers":[
+                {
+                    "type": "SCARTA_CARTA_MALUS",
+                    "durata": "CONTINUO",
+                    "effectToExecute":[
+                        {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"EROE_ATTIVO"},
+                        {"type": "GUADAGNARE_VITA", "qta":1, "target": "EROE_ATTIVO"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Divinazione",
+            "id": "divinazione6",
+            "tipo": "Competenza",
+            "descrizione": "Ogni volta che giochi un Oggetto, puoi scegliere di guardare alla carta in cima al tuo mazzo e decidere se lasciarla in cima o scartarla",
+            "path-img":"/Immagini_carte/Competenze/Divinazione.png",
+            "triggers":[
+                {
+                    "type": "GIOCA_OGGETTO",
+                    "durata": "CONTINUO",
+                    "effectToExecute":[
+                        {"type":"GUARDA_CARTA_CIMA", "qta":1, "target":"EROE_ATTIVO"},
+                        {
+                            "type": "SCELTA",
+                            "target":"EROE_ATTIVO",
+                            "opzioni":[
+                                {"type": "LASCIA_CARTA_CIMA", "target": "EROE_ATTIVO"},
+                                {"type": "SCARTA_CARTA_CIMA", "qta": 1, "target":"TUTTI_GLI_EROI"}
+                            ]
+                        }
+                        
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Erbologia",
+            "id": "erbologia6",
+            "tipo": "Competenza",
+            "descrizione": "Se un Eroe guadagna 3 o più Punti Vita, egli pesca una carta",
+            "path-img":"/Immagini_carte/Competenze/Erbologia.png",
+            "triggers":[
+                {
+                    "type": "GUADAGNA_VITA_QUORUM",
+                    "durata": "CONTINUO",
+                    "qtaQuorum": 3,
+                    "attivato1Volta": false,
+                    "effectToExecute":[
+                        {"type":"PESCARE_CARTA", "qta":1, "target":"EROE_ATTIVANTE"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Incanti", 
+            "id": "incanti6",
+            "tipo": "Competenza",
+            "descrizione": "Una volta per turno, puoi scartare 2 Incantesimi.\nSe lo fai, tutti gli eroi guadagnano 1 Segnalino Influenza e pescano una carta",
+            "path-img":"/Immagini_carte/Competenze/Incanti.png",
+            "attivabile": true,
+            "attivato1Volta": false,
+            "effetti":[
+                {"type": "SCARTA_INCANTESIMO", "qta":2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_INFLUENZA", "qta":1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+                {"type": "PESCARE_CARTA", "qta":1, "target":"TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+            ],
+            "commento": "da vedere come considerare un evento che è possibile attivare ogni volta per turno"
+        },
+        {
+            "nome": "Pozioni", 
+            "id": "pozioni6",
+            "tipo": "Competenza",
+            "descrizione": "Se giochi almeno un Alleato, un Oggetto e un Incantesimo nello stesso turno, un Eroe guadagna 1 Segnalino Attacco e 1 Punto Vita",
+            "path-img":"/Immagini_carte/Competenze/Pozioni.png",
+            "triggers":[
+                {
+                    "type": "GIOCA_TUTTO",
+                    "durata": "CONTINUO",
+                    "attivato1Volta": false,
+                    "effectToExecute":[
+                        {"type": "GUADAGNARE_ATTACCO", "qta":1, "target": "EROE_SCELTO", "targetCount":1},
+                        {"type":"GUADAGNARE_VITA", "qta":1, "target":"EROE_SCELTO", "targetCount":1}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Storia della magia", 
+            "id": "storiaMagia6",
+            "tipo": "Competenza",
+            "descrizione": "Ogni volta che acquisti un Incantesimo, un eroe guadagna 1 Segnalino Influenza",
+            "path-img":"/Immagini_carte/Competenze/Storia_della_magia.png",
+            "triggers":[
+                {
+                    "type": "ACQUISTA_INCANTESIMO",
+                    "durata": "CONTINUO",
+                    "attivato1Volta": false,
+                    "effectToExecute":[
+                        {"type": "GUADAGNARE_INFLUENZA", "qta":1, "target": "EROE_SCELTO", "targetCount":1}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Trasfigurazione", 
+            "id": "trasfigurazione6",
+            "tipo": "Competenza",
+            "descrizione": "Una volta per turno, puoi scartare 1 Oggetto per cercare dal tuo mazzo una carta con un valore di 5 o meno Segnalini Influenza e aggiungerla alla mano. Poi mischia il mazzo",
+            "path-img":"/Immagini_carte/Competenze/Trasfigurazione.png",
+            "attivabile": true,
+            "attivato1Volta": false,
+            "effetti":[
+                {"type": "SCARTA_OGGETTO", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "CERCA_CARTA_MAZZO", "qta":1, "qtaQuorum": 5, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "MISCHIA_MAZZO", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "commento": "da vedere come considerare un evento che è possibile attivare ogni volta per turno"
+        },
+        {
+            "nome": "Lezioni di volo", 
+            "id": "lezioniVolo6",
+            "tipo": "Competenza",
+            "descrizione": "Una volta per turno, puoi scartare 5 Segnalini Influenza.\n Se lo fai, rimuovi 1 Segnalino Controllo dal Luogo",
+            "path-img":"/Immagini_carte/Competenze/Volo.png",
+            "attivabile": true,
+            "attivato1Volta": false,
+            "effetti":[
+                {"type": "SCARTA_INFLUENZA", "qta":5, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "RIMUOVERE_MARCHIO_NERO", "qta":1, "target":"LUOGO", "durata": "ISTANTANEO"}
+            ],
+            "commento": "da vedere come considerare un evento che è possibile attivare ogni volta per turno"
+        }
+    ]
+}

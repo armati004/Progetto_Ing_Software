@@ -1,0 +1,219 @@
+{
+    "dadi": [
+        {
+            "nome": "Dado Grifondoro",
+            "id": "dadoGrifondoro",
+            "path-img": "/Immagini_carte/Dadi/dadoGrifondoro.png",
+            "opzioni": [
+                {
+                    "type": "GUADAGNARE_INFLUENZA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "PESCARE_CARTA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_ATTACCO",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_VITA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_INFLUENZA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_INFLUENZA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                }
+            ]
+        },
+        {
+            "nome": "Dado Serpeverde",
+            "id": "dadoSerpeverde",
+            "path-img": "/Immagini_carte/Dadi/dadoSerpeverde.png",
+            "opzioni": [
+                {
+                    "type": "PESCARE_CARTA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_VITA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_INFLUENZA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_ATTACCO",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_ATTACCO",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_ATTACCO",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                }
+            ]
+        },
+		{
+            "nome": "Dado Malvagio",
+            "id": "dadoMalvagio",
+            "path-img": "/Immagini_carte/Dadi/dadoSerpeverde.png",
+            "opzioni": [
+				{
+                    "type": "PERDERE_VITA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+				},
+                {
+                    "type": "SCARTARE_CARTA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+				{
+                    "type": "PERDERE_VITA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },				
+                {
+                    "type": "RIMUOVERE_ATTACCO",
+                    "qta": 1,
+                    "target": "TUTTI_I_MALVAGI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "AGGIUNGERE_MARCHIO_NERO",
+                    "qta": 1,
+                    "target": "LUOGO",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "PERDERE_VITA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                }
+            ]
+        },
+        {
+            "nome": "Dado Corvonero",
+            "id": "dadoCorvonero",
+            "path-img": "/Immagini_carte/Dadi/dadoCorvonero.png",
+            "opzioni": [
+                {
+                    "type": "GUADAGNARE_VITA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_INFLUENZA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_ATTACCO",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "PESCARE_CARTA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "PESCARE_CARTA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "PESCARE_CARTA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                }
+            ]
+        },
+        {
+            "nome": "Dado Tassorosso",
+            "id": "dadoTassorosso",
+            "path-img": "/Immagini_carte/Dadi/dadoTassorosso.png",
+            "opzioni": [
+                {
+                    "type": "GUADAGNARE_VITA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_ATTACCO",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "PESCARE_CARTA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_VITA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_VITA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                },
+                {
+                    "type": "GUADAGNARE_INFLUENZA",
+                    "qta": 1,
+                    "target": "TUTTI_GLI_EROI",
+                    "durata": "ISTANTANEO"
+                }
+            ]
+        }
+    ]
+}

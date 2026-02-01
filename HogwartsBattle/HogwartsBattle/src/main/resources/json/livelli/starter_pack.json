@@ -1,0 +1,285 @@
+{
+    "harry":[
+        {
+            "nome": "Edvige",
+            "id": "edvige0",
+            "class": "Alleato",
+            "descrizione": "Scegli uno: \n Guadagna 1 Segnalino Attacco; o guadagni 2 Punti vita",
+            "costo": 0,
+            "path-img": "/Immagini_carte/Starter_Pack/Harry/Edvige.png",
+            "effetti":[
+                {
+                    "type": "SCELTA",
+                    "target":"EROE_ATTIVO",
+                    "opzioni":[
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO","durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ],
+					"durata": "ISTANTANEO"
+                }
+            ]
+        },
+        {
+            "nome": "Firebolt",
+            "id": "firebolt0",
+            "class": "Oggetto",
+            "descrizione": "Guadagni 1 Segnalino Attacco \nSe sconfiggi un Malvagio, guadagni anche 1 Segnalino Influenza",
+            "costo": 0,
+            "path-img": "/Immagini_carte/Starter_Pack/Harry/Firebolt.png",
+            "effetti":[
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type": "NEMICO_SCONFITTO",
+                    "durata":"TEMPORANEO",
+                    "effectToExecute":[
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Mantello dell'Invisibilità",
+            "id": "mantelloInvisibilita0",
+            "class": "Oggetto",
+            "descrizione": "Guadagni 1 Segnalino Attacco,\n Se hai questa carta in mano, non puoi perdere più di 1 Punto Vita per Evento Arti Oscure o Malvagio",
+            "costo": 0,
+            "path-img": "/Immagini_carte/Starter_Pack/Harry/Mantello_dell_invisibilita.png",
+            "effetti":[
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type": "RICEVI_DANNO",
+                    "durata":"TEMPORANEO",
+                    "effectToExecute":[
+                        {"type": "LIMITARE_DANNO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        },
+		{
+		  "nome": "Alohomora",
+		  "id": "Alohomora_Harry",
+		  "class": "Incantesimo",
+		  "descrizione": "Guadagni 1 influenza",
+		  "costo": 0,
+		  "pathImmagine": "/Immagini_carte/Starter_Pack/Harry/Alohomora_Harry.png",
+		  "effetti": [{"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}],
+		  "triggers": []
+		}
+    ],
+    "Hermione":[
+		{
+		  "nome": "Alohomora",
+		  "id": "Alohomora_Hermione",
+		  "class": "Incantesimo",
+		  "descrizione": "Guadagni 1 influenza",
+		  "costo": 0,
+		  "pathImmagine": "/Immagini_carte/Starter_Pack/Hermione/Alohomora_Hermione.png",
+		  "effetti": [{"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}],
+		  "triggers": []
+		},
+        {
+            "nome": "Favole di Beda il Bardo",
+            "id": "favolaBeda0",
+            "class": "Oggetto",
+            "descrizione": "Scegli uno: \nGuadagni 2 Segnalini influenza; o TUTTI gli Eroi guadagnano 1 Segnalino Influenza",
+            "costo": 0,
+            "path-img": "/Immagini_carte/Starter_Pack/Hermione/Favole_di_Beda_il_Bardo.png",
+            "effetti":[
+                {
+                    "type": "SCELTA",
+                    "target":"EROE_ATTIVO",
+                    "opzioni":[
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO", "durata":"ISTANTANEO"},
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata":"ISTANTANEO"}
+                    ],
+					"durata": "ISTANTANEO"
+                }
+            ]
+        },
+        {
+            "nome": "Giratempo",
+            "id": "giratempo0",
+            "class": "Oggetto",
+            "descrizione": "Guadagni 1 Segnalino Influenza \n Puoi mettere gli Incantesimi che acquisti in cima al mazzo invece che nella tua pila degli scarti",
+            "costo": 0,
+            "path-img": "/Immagini_carte/Starter_Pack/Hermione/Giratempo.png",
+            "effetti":[
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type": "ACQUISTA_INCANTESIMO",
+                    "durata":"TEMPORANEO",
+                    "effectToExecute":[
+                        {"type": "mettiInCimaMazzo", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Grattastinchi",
+            "id": "grattastinchi0",
+            "class": "Alleato",
+            "descrizione": "Scegli uno: \nGuadagni 1 Segnalino Attacco; o guadagni 2 Punti Vita",
+            "costo": 0,
+            "path-img": "/Immagini_carte/Starter_Pack/Hermione/Grattastinchi.png",
+            "effetti":[
+                {
+                    "type": "SCELTA",
+                    "target":"EROE_ATTIVO",
+                    "opzioni":[
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ],
+					"durata": "ISTANTANEO"
+                }
+            ]
+        }
+    ],
+    "Neville":[
+		{
+		  "nome": "Alohomora",
+		  "id": "Alohomora_Neville",
+		  "class": "Incantesimo",
+		  "descrizione": "Guadagni 1 influenza",
+		  "costo": 0,
+		  "pathImmagine": "/Immagini_carte/Starter_Pack/Neville/Alohomora_Neville.png",
+		  "effetti": [{"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}],
+		  "triggers": []
+		},
+        {
+            "nome": "Mandragola",
+            "id": "mandragola0",
+            "class": "Oggetto",
+            "descrizione": "Scegli uno:\n Guadagni 1 Segnalino Attacco; o un Eroe guadagnano 2 Punti Vita",
+            "costo": 0,
+            "path-img": "/Immagini_carte/Starter_Pack/Neville/Mandragola.png",
+            "effetti":[
+                {
+                    "type": "SCELTA",
+                    "target":"EROE_ATTIVO",
+                    "opzioni":[
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_SCELTO", "qta-target": 1, "durata": "ISTANTANEO"}
+                    ],
+					"durata": "ISTANTANEO"
+                }
+            ]
+        },
+        {
+            "nome": "Oscar",
+            "id": "oscar0",
+            "class": "Alleato",
+            "descrizione": "Scegli uno: \n Guadagni 1 Segnalino Attacco; o guadagni 2 Punti vita",
+            "costo": 0,
+            "path-img": "/Immagini_carte/Starter_Pack/Neville/Oscar.png",
+            "effetti":[
+                {
+                    "type": "SCELTA",
+                    "target":"EROE_ATTIVO",
+                    "opzioni":[
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ],
+					"durata": "ISTANTANEO"
+                }
+            ]
+        },
+        {
+            "nome": "Ricordella",
+            "id": "ricordella0",
+            "class": "Oggetto",
+            "descrizione": "Guadagni 1 Segnalino Influenza \n Se scarti questa carta, guadagni 2 Segnalini Influenza",
+            "costo": 0,
+            "path-img": "/Immagini_carte/Starter_Pack/Neville/Ricordella.png",
+            "effetti":[
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type": "AUTO_SCARTO",
+                    "durata":"TEMPORANEO",
+                    "effectToExecute":[
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        }
+    ],
+    "Ron":[
+		{
+		  "nome": "Alohomora",
+		  "id": "Alohomora_Ron",
+		  "class": "Incantesimo",
+		  "descrizione": "Guadagni 1 influenza",
+		  "costo": 0,
+		  "pathImmagine": "/Immagini_carte/Starter_Pack/Ron/Alohomora_Ron.png",
+		  "effetti": [{"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}],
+		  "triggers": []
+		},
+        {
+            "nome": "Gelatine tutti gusti",
+            "id": "gelatineTuttiGusti0",
+            "class": "Oggetto",
+            "descrizione": "Guadagni 1 Segnalino Influenza\n Per ogni Alleato giocato in questo turno, guadagni 1 Segnalino Attacco",
+            "costo": 0,
+            "path-img": "/Immagini_carte/Starter_Pack/Ron/Gelatine_tutti_gusti.png",
+            "effetti":[
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type": "GIOCA_ALLEATO",
+                    "durata":"TEMPORANEO",
+                    "effectToExecute":[
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Leotordo",
+            "id": "leotardo0",
+            "class": "Alleato",
+            "descrizione": "Scegli uno: \n Guadagni 1 Segnalino Attacco; o guadagni 2 Punti vita",
+            "costo": 0,
+            "path-img": "/Immagini_carte/Starter_Pack/Ron/Leotordo.png",
+            "effetti":[
+                {
+                    "type": "SCELTA",
+                    "target":"EROE_ATTIVO",
+                    "opzioni":[
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ],
+					"durata": "ISTANTANEO"
+                }
+            ]
+        },
+        {
+            "nome": "Tornado11",
+            "id": "tornado110",
+            "class": "Oggetto",
+            "descrizione": "Guadagni 1 Segnalino Attacco \n Se sconfiggi un Malvagio, guadagni anche 1 Segnalino Influenza",
+            "costo": 0,
+            "path-img": "/Immagini_carte/Starter_Pack/Ron/Tornado11.png",
+            "effetti":[
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type": "NEMICO_SCONFITTO",
+                    "durata":"TEMPORANEO",
+                    "effectToExecute":[
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        }
+    ]
+    
+}

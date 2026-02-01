@@ -1,0 +1,343 @@
+{
+    "gioco1":[
+        {
+            "nome": "Attrezzatura da Quidditch",
+            "id": "attrezzaturaQuidditch1",
+            "class": "Oggetto",
+            "descrizione": "Guadagni 1 Segnalino Attacco e 1 Punto Vita",
+            "costo": 3,
+            "path-img": "/Immagini_carte/Negozio/Gioco1/Attrezzatura_da_quidditch.png",
+            "effetti":[
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_VITA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ]
+        },
+        {
+            "nome": "Boccino d'oro",
+            "id": "boccinoOro1",
+            "class": "Oggetto",
+            "descrizione": "Guadagni 2 Segnalini Influenza \nPesca una carta",
+            "costo": 5,
+            "path-img": "/Immagini_carte/Negozio/Gioco1/Boccino_d_oro.png",
+            "effetti":[
+                {"type": "GUADAGNARE_INFLUENZA", "qta":2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "PESCARE_CARTA", "qta": 1 , "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ]
+        },
+        {
+            "nome": "Cappello parlante",
+            "id": "cappelloParlante1",
+            "class": "Oggetto",
+            "descrizione": "Guadagni 2 Segnalini Influenza \nPuoi mettere gli alleati che acquisti in cima al tuo mazzo, invece che nel mazzo degli scarti",
+            "costo": 4,
+            "path-img": "/Immagini_carte/Negozio/Gioco1/Cappello_parlante.png",
+            "effetti":[
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type": "ACQUISTA_ALLEATO",
+                    "durata":"TEMPORANEO",
+                    "effectToExecute":[
+                        {"type": "ALLEATO_IN_MAZZO", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Essenza di dittamo",
+            "id": "essenzaDittamo1",
+            "class": "Oggetto",
+            "descrizione": "Un eroe guadagna 2 Punti Vita",
+            "costo": 2,
+            "path-img": "/Immagini_carte/Negozio/Gioco1/Essenza_di_dittamo.png",
+            "effetti":[
+                {"type": "GUADAGNARE_VITA", "qta": 2 , "target": "EROE_SCELTO", "targetCount": 1, "durata": "ISTANTANEO"}
+            ]
+        }
+    ],
+    "gioco2":[
+        {
+            "nome": "Nimbus 2001",
+            "id": "nimbusDuemilauno2",
+            "class": "Oggetto",
+            "descrizione": "Guadagni 2 Segnalini Attacco\nSe sconfiggi un Malvagio, guadagni anche 2 Segnalini influenza",
+            "costo": 5,
+            "path-img": "/Immagini_carte/Negozio/Gioco2/Nimbus_Duemilauno.png",
+            "effetti":[
+                {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type": "NEMICO_SCONFITTO",
+                    "durata":"TEMPORANEO",
+                    "effectToExecute":[
+                        {"type": "GUADAGNARE_INFLUENZA","qta":2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Pozione polisucco",
+            "id": "pozionePolisucco2",
+            "class": "Oggetto",
+            "descrizione": "Scegli un Alleato che hai giocato questo turno. Puoi copiare gli effetti di quell'Alleato",
+            "costo": 3,
+            "path-img": "/Immagini_carte/Negozio/Gioco2/Pozione_Polisucco.png",
+            "effetti":[
+                {"type": "COPIA_EFFETTO", "target": "ALLEATO_GIOCATO", "targetCount":1, "durata": "ISTANTANEO"}
+            ]
+        }
+    ],
+    "gioco3":[
+        {
+            "nome": "Burrobirra",
+            "id": "burrobirra3",
+            "class": "Oggetto",
+            "descrizione": "2 Eroi guadagnano 1 Segnalino Influenza e 1 Punto Vita",
+            "costo": 2,
+            "path-img": "/Immagini_carte/Negozio/Gioco3/Burrobirra.png",
+            "effetti":[
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_SCELTO", "targetCount":2, "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_VITA", "qta":1, "target": "EROE_SCELTO", "targetCount":2, "durata": "ISTANTANEO"}
+            ]
+        },
+         {
+            "nome": "Cioccorana",
+            "id": "cioccorana3",
+            "class": "Oggetto",
+            "descrizione": "Un eroe guadagna 1 Segnalino Influenza e 1 Punto Vita\nSe scarti questa carta, guadagni 1 Segnalino Influenza e 1 Punto Vita",
+            "costo": 2,
+            "path-img": "/Immagini_carte/Negozio/Gioco3/Cioccorana.png",
+            "effetti":[
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_VITA", "qta": 1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type": "AUTO_SCARTO",
+                    "durata":"TEMPORANEO",
+                    "effectToExecute":[
+                        {"type": "GUADAGNARE_INFLUENZA", "qta":1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_VITA", "qta":1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Mappa del malandrino",
+            "id": "mappaMalandrino3",
+            "class": "Oggetto",
+            "descrizione": "Pesca 2 carte\nSe scarti questa carta, ogni Eroe pesca una carta",
+            "costo": 5,
+            "path-img":"/Immagini_carte/Negozio/Gioco3/Mappa_del_Malandrino.png",
+            "effetti":[
+                {"type":"PESCARE_CARTA", "qta":2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type":"AUTO_SCARTO",
+                    "durata":"TEMPORANEO",
+                    "effectToExecute":[
+                        {"type":"PESCARE_CARTA", "qta":1, "target":"TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Sfera di cristallo",
+            "id": "sferaCristallo3",
+            "class": "Oggetto",
+            "descrizione": "Pesca 2 carte, scarti 1 carta",
+            "costo": 3,
+            "path-img":"/Immagini_carte/Negozio/Gioco3/Sfera_di_Cristallo.png",
+            "effetti":[
+                {"type":"PESCARE_CARTA", "qta":2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type":"SCARTARE_CARTA", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ]
+        }
+    ],
+    "gioco4":[
+        {
+            "nome": "Coppa tremaghi",
+            "id": "coppaTremaghi4",
+            "class": "Oggetto",
+            "descrizione": "Guadagni 1 Segnalino Attaco, 1 Segnalino Influenza e 1 Punto Vita",
+            "costo": 5,
+            "path-img":"/Immagini_carte/Negozio/Gioco4/Coppa_tremaghi.png",
+            "effetti":[
+                {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type":"GUADAGNARE_INFLUENZA", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type":"GUADAGNARE_VITA", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"} 
+            ]
+        },
+        {
+            "nome": "Pensatoio",
+            "id": "pensatoio4",
+            "class": "Oggetto",
+            "descrizione": "2 Eroi guadagnano ciascuno 1 Segnalino Influenza e pescare 1 Carta",
+            "costo": 5,
+            "path-img":"/Immagini_carte/Negozio/Gioco4/Pensatoio.png",
+            "effetti":[
+                {"type":"GUADAGNARE_INFLUENZA", "qta":1, "target":"EROE_SCELTO", "targetCount":2, "durata": "ISTANTANEO"},
+                {"type":"PESCARE_CARTA", "qta":1, "target":"EROE_SCELTO", "targetCount":2, "durata": "ISTANTANEO"} 
+            ]
+        },
+        {
+            "nome": "Storia di Hogwarts",
+            "id": "storiaHogwarts4",
+            "class": "Oggetto",
+            "descrizione": "Scegli e tira un dado casata",
+            "costo": 4,
+            "path-img":"/Immagini_carte/Negozio/Gioco4/Storia_di_Hogwarts.png",
+            "effetti":[
+                {
+                    "type": "SCEGLI_DADO",
+                    "target":"EROE_ATTIVO",
+                    "opzioni":[
+                        {"type": "DADO_TASSOROSSO", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "DADO_GRIFONDORO", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "DADO_SERPEVERDE", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "DADO_CORVONERO", "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ],
+					"durata": "ISTANTANEO"
+                }
+            ]
+        }
+    ],
+    "gioco5":[
+        {
+            "nome": "G.U.F.O",
+            "id": "gufo5",
+            "class": "Oggetto",
+            "descrizione": "Guadagni 2 Segnalini Influenza\nSe giochi 2 o più Incantesimi guadagni anche 1 Segnalino Attacco e 1 Punto Vita",
+            "costo": 4,
+            "path-img":"/Immagini_carte/Negozio/Gioco5/GUFO.png",
+            "effetti":[
+                {"type":"GUADAGNARE_INFLUENZA", "qta":2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type":"INCANTESIMI_GIOCATI",
+                    "qtaQuorum":2,
+                    "attivato1Volta": false,
+                    "durata":"TEMPORANEO",
+                    "effectToExecute":[
+                        {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type":"GUADAGNARE_VITA", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        }
+    ],
+    "gioco6":[
+        {
+           "nome": "Bacchetta di Sambuco",
+            "id": "bacchettaSambuco6",
+            "class": "Oggetto",
+            "descrizione": "Per ogni Incantesimo giocato in questo turno:\nGuadagni 1 Segnalino Attacco e 1 Punto Vita",
+            "costo": 7,
+            "path-img":"/Immagini_carte/Negozio/Gioco6/Bacchetta_di_Sambuco.png",
+            "triggers":[
+                {
+                    "type":"GIOCA_INCANTESIMO",
+                    "durata":"TEMPORANEO",
+                    "effectToExecute":[
+                        {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type":"GUADAGNARE_VITA", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ] 
+        },
+        {
+            "nome":"Bezoar",
+            "id":"bezoar6",
+            "class":"Oggetto",
+            "descrizione": "Un eroe a tua scelta guadagna 3 Punti Vita.\nPesca una carta",
+            "costo":4,
+            "path-img":"/Immagini_carte/Negozio/Gioco6/Bezoar.png",
+            "effetti":[
+                {"type":"GUADAGNARE_VITA", "qta":3, "target":"EROE_SCELTO", "targetCount":1, "durata": "ISTANTANEO"},
+                {"type":"PESCARE_CARTA", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ]
+        },
+        {
+            "nome":"Deluminatore",
+            "id":"deluminatore6",
+            "class":"Oggetto",
+            "descrizione": "Rimuovi fino a 2 Segnalini Controllo dal Luogo",
+            "costo":6,
+            "path-img":"/Immagini_carte/Negozio/Gioco6/Bezoar.png",
+            "effetti":[
+                {
+                    "type": "SCELTA",
+                    "target":"EROE_ATTIVO",
+                    "opzioni":[
+                        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target":"LUOGO", "durata": "ISTANTANEO"},
+                        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 2, "target":"LUOGO", "durata": "ISTANTANEO"}
+                    ],
+					"durata": "ISTANTANEO"
+                }
+            ]
+        },
+        {
+            "nome":"Felix Felicis",
+            "id":"felixFelicis6",
+            "class":"Oggetto",
+            "descrizione": "Scegli 2:\nGuadagni 2 Segnalini Attacco; o guadagni 2 Segnalini Influenza; o guadagni 2 Punti Vita; o Pesca 2 carte",
+            "costo":7,
+            "path-img":"/Immagini_carte/Negozio/Gioco6/Felix_Felicis.png",
+            "effetti":[
+                {
+                    "type": "SCELTA_MULTIPLA",
+                    "target":"EROE_ATTIVO",
+					"qta": 2,
+                    "opzioni":[
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target":"EROE_ATTIVO", "selected": false, "durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target":"EROE_ATTIVO", "selected": false, "durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO", "selected": false, "durata": "ISTANTANEO"},
+                        {"type": "PESCARE_CARTA", "qta": 2, "target":"EROE_ATTIVO", "selected": false, "durata": "ISTANTANEO"}
+                    ],
+					"durata": "ISTANTANEO"
+                }
+            ]
+        },
+        {
+            "nome":"Pozioni avanzate",
+            "id":"pozioniAvanzate6",
+            "class":"Oggetto",
+            "descrizione": "Tutti gli Eroi guadagnano 2 Punti Vita. Poi, ogni Eroe con massimo Punti Vita guadagna 1 Segnalino Attacco e pesca una carta",
+            "costo":6,
+            "path-img":"/Immagini_carte/Negozio/Gioco6/Pozioni_avanzate.png",
+            "effetti":[
+                {"type":"GUADAGNARE_VITA", "qta":2, "target":"TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type":"SALUTE_MASSIMA",
+                    "target": "TUTTI_GLI_EROI",
+                    "durata":"TEMPORANEO",
+                    "effectToExecute":[
+                        {"type":"GUADAGNARE_ATTACCO", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type":"PESCARE_CARTA", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        }
+    ],
+    "gioco7":[
+        {
+            "nome":"Spada di Grifondoro",
+            "id":"spadaGrifondoro7",
+            "class":"Oggetto",
+            "descrizione": "Guadagni 2 Segnalini Attacco\nTira il dado casata Grifondoro 2 volte",
+            "costo":7,
+            "path-img":"/Immagini_carte/Negozio/Gioco7/Spada_di_Grifondoro.png",
+            "effetti":[
+                {"type":"GUADAGNARE_ATTACCO", "qta":2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type":"DADO_GRIFONDORO", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type":"DADO_GRIFONDORO", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ]
+        }
+    ]
+}

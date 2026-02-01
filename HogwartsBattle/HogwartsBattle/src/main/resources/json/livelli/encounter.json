@@ -1,0 +1,368 @@
+{
+  "pack1": [
+    {
+      "nome": "Sneaking in the Halls!",
+      "id": "sneakingHalls1",
+      "pack": 1,
+      "ordine": 1,
+      "malvagiAssociati": ["dracoMalfoy2", "crabbeGoyle1", "marcusFlint1", "pansyParkinson1"],
+      "descrizioneEffetto": "If the active Hero has three or more Items in hand, add a control token to the Location.",
+      "effettiContinui": [
+        {
+          "type": "CONTROLLO_ITEMS_IN_MANO",
+          "qta": 3,
+          "target": "EROE_ATTIVO",
+          "durata": "CONTINUO"
+        }
+      ],
+      "descrizioneCompletamento": "Play 4 Items in one turn.",
+      "tipoCondizione": "GIOCA_CARTE_TIPO",
+      "tipoCartaRichiesto": "OGGETTO",
+      "valoreRichiesto": 4,
+      "descrizioneRicompensa": "Once per game, you may discard this; then ALL Heroes may banish a card in their hand or discard pile.",
+      "reward": [
+        {
+          "type": "BANISH_CARTA_MANO_O_SCARTO",
+          "target": "TUTTI_GLI_EROI",
+          "durata": "ISTANTANEO"
+        }
+      ],
+      "pathImg": "/Immagini_carte/Encounter/Pack1/Sneaking_in_the_Halls.png"
+    },
+    {
+      "nome": "The Ministry is Meddling",
+      "id": "ministryMeddling1",
+      "pack": 1,
+      "ordine": 2,
+      "malvagiAssociati": ["corneliusFudge2", "luciusMalfoy2"],
+      "descrizioneEffetto": "Active Hero discards any Attack and Influence tokens they have collected. If you discard anything, lose 2 health.",
+      "effettiContinui": [
+        {
+          "type": "SCARTA_RISORSE_E_PERDI_VITA",
+          "qta": 2,
+          "target": "EROE_ATTIVO",
+          "durata": "CONTINUO"
+        }
+      ],
+      "descrizioneCompletamento": "Acquire 8 Influence in one turn.",
+      "tipoCondizione": "ACQUISTA_INFLUENZA",
+      "valoreRichiesto": 8,
+      "descrizioneRicompensa": "Once per game, you may discard this; then ALL Heroes gain 1 Influence. Remove 1 control token from the Location.",
+      "reward": [
+        {
+          "type": "GUADAGNARE_INFLUENZA",
+          "qta": 1,
+          "target": "TUTTI_GLI_EROI",
+          "durata": "ISTANTANEO"
+        },
+        {
+          "type": "RIMUOVERE_MARCHIO_NERO",
+          "qta": 1,
+          "target": "LUOGO",
+          "durata": "ISTANTANEO"
+        }
+      ],
+      "pathImg": "/Immagini_carte/Encounter/Pack1/The_ministry_is_meddling.png"
+    },
+    {
+      "nome": "Detention with Dolores",
+      "id": "detentionDolores1",
+      "pack": 1,
+      "ordine": 3,
+      "malvagiAssociati": ["doloresUmbridge2"],
+      "descrizioneEffetto": "If the active Hero has at least one card with a value of 4 or more in hand, add a control token to the Location.",
+      "effettiContinui": [
+        {
+          "type": "CONTROLLO_VALORE_CARTA_IN_MANO",
+          "qta": 4,
+          "target": "EROE_ATTIVO",
+          "durata": "CONTINUO"
+        }
+      ],
+      "descrizioneCompletamento": "Play 3 cards with a value of 4 or more in one turn.",
+      "tipoCondizione": "GIOCA_CARTE_VALORE",
+      "valoreRichiesto": 3,
+      "valoreCarta": 4,
+      "descrizioneRicompensa": "Once per game, you may discard this; then ALL Heroes gain 2 Influence.",
+      "reward": [
+        {
+          "type": "GUADAGNARE_INFLUENZA",
+          "qta": 2,
+          "target": "TUTTI_GLI_EROI",
+          "durata": "ISTANTANEO"
+        }
+      ],
+      "pathImg": "/Immagini_carte/Encounter/Pack1/Detention_with_dolores.png"
+    }
+  ],
+  
+  "pack2": [
+    {
+      "nome": "Before the Wizengamot",
+      "id": "beforeWizengamot2",
+      "pack": 2,
+      "ordine": 1,
+      "malvagiAssociati": ["corneliusFudge3", "doloresUmbridge3"],
+      "descrizioneEffetto": "When a Hero resolves a Creature, they discard two cards, then draw two cards. Banish 2 Potions to negate.",
+      "effettiContinui": [
+        {
+          "type": "RISOLVI_CREATURA_SCARTA_E_PESCA",
+          "qta": 2,
+          "target": "EROE_ATTIVO",
+          "durata": "CONTINUO"
+        }
+      ],
+      "descrizioneCompletamento": "Banish 5 Potions in one turn.",
+      "tipoCondizione": "BANISH_POZIONI",
+      "valoreRichiesto": 5,
+      "descrizioneRicompensa": "Once per game, you may discard this; then ALL Heroes draw a card.",
+      "reward": [
+        {
+          "type": "PESCA_CARTE",
+          "qta": 1,
+          "target": "TUTTI_GLI_EROI",
+          "durata": "ISTANTANEO"
+        }
+      ],
+      "pathImg": "/Immagini_carte/Encounter/Pack2/Before_the_Wizengamot.png"
+    },
+    {
+      "nome": "Ministers of Magic",
+      "id": "ministersOfMagic2",
+      "pack": 2,
+      "ordine": 2,
+      "malvagiAssociati": ["corneliusFudge2", "rufiusScrimgeour2"],
+      "descrizioneEffetto": "If the active Hero brews a Potion, remove 2 Influence tokens from the Location.",
+      "effettiContinui": [
+        {
+          "type": "BREW_POZIONE_RIMUOVI_INFLUENZA",
+          "qta": 2,
+          "target": "LUOGO",
+          "durata": "CONTINUO"
+        }
+      ],
+      "descrizioneCompletamento": "Acquire 8 Influence in one turn.",
+      "tipoCondizione": "ACQUISTA_INFLUENZA",
+      "valoreRichiesto": 8,
+      "descrizioneRicompensa": "Once per game, you may discard this; then ALL Heroes gain 2 Influence.",
+      "reward": [
+        {
+          "type": "GUADAGNARE_INFLUENZA",
+          "qta": 2,
+          "target": "TUTTI_GLI_EROI",
+          "durata": "ISTANTANEO"
+        }
+      ],
+      "pathImg": "/Immagini_carte/Encounter/Pack2/Ministers_of_Magic.png"
+    },
+    {
+      "nome": "Magic's Might",
+      "id": "magicsMight2",
+      "pack": 2,
+      "ordine": 3,
+      "malvagiAssociati": ["giantSpider2", "troll2"],
+      "descrizioneEffetto": "Play 2 cards with symbols to remove 2 Ingredients.",
+      "effettiContinui": [
+        {
+          "type": "GIOCA_CARTE_SIMBOLI_RIMUOVI_INGREDIENTI",
+          "qta": 2,
+          "target": "EROE_ATTIVO",
+          "durata": "CONTINUO"
+        }
+      ],
+      "descrizioneCompletamento": "Acquire 8 Attack in one turn.",
+      "tipoCondizione": "ACQUISTA_ATTACCO",
+      "valoreRichiesto": 8,
+      "descrizioneRicompensa": "Once per game, you may discard this; then ALL Heroes gain 2 Attack.",
+      "reward": [
+        {
+          "type": "GUADAGNARE_ATTACCO",
+          "qta": 2,
+          "target": "TUTTI_GLI_EROI",
+          "durata": "ISTANTANEO"
+        }
+      ],
+      "pathImg": "/Immagini_carte/Encounter/Pack2/Magics_Might.png"
+    }
+  ],
+  
+  "pack3": [
+    {
+      "nome": "A Family Disgraced",
+      "id": "familyDisgraced3",
+      "pack": 3,
+      "ordine": 1,
+      "malvagiAssociati": ["luciusMalfoy3", "dracoMalfoy3"],
+      "descrizioneEffetto": "If you play an Item and there's a Malfoy in play, discard two cards. If you draw or play a Black card, you may discard it then draw a card.",
+      "effettiContinui": [
+        {
+          "type": "GIOCA_ITEM_MALFOY_SCARTA",
+          "qta": 2,
+          "target": "EROE_ATTIVO",
+          "durata": "CONTINUO"
+        }
+      ],
+      "descrizioneCompletamento": "If you play an Item, you may discard two cards.",
+      "tipoCondizione": "GIOCA_ITEM_SCARTA",
+      "valoreRichiesto": 2,
+      "descrizioneRicompensa": "Once per game, you may discard this; then draw a card.",
+      "reward": [
+        {
+          "type": "PESCA_CARTE",
+          "qta": 1,
+          "target": "EROE_ATTIVO",
+          "durata": "ISTANTANEO"
+        }
+      ],
+      "pathImg": "/Immagini_carte/Encounter/Pack3/A_Family_Disgraced.png"
+    },
+    {
+      "nome": "View Memories",
+      "id": "viewMemories3",
+      "pack": 3,
+      "ordine": 2,
+      "malvagiAssociati": ["tomRiddle4", "horaceSlugohorn3"],
+      "descrizioneEffetto": "If you play a 5-cost or less Potions, add a control token to the Location.",
+      "effettiContinui": [
+        {
+          "type": "GIOCA_POZIONE_5_CONTROLLO",
+          "qta": 5,
+          "target": "LUOGO",
+          "durata": "CONTINUO"
+        }
+      ],
+      "descrizioneCompletamento": "Discard 5 potions.",
+      "tipoCondizione": "SCARTA_POZIONI",
+      "valoreRichiesto": 5,
+      "descrizioneRicompensa": "Once per game, you may discard this; then ALL Heroes draw a card.",
+      "reward": [
+        {
+          "type": "PESCA_CARTE",
+          "qta": 1,
+          "target": "TUTTI_GLI_EROI",
+          "durata": "ISTANTANEO"
+        }
+      ],
+      "pathImg": "/Immagini_carte/Encounter/Pack3/View_Memories.png"
+    },
+    {
+      "nome": "Peril of the Pensieve",
+      "id": "perilPensieve3",
+      "pack": 3,
+      "ordine": 3,
+      "malvagiAssociati": ["albusDumbledore4"],
+      "descrizioneEffetto": "If you brew a Potion, you may discard this; then remove 3 control tokens from the Location.",
+      "effettiContinui": [
+        {
+          "type": "BREW_POZIONE_RIMUOVI_CONTROLLO",
+          "qta": 3,
+          "target": "LUOGO",
+          "durata": "CONTINUO"
+        }
+      ],
+      "descrizioneCompletamento": "Brew 3 Potions.",
+      "tipoCondizione": "BREW_POZIONI",
+      "valoreRichiesto": 3,
+      "descrizioneRicompensa": "Once per game, you may discard this; then remove 3 control tokens from the Location.",
+      "reward": [
+        {
+          "type": "RIMUOVERE_MARCHIO_NERO",
+          "qta": 3,
+          "target": "LUOGO",
+          "durata": "ISTANTANEO"
+        }
+      ],
+      "pathImg": "/Immagini_carte/Encounter/Pack3/Peril_of_the_Pensieve.png"
+    }
+  ],
+  
+  "pack4": [
+    {
+      "nome": "Staffing Changes",
+      "id": "staffingChanges4",
+      "pack": 4,
+      "ordine": 1,
+      "malvagiAssociati": ["severusSnape4", "albusDumbledore5"],
+      "descrizioneEffetto": "If there are 4 or more active Black cards showing Active Hexes, discard a card. If there are 6 or more, discard 2 additional Black cards.",
+      "effettiContinui": [
+        {
+          "type": "CARTE_NERE_ATTIVE_SCARTA",
+          "qta": 4,
+          "target": "EROE_ATTIVO",
+          "durata": "CONTINUO"
+        }
+      ],
+      "descrizioneCompletamento": "Remove 5 villains in one turn.",
+      "tipoCondizione": "SCONFIGGI_MALVAGI",
+      "valoreRichiesto": 5,
+      "descrizioneRicompensa": "Once per game, you may discard this; then ALL Heroes gain a card.",
+      "reward": [
+        {
+          "type": "PESCA_CARTE",
+          "qta": 1,
+          "target": "TUTTI_GLI_EROI",
+          "durata": "ISTANTANEO"
+        }
+      ],
+      "pathImg": "/Immagini_carte/Encounter/Pack4/Staffing_Changes.png"
+    },
+    {
+      "nome": "The Seventh Horcrux",
+      "id": "seventhHorcrux4",
+      "pack": 4,
+      "ordine": 2,
+      "malvagiAssociati": ["nagini7", "lordVoldemort7"],
+      "descrizioneEffetto": "Unless there's a Card costing 7 or less in your hand, ALL Heroes lose 1 Health. Discard a 7-cost or less card to negate.",
+      "effettiContinui": [
+        {
+          "type": "NESSUNA_CARTA_7_PERDI_VITA",
+          "qta": 7,
+          "target": "TUTTI_GLI_EROI",
+          "durata": "CONTINUO"
+        }
+      ],
+      "descrizioneCompletamento": "Move 6 cards costing 7 or less.",
+      "tipoCondizione": "GIOCA_CARTE_VALORE",
+      "valoreRichiesto": 6,
+      "valoreCarta": 7,
+      "descrizioneRicompensa": "Once per game, you may discard this; then remove 3 control tokens from the Location.",
+      "reward": [
+        {
+          "type": "RIMUOVERE_MARCHIO_NERO",
+          "qta": 3,
+          "target": "LUOGO",
+          "durata": "ISTANTANEO"
+        }
+      ],
+      "pathImg": "/Immagini_carte/Encounter/Pack4/The_Seventh_Horcrux.png"
+    },
+    {
+      "nome": "Battle of Hogwarts",
+      "id": "battleHogwarts4",
+      "pack": 4,
+      "ordine": 3,
+      "malvagiAssociati": ["lordVoldemort7", "bellatrixLestrange4", "nagini7"],
+      "descrizioneEffetto": "Add a control token to the Location. Resolve 2 Dark Arts effects. Reveal a Dark Arts event & remove HP 10 per turn.",
+      "effettiContinui": [
+        {
+          "type": "BATTAGLIA_HOGWARTS",
+          "qta": 2,
+          "target": "LUOGO",
+          "durata": "CONTINUO"
+        }
+      ],
+      "descrizioneCompletamento": "Destroy 3 Horcruxes.",
+      "tipoCondizione": "DISTRUGGI_HORCRUX",
+      "valoreRichiesto": 3,
+      "descrizioneRicompensa": "Once per game, you may discard this; then ALL Heroes return to HP 10.",
+      "reward": [
+        {
+          "type": "RITORNA_A_VITA_MASSIMA",
+          "target": "TUTTI_GLI_EROI",
+          "durata": "ISTANTANEO"
+        }
+      ],
+      "pathImg": "/Immagini_carte/Encounter/Pack4/Battle_of_Hogwarts.png"
+    }
+  ]
+}

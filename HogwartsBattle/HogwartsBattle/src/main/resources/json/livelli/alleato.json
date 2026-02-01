@@ -1,0 +1,439 @@
+{
+    "gioco1":[
+        {
+            "nome": "Albus Silente",
+            "id": "albusSilente1",
+            "class": "Alleato",
+            "descrizione": "Tutti gli eroi guadagnano 1 Segnalino Attacco, 1 Segnalino influenza, 1 punto vita e pescano una carta",
+            "costo": 8,
+            "path-img": "/Immagini_carte/Negozio/Gioco1/Albus_Silente.png",
+            "effetti":[
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_VITA", "qta":1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+                {"type": "PESCARE_CARTA", "qta": 1 , "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+            ]
+        },
+        {
+            "nome": "Oliver Baston",
+            "id": "oliverBaston1",
+            "class": "Alleato",
+            "descrizione": "Guadagni 1 Segnalino Attacco, \nSe sconfiggi un Malvagio, un eroe guadagna 2 Punti Vita",
+            "costo": 3,
+            "path-img": "/Immagini_carte/Negozio/Gioco1/Oliver_Baston.png",
+            "effetti":[
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type": "NEMICO_SCONFITTO",
+                    "durata": "TEMPORANEO",
+                    "effectToExecute":[
+                        {"type": "GUADAGNARE_VITA", "qta":2, "target": "EROE_SCELTO", "targetCount": 1, "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Rubeus Hagrid",
+            "id": "rubeusHagrid1",
+            "class": "Alleato",
+            "descrizione": "Guadagni 1 Segnalino Attacco, \nTutti gli eroi guadagnano 1 Punto Vita",
+            "costo": 4,
+            "path-img": "/Immagini_carte/Negozio/Gioco1/Rubeus_Hagrid.png",
+            "effetti":[
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_VITA", "qta":1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+            ]
+        }
+    ],
+    "gioco2":[
+        {
+            "nome": "Arthur Weasley",
+            "id": "arthurWeasley2",
+            "class": "Alleato",
+            "descrizione": "Ogni eroe guadagna 2 Segnalini Influenza",
+            "costo": 6,
+            "path-img": "/Immagini_carte/Negozio/Gioco2/Arthur_Weasley.png",
+            "effetti":[
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+            ]
+        },
+        {
+            "nome": "Dobby l'elfo casalingo",
+            "id": "dobbyElf2",
+            "class": "Alleato",
+            "descrizione": "Rimuovi 1 Segnalino Controllo dal luogo. \n Pesca una carta",
+            "costo": 4,
+            "path-img": "/Immagini_carte/Negozio/Gioco2/Dobby_l_Elfo_Domestico.png",
+            "effetti":[
+                {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target": "LUOGO", "durata": "ISTANTANEO"},
+                {"type": "PESCARE_CARTA", "qta": 1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ]
+        },
+        {
+            "nome": "Fanny la fenice",
+            "id": "fannyFenice2",
+            "class": "Alleato",
+            "descrizione": "Scegli uno: \n Guadagna 2 Segnalini Attacco \n o \n Tutti gli eroi guadagnano 2 Punti Vita",
+            "costo": 5,
+            "path-img": "/Immagini_carte/Negozio/Gioco2/Fanny_la_Fenice.png",
+            "effetti":[
+                {
+                    "type": "SCELTA",
+                    "target":"EROE_ATTIVO",
+                    "opzioni":[
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target":"TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+                    ],
+					"durata": "ISTANTANEO"
+                }
+            ]
+        },
+        {
+            "nome": "Gilderoy Allock",
+            "id": "gilderoyAllock2",
+            "class": "Alleato",
+            "descrizione": "Pesca 1 carta, poi scarta un'altra carta. \n Se scarti questa carta pesca una carta",
+            "costo": 2,
+            "path-img": "/Immagini_carte/Negozio/Gioco2/Gilderoy_Allock.png",
+            "effetti":[
+                {"type": "PESCARE_CARTA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "SCARTARE_CARTA", "qta": 1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type": "AUTO_SCARTO",
+                    "durata": "TEMPORANEO",
+                    "effectToExecute":[
+                        {"type": "PESCARE_CARTA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Ginny Weasley",
+            "id": "ginnyWeasley2",
+            "class": "Alleato",
+            "descrizione": "Guadagni 1 Segnalino Attacco e un Segnalino Influenza",
+            "costo": 4,
+            "path-img": "/Immagini_carte/Negozio/Gioco2/Ginny_Weasley.png",
+            "effetti":[
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ]
+        },
+        {
+            "nome": "Molly Weasley",
+            "id": "mollyWeasley2",
+            "class": "Alleato",
+            "descrizione": "Tutti gli eroi guadagnano 1 Segnalino Influenza e 2 Punti Vita",
+            "costo": 6,
+            "path-img": "/Immagini_carte/Negozio/Gioco2/Molly_Weasley.png",
+            "effetti":[
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_VITA", "qta": 2, "target":"TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+            ]
+        }
+    ],
+    "gioco3":[
+        {
+            "nome": "Remus Lupin",
+            "id": "remusLupin3",
+            "class": "Alleato",
+            "descrizione": "Guadagni 1 Segnalino Attacco\n Un eroe a tua scelta guadagna 3 Punti Vita",
+            "costo": 4,
+            "path-img": "/Immagini_carte/Negozio/Gioco3/Remus_Lupin.png",
+            "effetti":[
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_VITA", "qta": 3, "target":"EROE_SCELTO", "targetCount":1, "durata": "ISTANTANEO"}
+            ]
+        },
+        {
+            "nome": "Sibilla Cooman",
+            "id": "sibillaCooman3",
+            "class": "Alleato",
+            "descrizione": "Pesca 2 carte, poi scarta un'altra carta. \n Se scarti un magia guadagni 2 Segnalini Influenza",
+            "costo": 4,
+            "path-img": "/Immagini_carte/Negozio/Gioco3/Sibilla_Cooman.png",
+            "effetti":[
+                {"type": "PESCARE_CARTA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "SCARTARE_CARTA", "qta": 1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type": "SCARTA_INCANTESIMO",
+                    "durata": "TEMPORANEO",
+                    "effectToExecute":[
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Sirius Black",
+            "id": "siriusBlack3",
+            "class": "Alleato",
+            "descrizione": "Guadagni 2 Segnalini Attacco e 1 Segnalino Influenza",
+            "costo": 6,
+            "path-img": "/Immagini_carte/Negozio/Gioco3/Sirius_Black.png",
+            "effetti":[
+                {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ]
+        }
+    ],
+    "gioco4":[
+        {
+            "nome": "Alastor 'Malocchio' Moody",
+            "id": "alastorMoody4",
+            "class": "Alleato",
+            "descrizione": "Guadagni 2 Segnalini Influenza.\nRimuovi 1 Segnalino Controllo dal luogo",
+            "costo": 6,
+            "path-img": "/Immagini_carte/Negozio/Gioco4/Alastor_Moody.png",
+            "effetti":[
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target":"LUOGO", "durata": "ISTANTANEO"}
+            ]
+        },
+        {
+            "nome": "Cedric Diggory",
+            "id": "cedricDiggory4",
+            "class": "Alleato",
+            "descrizione": "Guadagni 1 Segnalino Attacco.\nTira il dado Tassorosso",
+            "costo": 4,
+            "path-img": "/Immagini_carte/Negozio/Gioco4/Cedric_Diggory.png",
+            "effetti":[
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "DADO_TASSOROSSO", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ]
+        },        
+        {
+            "nome": "Filius Vitious",
+            "id": "filiusVitious4",
+            "class": "Alleato",
+            "descrizione": "Guadagni 1 Segnalino Influenza.\nPesca una carta.\nTira un dado Corvonero",
+            "costo": 6,
+            "path-img": "/Immagini_carte/Negozio/Gioco4/Filius_Vitious.png",
+            "effetti":[
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "PESCARE_CARTA", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "DADO_CORVONERO", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ]
+        },
+        {
+            "nome": "Fleur Delacour",
+            "id": "fleurDelacour4",
+            "class": "Alleato",
+            "descrizione": "Guadagni 2 Segnalini Influenza.\n Se giochi un altro alleato, guadagni anche 2 Punti Vita",
+            "costo": 4,
+            "path-img": "/Immagini_carte/Negozio/Gioco4/Fleur_Delacour.png",
+            "effetti":[
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type": "GIOCA_ALLEATO",
+                    "durata": "TEMPORANEO",
+                    "effectToExecute":[
+                        {"type": "GUADAGNARE_VITA", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Minerva McGranitt",
+            "id": "minervaMcGranitt4",
+            "class": "Alleato",
+            "descrizione": "Guadagni 1 Segnalino Influenza e 1 segnalino attacco.\nTira un dado Grifondoro",
+            "costo": 6,
+            "path-img": "/Immagini_carte/Negozio/Gioco4/Minerva_McGranitt.png",
+            "effetti":[
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "DADO_GRIFONDORO", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ]
+        },
+        {
+            "nome": "Pomona Sprite",
+            "id": "pomonaSprite4",
+            "class": "Alleato",
+            "descrizione": "Guadagni 1 Segnalino Influenza.\nUn eroe a tua scelta guadagna 2 Punti Vita\nTira un dado Tassorosso",
+            "costo": 6,
+            "path-img": "/Immagini_carte/Negozio/Gioco4/Pomona_Sprite.png",
+            "effetti":[
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_SCELTO", "targetCount": 1, "durata": "ISTANTANEO"},
+                {"type": "DADO_TASSOROSSO", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ]
+        },
+        {
+            "nome": "Viktor Krum",
+            "id": "viktorKrum4",
+            "class": "Alleato",
+            "descrizione": "Guadagni 2 Segnalini Attacco.\nSe sconfiggi un malvagio, guadagni anche 1 Segnalino Influenza e 1 Punto vita",
+            "costo": 5,
+            "path-img": "/Immagini_carte/Negozio/Gioco4/Viktor_Krum.png",
+            "effetti":[
+                {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type": "NEMICO_SCONFITTO",
+                    "durata":"TEMPORANEO",
+                    "effectToExecute":[
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_VITA", "qta":1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Severus Piton",
+            "id": "severusPiton4",
+            "class": "Alleato",
+            "descrizione": "Guadagni 1 Segnalino Attacco e 2 Punti Vita.\n Tira un Dado Serpeverde",
+            "costo": 6,
+            "path-img": "/Immagini_carte/Negozio/Gioco4/Severus_Piton.png",
+            "effetti":[
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_VITA", "qta": 2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "DADO_SERPEVERDE", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ]
+        }
+    ],
+    "gioco5":[
+        {
+            "nome": "Cho Chang",
+            "id": "choChang5",
+            "class": "Alleato",
+            "descrizione": "Pesca 3 carte, poi scarta 2 carte dalla mano.\nTira un Dado Corvonero",
+            "costo": 4,
+            "path-img": "/Immagini_carte/Negozio/Gioco5/Cho_Chang.png",
+            "effetti":[
+                {"type": "PESCARE_CARTA", "qta": 3, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "SCARTARE_CARTA", "qta": 2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "DADO_CORVONERO", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ]
+        },
+        {
+            "nome": "Fred Weasley",
+            "id": "fredWeasley5",
+            "class": "Alleato",
+            "descrizione": "Guadagni 1 Segnalino Attacco.\nSe un altro Eroe ha un Weasley nella sua mano, OGNI eroe guadagna 1 Segnalino Influenza \nTira il dado Grifondoro",
+            "costo": 4,
+            "path-img": "/Immagini_carte/Negozio/Gioco5/Fred_Weasley.png",
+            "effetti":[
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "DADO_GRIFONDORO", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type": "WEASLEY_IN_MANO",
+                    "durata": "TEMPORANEO",
+                    "effectToExecute":[
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "George Weasley",
+            "id": "georgeWeasley5",
+            "class": "Alleato",
+            "descrizione": "Guadagni 1 Segnalino Attacco.\nSe un altro Eroe ha un Weasley nella sua mano, OGNI eroe guadagna 1 Punto Vita \nTira il dado Grifondoro",
+            "costo": 4,
+            "path-img": "/Immagini_carte/Negozio/Gioco5/George_Weasley.png",
+            "effetti":[
+                {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "DADO_GRIFONDORO", "target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+            ],
+            "triggers":[
+                {
+                    "type": "WEASLEY_IN_MANO",
+                    "durata": "TEMPORANEO",
+                    "effectToExecute":[
+                        {"type": "GUADAGNARE_VITA", "qta": 1, "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Kingsley Shacklebolt",
+            "id": "kingsleyShacklebolt5",
+            "class": "Alleato",
+            "descrizione": "Guadagni 2 Segnalini Attacco e 1 Punto Vita.\nRimuovi 1 Segnalino Controllo dal Luogo",
+            "costo": 7,
+            "path-img": "/Immagini_carte/Negozio/Gioco5/Kingsley_Shacklebolt.png",
+            "effetti":[
+                {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "GUADAGNARE_VITA", "qta": 1, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "RIMUOVERE_MARCHIO_NERO", "qta":1, "target":"LUOGO", "durata": "ISTANTANEO"}
+            ]
+        },
+        {
+            "nome": "Luna Lovegood",
+            "id": "lunaLovegood5",
+            "class": "Alleato",
+            "descrizione": "Guadagna 1 Segnalino Influenza.\nSe giochi un altro Oggetto, guadagni anche 1 Segnalino Attacco\nTira un Dado Corvonero",
+            "costo": 5,
+            "path-img": "/Immagini_carte/Negozio/Gioco5/Luna_Lovegood.png",
+            "effetti":[
+                {"type": "GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                {"type": "DADO_CORVONERO", "target":"EROE_ATTIVO"}
+            ],
+            "triggers":[
+                {
+                    "type": "GIOCA_OGGETTO",
+                    "durata":"TEMPORANEO",
+                    "effectToExecute":[
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ]
+                }
+            ]
+        },
+        {
+            "nome": "Ninfadora Tonks",
+            "id": "ninfadoraTonks5",
+            "class": "Alleato",
+            "descrizione": "Scegli uno: \n Guadagna 3 Segnalini Influenza; o guadagni 2 Segnalini Attacco; o rimuovi 1 Segnalino Controllo dal Luogo",
+            "costo": 5,
+            "path-img": "/Immagini_carte/Negozio/Gioco5/Ninfadora_Tonks.png",
+            "effetti":[
+                {
+                    "type": "SCELTA",
+                    "target":"EROE_ATTIVO",
+                    "opzioni":[
+                        {"type": "GUADAGNARE_INFLUENZA", "qta": 3, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "GUADAGNARE_ATTACCO", "qta": 2, "target":"EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type": "RIMUOVERE_MARCHIO_NERO", "qta": 1, "target":"LUOGO", "durata": "ISTANTANEO"}
+                    ],
+					"durata": "ISTANTANEO"
+                }
+            ]
+        }
+    ],
+    "gioco6":[
+        {
+           "nome": "Horace Lumacorno",
+            "id": "horaceLumacorno6",
+            "class": "Alleato",
+            "descrizione": "Tutti gli eroi scelgono uno: \nGuadagnano 1 Segnalino Influenza o 1 Punto Vita",
+            "costo": 6,
+            "path-img": "/Immagini_carte/Negozio/Gioco6/Horace_Lumacorno.png",
+            "effetti":[
+                {
+                    "type":"SCELTA",
+                    "target":"TUTTI_GLI_EROI",
+                    "opzioni":[
+                        {"type":"GUADAGNARE_INFLUENZA", "qta": 1, "target": "EROE_ATTIVO", "durata": "ISTANTANEO"},
+                        {"type":"GUADAGNARE_VITA","qta":1,"target":"EROE_ATTIVO", "durata": "ISTANTANEO"}
+                    ],
+					"durata": "ISTANTANEO"
+                },
+                {"type": "DADO_SERPEVERDE", "target":"EROE_ATTIVO"}
+            ] 
+        }
+    ]
+
+}
