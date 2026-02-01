@@ -251,15 +251,16 @@ public class EsecutoreEffetti {
 	private static void guadagnareVita(Effetto effetto, StatoDiGioco stato, Giocatore giocatore, Carta attivante) {
 		if (effetto.getQta() == null || effetto.getQta() <= 0)
 			return;
+		
+		if (stato.getGestoreEffetti().regolaAttiva(TipoEffetto.NON_GUADAGNARE_VITA)) {
+			System.out.println("I giocatori non possono guadagnare vite");
+			GameController.getInstance().getGameUI().getMessagePanel().mostraMessaggio("I giocatori non possono guadagnare vite", MessagePanel.TipoMessaggio.EFFETTO);
+			return;
+		}
 
 		List<Giocatore> bersagli = determinaBersagli(effetto, stato, giocatore, attivante);
 
 		for (Giocatore g : bersagli) {
-
-			if (stato.getGestoreEffetti().regolaAttiva(TipoEffetto.NON_GUADAGNARE_VITA)) {
-				System.out.println(g.getEroe().getNome() + " non può guadagnare vita");
-				continue;
-			}
 
 			int vecchiaVita = g.getSalute();
 			int nuovaVita = Math.min(vecchiaVita + effetto.getQta(), g.getSaluteMax());

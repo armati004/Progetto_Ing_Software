@@ -92,6 +92,14 @@ public class Giocatore {
         	stato.getGestoreTrigger().attivaTrigger(TipoTrigger.GIOCA_ALLEATO, stato, this);
         }
         
+        if(oggettiGiocati >= 1) {
+        	stato.getGestoreTrigger().attivaTrigger(TipoTrigger.GIOCA_OGGETTO, stato, this);
+        }
+        
+        if(incantesimiGiocati >= 1) {
+        	stato.getGestoreTrigger().attivaTrigger(TipoTrigger.GIOCA_INCANTESIMO, stato, this);
+        }
+        
         mano.remove(carta);
         scarti.aggiungiCarta(carta);
 

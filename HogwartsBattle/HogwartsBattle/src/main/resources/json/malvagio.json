@@ -351,7 +351,7 @@
       "vita": "8",
       "path-img": "/Immagini_carte/Malvagi/Gioco6/Fenrir_Greyback.png",
 	  "effetti":[
-		{"type": "NON_GUADAGNARE_VITA", "target": "TUTTI_GLI_EROI", "durata": "ISTANTANEO"}
+		{"type": "NON_GUADAGNARE_VITA", "target": "TUTTI_GLI_EROI", "durata": "CONTINUO"}
 	  ],
       "triggers": [
         
@@ -366,7 +366,7 @@
       "nome": "Lord Voldemort",
       "id": "lordVoldemort6",
       "class": "Malvagio",
-      "descrizione": "Tira il dado di Serpeverde: \nAttacco: Tutti perdono una vita \nInfluenza: Aggiungi 1 marchio nero al Luogo \nVita: Rimuovi 1 Attacco da tutti i malvagi \nCarta: Tutti scartano 1 carta, \n non puoi mettere Segnalini Attacco su questa carta finché tutti i malvagi non sono sconfitti",
+      "descrizione": "Tira il dado di Serpeverde: \nAttacco: Tutti perdono una vita \nInfluenza: Aggiungi 1 marchio nero al Luogo \nVita: Rimuovi 1 Attacco da tutti i malvagi \nCarta: Tutti scartano 1 carta",
       "Descrizione-ricompensa": "Gli eroi vincono",
       "costo": "0",
       "vita": "15",
@@ -396,7 +396,7 @@
       "nome": "Lord Voldemort",
       "id": "lordVoldemort7",
       "class": "Malvagio",
-      "descrizione": "Aggiungi 1 Segnalino Controllo al Luogo.\nOgni volta che 1 Segnalino Controllo è rimosso dal Luogo, tutti gli Eroi perdono 1 Punto Vita.\nNon possono essere assegnati Segnalini Attacco su questa carta finché tutti gli altri Malvagi non sono sconfitti.",
+      "descrizione": "Aggiungi 1 Segnalino Controllo al Luogo.\nOgni volta che 1 Segnalino Controllo è rimosso dal Luogo, tutti gli Eroi perdono 1 Punto Vita.",
       "Descrizione-ricompensa": "Gli eroi vincono",
       "costo": "0",
       "vita": "20",
