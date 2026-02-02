@@ -82,7 +82,7 @@ class PotionManagerTest {
         List<String> ingredienti = new ArrayList<>();
         ingredienti.add("WILD");
         ingredienti.add("WILD");
-        pozione.setIngredienteRichiesti(ingrediente);
+        pozione.setIngredienteRichiesti(ingredienti);
         
         // Aggiungi solo 1 WILD (insufficiente)
         giocatore.aggiungiIngrediente("WILD", 1);
@@ -147,8 +147,8 @@ class PotionManagerTest {
         
         potionManager.inizializza();
         
-        int scaffaleASize = ((List<Giocatore>) potionManager.getScaffaleA()).size();
-        int scaffaleBSize = ((List<Giocatore>) potionManager.getScaffaleB()).size();
+        int scaffaleASize = potionManager.getScaffaleA().size();
+        int scaffaleBSize = potionManager.getScaffaleB().size();
         
         assertTrue(scaffaleASize <= 3, "Scaffale A non deve avere più di 3 pozioni");
         assertTrue(scaffaleBSize <= 3, "Scaffale B non deve avere più di 3 pozioni");
