@@ -344,4 +344,9 @@ public class Encounter {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public void setTipoCondizione(String tipoCondizione2) {
+		// TODO Auto-generated method stub
+		
+	}
 }
